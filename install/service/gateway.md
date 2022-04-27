@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide/blob/master/README.md) > [AP Install](../README.md) > Gateway Service
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > Gateway Service
 
 ## Table of Contents
 
@@ -424,4 +424,4 @@ service broker:   api-gateway-service-broker
 [013]:./images/apigateway-service/image013.jpeg
 
 
-### [Index](https://github.com/PaaS-TA/Guide/blob/master/README.md) > [AP Install](../README.md) > Gateway Service
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > Gateway Service

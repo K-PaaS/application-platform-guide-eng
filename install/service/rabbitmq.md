@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide/blob/master/README.md) > [AP Install](../README.md) > RabbitMQ Service
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > RabbitMQ Service
 
 ## Table of Contents
 
@@ -619,4 +619,4 @@ test
 [rabbitmq_image_19]:./images/rabbitmq/rabbitmq_image_19.png
 
 
-### [Index](https://github.com/PaaS-TA/Guide/blob/master/README.md) > [AP Install](../README.md) > RabbitMQ Service
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > RabbitMQ Service

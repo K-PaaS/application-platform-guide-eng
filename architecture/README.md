@@ -8,8 +8,8 @@
   - [PaaS-TA Multi CPI](./application_platform/paasta_multi_cpi.md)  
 
 + Portal
-  + [BOSH를 이용한 포탈 VM Type](./portal/vm_type.md)   
-  + [PaaS-TA AP를 이용한 포탈 Container Type](./portal/container_type.md)   
+  + [VM Typed Portal Using BOSH](./portal/vm_type.md)   
+  + [Container Typed Portal Using PaaS-TA AP](./portal/container_type.md)   
 
 - Service
   - [MySQL](./service/mysql.md)

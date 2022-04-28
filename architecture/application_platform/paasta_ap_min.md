@@ -1,38 +1,38 @@
 ### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > PaaS-TA AP - min
 
-## 목적
-본 문서는 PaaS-TA Application Platform (AP) - min의 Architecture를 제공한다.
+## Purpose
+This document provides the Architecture of PaaS-TA Application Platform (AP) – min.
 <br><br>
 
-## 시스템 구성도
+## System Configuration Diagram
 ![PaaS-TA AP - min Architecture](image/ap_architecture_min.png)
 
-- 4VM 배포 시
+- When Deploying 4VM
 
-| 구분  | 인스턴스 수| 스펙 |
+| Classification | Number of Instances | Specification |
 |-------|----|-----|
-| compute | N | 4vCPU / 16GB RAM / 100GB 추가 디스크 |
-| control | N | 4vCPU / 16GB RAM / 30GB 추가 디스크 |
-| database | 1 | 1vCPU / 2GB RAM / 100GB 추가 디스크 |
+| compute | N | 4vCPU / 16GB RAM / 100GB Extra Disk |
+| control | N | 4vCPU / 16GB RAM / 30GB Extra Disk |
+| database | 1 | 1vCPU / 2GB RAM / 100GB Extra Disk |
 | router | 1 | 1vCPU / 2GB RAM |
 
-- 7VM 배포 시
+- Wehn Deploying 7VM
 
-| 구분  | 인스턴스 수| 스펙 |
+| Classification | Number of Instances | Specificaion |
 |-------|----|-----|
-| compute | N | 4vCPU / 16GB RAM / 100GB 추가 디스크 |
-| control | N | 4vCPU / 16GB RAM / 30GB 추가 디스크 |
-| database | 1(PostgreSQL) or N(MySQL) | 1vCPU / 2GB RAM / 10GB 추가 디스크 |
+| compute | N | 4vCPU / 16GB RAM / 100GB Extra Disk |
+| control | N | 4vCPU / 16GB RAM / 30GB Extra Disk |
+| database | 1(PostgreSQL) or N(MySQL) | 1vCPU / 2GB RAM / 10GB Extra Disk |
 | haproxy | 1 | 1vCPU / 2GB RAM |
 | router | N | 1vCPU / 2GB RAM  |
-| singleton-blobstore | 1 | 1vCPU / 2GB RAM / 100GB 추가 디스크 |
+| singleton-blobstore | 1 | 1vCPU / 2GB RAM / 100GB Extra Disk |
 | tcp-router | N | 1vCPU / 2GB RAM |
 
 
 
-## 설명
-PaaS-TA AP - min은 PaaS-TA AP의 경량화 버전이다.  
-기존 15~16VM 구성요소를 필요에 따라 4VM이나 7VM로 배포가 가능하다.
+## Description
+PaaS-TA AP – min is a lightweight version of PaaS-TA AP.    
+Existing 15 to 16 VM components can be deployed as 4 VMs or 7 VMs if needed.
 
 
 ### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > PaaS-TA AP - min

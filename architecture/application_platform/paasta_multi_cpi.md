@@ -15,7 +15,7 @@ This document provides the Architecture of PaaS-TA Multi CPI.
 | Classification | Number of Instances| Specification |
 |-------|----|-----|
 | openvpn | 2 | 1vCPU / 0.5GB RAM |
-| BOSH | 1 | 4vCPU / 16GB RAM / (25GB + 64GB) 추가 Extra Disk |
+| BOSH | 1 | 4vCPU / 16GB RAM / (25GB + 64GB) Extra Disk |
 
 <br><br>
 

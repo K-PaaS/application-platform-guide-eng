@@ -1,12 +1,12 @@
 ### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > Portal VM Type
 
-## 목적
-본 문서는 Application Platform (AP) Portal - VM Type의 Architecture를 제공한다.
+## Purpose
+This document provides the Architecture of Application Platform (AP) Portal - VM Type.
 <br><br>
 
-## 시스템 구성도
-VM Type의 AP Portal은 Portal API와 Portal UI로 나뉘어있다.  
-Portal API, Portal UI의 구성과 스펙은 다음과 같다.  
+## System Configuration Diagram
+The AP Portal of VM Type can be divided into two parts, Portal API and Portal UI.  
+The configuration and specification of Portal API and Portal UI are as follows.  
 <br>
 
 
@@ -15,11 +15,11 @@ Portal API, Portal UI의 구성과 스펙은 다음과 같다.
 
 <br>
 
-| Deployment | 구분  | 스펙 |
+| Deployment | Classification | Specification |
 |------------|-------|-----|
-| portal-api | binary_storage | 1vCPU / 512MB RAM / 4GB Disk 10GB(영구적 Disk) |
+| portal-api | binary_storage | 1vCPU / 512MB RAM / 4GB Disk 10GB(Permanent Disk) |
 | portal-api | haproxy | 1vCPU / 512MB RAM / 4GB Disk|
-| portal-api | mariadb | 1vCPU / 512MB RAM / 4GB Disk +10GB(영구적 Disk) |
+| portal-api | mariadb | 1vCPU / 512MB RAM / 4GB Disk +10GB(Permanent Disk) |
 | portal-api | paas-ta-portal-registration | 1vCPU / 512MB RAM / 4GB Disk |
 | portal-api | paas-ta-portal-gateway | 1vCPU / 512MB RAM / 4GB Disk |
 | portal-api | paas-ta-portal-api | 1vCPU / 1GB RAM / 4GB Disk |
@@ -27,7 +27,7 @@ Portal API, Portal UI의 구성과 스펙은 다음과 같다.
 | portal-api | paas-ta-portal-log-api | 1vCPU / 512MB RAM / 4GB Disk |
 | portal-api | paas-ta-portal-storage-api | 1vCPU / 512MB RAM / 4GB Disk |
 | portal-ui | haproxy | 1vCPU / 512MB RAM / 4GB Disk|
-| portal-ui | mariadb | 1vCPU / 512MB RAM / 4GB Disk +10GB(영구적 Disk) |
+| portal-ui | mariadb | 1vCPU / 512MB RAM / 4GB Disk +10GB(Permanent Disk) |
 | portal-ui | paas-ta-portal-webadmin | 1vCPU / 512MB RAM / 4GB Disk |
 | portal-ui | paas-ta-portal-webuser | 1vCPU / 512MB RAM / 4GB Disk|
 <br>

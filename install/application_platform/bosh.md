@@ -29,88 +29,88 @@
 
 ## Executive Summary
 
-본 문서는 BOSH2(이하 BOSH)의 설치 가이드 문서로, BOSH를 실행할 수 있는 환경을 구성하고 사용하는 방법에 관해서 설명하였다.
+This document is an installation guide document for BOSH2 (hereinafter referred to as BOSH) and explains how to configure and use the environment to run BOSH.
 
-# <div id='1'/>1. 문서 개요
+# <div id='1'/>1. Document Outline
 
-## <div id='1.1'/>1.1. 목적
-클라우드 환경에 서비스 시스템을 배포할 수 있는 BOSH는 릴리즈 엔지니어링, 개발, 소프트웨어 라이프사이클 관리를 통합한 오픈소스 프로젝트로 본 문서에서는 Inception 환경(설치환경)에서 BOSH를 설치하는 데 그 목적이 있다.
+## <div id='1.1'/>1.1. Purpose
+BOSH, which can distribute service systems to cloud environments, is an open-source project that integrates release engineering, development, and software lifecycle management. The purpose of this document is to install BOSH in an Inception environment (installation environment).
 
-## <div id='1.2'/>1.2. 범위
-본 문서는 Linux 환경(Ubuntu 18.04)을 기준으로 BOSH 설치를 위한 패키지와 라이브러리를 설치 및 구성하고, 이를 이용하여 BOSH를 설치하는 것을 기준으로 작성하였다.
+## <div id='1.2'/>1.2. Range
+This document was written based on installing and configuring packages and libraries for BOSH installation based on Linux environments (Ubuntu 18.04) and using them to install BOSH.
 
-## <div id='1.3'/>1.3. 참고 자료
+## <div id='1.3'/>1.3. References
 
-본 문서는 Cloud Foundry의 BOSH Document와 Cloud Foundry Document를 참고로 작성하였다.
+This document was prepared by referring to Cloud Foundry's BOSH Document and Cloud Foundry Document.
 
 BOSH Document: [http://bosh.io](http://bosh.io)  
 BOSH Deployment: [https://github.com/cloudfoundry/bosh-deployment](https://github.com/cloudfoundry/bosh-deployment)  
 Cloud Foundry Document: [https://docs.cloudfoundry.org](https://docs.cloudfoundry.org)  
 
 
-# <div id='2'/>2. BOSH 설치 환경 구성 및 설치
+# <div id='2'/>2. Configuring and Installing the BOSH Installation Environment 
 
-## <div id='2.1'/>2.1. BOSH 설치 절차
-Inception(PaaS-TA 설치 환경)은 BOSH 및 PaaS-TA를 설치하기 위한 설치 환경으로, VM 또는 서버 장비이다.  
-OS Version은 Ubuntu 18.04를 기준으로 한다. IaaS에서 수동으로 Inception VM을 생성해야 한다.
+## <div id='2.1'/>2.1. BOSH Installaion Procedure
+Inception (a PaaS-TA installation) is an installation environment for installing BOSH and PaaS-TA, either VM or server equipment. 
+OS Version is based on Ubuntu 18.04. Inception VM must be created manually in IaaS.
 
-Inception VM은 Ubuntu 18.04, vCPU 2 Core, Memory 4G, Disk 100G 이상을 권고한다.
+Inception VM recommends Ubuntu 18.04, vCPU 2 Core, Memory 4G, and Disk 100G or higher.
 
-## <div id='2.2'/>2.2.  Inception 서버 구성
+## <div id='2.2'/>2.2.  Inception Server Configuration
 
-Inception 서버는 BOSH 및 PaaS-TA를 설치하기 위해 필요한 패키지 및 라이브러리, Manifest 파일 등의 환경을 가지고 있는 배포 작업 실행 서버이다.  
-Inception 서버는 외부 통신이 가능해야 한다.
+The Inception server is a deployment job execution server that has the necessary environment for installing BOSH and PaaS-TA, such as packages, libraries, and Manifest files.
+The Inception server should be capable of external communication.
 
-BOSH 및 PaaS-TA 설치를 위해 Inception 서버에 구성해야 할 컴포넌트는 다음과 같다.
+The components to be configured on the Inception server for BOSH and PaaS-TA installation are as follows.
 
-- BOSH CLI 6.1.x 이상
-- BOSH Dependency : ruby, ruby-dev, openssl 등
-- BOSH Deployment: BOSH 설치를 위한 manifest deployment  
-- PaaS-TA Deployment : PaaS-TA 설치를 위한 manifest deployment
+- BOSH CLI 6.1.x and above
+- BOSH Dependency : ruby, ruby-dev, openssl etc.
+- BOSH Deployment:manifest deployment for BOSH installation
+- PaaS-TA Deployment : Manifest deployment for PaaS-TA installation
 
-## <div id='2.3'/>2.3.  BOSH 설치
+## <div id='2.3'/>2.3.  BOSH Installation
 
 ### <div id='2.3.1'/>2.3.1.    Prerequisite
 
-- 본 설치 가이드는 Ubuntu 18.04 버전을 기준으로 한다.  
+- This installation guide is based on Ubuntu 18.04.
 
-- IaaS Security Group의 열어줘야할 Port를 설정한다.
+- Set which ports should be opened for IaaS security groups.
 
-|포트|비고|
+|Port|Remarks|
 |---|---|
-|22|BOSH 사용|
-|6868|BOSH 사용|
-|25555|BOSH 사용|
-|53|PaaS-TA 사용|
-|68|PaaS-TA 사용|
-|80|PaaS-TA 사용|
-|443|PaaS-TA 사용|
-|4443|PaaS-TA 사용|
+|22|Use BOSH|
+|6868|Use BOSH|
+|25555|Use BOSH|
+|53|Use PaaS-TA|
+|68|Use PaaS-TA|
+|80|Use PaaS-TA|
+|443|Use PaaS-TA|
+|4443|Use PaaS-TA|
 
 
-- IaaS Security Group의 inbound 의 ICMP types 13 (timestamp request), types 14 (timestamp response) Rule을 비활성화 한다. (CVE-1999-0524 ICMP timestamp response 보안 이슈 적용)  
+- Disable the ICMP types 13 (timestamp request) and types 14 (timestamp response) rule in the inbound of the IaaS security group. (CVE-1999-0524 ICMP timestamp response security issue applied)
 
-  예 - AWS security group config)  
+  Ex. - AWS security group config)  
   ![Security_Group_ICMP_Image1](./images/bosh/security-group-icmp-01.png)  
 
 
-### <div id='2.3.2'/>2.3.2.    BOSH CLI 및 Dependency 설치
+### <div id='2.3.2'/>2.3.2.    BOSH CLI and Dependency Installation
 
-- BOSH Dependency 설치 (Ubuntu 18.04)
+- BOSH Dependency Installation (Ubuntu 18.04)
 
 ```
 $ sudo apt-get update
 $ sudo apt install -y build-essential zlibc zlib1g-dev ruby ruby-dev openssl libxslt1-dev libxml2-dev libssl-dev libreadline7 libreadline-dev libyaml-dev libsqlite3-dev sqlite3
 ```
 
-- BOSH Dependency 설치 (Ubuntu 16.04)
+- BOSH Dependency Installation (Ubuntu 16.04)
 
 ```
 $ sudo apt-get update
 $ sudo apt install -y libcurl4-openssl-dev gcc g++ build-essential zlibc zlib1g-dev ruby ruby-dev openssl libxslt-dev libxml2-dev libssl-dev libreadline6 libreadline6-dev libyaml-dev libsqlite3-dev sqlite3
 ```
 
-- BOSH CLI 설치
+- BOSH CLI Installation
 
 ```
 $ mkdir -p ~/workspace
@@ -122,15 +122,15 @@ $ sudo mv ./bosh /usr/local/bin/bosh
 $ bosh -v
 ```
 
-BOSH2 CLI는 BOSH 설치 시, BOSH certificate 정보를 생성해 주는 기능이 있다.  
-Cloud Foundry의 기본 BOSH CLI는 인증서가 1년으로 제한되어 있다.  
-BOSH 인증서는 BOSH 내부 Component 간의 통신 시 필요한 certificate이다.  
-만약 BOSH 설치 후 1년이 지나면 인증서의 갱신이 필요하다.  
-- certificate 갱신 가이드 영상 - [링크](https://youtu.be/zn8VO-fHAFE?t=1994)
+The BOSH2 CLI has the function of generating BOSH certificate information when installing BOSH.
+Cloud Foundry's default BOSH CLI has a certificate limited for a year.
+The BOSH certificate requires communication between BOSH internal components.
+After a year of installing BOSH, the certification has to be renewed.  
+- Certificate renew guide video - [Link](https://youtu.be/zn8VO-fHAFE?t=1994)
 
-### <div id='2.3.3'/>2.3.3.    설치 파일 다운로드
+### <div id='2.3.3'/>2.3.3.    Installation File Download
 
-- BOSH를 설치하기 위한 deployment가 존재하지 않는다면 다운로드 받는다
+- Download if deployment for installing BOSH does not exist.
 ```
 $ mkdir -p ~/workspace
 $ cd ~/workspace

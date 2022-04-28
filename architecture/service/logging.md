@@ -4,7 +4,7 @@
 This document provides the Architecture of Application Platform (AP) - Logging Service.
 <br><br>
 
-## 시스템 구성도
+## System Configuration Diagram
 
 
 ![logging_architecture_eng](https://user-images.githubusercontent.com/104418463/165663060-26373737-8e9c-405f-ab25-0b8163d8bef2.png)

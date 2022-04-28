@@ -513,13 +513,13 @@ bosh/0:~$
 
 
 
-## <div id='4'/>4. 기타
-### <div id='4.1'/>4.1. BOSH 로그인 생성 스크립트
+## <div id='4'/>4. Others
+### <div id='4.1'/>4.1. Create BOSH login script
 
-PaaS-TA 5.5부터 BOSH 로그인을 하는 스크립트의 생성을 지원한다.
-해당 스크립트의 BOSH_DEPLOYMENT_PATH, CURRENT_IAAS, BOSH_IP, BOSH_CLIENT_ADMIN_ID, BOSH_ENVIRONMENT, BOSH_LOGIN_FILE_PATH, BOSH_LOGIN_FILE_NAME를 BOSH 환경과 스크립트를 저장하고 싶은 위치로 변경 후 실행한다.
+Provides creating BOSH login script form PaaS-TA 5.5.
+Can save the BOSH_DEPLOYMENT_PATH, CURRENT_IAAS, BOSH_IP, BOSH_CLIENT_ADMIN_ID, BOSH_ENVIRONMENT, BOSH_LOGIN_PATH, BOSH_LOGIN_FILE_PATH, and change the BOSH_LOGIN_FILE_ME script at the preferred location.
 
-- BOSH Login 생성 Script의 설정 수정
+- Modify settings in the Create BOSH Login Script
 
 > $ vi ~/workspace/paasta-deployment/bosh/create-bosh-login.sh
 ```
@@ -550,7 +550,7 @@ credhub login -s https://'${BOSH_IP}':8844 --skip-tls-validation --client-name=c
 ' > ${BOSH_LOGIN_FILE_PATH}/${BOSH_LOGIN_FILE_NAME}
 ```
 
-- BOSH Login 생성 Script 실행
+- Create BOSH Login Run Script
 
 ```
 $ cd ~/workspace/paasta-deployment/bosh
@@ -558,7 +558,7 @@ $ source create-bosh-login.sh
 ```
 
 
-- 생성된 Script로 BOSH Login 실행
+- Run BOSH Login using the created Script 
 
 ```
 $ source {BOSH_LOGIN_FILE_PATH}/{BOSH_LOGIN_FILE_NAME}

@@ -1,21 +1,22 @@
 ### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > MongoDB Service
 
-## 목적
-본 문서는 Application Platform (AP) - MongoDB Service의 Architecture를 제공한다.
+## Purpose
+This document provides the Architecture of Application Platform (AP) - MongoDB Service.
 <br><br>
 
-## 시스템 구성도
-![MongoDB Service Architecture](image/mongodb_architecture.png)
+## System Configuration Diagram
+![mongodb_architecture_eng](https://user-images.githubusercontent.com/104418463/165661071-6b87f9d8-659a-449b-84bd-0eb4eda101cb.png)
+
 
 <br>
 
-| 구분  | 스펙 |
+| Classification | Specification |
 |-------|----|
 | mongodb-broker | 2vCPU / 4GB RAM |
 | mongodb_shard | 2vCPU / 4GB RAM |
-| mongodb_config | 2vCPU / 4GB RAM / 10GB 추가 디스크 |
-| mongodb_master | 2vCPU / 4GB RAM / 10GB 추가 디스크 |
-| mongodb_worker | 2vCPU / 4GB RAM / 10GB 추가 디스크 |
+| mongodb_config | 2vCPU / 4GB RAM / 10GB Extra Disk |
+| mongodb_master | 2vCPU / 4GB RAM / 10GB Extra Disk |
+| mongodb_worker | 2vCPU / 4GB RAM / 10GB Extra Disk |
 
 
 

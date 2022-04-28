@@ -10,8 +10,8 @@ The configuration and specification of Portal API and Portal UI are as follows.
 <br>
 
 
+![portal_architecture_vm_eng](https://user-images.githubusercontent.com/104418463/165660068-04afc287-af3b-4573-97ba-768b48754b51.png)
 
-![Portal Architecture - VM Type](image/portal_architecture_vm.png)
 
 <br>
 

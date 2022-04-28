@@ -7,7 +7,8 @@ This document provides the Architecture of Application Platform (AP) - WEB IDE S
 ## System Configuration Diagram
 
 
-![webide_architecture_eng](https://user-images.githubusercontent.com/104418463/165661766-35dab8ed-623a-4ec4-8ce8-8f379530f8cf.png)
+![webide_architecture_eng](https://user-images.githubusercontent.com/104418463/165661890-da42ae70-a3fe-495a-a212-93cade0129c5.png)
+
 
 
 <br>

@@ -1,10 +1,10 @@
 ### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > PaaS-TA Multi CPI
 
-## 목적
-본 문서는 PaaS-TA Multi CPI의 Architecture를 제공한다.
+## Purpose
+This document provides the Architecture of PaaS-TA Multi CPI.
 <br><br>
 
-## 시스템 구성도
+## System Configuration Diagram
 
 
 
@@ -12,10 +12,10 @@
 
 <br>
 
-| 구분  | 인스턴스 수| 스펙 |
+| Classification | Number of Instances| Specification |
 |-------|----|-----|
 | openvpn | 2 | 1vCPU / 0.5GB RAM |
-| BOSH | 1 | 4vCPU / 16GB RAM / (25GB + 64GB) 추가 디스크 |
+| BOSH | 1 | 4vCPU / 16GB RAM / (25GB + 64GB) 추가 Extra Disk |
 
 <br><br>
 

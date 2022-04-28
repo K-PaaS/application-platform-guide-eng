@@ -1,20 +1,21 @@
 ### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > WEB IDE Service
 
-## 목적
-본 문서는 Application Platform (AP) - WEB IDE Service의 Architecture를 제공한다.
+## Purpose
+This document provides the Architecture of Application Platform (AP) - WEB IDE Service.
 <br><br>
 
-## 시스템 구성도
+## System Configuration Diagram
 
 
-![WEB IDE Service Architecture](image/webide_architecture.png)
+![webide_architecture_eng](https://user-images.githubusercontent.com/104418463/165661766-35dab8ed-623a-4ec4-8ce8-8f379530f8cf.png)
+
 
 <br>
 
-| 구분  | 스펙 |
+| Classification | Specification |
 |-------|-----|
 | eclipse-che | 2vCPU / 8GB RAM |
-| mariadb | 1vCPU / 2GB RAM / 10GB 추가 디스크 |
+| mariadb | 1vCPU / 2GB RAM / 10GB Extra Disk |
 | webide-broker | 2vCPU / 4GB RAM |
 
 

@@ -5,7 +5,7 @@ This document provides the Architecture of Application Platform (AP) - Source Co
 <br><br>
 
 ## System Configuration Diagram
-![Source Control Service Architecture](image/source_control_architecture.PNG)
+![Source Control_architecture_eng](https://user-images.githubusercontent.com/104418463/165657254-70b8412f-ca52-44f1-9ad1-77f3910e8a38.png)
 
 <br>
 

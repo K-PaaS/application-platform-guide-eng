@@ -103,7 +103,7 @@ else
 fi
 ```
 
-- Stemcell 업로드 Script 실행
+- Stemcell Upload Run Script 
 
 ```
 $ cd ~/workspace/paasta-deployment/bosh
@@ -112,25 +112,25 @@ $ source upload-stemcell.sh
 
 <br>
 
-## <div id='2.4'/>2.4. Runtime Config 설정
-Runtime config는 BOSH로 배포되는 VM에 일괄 적용되는 설정이다.
-기본적인 Runtime Config 설정 명령어는 다음과 같다.  
+## <div id='2.4'/>2.4. Runtime Config Setting
+Runtime config is a setting that applies to VMs distributed in BOSH collectively.
+The basic Runtime Config setting command is as follows.
 ```                     
 $ bosh -e ${BOSH_ENVIRONMENT} update-runtime-config {PATH} --name={NAME}
 ```
 
-PaaS-TA AP에서 적용하는 Runtime Config는 다음과 같다.  
+The Runtime Config applied by PaaS-TAAP is as follows.
 
 - DNS Runtime Config  
-  PaaS-TA 4.0부터 적용되는 부분으로 PaaS-TA Component에서 Consul이 대체된 Component이다.  
-  PaaS-TA Component 간의 통신을 위해 BOSH DNS 배포가 선행되어야 한다.  
+  As part of PaaS-TA 4.0, it is a component that has been replaced by Consul in PaaS-TA Component.
+  BOSH DNS distribution should precede communication between PaaS-TA components.
 
 - OS Configuration Runtime Config  
-  BOSH Linux OS 구성 릴리스를 이용하여 sysctl을 구성한다.  
+  BOSH Linux OS configuration release is used to configure sysctl.
 
-paasta-deployment는 v5.5.0 부터 Runtime Config 설정 스크립트를 지원하며, BOSH 로그인 후 다음 명령어를 수행하여 Runtime Config를 설정한다.  
+Paasta-deployment supports the Runtime Config configuration script from v5.5.0. After logging in to BOSH, run the following commands to configure Runtime Config.
 
-  - Runtime Config 업데이트 Script 수정 (BOSH_ENVIRONMENT 수정)
+  - Modify Runtime Config Update Script (Modify BOSH_ENVIRONMENT)
 > $ vi ~/workspace/paasta-deployment/bosh/update-runtime-config.sh
 ```                     
 #!/bin/bash

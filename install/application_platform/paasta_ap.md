@@ -2,39 +2,39 @@
 
 ## Table of Contents
 
-1. [개요](#1)  
- 1.1. [목적](#1.1)  
- 1.2. [범위](#1.2)  
- 1.3. [참고 자료](#1.3)  
-2. [PaaS-TA AP 설치](#2)  
+1. [Outline](#1)  
+ 1.1. [Purpose](#1.1)  
+ 1.2. [Range](#1.2)  
+ 1.3. [Refrences](#1.3)  
+2. [PaaS-TA AP Installation](#2)  
  2.1. [Prerequisite](#2.1)  
- 2.2. [설치 파일 다운로드](#2.2)  
- 2.3. [Stemcell 업로드](#2.3)  
- 2.4. [Runtime Config 설정](#2.4)  
- 2.5. [Cloud Config 설정](#2.5)  
- 2.6. [PaaS-TA AP 설치 파일](#2.6)  
-　2.6.1. [PaaS-TA AP 설치 Variable 파일](#2.6.1)    
-　2.6.2. [PaaS-TA AP Operation 파일](#2.6.2)  
-　2.6.3. [PaaS-TA AP 설치 Shell Scripts](#2.6.3)  
- 2.7. [PaaS-TA AP 설치](#2.7)  
- 2.8. [PaaS-TA AP 로그인](#2.8)   
+ 2.2. [Download the installation file](#2.2)  
+ 2.3. [Stemcell Upload](#2.3)  
+ 2.4. [Runtime Config Setting](#2.4)  
+ 2.5. [Cloud Config Setting](#2.5)  
+ 2.6. [PaaS-TA AP Installation File](#2.6)  
+　2.6.1. [PaaS-TA AP Installation Variable File](#2.6.1)    
+　2.6.2. [PaaS-TA AP Operation File](#2.6.2)  
+　2.6.3. [PaaS-TA AP Installation Shell Scripts](#2.6.3)  
+ 2.7. [PaaS-TA AP Installation](#2.7)  
+ 2.8. [PaaS-TA AP Login](#2.8)   
 
-# <div id='1'/>1.  문서 개요
+# <div id='1'/>1.  Document Outline
 
-## <div id='1.1'/>1.1. 목적
-본 문서는 Monitoring을 적용하지 않은 PaaS-TA Application Platform(이하 PaaS-TA AP)을 수동으로 설치하기 위한 가이드를 제공하는 데 그 목적이 있다.
-
-<br>
-
-## <div id='1.2'/>1.2. 범위
-PaaS-TA AP는 bosh-deployment를 기반으로 한 BOSH 환경에서 설치하며 paasta-deployment v5.7.1의 설치를 기준으로 가이드를 작성하였다.  
-PaaS-TA AP는 VMware vSphere, Google Cloud Platform, Amazon Web Services EC2, OpenStack, Microsoft Azure 등의 IaaS를 지원하며,  paasta-deployment v5.7.1에서 검증한 IaaS 환경은 AWS, OpenStack, vSphere 환경이다.
+## <div id='1.1'/>1.1. Purpose
+The purpose of this document is to provide a guide for manually installing the PaaS-TA Application Platform (hereinafter referred to as PaaS-TA AP) without monitoring.
 
 <br>
 
-## <div id='1.3'/>1.3. 참고 자료
+## <div id='1.2'/>1.2. Range
+PaaS-TA AP is installed in a BOSH environment based on bosh-deployment. Guide was written based on the installation of paasta-deployment v5.7.1.
+PaaS-TA AP supports IaaS such as VMware vSphere, Google Cloud Platform, Amazon Web Services EC2, OpenStack, and Microsoft Azure, and the IaaS environment validated in paasta-deployment v5.7.1 is AWS, OpenStack, and vSphere environments.
 
-본 문서는 Cloud Foundry의 BOSH Document와 Cloud Foundry Document를 참고로 작성하였다.
+<br>
+
+## <div id='1.3'/>1.3. References
+
+This document was prepared by referring to Cloud Foundry's BOSH Document and Cloud Foundry Document.
 
 BOSH Document: [http://bosh.io](http://bosh.io)  
 Cloud Foundry Document: [https://docs.cloudfoundry.org](https://docs.cloudfoundry.org)  
@@ -43,11 +43,11 @@ CF Deployment: [https://github.com/cloudfoundry/cf-deployment](https://github.co
   
 <br><br>
 
-# <div id='2'/>2. PaaS-TA AP 설치
+# <div id='2'/>2. PaaS-TA AP Installation
 ## <div id='2.1'/>2.1. Prerequisite
 
-- BOSH2 기반의 BOSH를 설치한다.
-- PaaS-TA AP 설치는 BOSH를 설치한 Inception(설치 환경)에서 작업한다.
+- Installs BOSH2 based BOSH.
+- Installation of PaaS-TA AP is operated at Inception where BOSH was installed.
 - PaaS-TA AP 설치를 위해 BOSH LOGIN을 진행한다.
 
 <br>

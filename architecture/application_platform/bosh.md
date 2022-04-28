@@ -1,10 +1,10 @@
 ### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > BOSH
 
-## 목적
+## Purpose
 This document provides the Architecture of the BOSH.
 <br><br>
 
-## 시스템 구성도
+## System Configuration Diagram
 
 ![BOSH Architecture](image/bosh_architecture.png)
 

@@ -1,20 +1,21 @@
 ### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > GlusterFS Service
 
-## 목적
-본 문서는 Application Platform (AP) - GlusterFS Service의 Architecture를 제공한다.
+## Purpose
+This document provides the Architecture of Application Platform (AP) - GlusterFS Service.
 <br><br>
 
-## 시스템 구성도
+## System Configuration Diagram
 
 
-![GlusterFS Service Architecture](image/glusterfs_architecture.png)
+![glusterfs_architecture_eng](https://user-images.githubusercontent.com/104418463/165661493-865ad1b2-7cb6-4504-a287-449dca50c399.png)
+
 
 <br>
 
-| 구분  | 스펙 |
+| Classification | Specification |
 |-------|-----|
-| mysql | 2vCPU / 4GB RAM / 2GB 추가 디스크|
-| paasta-glusterfs-broker | 1vCPU / 2GB RAM / 4GB 추가 디스크|
+| mysql | 2vCPU / 4GB RAM / 2GB Extra Disk|
+| paasta-glusterfs-broker | 1vCPU / 2GB RAM / 4GB Extra Disk|
 
 
 

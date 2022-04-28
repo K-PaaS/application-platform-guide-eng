@@ -48,12 +48,12 @@ CF Deployment: [https://github.com/cloudfoundry/cf-deployment](https://github.co
 
 - Installs BOSH2 based BOSH.
 - Installation of PaaS-TA AP is operated at Inception where BOSH was installed.
-- PaaS-TA AP 설치를 위해 BOSH LOGIN을 진행한다.
+- BOSH LOGIN is performed for PaaS-TAAP installation.
 
 <br>
 
-## <div id='2.2'/>2.2. 설치 파일 다운로드
-- PaaS-TA AP를 설치하기 위한 deployment가 존재하지 않는다면 다운로드 받는다
+## <div id='2.2'/>2.2. Download the Installation File
+- Download if deployment to install PaaS-TA AP does not exist.
 
 ```
 $ mkdir -p ~/workspace
@@ -65,26 +65,26 @@ $ git clone https://github.com/PaaS-TA/paasta-deployment.git -b v5.7.1
 
 <br>
 
-## <div id='2.3'/>2.3. Stemcell 업로드
-Stemcell은 배포 시 생성되는 PaaS-TA AP VM Base OS Image이다.  
-paasta-deployment v5.7.1는 Ubuntu bionic stemcell 1.76을 기반으로 한다.  
-기본적인 Stemcell 업로드 명령어는 다음과 같다.  
+## <div id='2.3'/>2.3. Stemcell Upload
+Stemcell is a PaaS-TAAP VM Base OS image that is created during deployment.
+Paasta-deployment v5.7.1 is based on Ubuntu bionic stem cell 1.76. 
+The basic Stemcell upload command are as follows.
 ```                     
 $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell {URL}
 ```
 
-paasta-deployment는 v5.5.0 부터 Stemcell 업로드 스크립트를 지원하며, BOSH 로그인 후 다음 명령어를 수행하여 Stemcell을 올린다.  
-BOSH_ENVIRONMENT는 BOSH 설치 시 사용한 Director 명이고, CURRENT_IAAS는 배포된 환경 IaaS(aws, azure, gcp, openstack, vsphere, 그외 입력시 bosh-lite)에 맞게 입력을 한다.
-<br>(PaaS-TA AP에서 제공되는 create-bosh-login.sh을 이용하여 BOSH LOGIN시 BOSH_ENVIRONMENT와 CURRENT_IAAS는 자동입력된다.)
+Paasta-deployment supports Stemcell upload scripts from v5.5.0. After logging in to BOSH, perform the following command to upload Stemcell.
+BOSH_ENVIRONMENT is the Director name used when installing BOSH, and CURRENT_IAAS is entered according to the deployed environment IaaS (aws, azure, gcp, openstack, vsphere, and other input bosh-lite).
+<br>(create-bosh-login provided by PaaS-TAAP.BOSH_ENVIRONMENT and CURRENT_IAAS are automatically entered during BOSH LOGIN using sh.)
 
-- Stemcell 업로드 Script의 설정 수정 (BOSH_ENVIRONMENT 수정)
+- Modify the settings of the Stemcell upload script (Modify BOSH_ENVIRONMENT)
 
 > $ vi ~/workspace/paasta-deployment/bosh/upload-stemcell.sh
 ```                     
 #!/bin/bash
 STEMCELL_VERSION=1.76
-CURRENT_IAAS="${CURRENT_IAAS}"				# IaaS Information (PaaS-TA에서 제공되는 create-bosh-login.sh 미 사용시 aws/azure/gcp/openstack/vsphere/bosh-lite 입력)
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"			# bosh director alias name (PaaS-TA에서 제공되는 create-bosh-login.sh 미 사용시 bosh envs에서 이름을 확인하여 입력)
+CURRENT_IAAS="${CURRENT_IAAS}"				# IaaS Information (When not using create-bosh-login.sh provided by PaaS-TA enter aws/azure/gcp/openstack/vsphere/bosh-lite)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"			# bosh director alias name (When not using create-bosh-login.sh provided by PaaS-TA, Check and enter the name in boshenvs)
 
 if [[ ${CURRENT_IAAS} = "aws" ]]; then
         bosh -e ${BOSH_ENVIRONMENT} upload-stemcell https://storage.googleapis.com/bosh-core-stemcells/${STEMCELL_VERSION}/bosh-stemcell-${STEMCELL_VERSION}-aws-xen-hvm-ubuntu-bionic-go_agent.tgz -n

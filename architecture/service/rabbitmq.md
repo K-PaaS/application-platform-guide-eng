@@ -1,15 +1,17 @@
 ### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > RabbitMQ Service
 
-## 목적
-본 문서는 Application Platform (AP) - RabbitMQ Service의 Architecture를 제공한다.
+## Purpose
+This document provides the Architecture of Application Platform (AP) - RabbitMQ Service.
 <br><br>
 
-## 시스템 구성도
-![RabbitMQ Service Architecture](image/rabbitmq_architecture.png)
+## System Configuration Diagram
+
+![rabbitmq_architecture_eng](https://user-images.githubusercontent.com/104418463/165661632-c1f8a920-f685-46f1-a2a7-b2d98b1f3b5f.png)
+
 
 <br>
 
-| 구분  | 스펙 |
+| Classification | Specification |
 |-------|-----|
 | rmq-broker | 1vCPU / 2GB RAM  |
 | rmq | 1vCPU / 2GB RAM  |

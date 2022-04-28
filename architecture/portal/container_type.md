@@ -1,30 +1,32 @@
 ### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > Portal Container Type
 
-## 목적
-본 문서는 Application Platform (AP) Portal - Container Type의 Architecture를 제공한다.
+## Purpose
+This document provides the Architecture of Application Platform (AP) Portal- Container Type.
 <br><br>
 
-## 시스템 구성도
-Container Type의 AP Portal은 Portal Infra와 Portal APP으로 나뉘어있다.  
-Portal Infra는 BOSH로 배포되고, Portal APP은 PaaS-TA AP로 배포된다.  
-Portal Infra, Portal APP의 구성과 스펙은 다음과 같다.  
+## System Configuration Diagram
+The Container Type AP Portal can be divided into two parts, Portal Infra and Portal APP.
+Portal Infra is distributed as BOSH, and Portal APP is distributed as PaaS-TAAP.
+The configuration and specification of Portal Infra and Portal APP are as follows. 
 <br>
 
 
 
-![Portal Architecture - Container Type](./image/portal_architecture_container.png)
+![portal_architecture_container_eng](https://user-images.githubusercontent.com/104418463/165660452-7e57fa86-5835-412f-9330-4c9b6b29ebf8.png)
+
+
 
 <br>
 
 * Paas-TA Portal infra VM   
 
-| 구분 | 스펙 |
+| Classification | Specification |
 |---------|-------|
-| infra (mariadb / binary storage) | 1vCPU / 512MB RAM / 10GB Disk 20GB(영구적 Disk) |
+| infra (mariadb / binary storage) | 1vCPU / 512MB RAM / 10GB Disk 20GB(Permanent Disk) |
 
 * Paas-TA Portal App
 
-| App명 | 인스턴스 수 | 메모리 | 디스크 |
+| App Name | Number of Instances | Memory | Disk |
 |--------|-------|-------|-------|
 | portal-registration | N | 1G | 1G|
 | portal-gateway | N | 1G | 1G|

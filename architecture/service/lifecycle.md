@@ -1,19 +1,20 @@
 ### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > Lifecycle Service
 
-## 목적
-본 문서는 Application Platform (AP) - Lifecycle Service의 Architecture를 제공한다.
+## Purpose
+This document provides the Architecture of Application Platform (AP) - Lifecycle Service.
 <br><br>
 
-## 시스템 구성도
-![Lifecycle Service Architecture](image/lifecycle_architecture.png)
+## System Configuration
+![lifecycle_architecture_eng](https://user-images.githubusercontent.com/104418463/165675774-fed7f22d-ac9d-4707-b92f-2520c3551b47.png)
+
 
 <br>
 
-| 구분  | 스펙 |
+| Classification | Specification |
 |-------|----|
-| mariadb | 2vCPU / 4GB RAM / 10GB 추가 디스크 |
+| mariadb | 2vCPU / 4GB RAM / 10GB Additional Disk |
 | service-broker | 2vCPU / 4GB RAM |
-| app-lifecycle | 2vCPU / 4GB RAM / 20GB 추가 디스크 |
+| app-lifecycle | 2vCPU / 4GB RAM / 20GB Additional Disk |
 
 
 

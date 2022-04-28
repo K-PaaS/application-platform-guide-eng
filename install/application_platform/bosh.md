@@ -12,7 +12,7 @@
  2.3. [BOSH Installation](#2.3)  
 　2.3.1. [Prerequisite](#2.3.1)  
 　2.3.2. [BOSH CLI and Dependency Installation](#2.3.2)  
-　2.3.3. [Installation File Download](#2.3.3)  
+　2.3.3. [Download Installation File](#2.3.3)  
 　2.3.4. [BOSH Installation](#2.3.4)  
 　　2.3.4.1. [BOSH Installation Variable File](#2.3.4.1)  
 　　2.3.4.2. [BOSH Installation Option File](#2.3.4.2)  
@@ -129,7 +129,7 @@ The BOSH certificate requires communication between BOSH internal components.
 After a year of installing BOSH, the certification has to be renewed.  
 - Certificate renew guide video - [Link](https://youtu.be/zn8VO-fHAFE?t=1994)
 
-### <div id='2.3.3'/>2.3.3.    Installation File Download
+### <div id='2.3.3'/>2.3.3.    Download Installation FIle
 
 - Download if deployment for installing BOSH does not exist.
 ```
@@ -138,7 +138,7 @@ $ cd ~/workspace
 $ git clone https://github.com/PaaS-TA/paasta-deployment.git -b v5.7.1
 ```
 
-- paasta/deployment/paasta-deployment 이하 폴더 확인
+- Check the folders under paasta/deployment/paasta-deployment
 
 ```
 $ cd ~/workspace/paasta-deployment
@@ -149,66 +149,66 @@ README.md  bosh  cloud-config  paasta
 <table>
 <tr>
 <td>bosh</td>
-<td>BOSH 설치를 위한 manifest 및 설치 파일이 존재하는 폴더</td>
+<td>Folder containing manifest and installation files for BOSH installation exist</td>
 </tr>
 <tr>
 <td>cloud-config</td>
-<td>VM 배포를 위한 IaaS network, storage, vm 관련 설정 파일이 존재하는 폴더</td>
+<td>Folder containing IaaS network, storage, vm-specific settings files for VM deployment exist</td>
 </tr>
 <tr>
 <td>paasta</td>
-<td>PaaS-TA AP 설치를 위한 manifest 및 설치 파일이 존재하는 폴더</td>
+<td>Folder containing manifest and installation files for PaaS-TAAP installation</td>
 </tr>
 </table>
 
 
-### <div id='2.3.4'/>2.3.4.    BOSH 설치 파일
+### <div id='2.3.4'/>2.3.4.    BOSH Installation File
 
-~/workspace/paasta-deployment/bosh 폴더에는 BOSH 설치를 위한 IaaS별 Shell Script 파일이 존재한다.  
+~/workspace/paasta-deployment/bosh contains IaaS-specific Shell Script files for BOSH installation.
 
-Shell Script 파일을 이용하여 BOSH를 설치한다.
-파일명은 deploy-{IaaS}.sh 로 만들어졌다.  
-또한 {IaaS}-vars.yml을 수정하여 BOSH 설치시 적용하는 변수을 설정할 수 있다.
+Use Shell Script to intall BOSH.
+File name was made as deploy-{IaaS}.sh . 
+Modification can be done by {IaaS}-vars.yml to set the variables to be applied during BOSH installation.
 
 <table>
 <tr>
 <td>aws-vars.yml</td>
-<td>AWS 환경에 BOSH 설치시 적용하는 변수 설정 파일</td>
+<td>The file for varialbe setting to be applied when installing BOSH in a AWS environment</td>
 </tr>
 <tr>
 <td>openstack-vars.yml</td>
-<td>OpenStack 환경에 BOSH 설치시 적용하는 변수 설정 파일</td>
+<td>The file for varialbe setting to be applied when installing BOSH in a OpenStack environment</td>
 </tr>
 <tr>
 <td>vsphere-vars.yml</td>
-<td>vSphere 환경에 BOSH 설치시 적용하는 변수 설정 파일</td>
+<td>The file for varialbe setting to be applied when installing BOSH in a vSphere environment</td>
 </tr>
 <tr>
 <td>deploy-aws.sh</td>
-<td>AWS 환경에 BOSH 설치를 위한 Shell Script 파일</td>
+<td>Shell Script File for BOSH Installing in AWS Environment</td>
 </tr>
 <tr>
 <td>deploy-openstack.sh</td>
-<td>OpenStack 환경에 BOSH 설치를 위한 Shell Script 파일</td>
+<td>Shell Script File for BOSH Installing in OpenStack</td>
 </tr>
 <tr>
 <td>deploy-vsphere.sh</td>
-<td>vSphere 환경에 BOSH 설치를 위한 Shell Script 파일</td>
+<td>Shell Script File for BOSH Installing in vSphere</td>
 </tr>
 <tr>
 <td>bosh.yml</td>
-<td>BOSH를 생성하는 Manifest 파일</td>
+<td>Manifest file to create BOSH</td>
 </tr>
 </table>
 
 
 
 
-#### <div id='2.3.4.1'/>2.3.4.1. BOSH 설치 Variable File 설정
+#### <div id='2.3.4.1'/>2.3.4.1. BOSH Installation Variable File Settings
 
-BOSH를 설치하는 IaaS환경에 맞춰서 Variable File을 설정한다.
+Set variable file according to IaaS environment where BOSH is installed.
 
-- AWS 환경 설치 시 
+- When installing AWS environment 
 
 > $ vi ~/workspace/paasta-deployment/bosh/aws-vars.yml
 ```
@@ -225,16 +225,16 @@ az: "ap-northeast-2a"					# AWS AZ Zone
 default_key_name: "aws-paasta.pem"			# AWS Key Name
 default_security_groups: ["bosh"]			# AWS Security-Group
 subnet_id: "paasta-subnet"				# AWS Subnet
-private_key: "~/.ssh/aws-paasta.pem"			# SSH Private Key Path (해당 IaaS에 접근권한을 가진 Private key의 경로)
+private_key: "~/.ssh/aws-paasta.pem"			# SSH Private Key Path (Path to a private key with access to corresponding IaaS)
 
-# MONITORING VARIABLE(PaaS-TA Monitoring을 설치할 경우 향후 설치할 VM의 값으로 미리 수정)
+# MONITORING VARIABLE(When installing PaaS-TA Monitoring, pre-modify the value of the VM to be installed ahead of time)
 metric_url: "xx.xx.xxx.xxx"				# PaaS-TA Monitoring InfluxDB IP
 syslog_address: "xx.xx.xxx.xxx"				# Logsearch의 ls-router IP
 syslog_port: "2514"					# Logsearch의 ls-router Port
 syslog_transport: "relp"				# Logsearch Protocol
 ```
 
-- OpenStack 환경 설치 시
+- When installing OpenStack environment
 
 > $ vi ~/workspace/paasta-deployment/bosh/openstack-vars.yml
 ```
@@ -253,17 +253,17 @@ openstack_password: "XXXXXX"				# Openstack User Password
 openstack_username: "XXXXXX"				# Openstack User Name
 openstack_domain: "XXXXXXX"				# Openstack Domain Name
 openstack_project: "PaaSTA"				# Openstack Project
-private_key: "~/.ssh/id_rsa.pem"			# SSH Private Key Path (해당 IaaS에 접근권한을 가진 Private key의 경로)
+private_key: "~/.ssh/id_rsa.pem"			# SSH Private Key Path (Path to a private key with access corresponding IaaS)
 region: "RegionOne"					# Openstack Region
 
-# MONITORING VARIABLE(PaaS-TA Monitoring을 설치할 경우 향후 설치할 VM의 값으로 미리 수정)
+# MONITORING VARIABLE(When installing PaaS-TA Monitoring, pre-modify it to the value of the VMs to be installed ahead of time)
 metric_url: "10.0.161.101"				# PaaS-TA Monitoring InfluxDB IP
 syslog_address: "10.0.121.100"				# Logsearch의 ls-router IP
 syslog_port: "2514"					# Logsearch의 ls-router Port
 syslog_transport: "relp"				# Logsearch Protocol
 ```
 
-- vSphere 환경 설치 시
+- When installing vSphere environment
 
 > $ vi ~/workspace/paasta-deployment/bosh/vsphere-vars.yml
 ```
@@ -285,7 +285,7 @@ vcenter_disks: "PaaS-TA_Disks"			# vCenter Disk Name
 vcenter_cluster: "PaaS-TA"			# vCenter Cluster Name
 vcenter_rp: "PaaS-TA_Pool"			# vCenter Resource Pool Name
 
-# MONITORING VARIABLE(PaaS-TA Monitoring을 설치할 경우 수정)
+# MONITORING VARIABLE(Modify when installing PaaS-TA Monitoring)
 metric_url: "10.0.161.101"			# PaaS-TA Monitoring InfluxDB IP
 syslog_address: "10.0.121.100"			# Logsearch의 ls-router IP
 syslog_port: "2514"				# Logsearch의 ls-router Port
@@ -294,128 +294,128 @@ syslog_transport: "relp"			# Logsearch Protocol
 
 
 
-#### <div id='2.3.4.2'/>2.3.4.2. BOSH 설치 Option 파일
+#### <div id='2.3.4.2'/>2.3.4.2. BOSH Installation Option file
 
-설치 Shell Script에서 사용되는 Option 파일은 다음과 같다.  
+The option files used in the installation Shell Script are as follows.
 
 <table>
 <tr>
-<td>파일명</td>
-<td>설명</td>
+<td>File Name</td>
+<td>Description</td>
 </tr>
 <tr>
 <td>uaa.yml</td>
-<td>UAA 적용</td>
+<td>UAA applied</td>
 </tr>
 <tr>
 <td>credhub.yml</td>
-<td>CredHub 적용</td>
+<td>CredHub applied</td>
 </tr>
 <tr>
 <td>jumpbox-user.yml</td>
-<td>BOSH Jumpbox user 생성</td>
+<td>Create BOSH Jumpbox user</td>
 </tr>
 <tr>
 <td>cce.yml</td>
-<td>CCE 조치 적용</td>
+<td>Took action for CCE</td>
 </tr>
 </table>
 
 
 
-#### <div id='2.3.4.3'/>2.3.4.3. BOSH 설치 Shell Script
+#### <div id='2.3.4.3'/>2.3.4.3. BOSH Installation Shell Script
 
-BOSH 설치 명령어는 create-env로 시작한다.  
-Shell이 아닌 BOSH Command로 실행 가능하며, 설치하는 IaaS 환경에 따라 Option이 달라진다.  
-BOSH 삭제 시 delete-env 명령어를 사용하여 설치된 BOSH를 삭제할 수 있다.
+BOSH installation command starts with create-env.
+BOSH Command can execute instead of Shell. Options may vary depending on the IaaS environment installed.
+Installed BOSH can be deleted using the delete-env command.
 
-BOSH 설치 Option은 아래와 같다.
+BOSH Installation Options are as follows.
 
 <table>
 <tr>
 <td>--state</td>
-<td>BOSH 설치 명령어 실행 시 생성되는 파일로, 설치된 BOSH의 IaaS 설정 정보가 저장된다. (Backup 필요)</td>
+<td>IaaS configuration information of the installed BOSH will be stored in the file generated when executing the BOSH installation command. (Backup needed)</td>
 </tr>
 <tr>
 <td>--vars-store</td>
-<td>BOSH 설치 명령어 실행 시 생성되는 파일로, 설치된 BOSH의 내부 컴포넌트가 사용하는 인증서 및 인증정보가 저장된다. (Backup 필요)</td>
+<td>certificates and authentication information used by the internal components of the installed BOSH will be stored in the file generated when executing a BOSH installation command. (Backup needed)</td>
 </tr>   
 <tr>
 <td>-o</td>
-<td>BOSH 설치 시 적용하는 Operation 파일을 설정할 경우 사용한다. <br>IaaS별 CPI 또는 Jumpbox-user, CredHub 등의 설정을 적용할 수 있다.</td>
+<td>Used when setting the operation file to be applied when installing BOSH. <br> Each IaaS may apply settings such as CPI or Jumpbox-user, CreditHub, etc.</td>
 </tr>
 <tr>
 <td>-v</td>
-<td>BOSH 설치 시 적용하는 변수 또는 Operation 파일에 변수를 설정할 경우 사용한다. <br>Operation 파일 속성에 따라 필수 또는 선택 항목으로 나뉜다.</td>
+<td>Used when setting variables in the operation file or variables applied when installing BOSH. <br>It can be divided into mandatory or optional items depending on the operation file properties.</td>
 </tr>
 <tr>
 <td>-l, --var-file</td>
-<td>YAML파일에 작성한 변수를 읽어올때 사용한다.</td>
+<td>Used to read variables written in YAML files.</td>
 </tr>
 </table>
 
-설치 Shell Script에 Option을 변경필요가 있다면 해당 명령어를 실행하여 변경한다.
+If the options in the installed Shell Scripts need to be changed, run the corresponding command
 
-- AWS 환경 설치 시 
+- When installing AWS environment
 
 > $ vi ~/workspace/paasta-deployment/bosh/deploy-aws.sh
 ```
 bosh create-env bosh.yml \                         
-	--state=aws/state.json \			# BOSH Latest Running State, 설치 시 생성, Backup 필요
-	--vars-store=aws/creds.yml \			# BOSH Credentials and Certs, 설치 시 생성, Backup 필요
-	-o aws/cpi.yml \				# AWS CPI 적용
-	-o uaa.yml \					# UAA 적용      
-	-o credhub.yml \				# CredHub 적용    
-	-o jumpbox-user.yml \				# Jumpbox-user 적용  
-	-o cce.yml \					# CCE 조치 적용
- 	-l aws-vars.yml					# AWS 환경에 BOSH 설치시 적용하는 변수 설정 파일
+	--state=aws/state.json \			# BOSH Latest Running State, Create at installation, Backup needed
+	--vars-store=aws/creds.yml \			# BOSH Credentials and Certs, Create at installation, Backup needed
+	-o aws/cpi.yml \				# AWS CPI applied
+	-o uaa.yml \					# UAA applied  
+	-o credhub.yml \				# CredHub applied    
+	-o jumpbox-user.yml \				# Jumpbox-user applied  
+	-o cce.yml \					# Took action for CCE
+ 	-l aws-vars.yml					# The file for varialbe setting to be applied when installing BOSH in a AWS environment
 ```
 
-- OpenStack 환경 설치 시 
+- When installing OpenStack environment
 
 > $ vi ~/workspace/paasta-deployment/bosh/deploy-openstack.sh
 ```
 bosh create-env bosh.yml \                       
-	--state=openstack/state.json \			# BOSH Latest Running State, 설치 시 생성, Backup 필요
-	--vars-store=openstack/creds.yml \		# BOSH Credentials and Certs, 설치 시 생성, Backup 필요
-	-o openstack/cpi.yml \				# Openstack CPI 적용
-	-o uaa.yml \					# UAA 적용
-	-o credhub.yml \				# CredHub 적용
-	-o jumpbox-user.yml \				# Jumpbox-user 적용
-	-o cce.yml \					# CCE 조치 적용
-	-o openstack/disable-readable-vm-names.yml \	# VM 명을 UUIDs로 적용
-	-l openstack-vars.yml				# OpenStack 환경에 BOSH 설치시 적용하는 변수 설정 파일
+	--state=openstack/state.json \			# BOSH Latest Running State, Create at installation, Backup needed
+	--vars-store=openstack/creds.yml \		# BOSH Credentials and Certs, Create at installation, Backup needed
+	-o openstack/cpi.yml \				# Openstack CPI applied
+	-o uaa.yml \					# UAA applied
+	-o credhub.yml \				# CredHub applied
+	-o jumpbox-user.yml \				# Jumpbox-user applied
+	-o cce.yml \					# Took action for CCE
+	-o openstack/disable-readable-vm-names.yml \	# VM name applied as UUIDs
+	-l openstack-vars.yml				# The file for varialbe setting to be applied when installing BOSH in a OpenStack environment
 ```
 
-- vSphere 환경 설치 시 
+- When installing vSphere environment
 
 > $ vi ~/workspace/paasta-deployment/bosh/deploy-vsphere.sh
 ```
 bosh create-env bosh.yml \
-	--state=vsphere/state.json \			# BOSH Latest Running State, 설치 시 생성, Backup 필요
-	--vars-store=vsphere/creds.yml \		# BOSH Credentials and Certs, 설치 시 생성, Backup 필요
-	-o vsphere/cpi.yml \				# vSphere CPI 적용
-	-o vsphere/resource-pool.yml  \				# vSphere resouce-pool 사용 설정
-	-o uaa.yml  \					# UAA 적용
-	-o credhub.yml  \				# CredHub 적용
-	-o jumpbox-user.yml  \				# Jumpbox-user 적용
-	-o cce.yml \					# CCE 조치 적용
-	-l vsphere-vars.yml				# vSphere 환경에 BOSH 설치시 적용하는 변수 설정 파일
+	--state=vsphere/state.json \			# BOSH Latest Running State, Create at installation, Backup needed
+	--vars-store=vsphere/creds.yml \		# BOSH Credentials and Certs, Create at installation, Backup needed
+	-o vsphere/cpi.yml \				# vSphere CPI applied
+	-o vsphere/resource-pool.yml  \				# Enable vSphere resouce-pool
+	-o uaa.yml  \					# UAA applied
+	-o credhub.yml  \				# CredHub applied
+	-o jumpbox-user.yml  \				# Jumpbox-user applied
+	-o cce.yml \					# Took action forCCE
+	-l vsphere-vars.yml				# The file for varialbe setting to be applied when installing BOSH in a vSphere Environment
 ```
 
 
-- Shell Script 파일에 실행 권한 부여
+- Grant execution permissions to Shell Script files
 
 ```
 $ chmod +x ~/workspace/paasta-deployment/bosh/*.sh  
 ```
 
 
-### <div id='2.3.5'/>2.3.5. BOSH 설치
+### <div id='2.3.5'/>2.3.5. BOSH Installation
 
-Variable File과 설치 Shell Script의 설정이 완료되었으면 다음 명령어를 이용하여 설치를 진행한다.  
+After setting up Variable File and Installation Shell Script, proceed with the installation using the following command. 
 
-- BOSH 설치 Shell Script 파일 실행
+- Run BOSH Installation Shell Script File
 
 ```
 $ cd ~/workspace/paasta-deployment/bosh

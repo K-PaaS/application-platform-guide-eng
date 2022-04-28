@@ -1,20 +1,21 @@
 ### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > MySQL Service
 
-## 목적
-본 문서는 Application Platform (AP) - MySQL Service의 Architecture를 제공한다.
+## Purpose
+This document provides the Architecture of Application Platform (AP) - MySQL Service.
 <br><br>
 
-## 시스템 구성도
+## System Configuration Diagram
 <br>
 
-![MySQL Service Architecture](image/mysql_architecture.png)
+![mysql_architecture_eng](https://user-images.githubusercontent.com/104418463/165660903-7009efb1-b801-4f05-b0cb-82e972df12df.png)
+
 
 <br>
 
-| 구분  | 스펙 |
+| Classification | Specification |
 |-------|----|
 | arbitrator | 1vCPU / 2GB RAM |
-| mysql | 1vCPU / 2GB RAM / 8GB 추가 디스크 |
+| mysql | 1vCPU / 2GB RAM / 8GB Extra Disk |
 | mysql_broker | 1vCPU / 2GB RAM |
 | proxy | 1vCPU / 2GB RAM |
 

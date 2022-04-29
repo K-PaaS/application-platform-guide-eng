@@ -253,7 +253,8 @@ The reason for setting it in three units is for service tripleization, and it ma
 A VM Type is a VM Type defined in IaaS.
 
 ※ The following are the Instance Type defined by AWS.
-![PaaSTa_FLAVOR_Image]
+![aws-vmtype_eng](https://user-images.githubusercontent.com/104418463/165898613-4c595bbb-ae56-4033-ac6f-cea617523481.png)
+
 
 - Compilation
 
@@ -581,7 +582,7 @@ After installing PaaS-TA AP, refer to the other CLI in the User Guide for how to
 </tr>
 <tr>
 <td>operations/cce.yml</td>
-<td>CCE 조치를 적용하여 설치한다.</td>
+<td>CCE is applied when installing.</td>
 <td></td>
 </tr>
 </table>
@@ -636,7 +637,7 @@ bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy paasta-deployment.yml \	# PaaS-T
 	-o operations/use-haproxy.yml \					# Apply HAProxy 
 	-o operations/use-haproxy-public-network.yml \			# APply HAProxy Public Network
 	-o operations/use-postgres.yml \				# Database Type Setting (Requiires Migration from versions lower than 3.5)
-	-o operations/cce.yml \						# Took action for CCE
+	-o operations/cce.yml \						# CCE applied
 	-o operations/rename-network-and-deployment.yml \		# Rename Network and Deployment
 	-l vars.yml \							# Variable settings file to apply when installing PaaS-TA in your environment
 	-l ../../common/common_vars.yml					# Common variable setting file to apply when installing PaaS-TA and various services
@@ -652,7 +653,7 @@ bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy paasta-deployment.yml \	# PaaS-T
 	-o operations/use-haproxy.yml \					# Apply HAProxy
 	-o operations/use-haproxy-public-network.yml \			# Apply HAProxy Public Network 
 	-o operations/use-postgres.yml \				# Database Type Setting (requiires Migration from versions lower than 3.5)
-	-o operations/cce.yml \						# Took action for CCE
+	-o operations/cce.yml \						# CCE applied
 	-o operations/rename-network-and-deployment.yml \		# Rename Network and Deployment
 	-l vars.yml \							# Variable settings file to apply when installing PaaS-TA in your environment
 	-l ../../common/common_vars.yml					# Common variable setting file to apply when installing PaaS-TA and various services
@@ -667,7 +668,7 @@ bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy paasta-deployment.yml \	# PaaS-T
 	-o operations/use-haproxy.yml \					# Apply HAProxy
 	-o operations/use-haproxy-public-network-vsphere.yml \		# Apply HAProxy Public Network vSphere
 	-o operations/use-postgres.yml \				# Database Type Setting (requiires Migration from versions lower than 3.5)
-	-o operations/cce.yml \						# Took action for CCE
+	-o operations/cce.yml \						# CCE applied
 	-o operations/rename-network-and-deployment.yml \		# Rename Network and Deployment
 	-l vars.yml \							# Variable settings file to apply when installing PaaS-TA in your environment
 	-l ../../common/common_vars.yml					# Common variable setting file to apply when installing PaaS-TA and various services
@@ -692,7 +693,7 @@ bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy paasta-deployment.yml \	# PaaS-T
 	-o operations/use-haproxy.yml \					# Apply HAProxy
 	-o operations/use-haproxy-public-network.yml \			# Apply HAProxy Public Network
 	-o operations/use-postgres.yml \				# Database Type Setting (requiires Migration from versions lower than 3.5)
-	-o operations/cce.yml \						# Took action for CCE
+	-o operations/cce.yml \						# CCE applied
 	-o operations/rename-network-and-deployment.yml \		# Rename Network and Deployment
 	-l vars.yml \							# Variable settings file to apply when installing PaaS-TA in your environment
 	-l ../../common/common_vars.yml					# Common variable settings file to apply when installing PaaS-TA and various services

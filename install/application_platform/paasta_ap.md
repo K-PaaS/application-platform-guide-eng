@@ -694,18 +694,18 @@ bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy paasta-deployment.yml \	# PaaS-T
 	-o operations/use-postgres.yml \				# Database Type Setting (requiires Migration from versions lower than 3.5)
 	-o operations/cce.yml \						# Took action for CCE
 	-o operations/rename-network-and-deployment.yml \		# Rename Network and Deployment
-	-l vars.yml \							# 환경에 PaaS-TA 설치시 적용하는 변수 설정 파일
-	-l ../../common/common_vars.yml					# PaaS-TA 및 각종 Service 설치시 적용하는 공통 변수 설정 파일
+	-l vars.yml \							# Variable settings file to apply when installing PaaS-TA in your environment
+	-l ../../common/common_vars.yml					# Common variable settings file to apply when installing PaaS-TA and various services
 ```
 
-- PaaS-TA AP 설치 시 Shell Script 파일 실행 (BOSH 로그인 필요)
+- Run Shell Script file when installing PaaS-TA AP (BOSH login required)
 
 ```
 $ cd ~/workspace/paasta-deployment/paasta
 $ ./deploy-{IaaS}.sh
 ```
 
-- PaaS-TA AP 설치 확인
+- PaaS-TA AP Installation Check
 
 > $ bosh -e ${BOSH_ENVIRONMENT} vms -d paasta
 
@@ -757,13 +757,13 @@ Succeeded
 
 <br>
 
-## <div id='2.8'/>2.8.  PaaS-TA AP 로그인
+## <div id='2.8'/>2.8.  PaaS-TA AP Login
 
-CF CLI를 설치하고 PaaS-TA AP에 로그인한다.  
-CF CLI는 v6과 v7중 선택해서 설치를 한다.  
-CF API는 PaaS-TA AP 배포 시 지정했던 System Domain 명을 사용한다.
+Install CF CLI and log in to PaaS-TA AP.  
+Install CF CLI by selecting between v6 and v7. 
+CF API uses the System Domain name specified during PaaS-TA AP deployment.
 
-- CF CLI v6 설치
+- CF CLI v6 Installation
 
 ```
 $ wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
@@ -773,7 +773,7 @@ $ sudo apt install cf-cli -y
 $ cf --version
 ```
 
-- CF CLI v7 설치 (PaaS-TA AP 5.1.0 이상)
+- CF CLI v7 Installation (PaaS-TA AP 5.1.0 above)
 
 ```
 $ wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
@@ -783,7 +783,7 @@ $ sudo apt install cf7-cli -y
 $ cf --version
 ```
 
-- PaaS-TA AP 로그인
+- PaaS-TA AP Login
 
 > $ cf login -a https://api.{system_domain} --skip-ssl-validation 
 

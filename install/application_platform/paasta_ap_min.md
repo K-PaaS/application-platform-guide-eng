@@ -2,39 +2,39 @@
 
 ## Table of Contents
 
-1. [개요](#1)  
- 1.1. [목적](#1.1)  
- 1.2. [범위](#1.2)  
- 1.3. [참고 자료](#1.3)  
-2. [PaaS-TA AP min 설치](#2)  
+1. [Outline](#1)  
+ 1.1. [Purpose](#1.1)  
+ 1.2. [Range](#1.2)  
+ 1.3. [References](#1.3)  
+2. [PaaS-TA AP min Installaion](#2)  
  2.1. [Prerequisite](#2.1)  
- 2.2. [설치 파일 다운로드](#2.2)  
- 2.3. [Stemcell 업로드](#2.3)  
- 2.4. [Runtime Config 설정](#2.4)  
- 2.5. [Cloud Config 설정](#2.5)  
- 2.6. [PaaS-TA AP min 설치 파일](#2.6)  
-　2.6.1. [PaaS-TA AP min 설치 Variable 파일](#2.6.1)    
-　2.6.2. [PaaS-TA AP min Operation 파일](#2.6.2)  
-　2.6.3. [PaaS-TA AP min 설치 Shell Scripts](#2.6.3)  
- 2.7. [PaaS-TA AP min 설치](#2.7)  
- 2.8. [PaaS-TA AP min 로그인](#2.8)   
+ 2.2. [Download the installation file](#2.2)  
+ 2.3. [Stemcell Upload](#2.3)  
+ 2.4. [Runtime Config Setting](#2.4)  
+ 2.5. [Cloud Config Setting](#2.5)  
+ 2.6. [PaaS-TA AP min Installation File](#2.6)  
+　2.6.1. [PaaS-TA AP min Installation Variable File](#2.6.1)    
+　2.6.2. [PaaS-TA AP min Operation File](#2.6.2)  
+　2.6.3. [PaaS-TA AP min Installation Shell Scripts](#2.6.3)  
+ 2.7. [PaaS-TA AP min Installation](#2.7)  
+ 2.8. [PaaS-TA AP min Login](#2.8)   
 
-# <div id='1'/>1.  문서 개요
+# <div id='1'/>1.  Document Outline
 
-## <div id='1.1'/>1.1. 목적
-본 문서는 Monitoring을 적용하지 않은 PaaS-TA Application Platform 경량화(이하 PaaS-TA AP min)을 수동으로 설치하기 위한 가이드를 제공하는 데 그 목적이 있다.
-
-<br>
-
-## <div id='1.2'/>1.2. 범위
-PaaS-TA AP min은 bosh-deployment를 기반으로 한 BOSH 환경에서 설치하며 paasta-deployment v5.6.6-min의 설치를 기준으로 가이드를 작성하였다.  
-PaaS-TA AP min은 VMware vSphere, Google Cloud Platform, Amazon Web Services EC2, OpenStack, Microsoft Azure 등의 IaaS를 지원하며,  paasta-deployment v5.6.6-min에서 검증한 IaaS 환경은 AWS, OpenStack 환경이다.
+## <div id='1.1'/>1.1. Outline
+The purpose of this document is to provide a guide for manually installing PaaS-TA Application Platform lightening (hereinafter referred to as PaaS-TA AP min) without monitoring.
 
 <br>
 
-## <div id='1.3'/>1.3. 참고 자료
+## <div id='1.2'/>1.2. Range
+PaaS-TA AP min is installed in a BOSH environment based on bosh-deployment, and a guide was written based on the installation of paasta-deployment v5.6.6-min.
+PaaS-TA AP min supports IaaS such as VMware vSphere, Google Cloud Platform, Amazon Web Services EC2, OpenStack, and Microsoft Azure. The IaaS environment validated by paasta-deployment v5.6.6-min is AWS and OpenStack environment.
 
-본 문서는 Cloud Foundry의 BOSH Document와 Cloud Foundry Document를 참고로 작성하였다.
+<br>
+
+## <div id='1.3'/>1.3. Refrences
+
+This document was prepared by referring to Cloud Foundry's BOSH Document and Cloud Foundry Document.
 
 BOSH Document: [http://bosh.io](http://bosh.io)  
 Cloud Foundry Document: [https://docs.cloudfoundry.org](https://docs.cloudfoundry.org)  
@@ -43,18 +43,18 @@ CF Deployment: [https://github.com/cloudfoundry/cf-deployment](https://github.co
 
 <br><br>
 
-# <div id='2'/>2. PaaS-TA AP min 설치
+# <div id='2'/>2. PaaS-TA AP min Installation
 ## <div id='2.1'/>2.1. Prerequisite
 
-- BOSH2 기반의 BOSH를 설치한다.
-- PaaS-TA AP min 설치는 BOSH를 설치한 Inception(설치 환경)에서 작업한다.
-- PaaS-TA AP min 설치를 위해 BOSH LOGIN을 진행한다.
-- 가이드 내에 BOSH 폴더에서 실행되는 작업은 BOSH 설치 가이드에서 다운받은 paasta-deployment를 이용한다.
+- Install BOSH based on BOSH2.
+- PaaS-TA AP min installation works in Inception where BOSH is installed.
+- BOSH LOGIN is performed for PaaS-TA AP min installation.
+- The tasks performed in the BOSH folder in the guide use to paasta-deployment download from the BOSH installation guide.
 
 <br>
 
-## <div id='2.2'/>2.2. 설치 파일 다운로드
-- PaaS-TA AP min를 설치하기 위한 deployment가 존재하지 않는다면 다운로드 받는다
+## <div id='2.2'/>2.2. Download the installation file
+- Download when deployment for installing PaaS-TA AP min does not exist.
 
 ```
 $ mkdir -p ~/workspace
@@ -66,26 +66,26 @@ $ git clone https://github.com/PaaS-TA/paasta-deployment.git -b v5.6.6-min paast
 
 <br>
 
-## <div id='2.3'/>2.3. Stemcell 업로드
-Stemcell은 배포 시 생성되는 VM Base OS Image이다.  
-paasta-deployment v5.6.6은 Ubuntu bionic stemcell 1.34을 기반으로 한다.  
-기본적인 Stemcell 업로드 명령어는 다음과 같다.  
+## <div id='2.3'/>2.3. Stemcell Upload
+Stemcell is a VM Base OS image that is created during deployment.  
+Paasta-deployment v5.6.6 is based on Ubuntuionic stemcell 1.34.
+The basic Stemcell upload commands are as follows. 
 ```                     
 $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell {URL}
 ```
 
-paasta-deployment는 v5.5.0 부터 Stemcell 업로드 스크립트를 지원하며, BOSH 로그인 후 다음 명령어를 수행하여 Stemcell을 올린다.  
-BOSH_ENVIRONMENT는 BOSH 설치 시 사용한 Director 명이고, CURRENT_IAAS는 배포된 환경 IaaS(aws, azure, gcp, openstack, vsphere, 그외 입력시 bosh-lite)에 맞게 입력을 한다.
-<br>(PaaS-TA AP에서 제공되는 create-bosh-login.sh을 이용하여 BOSH LOGIN시 BOSH_ENVIRONMENT와 CURRENT_IAAS는 자동입력된다.)
+Paasta-deployment supports Stemcell upload scripts from v5.5.0. After logging in to BOSH, perform the following commands to upload Stemcells.
+BOSH_ENVIRONMENT is the Director name used when installing BOSH, and CURRENT_IAAS is entered according to the deployed environment IaaS (aws, azure, gcp, openstack, vsphere, and other input bosh-lite).
+<br>(PaaS-TAAP creates a create-bosh-login.When bosh login using sh, bosh_environment and current_ias are automatically input.)
 
-- Stemcell 업로드 Script의 설정 수정 (BOSH_ENVIRONMENT 수정)
+- Modify the settings of the Stemcell upload script (Modify BOSH_ENVIRONMENT)
 
 > $ vi ~/workspace/paasta-deployment/bosh/upload-stemcell.sh
 ```                     
 #!/bin/bash
 STEMCELL_VERSION=1.34
-CURRENT_IAAS="${CURRENT_IAAS}"				# IaaS Information (PaaS-TA에서 제공되는 create-bosh-login.sh 미 사용시 aws/azure/gcp/openstack/vsphere/bosh-lite 입력)
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"			# bosh director alias name (PaaS-TA에서 제공되는 create-bosh-login.sh 미 사용시 bosh envs에서 이름을 확인하여 입력)
+CURRENT_IAAS="${CURRENT_IAAS}"				# IaaS Information (When not using create-bosh-login.sh provided by PaaS-TA, enter aws/azure/gcp/openstack/vsphere/bosh-lite)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"			# bosh director alias name (When not using create-bosh-login.sh provided by PaaS-TA, check and enter name from bosh envs)
 
 if [[ ${CURRENT_IAAS} = "aws" ]]; then
         bosh -e ${BOSH_ENVIRONMENT} upload-stemcell https://storage.googleapis.com/bosh-core-stemcells/${STEMCELL_VERSION}/bosh-stemcell-${STEMCELL_VERSION}-aws-xen-hvm-ubuntu-bionic-go_agent.tgz -n
@@ -105,7 +105,7 @@ fi
 
 ```
 
-- Stemcell 업로드 Script 실행
+- Stemcell Upload Run Script
 
 ```
 $ cd ~/workspace/paasta-deployment/bosh
@@ -114,41 +114,41 @@ $ source upload-stemcell.sh
 
 <br>
 
-## <div id='2.4'/>2.4. Runtime Config 설정
-Runtime config는 BOSH로 배포되는 VM에 일괄 적용되는 설정이다.
-기본적인 Runtime Config 설정 명령어는 다음과 같다.  
+## <div id='2.4'/>2.4. Runtime Config Setting
+Runtime config is a setting that applies to VMs distributed in BOSH collectively.
+The basic Runtime Config setting command is as follows.
 ```                     
 $ bosh -e ${BOSH_ENVIRONMENT} update-runtime-config {PATH} --name={NAME}
 ```
 
-PaaS-TA AP min에서 적용하는 Runtime Config는 다음과 같다.  
+The Runtime Config applied in PaaS-TA AP min is as follows.
 
 - DNS Runtime Config  
-  PaaS-TA 4.0부터 적용되는 부분으로 PaaS-TA Component에서 Consul이 대체된 Component이다.  
-  PaaS-TA Component 간의 통신을 위해 BOSH DNS 배포가 선행되어야 한다.  
+  A part of PaaS-TA 4.0, a component that has been replaced by Consul in PaaS-TA Component.
+  BOSH DNS distribution should precede communication between PaaS-TA components.
 
 - OS Configuration Runtime Config  
-  BOSH Linux OS 구성 릴리스를 이용하여 sysctl을 구성한다.  
+  BOSH Linux OS configuration release is used to configure sysctl
 
-paasta-deployment는 v5.5.0 부터 Runtime Config 설정 스크립트를 지원하며, BOSH 로그인 후 다음 명령어를 수행하여 Runtime Config를 설정한다.  
+Paasta-deployment supports the Runtime Config configuration script from v5.5.0. After logging in to BOSH, run the following commands to configure Runtime Config.
 
-  - Runtime Config 업데이트 Script 수정 (BOSH_ENVIRONMENT 수정)
+  - Modify Runtime Config Update Script (Modify BOSH_ENVIRONMENT)
 > $ vi ~/workspace/paasta-deployment/bosh/update-runtime-config.sh
 ```                     
 #!/bin/bash
 
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"			 # bosh director alias name (PaaS-TA에서 제공되는 create-bosh-login.sh 미 사용시 bosh envs에서 이름을 확인하여 입력)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"			 # bosh director alias name (When not using create-bosh-login.sh provided by PaaS-TA, check and enter name from bosh envs)
 
 bosh -e ${BOSH_ENVIRONMENT} update-runtime-config -n runtime-configs/dns.yml
 bosh -e ${BOSH_ENVIRONMENT} update-runtime-config -n --name=os-conf runtime-configs/os-conf.yml
 ```
-- Runtime Config 업데이트 Script 실행
+- Runtime Config Update Run Script
 ```                     
 $ cd ~/workspace/paasta-deployment/bosh
 $ source update-runtime-config.sh
 ```
 
-  - Runtime Config 확인  
+  - Runtime Config Check  
   ```  
   $ bosh -e ${BOSH_ENVIRONMENT} runtime-config
   $ bosh -e ${BOSH_ENVIRONMENT} runtime-config --name=os-conf
@@ -156,16 +156,16 @@ $ source update-runtime-config.sh
 
 <br>
 
-## <div id='2.5'/>2.5. Cloud Config 설정
+## <div id='2.5'/>2.5. Cloud Config Setting
 
-BOSH를 통해 VM을 배포 시 IaaS 관련 Network, Storage, VM 관련 설정을 Cloud Config로 정의한다.  
-paasta-deployment 설치 파일을 내려받으면 ~/workspace/paasta-deployment-min/cloud-config 디렉터리 이하에 IaaS 별 Cloud Config 예제를 확인할 수 있으며, 예제를 참고하여 cloud-config.yml을 IaaS에 맞게 수정한다.  
-PaaS-TA AP 배포 전에 Cloud Config를 BOSH에 적용해야 한다.
+When deploying VMs through BOSH, IaaS-related network, storage, and VM-related settings are defined as Cloud Config.
+After downloading the paasta-deployment installation file, you can see examples of IaaS-specific CloudConfig under the ~/workspace/paasta-deployment-min/cloud-config directory, and modify cloud-config.yml to fit IaaS. 
+Cloud Config should be applied to BOSH prior to PaaS-TAAP deployment.
 
-- AWS을 기준으로 한 [cloud-config.yml](https://github.com/PaaS-TA/paasta-deployment/blob/master/cloud-config/aws-cloud-config.yml) 예제
+- An example based on AWS [cloud-config.yml](https://github.com/PaaS-TA/paasta-deployment/blob/master/cloud-config/aws-cloud-config.yml) 
 
 ```
-## azs :: 가용 영역(Availability Zone)을 정의한다.
+## azs :: Defines Availability Zone
 azs:
 - cloud_properties:
     availability_zone: ap-northeast-2a
@@ -174,9 +174,9 @@ azs:
     availability_zone: ap-northeast-2a
   name: z2
 
-... ((생략)) ...
+... ((Skip)) ...
 
-## compilation :: 컴파일 가상머신이 생성될 가용 영역 및 가상머신 유형 등을 정의한다.
+## compilation :: Define the available area and type of virtual machine in which the compile virtual machine will be created.
 compilation:
   az: z4
   network: default
@@ -184,16 +184,16 @@ compilation:
   vm_type: xlarge
   workers: 5
 
-## disk_types :: 디스크 유형(Disk Type, Persistent Disk)을 정의한다.
+## disk_types :: Defines disk type (Persistent Disk).
 disk_types:
 - disk_size: 1024
   name: default
 - disk_size: 1024
   name: 1GB
   
-... ((생략)) ...
+... ((Skip)) ...
 
-## networks :: 네트워크(Network)를 정의한다. (AWS 경우, Subnet 및 Security Group, DNS, Gateway 등 설정)
+## networks :: Defines network. (For AWS, set up Subnet and Security Groups, DNS, Gateway, etc.)
 networks:
 - name: default
   subnets:
@@ -210,9 +210,9 @@ networks:
     static:
     - 10.0.1.10 - 10.0.1.120
 
-... ((생략)) ...
+... ((Skip)) ...
 
-## vm_extentions :: 임의의 특정 IaaS 구성을 지정하는 가상머신 구성을 정의한다. (Security Groups 및 Load Balancers 등)
+## vm_extentions :: Define a virtual machine configuration that specifies any specific IaaS configuration (such as Security Groups and Load Balancers)
 vm_extensions:
 - name: cf-router-network-properties
 - name: cf-tcp-router-network-properties

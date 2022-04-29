@@ -135,18 +135,18 @@ Paasta-deployment supports the Runtime Config configuration script from v5.5.0. 
 ```                     
 #!/bin/bash
 
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"			 # bosh director alias name (PaaS-TA에서 제공되는 create-bosh-login.sh 미 사용시 bosh envs에서 이름을 확인하여 입력)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"			 # bosh director alias name (When not using Create-bosh-login.sh provided by PaaS-TA, check and enter name at bosh envs)
 
 bosh -e ${BOSH_ENVIRONMENT} update-runtime-config -n runtime-configs/dns.yml
 bosh -e ${BOSH_ENVIRONMENT} update-runtime-config -n --name=os-conf runtime-configs/os-conf.yml
 ```
-- Runtime Config 업데이트 Script 실행
+- Runtime Config Update Run Script
 ```                     
 $ cd ~/workspace/paasta-deployment/bosh
 $ source update-runtime-config.sh
 ```
 
-  - Runtime Config 확인  
+  - Runtime Config Check
   ```  
   $ bosh -e ${BOSH_ENVIRONMENT} runtime-config
   $ bosh -e ${BOSH_ENVIRONMENT} runtime-config --name=os-conf
@@ -154,16 +154,16 @@ $ source update-runtime-config.sh
 
 <br>
 
-## <div id='2.5'/>2.5. Cloud Config 설정
+## <div id='2.5'/>2.5. Cloud Config Setting
 
-BOSH를 통해 VM을 배포 시 IaaS 관련 Network, Storage, VM 관련 설정을 Cloud Config로 정의한다.  
-paasta-deployment 설치 파일을 내려받으면 ~/workspace/paasta-deployment/cloud-config 디렉터리 이하에 IaaS 별 Cloud Config 예제를 확인할 수 있으며, 예제를 참고하여 cloud-config.yml을 IaaS에 맞게 수정한다.  
-PaaS-TA AP 배포 전에 Cloud Config를 BOSH에 적용해야 한다.
+When deploying VMs through BOSH, IaaS-related network, storage, and VM-related settings are defined as Cloud Config. 
+When downloading the paasta-deployment installation file, you can check examples of cloud configurations by IaaS in the ~/workspace/paasta-deployment/cloud-config directory and modify cloud-config.yml to fit IaaS. 
+Cloud Config should be applied to BOSH prior to PaaS-TA AP deployment.
 
-- AWS을 기준으로 한 [cloud-config.yml](https://github.com/PaaS-TA/paasta-deployment/blob/master/cloud-config/aws-cloud-config.yml) 예제
+- [cloud-config.yml] (https://github.com/PaaS-TA/paasta-deployment/blob/master/cloud-config/aws-cloud-config.yml) is an example based on AWS
 
 ```
-## azs :: 가용 영역(Availability Zone)을 정의한다.
+## azs :: Defines Availability Zone
 azs:
 - cloud_properties:
     availability_zone: ap-northeast-2a
@@ -172,9 +172,9 @@ azs:
     availability_zone: ap-northeast-2a
   name: z2
 
-... ((생략)) ...
+... ((Skip)) ...
 
-## compilation :: 컴파일 가상머신이 생성될 가용 영역 및 가상머신 유형 등을 정의한다.
+## compilation :: Defines the available area and type of virtual machine, etc., in which the virtual machine will be created
 compilation:
   az: z4
   network: default
@@ -182,16 +182,16 @@ compilation:
   vm_type: xlarge
   workers: 5
 
-## disk_types :: 디스크 유형(Disk Type, Persistent Disk)을 정의한다.
+## disk_types :: Defines Disk Type, Persistent Disk
 disk_types:
 - disk_size: 1024
   name: default
 - disk_size: 1024
   name: 1GB
   
-... ((생략)) ...
+... ((Skip)) ...
 
-## networks :: 네트워크(Network)를 정의한다. (AWS 경우, Subnet 및 Security Group, DNS, Gateway 등 설정)
+## networks :: Defines Network. (In case of AWS, set Subnet,Security Group, DNS, Gateway, and etc.)
 networks:
 - name: default
   subnets:
@@ -208,9 +208,9 @@ networks:
     static:
     - 10.0.1.10 - 10.0.1.120
 
-... ((생략)) ...
+... ((Skip)) ...
 
-## vm_extentions :: 임의의 특정 IaaS 구성을 지정하는 가상머신 구성을 정의한다. (Security Groups 및 Load Balancers 등)
+## vm_extentions :: Defines a virtual machine configuration that specifies the arbitrary specific configuration IaaS. (such as Security Groups and Load Balancers)
 vm_extensions:
 - name: cf-router-network-properties
 - name: cf-tcp-router-network-properties
@@ -222,9 +222,9 @@ vm_extensions:
       type: gp2
   name: 50GB_ephemeral_disk
 
-... ((생략)) ...
+... ((Skip)) ...
 
-## vm_type :: 가상머신 유형(VM Type)을 정의한다. (AWS 경우, Instance type 설정)
+## vm_type :: Defines Virtual Machines(VM Type). (In case of AWS, set instance type)
 vm_types:
 - cloud_properties:
     ephemeral_disk:
@@ -239,44 +239,44 @@ vm_types:
     instance_type: t2.small
   name: small
   
-... ((생략)) ...
+... ((Skip)) ...
 ```
 
 - AZs
 
-PaaS-TA에서 제공되는 Cloud Config 예제는 z1 ~ z6까지 설정되어 있다.  
-z1 ~ z3까지는 PaaS-TA AP VM이 설치되는 Zone이며, z4 ~ z6까지는 서비스가 설치되는 Zone으로 정의한다.   
-3개 단위로 설정하는 이유는 서비스 3중화를 위해서이며, 설치하는 환경에 따라 다르게 설정해도 무방하다.  
+Cloud Config examples provided in PaaS-TA are set from z1 to z6.
+Z1 to z3 are zones where PaaS-TA AP VMs are installed, and z4 to z6 are defined as zones where services are installed.
+The reason for setting it in three units is for service tripleization, and it may be set differently depending on the installation environment.
 
 - VM Types
 
-VM Type은 IaaS에서 정의된 VM Type이다.  
+A VM Type is a VM Type defined in IaaS.
 
-※ 다음은 AWS에서 정의한 Instance Type이다.
+※ The following are the Instance Type defined by AWS.
 ![PaaSTa_FLAVOR_Image]
 
 - Compilation
 
-PaaS-TA AP 및 서비스 설치 시, BOSH는 Compile 작업용 VM을 생성하여 소스를 컴파일하고, 이후 VM을 생성하여 컴파일된 파일을 대상 VM에 설치한 뒤 Compile 작업용 VM은 삭제된다. (Worker 수는 Compile VM의 수로, 많을수록 컴파일 속도가 빨라진다.)  
+When PaaS-TA AP and services are installed, BOSH creates a Compile task VM to compile the source, and then creates a VM to install the compiled file on the destination VM and deletes the Compile task VM. (The number of workers is the number of Compile VMs, and the more the number, the faster the compilation speed.)  
 
 - Disk Size
 
-PaaS-TA AP 및 서비스가 설치되는 VM의 Persistent Disk Size이다.
+Persistent disk size is the VM where PaaS-TA AP and services are installed.
 
 - Networks
 
-Networks는 AZ 별 Subnet Network, DNS, Security Groups, Network ID를 정의한다.  
-보통 AZ 별로 256개의 IP를 정의할 수 있도록 Range Cider를 정의한다.
+Networks defines subnet networks, DNS, security groups, and network IDs for each AZ.
+Typically, a Range Cider is defined so that 256 IPs can be defined per AZ.
 
 <br>
 
-- Cloud Config 업데이트
+- Cloud Config Update
 
 ```
 $ bosh -e ${BOSH_ENVIRONMENT} update-cloud-config ~/workspace/paasta-deployment/cloud-config/{iaas}-cloud-config.yml
 ```
 
-- Cloud Config 확인
+- Cloud Config Check
 
 ```
 $ bosh -e ${BOSH_ENVIRONMENT} cloud-config  
@@ -284,74 +284,73 @@ $ bosh -e ${BOSH_ENVIRONMENT} cloud-config
 
 <br>
 
-## <div id='2.6'/>2.6.  PaaS-TA AP 설치 파일
+## <div id='2.6'/>2.6.  PaaS-TA AP Installation File
 
-common_vars.yml파일과 vars.yml을 수정하여 PaaS-TA AP 설치시 적용하는 변수를 설정할 수 있다.
+common_vars.yml file and vars.yml can be modified to set the variables to be applied when installing PaaS-TA AP.
 
 <table>
 <tr>
 <td>common_vars.yml</td>
-<td>PaaS-TA AP 및 각종 Service 설치시 적용하는 공통 변수 설정 파일</td>
+<td>Common variable settings file to apply when installing PaaS-TA AP and various services</td>
 </tr>
 <tr>
 <td>vars.yml</td>
-<td>PaaS-TA AP 설치시 적용하는 변수 설정 파일</td>
+<td>Variable settings file to apply when installing PaaS-TA AP</td>
 </tr>
 <tr>
 <td>deploy-aws.sh</td>
-<td>AWS 환경에 PaaS-TA AP 설치를 위한 Shell Script 파일</td>
+<td>Shell Script File for PaaS-TA AP Installation in AWS Environments</td>
 </tr>
 <tr>
 <td>deploy-openstack.sh</td>
-<td>OpenStack 환경에 PaaS-TA AP 설치를 위한 Shell Script 파일</td>
+<td>Shell Script File for PaaS-TA AP Installation in an OpenStack Environment</td>
 </tr>
 <tr>
 <td>deploy-vsphere.sh</td>
-<td>vSphere 환경에 PaaS-TA AP 설치를 위한 Shell Script 파일</td>
+<td>Shell Script File for PaaS-TA AP Installation in a vSphere Environment</td>
 </tr>
 <tr>
 <td>paasta-deployment.yml</td>
-<td>PaaS-TA AP을 배포하는 Manifest 파일</td>
+<td>Manifest file that deploys PaaS-TA AP</td>
 </tr>
 </table>
 
 <br>
 
-### <div id='2.6.1'/>2.6.1. PaaS-TA AP 설치 Variable File
+### <div id='2.6.1'/>2.6.1. PaaS-TA AP Installation Variable File
 
 
 - common_vars.yml  
 
-~/workspace/common 폴더에 있는 [common_vars.yml](https://github.com/PaaS-TA/common/blob/master/common_vars.yml)에는 PaaS-TA AP 및 각종 Service 설치 시 적용하는 공통 변수 설정 파일이 존재한다.  
-PaaS-TA AP를 설치 시 system_domain, paasta_admin_username, paasta_admin_password, paasta_database_port, paasta_cc_db_password, paasta_uaa_db_password, uaa_client_admin_secret, uaa_client_portal_secret의 값을 변경 하여 설치 할 수 있다.
-
+Common variable setting file to apply when installing PaaS-TA AP and various services is under ~/workspace/common folder, [common_vars.yml] (https://github.com/PaaS-TA/common/blob/master/common_vars.yml). 
+When installing PaaS-TA AP by changing the variables of system_domain, paasta_admin_username, paasta_admin_password, paasta_database_port, paasta_cc_db_password, paasta_uaa_db_password, uaa_client_admin_secret, uaa_client_portal_secret.
 > $ vi ~/workspace/common/common_vars.yml
 
 ```
-... ((생략)) ...
+... ((Skip)) ...
 
-system_domain: "xx.xx.xxx.xxx.nip.io"			# Domain (nip.io를 사용하는 경우 HAProxy Public IP와 동일)
+system_domain: "xx.xx.xxx.xxx.nip.io"			# Domain (Same as HAProxy Public IP when using nip.io)
 paasta_admin_username: "admin"				# PaaS-TA Admin Username
 paasta_admin_password: "admin"				# PaaS-TA Admin Password
 paasta_database_port: 5524				# PaaS-TA Database Port (e.g. 5524(postgresql)/13307(mysql)) -- Do Not Use "3306"&"13306" in mysql
 paasta_cc_db_password: "cc_admin"			# CCDB Password(e.g. "cc_admin")
 paasta_uaa_db_password: "uaa_admin"			# UAADB Password(e.g. "uaa_admin")
-uaa_client_admin_secret: "admin-secret"			# UAAC Admin Client에 접근하기 위한 Secret 변수
-uaa_client_portal_secret: "clientsecret"		# UAAC Portal Client에 접근하기 위한 Secret 변수
+uaa_client_admin_secret: "admin-secret"			# Secret variables for accessing the UAAC Admin Client
+uaa_client_portal_secret: "clientsecret"		# Secret variables for accessing the UAAC Portal Client
 
-... ((생략)) ...
+... ((Skip)) ...
 ```
 
 - vars.yml  
 
-PaaS-TA AP를 설치 할 때 적용되는 각종 변수값이나 배포 될 VM의 설정을 변경할 수 있다.
+Several variable values that would be applied during the installation of PaaS-TA AP and the settings of VM that is to be deployed can be altered.
 
 > $ vi ~/workspace/paasta-deployment/paasta/vars.yml
 ```
 # SERVICE VARIABLE
 deployment_name: "paasta"			# Deployment Name
-network_name: "default"				# VM에 별도로 지정하지 않는 Default Network Name
-haproxy_public_ip: "52.78.32.153"		# HAProxy IP (Public IP, HAproxy VM 배포시 필요)
+network_name: "default"				# Default Network Name not specified separately at VM
+haproxy_public_ip: "52.78.32.153"		# HAProxy IP (Public IP, HAproxy VM needed when deploying)
 haproxy_public_network_name: "vip"		# PaaS-TA Public Network Name
 haproxy_private_network_name: "private" 	# PaaS-TA Private Network Name (vSphere use-haproxy-public-network-vsphere.yml 포함 배포시 설정 필요)
 cc_db_encryption_key: "db-encryption-key"	# Database Encryption Key (Version Upgrade 시 동일 KEY 필수)

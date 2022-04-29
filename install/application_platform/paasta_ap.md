@@ -542,15 +542,15 @@ After installing PaaS-TA AP, refer to the other CLI in the User Guide for how to
 <tr>
 <td>operations/use-postgres.yml</td>
 <td>Install Database as Postgres <br>
-    - use-postgres.yml 미적용 시 MySQL 설치  <br>
-    - Requiring for Migration from 3.5 or lower version
+    - Install MySQL when use-postgres.yml is not applied  <br>
+    - Requiring for Migration from versions lower than 3.5
 </td>
 <td></td>
 </tr>
 <tr>
 <td>operations/use-haproxy.yml</td>
 <td>Apply HAProxy <br>
-    - IaaS에서 제공하는 LB를 사용하여 PaaS-TA AP 설치 시, Operation 파일을 제거하고 설치한다.
+    - When installing PaaS-TA AP using LB provided by IaaS, the operation file is removed and installed.
 </td>
 <td>Requires operation file: use-haproxy-public-network.yml <br>
     Requires value :  -v haproxy_private_ip
@@ -558,8 +558,8 @@ After installing PaaS-TA AP, refer to the other CLI in the User Guide for how to
 </tr>
 <tr>
 <td>operations/use-haproxy-public-network.yml</td>
-<td>HAProxy Public Network 설정 <br>
-    - IaaS에서 제공하는 LB를 사용하여 PaaS-TA AP 설치 시, Operation 파일을 제거하고 설치한다.
+<td>HAProxy Public Network setting <br>
+    - When installing PaaS-TA AP using IaaS-provided LB, remove and install Operation files.
 </td>
 <td>Requires: use-haproxy.yml <br>
     Requires Value :  <br>
@@ -569,8 +569,8 @@ After installing PaaS-TA AP, refer to the other CLI in the User Guide for how to
 </tr>
 <tr>
 <td>operations/use-haproxy-public-network-vsphere.yml</td>
-<td>HAProxy Public Network 설정 <br>
-    - vsphere에서 사용하며, IaaS에서 제공하는 LB를 사용하여 PaaS-TA AP 설치 시, Operation 파일을 제거하고 설치한다.
+<td>HAProxy Public Network Setting <br>
+    - When installing PaaS-TA AP using IaaS-provided LB, which is used by vsphere, the operation file is removed and installed.
 </td>
 <td>Requires: use-haproxy.yml <br>
     Requires Value :  <br>
@@ -588,93 +588,92 @@ After installing PaaS-TA AP, refer to the other CLI in the User Guide for how to
 
 <br>
 
-### <div id='2.6.3'/>2.6.3.   PaaS-TA AP 설치 Shell Scripts
-paasta-deployment.yml 파일은 PaaS-TA AP를 배포하는 Manifest 파일이며, PaaS-TA AP VM에 대한 설치 정의를 하게 된다.  
-이미 설치된 PaaS-TA AP의 재배포 시, singleton-blobstore, database의 AZs(zone)을 변경하면 조직(ORG), 공간(SPACE), 앱(APP) 정보가 모두 삭제된다.
+### <div id='2.6.3'/>2.6.3.   PaaS-TA AP Installation Shell Scripts
+The paasta-deployment.yml file is a Manifest file that deploys PaaS-TA AP, which provides installation definitions for PaaS-TA AP VMs.
+When redistributing installed PaaS-TA AP, if AZs (zone) of the singleton-blobstore and database changes, all organization (ORG), space (SPACE), and app (APP) information gets deleted.
 
-**※ PaaS-TA AP 설치 시 명령어는 BOSH deploy를 사용한다. (IaaS 환경에 따라 Option이 다름)**
+**※ Use BOSH deploy as a Command to install PaaS-TA AP. (Options vary by IaaS environment)**
 
-PaaS-TA AP 배포 BOSH 명령어 예시
-
+Example of PaaS-TA AP deployment BOSH command
 ```
 $ bosh -e ${BOSH_ENVIRONMENT} -d paasta deploy paasta-deployment.yml
 ```
 
-PaaS-TA AP 배포 시, 설치 Option을 추가해야 한다. 설치 Option에 대한 설명은 아래와 같다.
+Installation options must be added when deploying PaaS-TAAP. The description of the installation options are as follows.
 
 <table>
 <tr>
 <td>-e</td>
-<td>BOSH Director 명</td>
+<td>BOSH Director Name</td>
 </tr>
 <tr>
 <td>-d</td>
-<td>Deployment 명 (기본값 paasta, 수정 시 다른 PaaS-TA 서비스에 영향을 준다.)</td>
+<td>Deployment Name (Default Value paasta, modifications affect other PaaS-TA services.)</td>
 </tr>   
 <tr>
 <td>-o</td>
-<td>PaaS-TA 설치 시 적용하는 Option 파일로 IaaS별 속성, Haproxy 사용 여부, Database 설정 기능을 제공한다.
+<td>The Option file applied when installing PaaS-TA provides attributes for each IaaS, whether or not to use Haproxy, and database setting functions.
 </td>
 </tr>
 <tr>
 <td>-v</td>
-<td>PaaS-TA 설치 시 적용하는 변수 또는 Option 파일에 변수를 설정할 경우 사용한다. <br> Option 파일 속성에 따라 필수 또는 선택 항목으로 나뉜다.</td>
+<td>Used to set variables in the option file or variables applied when installing PaaS-TA. <br> Option Categorized into required or optional items according to file properties.</td>
 </tr>
 <tr>
 <td>-l, --var-file</td>
-<td>YAML파일에 작성한 변수를 읽어올때 사용한다.</td>
+<td>Used to read variables written in YAML file.</td>
 </tr>
 </table>
 
-- AWS 환경 설치 시
+- When installing AWS environment
 
 > $ vi ~/workspace/paasta-deployment/paasta/deploy-aws.sh
 ```
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"					 # bosh director alias name (PaaS-TA에서 제공되는 create-bosh-login.sh 미 사용시 bosh envs에서 이름을 확인하여 입력)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"					 # bosh director alias name (When Create-bosh-login.sh provided by PaaS-TA is not used, check and enter the name in bosenvs)
 
 bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy paasta-deployment.yml \	# PaaS-TA Manifest File
-	-o operations/aws.yml \						# AWS 설정
-	-o operations/use-haproxy.yml \					# HAProxy 적용
-	-o operations/use-haproxy-public-network.yml \			# HAProxy Public Network 적용
-	-o operations/use-postgres.yml \				# Database Type 설정 (3.5버전 이하에서 Migration 시 필수)
-	-o operations/cce.yml \						# CCE 조치 적용
+	-o operations/aws.yml \						# AWS Setting
+	-o operations/use-haproxy.yml \					# Apply HAProxy 
+	-o operations/use-haproxy-public-network.yml \			# APply HAProxy Public Network
+	-o operations/use-postgres.yml \				# Database Type Setting (Requiires Migration from versions lower than 3.5)
+	-o operations/cce.yml \						# Took action for CCE
 	-o operations/rename-network-and-deployment.yml \		# Rename Network and Deployment
-	-l vars.yml \							# 환경에 PaaS-TA 설치시 적용하는 변수 설정 파일
-	-l ../../common/common_vars.yml					# PaaS-TA 및 각종 Service 설치시 적용하는 공통 변수 설정 파일
+	-l vars.yml \							# Variable settings file to apply when installing PaaS-TA in your environment
+	-l ../../common/common_vars.yml					# Common variable setting file to apply when installing PaaS-TA and various services
 ```
 
-- OpenStack 환경 설치 시
+- When installing an OpenStack environment
 > $ vi ~/workspace/paasta-deployment/paasta/deploy-openstack.sh
 ```
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"					 # bosh director alias name (PaaS-TA에서 제공되는 create-bosh-login.sh 미 사용시 bosh envs에서 이름을 확인하여 입력)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"					 # bosh director alias name (When Create-bosh-login.sh provided by PaaS-TA is not used, check and enter the name in bosh envs)
 
 bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy paasta-deployment.yml \	# PaaS-TA Manifest File
-	-o operations/openstack.yml \					# OpenStack 설정
-	-o operations/use-haproxy.yml \					# HAProxy 적용
-	-o operations/use-haproxy-public-network.yml \			# HAProxy Public Network 적용
-	-o operations/use-postgres.yml \				# Database Type 설정 (3.5버전 이하에서 Migration 시 필수)
-	-o operations/cce.yml \						# CCE 조치 적용
+	-o operations/openstack.yml \					# OpenStack Setting
+	-o operations/use-haproxy.yml \					# Apply HAProxy
+	-o operations/use-haproxy-public-network.yml \			# Apply HAProxy Public Network 
+	-o operations/use-postgres.yml \				# Database Type Setting (requiires Migration from versions lower than 3.5)
+	-o operations/cce.yml \						# Took action for CCE
 	-o operations/rename-network-and-deployment.yml \		# Rename Network and Deployment
-	-l vars.yml \							# PaaS-TA 설치시 적용하는 변수 설정 파일
-	-l ../../common/common_vars.yml					# PaaS-TA 및 각종 Service 설치시 적용하는 공통 변수 설정 파일
+	-l vars.yml \							# Variable settings file to apply when installing PaaS-TA in your environment
+	-l ../../common/common_vars.yml					# Common variable setting file to apply when installing PaaS-TA and various services
 ```
 
 - vSphere 환경 설치 시
 > $ vi ~/workspace/paasta-deployment/paasta/deploy-vsphere.sh
 ```
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"			 # bosh director alias name (PaaS-TA에서 제공되는 create-bosh-login.sh 미 사용시 bosh envs에서 이름을 확인하여 입력)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"			 # bosh director alias name (When Create-bosh-login.sh provided by PaaS-TA is not used, check and enter the name in bosh envs)
 
 bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy paasta-deployment.yml \	# PaaS-TA Manifest File
-	-o operations/use-haproxy.yml \					# HAProxy 적용
-	-o operations/use-haproxy-public-network-vsphere.yml \		# HAProxy Public Network vSphere 적용
-	-o operations/use-postgres.yml \				# Database Type 설정 (3.5버전 이하에서 Migration 시 필수)
-	-o operations/cce.yml \						# CCE 조치 적용
+	-o operations/use-haproxy.yml \					# Apply HAProxy
+	-o operations/use-haproxy-public-network-vsphere.yml \		# Apply HAProxy Public Network vSphere
+	-o operations/use-postgres.yml \				# Database Type Setting (requiires Migration from versions lower than 3.5)
+	-o operations/cce.yml \						# Took action for CCE
 	-o operations/rename-network-and-deployment.yml \		# Rename Network and Deployment
-	-l vars.yml \							# PaaS-TA 설치시 적용하는 변수 설정 파일
-	-l ../../common/common_vars.yml					# PaaS-TA 및 각종 Service 설치시 적용하는 공통 변수 설정 파일
+	-l vars.yml \							# Variable settings file to apply when installing PaaS-TA in your environment
+	-l ../../common/common_vars.yml					# Common variable setting file to apply when installing PaaS-TA and various services
 ```
 
-- Shell script 파일에 실행 권한 부여
+- Grant execution permissions to Shell script File
 
 ```
 $ chmod +x ~/workspace/paasta-deployment/paasta/*.sh
@@ -682,18 +681,18 @@ $ chmod +x ~/workspace/paasta-deployment/paasta/*.sh
 
 <br>
 
-## <div id='2.7'/>2.7.  PaaS-TA AP 설치
-- 서버 환경에 맞추어 common_vars.yml와 vars.yml를 수정 한 뒤, Deploy 스크립트 파일의 설정을 수정한다.
+## <div id='2.7'/>2.7.  PaaS-TA AP Installation
+- Modify common_vars.yml and vars.yml to match your server environment, and then modify the settings in the Deploy script file.
 > $ vi ~/workspace/paasta-deployment/paasta/deploy-aws.sh
 ```
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"			 		# bosh director alias name (PaaS-TA에서 제공되는 create-bosh-login.sh 미 사용시 bosh envs에서 이름을 확인하여 입력)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"			 		# bosh director alias name (When Create-bosh-login.sh provided by PaaS-TA is not used, check and enter the name in bosh envs)
 
 bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy paasta-deployment.yml \	# PaaS-TA Manifest File
-	-o operations/aws.yml \						# AWS 설정
-	-o operations/use-haproxy.yml \					# HAProxy 적용
-	-o operations/use-haproxy-public-network.yml \			# HAProxy Public Network 적용
-	-o operations/use-postgres.yml \				# Database Type 설정 (3.5버전 이하에서 Migration 시 필수)
-	-o operations/cce.yml \						# CCE 조치 적용
+	-o operations/aws.yml \						# AWS Setting
+	-o operations/use-haproxy.yml \					# Apply HAProxy
+	-o operations/use-haproxy-public-network.yml \			# Apply HAProxy Public Network
+	-o operations/use-postgres.yml \				# Database Type Setting (requiires Migration from versions lower than 3.5)
+	-o operations/cce.yml \						# Took action for CCE
 	-o operations/rename-network-and-deployment.yml \		# Rename Network and Deployment
 	-l vars.yml \							# 환경에 PaaS-TA 설치시 적용하는 변수 설정 파일
 	-l ../../common/common_vars.yml					# PaaS-TA 및 각종 Service 설치시 적용하는 공통 변수 설정 파일

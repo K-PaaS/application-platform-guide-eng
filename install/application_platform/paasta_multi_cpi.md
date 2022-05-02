@@ -2,44 +2,44 @@
 
 ## Table of Contents
 
-1. [개요](#1)  
- 1.1. [목적](#1.1)  
- 1.2. [범위](#1.2)  
- 1.3. [참고 자료](#1.3)  
+1. [Outline](#1)  
+ 1.1. [Purpose](#1.1)  
+ 1.2. [Range](#1.2)  
+ 1.3. [Refrences](#1.3)  
 2. [Multi CPI](#2)  
  2.1. [Prerequisite](#2.1)  
- 2.2. [설치 파일 다운로드](#2.2)  
+ 2.2. [Download the installation file](#2.2)  
  2.3. [OpenVPN](#2.3)  
-　2.3.1. [변수 설정](#2.3.1)       
-　2.3.2. [인증서 생성](#2.3.2)       
-　2.3.3. [OpenVPN 설치](#2.3.3)  
-　2.3.4. [OpenVPN 연결 확인](#2.3.4)  
-　2.3.5. [정적 라우팅 추가 (선택)](#2.3.5)  
- 2.4. [Multi CPI 설정](#2.4)   
-　2.4.1. [BOSH 설치](#2.4.1)    
-　2.4.2. [CPI Config 설정](#2.4.2)    
-　　2.4.2.1. [Same IaaS AZ의 경우](#2.4.2.1)    
-　　2.4.2.2. [Different IaaS AZ의 경우](#2.4.2.2)    
-　2.4.3. [Cloud Config 설정](#2.4.3)    
-　　2.4.3.1. [Same IaaS AZ의 경우](#2.4.3.1)    
-　　2.4.3.2. [Different IaaS AZ의 경우](#2.4.3.2)    
-　2.4.4. [Stemcell 업로드](#2.4.4)    
-　2.4.5. [Multi CPI를 이용한 AP 설치 테스트](#2.4.5)    
+　2.3.1. [Variable Setting](#2.3.1)       
+　2.3.2. [Generate Certificate](#2.3.2)       
+　2.3.3. [OpenVPN Installation](#2.3.3)  
+　2.3.4. [OpenVPN Connection Check](#2.3.4)  
+　2.3.5. [Add Static Routing (Select)](#2.3.5)  
+ 2.4. [Multi CPI Setting](#2.4)   
+　2.4.1. [BOSH Installation](#2.4.1)    
+　2.4.2. [CPI Config Setting](#2.4.2)    
+　　2.4.2.1. [Same IaaS for AZ](#2.4.2.1)    
+　　2.4.2.2. [Different IaaS for AZ](#2.4.2.2)    
+　2.4.3. [Cloud Config Setting](#2.4.3)    
+　　2.4.3.1. [Same IaaS for AZ](#2.4.3.1)    
+　　2.4.3.2. [Different IaaS for AZ](#2.4.3.2)    
+　2.4.4. [Stemcell Upload](#2.4.4)    
+　2.4.5. [AP Installation Test with Multi-CPI](#2.4.5)    
  
-# <div id='1'/>1.  문서 개요
+# <div id='1'/>1. Document Outline
 
-## <div id='1.1'/>1.1. 목적
-본 문서는 BOSH2(이하 BOSH)의 Multi CPI 설정 가이드 문서로, 하나의 BOSH를 통하여 BOSH가 설치된 IaaS 환경(이하 Main IaaS AZ)과 BOSH가 설치되지 않은 다른 IaaS 환경(이하 Second IaaS AZ)에서 VM을 배포하는 Multi CPI를 설정하고 사용하는 방법에 관해서 설명하였다.  
+## <div id='1.1'/>1.1. Purpose
+This document is a Multi-CPI setup guide for BOSH2 (hereinafter BOSH) and explains how to set up and use Multi-CPI that distributes VMs in IaaS environments. (hereinafter referred to as Main IaaS AZ) and other IaaS environments (hereinafter referred to as Second IaaS AZ) where BOSH is installed through one BOSH.
 
 <br>
 
-## <div id='1.2'/>1.2. 범위
-본 가이드는 BOSH와 PaaS-TA AP에 대한 기본 이해도가 있다는 전제 하에 가이드를 진행하였다.  
-multi-cpi-deployment는 paasta-deployment v5.7.1의 설치를 기준으로 가이드를 작성하였다.  
-multi-cpi-deployment는 AWS, OpenStack, vSphere 에서 설정이 가능하다.  
-분류는 크게 Main IaaS AZ와 Second IaaS AZ가 같은 경우 (e.g. A OpenStack ⇔ B OpenStack, 이하 Same IaaS AZ) 와 Main IaaS AZ와 Second IaaS AZ가 다른 경우 (e.g. Openstack ⇔ AWS, 이하 Different IaaS AZ)를 기준으로 작성하였다.
+## <div id='1.2'/>1.2. Range
+This guide was conducted on the premise that there is a basic understanding of BOSH and PaaS-TA AP.
+For multi-cpi-deployment, a guide was prepared based on the installation of paasta-deployment v5.7.1.
+Multi-cpi-deployment can be configured on AWS, OpenStack, and vSphere.
+The classification was largely based on the case where Main IaaS AZ and Second IaaS AZ are the same (e.g. A OpenStack ⇆ B OpenStack, hereinafter Same IaaS AZ) and the case where Main IaaS AZ and Second IaaS AZ are different (e.g. OpenStack ⇆ AWS, hereinafter Different IaaS AZ).
 
-설정 가능한 IaaS 케이스는 다음과 같다.  
+The configurable IaaS cases are as follows.
 
 
 <table class="tg">
@@ -94,9 +94,9 @@ multi-cpi-deployment는 AWS, OpenStack, vSphere 에서 설정이 가능하다.
    
 <br>
 
-## <div id='1.3'/>1.3. 참고 자료
+## <div id='1.3'/>1.3. Refrences
 
-본 문서는 Cloud Foundry의 BOSH Document와 cf-deployment, Open VPN을 참고로 작성하였다.
+This document was written by referring to Cloud Foundry's BOSH Document, cf-deployment, and Open VPN.
 
 BOSH Document: [https://bosh.io](https://bosh.io)  
 CF Document: [https://docs.cloudfoundry.org/](https://docs.cloudfoundry.org/)  
@@ -109,24 +109,23 @@ OpenVPN : [https://openvpn.net/](https://openvpn.net/)
 <br><br>
 
 # <div id='2'/>2.  Multi CPI
-BOSH에 Multi CPI를 설정할 경우 하나의 BOSH를 통하여 Main IaaS AZ와 Second IaaS AZ 두개의 환경에서 VM을 각각 배포할 수 있다.  
-본 가이드에서는 Main IaaS AZ와 Second IaaS AZ에 OpenVPN을 각각 설치한 후, Main IaaS AZ에 BOSH를 설치한 뒤 Multi CPI 설정을 진행한다.  
-
+When Multi-CPI is set up in BOSH, VMs can be deployed in two environments, Main IaaS AZ and Second IaaS AZ, respectively, through one BOSH.
+In this guide, OpenVPN is installed on the Main IaaS AZ and the Second IaaS AZ, respectively, and BOSH is installed on the Main IaaS AZ and Multi CPI is set up.
 <br>
 
 ## <div id='2.1'/>2.1. Prerequisite
 
-본 가이드는 Linux 환경에서 진행하는 것을 기준으로 하였다.  
-또한 Multi CPI 설정를 위해서는 먼저 BOSH CLI가 설치 되어 있어야 한다.  
-BOSH CLI가 설치 되어 있지 않을 경우 먼저 BOSH 설치 가이드 문서를 참고 하여 BOSH CLI를 설치를 진행 한다.
+This guide is based on the Linux environment.
+In addition, BOSH CLI must be installed before Multi-CPI can be configured.
+If the BOSH CLI is not installed, first refer to the BOSH Installation Guide document and proceed with the BOSH CLI installation.
 
 
 <br>
 
 
-## <div id='2.2'/>2.2. 설치 파일 다운로드
+## <div id='2.2'/>2.2. ownload the installation file
 
-- BOSH를 설치하기 위한 paasta-deployment와 Multi CPI 설정을 위한 multi-cpi-deployment가 존재하지 않는다면 다운로드 받는다
+- Download if paasta-deployment for installing BOSH and multi-cpi-deployment for Multi CPI setup do not exist
 
 ```
 $ mkdir -p ~/workspace
@@ -138,18 +137,18 @@ $ git clone https://github.com/PaaS-TA/multi-cpi-deployment.git -b v5.7.1
 <br>
 
 ## <div id='2.3'/>2.3. OpenVPN
-BOSH가 Main IaaS AZ와 Second IaaS AZ의 통신을 진행하기 위하여 OpenVPN을 Main IaaS AZ와 Second IaaS AZ에  설치를 진행한다.
+In order for BOSH to communicate between Main IaaS AZ and Second IaaS AZ, OpenVPN will be installed on Main IaaS AZ and Second IaaS AZ.
 
 <br>
 
-### <div id='2.3.1'/>2.3.1. 변수 설정
+### <div id='2.3.1'/>2.3.1. Variable Setting
 ```
-# OpenVPN 설치를 위한 deployment 폴더 이동
+# Go to Deployment folder to install OpenVPN
 $ cd ~/workspace/multi-cpi-deployment/openvpn
 ```
 
-- Main IaaS AZ에 설치되는 OpenVPN az1 변수를 설정한다.  
-  (OpenVPN을 설치할 IaaS 환경에 대한 주석을 해제하고 변수를 설정한다.)
+- Set the OpenVPN az1 variable installed in the Main IaaS AZ.
+  (Uncomment and set variables for IaaS environments where OpenVPN will be installed.)
 > $ vi vars-az1.yml
 ```
 ### openvpn default
@@ -206,8 +205,8 @@ remote_vpn_ip: "XXX.XXX.XXX.XXX"                  # Used by OpenVPN Server-2 ip
 #vcenter_disks: "Disks"                            # vCenter Disk Name
 ```
 
-- Second IaaS AZ에 설치되는 OpenVPN az2 변수를 설정한다.  
-  (OpenVPN을 설치할 IaaS 환경에 대한 주석을 해제하고 변수를 설정한다.)
+- Set the OpenVPN az2 variable installed in the Second IaaS AZ. 
+  (Uncomment and set variables for IaaS environments where OpenVPN will be installed.)
 > $ vi vars-az2.yml
 ```
 ### openvpn default
@@ -223,14 +222,14 @@ vpn_network_mask_bits: "24"                       # ex) 24
 remote_network_cidr_block: "XXX.XXX.XXX.XXX/24"   # ex) 10.0.10.0/24
 remote_vpn_ip: "XXX.XXX.XXX.XXX"                  # Used by OpenVPN Server-1 ip 
 
-... ((생략)) ...
+... ((Skip)) ...
 
 ```
 
 <br>
 
-### <div id='2.3.2'/>2.3.2. 인증서 생성
-OpenVPN에서 사용 할 인증서를 generate_ca.sh을 실행하여 생성한다.
+### <div id='2.3.2'/>2.3.2. Generate Certificate
+Run generate_ca.sh to generate the certificate to be used in OpenVPN.
 ```
 $ source generate_ca.sh
 
@@ -243,10 +242,10 @@ drwxrwxr-x 4 ubuntu ubuntu  4096 Jul 21 01:47 ../
 
 <br>
 
-### <div id='2.3.3'/>2.3.3. OpenVPN 설치
-- deploy-vpn-\*.sh에 사용할 IaaS에 대한 옵션을 추가한다.
+### <div id='2.3.3'/>2.3.3. OpenVPN Installation
+- Add options to be used for IaaS at deploy-vpn-\*.sh.
 ```
-### OpenVPN az1 IaaS 설정
+### OpenVPN az1 IaaS Setting
 $ vi deploy-vpn-az1.sh
 
 ex) Choose one and add it.
@@ -255,7 +254,7 @@ ex) Choose one and add it.
 -o operations/init-vsphere.yml \
 
 
-### OpenVPN az2 IaaS 설정 
+### OpenVPN az2 IaaS Setting
 $ vi deploy-vpn-az2.sh
 
 ex) Choose one and add it.
@@ -265,21 +264,21 @@ ex) Choose one and add it.
 ```
 
 
-- 생성된 인증서를 사용하여 OpenVPN az1, OpenVPN az2 설치를 진행한다.
+- Install OpenVPNaz1 and OpenVPNaz2 using the generated certificate.
 ```
-### OpenVPN az1 설치
+### OpenVPN az1 Installation
 $ source deploy-vpn-az1.sh
 
-### OpenVPN az2 설치
+### OpenVPN az2 Installation
 $ source deploy-vpn-az2.sh
 ```
 
 <br>
 
-### <div id='2.3.4'/>2.3.4. OpenVPN 연결 확인
-OpenVPN이 설치가 완료되면 상호간 연결이 가능한지 확인한다.
+### <div id='2.3.4'/>2.3.4. OpenVPN Connection Check
+When OpenVPN is completely installed, verify that interconnection is possible.
 ```
-# OpenVPN 인증키 생성
+# OpenVPN Generate Authentication Key
 ## OpenVPN az1.key
 $ bosh int creds/vpn-deploy-az1.yml --path /ssh/private_key > openvpn-az1.key 
 $ chmod 600 openvpn-az1.key
@@ -289,23 +288,23 @@ $ bosh int creds/vpn-deploy-az2.yml --path /ssh/private_key > openvpn-az2.key
 $ chmod 600 openvpn-az2.key
 
 
-# 연결 확인
+# Connection Check
 ## openVPN az1
 $ ssh openvpn@{openvpn-az1-ip} -i openvpn-az1.key 
 
-## ping 연결 확인
+## ping Connection Check
 $ ping {openvpn-az2-ip}
 
-## ifconfig 확인 (네트워크 인터페이스 tun0, tun2 확인)
+## ifconfig Check (Check network interface tun0, tun2)
 $ sudo su
 $ ifconfig 
 ```
 
 <br>
 
-### <div id='2.3.5'/>2.3.5. 정적 라우팅 추가 (선택)
-클라이언트 터널을 사용하기 위하여 정적 라우팅을 추가할 수 있다.  
-IaaS에서 정적 경로 추가를 지원하지 않는 경우 OpenVPN 의 네트워크를 사용할 모든 VM에서 해당 명령어를 통하여 정적 라우팅을 설정한다.
+### <div id='2.3.5'/>2.3.5. Add Static Routing (Select)
+Static routing may be added to use the client tunnel.
+If IaaS does not support adding static routes, establish static routing through the command on all VMs that will use OpenVPN's network.
 ```
 $ sudo ip route add {remote_network_cidr_block} via {lan_ip}
 e.g.) sudo ip route add 20.0.20.0/24 via 10.0.10.10
@@ -315,10 +314,10 @@ $ ping {remote_network_ip}
 
 <br>
 
-## <div id='2.4'/>2.4. Multi CPI 설정
-BOSH를 설치하고 Multi CPI를 설정하여 하나의 BOSH로 Main IaaS AZ와 Second IaaS AZ에서 VM을 배포할 수 있다.  
+## <div id='2.4'/>2.4. Multi CPI Setting
+May install BOSH and set up Multi-CPI to deploy VMs in the Main IaaS AZ and Second IaaS AZ with one BOSH.
 
-- Multi CPI 파일 BOSH 폴더로 이동
+- Move Multi CPI File to  BOSH Folder
 ```
 $ cp ~/workspace/multi-cpi-deployment/multi-cpi ~/workspace/paasta-deployment/bosh -r
 $ cd ~/workspace/paasta-deployment/bosh
@@ -326,22 +325,22 @@ $ cd ~/workspace/paasta-deployment/bosh
 
 <br>
 
-### <div id='2.4.1'/>2.4.1. BOSH 설치
-Same IaaS AZ의 경우 다른 옵션을 추가하지 않고 BOSH를 설치하며, Different IaaS AZ의 경우 옵션을 추가하여 BOSH 설치를 진행한다.    
-본 가이드에서는 추가되는 옵션에대한 설명을 진행한다.  
-본 가이드에서는 4개의 예제를 기술했지만 상황에 맞춰서 옵션과 배포파일을 변경하여 진행한다.  
-BOSH 설치에 대한 상세 내용은 BOSH 설치 가이드를 참고한다.
+### <div id='2.4.1'/>2.4.1. BOSH Installation
+For Same IaaS AZ, install BOSH without adding other options, and for Different IaaS AZ, install BOSH by adding options.
+This guide explains the additional options.
+In this guide, four examples are described, but options and distribution files are changed according to the situation.
+For more information on installing BOSH, see the BOSH Installation Guide.
 
-- Multi CPI 관련 Option 파일
+- Multi CPI Related Option File
 
-|파일명|설명|
+|File Name|Description|
 |------|---|
-| deploy-cpi-aws-secondary.yml | BOSH를 설치하지 않는 인프라가 AWS 일 경우 사용 |
-| deploy-cpi-openstack-secondary.yml	 | BOSH를 설치하지 않는 인프라가 OpenStack 일 경우 사용 |
-| deploy-cpi-vsphere-secondary.yml	 | BOSH를 설치하지 않는 인프라가 vSphere 일 경우 사용 |
-| deploy-cpi-registry-secondary.yml | BOSH를 설치하는 인프라가 vSphere 일 경우 사용 <br>(paasta-deployment v5.7.0 미만 버전 배포 시 사용, <br>v5.7.0 이상은 사용하지 않는다.) |
+| deploy-cpi-aws-secondary.yml | BUse if infrastructure without BOSH is AWS |
+| deploy-cpi-openstack-secondary.yml	 | Use if infrastructure without BOSH is OpenStack |
+| deploy-cpi-vsphere-secondary.yml	 | Use if infrastructure without BOSH is OpenStack vSphere|
+| deploy-cpi-registry-secondary.yml | Use if infrastructure without BOSH is OpenStack vSphere <br>(used for paasta-deployment v5.7.0 or lower version deployment, <br>v5.7.0 or higher has no need to use.) |
 
-- 예제1. AWS - Openstack BOSH 설치
+- Example 1. AWS - Openstack BOSH Installation
 > $ vi deploy-aws.sh
 ```diff
  bosh create-env bosh.yml \
@@ -356,7 +355,7 @@ BOSH 설치에 대한 상세 내용은 BOSH 설치 가이드를 참고한다.
  	-l aws-vars.yml
 ```
 
-- 예제2. AWS - vSphere BOSH 설치
+- Example 2. AWS - vSphere BOSH Installation
 > $ vi deploy-aws.sh
 ```diff
  bosh create-env bosh.yml \
@@ -372,7 +371,7 @@ BOSH 설치에 대한 상세 내용은 BOSH 설치 가이드를 참고한다.
 ```
 
 
-- 예제3. Openstack - vSphere BOSH 설치
+- Exmaple 3. Openstack - vSphere BOSH Installation
 > $ vi deploy-openstack.sh
 ```diff
  bosh create-env bosh.yml \
@@ -388,7 +387,7 @@ BOSH 설치에 대한 상세 내용은 BOSH 설치 가이드를 참고한다.
  	-l openstack-vars.yml
 ```
 
-- 예제4. vSphere - AWS BOSH 설치 (paasta-deployment v5.7.0 이상 설치 시)
+- Exmaple 4. vSphere - AWS BOSH Installation (paasta-deployment v5.7.0 and above)
 > $ vi deploy-vsphere.sh
 ```diff
  bosh create-env bosh.yml \
@@ -403,7 +402,7 @@ BOSH 설치에 대한 상세 내용은 BOSH 설치 가이드를 참고한다.
  	-l vsphere-vars.yml
 ```
 
-- 예제5. vSphere - AWS BOSH 설치 (paasta-deployment v5.7.0 미만 설치 시)
+- Example 5. vSphere - AWS BOSH Installation (paasta-deployment v5.7.0 and lower)
 > $ vi deploy-vsphere.sh
 ```diff
  bosh create-env bosh.yml \
@@ -420,7 +419,7 @@ BOSH 설치에 대한 상세 내용은 BOSH 설치 가이드를 참고한다.
 ```
 
 
-- 변수 설정 후 BOSH 설치 진행
+- Proceed with BOSH installation after setting the variable
 ```
 $ vi {IaaS}-vars.yml
 $ source deploy-{IaaS}.sh
@@ -429,20 +428,20 @@ $ source deploy-{IaaS}.sh
 <br>
 
 
-### <div id='2.4.2'/>2.4.2. CPI Config 설정
-CPI에 대한 추가 설정을 진행한다.  
-해당되는 IaaS에 맞게 cpi-config.yml의 주석을 해제하여 진행한다.
-|파일명|설명|
+### <div id='2.4.2'/>2.4.2. CPI Config Setting
+Proceed with additional settings for the CPI.  
+Uncomment the cpi-config.yml according to the corresponding IaaS to proceed.
+|File Name|Description|
 |------|---|
-| cpi-config.yml	 | multi-cpi 추가를 위한 cpi config file |
-| cpi-vars.yml	 | multi-cpi 설정 파일 |
+| cpi-config.yml	 | cpi config file to add multi-cpi |
+| cpi-vars.yml	 | multi-cpi Setting File |
 
-#### <div id='2.4.2.1'/>2.4.2.1. Same IaaS AZ의 경우
+#### <div id='2.4.2.1'/>2.4.2.1. Same IaaS for AZ
 
-- 예제 AWS - AWS를 사용할 경우
+- Example AWS - When using AWS
 > $ vi multi-cpi/cpi-vars.yml
 ```
-... ((생략)) ...
+... ((Skip)) ...
 
 ## MULTI-CPI VARIABLE :: AWS
 aws_access_key_id: "XXXXXXXXXXXXXXX"                    # AWS Access Key
@@ -451,7 +450,7 @@ aws_default_key_name: "paasta-key"                      # AWS Key Name
 aws_default_security_groups: ["paasta-security"]        # AWS Security-Group
 aws_region: "ap-northeast-2"                            # AWS Region
 
-... ((생략)) ...
+... ((Skip)) ...
 
 # IF USE SAME IAAS, CPI MULTI-CPI VARIABLE
 
@@ -462,10 +461,10 @@ aws_second_default_key_name: "paasta-key"                      # AWS Second Key 
 aws_second_default_security_groups: ["paasta-security"]        # AWS Second Security-Group
 aws_second_region: "ap-northeast-2"                            # AWS Second Region
 
-... ((생략)) ...
+... ((Skip)) ...
 ```
 
-> $ vi multi-cpi/cpi-config.yml (사용할 IaaS 정보를 주석 해제한다.)
+> $ vi multi-cpi/cpi-config.yml (Uncomment IaaS information to use.)
 ```
 #### DIFFERENT IAAS CPI
 
@@ -479,7 +478,7 @@ cpis:
     default_security_groups: ((aws_default_security_groups))
     region: ((aws_region))
 
-... ((생략)) ...
+... ((Skip)) ...
 
 #### SAME IAAS CPI
 
@@ -492,19 +491,19 @@ cpis:
     default_security_groups: ((aws_second_default_security_groups))
     region: ((aws_second_region))
 
-... ((생략)) ...
+... ((Skip)) ...
 ```
 
-- CPI Config 적용
+- Apply CPI Config
 ```
 $ bosh update-cpi-config multi-cpi/cpi-config.yml -l multi-cpi/cpi-vars.yml
 ```
 
-#### <div id='2.4.2.2'/>2.4.2.2. Different IaaS AZ의 경우
-- 예제 AWS - OpenStack을 사용할 경우
+#### <div id='2.4.2.2'/>2.4.2.2. Different IaaS for AZ
+- Example AWS - When using OpenStack
 > $ vi multi-cpi/cpi-vars.yml
 ```
-... ((생략)) ...
+... ((Skip)) ...
 
 ## MULTI-CPI VARIABLE :: AWS
 aws_access_key_id: "XXXXXXXXXXXXXXX"                    # AWS Access Key
@@ -523,10 +522,10 @@ openstack_region: "RegionOne"                           # OpenStack Region
 openstack_default_key_name: "paasta-key"                # OpenStack Key Name
 openstack_default_security_groups: ["paasta-security"]  # OpenStack Security Group
 
-... ((생략)) ...
+... ((Skip)) ...
 ```
 
-> vi multi-cpi/cpi-config.yml (사용할 정보를 주석 해제한다.)
+> vi multi-cpi/cpi-config.yml (Uncomment information to use.)
 ```
 #### DIFFERENT IAAS CPI
 
@@ -553,24 +552,24 @@ cpis:
     default_security_groups: ((openstack_default_security_groups))
     human_readable_vm_names: true
 
-... ((생략)) ...
+... ((Skip)) ...
 ```
 
-- CPI Config 적용
+- Apply CPI Config 
 ```
 $ bosh update-cpi-config multi-cpi/cpi-config.yml -l multi-cpi/cpi-vars.yml
 ```
 
 <br>
 
-### <div id='2.4.3'/>2.4.3. Cloud Config 설정
-Cloud Config에 대한 추가 설정을 진행한다.  
-Same IaaS AZ의 경우 paasta-deployment 폴더의 cloud-config 파일을 이용하며, Different IaaS AZ의 경우 bosh/multi-cpi 폴더의 cloud-config 파일을 이용한다.  
+### <div id='2.4.3'/>2.4.3. Cloud Config Setting
+Proceed with additional setup for Cloud Config.
+Same IaaS AZ uses the cloud-config file in the paasta-deployment folder, and Different IaaS AZ uses the cloud-config file in the bosh/multi-cpi folder. 
 
-#### <div id='2.4.3.1'/>2.4.3.1. Same IaaS AZ의 경우
+#### <div id='2.4.3.1'/>2.4.3.1. Same IaaS for AZ
 
 ```diff
-cloud-config 의 azs 에서 각 인프라의 cpi-name 을 지정
+Specify the cpi-name of each infrastructure in the azs of cloud-config
 
  azs:
  - cloud_properties:
@@ -593,43 +592,43 @@ cloud-config 의 azs 에서 각 인프라의 cpi-name 을 지정
  ...
 ```
 
-- Cloud Config 적용
+- Apply Cloud Config 
 ```
 $ bosh update-cloud-config ~/workspace/cloud-config/{iaas}-cloud-config.yml 
 ```
 
-#### <div id='2.4.3.2'/>2.4.3.2. Different IaaS AZ의 경우
+#### <div id='2.4.3.2'/>2.4.3.2. Different IaaS for AZ
 
-|파일명|설명|
+|File Name|Description|
 |------|---|
 | cloud-config-aws-openstack.yml | AWS, OpenStack cloud config file |
 | cloud-config-openstack-vsphere.yml	| OpenStack, vSphere cloud config file |
 | cloud-config-vsphere-aws.yml	 | vSphere, AWS cloud config file |
 
 ```
-# AWS - OpenStack or OpenStack - AWS를 사용하는 경우
+# AWS - OpenStack or OpenStack - When Using AWS
 $ bosh update-cloud-config ~/workspace/bosh/multi-cpi/cloud-config-aws-openstack.yml
 
-# OpenStack - vSphere or vSphere - OpenStack를 사용하는 경우
+# OpenStack - vSphere or vSphere - When Using OpenStack
 $ bosh update-cloud-config ~/workspace/bosh/multi-cpi/cloud-config-openstack-vsphere.yml
 
-# vSphere - AWS or AWS - vSphere를 사용하는 경우
+# vSphere - AWS or AWS - When using vSphere
 $ bosh update-cloud-config ~/workspace/bosh/multi-cpi/cloud-config-vsphere-aws.yml
 ```
 
-- Cloud Config 적용
+- Apply Cloud Config
 ```
 $ bosh update-cloud-config ~/workspace/bosh/multi-cpi/cloud-config-{iaas}-{iaas}.yml 
 ```
 
 <br>
 
-### <div id='2.4.4'/>2.4.4. Stemcell 업로드
-설치된 BOSH에 로그인 후 사용하는 IaaS의 Stemcell 업로드를 진행한다.   
-(e.g. AWS와 OpenStack의 두개의 환경을 사용 할 경우 해당 명령어를 두개 다 실행한다.)  
+### <div id='2.4.4'/>2.4.4. Stemcell Upload
+Log in to the installed BOSH and proceed with the IaaS Stemcell upload.
+(e.g. Use both AWS and OpenStack environments, execute both of those commands.)  
 ```
-# paasta-deployment v5.7.1와 동일한 Stemcell인 ubuntu-bionic 1.76를 사용한다.
-# AWS 스템셀의 경우 light Stemcell을 이용한다
+# Use ubuntu-bionic 1.76 which is the same stem cell as paasta-deployment v5.7.1.
+# For AWS stem cells, use light stemcells
 
 # AWS
 $ bosh upload-stemcell https://storage.googleapis.com/bosh-aws-light-stemcells/1.76/light-bosh-stemcell-1.76-aws-xen-hvm-ubuntu-bionic-go_agent.tgz --fix
@@ -644,37 +643,37 @@ $ bosh upload-stemcell https://storage.googleapis.com/bosh-core-stemcells/1.76/b
 <br>
 
 
-### <div id='2.4.5'/>2.4.5. Multi CPI를 이용한 AP 설치 테스트
-Multi CPI 설정을 완료한 뒤, PaaS-TA AP를 설치하여 상호간 통신이 원활하게 진행되는지 테스트를 진행한다.  
-PaaS-TA AP에 필요한 runtime-config 설정이나 변수 설정에 관한 설명은 PaaS-TA AP 가이드를 참조한다.  
+### <div id='2.4.5'/>2.4.5. AP Installation Test with Multi-CPI
+After completing the Multi-CPI setup, PaaS-TA AP is installed to test whether communication between each other is smooth.
+For a description of the runtime-config setting or variable setting required for PaaS-TA AP, refer to the PaaS-TA AP Guide.
 
-본 가이드에서는 여러 케이스중 AWS - OpenStack 기준으로 Diego-cell을 OpenStack에, 나머지 VM을 AWS에 설치하여 진행하였다.  
-Diego-cell뿐 아니라 다른 VM도 분산 배포가 가능하고 Diego-cell을 각각 다른 IaaS에 분산하여 배포도 가능하니 해당되는 설정에 맞게 배포 방식을 변경하여 설치를 진행한다.  
+In this guide, among several cases, Diego-cell was installed on OpenStack and the remaining VMs were installed on AWS based on AWS - OpenStack.
+Not only Diego-cell but also other VMs can be distributed and distributed across different IaaS. Change the distribution method according to the application settings to proceed with the installation. 
 
-- PaaS-TA AP 설치 폴더 이동
+- Go to PaaS-TA AP Installation Folder
 ```
 $ cd ~/workspace/paasta-deployment/paasta
 ```
 
-- diego-cell zone 변경
+- diego-cell zone change
 > $ vi vars.yml
 ```
-... ((생략)) ...
+... ((Skip)) ...
 
 # DIEGO-CELL
-diego_cell_azs: ["z4", "z5"]		# Diego-Cell 가용 존
-diego_cell_instances: 3			# Diego-Cell 인스턴스 수
+diego_cell_azs: ["z4", "z5"]		# Diego-Cell Available Zone
+diego_cell_instances: 3			# Diego-Cell Number of Instances
 
-... ((생략)) ...
+... ((Skip)) ...
 ```
 
-- PaaS-TA AP 설치
+- PaaS-TA AP Installation
 ```
 $ source deploy-aws.sh
 ```
 
 
-PaaS-TA AP 설치 완료 후 Test APP을 Push하여 App이 정상작동하는지 확인한다.
+After completing PaaS-TA AP installation, push the Test APP to check if the app is working properly.
 
 
 

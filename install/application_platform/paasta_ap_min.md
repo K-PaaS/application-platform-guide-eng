@@ -506,16 +506,16 @@ Refer to the other CLI in the User Guide for how to use UAAC after installing Pa
 </tr>
 <tr>
 <td>operations/min-use-postgres.yml</td>
-<td>Database를 Postgres로 설치 <br>
-    - min-use-postgres.yml 미적용 시 MySQL 설치  <br>
-    - 3.5 이전 버전에서 Migration 시 필수  
+<td>Install Database as Postgres <br>
+    - When min-use-postgres.yml cannot be applied, install MySQL<br>
+    - Migration is required in versions lower than 3.5  
 </td>
 <td></td>
 </tr>
 <tr>
 <td>operations/min-use-haproxy.yml</td>
-<td>HAProxy 적용 <br>
-    - IaaS에서 제공하는 LB를 사용하여 PaaS-TA AP min 설치 시, Operation 파일을 제거하고 설치한다.
+<td>Apply HAProxy <br>
+    - When installing PaaS-TA AP min using LB provided by IaaS, the operation file will be removed and be installed.
 </td>
 <td>Requires operation file: use-haproxy-public-network.yml <br>
     Requires value :  -v haproxy_private_ip
@@ -523,8 +523,8 @@ Refer to the other CLI in the User Guide for how to use UAAC after installing Pa
 </tr>
 <tr>
 <td>operations/use-haproxy-public-network.yml</td>
-<td>HAProxy Public Network 설정 <br>
-    - IaaS에서 제공하는 LB를 사용하여 PaaS-TA AP min 설치 시, Operation 파일을 제거하고 설치한다.
+<td>HAProxy Public Network Setting <br>
+    - When installing PaaS-TA AP min using LB provided by IaaS, the operation file will be removed and be installed.
 </td>
 <td>Requires: use-haproxy.yml <br>
     Requires Value :  <br>
@@ -534,24 +534,24 @@ Refer to the other CLI in the User Guide for how to use UAAC after installing Pa
 </tr>
 <tr>
 <td>operations/min-use-router-public-network.yml</td>
-<td>router를 외부 접근을 가능하게 수정한다.</td>
-<td>4VMs 배포시 사용</td>
+<td>Modify the router to allow external access</td>
+<td>Use when deploying 4VMs</td>
 </tr>
 <tr>
 <td>operations/min-create-vm-singleton-blobstore.yml</td>
-<td>4VMs에서 사용되는 database의 singleton-blobstore를 단일 VM으로 배포한다.</td>
+<td>Deploy singleton-blobstore of database used by 4VMs as a single VM.</td>
 <td>Requires: min-use-haproxy.yml <br>
-7VMs 배포시 사용 <br>
+Use when deploying 7VMs <br>
 Requires operation file: min-option-network-and-deployment.yml</td>
 </tr>
 <tr>
 <td>operations/min-create-vm-tcp-router.yml</td>
-<td>4VMs에서 사용되는 router의 tcp-router를 단일 VM으로 배포한다.</td>
-<td>7VMs 배포시 사용</td>
+<td>Deploy tcp-router of router used by 4VMs as a single VM.</td>
+<td>Use when deploying 7VMs</td>
 </tr>
 <tr>
 <td>operations/min-cce.yml</td>
-<td>CCE 조치를 적용하여 설치한다.</td>
+<td>Apply CCE when installing.</td>
 <td></td>
 </tr>
 </table>

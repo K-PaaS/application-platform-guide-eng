@@ -777,13 +777,13 @@ Succeeded
 
 <br>
 
-## <div id='2.8'/>2.8.  PaaS-TA AP min 로그인
+## <div id='2.8'/>2.8.  PaaS-TA AP min Login
 
-CF CLI를 설치하고 PaaS-TA AP min에 로그인한다.  
-CF CLI는 v6과 v7중 선택해서 설치를 한다.  
-CF API는 PaaS-TA AP min 배포 시 지정했던 System Domain 명을 사용한다.
+Install CF CLI and log in to PaaS-TA AP min.  
+Install CF CLI by selecting between v6 and v7.  
+The CF API uses the System Domain name specified during PaaS-TA AP min deployment.
 
-- CF CLI v6 설치
+- CF CLI v6 Installation
 
 ```
 $ wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
@@ -793,7 +793,7 @@ $ sudo apt install cf-cli -y
 $ cf --version
 ```
 
-- CF CLI v7 설치 (PaaS-TA AP min 5.1.0 이상)
+- CF CLI v7 Installation (PaaS-TA AP min 5.1.0 above)
 
 ```
 $ wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
@@ -803,7 +803,7 @@ $ sudo apt install cf7-cli -y
 $ cf --version
 ```
 
-- CF API URL 설정
+- CF API URL Setting
 
 > $ cf api api.{system_domain} --skip-ssl-validation
 
@@ -816,7 +816,7 @@ api endpoint:   https://api.54.180.53.80.nip.io
 api version:    3.87.0
 ```
 
-- PaaS-TA AP min 로그인
+- PaaS-TA AP min Login
 
 > $ cf login
 

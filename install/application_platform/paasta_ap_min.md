@@ -255,7 +255,8 @@ The reason for setting in three unit is for service tripleization, It may be set
 A VM Type is a VM Type defined in IaaS.
 
 ※ Following are the Instance Type defined by AWS.
-![PaaSTa_FLAVOR_Image]
+![aws-vmtype_eng](https://user-images.githubusercontent.com/104418463/166170134-37816fd0-5a08-4e78-8580-66ef9840de29.png)
+
 
 - Compilation
 

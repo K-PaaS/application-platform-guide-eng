@@ -659,7 +659,7 @@ bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy paasta-deployment.yml \	# PaaS-T
 	-l ../../common/common_vars.yml					# Common variable setting file to apply when installing PaaS-TA and various services
 ```
 
-- vSphere 환경 설치 시
+- When installing a vSphere environment
 > $ vi ~/workspace/paasta-deployment/paasta/deploy-vsphere.sh
 ```
 BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"			 # bosh director alias name (When Create-bosh-login.sh provided by PaaS-TA is not used, check and enter the name in bosh envs)

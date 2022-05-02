@@ -2,57 +2,57 @@
 
 ## Table of Contents
 
-1. [문서 개요](#1)  
-    1.1. [목적](#1.1)  
-    1.2. [범위](#1.2)  
-    1.3. [참고자료](#1.3)  
+1. [Document Outline](#1)  
+    1.1. [Purpose](#1.1)  
+    1.2. [Range](#1.2)  
+    1.3. [References](#1.3)  
 
-2. [PaaS-TA AP Portal UI 설치](#2)  
+2. [PaaS-TA AP Portal UI Installation](#2)  
     2.1. [Prerequisite](#2.1)   
-    2.2. [Stemcell 확인](#2.2)    
-    2.3. [Deployment 다운로드](#2.3)   
-    2.4. [Deployment 파일 수정](#2.4)  
-    2.5. [서비스 설치](#2.5)    
-    2.6. [서비스 설치 확인](#2.6)  
-    2.7. [Portal SSH 설치](#2.7)  
+    2.2. [Stemcell Check](#2.2)    
+    2.3. [Deployment Download](#2.3)   
+    2.4. [Deployment File Modification](#2.4)  
+    2.5. [Service Installation](#2.5)    
+    2.6. [Service Installation Check](#2.6)  
+    2.7. [Portal SSH Installation](#2.7)  
 
-3. [PaaS-TA AP Portal 운영](#3)  
-    3.1. [사용자의 조직 생성 Flag 활성화](#3.1)  
-    3.2. [사용자포탈 UAA 페이지 오류](#3.2)  
-    3.3. [운영자포탈 유저 페이지 조회 오류](#3.3)  
+3. [PaaS-TA AP Portal Operation](#3)  
+    3.1. [Enable the user's organizational creation flag](#3.1)  
+    3.2. [User Portal UAA Page Error](#3.2)  
+    3.3. [Operator's Portal User Page lookup error](#3.3)  
     3.4. [Log](#3.4)  
-    3.5. [카탈로그 적용](#3.5)  
-    3.6. [모니터링 및 오토스케일링 적용](#3.6)  
+    3.5. [Apply Catalog](#3.5)  
+    3.6. [Apply Monitoring and Autoscaling](#3.6)  
 
 
-## <div id="1"/> 1. 문서 개요
-### <div id="1.1"/> 1.1. 목적
+## <div id="1"/> 1. Document Outline
+### <div id="1.1"/> 1.1. Purpose
 
-본 문서(PaaS-TA AP Portal UI 설치 가이드)는 PaaS-TA AP Portal UI를 BOSH를 이용하여 설치 하는 방법을 기술하였다.
+This document (PaaS-TA AP Portal UI Installation Guide) describes how to install PaaS-TA AP Portal UI using BOSH.
 
-### <div id="1.2"/> 1.2. 범위
-설치 범위는 PaaS-TA AP Portal을 검증하기 위한 Portal UI 기본 설치를 기준으로 작성하였다.
+### <div id="1.2"/> 1.2. Range
+The installation scope was created based on the basic installation of the Portal UI to verify the PaaS-TA AP Portal.
 
-### <div id="1.3"/> 1.3. 참고자료
+### <div id="1.3"/> 1.3. References
 BOSH Document: [http://bosh.io](http://bosh.io)  
 Cloud Foundry Document: [https://docs.cloudfoundry.org](https://docs.cloudfoundry.org)  
 
-## <div id="2"/> 2. PaaS-TA AP Portal UI 설치
+## <div id="2"/> 2. PaaS-TA AP Portal UI Installation
 
 ### <div id="2.1"/> 2.1. Prerequisite  
 
-본 설치 가이드는 Linux 환경에서 설치하는 것을 기준으로 하였다.  
-서비스팩 설치를 위해서는 먼저 BOSH CLI v2 가 설치 되어 있어야 하고 BOSH 에 로그인이 되어 있어야 한다.<br>
-BOSH CLI v2 가 설치 되어 있지 않을 경우 먼저 BOSH2.0 설치 가이드 문서를 참고 하여 BOSH CLI v2를 설치를 하고 사용법을 숙지 해야 한다.<br>
-UAA client가 설치 되어 있지 않을 경우 UAA client의 설치가 필요하다.
+This installation guide is based on installation in a Linux environment.
+To install the service pack, BOSH CLI v2 must be installed and logged in to BOSH.<br>
+If BOSH CLI v2 is not installed, you must first refer to the BOSH 2.0 Installation Guide document to install BOSH CLI v2 and be familiarize on the usage.<br>
+If the UAA client is not installed, the UAA client needs to be installed.
 
-- UAA client 설치 (BOSH Dependency 설치 필요)
+- UAA client Installation (BOSH Dependency Installation Required)
 ```
 $ sudo gem install cf-uaac
 $ uaac -v
 ```
 
-### <div id="2.2"/> 2.2. Stemcell 확인
+### <div id="2.2"/> 2.2. Stemcell Check
 
 Stemcell 목록을 확인하여 서비스 설치에 필요한 Stemcell이 업로드 되어 있는 것을 확인한다.  
 본 가이드의 Stemcell은 ubuntu-bionic 1.76를 사용한다.  

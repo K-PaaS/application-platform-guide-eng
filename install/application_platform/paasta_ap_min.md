@@ -600,7 +600,7 @@ When deploying PaaS-TA AP min, installation options must be added. The descripti
 ```
 $ vi ~/workspace/paasta-deployment-min/paasta/deploy-aws-4vms.sh
 
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"                   # bosh director alias name (When Create-bosh-login provided by PaaS-TA.If sh is not used, check and enter the name in bosenvs)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"                   # bosh director alias name (When Create-bosh-login provided by PaaS-TA.If sh is not used, check and enter the name in bosh envs)
 
 bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy min-paasta-deployment.yml \	# PaaS-TA-min Manifest File
         -o operations/min-aws.yml \					# AWS Setting
@@ -618,7 +618,7 @@ bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy min-paasta-deployment.yml \	# Pa
 ```
 $ vi ~/workspace/paasta-deployment-min/paasta/deploy-aws-7vms.sh
 
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"                   # bosh director alias name (When Create-bosh-login provided by PaaS-TA.If sh is not used, check and enter the name in bosenvs)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"                   # bosh director alias name (When Create-bosh-login provided by PaaS-TA.If sh is not used, check and enter the name in bosh envs)
 
 bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy min-paasta-deployment.yml \	# PaaS-TA-min Manifest File
         -o operations/min-aws.yml \					# AWS Setting
@@ -639,7 +639,7 @@ bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy min-paasta-deployment.yml \	# Pa
 ```
 $ vi ~/workspace/paasta-deployment-min/paasta/deploy-openstack-4vms.sh
 
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"                   # bosh director alias name (Create-bosh-login provided by PaaS-TA.If sh is not used, check and enter the name in bosenvs)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"                   # bosh director alias name (Create-bosh-login provided by PaaS-TA.If sh is not used, check and enter the name in bosh envs)
 
 bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy min-paasta-deployment.yml \	# PaaS-TA-min Manifest File
         -o operations/min-openstack.yml \					# Openstack Setting
@@ -656,7 +656,7 @@ bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy min-paasta-deployment.yml \	# Pa
 ```
 $ vi ~/workspace/paasta-deployment-min/paasta/deploy-openstack-7vms.sh
 
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"                   # bosh director alias name (When Create-bosh-login provided by PaaS-TA.If sh is not used, check and enter the name in bosenvs)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"                   # bosh director alias name (When Create-bosh-login provided by PaaS-TA.If sh is not used, check and enter the name in bosh envs)
 
 bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy min-paasta-deployment.yml \	# PaaS-TA-min Manifest File
         -o operations/min-openstack.yml \					# Openstack Setting
@@ -668,11 +668,11 @@ bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy min-paasta-deployment.yml \	# Pa
         -o operations/min-rename-network-and-deployment.yml \		# Rename Network and Deployment
         -o operations/min-option-network-and-deployment.yml \		# singleton-blobstore Rename Network and Deployment
 	-o operations/min-cce.yml \					# CCE Applied
-        -l min-vars.yml \						# PaaS-TA-min 설치시 적용하는 변수 설정 파일
-        -l ../../common/common_vars.yml					# PaaS-TA 및 각종 Service 설치시 적용하는 공통 변수 설정 파일
+        -l min-vars.yml \						# Variable settings file to apply when installing PaaS-TA-min
+        -l ../../common/common_vars.yml					# Common variable settings file to apply when installing PaaS-TA and various services
 ```
 
-- Shell script 파일에 실행 권한 부여
+- Grant execution permissions to Shell script files
 
 ```
 $ chmod +x ~/workspace/paasta-deployment-min/paasta/*.sh
@@ -680,55 +680,55 @@ $ chmod +x ~/workspace/paasta-deployment-min/paasta/*.sh
 
 <br>
 
-## <div id='2.7'/>2.7.  PaaS-TA AP min 설치
-- 서버 환경에 맞추어 common_vars.yml와 min-vars.yml를 수정 한 뒤, Deploy 스크립트 파일의 설정을 수정한다.
+## <div id='2.7'/>2.7.  PaaS-TA AP min Installation
+- Modify common_vars.yml and min-vars.yml to match your server environment, and then modify the settings in the Deploy script file.
 
-- 4VM 배포 시
+- When Deploying 4VM
 ```
 $ vi ~/workspace/paasta-deployment-min/paasta/deploy-aws-4vms.sh
 
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"                   # bosh director alias name (PaaS-TA에서 제공되는 create-bosh-login.sh 미 사용시 bosh envs에서 이름을 확인하여 입력)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"                   # bosh director alias name (When Create-bosh-login provided by PaaS-TA.If sh is not used, check and enter the name in bosh envs)
 
 bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy min-paasta-deployment.yml \	# PaaS-TA-min Manifest File
-        -o operations/min-aws.yml \					# AWS 설정
-	-o operations/min-use-router-public-network.yml \		# Router 외부 접근 설정
+        -o operations/min-aws.yml \					# AWS Setting
+	-o operations/min-use-router-public-network.yml \		# Router External Access Settings
 	-o operations/min-use-router-public-network-aws.yml \
-        -o operations/min-use-postgres.yml \				# Database Type 설정 (3.5버전 이하에서 Migration 시 필수)
+        -o operations/min-use-postgres.yml \				# Database Type Setting (Requiring for Migration from versions lower than 3.5)
         -o operations/min-rename-network-and-deployment.yml \		# Rename Network and Deployment
-	-o operations/min-cce.yml \					# CCE 조치 적용
-        -l min-vars.yml \						# PaaS-TA-min 설치시 적용하는 변수 설정 파일
-        -l ../../common/common_vars.yml					# PaaS-TA 및 각종 Service 설치시 적용하는 공통 변수 설정 파일
+	-o operations/min-cce.yml \					# CCE Applied
+        -l min-vars.yml \						# Variable settings file to apply when installing PaaS-TA-min
+        -l ../../common/common_vars.yml					# Common variable settings file to apply when installing PaaS-TA and various services
 ```
 
 
-- 7VM 배포 시
+- When Deploying 7VM
 ```
 $ vi ~/workspace/paasta-deployment-min/paasta/deploy-aws-7vms.sh
 
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"                   # bosh director alias name (PaaS-TA에서 제공되는 create-bosh-login.sh 미 사용시 bosh envs에서 이름을 확인하여 입력)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"                   # bosh director alias name When Create-bosh-login provided by PaaS-TA.If sh is not used, check and enter the name in bosh envs)
 
 bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy min-paasta-deployment.yml \	# PaaS-TA-min Manifest File
-        -o operations/min-aws.yml \					# AWS 설정
-        -o operations/min-create-vm-singleton-blobstore.yml \		# singleton-blobstore VM 배포
-        -o operations/min-create-vm-tcp-router.yml \			# tcp-router VM 배포
-        -o operations/min-use-haproxy.yml \				# HAProxy 적용
-        -o operations/use-haproxy-public-network.yml \			# HAProxy Public Network 적용
-        -o operations/min-use-postgres.yml \				# Database Type 설정 (3.5버전 이하에서 Migration 시 필수)
+        -o operations/min-aws.yml \					# AWS Setting
+        -o operations/min-create-vm-singleton-blobstore.yml \		# singleton-blobstore VM Deployment
+        -o operations/min-create-vm-tcp-router.yml \			# tcp-router VM Deployment
+        -o operations/min-use-haproxy.yml \				# HAProxy Applied
+        -o operations/use-haproxy-public-network.yml \			# HAProxy Public Network Applied
+        -o operations/min-use-postgres.yml \				# Database Type Setting (Requiring for Migration from versions lower than 3.5)
         -o operations/min-rename-network-and-deployment.yml \		# Rename Network and Deployment
         -o operations/min-option-network-and-deployment.yml \		# singleton-blobstore Rename Network and Deployment
-	-o operations/min-cce.yml \					# CCE 조치 설정
-        -l min-vars.yml \						# PaaS-TA-min 설치시 적용하는 변수 설정 파일
-        -l ../../common/common_vars.yml					# PaaS-TA 및 각종 Service 설치시 적용하는 공통 변수 설정 파일
+	-o operations/min-cce.yml \					# CCE Applied
+        -l min-vars.yml \						# Variable settings file to apply when installing PaaS-TA-min
+        -l ../../common/common_vars.yml					# Common variable settings file to apply when installing PaaS-TA and various services
 ```
 
-- PaaS-TA AP min 설치 시 Shell Script 파일 실행 (BOSH 로그인 필요)
+- Run the Shell Script file when installing PaaS-TA AP min (Requireds BOSH Login)
 
 ```
 $ cd ~/workspace/paasta-deployment-min/paasta
 $ ./deploy-{IaaS}-{VMs_Number}.sh
 ```
 
-- PaaS-TA AP min 설치 확인
+- PaaS-TA AP min Installation Check
 
 > $ bosh -e ${BOSH_ENVIRONMENT} vms -d paasta
 

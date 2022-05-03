@@ -26,35 +26,35 @@
     4.3. [Apply Catalog](#4.3)  
 
 
-## <div id="1"/> 1. 문서 개요
-### <div id="1.1"/> 1.1. 목적
+## <div id="1"/> 1. Document Outline
+### <div id="1.1"/> 1.1. Purpose
 
-본 문서(PaaS-TA AP Portal Container Type 설치 가이드)는 PaaS-TA AP Portal을 BOSH와 PaaS-TA AP를 이용하여 설치 하는 방법을 기술하였다.
+This document (PaaS-TA AP Portal Container Type Installation Guide) describes how to install PaaS-TA AP Portal using BOSH and PaaS-TA AP.
 
-### <div id="1.2"/> 1.2. 범위
-설치 범위는 PaaS-TA AP Portal을 검증하기 위한 Portal infra 설치 및 Portal App 배포를 기준으로 작성하였다.
+### <div id="1.2"/> 1.2. Range
+The installation scope was created based on the installation of the Portal infrastructure and the distribution of the Portal App to verify the PaaS-TA AP Portal.
 
-### <div id="1.3"/> 1.3. 참고자료
+### <div id="1.3"/> 1.3. References
 BOSH Document: [http://bosh.io](http://bosh.io)  
 Cloud Foundry Document: [https://docs.cloudfoundry.org](https://docs.cloudfoundry.org)  
 
-## <div id="2"/> 2. PaaS-TA AP Portal infra 설치  
+## <div id="2"/> 2. PaaS-TA AP Portal infra Installation  
 
 ### <div id="2.1"/> 2.1. Prerequisite
-본 설치 가이드는 Linux 환경에서 설치하는 것을 기준으로 하였다.  
-서비스팩 설치를 위해서는 먼저 BOSH CLI v2 가 설치 되어 있어야 하고 BOSH 에 로그인이 되어 있어야 한다.  
-BOSH CLI v2 가 설치 되어 있지 않을 경우 먼저 BOSH2.0 설치 가이드 문서를 참고 하여 BOSH CLI v2를 설치를 하고 사용법을 숙지 해야 한다.  
-UAA client가 설치 되어 있지 않을 경우 UAA client의 설치가 필요하다.
+This installation guide is based on installation in a Linux environment.
+To install the service pack, BOSH CLI v2 must be installed and logged in to BOSH.
+If BOSH CLI v2 is not installed, you must first refer to the BOSH 2.0 Installation Guide document to install BOSH CLI v2 and familiarize yourself with the usage.
+If the UAA client is not installed, the UAA client needs to be installed.
 
-- UAA client 설치 (BOSH Dependency 설치 필요)
+- UAA client Installation (BOSH Dependency Installation Required)
 ```
 $ sudo gem install cf-uaac
 $ uaac -v
 ```
 
-### <div id="2.2"/> 2.2. Stemcell 확인
-Stemcell 목록을 확인하여 서비스 설치에 필요한 Stemcell이 업로드 되어 있는 것을 확인한다.  
-본 가이드의 Stemcell은 ubuntu-bionic 1.76를 사용한다.  
+### <div id="2.2"/> 2.2. Stemcell Check
+Check the list of Stemcells to verify that the Stemcells required for service installation are uploaded.
+The Stemcell in this guide uses ubuntu-bionic 1.76.
 
 > $ bosh -e ${BOSH_ENVIRONMENT} stemcells
 
@@ -71,34 +71,34 @@ bosh-openstack-kvm-ubuntu-bionic-go_agent  1.76      ubuntu-bionic  -    ce507ae
 Succeeded
 ```
 
-만약 해당 Stemcell이 업로드 되어 있지 않다면 [bosh.io 스템셀](https://bosh.io/stemcells/) 에서 해당되는 IaaS환경과 버전에 해당되는 스템셀 링크를 복사 후 다음과 같은 명령어를 실행한다.
+If the corresponding Stemcell is not uploaded, copy the corresponding IaaS environment and version stemcell link from [bosh.io Stemcell] (https://bosh.io/stemcells/) and execute the following command.
 
 ```
-# Stemcell 업로드 명령어 예제
+# Example of Stemcell Upload Command
 $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell -n {STEMCELL_URL}
 ```
 
 
-### <div id="2.3"/> 2.3. Deployment 다운로드
+### <div id="2.3"/> 2.3. Deployment Download
 
-서비스 설치에 필요한 Deployment를 Git Repository에서 받아 서비스 설치 작업 경로로 위치시킨다.  
+Download the deployment needed from Git Repository and place the file at the service installation directory 
 
 - Portal Deployment Git Repository URL : https://github.com/PaaS-TA/portal-deployment/tree/v5.2.5
 
 ```
-# Deployment 다운로드 파일 위치 경로 생성 및 설치 경로 이동
+# Deployment File Download , make directory, change directory
 $ mkdir -p ~/workspace
 $ cd ~/workspace
 
-# Deployment 파일 다운로드
+# Deployment File Download
 $ git clone https://github.com/PaaS-TA/portal-deployment.git -b v5.2.5
 ```
 
-### <div id="2.4"/> 2.4. Deployment 파일 수정  
-BOSH Deployment manifest는 Components 요소 및 배포의 속성을 정의한 YAML 파일이다.  
-Deployment 파일에서 사용하는 network, vm_type, disk_type 등은 Cloud config를 활용하고, 활용 방법은 PaaS-TA AP 설치 가이드를 참고한다.  
+### <div id="2.4"/> 2.4. Deployment File Modification
+The BOSH Deployment manifest is a YAML file that defines the properties of the Components element and the deployment. 
+Network, vm_type, disk_type, etc. used in the deployment file utilize Cloud config, and refer to the PaaS-TA AP installation guide for utilization methods.
 
-- Cloud config 설정 내용을 확인한다.   
+- Check the contents of the cloud config setting.  
 
 > $ bosh -e ${BOSH_ENVIRONMENT} cloud-config   
 
@@ -113,7 +113,7 @@ azs:
     availability_zone: ap-northeast-2a
   name: z2
 
-... ((생략)) ...
+... ((Skip)) ...
 
 disk_types:
 - disk_size: 1024
@@ -121,7 +121,7 @@ disk_types:
 - disk_size: 1024
   name: 1GB
 
-... ((생략)) ...
+... ((Skip)) ...
 
 networks:
 - name: default
@@ -139,7 +139,7 @@ networks:
     static:
     - 10.0.1.10 - 10.0.1.120
 
-... ((생략)) ...
+... ((Skip)) ...
 
 vm_types:
 - cloud_properties:
@@ -155,25 +155,25 @@ vm_types:
     instance_type: t2.small
   name: small
 
-... ((생략)) ...
+... ((Skip)) ...
 
 Succeeded
 ```
 
-- common_vars.yml을 서버 환경에 맞게 수정한다.
-- PaaS-TA AP Portal infra에서 사용하는 변수는 system_domain이다.
+- Modify common_vars.yml to suit your server environment.
+- The variable used by PaaS-TA AP Portal infrastructure is system_domain.
 
 > $ vi ~/workspace/common/common_vars.yml
 ```
-... ((생략)) ...
+... ((Skip)) ...
 
-system_domain: "61.252.53.246.nip.io"		# Domain (nip.io를 사용하는 경우 HAProxy Public IP와 동일)
+system_domain: "61.252.53.246.nip.io"		# Domain (Same as HAProxy Public IP when using nip.io)
 
-... ((생략)) ...
+... ((Skip)) ...
 ```
 
 
-- Deployment YAML에서 사용하는 변수 파일을 서버 환경에 맞게 수정한다.
+- Modify the variable files used by Deployment YAML to suit your server environment.
 
 > $ vi ~/workspace/portal-deployment/portal-container-infra/vars.yml
 
@@ -209,10 +209,10 @@ binary_storage_tenantname: "<BINARY_STORAGE_TENANTNAME>"        # binary storage
 binary_storage_email: "<BINARY_STORAGE_EMAIL>"                  # binary storage : email (e.g. "paasta@paasta.com")
 ```
 
-### <div id="2.5"/> 2.5. 서비스 설치
+### <div id="2.5"/> 2.5. Service Installation
 
-- 서버 환경에 맞추어 Deploy 스크립트 파일의 VARIABLES 설정을 수정하고, Option file을 추가할지 선택한다.  
-     (선택) -o operations/cce.yml (CCE 조치를 적용하여 설치)
+- Modify the VARIABLES settings in the Deploy script file to match your server environment, and select whether to add the option file.
+     (Optional) -o operations/cce.yml (Apply CCE when installing)
 
 > $ vi ~/workspace/portal-deployment/portal-container-infra/deploy.sh
 ```
@@ -220,7 +220,7 @@ binary_storage_email: "<BINARY_STORAGE_EMAIL>"                  # binary storage
 
 # VARIABLES
 COMMON_VARS_PATH="<COMMON_VARS_FILE_PATH>"  # common_vars.yml File Path (e.g. ../../common/common_vars.yml)
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"      # bosh director alias name (PaaS-TA에서 제공되는 create-bosh-login.sh 미 사용시 bosh envs에서 이름을 확인하여 입력)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"      # bosh director alias name (When not using create-bosh-login.sh provided by PaaS-TA, check the name at bosh envs and enter)
 
 # DEPLOY
 bosh -e ${BOSH_ENVIRONMENT} -n -d portal-container-infra deploy --no-redact portal-container-infra.yml \
@@ -229,15 +229,15 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d portal-container-infra deploy --no-redact port
    -l vars.yml
 ```
 
-- 서비스를 설치한다.  
+- Install Service  
 ```
 $ cd ~/workspace/portal-deployment/portal-container-infra    
 $ sh ./deploy.sh  
 ```
 
 
-### <div id="2.6"/> 2.6. 서비스 설치 확인
-설치 완료된 서비스를 확인한다.  
+### <div id="2.6"/> 2.6. Service Installation Check
+Check the installed service.
 
 > $ bosh -e ${BOSH_ENVIRONMENT} -d portal-container-infra vms  
 
@@ -256,9 +256,9 @@ infra/3193a1fa-156d-4dd9-935d-4b67cdcc1182  running        z3  10.0.81.121  i-09
 Succeeded
 ```
 
-## <div id="3"/> 3. PaaS-TA AP Portal 설치
-### <div id="3.1"/> 3.1. Portal App 구성
-PaaS-TA AP에 Portal 관련 App이 9개 배포되며 구성은 다음과 같다.
+## <div id="3"/> 3. PaaS-TA AP Portal Installation
+### <div id="3.1"/> 3.1. Portal App Configuration
+9 Portal-related apps are distributed on PaaS-TAAP, and the configuration are as follows.
 ```
 portal-app-1.2.2
 ├── portal-api-2.4.1
@@ -271,8 +271,8 @@ portal-app-1.2.2
 ├── portal-web-admin-2.3.1
 └── portal-web-user-2.4.1
 ```
-### <div id="3.2"/> 3.2. Portal App 배포 Script 변수 설정  
-Portal App 배포 Script 실행을 위하여 Script가 있는 위치로 이동한다.
+### <div id="3.2"/> 3.2. Portal App Deployment Script Variable Settings
+Navigate to the location where the script is located to run the Portal App deployment script.
 
 ```
 ### 설치 작업 경로 이동

@@ -2,58 +2,58 @@
 
 ## Table of Contents  
 
-1. [문서 개요](#1)  
-  1.1. [목적](#1.1)  
-  1.2. [범위](#1.2)  
-  1.3. [참고자료](#1.3)  
+1. [Document Outline](#1)  
+  1.1. [Purpose](#1.1)  
+  1.2. [Range](#1.2)  
+  1.3. [References](#1.3)  
   
-2. [MySQL 서비스 설치](#2)  
+2. [MySQL Service Installaion](#2)  
   2.1. [Prerequisite](#2.1)   
-  2.2. [Stemcell 확인](#2.2)    
-  2.3. [Deployment 다운로드](#2.3)   
-  2.4. [Deployment 파일 수정](#2.4)  
-  2.5. [서비스 설치](#2.5)    
-  2.6. [서비스 설치 확인](#2.6)   
+  2.2. [Stemcell Check](#2.2)    
+  2.3. [Deployment Download](#2.3)   
+  2.4. [Deployment File Modification](#2.4)  
+  2.5. [Service Installaion](#2.5)    
+  2.6. [Service Installation Check](#2.6)   
   
-3. [MySQL 연동 Sample Web App 설명](#3)  
-  3.1. [서비스 브로커 등록](#3.1)  
-  3.2. [Sample Web App 다운로드](#3.2)  
-  3.3. [PaaS-TA에서 서비스 신청](#3.3)  
-  3.4. [Sample Web App 배포 및 MySQL바인드 확인](#3.4)  
+3. [MySQL Linkage Sample Web App Description](#3)  
+  3.1. [Service Broker Registration](#3.1)  
+  3.2. [Sample Web App Download](#3.2)  
+  3.3. [Apply for services from PaaS-TA](#3.3)  
+  3.4. [Deploy Sample Web App and Verify MySQL Binds](#3.4)  
 
-4. [MySQL Client 툴 접속](#4)  
-  4.1. [HeidiSQL 설치 및 연결](#4.1)  
-
-
+4. [Access MySQL Client Tool](#4)  
+  4.1. [Install and Connect to HeidiSQL](#4.1)  
 
 
 
 
-## <div id='1'> 1. 문서 개요
-### <div id='1.1'> 1.1. 목적
 
-본 문서(MySQL 서비스팩 설치 가이드)는 PaaS-TA에서 제공되는 서비스팩인 MySQL 서비스팩을 Bosh를 이용하여 설치 하는 방법을 기술하였다.
+
+## <div id='1'> 1. Document Outline
+### <div id='1.1'> 1.1. Purpose
+
+This document (MySQL Service Pack Installation Guide) describes how to install MySQL Service Pack, a service pack provided by PaaS-TA, using Bosch.
 	
 	
-### <div id='1.2'> 1.2. 범위
-설치 범위는 MySQL 서비스팩을 검증하기 위한 기본 설치를 기준으로 작성하였다.
+### <div id='1.2'> 1.2. Range
+The installation scope was written based on the basic installation to verify the MySQL service pack.
 
-### <div id='1.3'> 1.3. 참고자료
+### <div id='1.3'> 1.3. References
 BOSH Document: [http://bosh.io](http://bosh.io)  
 Cloud Foundry Document: [https://docs.cloudfoundry.org](https://docs.cloudfoundry.org)  
 
-## <div id='2'> 2. MySQL 서비스 설치
+## <div id='2'> 2. MySQL Service Installation
 
 ### <div id="2.1"/> 2.1. Prerequisite  
 
-본 설치 가이드는 Linux 환경에서 설치하는 것을 기준으로 하였다.  
-서비스팩 설치를 위해서는 먼저 BOSH CLI v2 가 설치 되어 있어야 하고 BOSH 에 로그인이 되어 있어야 한다.  
-BOSH CLI v2 가 설치 되어 있지 않을 경우 먼저 BOSH2.0 설치 가이드 문서를 참고 하여 BOSH CLI v2를 설치를 하고 사용법을 숙지 해야 한다.  
+This installation guide is based on installation in a Linux environment.
+To install the service pack, BOSH CLI v2 must be installed and logged in to BOSH.
+If BOSH CLI v2 is not installed, you must first refer to the BOSH 2.0 Installation Guide document to install BOSH CLI v2 and familiarize yourself with the usage.
 
-### <div id="2.2"/> 2.2. Stemcell 확인
+### <div id="2.2"/> 2.2. Stemcell Check
 
-Stemcell 목록을 확인하여 서비스 설치에 필요한 Stemcell이 업로드 되어 있는 것을 확인한다.  
-본 가이드의 Stemcell은 ubuntu-bionic 1.76를 사용한다.  
+Check the list of Stemcells to verify that the Stemcells required for service installation are uploaded.
+The Stemcell in this guide uses ubuntu-bionic 1.76.
 
 > $ bosh -e ${BOSH_ENVIRONMENT} stemcells
 
@@ -70,34 +70,34 @@ bosh-openstack-kvm-ubuntu-bionic-go_agent  1.76      ubuntu-bionic  -    ce507ae
 Succeeded
 ```
 
-만약 해당 Stemcell이 업로드 되어 있지 않다면 [bosh.io 스템셀](https://bosh.io/stemcells/) 에서 해당되는 IaaS환경과 버전에 해당되는 스템셀 링크를 복사 후 다음과 같은 명령어를 실행한다.
+If the corresponding Stemcell is not uploaded, copy the corresponding IaaS environment and version stemcell link from [bosh.io Stemcell] (https://bosh.io/stemcells/) and execute the following command.
 
 ```
-# Stemcell 업로드 명령어 예제
+# Example of Stemcell Upload Command
 $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell -n {STEMCELL_URL}
 ```
 
-### <div id="2.3"/> 2.3. Deployment 다운로드  
+### <div id="2.3"/> 2.3. Deployment Download  
 
-서비스 설치에 필요한 Deployment를 Git Repository에서 받아 서비스 설치 작업 경로로 위치시킨다.  
+Download the deployment needed from Git Repository and place the file at the service installation directory
 
 - Service Deployment Git Repository URL : https://github.com/PaaS-TA/service-deployment/tree/v5.1.5
 
 ```
-# Deployment 다운로드 파일 위치 경로 생성 및 설치 경로 이동
+# Deployment File Download , make directory, change directory
 $ mkdir -p ~/workspace
 $ cd ~/workspace
 
-# Deployment 파일 다운로드
+# Deployment File Download
 $ git clone https://github.com/PaaS-TA/service-deployment.git -b v5.1.5
 ```
 
-### <div id="2.4"/> 2.4. Deployment 파일 수정
+### <div id="2.4"/> 2.4. Deployment File Modification
 
-BOSH Deployment manifest는 Components 요소 및 배포의 속성을 정의한 YAML 파일이다.  
-Deployment 파일에서 사용하는 network, vm_type, disk_type 등은 Cloud config를 활용하고, 활용 방법은 PaaS-TA AP 설치 가이드를 참고한다.  
+The BOSH Deployment manifest is a YAML file that defines the properties of the Components element and the deployment.
+Network, vm_type, disk_type, etc. used in the deployment file utilize Cloud config, and refer to the PaaS-TAAP installation guide for utilization methods
 
-- Cloud config 설정 내용을 확인한다.   
+- Check the contents of the cloud config setting.
 
 > $ bosh -e ${BOSH_ENVIRONMENT} cloud-config   
 
@@ -112,7 +112,7 @@ azs:
     availability_zone: ap-northeast-2a
   name: z2
 
-... ((생략)) ...
+... ((Skip)) ...
 
 disk_types:
 - disk_size: 1024
@@ -120,7 +120,7 @@ disk_types:
 - disk_size: 1024
   name: 1GB
 
-... ((생략)) ...
+... ((Skip)) ...
 
 networks:
 - name: default
@@ -138,7 +138,7 @@ networks:
     static:
     - 10.0.1.10 - 10.0.1.120
 
-... ((생략)) ...
+... ((Skip)) ...
 
 vm_types:
 - cloud_properties:
@@ -154,12 +154,12 @@ vm_types:
     instance_type: t2.small
   name: small
 
-... ((생략)) ...
+... ((Skip)) ...
 
 Succeeded
 ```
 
-- Deployment YAML에서 사용하는 변수 파일을 서버 환경에 맞게 수정한다.
+- Modify the variable files used by Deployment YAML to suit your server environment.
 
 > $ vi ~/workspace/service-deployment/mysql/vars.yml	
 ```
@@ -195,10 +195,10 @@ mysql_broker_instances: 1                                        # mysql broker 
 mysql_broker_vm_type: "small"                                    # mysql broker vm type
 ```
 
-### <div id="2.5"/> 2.5. 서비스 설치
+### <div id="2.5"/> 2.5. Service Installation
 
-- 서버 환경에 맞추어 Deploy 스크립트 파일의 VARIABLES 설정을 수정하고, Option file을 추가할지 선택한다.  
-     (선택) -o operations/cce.yml (CCE 조치를 적용하여 설치)
+- Modify the VARIABLES settings in the Deploy script file to match your server environment, and select whether to add the option file.
+     (Optional) -o operations/cce.yml (Appky CCE when installing)
 
 
 > $ vi ~/workspace/service-deployment/mysql/deploy.sh
@@ -208,7 +208,7 @@ mysql_broker_vm_type: "small"                                    # mysql broker 
 
 # VARIABLES
 COMMON_VARS_PATH="<COMMON_VARS_FILE_PATH>"    # common_vars.yml File Path (e.g. ../../common/common_vars.yml)
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"        # bosh director alias name (PaaS-TA에서 제공되는 create-bosh-login.sh 미 사용시 bosh envs에서 이름을 확인하여 입력)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"        # bosh director alias name (When not using create-bosh-login.sh provided by PaaS-TA, check the name at bosh envs and enter)
 
 # DEPLOY
 bosh -e ${BOSH_ENVIRONMENT} -n -d mysql deploy --no-redact mysql.yml \
@@ -217,16 +217,16 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d mysql deploy --no-redact mysql.yml \
     -l vars.yml
 ```
 
-- 서비스를 설치한다.  
+- Service Installation
 ```
 $ cd ~/workspace/service-deployment/mysql  
 $ sh ./deploy.sh  
 ```  
 
 
-### <div id="2.6"/> 2.6. 서비스 설치 확인
+### <div id="2.6"/> 2.6. Service Installation Check
 
-설치 완료된 서비스를 확인한다.  
+Check the installed service.
 
 > $ bosh -e ${BOSH_ENVIRONMENT} -d mysql vms  
 
@@ -248,15 +248,14 @@ proxy/5b883a78-eb43-417f-98a2-d44c13c29ed4                     running        z5
 Succeeded
 ```	
 
-## <div id='3'> 3. MySQL 연동 Sample Web App 설명  
+## <div id='3'> 3. MySQL Linkage Sample Web App Description
 
-본 Sample App은 MySQL의 서비스를 Provision한 상태에서 PaaS-TA에 배포하면 MySQL서비스와 bind되어 사용할 수 있다.  
+This Sample App can be used as it is bound with the MySQL service when distributed to PaaS-TA while the MySQL service is provisioned.
 
-### <div id='3.1'> 3.1. MySQL 서비스 브로커 등록  
-Mysql 서비스팩 배포가 완료 되었으면 Application에서 서비스 팩을 사용하기 위해서 먼저 MySQL 서비스 브로커를 등록해 주어야 한다.  
-서비스 브로커 등록시 PaaS-TA에서 서비스브로커를 등록할 수 있는 사용자로 로그인이 되어 있어야 한다.
-
-- 서비스 브로커 목록을 확인한다.
+### <div id='3.1'> 3.1. Register MySQL Service Broker
+Once the Mysql service pack has been deployed, the application must first register the MySQL service broker to use the service pack.
+When registering a service broker, you must be logged in as a user who can register a service broker in PaaS-TA.
+- Check the list of service brokers.
 
 > $ cf service-brokers  
 ```  
@@ -266,16 +265,16 @@ name   url
 No service brokers found
 ```   
 
-- 서비스 브로커 등록 명령어
+- Service Broker Registration Commands
 ```
 cf create-service-broker [SERVICE_BROKER] [USERNAME] [PASSWORD] [SERVICE_BROKER_URL]
 
-[SERVICE_BROKER] : 서비스 브로커 명
-[USERNAME] / [PASSWORD] : 서비스 브로커에 접근할 수 있는 사용자 ID / PASSWORD
-[SERVICE_BROKER_URL] : 서비스 브로커 접근 URL
+[SERVICE_BROKER] : Service Broker Name
+[USERNAME] / [PASSWORD] : User ID/PASSWORD to access the service broker
+[SERVICE_BROKER_URL] : Service Broker Access URL
 ```
 	
-- MySQL 서비스 브로커를 등록한다.
+- Register MySQL service broker.
 
 >`$ cf create-service-broker mysql-service-broker admin cloudfoundry http://<mysql-broker_ip>:8080`
 ```  
@@ -284,7 +283,7 @@ Creating service broker mysql-service-broker as admin...
 OK
 ```  
 
-- 등록된 MySQL 서비스 브로커를 확인한다.
+- Check the registered MySQL service broker.
 
 >`$ cf service-brokers`
 ```  
@@ -295,7 +294,7 @@ name                      url
 mysql-service-broker      http://10.30.107.167:8080
 ```  
 
-- 접근 가능한 서비스 목록을 확인한다.
+- Check the list of accessible services.
 
 >`$ cf service-access`
 ```  
@@ -306,9 +305,9 @@ broker: mysql-service-broker
    Mysql-DB   Mysql-Plan1-10con    none
    Mysql-DB   Mysql-Plan2-100con   none
 ```  
-서비스 브로커 생성시 디폴트로 접근을 허용하지 않는다.
+Default access is not allowed when creating a service broker.
 
-- 특정 조직에 해당 서비스 접근 허용을 할당하고 접근 서비스 목록을 다시 확인한다. (전체 조직)
+- Assign access to the service to a specific organization and double-check the access service list. (Overall Organization)
 
 > $ cf enable-service-access Mysql-DB  
 ```
@@ -324,24 +323,24 @@ broker: mysql-service-broker
    Mysql-DB   Mysql-Plan2-100con   all
 ```  
 
-### <div id='3.2'> 3.2. Sample Web App 다운로드  
+### <div id='3.2'> 3.2. Sample Web App Download  
 
-Sample App은 PaaS-TA에 App으로 배포되며 App구동시 Bind 된 MySQL 서비스 연결 정보로 접속하여 초기 데이터를 생성하게 된다.    
-브라우져를 통해 App에 접속 후 "MYSQL 데이터 가져오기"를 통해 초기 생성된 데이터를 조회 할 수 있다.  
+Sample App is deployed as an app in PaaS-TA. When the app runs, the initial data is generated by accessing the bound MySQL service connection information.
+After accessing the app through a browser, the initially generated data can be inquired through "MYSQL data import".
 
-- Sample App 묶음 다운로드
+- Download zip file of sample apps
 ```
 $ wget https://nextcloud.paas-ta.org/index.php/s/NDgriPk5cgeLMfG/download --content-disposition  
 $ unzip paasta-service-samples.zip  
 $ cd paasta-service-samples/mysql  
 ```
 
-### <div id='3.3'> 3.3. PaaS-TA에서 서비스 신청  
-Sample App에서 MySQL 서비스를 사용하기 위해서는 서비스 신청(Provision)을 해야 한다.  
+### <div id='3.3'> 3.3. Apply for service in PaaS-TA
+In order to use the MySQL service in the Sample App, you must apply for a service (Provision).
 
-*참고: 서비스 신청시 PaaS-TA에서 서비스를 신청 할 수 있는 사용자로 로그인이 되어 있어야 한다.  
+*Note: you must be logged in as a user who can apply for the service from PaaS-TA when applying for a service.
 
-- 먼저 PaaS-TA Marketplace에서 서비스가 있는지 확인을 한다.  
+- Check whether there is a service in the PaaS-TA Marketplace first.
 
 > $ cf marketplace   
 ```  
@@ -354,16 +353,16 @@ Mysql-DB     Mysql-Plan1-10con, Mysql-Plan2-100con*   A simple mysql implementat
 TIP:  Use 'cf marketplace -s SERVICE' to view descriptions of individual plans of a given service.
 ```  
 
-- 서비스 인스턴스 신청 명령어
+- Service Instance Application Commands
 ```
 cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 
-[SERVICE] : Marketplace에서 보여지는 서비스 명
-[PLAN] : 서비스에 대한 정책
-[SERVICE_INSTANCE] : 생성할 서비스 인스턴스 이름
+[SERVICE] : Name of Service being shown in Marketplace
+[PLAN] : Policies for Services
+[SERVICE_INSTANCE] : Name of the service instance to be created
 ```
 	
-- Marketplace에서 원하는 서비스가 있으면 서비스 신청(Provision)을 한다.  
+- If there is a service you want from Marketplace, apply for a service (Provision).
 
 > $ cf create-service Mysql-DB Mysql-Plan2-100con mysql-service-instance   
 ```  
@@ -373,7 +372,7 @@ OK
 Attention: The plan `Mysql-Plan2-100con` of service `Mysql-DB` is not free.  The instance `mysql-service-instance` will incur a cost.  Contact your administrator if you think this is in error.
 ```  
 
-- 생성된 MySQL 서비스 인스턴스를 확인한다.  
+- Verify the MySQL service instance that was created.
 
 > $ cf services 
 ```  
@@ -384,11 +383,11 @@ name                      service    plan                 bound apps            
 mysql-service-instance    Mysql-DB   Mysql-Plan2-100con                         create succeeded
 ```  
 
-### <div id='3.4'> 3.4. Sample Web App 배포 및 MySQL바인드 확인   
-서비스 신청이 완료되었으면 Sample Web App 에서는 생성된 서비스 인스턴스를 Bind 하여 App에서 MySQL 서비스를 이용한다.  
-*참고: 서비스 Bind 신청시 PaaS-TA에서 서비스 Bind신청 할 수 있는 사용자로 로그인이 되어 있어야 한다.  
-
-- manifest 파일을 확인한다.  
+### <div id='3.4'> 3.4. Sample Web App Deployment and MySQL Bind Verification 
+When the service application is completed, the Sample Web App binds the generated service instance and uses the MySQL service in the App.
+*참고: When applying for service bind, you must be logged in as a user who can apply for service bind in PaaS-TA.
+	
+- Check the manifest file. 
 
 > $ vi manifest.yml   
 
@@ -408,7 +407,7 @@ applications:
 
 ```
 
-- --no-start 옵션으로 App을 배포한다.  
+- Deploy the app with the --no-start option.
 > $ cf push --no-start  
 ```  
 Applying manifest file /home/ubuntu/workspace/samples/paasta-service-samples/mysql/manifest.yml...
@@ -434,7 +433,7 @@ memory usage:   1024M
 #0   down    2021-11-22T05:21:57Z   0.0%   0 of 0   0 of 0   
 ```  
 	
-- Sample Web App에서 생성한 서비스 인스턴스 바인드 신청을 한다.
+- Apply for service instance bind created by Sample Web App.
 
 > $ cf bind-service mysql-sample-app mysql-service-instance  
 
@@ -443,12 +442,12 @@ Binding service mysql-service-instance to app mysql-sample-app in org system / s
 OK
 ```
 
-App 구동 시 Service와의 통신을 위하여 보안 그룹을 추가한다.
+When running the app, add a security group for communication with the service.
 
-- rule.json을 편집한다.  
+- modify rule.json 
 > $ vi rule.json   
 ```
-## mysql의 proxy IP를 destination에 설정
+## set mysql's proxy IP at destination
 [
   {
     "protocol": "tcp",
@@ -459,7 +458,7 @@ App 구동 시 Service와의 통신을 위하여 보안 그룹을 추가한다.
 ```
 <br>
 
-- 보안 그룹을 생성한다.  
+- Create a security group.
 
 > $ cf create-security-group mysql rule.json  
 
@@ -471,14 +470,14 @@ OK
 
 <br>
 
-- Mysql 서비스를 사용할수 있도록 생성한 보안 그룹을 적용한다.
+- Apply the security group that you created to use the Mysql service.
 > $ cf bind-running-security-group mysql  
 ```
 Binding security group mysql to running as admin...
 OK		
 ```
 	
-- App을 재기동 한다.  
+- Restart the app.
 
 
 > $ cf restart mysql-sample-app  
@@ -508,19 +507,19 @@ buildpacks:
 	java_buildpack   v4.37-https://github.com/cloudfoundry/java-buildpack.git#ab2b4512   java            java
 ```  
 
-- App이 정상적으로 MySQL 서비스를 사용하는지 확인한다.  
+- Check if the app uses the MySQL service normally.
 
 ![update_mysql_vsphere_34]  
 
-## <div id='4'> 4. MySQL Client 툴 접속  
+## <div id='4'> 4. Access MySQL Client Tool
 
-Application에 바인딩 된 MySQL 서비스 연결정보는 Private IP로 구성되어 있기 때문에 MySQL Client 툴에서 직접 연결할수 없다. 따라서 MySQL Client 툴에서 SSH 터널, Proxy 터널 등을 제공하는 툴을 사용해서 연결하여야 한다. 본 가이드는 SSH 터널을 이용하여 연결 하는 방법을 제공하며 MySQL Client 툴로써는 오픈 소스인 HeidiSQL로 가이드한다. HeidiSQL 에서 접속하기 위해서 먼저 SSH 터널링 할수 있는 VM 인스턴스를 생성해야한다. 이 인스턴스는 SSH로 접속이 가능해야 하고 접속 후 Open PaaS 에 설치한 서비스팩에 Private IP 와 해당 포트로 접근이 가능하도록 시큐리티 그룹을 구성해야 한다. 이 부분은 vSphere관리자 및 OpenPaaS 운영자에게 문의하여 구성한다.  
+The MySQL service connection information bound to the application is configured with Private IP and cannot be connected directly from the MySQL Client tool. Therefore, the MySQL Client tool should be connected using a tool that provides SSH tunnels, proxy tunnels, etc. This guide provides a way to connect using SSH tunnels and guides you to HeidiSQL, an open-source, using the MySQL Client tool. To connect from HeidiSQL, you must first create an SSH tunnelable VM instance. This instance must be accessible via SSH, and after that, a security group must be configured to access the service pack installed in Open PaaS with Private IP and its ports. This part is configured by contacting the vSphere administrator and OpenPaaS operator.
 
-### <div id='4.1'> 4.1. HeidiSQL 설치 및 연결  
+### <div id='4.1'> 4.1. Installing and Connecting HeidiSQL
 
-HeidiSQL 프로그램은 무료로 사용할 수 있는 오픈소스 소프트웨어이다.  
+The HeidiSQL program is an open-source software that can be used for free.
 
-- HeidiSQL을 다운로드 하기 위해 아래 URL로 이동하여 설치파일을 다운로드 한다.  
+- To download HeidiSQL, go to the URL below to download the installation file.
 
 >[http://www.heidisql.com/download.php](http://www.heidisql.com/download.php)
 
@@ -528,27 +527,27 @@ HeidiSQL 프로그램은 무료로 사용할 수 있는 오픈소스 소프트�
 
 <br>
 
-- 다운로드한 설치파일을 실행한다.
+- Run the downloaded installation file.
 
 >![mysql_vsphere_4.1.02]
 
 <br>
 
-- HeidSQL 설치를 위한 안내사항이다. Next 버튼을 클릭한다.
+- Bellow is a guide for installing HeidSQL. Click Next.
 
 >![mysql_vsphere_4.1.03]
 
 <br>
 
-- 프로그램 라이선스에 관련된 내용이다. 동의(I accept the agreement)에 체크 후 Next 버튼을 클릭한다.
+- It is about program license. Check I accept the agreement and click Next.
 
 >![mysql_vsphere_4.1.04]
 
 <br>
 
-- HeidiSQL을 설치할 경로를 설정 후 Next 버튼을 클릭한다.
+- Set the path to install HeidiSQL and click the Next button.
 
->별도의 경로 설정이 필요 없을 경우 default로 C드라이브 Program Files 폴더에 설치가 된다.
+>If no separate path setting is required, it is installed in the C drive Program Files folder by default.
 
 >![mysql_vsphere_4.1.05]
 

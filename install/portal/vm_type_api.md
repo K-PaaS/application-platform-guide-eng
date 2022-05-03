@@ -85,7 +85,7 @@ Download the deployment needed from Git Repository and place the file at the ser
 - Portal Deployment Git Repository URL : https://github.com/PaaS-TA/portal-deployment/tree/v5.2.5
 
 ```
-# Deployment Deployment File Download , make directory, change directory
+# Deployment File Download , make directory, change directory
 $ mkdir -p ~/workspace
 $ cd ~/workspace
 

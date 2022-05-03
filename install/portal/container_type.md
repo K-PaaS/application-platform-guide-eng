@@ -275,11 +275,11 @@ portal-app-1.2.2
 Navigate to the location where the script is located to run the Portal App deployment script.
 
 ```
-### 설치 작업 경로 이동
+### Change Installation Directory
 $ cd ~/workspace/portal-deployment/portal-container-infra/scripts
 ```
 
-Script 변수를 설정한다. (FILE PATH 부분 변경 필수, 나머지 옵션)
+Set the Script variable. (FILE PATH Partial Change Required, Remaining Options)
 > $ vi portal-app-variable.yml
 ```
 #!/bin/bash
@@ -344,8 +344,8 @@ PORTAL_EXTERNAL_STORAGE_PASSWORD=			# Portal External Storage Password
 ```
 
 
-### <div id="3.3"/> 3.3. Portal App 배포 Script 실행
-변수 설정이 완료되었으면 배포 Script를 실행한다.
+### <div id="3.3"/> 3.3. Run the Portal App Deployment Script
+When the variable setting is complete, run the deployment script.
 > $ source deploy-portal-app.sh
 ```
 .....
@@ -365,11 +365,11 @@ ssh-app               started           web:1/1             ssh-app.61.252.53.24
 
 
 
-## <div id="4"/>4. PaaS-TA AP Portal 운영
+## <div id="4"/>4. PaaS-TA AP Portal Operation
 
-### <div id="4.1"/> 4.1. 사용자의 조직 생성 Flag 활성화
+### <div id="4.1"/> 4.1. Enable the user's organizational creation flag
 
-PaaS-TA는 기본적으로 일반 사용자는 조직을 생성할 수 없도록 설정되어 있다. 포털 배포를 위해 조직 및 공간을 생성해야 하고 또 테스트를 구동하기 위해서도 필요하므로 사용자가 조직을 생성할 수 있도록 user_org_creation FLAG를 활성화 한다. FLAG 활성화를 위해서는 PaaS-TA 운영자 계정으로 로그인이 필요하다.
+PaaS-TA sets up that ordinary users cannot create an organization. Enable user_org_creation FLAG so that users can create an organization because it is necessary to create an organization and space for portal deployments and to run tests. To activate FLAG, logging in with PaaS-TA Admin(Operator) account is required.
 
 ```
 $ cf enable-feature-flag user_org_creation
@@ -381,32 +381,32 @@ OK
 Feature user_org_creation Enabled.
 ```
 
-### <div id="4.2"/> 4.2. 사용자포탈 UAA페이지 오류  
+### <div id="4.2"/> 4.2. Error on user portal UAA page
 
-- uaac의 endpoint를 설정하고 uaac 로그인을 실행한다.
+- Set the endpoint of the uaac and run the uaac login.
 ```
-# endpoint 설정
+# endpoint Setting
 $ uaac target https://uaa.<DOMAIN> --skip-ssl-validation
 
-# target 확인
+# target check
 $ uaac target
 Target: https://uaa.<DOMAIN>
 Context: uaa_admin, from client uaa_admin
 
-# uaac 로그인
+# uaac login
 $ uaac token client get <UAA_CLIENT_ADMIN_ID> -s <UAA_CLIENT_ADMIN_SECRET>
 Successfully fetched token via client credentials grant.
 Target: https://uaa.<DOMAIN>
 Context: admin, from client admin
 ```
-- redirect오류 - portalclient 미등록  
+- redirect error - portalclient not registered 
 ![paas-ta-portal-31]  
-1. uaac portalclient가 등록이 되어있지 않다면 해당 화면과 같이 redirect오류가 발생한다.  
-2. uaac client add를 통해 potalclient를 추가시켜주어야 한다.   
+1. If the uaac portal client is not registered, a redirect error occurs as shown on the screen.
+2. You must add the portalclient through uaac client add.
 > $ uaac client add <PORTAL_UAA_CLIENT_ID> -s <PORTAL_UAA_CLIENT_SECRET> --redirect_uri <PORTAL_WEB_USER_URI>, <PORTAL_WEB_USER_URI>/callback --scope   "cloud_controller_service_permissions.read , openid , cloud_controller.read , cloud_controller.write , cloud_controller.admin" --authorized_grant_types "authorization_code , client_credentials , refresh_token" --authorities="uaa.resource" --autoapprove="openid , cloud_controller_service_permissions.read"  
 
 ```
-# e.g. portal client 계정 생성
+# e.g. Create a portal client account
 
 $ uaac client add portalclient -s clientsecret --redirect_uri "http://portal-web-user.<DOMAIN>, http://portal-web-user.<DOMAIN>/callback" \
 --scope "cloud_controller_service_permissions.read , openid , cloud_controller.read , cloud_controller.write , cloud_controller.admin" \
@@ -415,10 +415,10 @@ $ uaac client add portalclient -s clientsecret --redirect_uri "http://portal-web
 --autoapprove="openid , cloud_controller_service_permissions.read"
 ```
 
-- redirect오류 - portalclient의 redirect_uri 등록 오류  
+- edirectError - Error registering redirect_uri in the portalclient
 ![paas-ta-portal-32]  
-1. uaac portalclient가 uri가 잘못 등록되어있다면 해당 화면과 같이 redirect오류가 발생한다.   
-2. uaac client update를 통해 uri를 수정해야한다.  
+1. If uri is registered incorrectly in the uaac portal client, a redirect error occurs as shown on that screen.
+2. The uri should be modified through the uaac client update.
 > $ uaac client update portalclient --redirect_uri "<PORTAL_WEB_USER_URI>, <PORTAL_WEB_USER_URI>/callback"   
 
 ```
@@ -426,20 +426,20 @@ $ uaac client add portalclient -s clientsecret --redirect_uri "http://portal-web
 $ uaac client update portalclient --redirect_uri "http://portal-web-user.<DOMAIN>, http://portal-web-user.<DOMAIN>/callback"
 ```
 
-### <div id="4.3"/> 4.3. 카탈로그 적용  
-##### 1. Catalog 빌드팩, 서비스팩 추가  
-Paas-TA Portal 설치 후에 관리자 포탈에서 빌드팩, 서비스팩을 등록해야 사용자 포탈에서 사용이 가능하다.  
-- [카탈로그 이미지 다운로드](https://nextcloud.paas-ta.org/index.php/s/EmzfJw38H4GQKTr/download)
+### <div id="4.3"/> 4.3. Apply Catalog
+##### 1. Add Catalog buildpack and servicepack
+After installing the Paas-TA Portal, you must register the build pack and service pack on the administrator portal to use it on the user portal.
+- [Catalog Image Download](https://nextcloud.paas-ta.org/index.php/s/EmzfJw38H4GQKTr/download)
 
-1. 관리자 포탈에 접속한다.(portal-web-admin.\<DOMAIN\>)  
+1. Access the Administrator Portal.(portal-web-admin.\<DOMAIN\>)  
 ![paas-ta-portal-15]  
-2. 운영관리를 누른다.  
+2. Press Operation Management.
 ![paas-ta-portal-16]  
-3. 카탈로그 페이지에 들어간다.  
+3. Go to the catalog page.
 ![paas-ta-portal-17]  
-4. 빌드팩, 서비스팩 상세화면에 들어가서 각 항목란에 값을 입력후에 저장을 누른다.  
+4. Enter the build pack and service pack detail screen, enter the value in each item column, and click Save.
 ![paas-ta-portal-18]  
-5. 사용자포탈에서 변경된값이 적용되어있는지 확인한다.  
+5. Check whether the changed value is applied in the user portal.
 ![paas-ta-portal-19]   
 
 [paas-ta-portal-01]:./images/Paas-TA-Portal_App_01.png

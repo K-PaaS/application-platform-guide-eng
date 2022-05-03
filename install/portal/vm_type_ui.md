@@ -349,7 +349,7 @@ $ uaac client add portalclient -s xxxxx --redirect_uri "http://portal-web-user.x
     
     >$ uaac client update portalclient --redirect_uri "http://portal-web-user.xxxx.nip.io, http://portal-web-user.xxxx.nip.io/callback"
 
-### <div id="3.3"/> 3.3. Operator Portal User Page inquiry error
+### <div id="3.3"/> 3.3. Operator's Portal User Page inquiry error
 1. If the information cannot be retrieved and an error occurs when the page is moved, the DB information config must be modified and restarted after moving to the common-api VM.
 
 ### <div id="3.4"/> 3.4. Log

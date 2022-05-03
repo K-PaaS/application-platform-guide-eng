@@ -19,7 +19,7 @@
 3. [PaaS-TA AP Portal Operation](#3)  
     3.1. [Enable the user's organizational creation flag](#3.1)  
     3.2. [User Portal UAA Page Error](#3.2)  
-    3.3. [Operator's Portal User Page lookup error](#3.3)  
+    3.3. [Operator's Portal User Page Inquiry error](#3.3)  
     3.4. [Log](#3.4)  
     3.5. [Apply Catalog](#3.5)  
     3.6. [Apply Monitoring and Autoscaling](#3.6)  

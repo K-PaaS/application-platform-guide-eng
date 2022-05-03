@@ -2,15 +2,15 @@
 
 ## Table of Contents  
 
-1. [문서 개요](#1)  
-    1.1. [목적](#1.1)  
-    1.2. [범위](#1.2)  
-    1.3. [참고자료](#1.3)  
+1. [Document Outline](#1)  
+    1.1. [Purpose](#1.1)  
+    1.2. [Range](#1.2)  
+    1.3. [References](#1.3)  
 
-2. [PaaS-TA AP Portal API 설치](#2)  
+2. [PaaS-TA AP Portal API Installation](#2)  
     2.1. [Prerequisite](#2.1)   
-    2.2. [Stemcell 확인](#2.2)    
-    2.3. [Deployment 다운로드](#2.3)   
+    2.2. [Stemcell Check](#2.2)    
+    2.3. [Deployment Download](#2.3)   
     2.4. [Deployment 파일 수정](#2.4)  
     2.5. [서비스 설치](#2.5)    
     2.6. [서비스 설치 확인](#2.6)  

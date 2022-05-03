@@ -11,17 +11,17 @@
     2.1. [Prerequisite](#2.1)   
     2.2. [Stemcell Check](#2.2)    
     2.3. [Deployment Download](#2.3)   
-    2.4. [Deployment 파일 수정](#2.4)  
-    2.5. [서비스 설치](#2.5)    
-    2.6. [서비스 설치 확인](#2.6)  
+    2.4. [Deployment File Modification](#2.4)  
+    2.5. [Service Installation](#2.5)    
+    2.6. [Service Installation Check](#2.6)  
 
-3. [PaaS-TA AP Portal 운영](#3)  
-    3.1. [사용자의 조직 생성 Flag 활성화](#3.1)  
-    3.2. [사용자포탈 UAA 페이지 오류](#3.2)  
-    3.3. [운영자포탈 유저 페이지 조회 오류](#3.3)  
+3. [PaaS-TA AP Portal Operation](#3)  
+    3.1. [Enable the user's organizational creation flag](#3.1)  
+    3.2. [User Portal UAA Page Error](#3.2)  
+    3.3. [Operator Portal User Page inquiry error](#3.3)  
     3.4. [DB Migration](#3.4)  
     3.5. [Log](#3.5)  
-    3.6. [카탈로그 적용](#3.6)  
+    3.6. [Apply Catalog](#3.6)  
 
 
 ## <div id="1"/> 1. 문서 개요

@@ -497,7 +497,7 @@ You can check the log of each instance on the Paas-TA Portal.
                 at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
 
 ### <div id="3.6"/> 3.6. Apply Catalog
-##### 1. Catalog Add buildpack and servicepack
+##### 1. Add Catalog buildpack and servicepack
 After installing the Paas-TA Portal, you must register the build pack and service pack on the administrator portal to use it on the user portal.
 
  1. Access the Administrator Portal.(portal-web-admin.[public ip].nip.io)

@@ -454,7 +454,7 @@ After installing the Paas-TA Portal, you must register the build pack and servic
  2. Go to Catalog page.
     
     >![paas-ta-portal-17]
- 3. Go to the buildpack and servicepack detail page, enter the value in each 항목란, and click Save.
+ 3. Go to the buildpack and servicepack detail page, enter the value in each index, and click Save.
     
     >![paas-ta-portal-18]
  4. Check whether the changed value is applied in the user portal.

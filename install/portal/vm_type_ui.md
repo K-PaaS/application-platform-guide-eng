@@ -94,7 +94,7 @@ $ cd ~/workspace
 $ git clone https://github.com/PaaS-TA/portal-deployment.git -b v5.2.5
 ```
 
-### <div id="2.4"/> 2.4. Deployment Edit File
+### <div id="2.4"/> 2.4. Deployment File Modification
 
 The BOSH Deployment manifest is a YAML file that defines the properties of the Component elements and the deployment.
 Network, vm_type, disk_type, etc. used in the deployment file utilize Cloud config, and refer to the PaaS-TA AP installation guide for utilization methods.

@@ -2,28 +2,28 @@
 
 ## Table of Contents  
 
-1. [문서 개요](#1)  
-    1.1. [목적](#1.1)  
-    1.2. [범위](#1.2)  
-    1.3. [참고자료](#1.3)  
+1. [Document Outline](#1)  
+    1.1. [Purpose](#1.1)  
+    1.2. [Range](#1.2)  
+    1.3. [References](#1.3)  
 
-2. [PaaS-TA AP Portal infra 설치](#2)  
+2. [PaaS-TA AP Portal infra Installation](#2)  
     2.1. [Prerequisite](#2.1)   
-    2.2. [Stemcell 확인](#2.2)    
-    2.3. [Deployment 다운로드](#2.3)   
-    2.4. [Deployment 파일 수정](#2.4)  
-    2.5. [서비스 설치](#2.5)    
-    2.6. [서비스 설치 확인](#2.6)  
+    2.2. [Stemcell Check](#2.2)    
+    2.3. [Deployment Download](#2.3)   
+    2.4. [Deployment File Modification](#2.4)  
+    2.5. [Service Installation](#2.5)    
+    2.6. [Service Installation Check](#2.6)  
 
-3. [PaaS-TA AP Portal 설치](#3)  
-    3.1. [Portal App 구성](#3.1)  
-    3.2. [Portal App 배포 Script 변수 설정](#3.2)  
-    3.3. [Portal App 배포 Script 실행](#3.3)  
+3. [PaaS-TA AP Portal Installation](#3)  
+    3.1. [Portal App Configuration](#3.1)  
+    3.2. [Portal Set App Deployment Script Variables](#3.2)  
+    3.3. [Portal Run App Deployment Script](#3.3)  
 
-4. [PaaS-TA AP Portal 운영](#4)  
-    4.1. [사용자의 조직 생성 Flag 활성화](#4.1)  
-    4.2. [사용자포탈 UAA 페이지 오류](#4.2)  
-    4.3. [카탈로그 적용](#4.3)  
+4. [PaaS-TA AP Portal Operation](#4)  
+    4.1. [Enable the user's organizational creation flag](#4.1)  
+    4.2. [User Portal UAA Page Error](#4.2)  
+    4.3. [Apply Catalog](#4.3)  
 
 
 ## <div id="1"/> 1. 문서 개요

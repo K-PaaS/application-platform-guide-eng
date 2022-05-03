@@ -553,85 +553,85 @@ The HeidiSQL program is an open-source software that can be used for free.
 
 <br>
 
-- 설치 완료 후 시작메뉴에 HeidiSQL 바로가기 아이콘의 이름을 설정하는 과정이다.  
->Next 버튼을 클릭하여 다음 과정을 진행한다.
+- This is the process of setting the name of the HeidiSQL shortcut icon at the Start menu after the installing 
+>Click the Next button to proceed to the next step.
 
 >![mysql_vsphere_4.1.06]
 
 <br>
 
-- 체크박스가 4개가 있다. 아래의 경우를 고려하여 체크 및 해제를 한다.
+- There are 4 check boxes. Check and release considering the following cases.
 >
-  바탕화면에 바로가기 아이콘을 생성할 경우  
-  sql확장자를 HeidiSQL 프로그램으로 실행할 경우  
-  heidisql 공식 홈페이지를 통해 자동으로 update check를 할 경우  
-  heidisql 공식 홈페이지로 자동으로 버전을 전송할 경우
+  When you create a shortcut icon on your desktop
+  When running the sql extension as a HeidiSQL program
+  When you automatically check for updates through the official website of heidisql
+  When you automatically send the version to the official website of heidisql,
 
-> 체크박스에 체크 설정/해제를 완료했다면 Next 버튼을 클릭한다.
+> Click the Next button when you have finished setting/unchecking the check box.
 
 >![mysql_vsphere_4.1.07]
 
 <br>
 
-- 설치를 위한 모든 설정이 한번에 출력된다. 확인 후 Install 버튼을 클릭하여 설치를 진행한다.
+- All settings for installation are printed at once. After checking, click the Install button to proceed with the installation
 
 >![mysql_vsphere_4.1.08]
 
 <br>
 
-- Finish 버튼 클릭으로 설치를 완료한다.
+- Click the Finish button to complete the installation.
 
 >![mysql_vsphere_4.1.09]
 
 <br>
 
-- HeidiSQL을 실행했을 때 처음 뜨는 화면이다. 이 화면에서 Server에 접속하기 위한 profile을 설정/저장하여 접속할 수 있다. 신규 버튼을 클릭한다.
+- This is the first screen that appears when you run HeidiSQL. On this screen, you can access by setting/saving a profile for accessing the server. Click the New button.
 
 >![mysql_vsphere_4.1.10]
 
 <br>
 
-- 어떤 Server에 접속하기 위한 Connection 정보인지 별칭을 입력한다.
+- Enter an alias for the connection information to connect to which server
 
 >![mysql_vsphere_4.1.11]
 
 <br>
 
-- 네트워크 유형의 목록에서 MySQL(SSH tunel)을 선택한다.
+- Select MySQL (SSHTunel) from the list of network types.
 
 >![mysql_vsphere_4.1.12]
 
 <br>
 
-- 아래 붉은색 영역에 접속하려는 서버 정보를 모두 입력한다.
+- Enter all server information to access the red area below.
 
 >![mysql_vsphere_4.1.13]
 
->서버 정보는 Application에 바인드되어 있는 서버 정보를 입력한다. cf env <app_name> 명령어로 이용하여 확인한다.
+>The server information inputs the server information bound to the application. Check using the cfenv <app_name> command.
 
->**예)** $cf env hello-spring-mysql
+>**Ex.)** $cf env hello-spring-mysql
 
 >![mysql_vsphere_4.1.14]
 
 <br>
 
-- - SSH 터널 탭을 클릭하고 OpenPaaS 운영 관리자에게 제공받은 SSH 터널링 가능한 서버 정보를 입력한다. plink.exe 위치 입력은 Putty에서 제공하는 plink.exe 실행 위치를 넣어주고 만일 해당 파일이 없을 경우 plink.exe 내려받기 링크를 클릭하여 다운받는다. 로컬 포트 정보는 임의로 넣고 열기 버튼을 클릭하면 Mysql 데이터베이스에 접속한다.
+- - Click the SSH Tunnel tab and enter the SSH tunnelable server information provided to the OpenPaaS operations manager. The plink.exe location entry lets you enter the location where Putty runs the plink.exe and if the file is not present, plink. Click the download link to download the exe. Enter local port information arbitrarily and click the Open button to access the Mysql database.
 
->(참고) 만일 개인 키로 접속이 가능한 경우에는 openstack용 Open PaaS Mysql 서비스팩 설치 가이드를 참고한다.
+>(Note) If access is possible with a private key, refer to the Open PaaS Mysql service pack installation guide for openstack.
 
 >![mysql_vsphere_4.1.15]
 
 <br>
 
-- 접속이 완료되면 좌측에 스키마 정보가 나타난다. 하지만 초기설정은 테이블, 뷰, 프로시져, 함수, 트리거, 이벤트 등 모두 섞여 있어서 한눈에 구분하기가 힘들어서 접속한 DB 별칭에 마우스 오른쪽 클릭 후 "트리 방식 옵션" - "객체를 유형별로 묶기"를 클릭하면 아래 화면과 같이 각 유형별로 구분이된다.
+- When the connection is complete, schema information appears on the left. However, the initial settings are all mixed with tables, views, procedures, functions, triggers, and events, which are difficult to distinguish at a glance, so right-click on the DB alias you accessed and click "Tree Options" - "Bundle Objects by Type" as shown on the screen below.
 
 >![mysql_vsphere_4.1.16]
 
 <br>
 
-- 우측 화면에 쿼리 탭을 클릭하여 Query문을 작성한 후 실행 버튼(삼각형)을 클릭한다.  
+- On the right screen, click the Query tab to create a Query statement, and then click the Run button (triangle).
 
->쿼리문에 이상이 없다면 정상적으로 결과를 얻을 수 있을 것이다.
+>If there is no abnormality in the query statement, the result will be obtained normally.
 
 >![mysql_vsphere_4.1.17]
 	

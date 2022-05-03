@@ -441,7 +441,7 @@ You can check the log of each instance on the Paas-TA Portal.
                 at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
 
 ### <div id="3.5"/> 3.5. Apply Catalog
-##### 1. Catalog Add buildpack and servicepack
+##### 1. Add Catalog buildpack and servicepack
 After installing the Paas-TA Portal, you must register the build pack and service pack on the administrator portal to use it on the user portal.
 - [Download Catalog Image](https://nextcloud.paas-ta.org/index.php/s/EmzfJw38H4GQKTr/download)
 

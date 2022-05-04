@@ -25,10 +25,10 @@
 ## <div id="1"/> 1. Document Outline
 
 ### <div id="1.1"/>1.1. Purpose
-This document (GlusterFS service pack installation guide) describes how to install the ClusterFS service pack, which is a service pack provided by PaaS-TA, using Bosch.
+This document (GlusterFS service pack installation guide) describes how to install the GlusterFS service pack, which is a service pack provided by PaaS-TA, using Bosch.
 
 ### <div id="1.2"/> 1.2. Range
-The installation scope was prepared based on the basic installation to verify the ClusterFS service pack.
+The installation scope was prepared based on the basic installation to verify the GlusterFS service pack.
 
 
 ### <div id="1.3"/>1.3. References
@@ -42,7 +42,7 @@ Cloud Foundry Document: [https://docs.cloudfoundry.org](https://docs.cloudfoundr
 This installation guide is based on installing in a Linux environment.
 In order to install the service pack, BOSH CLI v2 must be installed and logged in to BOSH. 
 If BOSH CLI v2 is not installed, you should first refer to the BOSH 2.0 installation guide document to install BOSH CLI v2 and familiarize yourself with the usage.
-A Swift & ClusterFS server must be installed to connect with the service broker.
+A Swift & GlusterFS server must be installed to connect with the service broker.
 
 ### <div id="2.2"/> 2.2. Stemcell Check
 
@@ -277,7 +277,7 @@ Succeeded
 ```
 
 ## <div id="3"/>3. GlusterFS Linkage Sample App Description
-This Sample Web App is distributed to PaaS-TA and can be used with the service of ClusterFS on Provision and Bind.
+This Sample Web App is distributed to PaaS-TA and can be used with the service of GlusterFS on Provision and Bind.
 
 ### <div id="3.1"/> 3.1. Service Broker Registration  
 
@@ -420,10 +420,10 @@ glusterfs-service-instance  glusterfs   glusterfs-1000Mb                        
 
 ### <div id='3.4'> 3.4. Apply for service bind to Sample App and check for App
 
-When the service application is completed, the Sample Web App binds the generated service instance and uses the ClusterFS service in the App.
+When the service application is completed, the Sample Web App binds the generated service instance and uses the GlusterFS service in the App.
 *Note: When applying for service bind, you must be logged in as a user who can apply for service bind on an open cloud platform.
   
-- Check the manifest file. (Set swift_region to the region that you want to use on the ClusterFS server.)
+- Check the manifest file. (Set swift_region to the region that you want to use on the GlusterFS server.)
 
 > $ vi manifest.yml   
 ```
@@ -480,7 +480,7 @@ When running the app, add a security group for communication with the service.
 - Modify rule.json.  
 > $ vi rule.json   
 ```
-## Set clusterfs IP and PORT (swiftproxy_port, auth_port) to destination
+## Set GlusterFS IP and PORT (swiftproxy_port, auth_port) to destination
 [
   {
     "protocol": "tcp",
@@ -505,16 +505,16 @@ OK
 - Apply the security group that you created to use the GlusterFS service.
 > $ cf bind-running-security-group glusterfs  
 ```
-Binding security group glusterfs to running as admin...
+Binding security group glusterFS to running as admin...
 OK		
 ```
   
 - Restart App for bind to take effect.
 
-> $ cf restart hello-spring-glusterfs 
+> $ cf restart hello-spring-glusterFS 
 
 ```	
-Restarting app hello-spring-glusterfs in org system / space dev as admin...
+Restarting app hello-spring-glusterFS in org system / space dev as admin...
 
 Staging app and tracing logs...
    Downloading java_buildpack...
@@ -529,9 +529,9 @@ Staging app and tracing logs...
 Instances starting...
 Instances starting...
 
-name:              hello-spring-glusterfs
+name:              hello-spring-glusterFS
 requested state:   started
-routes:            hello-spring-glusterfs.paasta.kr
+routes:            hello-spring-glusterFS.paasta.kr
 last uploaded:     Mon 22 Nov 05:19:59 UTC 2021
 stack:             cflinuxfs3
 buildpacks:        

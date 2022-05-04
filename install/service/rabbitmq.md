@@ -25,25 +25,25 @@
 ### <div id='1.1'> 1.1. Purpose
 This document (Rabbit MQ service pack installation guide) describes how to install RabbitMQ service pack, which is a service pack provided by PaaS-TA, using Bosh. 
 
-### <div id='1.2'> 1.2. 범위 
-설치 범위는 RabbitMQ 서비스팩을 검증하기 위한 기본 설치를 기준으로 작성하였다. 
+### <div id='1.2'> 1.2. Range
+The installation scope was prepared based on the basic installation to verify the RabbitMQ service pack. 
 
 
-### <div id='1.3'> 1.3. 참고자료
+### <div id='1.3'> 1.3. References
 BOSH Document: [http://bosh.io](http://bosh.io)  
 Cloud Foundry Document: [https://docs.cloudfoundry.org](https://docs.cloudfoundry.org)  
 
 
-## <div id='2'> 2. RabbitMQ 서비스 설치
+## <div id='2'> 2. RabbitMQ Service Installation
 
 ### <div id="2.1"/> 2.1. Prerequisite  
 
-본 설치 가이드는 Linux 환경에서 설치하는 것을 기준으로 하였다.  
-서비스팩 설치를 위해서는 먼저 BOSH CLI v2 가 설치 되어 있어야 하고 BOSH 에 로그인이 되어 있어야 한다.  
-BOSH CLI v2 가 설치 되어 있지 않을 경우 먼저 BOSH2.0 설치 가이드 문서를 참고 하여 BOSH CLI v2를 설치를 하고 사용법을 숙지 해야 한다.  
+This installation guide is based on installing in a Linux environment. 
+In order to install the service pack, BOSH CLI v2 must be installed and logged in to BOSH.
+If BOSH CLI v2 is not installed, you should first refer to the BOSH 2.0 installation guide document to install BOSH CLI v2 and familiarize the usage.
 
-- bosh runtime-config를 확인하여 bosh-dns include deployments 에 rabbitmq가 있는지 확인한다.  
- ※ bosh-dns include deployments에 rabbitmq가 없다면 ~/workspace/paasta-deployment/bosh/runtime-configs 의 dns.yml 을 열어서 rabbitmq를 추가하고, bosh runtime-config를 업데이트 해준다.    
+- Check the bosh runtime-config to see if there is a rabbitmq in the bosh-dns include deployments.
+ ※ If bosh-dns include deployments is not at rabbitmq, go to ~/workspace/paasta-deployment/bosh/runtime-configs and open dns.yml to add rabbitmq and update bosh runtime-config.  
 
 > $ bosh -e micro-bosh runtime-config
 ```

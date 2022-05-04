@@ -43,8 +43,8 @@ Cloud Foundry Document: [https://docs.cloudfoundry.org](https://docs.cloudfoundr
 	
 ### <div id="2.1"/> 2.1. Prerequisite  
 
-Stemcell 목록을 확인하여 서비스 설치에 필요한 Stemcell이 업로드 되어 있는 것을 확인한다.  
-본 가이드의 Stemcell은 ubuntu-bionic 1.76를 사용한다.  
+Check the Stemcell list to make sure that the Stemcell required for service installation is uploaded.
+The Stemcell of this guide uses ubuntu-bionic 1.76.
 
 > $ bosh -e ${BOSH_ENVIRONMENT} stemcells
 
@@ -61,37 +61,37 @@ bosh-openstack-kvm-ubuntu-bionic-go_agent  1.76      ubuntu-bionic  -    ce507ae
 Succeeded
 ```
 
-만약 해당 Stemcell이 업로드 되어 있지 않다면 [bosh.io 스템셀](https://bosh.io/stemcells/) 에서 해당되는 IaaS환경과 버전에 해당되는 스템셀 링크를 복사 후 다음과 같은 명령어를 실행한다.
+If the corresponding Stemcell is not uploaded, copy the corresponding Stemcell link to the corresponding IaaS environment and version from [bosh.io Stemcell] and run the following command:
 
 ```
-# Stemcell 업로드 명령어 예제
+# Example of Stemcell Upload Command
 $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell -n {STEMCELL_URL}
 ```
 
-### <div id="2.3"/> 2.3. Deployment 다운로드  
+### <div id="2.3"/> 2.3. Deployment Download
 
-서비스 설치에 필요한 Deployment를 Git Repository에서 받아 서비스 설치 작업 경로로 위치시킨다.  
+Download the deployment needed from Git Repository and place the file at the service installation directory
 
 - Service Deployment Git Repository URL : https://github.com/PaaS-TA/service-deployment/tree/v5.1.5
 
 ```
-# Deployment 다운로드 파일 위치 경로 생성 및 설치 경로 이동
+# Deployment File Download , make directory, change directory
 $ mkdir -p ~/workspace
 $ cd ~/workspace
 
-# Deployment 파일 다운로드
+# Deployment File Download
 $ git clone https://github.com/PaaS-TA/service-deployment.git -b v5.1.5
 
-# common_vars.yml 파일 다운로드(common_vars.yml가 존재하지 않는다면 다운로드)
+# common_vars.yml File Download (Download if common_vars.yml doesn't exist)
 $ git clone https://github.com/PaaS-TA/common.git
 ```
 
-### <div id="2.4"/> 2.4. Deployment 파일 수정
+### <div id="2.4"/> 2.4. Deployment File Modification
 
-BOSH Deployment manifest는 Components 요소 및 배포의 속성을 정의한 YAML 파일이다.  
-Deployment 파일에서 사용하는 network, vm_type, disk_type 등은 Cloud config를 활용하고, 활용 방법은 PaaS-TA AP 설치 가이드를 참고한다.  
+The BOSH Deployment manifest is a YAML file that defines the properties of components elements and deployments. 
+Cloud config is used for network, vm_type, and disk_type used in Deployment files, and refer to the PaaS-TA AP installation guide for how to use it.
 
-- Cloud config 설정 내용을 확인한다.   
+- Check the Cloud config settings.
 
 > $ bosh -e micro-bosh cloud-config   
 
@@ -106,7 +106,7 @@ azs:
     availability_zone: ap-northeast-2a
   name: z2
 
-... ((생략)) ...
+... ((Skip)) ...
 
 disk_types:
 - disk_size: 1024
@@ -114,7 +114,7 @@ disk_types:
 - disk_size: 1024
   name: 1GB
 
-... ((생략)) ...
+... ((Skip)) ...
 
 networks:
 - name: default
@@ -132,7 +132,7 @@ networks:
     static:
     - 10.0.1.10 - 10.0.1.120
 
-... ((생략)) ...
+... ((Skip)) ...
 
 vm_types:
 - cloud_properties:
@@ -148,31 +148,31 @@ vm_types:
     instance_type: t2.small
   name: small
 
-... ((생략)) ...
+... ((Skip)) ...
 
 Succeeded
 ```
 
-- common_vars.yml을 서버 환경에 맞게 수정한다. 
-- redis에서 사용하는 변수는 bosh_url, bosh_client_admin_id, bosh_client_admin_secret, bosh_director_port, bosh_oauth_port, system_domain, paasta_admin_username, paasta_admin_password, bosh_version 이다.
+- Modify common_vars.yml to suit the server environment.
+- The variables used in redis are: bosh_url, bosh_client_admin_id, bosh_client_admin_secret, bosh_director_port, bosh_oauth_port, system_domain, paasta_admin_username, paasta_admin_password, and bosh_version.
 
 > $ vi ~/workspace/common/common_vars.yml
 ```
-... ((생략)) ...
+... ((Skip)) ...
 bosh_url: "https://10.0.1.6"			# BOSH URL (e.g. "https://00.000.0.0")
 bosh_client_admin_id: "admin"			# BOSH Client Admin ID
-bosh_client_admin_secret: "ert7na4jpew48"	# BOSH Client Admin Secret('echo $(bosh int ~/workspace/paasta-deployment/bosh/{iaas}/creds.yml --path /admin_password)' 명령어를 통해 확인 가능)
+bosh_client_admin_secret: "ert7na4jpew48"	# BOSH Client Admin Secret('echo $(bosh int ~/workspace/paasta-deployment/bosh/{iaas}/creds.yml --path /admin_password)' can check by using this command)
 bosh_director_port: 25555			# BOSH director port
 bosh_oauth_port: 8443				# BOSH oauth port
-bosh_version: 271.2				# BOSH version('bosh env' 명령어를 통해 확인 가능, on-demand service용, e.g. "271.2")
-system_domain: "61.252.53.246.nip.io"		# Domain (nip.io를 사용하는 경우 HAProxy Public IP와 동일)
+bosh_version: 271.2				# BOSH version('bosh env' command for on-demand service, e.g. "271.2")
+system_domain: "61.252.53.246.nip.io"		# Domain (Same as HAProxy Public IP when using nip.io)
 paasta_admin_username: "admin"			# PaaS-TA Admin Username
 paasta_admin_password: "admin"			# PaaS-TA Admin Password
-... ((생략)) ...
+... ((Skip)) ...
 ```
 
 
-- Deployment YAML에서 사용하는 변수 파일을 서버 환경에 맞게 수정한다.
+- Modify the variable files used by Deployment YAML to suit the server environment.
 
 > $ vi ~/workspace/deployment/service-deployment/redis/vars.yml
 ```
@@ -213,18 +213,18 @@ service_port: 6379                                                # On-Demand Re
 service_instance_guid: "54e2de61-de84-4b9c-afc3-88d08aadfcb6"            # Service Instance Guid
 service_instance_name: "redis"                                           # Service Instance Name
 service_instance_bullet_name: "Redis Dedicated Server Use"               # Service Instance bullet Name
-service_instance_bullet_desc: "Redis Service Using a Dedicated Server"   # Service Instance bullet에 대한 설명을 입력
+service_instance_bullet_desc: "Redis Service Using a Dedicated Server"   # Enter description about Service Instance bullet
 service_instance_plan_guid: "2a26b717-b8b5-489c-8ef1-02bcdc445720"       # Service Instance Plan Guid
 service_instance_plan_name: "dedicated-vm"                               # Service Instance Plan Name
-service_instance_plan_desc: "Redis service to provide a key-value store" # Service Instance Plan에 대한 설명을 입력
-service_instance_org_limitation: "-1"                                    # Org에 설치할수 있는 Service Instance 개수를 제한한다. (-1일경우 제한없음)
-service_instance_space_limitation: "-1"                                  # Space에 설치할수 있는 Service Instance 개수를 제한한다. (-1일경우 제한없음)
+service_instance_plan_desc: "Redis service to provide a key-value store" # Enter description about Service Instance Plan
+service_instance_org_limitation: "-1"                                    # Limit the number of Service Instances that can be installed in Org. (No limit for -1)
+service_instance_space_limitation: "-1"                                  # Limit the number of Service Instances that can be installed in Space. (No limit for -1)
 ```
 
-### <div id="2.5"/> 2.5. 서비스 설치
+### <div id="2.5"/> 2.5. Service Installation
 
-- 서버 환경에 맞추어 Deploy 스크립트 파일의 VARIABLES 설정을 수정하고, Option file을 추가할지 선택한다.  
-     (선택) -o operations/cce.yml (CCE 조치를 적용하여 설치)
+- Modify the VARIABLES settings in the Deploy script file to suit the server environment, and select whether to add the option file.
+     (Optional) -o operations/cce.yml (Apply CCE when installting)
 
 > $ vi ~/workspace/service-deployment/redis/deploy.sh
 
@@ -233,7 +233,7 @@ service_instance_space_limitation: "-1"                                  # Space
 
 # VARIABLES
 COMMON_VARS_PATH="<COMMON_VARS_FILE_PATH>"	# common_vars.yml File Path (e.g. ../../common/common_vars.yml)
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"		# bosh director alias name (PaaS-TA에서 제공되는 create-bosh-login.sh 미 사용시 bosh envs에서 이름을 확인하여 입력)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"		# bosh director alias name (Create-bosh-login.sh provided by PaaS-TA.If is not in use, check the name in bosh envs and enter)
 
 # DEPLOY
 bosh -e ${BOSH_ENVIRONMENT} -n -d redis deploy --no-redact redis.yml \
@@ -242,16 +242,16 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d redis deploy --no-redact redis.yml \
     -l vars.yml
 ```
 
-- 서비스를 설치한다.  
+- Install Service.  
 ```
 $ cd ~/workspace/service-deployment/redis  
 $ sh ./deploy.sh  
 ```  
 
 
-### <div id="2.6"/> 2.6. 서비스 설치 확인
+### <div id="2.6"/> 2.6. Service Installation Check
 
-설치 완료된 서비스를 확인한다.  
+Check the installed service.
 
 > $ bosh -e micro-bosh -d redis vms  
 
@@ -271,13 +271,13 @@ paas-ta-on-demand-broker/13c11522-10dd-485c-bb86-3ac5337223d0  running        z5
 Succeeded
 ```
 
-## <div id='3'> 3. CF CLI를 이용한 On-Demand-Redis 서비스 
-### <div id='3.1'> 3.1. On-Demand-Redis 서비스 브로커 등록
-Redis 서비스팩 배포가 완료 되었으면 Application에서 서비스 팩을 사용하기 위해서 먼저 On-Demand-Redis 서비스 브로커를 등록해 주어야 한다.
-서비스 브로커 등록시에는 PaaS-TA에서 서비스 브로커를 등록할 수 있는 사용자로 로그인하여야 한다
+## <div id='3'> 3. On-Demand-Redis service using CF CLI
+### <div id='3.1'> 3.1. On-Demand-Redis Service Broker Registration
+When the Redis service pack deployment is complete, the application must first register the On-Demand-Redis service broker to use the service pack.
+When registering a service broker, you must log in as a user who can register a service broker in PaaS-TA.
 
 
-- 서비스 브로커 목록을 확인한다.
+- Check the list of service brokers.
 
 > $ cf service-brokers
 ```
@@ -287,17 +287,17 @@ name   url
 No service brokers found
 ```
 
-- 서비스 브로커 등록 명령어
+- Service Broker Registration Commands
 ```
 cf create-service-broker [SERVICE_BROKER] [USERNAME] [PASSWORD] [SERVICE_BROKER_URL]
 
-[SERVICE_BROKER] : 서비스 브로커 명
-[USERNAME] / [PASSWORD] : 서비스 브로커에 접근할 수 있는 사용자 ID / PASSWORD
-[SERVICE_BROKER_URL] : 서비스 브로커 접근 URL
+[SERVICE_BROKER] : Service Broker Name
+[USERNAME] / [PASSWORD] : User ID / PASSWORD with access to service broker
+[SERVICE_BROKER_URL] : Service Broker Access URL
 ```
 
 	
-- On-Demand-Redis 서비스 브로커를 등록한다.
+- Register the On-Demand-Redis service broker.
 
 > $ cf create-service-broker on-demand-redis-service admin cloudfoundry http://<paas-ta-on-demand-broker_ip>:8080 
 
@@ -307,7 +307,7 @@ Creating service broker on-demand-redis-service as admin...
 OK
 ```
 
-- 등록된 On-Demand-Redis 서비스 브로커를 확인한다.
+- Check the registered On-Demand-Redis service broker
 
 > $ cf service-brokers 
 ```
@@ -318,7 +318,7 @@ on-demand-redis-service  http://10.30.255.26:8080
 ```
 
 
-- 접근 가능한 서비스 목록을 확인한다.
+- Check the list of accessible services.
 
 > $ cf service-access 
 ```
@@ -328,10 +328,10 @@ broker: on-demand-redis-service
    redis      dedicated-vm   none   
 
 ```
-서비스 브로커 등록시 최초에는 접근을 허용하지 않는다. 따라서 access는 none으로 설정된다.
+Access is initially not permitted when registering as a service broker. Therefore, access is set to none.
 
 
-- 특정 조직에 해당 서비스 접근 허용을 할당하고 접근 서비스 목록을 다시 확인한다. (전체 조직)
+- Assign permission to a specific organization to access the service and recheck the access service list. (Overall Organization)
 
 > $ cf enable-service-access redis  <br>
 ```
@@ -347,9 +347,9 @@ broker: on-demand-redis-service
    redis      dedicated-vm   all   
 ```
 
-### <div id='3.2'> 3.2. Sample App 다운로드
+### <div id='3.2'> 3.2. Sample App Download
 
-- Sample App 묶음 다운로드
+- Download zip file of sample app
 ```
 $ wget https://nextcloud.paas-ta.org/index.php/s/NDgriPk5cgeLMfG/download --content-disposition  
 $ unzip paasta-service-samples.zip  
@@ -358,11 +358,11 @@ $ cd paasta-service-samples/redis
 
 <br>
 
-### <div id='3.3'> 3.3. PaaS-TA에서 서비스 신청
-Sample App에서 Redis 서비스를 사용하기 위해서는 서비스 신청(Provision)을 해야 한다.
-*참고: 서비스 신청시 PaaS-TA에서 서비스를 신청 할 수 있는 사용자로 로그인이 되어 있어야 한다.
+### <div id='3.3'> 3.3. Apply for service in PaaS-TA
+In order to use the Redis service in the Sample App, you must apply for a service (Provision).
+*Note: When applying for a service, you must be logged in as a user who can apply for a service in PaaS-TA.
 
-- 먼저 PaaS-TA Marketplace에서 서비스가 있는지 확인을 한다.
+- Check whether there is a service in the PaaS-TA Marketplace first.
 
 > $ cf marketplace
 
@@ -374,16 +374,16 @@ redis     dedicated-vm   A paasta source control service for application develop
 
 <br>
 
-- 서비스 인스턴스 신청 명령어
+- Service Instance Application Commands
 ```
 cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 
-[SERVICE] : Marketplace에서 보여지는 서비스 명
-[PLAN] : 서비스에 대한 정책
-[SERVICE_INSTANCE] : 생성할 서비스 인스턴스 이름
+[SERVICE] : Service name shown at the Marketplace
+[PLAN] : Policies for Services
+[SERVICE_INSTANCE] : Name of the service instance to create
 ```
 	
-- Marketplace에서 원하는 서비스가 있으면 서비스 신청(Provision)을 한다.
+- If there is a service you want on the Marketplace, apply for a service (Provision).
 
 > $ cf create-service redis dedicated-vm redis
 
@@ -397,8 +397,8 @@ Create in progress. Use 'cf services' or 'cf service redis' to check operation s
 
 <br>
 
-- 생성된 Redis 서비스 인스턴스의 status를 확인한다.
- * create in progress인 상태일경우 서비스 준비중이므로 서비스 이용 및 바인드, 삭제가 제한이되므로 create succeeded가 될때까지 기다려야 한다.
+- Check the status of the generated Redis service instance.
+ * In the case of create in progress, use, bind, and delete of the service are restricted because the service is being prepared, so you have to wait until it is created successful.
 > $ cf service redis  
 
 ```
@@ -421,7 +421,7 @@ updated:   2019-07-05T05:58:16Z
 
 There are no bound apps for this service.
 ```
-- 생성된 Redis 서비스 인스턴스의 status가 create succeeded가 된것을 확인한다.
+- Verify that the status of the generated Redis service instance has been created successfully.
 ```
 Showing info of service redis in org system / space dev as admin...
 
@@ -445,8 +445,8 @@ There are no bound apps for this service.
 
 <br>
 	
-- on-demand-service를 통해 서비스를 생성할 경우 해당 공간에 security-group 생성 및 자동적으로 할당이 된다.  
-- Secuirty-group에 redis_[서비스 할당된 space guid] 가 생성된것을 확인한다.  
+- When a service is created through an on-demand-service, a security-group is created and automatically assigned to the space.
+- Verify that redis_[Service Assigned SpaceGuid] is created in the Secrety-group.
 	
 > $ cf space [space] --guid  
 ```
@@ -468,11 +468,11 @@ OK
 ```
 
 
-### <div id='3.4'> 3.4. Sample App에 서비스 바인드 신청 및 App 확인
-서비스 신청이 완료되었으면 Sample App 에서는 생성된 서비스 인스턴스를 Bind 하여 App에서 Redis 서비스를 이용한다.
-*참고: 서비스 Bind 신청시 PaaS-TA에서 서비스 Bind신청 할 수 있는 사용자로 로그인이 되어 있어야 한다.
+### <div id='3.4'> 3.4. Apply for service bind to Sample App and check for App
+When the service application is completed, the Sample App binds the generated service instance and uses the Redis service in the App.
+*Note: When applying for service bind, you must be logged in as a user who can apply for service bind in PaaS-TA.
 
-- manifest 파일을 확인한다.  
+- Check the manifest file.  
 
 > $ vi manifest.yml   
 
@@ -486,7 +486,7 @@ applications:
   buildpacks: [ruby_buildpack]
 ```
 
-- --no-start 옵션으로 App을 배포한다.
+- Deploy app with --no-start option.
 
 > $ cf push --no-start 
 ```  
@@ -514,7 +514,7 @@ memory usage:   256M
 #0   down    2021-11-22T05:39:06Z   0.0%   0 of 0   0 of 0   
 ```  
   
-- Sample Web App에서 생성한 서비스 인스턴스 바인드 신청을 한다.
+- Apply for service instance bind created by Sample Web App.
 
 > $ cf bind-service redis-example-app redis 
 
@@ -523,7 +523,7 @@ Binding service redis to app redis-example-app in org system / space dev as admi
 OK
 ```
 	
-- 바인드가 적용되기 위해서 App을 재기동한다.
+- Restart the App to apply the bind.
 
 > $ cf restart redis-example-app 
 
@@ -564,9 +564,9 @@ memory usage:   256M
 
 <br>
 
-App이 정상적으로 Redis 서비스를 사용하는지 확인한다.
+Check if the App uses Redis service normally.
 
-- curl 로 확인
+- Check with curl
 
 ```
 $ export APP=redis-example-app.[CF Domain]
@@ -581,42 +581,42 @@ success
 
 <br>
 
-## <div id='4'> 4. Portal을 이용한 Redis Service Test
-사용자 및 관리자 포탈이 설치가 되어있으면 포탈을 통해서 레디스 서비스 신청 및 바인드, 테스트가 가능하다.
+## <div id='4'> 4. Redis Service Test using portal
+If the user and manager portals are installed, it is possible to apply for, bind, and test the Ladies service through the portal.
 
 
-- 관리자 포탈에 접속해 서비스 관리의 서비스 브로커 페이지에서 브로커 리스트를 확인한다..
+- Access the Administrator Portal and check the list of brokers on the Service Broker page of Service Management.
 ![1]
-- On-Demand-Redis 서비스 브로커를 등록한다.
+- Register the On-Demand-Redis service broker.
 ![2]
 ![3]
-- 등록된 On-Demand-Redis 서비스 브로커를 확인한다.
+- Check the registered On-Demand-Redis service broker.
 ![4]
-- 서비스관리의 서비스 제어 페이지에서 접근 가능한 서비스 목록을 확인한다.
+- Check the list of accessible services on the Service Control page of Service Management.
 ![5]
 
-서비스 브로커 등록시 최초에는 접근을 허용하지 않는다. 따라서 access는 none으로 설정된다.
-- 특정 조직에 해당 서비스 접근 허용을 할당하고 접근 서비스 목록을 다시 확인한다. (전체 조직)
+Access is initially not permitted when registering as a service broker. Therefore, access is set to none.
+- Assign permission to a specific organization to access the service and recheck the access service list. (Overall Organization)
 ![6]
 
-### <div id='4.1'> 4.1. 서비스 신청
-사용자 포탈에서 서비스 신청하기 위해서는 관리자 포탈의 카탈로그페이지에서 서비스 등록을 먼저 해주어야 사용이 가능하다.
+### <div id='4.1'> 4.1. Application for service
+In order to apply for a service on the user portal, you must register the service on the catalog page of the administrator portal first to use it.
 
-- 관리자 포탈의 운영관리의 카탈로그 페이지로 이동해 서비스 등록을 한다.
+- Go to the catalog page of the operation management on the administrator portal and register the service.
 ![7]
-앱 바인드 파라미터는 app_guid 자동입력을 추가, 온디멘드 Y 로 설정후 서비스 등록을 진행한다.
-- 사용자 포탈 로그인 후 카탈로그 페이지에서 서비스를 생성한다.
+The app bind parameter adds app_guid automatic input, sets it to on-demand Y, and then registers the service.
+- After logging in to the user portal, create a service from the catalog page.
 ![8]
 
 
-- 생성된 Redis 서비스 인스턴스의 status를 확인한다.
+- Check the status of the generated Redis service instance.
 Service status : in progress
 ![9]
  
 Service status : created succeed
 ![10]
 
-- 관리자포탈 보안의 시큐리티그룹 페이지로 이동해 redis_[서비스 할당된 space guid] 가 생성된것을 확인한다.
+- Go to the security group page of the administrator portal security and confirm that redis_[service assigned space guide] is created.
 ![11]
 
 

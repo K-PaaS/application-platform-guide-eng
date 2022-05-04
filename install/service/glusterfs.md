@@ -93,7 +93,7 @@ $ git clone https://github.com/PaaS-TA/common.git
 ### <div id="2.4"/> 2.4. Deployment File Modification
 
 The BOSH Deployment manifest is a YAML file that defines the properties of components elements and deployments. 
-Cloud config is used for network, vm_type, and disk_type used in Deployment files, and refer to the PaaS-TA AP installation guide for how to use it.
+Cloud config is used for network, vm_type, and disk_type used in Deployment files, and refer to the PaaS-TA AP installation guide for the usage.
 
 - Check the Cloud config settings.
 

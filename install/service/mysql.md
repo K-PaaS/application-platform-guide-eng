@@ -32,7 +32,7 @@
 ## <div id='1'> 1. Document Outline
 ### <div id='1.1'> 1.1. Purpose
 
-This document (MySQL Service Pack Installation Guide) describes how to install MySQL Service Pack, a service pack provided by PaaS-TA, using Bosch.
+This document (MySQL Service Pack Installation Guide) describes how to install MySQL Service Pack, a service pack provided by PaaS-TA, using Bosh.
 	
 	
 ### <div id='1.2'> 1.2. Range

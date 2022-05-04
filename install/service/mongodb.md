@@ -25,7 +25,7 @@
 ## <div id='1'> 1. Document Outline
 ### <div id='1.1'> 1.1. Purpose
 
-This document (Mongodb service pack installation guide) describes how to install Mongodb service pack, which is a service pack provided by PaaS-TA, using Bosch.
+This document (Mongodb service pack installation guide) describes how to install Mongodb service pack, which is a service pack provided by PaaS-TA, using Bosh.
 
 ### <div id='1.2'> 1.2. Range
 The installation scope was prepared based on the basic installation to verify the Mongodb service pack.

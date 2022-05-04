@@ -29,7 +29,7 @@
 ## <div id='1'> 1. Document Outline
 
 ### <div id='1.1'> 1.1. Purpose
-This document (Redis service pack installation guide) describes how to install Redis service pack, which is a service pack provided by PaaS-TA, using Bosch.
+This document (Redis service pack installation guide) describes how to install Redis service pack, which is a service pack provided by PaaS-TA, using Bosh.
 
 ### <div id='1.2'> 1.2. Range
 The installation scope was prepared based on the basic installation to verify the Redis service pack.

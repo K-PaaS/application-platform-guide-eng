@@ -16,14 +16,14 @@
   2.6. [Service Installation Check](#2.6)  
 
 3. [RabbitMQ Linkage Sample App Description](#3)  
-  3.1. [서비스 브로커 등록](#3.1)  
-  3.2. [Sample App 다운로드](#3.2)  
-  3.3. [PaaS-TA에서 서비스 신청](#3.3)  
-  3.4. [Sample App에 서비스 바인드 신청 및 App 확인](#3.4)   
+  3.1. [Service Broker Registration](#3.1)  
+  3.2. [Sample App Download](#3.2)  
+  3.3. [Apply for service in PaaS-TA](#3.3)  
+  3.4. [Apply for service bind to Sample App and check for App](#3.4)   
      
-## <div id='1'> 1. 문서 개요
-### <div id='1.1'> 1.1. 목적
-본 문서(RabbitMQ 서비스팩 설치 가이드)는 PaaS-TA에서 제공되는 서비스팩인 RabbitMQ 서비스팩을 Bosh를 이용하여 설치 하는 방법을 기술하였다.  
+## <div id='1'> 1. Document Outline
+### <div id='1.1'> 1.1. Purpose
+This document (Rabbit MQ service pack installation guide) describes how to install RabbitMQ service pack, which is a service pack provided by PaaS-TA, using Bosh. 
 
 ### <div id='1.2'> 1.2. 범위 
 설치 범위는 RabbitMQ 서비스팩을 검증하기 위한 기본 설치를 기준으로 작성하였다. 

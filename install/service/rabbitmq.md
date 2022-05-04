@@ -79,15 +79,15 @@ addons:
           tls: "((/dns_healthcheck_server_tls))"
     release: bosh-dns
   name: bosh-dns
-...(생략)...
+...(Skip)...
 
 Succeeded
 ```
 
-### <div id="2.2"/> 2.2. Stemcell 확인
+### <div id="2.2"/> 2.2. Stemcell Check
 
-Stemcell 목록을 확인하여 서비스 설치에 필요한 Stemcell이 업로드 되어 있는 것을 확인한다.  
-본 가이드의 Stemcell은 ubuntu-bionic 1.76를 사용한다.  
+Check the Stemcell list to make sure that the Stemcell required for service installation is uploaded.
+The Stemcell of this guide uses ubuntu-bionic 1.76.
 
 > $ bosh -e ${BOSH_ENVIRONMENT} stemcells
 
@@ -104,10 +104,10 @@ bosh-openstack-kvm-ubuntu-bionic-go_agent  1.76      ubuntu-bionic  -    ce507ae
 Succeeded
 ```
 
-만약 해당 Stemcell이 업로드 되어 있지 않다면 [bosh.io 스템셀](https://bosh.io/stemcells/) 에서 해당되는 IaaS환경과 버전에 해당되는 스템셀 링크를 복사 후 다음과 같은 명령어를 실행한다.
+If the corresponding Stemcell is not uploaded, copy the corresponding Stemcell link to the corresponding IaaS environment and version from [bosh.io Stemcell] and run the following command:
 
 ```
-# Stemcell 업로드 명령어 예제
+# Example of Stemcell Upload Command
 $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell -n {STEMCELL_URL}
 ```
 

@@ -38,12 +38,12 @@ Cloud Foundry Document: [https://docs.cloudfoundry.org](https://docs.cloudfoundr
 
 ### <div id="2.1"/> 2.1. Prerequisite  
 
-본 설치 가이드는 Linux 환경에서 설치하는 것을 기준으로 하였다.  
-서비스팩 설치를 위해서는 먼저 BOSH CLI v2 가 설치 되어 있어야 하고 BOSH 에 로그인이 되어 있어야 한다.  
-BOSH CLI v2 가 설치 되어 있지 않을 경우 먼저 BOSH2.0 설치 가이드 문서를 참고 하여 BOSH CLI v2를 설치를 하고 사용법을 숙지 해야 한다.  
+This installation guide is based on installing in a Linux environment.  
+To install the service pack, BOSH CLI v2 must be installed and logged in to BOSH.  
+If BOSH CLI v2 is not installed, you should first refer to the BOSH 2.0 installation guide document to install BOSH CLI v2 and familiarize the usage.  
 
-- bosh runtime-config를 확인하여 bosh-dns include deployments 에 pinpoint가 있는지 확인한다.  
- ※ bosh-dns include deployments에 pinpoint가 없다면 ~/workspace/paasta-deployment/bosh/runtime-configs 의 dns.yml 을 열어서 pinpoint를 추가하고, bosh runtime-config를 업데이트 해준다.    
+- Check the bosh runtime-config to see if there are pinpoints in the bosh-dns include deployments.  
+ ※ If there is no pinpoint in bosh-dns include deployments, open the dns.yml in ~/workspace/paasta-deployment/bosh/runtime-configs to add pinpoint and update the bosh runtime-config.    
 
 > $ bosh -e micro-bosh runtime-config
 ```
@@ -79,15 +79,15 @@ addons:
           tls: "((/dns_healthcheck_server_tls))"
     release: bosh-dns
   name: bosh-dns
-...(생략)...
+...(Skip)...
 
 Succeeded
 ```
 
-### <div id="2.2"/> 2.2. Stemcell 확인
+### <div id="2.2"/> 2.2. Stemcell Check
 
-Stemcell 목록을 확인하여 서비스 설치에 필요한 Stemcell이 업로드 되어 있는 것을 확인한다.  
-본 가이드의 Stemcell은 ubuntu-bionic 1.76를 사용한다.  
+Check the Stemcell list to make sure that the Stemcell required for service installation is uploaded.
+The Stemcell of this guide uses ubuntu-bionic 1.76.  
 
 > $ bosh -e ${BOSH_ENVIRONMENT} stemcells
 
@@ -104,35 +104,35 @@ bosh-openstack-kvm-ubuntu-bionic-go_agent  1.76      ubuntu-bionic  -    ce507ae
 Succeeded
 ```
 
-만약 해당 Stemcell이 업로드 되어 있지 않다면 [bosh.io 스템셀](https://bosh.io/stemcells/) 에서 해당되는 IaaS환경과 버전에 해당되는 스템셀 링크를 복사 후 다음과 같은 명령어를 실행한다.
+If the corresponding Stemcell is not uploaded, copy the Stemcell link to the corresponding IaaS environment and version from [bosh.io Stemcell](https://bosh.io/stemcells/) and run the following command.
 
 ```
-# Stemcell 업로드 명령어 예제
+# Example of Stemcell Upload Command
 $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell -n {STEMCELL_URL}
 ```
 
 
-### <div id="2.3"/> 2.3. Deployment 다운로드  
+### <div id="2.3"/> 2.3. Deployment Download  
 
-서비스 설치에 필요한 Deployment를 Git Repository에서 받아 서비스 설치 작업 경로로 위치시킨다.  
+Download the deployment needed from Git Repository and place the file in the service installation directory.  
 
 - Service Deployment Git Repository URL : https://github.com/PaaS-TA/service-deployment/tree/v5.1.6
 
 ```
-# Deployment 다운로드 파일 위치 경로 생성 및 설치 경로 이동
+# Deployment File Download, make directory, change directory
 $ mkdir -p ~/workspace
 $ cd ~/workspace
 
-# Deployment 파일 다운로드
+# Deployment File Download
 $ git clone https://github.com/PaaS-TA/service-deployment.git -b v5.1.6
 ```
 
-### <div id="2.4"/> 2.4. Deployment 파일 수정
+### <div id="2.4"/> 2.4. Deployment File Modification
 
-BOSH Deployment manifest는 Components 요소 및 배포의 속성을 정의한 YAML 파일이다.  
-Deployment 파일에서 사용하는 network, vm_type, disk_type 등은 Cloud config를 활용하고, 활용 방법은 PaaS-TA AP 설치 가이드를 참고한다.  
+The BOSH Deployment manifest is a YAML file that defines the properties of components elements and deployments.  
+Cloud config is used for network, vm_type, and disk_type used in Deployment files, and refer to the PaaS-TA AP installation guide for the usage.  
 
-- Cloud config 설정 내용을 확인한다.   
+- Check the Cloud config settings.   
 
 > $ bosh -e micro-bosh cloud-config   
 
@@ -147,7 +147,7 @@ azs:
     availability_zone: ap-northeast-2a
   name: z2
 
-... ((생략)) ...
+... ((Skip)) ...
 
 disk_types:
 - disk_size: 1024
@@ -155,7 +155,7 @@ disk_types:
 - disk_size: 1024
   name: 1GB
 
-... ((생략)) ...
+... ((Skip)) ...
 
 networks:
 - name: default
@@ -173,7 +173,7 @@ networks:
     static:
     - 10.0.1.10 - 10.0.1.120
 
-... ((생략)) ...
+... ((Skip)) ...
 
 vm_types:
 - cloud_properties:
@@ -189,12 +189,12 @@ vm_types:
     instance_type: t2.small
   name: small
 
-... ((생략)) ...
+... ((Skip)) ...
 
 Succeeded
 ```
 
-- Deployment YAML에서 사용하는 변수 파일을 서버 환경에 맞게 수정한다.
+- Modify the variable file used by Deployment YAML to suit the server environment.
 
 > $ vi ~/workspace/service-deployment/pinpoint/vars.yml
 ```
@@ -242,10 +242,10 @@ webui_persistent_disk_type: "30GB"                               # webui persist
 webui_haproxy_public_ip: "<WEB_UI_PUBLIC_IP>"                    # webui haproxy's public IP
 ```
 
-### <div id="2.5"/> 2.5. 서비스 설치
+### <div id="2.5"/> 2.5. Service Installation
 
-- 서버 환경에 맞추어 Deploy 스크립트 파일의 VARIABLES 설정을 수정하고, Option file을 추가할지 선택한다.  
-     (선택) -o operations/cce.yml (CCE 조치를 적용하여 설치)
+- Modify the VARIABLES settings in the Deploy script file to suit the server environment, and select whether to add the option file.   
+     (optional) -o operations/cce.yml (Apply CCE when installing)
 
 > $ vi ~/workspace/service-deployment/pinpoint/deploy.sh
 
@@ -254,8 +254,8 @@ webui_haproxy_public_ip: "<WEB_UI_PUBLIC_IP>"                    # webui haproxy
 
 # VARIABLES
 COMMON_VARS_PATH="<COMMON_VARS_FILE_PATH>"	# common_vars.yml File Path (e.g. ../../common/common_vars.yml)
-CURRENT_IAAS="${CURRENT_IAAS}"			# IaaS Information (PaaS-TA에서 제공되는 create-bosh-login.sh 미 사용시 aws/azure/gcp/openstack/vsphere 입력)
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"		# bosh director alias name (PaaS-TA에서 제공되는 create-bosh-login.sh 미 사용시 bosh envs에서 이름을 확인하여 입력)
+CURRENT_IAAS="${CURRENT_IAAS}"			# IaaS Information (When not using create-bosh-login.sh provided by PaaS-TA, enter aws/azure/gcp/openstack/vsphere)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"		# bosh director alias name (When not using create-bosh-login.sh provided by PaaS-TA,check the name at bosh envs and enter)
 
 # DEPLOY
 bosh -e ${BOSH_ENVIRONMENT} -n -d pinpoint deploy --no-redact pinpoint.yml \
@@ -265,16 +265,16 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d pinpoint deploy --no-redact pinpoint.yml \
     -l vars.yml
 ```
 
-- 서비스를 설치한다.  
+- Install Service.  
 ```
 $ cd ~/workspace/service-deployment/pinpoint  
 $ sh ./deploy.sh  
 ```  
 
 
-### <div id="2.6"/> 2.6. 서비스 설치 확인
+### <div id="2.6"/> 2.6. Service Installation Check
 
-설치 완료된 서비스를 확인한다.  
+Check the installed service.  
 
 > $ bosh -e micro-bosh -d pinpoint vms  
 
@@ -298,16 +298,16 @@ webui/30f7c9cf-ab03-4f78-a9bf-96c5148a9ec1            running        z5  10.30.1
 Succeeded
 ```
 
-##  <div id='3'> 3. Sample Web App 연동 Pinpoint 연동
+##  <div id='3'> 3. Sample Web App Interworking Pinpoint Interworking
 
-본 Sample Web App은 개방형 클라우드 플랫폼에 배포되며 Pinpoint의 서비스를 Provision과 Bind를 한 상태에서 사용이 가능하다.
+This Sample Web App is distributed on an open cloud platform and Pinpoint's service can be used with Provision and Bind.
 
-### <div id='3.1'> 3.1. Pinpoint 서비스 브로커 등록
+### <div id='3.1'> 3.1. Pinpoint Service Broker Registration
 
-Pinpoint 서비스팩 배포가 완료 되었으면 Application에서 서비스 팩을 사용하기 위해서 먼저 Pinpoint 서비스 브로커를 등록해 주어야 한다.  
-서비스 브로커 등록시 PaaS-TA에서 서비스브로커를 등록 할 수 있는 사용자로 로그인이 되어 있어야 한다.
+When the Pinpoint service pack deployment is completed, the Pinpoint service broker must be registered first to use the service pack in the application.  
+When registering a service broker, you must be logged in as a user who can register a service broker in PaaS-TA.
 
-- 서비스 브로커 목록을 확인한다.
+- Check the list of service brokers.
 
 > $ cf service-brokers
 ```
@@ -317,16 +317,16 @@ name   url
 No service brokers found
 ```
 
-- 서비스 브로커 등록 명령어
+- Service Broker Registration Commands
 ```
 cf create-service-broker [SERVICE_BROKER] [USERNAME] [PASSWORD] [SERVICE_BROKER_URL]
 
-[SERVICE_BROKER] : 서비스 브로커 명
-[USERNAME] / [PASSWORD] : 서비스 브로커에 접근할 수 있는 사용자 ID / PASSWORD
-[SERVICE_BROKER_URL] : 서비스 브로커 접근 URL
+[SERVICE_BROKER] : Service Broker Name
+[USERNAME] / [PASSWORD] : User ID / PASSWORD with access to service broker
+[SERVICE_BROKER_URL] : Service Broker Access URL
 ```
 
-- Pinpoint 서비스 브로커를 등록한다.
+- Register Pinpoint Service Broker.
 
 > $ cf create-service-broker pinpoint-service-broker admin cloudfoundry http://<broker_ip>:8080
 
@@ -336,7 +336,7 @@ Creating service broker pinpoint-service-broker as admin...
 OK
 ```
 
--   등록된 Pinpoint 서비스 브로커를 확인한다.
+-   Check the registered Pinpoint service broker.
 
 > $ cf service-brokers
 ```
@@ -345,7 +345,7 @@ name url
 pinpoint-service-broker http://10.30.107.182:8080
 ```
 
--   접근 가능한 서비스 목록을 확인한다.
+-   Check the list of accessible services.
 
 > $ cf service-access
 ```
@@ -354,9 +354,9 @@ broker: pinpoint-service-broker
    offering   plan                access   orgs
    Pinpoint   Pinpoint_standard   none  
 ```
-서비스 브로커 생성시 디폴트로 접근을 허용하지 않는다.
+Access is not allowed by default when creating a service broker.
 
-- 특정 조직에 해당 서비스 접근 허용을 할당하고 접근 서비스 목록을 다시 확인한다. (전체 조직)
+- Assign permission to a specific organization to access the service and recheck the access service list. (Overall Organization)
 
 > $ cf enable-service-access Pinpoint
 ```
@@ -364,7 +364,7 @@ Enabling access to all plans of service Pinpoint for all orgs as admin...
 OK
 ```
 
-- 서비스 접근 허용을 확인한다.
+- Check the permission to access the service.
 > $ cf service-access
 ```
 broker: pinpoint-service-broker
@@ -372,12 +372,12 @@ broker: pinpoint-service-broker
    Pinpoint   Pinpoint_standard   all  
 ```
 
-### <div id='3.2'> 3.2. Sample Web App 다운로드
+### <div id='3.2'> 3.2. Sample Web App Download
 
-Sample Web App은 PaaS-TA에 App으로 배포가 된다. 배포된 App에 Pinpoint 서비스 Bind 를 통하여 초기 데이터를 생성하게 된다.  
-바인드 완료 후 연결 url을 통하여 브라우저로 해당 App에 대한 Pinpoint 서비스 모니터링을 할 수 있다.
+The Sample Web App is deployed as an App to PaaS-TA. Initial data is generated through Pinpoint service Bind on the distributed app.  
+After the binding is completed, Pinpoint service monitoring for the app can be performed through the browser through the connection url.
 
-- Sample App 묶음 다운로드
+- Download Zip File of Sample Apps 
 ```
 $ wget https://nextcloud.paas-ta.org/index.php/s/NDgriPk5cgeLMfG/download --content-disposition  
 $ unzip paasta-service-samples.zip  
@@ -386,12 +386,12 @@ $ cd paasta-service-samples/pinpoint
 
 <br>
 
-### <div id='3.3'> 3.3. PaaS-TA에서 서비스 신청
+### <div id='3.3'> 3.3. Apply for service in PaaS-TA
 
-Sample Web App에서 Pinpoint 서비스를 사용하기 위해서는 서비스 신청(Provision)을 해야 한다.  
-*참고: 서비스 신청시 PaaS-TA에서 서비스를 신청 할 수 있는 사용자로 로그인이 되어 있어야 한다.  
+To use the Pinpoint service in the Sample Web App, you must apply for a service (Provision).  
+*Note: When applying for a service, you must be logged in as a user who can apply for a service in PaaS-TA.  
 
-- 먼저 PaaS-TA Marketplace에서 서비스가 있는지 확인을 한다.
+- check whether there is a service in the PaaS-TA Marketplace first.
 
 > $ cf marketplace
 
@@ -403,16 +403,16 @@ service    plans               description
 Pinpoint   Pinpoint_standard   A simple pinpoint implementation
 ```
 
-- 서비스 인스턴스 신청 명령어
+- Service Instance Application Commands
 ```
 cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 
-[SERVICE] : Marketplace에서 보여지는 서비스 명
-[PLAN] : 서비스에 대한 정책
-[SERVICE_INSTANCE] : 생성할 서비스 인스턴스 이름
+[SERVICE] : Service nName shown in the Marketplace
+[PLAN] : Policies for Services
+[SERVICE_INSTANCE] : Name of the service instance to create
 ```
 
-- Marketplace에서 원하는 서비스가 있으면 서비스 신청(Provision)을 하여 서비스 인스턴스를 생성한다.
+- If there is a service that you want in the Marketplace, create a service instance by applying for a service (Provision).
 
 > $ cf create-service Pinpoint Pinpoint_standard PS1
 
@@ -421,7 +421,7 @@ Creating service instance PS1 in org org / space space as admin...
 OK
 ```
 
-- 생성된 Pinpoint 서비스 인스턴스를 확인한다.
+- Check the generated Pinpoint service instance.
 
 > $ cf services
 ```
@@ -432,12 +432,12 @@ name   service      plan                 bound apps   last
 PS1    Pinpoint     Pinpoint_standard                 create succeeded
 ```
 
-### <div id='3.4'> 3.4. Sample Web App에 서비스 바인드 신청 및 App 확인
+### <div id='3.4'> 3.4. Apply for service bind to Sample Web App and check for App
 
-서비스 신청이 완료되었으면 Sample Web App 에서는 생성된 서비스 인스턴스를 Bind 하여 App에서 Pinpoint 서비스를 이용한다.  
-*참고: 서비스 Bind 신청시 PaaS-TA 플랫폼에서 서비스 Bind신청 할 수 있는 사용자로 로그인이 되어 있어야 한다.
+When the service application is completed, the Sample Web App binds the generated service instance and uses the Pinpoint service in the App.  
+*Note: When applying for service bind, you must be logged in as a user who can apply for service bind on the PaaS-TA platform.
 
-- manifest 파일을 확인한다. 
+- Check manifest fie. 
 	
 > $ vi manifest.yml   
 
@@ -455,7 +455,7 @@ applications:
     JBP_CONFIG_SPRING_AUTO_RECONFIGURATION: '{enabled: false}'
 ```
 
-- Pinpoint buildpack 등록  
+- Pinpoint buildpack Registration  
 	
 > $ cf create-buildpack pinpoint_buildpack java-buildpack-pinpoint-monitoring-2402a2c.zip 14
 ```	
@@ -470,7 +470,7 @@ Processing uploaded buildpack pinpoint_buildpack...
 OK
 ```
 
-- --no-start 옵션으로 App을 배포한다.
+- Deploy app with --no-start option.
 
 > $ cf push --no-start 
 ```  
@@ -497,7 +497,7 @@ memory usage:   1024M
 #0   down    2021-11-22T05:26:04Z   0.0%   0 of 0   0 of 0   
 ```  
 	
-- Sample Web App에서 생성한 서비스 인스턴스 바인드 신청을 한다.
+- Apply for service instance bind created by Sample Web App.
 
 > $ cf bind-service spring-music-pinpoint PS1 -c '{"application_name":"spring-music-pinpoint"}'
 	
@@ -507,12 +507,12 @@ OK
 TIP: Use 'cf restage spring-music-pinpoint' to ensure your env variable changes take effect
 ```
 	
-App 구동 시 Service와의 통신을 위하여 보안 그룹을 추가한다.
+When running the app, add a security group for communication with the service.
 	
-- rule.json을 편집한다.  
+- Modify rule.json.  
 > $ vi rule.json   
 ```
-## pinpoint의 collector IP를 destination에 설정
+## Set the collector IP of pinpoint to destination
 [
   {
     "protocol": "all",
@@ -521,7 +521,7 @@ App 구동 시 Service와의 통신을 위하여 보안 그룹을 추가한다.
 ]
 ```
   
-- 보안 그룹을 생성한다.  
+- Create security group.  
 
 > $ cf create-security-group pinpoint rule.json  
 
@@ -531,14 +531,14 @@ Creating security group pinpoint as admin...
 OK		
 ```
   
-- Pinpoint 서비스를 사용할수 있도록 생성한 보안 그룹을 적용한다.
+- Apply the security group that you created to use the Pinpoint service.
 > $ cf bind-running-security-group pinpoint  
 ```
 Binding security group pinpoint to running as admin...
 OK		
 ```
 
-- 바인드가 적용되기 위해서 App을 restage한다.
+- Restage the app for the binding to be applied.
 
 > $ cf restage spring-music-pinpoint
 
@@ -580,7 +580,7 @@ memory usage:   1024M
 There are no running instances of this process.
 ```
 
-- Service 정상 구동 확인
+- Check service normal operation
 > $ cf service PS1
 ```
 name:             PS1
@@ -593,7 +593,7 @@ dashboard:        http://3.53.24.53/#/main
 service broker:   pinpoint-service-broker
 ```
 
-- PINPOINT UI 접근 
+- PINPOINT UI Access 
 ```
 # PINPOINT APP UI
 http://[DASHBOARD]/[application_name]@SPRING_BOOT/realtime

@@ -111,30 +111,30 @@ If the corresponding Stemcell is not uploaded, copy the corresponding Stemcell l
 $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell -n {STEMCELL_URL}
 ```
 
-### <div id="2.3"/> 2.3. Deployment 다운로드  
+### <div id="2.3"/> 2.3. Deployment Download  
 
-서비스 설치에 필요한 Deployment를 Git Repository에서 받아 서비스 설치 작업 경로로 위치시킨다.  
+Download the deployment needed from Git Repository and place the file at the service installation directory 
 
 - Service Deployment Git Repository URL : https://github.com/PaaS-TA/service-deployment/tree/v5.1.5
 
 ```
-# Deployment 다운로드 파일 위치 경로 생성 및 설치 경로 이동
+# Deployment File Download , make directory, change directory
 $ mkdir -p ~/workspace
 $ cd ~/workspace
 
-# Deployment 파일 다운로드
+# Deployment File Download
 $ git clone https://github.com/PaaS-TA/service-deployment.git -b v5.1.5
 
-# common_vars.yml 파일 다운로드(common_vars.yml가 존재하지 않는다면 다운로드)
+# common_vars.yml File Download (Download if common_vars.yml doesn't exist)
 $ git clone https://github.com/PaaS-TA/common.git
 ```
 
-### <div id="2.4"/> 2.4. Deployment 파일 수정
+### <div id="2.4"/> 2.4. Deployment File Modification
 
-BOSH Deployment manifest는 Components 요소 및 배포의 속성을 정의한 YAML 파일이다.  
-Deployment 파일에서 사용하는 network, vm_type, disk_type 등은 Cloud config를 활용하고, 활용 방법은 PaaS-TA AP 설치 가이드를 참고한다.  
+The BOSH Deployment manifest is a YAML file that defines the properties of components elements and deployments. 
+Cloud config is used for network, vm_type, and disk_type used in Deployment files, and refer to the PaaS-TA AP installation guide on the usage.  
 
-- Cloud config 설정 내용을 확인한다.   
+- Check the Cloud config settings.  
 
 > $ bosh -e micro-bosh cloud-config   
 
@@ -149,7 +149,7 @@ azs:
     availability_zone: ap-northeast-2a
   name: z2
 
-... ((생략)) ...
+... ((Skip)) ...
 
 disk_types:
 - disk_size: 1024
@@ -157,7 +157,7 @@ disk_types:
 - disk_size: 1024
   name: 1GB
 
-... ((생략)) ...
+... ((Skip)) ...
 
 networks:
 - name: default
@@ -175,7 +175,7 @@ networks:
     static:
     - 10.0.1.10 - 10.0.1.120
 
-... ((생략)) ...
+... ((Skip)) ...
 
 vm_types:
 - cloud_properties:
@@ -191,29 +191,29 @@ vm_types:
     instance_type: t2.small
   name: small
 
-... ((생략)) ...
+... ((Skip)) ...
 
 Succeeded
 ```
 
-- common_vars.yml을 서버 환경에 맞게 수정한다. 
-- RabbitMQ에서 사용하는 변수는 system_domain, paasta_admin_username, paasta_admin_password, paasta_nats_ip 이다.
+- Modify common_vars.yml to suit the server environment. 
+- The variables used in RabbitMQ are system_domain, paasta_admin_username, paasta_admin_password, and paasta_nats_ip.
 
 > $ vi ~/workspace/common/common_vars.yml
 ```
-... ((생략)) ...
+... ((Skip)) ...
 
-system_domain: "61.252.53.246.nip.io"		# Domain (nip.io를 사용하는 경우 HAProxy Public IP와 동일)
+system_domain: "61.252.53.246.nip.io"		# Domain (Same as HAProxy Public IP when using nip.io)
 paasta_admin_username: "admin"			# PaaS-TA Admin Username
 paasta_admin_password: "admin"			# PaaS-TA Admin Password
 paasta_nats_ip: "10.0.1.121"
   
-... ((생략)) ...
+... ((Skip)) ...
 
 ```
 
 
-- Deployment YAML에서 사용하는 변수 파일을 서버 환경에 맞게 수정한다.
+- Modify the variable files used by Deployment YAML to suit the server environment.
 
 > $ vi ~/workspace/service-deployment/rabbitmq/vars.yml
 
@@ -231,7 +231,7 @@ vm_type_small: "minimal"                                    # vm type small
 private_networks_name: "default"                            # private network name
 
 # COMMON
-bosh_name: "micro-bosh"                                     # bosh name (e.g. micro-bosh) -- ('bosh env' 명령어를 통해 확인 가능)
+bosh_name: "micro-bosh"                                     # bosh name (e.g. micro-bosh) -- (Checkable through 'bosh env' command)
 paasta_deployment_name: "paasta"                            # paasta application platform name (e.g. paasta)
 
 # RABBITMQ
@@ -263,10 +263,10 @@ broker_deregistrar_instances: 1                             # broker-deregistrar
 
 ```
 
-### <div id="2.5"/> 2.5. 서비스 설치
+### <div id="2.5"/> 2.5. Service Installation
 
-- 서버 환경에 맞추어 Deploy 스크립트 파일의 VARIABLES 설정을 수정하고, Option file을 추가할지 선택한다.  
-     (선택) -o operations/cce.yml (CCE 조치를 적용하여 설치)
+- Modify the VARIABLES settings in the Deploy script file to suit the server environment, and select whether to add the option file.
+     (Optinal) -o operations/cce.yml (Apply CCE when Installing)
 
 > $ vi ~/workspace/service-deployment/rabbitmq/deploy.sh
 
@@ -275,7 +275,7 @@ broker_deregistrar_instances: 1                             # broker-deregistrar
 
 # VARIABLES
 COMMON_VARS_PATH="<COMMON_VARS_FILE_PATH>"  # common_vars.yml File Path (e.g. ../../common/common_vars.yml)
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"      # bosh director alias name (PaaS-TA에서 제공되는 create-bosh-login.sh 미 사용시 bosh envs에서 이름을 확인하여 입력)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"      # bosh director alias name (WHen not useing create-bosh-login.sh provided by PaaS-TA, check the name in bosh envs and enter)
 
 # DEPLOY
 bosh -e ${BOSH_ENVIRONMENT} -n -d rabbitmq deploy --no-redact rabbitmq.yml \
@@ -284,16 +284,16 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d rabbitmq deploy --no-redact rabbitmq.yml \
     -l vars.yml
 ```
 
-- 서비스를 설치한다.  
+- Service Installation 
 ```
 $ cd ~/workspace/service-deployment/rabbitmq  
 $ sh ./deploy.sh  
 ```  
 
 
-### <div id="2.6"/> 2.6. 서비스 설치 확인
+### <div id="2.6"/> 2.6. Service Installation Check
 
-설치 완료된 서비스를 확인한다.  
+Check the installed service.  
 
 > $ bosh -e micro-bosh -d rabbitmq vms  
 
@@ -314,16 +314,16 @@ rmq/a4ef4c7e-4776-411d-8317-b2b059e416dd                running        z5  10.30
 Succeeded
 ```
 
-## <div id='3'> 3. RabbitMQ 연동 Sample App 설명
+## <div id='3'> 3. RabbitMQ Linkage Sample App Description
 
-본 Sample App은 PaaS-TA에 배포되며 RabbitMQ의 서비스를 Provision과 Bind를 한 상태에서 사용이 가능하다.
+This Sample App is deployed to PaaS-TA and can be used with RabbitMQ's service on Provision and Bind.
 
-### <div id='3.1'> 3.1. 서비스 브로커 등록 
+### <div id='3.1'> 3.1. Service Broker Registration
 
-RabbitMQ 서비스팩 배포가 완료 되었으면 Application에서 서비스 팩을 사용하기 위해서 먼저 RabbitMQ 서비스 브로커를 등록해 주어야 한다.
-서비스 브로커 등록시에는 PaaS-TA에서 서비스 브로커를 등록할 수 있는 사용자로 로그인 하여야 한다
+When the RabbitMQ service pack deployment is completed, the application must first register the RabbitMQ service broker to use the service pack.
+When registering a service broker, you must log in as a user who can register a service broker in PaaS-TA.
 
-- 서비스 브로커 목록을 확인한다.
+- Check the list of service brokers.
 > $ cf service-brokers
 ```
 Getting service brokers as admin...
@@ -334,16 +334,16 @@ No service brokers found
 
 <br>
 
-- 서비스 브로커 등록 명령어
+- Service Broker Registration Commands
 ```
 cf create-service-broker [SERVICE_BROKER] [USERNAME] [PASSWORD] [SERVICE_BROKER_URL]
 
-[SERVICE_BROKER] : 서비스 브로커 명
-[USERNAME] / [PASSWORD] : 서비스 브로커에 접근할 수 있는 사용자 ID / PASSWORD
-[SERVICE_BROKER_URL] : 서비스 브로커 접근 URL
+[SERVICE_BROKER] : Service Broker Name
+[USERNAME] / [PASSWORD] : User ID / PASSWORD with access to service broker
+[SERVICE_BROKER_URL] : Service Broker Access URL
 ```
 	
-- rabbitmq 서비스 브로커를 등록한다.
+- Register RabbitMQ service broker.
 
 > $ cf create-service-broker rabbitmq-service-broker admin cloudfoundry http://<rmq-broker_ip>:4567
 ```
@@ -354,7 +354,7 @@ OK
 ```
 <br>
 
-- 등록된 RabbitMQ 서비스 브로커를 확인한다.
+- Check the registered RabbitMQ service broker.
 
 > $ cf service-brokers  
 
@@ -366,7 +366,7 @@ rabbitmq-service-broker http://10.30.107.191:4567
 ```
 <br>
 
-- 접근 가능한 서비스 목록을 확인한다.
+- Check the list of accessible services.
 
 > $ cf service-access
 
@@ -377,9 +377,9 @@ broker: rabbitmq-service-broker
    rabbitmq     standard   none      
 ```
 
-- 서비스 브로커 등록시 최초에는 접근을 허용하지 않는다. 따라서 access는 none으로 설정된다.
+- Access is initially not permitted when registering as a service broker. Therefore, access is set to none.
 
-- 특정 조직에 해당 서비스 접근 허용을 할당하고 접근 서비스 목록을 다시 확인한다. (전체 조직)
+- Assign permission to a specific organization to access the service and recheck the access service list. (Overall Organization)
 
 > $ cf enable-service-access rabbitmq 
 
@@ -396,9 +396,9 @@ broker: rabbitmq-service-broker
    rabbitmq     standard   all      
 ```
 
-### <div id='3.2'> 3.2. Sample App 다운로드
+### <div id='3.2'> 3.2. Sample App Download
 
-- Sample App 묶음 다운로드
+- Download Zip file of Sample Apps
 ```
 $ wget https://nextcloud.paas-ta.org/index.php/s/NDgriPk5cgeLMfG/download --content-disposition  
 $ unzip paasta-service-samples.zip  
@@ -408,11 +408,11 @@ $ cd paasta-service-samples/rabbitmq
 <br>
 
 
-### <div id='3.3'> 3.3. 서비스 신청
-Sample App에서 RabbitMQ 서비스를 사용하기 위해서는 서비스 신청(Provision)을 해야 한다.
-*참고: 서비스 신청시 PaaS-TA에서 서비스를 신청 할 수 있는 사용자로 로그인이 되어 있어야 한다.
+### <div id='3.3'> 3.3. Application for service
+Applying for service in order to use the RabbitMQ service in the Sample App, you must apply for service (Provision).
+*Note: When applying for a service, you must be logged in as a user who can apply for a service in PaaS-TA.
 
-- 먼저 PaaS-TA Marketplace에서 서비스가 있는지 확인을 한다.
+- Check whether there is a service in the PaaS-TA Marketplace first.
 
 > $ cf marketplace
 
@@ -427,16 +427,16 @@ TIP: Use 'cf marketplace -s SERVICE' to view descriptions of individual plans of
 ```
 <br>
 
-- 서비스 인스턴스 신청 명령어
+- Service Instance Application Commands
 ```
 cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 
-[SERVICE] : Marketplace에서 보여지는 서비스 명
-[PLAN] : 서비스에 대한 정책
-[SERVICE_INSTANCE] : 생성할 서비스 인스턴스 이름
+[SERVICE] : Service name shown in the Marketplace
+[PLAN] : Policies for Services
+[SERVICE_INSTANCE] : Name of the service instance to create
 ```
 
-- Marketplace에서 원하는 서비스가 있으면 서비스 신청(Provision)을 한다.
+- If there is a service you want on the Marketplace, apply for a service (Provision).
 
 > $ cf create-service rabbitmq standard my_rabbitmq_service
 ```
@@ -446,7 +446,7 @@ OK
 
 <br>
 
-- 생성된 rabbitmq 서비스 인스턴스를 확인한다.
+- Check the generated instance of the RabbitMQ service.
 
 > $ cf services
 
@@ -459,11 +459,11 @@ my_rabbitmq_service   rabbitmq     standard                create succeeded   ra
 
 <br>
 
-### <div id='3.4'> 3.4. Sample App에 서비스 바인드 신청 및 App 확인
-서비스 신청이 완료되었으면 cf 에서 제공하는 rabbit-example-app을 다운로드해서 테스트를 진행한다.
-* 참고: 서비스 Bind 신청시 PaaS-TA에서 서비스 Bind 신청 할 수 있는 사용자로 로그인이 되어 있어야 한다.
+### <div id='3.4'> 3.4. Apply for service bind to Sample App and check App
+Once the service application is completed, download the labbit-example-app provided by cf and conduct the test.
+* Note: When applying for service bind, you must be logged in as a user who can apply for service bind in PaaS-TA..
 
-- manifest 파일을 확인한다.  
+- Check the manifest file.  
 
 > $ vi manifest.yml   
 
@@ -477,7 +477,7 @@ applications:
   - ruby_buildpack
 ```
 
-- --no-start 옵션으로 App을 배포한다.
+- Deploy app with --no-start option.
 
 > $ cf push --no-start 
 ```  
@@ -506,7 +506,7 @@ start command:   thin -R config.ru start
 
 ```  
   
-- Sample Web App에서 생성한 서비스 인스턴스 바인드 신청을 한다.
+- Apply for service instance bind created by Sample Web App.
 
 > $ cf bind-service rabbit-example-app my_rabbitmq_service 
 
@@ -515,12 +515,12 @@ Binding service my_rabbitmq_service to app rabbit-example-app in org system / sp
 OK
 ```
 
-App 구동 시 Service와의 통신을 위하여 보안 그룹을 추가한다.
+When running the app, add a security group for communication with the service.
 
-- rule.json을 편집한다.  
+- Modify rule.json.  
 > $ vi rule.json   
 ```
-## rabbitmq의 haproxy IP를 destination에 설정
+## Set haphroxy IP of rabbitmq to destination
 [
   {
     "protocol": "all",
@@ -529,7 +529,7 @@ App 구동 시 Service와의 통신을 위하여 보안 그룹을 추가한다.
 ]
 ```
   
-- 보안 그룹을 생성한다.  
+- Create a security group.  
 
 > $ cf create-security-group rabbitmq rule.json
 
@@ -539,14 +539,14 @@ Creating security group rabbitmq as admin...
 OK		
 ```
   
-- rabbitmq 서비스를 사용할수 있도록 생성한 보안 그룹을 적용한다.
+- Apply the security group that you created to use the rabbitmq service.
 > $ cf bind-running-security-group rabbitmq 
 ```
 Binding security group rabbitmq to running as admin...
 OK		
 ```
   
-- 바인드가 적용되기 위해서 App을 재기동한다.
+- Restart App for bind to take effect.
 
 > $ cf restart rabbit-example-app 
 
@@ -586,14 +586,14 @@ memory usage:   1024M
 ```  
 
 
--  App이 정상적으로 RabbitMQ 서비스를 사용하는지 확인한다.
+-  Check if the app uses RabbitMQ service normally.
 
 
-- 브라우저에서 확인
+- Check at the browser
 
 >![rabbitmq_image_12]
 
-- 스토어 엔드포인트 테스트
+- Test Store Endpoints
 ```	
 $ curl -XPOST -d 'test' https://rabbit-example-app.<YOUR-DOMAIN>/store -k  
 $ curl -XGET https://rabbit-example-app.<YOUR-DOMAIN>/store -k  

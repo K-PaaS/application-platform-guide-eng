@@ -36,7 +36,7 @@ This document (MySQL Service Pack Installation Guide) describes how to install M
 	
 	
 ### <div id='1.2'> 1.2. Range
-The installation scope was written based on the basic installation to verify the MySQL service pack.
+The installation range was written based on the basic installation to verify the MySQL service pack.
 
 ### <div id='1.3'> 1.3. References
 BOSH Document: [http://bosh.io](http://bosh.io)  

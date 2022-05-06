@@ -270,7 +270,7 @@ broker_deregistrar_broker_vm_type: "medium"                              # broke
 ### <div id="2.5"/> 2.5. Service Installation
 
 - Modify the VARIABLES settings in the Deploy script file to suit the server environment, and select whether to add the option file.
-     (optional) -o operations/cce.yml (Apply CCE when installing)
+	(optional) -o operations/cce.yml (Apply CCE when installing)
 
 
 > $ vi ~/workspace/service-deployment/mongodb/deploy.sh

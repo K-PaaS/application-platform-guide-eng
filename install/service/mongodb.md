@@ -28,7 +28,7 @@
 This document (Mongodb service pack installation guide) describes how to install Mongodb service pack, which is a service pack provided by PaaS-TA, using Bosh.
 
 ### <div id='1.2'> 1.2. Range
-The installation scope was prepared based on the basic installation to verify the Mongodb service pack.
+The installation range was prepared based on the basic installation to verify the Mongodb service pack.
 
 ### <div id='1.3'> 1.3. References
 BOSH Document: [http://bosh.io](http://bosh.io)  

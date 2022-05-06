@@ -250,7 +250,7 @@ Succeeded
 
 ## <div id='3'> 3. MySQL Linkage Sample Web App Description
 
-This Sample App can be used as it is bound with the MySQL service when distributed to PaaS-TA while the MySQL service is provisioned.
+This Sample App can be used as it is bound with the MySQL service when deployed to PaaS-TA while the MySQL service is provisioned.
 
 ### <div id='3.1'> 3.1. Register MySQL Service Broker
 Once the Mysql service pack has been deployed, the application must first register the MySQL service broker to use the service pack.

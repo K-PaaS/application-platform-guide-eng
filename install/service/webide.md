@@ -254,8 +254,8 @@ cloudfoundry_sslSkipValidation: "true"
   
 # VARIABLES
 COMMON_VARS_PATH="<COMMON_VARS_FILE_PATH>"       # common_vars.yml File Path (e.g. ../../common/common_vars.yml)
-CURRENT_IAAS="${CURRENT_IAAS}"					 # IaaS Information (PaaS-TA에서 제공되는 create-bosh-login.sh 미 사용시 aws/azure/gcp/openstack/vsphere 입력)
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"			 # bosh director alias name (PaaS-TA에서 제공되는 create-bosh-login.sh 미 사용시 bosh envs에서 이름을 확인하여 입력)
+CURRENT_IAAS="${CURRENT_IAAS}"					 # IaaS Information (When not using create-bosh-login.sh provided by PaaS-TA, enter aws/azure/gcp/openstack/vsphere)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"			 # bosh director alias name (When not using create-bosh-login.sh provided by PaaS-TA, check the name at bosh envs and enter)
 
 # DEPLOY
 bosh -e ${BOSH_NAME} -n -d web-ide deploy --no-redact web-ide.yml \
@@ -265,16 +265,16 @@ bosh -e ${BOSH_NAME} -n -d web-ide deploy --no-redact web-ide.yml \
     -l vars.yml      
 ```
 
-- 서비스를 설치한다.  
+- Install Service.  
 ```
 $ cd ~/workspace/service-deployment/web-ide
 $ sh ./deploy.sh  
 ```  
 
 
-### <div id="2.6"/> 2.6. 서비스 설치 확인
+### <div id="2.6"/> 2.6. Service Installation Check
 
-설치 완료된 서비스를 확인한다.  
+Check the installled service.  
 
 > $ bosh -e micro-bosh -d web-ide vms
 
@@ -296,17 +296,17 @@ Succeeded
 
 
 
-## <div id='3'/> 3. WEB-IDE의 PaaS-TA 포털사이트 연동
+## <div id='3'/> 3. Web-IDE's PaaS-TA Portal Site Interworking
 
-### <div id='3.1'/> 3.1. WEB-IDE 서비스 브로커 등록
+### <div id='3.1'/> 3.1. WEB-IDE Service Broker Registration
 
-- 서비스 브로커 등록 명령어
+- Service Broker Registration Commands
 ```
 cf create-service-broker [SERVICE_BROKER] [USERNAME] [PASSWORD] [SERVICE_BROKER_URL]
 
-[SERVICE_BROKER] : 서비스 브로커 명
-[USERNAME] / [PASSWORD] : 서비스 브로커에 접근할 수 있는 사용자 ID / PASSWORD
-[SERVICE_BROKER_URL] : 서비스 브로커 접근 URL
+[SERVICE_BROKER] : Service Broker Name
+[USERNAME] / [PASSWORD] : User ID / PASSWORD with access to service broker
+[SERVICE_BROKER_URL] : Service Broker Access URL
 ```
 
 - web-ide 서비스 브로커를 등록한다.

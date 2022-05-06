@@ -63,7 +63,7 @@ bosh-openstack-kvm-ubuntu-bionic-go_agent  1.76      ubuntu-bionic  -    ce507ae
 Succeeded
 ```
 
-If the corresponding Stemcell is not uploaded, copy the corresponding Stemcell link to the corresponding IaaS environment and version from [bosh.io Stemcell] and run the following command:
+If the corresponding Stemcell is not uploaded, copy the Stemcell link to the corresponding IaaS environment and version from [bosh.io Stemcell](https://bosh.io/stemcells/) and run the following command.
 
 ```
 # Example of Stemcell Upload Command

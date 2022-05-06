@@ -2,61 +2,61 @@
 
 ## Table of Contents  
 
-1. [문서 개요](#1)  
-  1.1. [목적](#1.1)  
-  1.2. [범위](#1.2)  
-  1.3. [참고자료](#1.3)  
+1. [Document Outline](#1)  
+  1.1. [Purpose](#1.1)  
+  1.2. [Range](#1.2)  
+  1.3. [References](#1.3)  
   
-2. [배포 파이프라인 서비스 설치](#2)  
+2. [Deployment Pipeline Service Installation](#2)  
  2.1. [Prerequisite](#2.1)  
- 2.2. [Stemcell 확인](#2.2)  
- 2.3. [Deployment 다운로드](#2.3)  
- 2.4. [Deployment 파일 수정](#2.4)  
- 2.5. [서비스 설치](#2.5)    
- 2.6. [서비스 설치 확인](#2.6)  
- 2.7. [[선택] 확장 언어 설치](#2.7)  
+ 2.2. [Stemcell Check](#2.2)  
+ 2.3. [Deployment Download](#2.3)  
+ 2.4. [Deployment File Modification](#2.4)  
+ 2.5. [Service Installation](#2.5)    
+ 2.6. [Service Installation Check](#2.6)  
+ 2.7. [[Optional] Extended language installation](#2.7)  
     
-3. [배포 파이프라인 서비스 관리 및 신청](#3)  
- 3.1. [서비스 브로커 등록](#3.1)  
- 3.2. [UAA Client 등록](#3.2)  
- 3.3. [Java Offline Buildpack 등록](#3.3)  
- 3.4. [서비스 신청](#3.4)  
-　3.4.1. [서비스 신청 - 포탈](#3.4.1)   
-　3.4.2. [서비스 신청 - CLI](#3.4.2)   
+3. [Manage and apply for deployment pipeline services](#3)  
+ 3.1. [Service Broker Registration](#3.1)  
+ 3.2. [UAA Client Registration](#3.2)  
+ 3.3. [Java Offline Buildpack Registration](#3.3)  
+ 3.4. [Service Registration](#3.4)  
+　3.4.1. [Service Registration - Portal](#3.4.1)   
+　3.4.2. [Service Registration - CLI](#3.4.2)   
 
 
-## <div id='1'/> 1. 문서 개요
+## <div id='1'/> 1. Document Outline
 
-### <div id='1.1'/> 1.1. 목적
-본 문서(배포 파이프라인 서비스팩 설치 가이드)는 PaaS-TA에서 제공되는 서비스팩인 배포 파이프라인 서비스팩을 Bosh를 이용하여 설치 하는 방법을 기술하였다.  
+### <div id='1.1'/> 1.1. Range
+This document (Distribution Pipeline Service Pack Installation Guide) describes how to install the distribution pipeline service pack, which is a service pack provided by PaaS-TA, using Bosh.  
 
-### <div id='1.2'/> 1.2. 범위
-설치 범위는 배포 파이프라인 서비스팩을 검증하기 위한 기본 설치를 기준으로 작성하였다.
+### <div id='1.2'/> 1.2. Range
+The installation range was prepared based on the basic installation to verify the distribution pipeline service pack.
 
 
-### <div id='1.3'/> 1.3. 참고 자료
+### <div id='1.3'/> 1.3. References
 BOSH Document: [http://bosh.io](http://bosh.io)  
 Cloud Foundry Document: [https://docs.cloudfoundry.org](https://docs.cloudfoundry.org)  
 
-## <div id='2'/> 2. 배포 파이프라인 서비스 설치
+## <div id='2'/> 2. Deployment Pipeline Service Installation
 
 ### <div id='2.1'/> 2.1. Prerequisite
 
-본 설치 가이드는 Linux 환경에서 설치하는 것을 기준으로 하였다.  
-서비스팩 설치를 위해서는 먼저 BOSH CLI v2 가 설치 되어 있어야 하고 BOSH 에 로그인이 되어 있어야 한다.  
-BOSH CLI v2 가 설치 되어 있지 않을 경우 먼저 BOSH2.0 설치 가이드 문서를 참고 하여 BOSH CLI v2를 설치를 하고 사용법을 숙지 해야 한다.  
-UAA client가 설치 되어 있지 않을 경우 UAA client의 설치가 필요하다.
+This installation guide is based on installing in a Linux environment  
+To install the service pack, BOSH CLI v2 must be installed and logged in to BOSH. 
+If BOSH CLI v2 is not installed, you should first refer to the BOSH 2.0 installation guide document to install BOSH CLI v2 and familiarize the usage.  
+If the UAA client is not installed, installation of the UAA client is required.
 
-- UAA client 설치 (BOSH Dependency 설치 필요)
+- UAA client Installation (BOSH Dependency Installation Required)
 ```
 $ sudo gem install cf-uaac
 $ uaac -v
 ```
 
-### <div id='2.2'/> 2.2. Stemcell 확인
+### <div id='2.2'/> 2.2. Stemcell Check
 
-Stemcell 목록을 확인하여 서비스 설치에 필요한 Stemcell이 업로드 되어 있는 것을 확인한다.  
-본 가이드의 Stemcell은 ubuntu-bionic 1.76를 사용한다.  
+Check the Stemcell list to make sure that the Stemcell required for service installation is uploaded.  
+The Stemcell of this guide uses ubuntu-bionic 1.76.  
 
 > $ bosh -e ${BOSH_ENVIRONMENT} stemcells
 
@@ -73,37 +73,37 @@ bosh-openstack-kvm-ubuntu-bionic-go_agent  1.76      ubuntu-bionic  -    ce507ae
 Succeeded
 ```
 
-만약 해당 Stemcell이 업로드 되어 있지 않다면 [bosh.io 스템셀](https://bosh.io/stemcells/) 에서 해당되는 IaaS환경과 버전에 해당되는 스템셀 링크를 복사 후 다음과 같은 명령어를 실행한다.
+If the corresponding Stemcell is not uploaded, copy the Stemcell link to the corresponding IaaS environment and version from [bosh.io Stemcell](https://bosh.io/stemcells/) and run the following command.
 
 ```
-# Stemcell 업로드 명령어 예제
+# Example of Stemcell Upload Command
 $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell -n {STEMCELL_URL}
 ```
 
-### <div id='2.3'/> 2.3. Deployment 다운로드  
+### <div id='2.3'/> 2.3. Deployment Download  
 
-서비스 설치에 필요한 Deployment를 Git Repository에서 받아 서비스 설치 작업 경로로 위치시킨다.  
+Download the deployment needed from Git Repository and place the file in the service installation directory.  
 
 - Service Deployment Git Repository URL : https://github.com/PaaS-TA/service-deployment/tree/v5.1.5
 
 ```
-# Deployment 다운로드 파일 위치 경로 생성 및 설치 경로 이동
+# Deployment File Download, make directory, change directory
 $ mkdir -p ~/workspace
 $ cd ~/workspace
 
-# Deployment 파일 다운로드
+# Deployment File Download
 $ git clone https://github.com/PaaS-TA/service-deployment.git -b v5.1.5
 
-# common_vars.yml 파일 다운로드(common_vars.yml가 존재하지 않는다면 다운로드)
+# common_vars.yml File Download(Download if common_vars.yml doesn't exist)
 $ git clone https://github.com/PaaS-TA/common.git
 ```
 
-### <div id='2.4'/> 2.4. Deployment 파일 수정
+### <div id='2.4'/> 2.4. Deployment File Modification
 
-BOSH Deployment manifest는 Components 요소 및 배포의 속성을 정의한 YAML 파일이다.  
-Deployment 파일에서 사용하는 network, vm_type, disk_type 등은 Cloud config를 활용하고, 활용 방법은 PaaS-TA AP 설치 가이드를 참고한다.  
+The BOSH Deployment manifest is a YAML file that defines the properties of components elements and deployments.  
+Cloud config is used for network, vm_type, and disk_type used in Deployment files, and refer to the PaaS-TA AP installation guide for the usage  
 
-- Cloud config 설정 내용을 확인한다.   
+- Check the Cloud config settings.   
 
 > $ bosh -e micro-bosh cloud-config   
 
@@ -118,7 +118,7 @@ azs:
     availability_zone: ap-northeast-2a
   name: z2
 
-... ((생략)) ...
+... ((SKip)) ...
 
 disk_types:
 - disk_size: 1024
@@ -126,7 +126,7 @@ disk_types:
 - disk_size: 1024
   name: 1GB
 
-... ((생략)) ...
+... ((Skip)) ...
 
 networks:
 - name: default
@@ -144,7 +144,7 @@ networks:
     static:
     - 10.0.1.10 - 10.0.1.120
 
-... ((생략)) ...
+... ((Skip)) ...
 
 vm_types:
 - cloud_properties:
@@ -160,25 +160,25 @@ vm_types:
     instance_type: t2.small
   name: small
 
-... ((생략)) ...
+... ((Skip)) ...
 
 Succeeded
 ```
 
-- common_vars.yml을 서버 환경에 맞게 수정한다. 
-- 배포 파이프라인에서 사용하는 변수는 system_domain 이다.
+- Modify common_vars.yml to suit the server environment. 
+- The variable used in the distribution pipeline is system_domain.
 
 > $ vi ~/workspace/common/common_vars.yml
 ```
-... ((생략)) ...
+... ((Skip)) ...
 
-system_domain: "61.252.53.246.nip.io"		# Domain (nip.io를 사용하는 경우 HAProxy Public IP와 동일)
+system_domain: "61.252.53.246.nip.io"		# Domain (Same as HAProxy Public IP when using nip.io)
 
-... ((생략)) ...
+... ((Skip)) ...
 
 ```
 
-- Deployment YAML에서 사용하는 변수 파일을 서버 환경에 맞게 수정한다.
+- Modify the variable files used by Deployment YAML to suit the server environment.
 
 > $ vi ~/workspace/service-deployment/pipeline-service/vars.yml
 
@@ -237,7 +237,7 @@ ci_server_dedicated_internal_static_ip: "<CI_SERVER_DEDICATED_PRIVATE_IP>"    # 
 ci_server_password: "<CI_SERVER_PASSWORD>"                                    # ci server(Jenkins) password (e.g. "admin!@#")
 ci_server_admin_user_username: "<CI_SERVER_ADMIN_USERNAME>"                   # ci server(Jenkins) admin username (e.g. "admin")
 ci_server_admin_user_password: "<CI_SERVER_ADMIN_PASSWORD>"                   # ci server(Jenkins) admin password (e.g. "admin!@#")
-ci_server_http_url: "<CI_SERVER_HTTP_URL>"                                    # ci server(Jenkins) 내부 IP 앞 두자리 입력 (e.g. 10.110.10.10 의 경우, "10.110" 입력)
+ci_server_http_url: "<CI_SERVER_HTTP_URL>"                                    # ci server(Jenkins) Enter the first two digits of the internal IP (e.g. If 10.110.10.10, enter "10.110")
 
 # BINARY_STORAGE
 binary_storage_azs: [z5]                                           # binary storage azs
@@ -245,9 +245,9 @@ binary_storage_instances: 1                                        # binary stor
 binary_storage_persistent_disk_type: "5GB"                         # binary storage persistent disk type
 binary_storage_vm_type: "small"                                    # binary storage vm type
 binary_storage_internal_static_ips: "<BINARY_STORAGE_PRIVATE_IP>"  # binary storage's private IP (e.g. "10.0.161.35")
-binary_storage_proxy_port: "10008"                                 # binary storage 프록시 서버 Port(Object Storage 접속 Port) (default : 10008)
+binary_storage_proxy_port: "10008"                                 # binary storage Proxy Server Port(Object Storage access Port) (default : 10008)
 binary_storage_auth_port: 15001                                    # binary storage keystone port (e.g. 15001) -- Do Not Use "5000"
-binary_storage_username: "paasta-pipeline"                         # binary storage 최초 생성되는 유저이름(Object Storage 접속 유저이름)
+binary_storage_username: "paasta-pipeline"                         # binary storage First generated user name(Object Storage Access Username)
 binary_storage_password: "paasta-pipeline"                         # binary storage 최초 생성되는 유저 비밀번호(Object Storage 접속 유저 비밀번호)
 binary_storage_tenantname: "paasta-pipeline"                       # binary storage 최초 생성되는 테넌트 이름(Object Storage 접속 테넌트 이름)
 binary_storage_email: "email@email.com"                            # binary storage 최소 생성되는 유저의 이메일

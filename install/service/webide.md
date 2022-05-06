@@ -366,7 +366,7 @@ broker: webide-service-broker
 > - Name : WEB IDE
 > - Category :  Development Support Tools
 > - Service : webide
-> - Thumbnail : [WEB IDE 서비스 썸네일]
+> - Thumbnail : [WEB IDE Service Thumbnail]
 > - Document URL : https://github.com/PaaS-TA/PAAS-TA-WEB-IDE-BROKER
 > App bind usage : N
 > - Public : Y

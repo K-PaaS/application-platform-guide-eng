@@ -31,7 +31,7 @@
 This document (PaaS-TA AP Portal UI Installation Guide) describes how to install PaaS-TA AP Portal UI using BOSH.
 
 ### <div id="1.2"/> 1.2. Range
-The installation scope was created based on the basic installation of the Portal UI to verify the PaaS-TA AP Portal.
+The installation range was created based on the basic installation of the Portal UI to verify the PaaS-TA AP Portal.
 
 ### <div id="1.3"/> 1.3. References
 BOSH Document: [http://bosh.io](http://bosh.io)  

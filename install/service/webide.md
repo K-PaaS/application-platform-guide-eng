@@ -1,65 +1,65 @@
 ### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > WEB IDE Service
 
 ## Table of Contents
-1. [문서 개요](#1)  
-  1.1. [목적](#1.1)  
-  1.2. [범위](#1.2)    
-  1.3. [참고자료](#1.3)  
+1. [Document Outline](#1)  
+  1.1. [Purpose](#1.1)  
+  1.2. [Range](#1.2)    
+  1.3. [References](#1.3)  
 
-2. [WEB IDE 설치](#2)  
+2. [WEB IDE Installation](#2)  
   2.1. [Prerequisite](#2.1)   
-  2.2. [Stemcell 확인](#2.2)    
-  2.3. [Deployment 다운로드](#2.3)   
-  2.4. [Deployment 파일 수정](#2.4)  
-  2.5. [서비스 설치](#2.5)    
-  2.6. [서비스 설치 확인](#2.6)  
+  2.2. [Stemcell Check](#2.2)    
+  2.3. [Deployment Download](#2.3)   
+  2.4. [Deployment File Modification](#2.4)  
+  2.5. [Service Installation](#2.5)    
+  2.6. [Service Installation Check](#2.6)  
 
-3. [WEB-IDE의 PaaS-TA 포털사이트 연동](#3)  
- 3.1. [WEB-IDE 서비스 브로커 등록](#3.1)  
- 3.2. [서비스 신청](#3.2)  
-　3.2.1. [서비스 신청 - 포탈](#3.2.1)   
-　3.2.2. [서비스 신청 - CLI](#3.2.2)   
+3. [Web-IDE's PaaS-TA Portal Site Interworking](#3)  
+ 3.1. [WEB-IDE Service Broker Registration](#3.1)  
+ 3.2. [Application for service](#3.2)  
+　3.2.1. [Application for service - Portal](#3.2.1)   
+　3.2.2. [Application for service - CLI](#3.2.2)   
 
-4. [WEB-IDE 에서 CF CLI 사용법](#4)  
-  4.1. [WEB-IDE New Project 화면](#4.1)  
-  4.2. [WEB-IDE Workspace 화면](#4.2)  
-  4.3. [WEB-IDE Teminal에서의 CF CLI 실행](#4.3)  
+4. [Use guide of CF CLI in WEB-IDE](#4)  
+  4.1. [WEB-IDE New Project Screen](#4.1)  
+  4.2. [WEB-IDE Workspace Screen](#4.2)  
+  4.3. [Run the CF CLI on the WEB-IDE Terminal](#4.3)  
 
-5. [WEB IDE IP 증설](#5)  
-  5.1. [서비스 확인](#5.1)   
-  5.2. [Deployment 파일 수정](#5.2)   
-  5.3. [서비스 재 설치](#5.3)    
-  5.4. [서비스 설치 확인](#5.4)    
-
-
-## <div id="1"/> 1. 문서 개요
-
-### <div id='1.1'/>1.1. 목적
-
-본 문서(WEB-IDE 서비스팩 설치 가이드)는 PaaS-TA에서 제공되는 서비스팩인 WEB-IDE 서비스팩을 Bosh를 이용하여 설치 하는 방법을 기술하였다.
-
-### <div id='1.2'/> 1.2. 범위
-설치 범위는 WEB-IDE 사용을 검증하기 위한 기본 설치를 기준으로 작성하였다.
+5. [WEB IDE IP Expansion](#5)  
+  5.1. [Service Check](#5.1)   
+  5.2. [Deployment File Modification](#5.2)   
+  5.3. [Service reinstallation](#5.3)    
+  5.4. [Service Installation Check](#5.4)    
 
 
-### <div id='1.3'/>1.3. 참고자료
+## <div id="1"/> 1. Document Outline
+
+### <div id='1.1'/>1.1. Purpose
+
+This document (WEB-IDE service pack installation guide) describes how to install the WEB-IDE service pack, which is a service pack provided by PaaS-TA, using Bosh.
+
+### <div id='1.2'/> 1.2. Range
+The installation range was prepared based on the basic installation to verify the use of WEB-IDE.
+
+
+### <div id='1.3'/>1.3. References
 BOSH Document: [http://bosh.io](http://bosh.io)  
 Cloud Foundry Document: [https://docs.cloudfoundry.org](https://docs.cloudfoundry.org)  
 Eclipse Che Technology: [https://www.eclipse.org/che/technology/](https://www.eclipse.org/che/technology/)  
 
 
-## <div id='2'/> 2. WEB IDE 설치  
+## <div id='2'/> 2. WEB IDE Installation  
 
 ### <div id="2.1"/> 2.1. Prerequisite 
 
-본 설치 가이드는 Linux 환경에서 설치하는 것을 기준으로 하였다.  
-서비스팩 설치를 위해서는 먼저 BOSH CLI v2 가 설치 되어 있어야 하고 BOSH 에 로그인이 되어 있어야 한다.  
-BOSH CLI v2 가 설치 되어 있지 않을 경우 먼저 BOSH2.0 설치 가이드 문서를 참고 하여 BOSH CLI v2를 설치를 하고 사용법을 숙지 해야 한다.  
+This installation guide is based on installing in a Linux environment. 
+In order to install the service pack, BOSH CLI v2 must be installed and logged in to BOSH.  
+If BOSH CLI v2 is not installed, you should first refer to the BOSH 2.0 installation guide document to install BOSH CLI v2 and familiarize with the usage.
 
-### <div id="2.2"/> 2.2. Stemcell 확인  
+### <div id="2.2"/> 2.2. Stemcell Check  
 
-Stemcell 목록을 확인하여 서비스 설치에 필요한 Stemcell이 업로드 되어 있는 것을 확인한다.  
-본 가이드의 Stemcell은 ubuntu-bionic 1.76를 사용한다.  
+Check the Stemcell list to make sure that the Stemcell required for service installation is uploaded. 
+The Stemcell of this guide uses ubuntu-bionic 1.76. 
 
 > $ bosh -e ${BOSH_ENVIRONMENT} stemcells
 
@@ -76,7 +76,7 @@ bosh-openstack-kvm-ubuntu-bionic-go_agent  1.76      ubuntu-bionic  -    ce507ae
 Succeeded
 ```
 
-만약 해당 Stemcell이 업로드 되어 있지 않다면 [bosh.io 스템셀](https://bosh.io/stemcells/) 에서 해당되는 IaaS환경과 버전에 해당되는 스템셀 링크를 복사 후 다음과 같은 명령어를 실행한다.
+If the corresponding Stemcell is not uploaded, copy the Stemcell link to the corresponding IaaS environment and version from [bosh.io Stemcell](https://bosh.io/stemcells/) and run the following command.
 
 ```
 # Stemcell 업로드 명령어 예제

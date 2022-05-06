@@ -2,39 +2,39 @@
 
 ## Table of Contents  
 
-1. [문서 개요](#1)  
-  1.1. [목적](#1.1)   
-  1.2. [범위](#1.2)   
-  1.3. [참고자료](#1.3)  
+1. [Document Outline](#1)  
+  1.1. [Purpose](#1.1)   
+  1.2. [Range](#1.2)   
+  1.3. [References](#1.3)  
   
-2. [Pinpoint 서비스 설치](#2)  
+2. [Pinpoint Service Installation](#2)  
   2.1. [Prerequisite](#2.1)   
-  2.2. [Stemcell 확인](#2.2)    
-  2.3. [Deployment 다운로드](#2.3)   
-  2.4. [Deployment 파일 수정](#2.4)  
-  2.5. [서비스 설치](#2.5)    
-  2.6. [서비스 설치 확인](#2.6)  
+  2.2. [Stemcell Check](#2.2)    
+  2.3. [Deployment Download](#2.3)   
+  2.4. [Deployment File Modification](#2.4)  
+  2.5. [Service Installation](#2.5)    
+  2.6. [Service Installation Check](#2.6)  
  
-3. [Sample Web App 연동 Pinpoint 연동](#3)    
-  3.1. [Pinpoint 서비스 브로커 등록](#3.1)  
-  3.2. [Sample Web App 구조](#3.2)   
-  3.3. [PaaS-TA에서 서비스 신청](#3.3)  
-  3.4. [Sample Web App에 서비스 바인드 신청 및 App 확인](#3.4)  
+3. [Sample Web App Interworking Pinpoint Interworking](#3)    
+  3.1. [Pinpoint Service Broker Registration](#3.1)  
+  3.2. [Sample Web App Structure](#3.2)   
+  3.3. [Apply for service in PaaS-TA](#3.3)  
+  3.4. [Apply for service bind to Sample Web App and check for App](#3.4)  
 
-## <div id='1'> 1. 문서 개요
-### <div id='1.1'> 1.1. 목적
+## <div id='1'> 1. Document Outline
+### <div id='1.1'> 1.1. Purpose
 
-본 문서(Pinpoint 서비스팩 설치 가이드)는 PaaS-TA에서 제공되는 서비스팩인 Pinpoint 서비스팩을 Bosh를 이용하여 설치 하는 방법을 기술하였다.
+This document (Pinpoint Service Pack Installation Guide) describes how to install Pinpoint Service Pack, a service pack provided by PaaS-TA, using Bosch.
 
-### <div id='1.2'> 1.2. 범위
-설치 범위는 Pinpoint 서비스팩을 검증하기 위한 기본 설치를 기준으로 작성하였다.
+### <div id='1.2'> 1.2. Range
+The installation Range was prepared based on the basic installation to verify the Pinpoint service pack.
 
 
-### <div id='1.3'> 1.3. 참고자료
+### <div id='1.3'> 1.3. References
 BOSH Document: [http://bosh.io](http://bosh.io)  
 Cloud Foundry Document: [https://docs.cloudfoundry.org](https://docs.cloudfoundry.org)  
 
-## <div id='2'> 2. Pinpoint 서비스 설치
+## <div id='2'> 2. Pinpoint Service Installation
 
 ### <div id="2.1"/> 2.1. Prerequisite  
 

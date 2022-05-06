@@ -79,34 +79,34 @@ Succeeded
 If the corresponding Stemcell is not uploaded, copy the Stemcell link to the corresponding IaaS environment and version from [bosh.io Stemcell](https://bosh.io/stemcells/) and run the following command.
 
 ```
-# Stemcell 업로드 명령어 예제
+# Example of Stemcell Upload Command
 $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell -n {STEMCELL_URL}
 ```
 
-### <div id="2.3"/> 2.3. Deployment 다운로드
+### <div id="2.3"/> 2.3. Deployment Download
 
-서비스 설치에 필요한 Deployment를 Git Repository에서 받아 서비스 설치 작업 경로로 위치시킨다.  
+Download the deployment needed from Git Repository and place the file at the service installation directory.  
 
 - Service Deployment Git Repository URL : https://github.com/PaaS-TA/service-deployment/tree/v5.1.5
 
 ```
-# Deployment 다운로드 파일 위치 경로 생성 및 설치 경로 이동
+# Deployment File Download , make directory, change directory
 $ mkdir -p ~/workspace
 $ cd ~/workspace
 
-# Deployment 파일 다운로드
+# Deployment File Download
 $ git clone https://github.com/PaaS-TA/service-deployment.git -b v5.1.5
 
-# common_vars.yml 파일 다운로드(common_vars.yml가 존재하지 않는다면 다운로드)
+# common_vars.yml File Download(Download if common_vars.yml doesn't exist)
 $ git clone https://github.com/PaaS-TA/common.git
 ```
 
-### <div id="2.4"/> 2.4. Deployment 파일 수정
+### <div id="2.4"/> 2.4. Deployment File Modification
 
-BOSH Deployment manifest는 Components 요소 및 배포의 속성을 정의한 YAML 파일이다.  
-Deployment 파일에서 사용하는 network, vm_type, disk_type 등은 Cloud config를 활용하고, 활용 방법은 PaaS-TA AP 설치 가이드를 참고한다.  
+The BOSH Deployment manifest is a YAML file that defines the properties of components elements and deployments.
+Cloud config is used for network, vm_type, and disk_type used in Deployment files, and refer to the PaaS-TA AP installation guide the usage.  
 
-- Cloud config 설정 내용을 확인한다.   
+- Check the Cloud config settings.   
 
 > $ bosh -e micro-bosh cloud-config   
 
@@ -121,7 +121,7 @@ azs:
     availability_zone: ap-northeast-2a
   name: z2
 
-... ((생략)) ...
+... ((Skip)) ...
 
 disk_types:
 - disk_size: 1024
@@ -129,7 +129,7 @@ disk_types:
 - disk_size: 1024
   name: 1GB
 
-... ((생략)) ...
+... ((Skip)) ...
 
 networks:
 - name: default
@@ -147,7 +147,7 @@ networks:
     static:
     - 10.0.1.10 - 10.0.1.120
 
-... ((생략)) ...
+... ((Skip)) ...
 
 vm_types:
 - cloud_properties:
@@ -163,40 +163,40 @@ vm_types:
     instance_type: t2.small
   name: small
 
-... ((생략)) ...
+... ((Skip)) ...
 
 Succeeded
 ```
 
-- common_vars.yml을 서버 환경에 맞게 수정한다. 
-- WEB IDE에서 사용하는 변수는 bosh_url, bosh_client_admin_id, bosh_client_admin_secret, bosh_director_port,  bosh_oauth_port, bosh_version, system_domain, paasta_admin_username, paasta_admin_password 이다.
+- Modify common_vars.yml to suit the server environment. 
+- The Variables used in WEB IDE are: bosh_url, bosh_client_admin_id, bosh_client_admin_secret, bosh_director_port,  bosh_oauth_port, bosh_version, system_domain, paasta_admin_username, paasta_admin_password.
 
 > $ vi ~/workspace/common/common_vars.yml
 ```
-... ((생략)) ...
+... ((Skip)) ...
 
 bosh_url: "https://10.0.1.6"			# BOSH URL (e.g. "https://00.000.0.0")
 bosh_client_admin_id: "admin"			# BOSH Client Admin ID
-bosh_client_admin_secret: "ert7na4jpew"		# BOSH Client Admin Secret('echo $(bosh int ~/workspace/paasta-deployment/bosh/{iaas}/creds.yml --path /admin_password)' 명령어를 통해 확인 가능)
+bosh_client_admin_secret: "ert7na4jpew"		# BOSH Client Admin Secret('echo $(bosh int ~/workspace/paasta-deployment/bosh/{iaas}/creds.yml --path /admin_password)' command can be used to check)
 bosh_director_port: 25555			# BOSH director port
 bosh_oauth_port: 8443				# BOSH oauth port
-bosh_version: 271.2				# BOSH version('bosh env' 명령어를 통해 확인 가능, on-demand service용, e.g. "271.2")
-system_domain: "61.252.53.246.nip.io"		# Domain (nip.io를 사용하는 경우 HAProxy Public IP와 동일)
+bosh_version: 271.2				# BOSH version(can be checked through 'bosh env' command, on-demand service용, e.g. "271.2")
+system_domain: "61.252.53.246.nip.io"		# Domain (Same as HAProxy Public IP when using nip.io)
 paasta_admin_username: "admin"			# PaaS-TA Admin Username
 paasta_admin_password: "admin"			# PaaS-TA Admin Password
 
-... ((생략)) ...
+... ((Skip)) ...
 
 ```
 
 
 
-- Deployment YAML에서 사용하는 변수 파일을 서버 환경에 맞게 수정한다.
+- Modify the variable files used by Deployment YAML to suit the server environment.
 
 > $ vi ~/workspace/service-deployment/web-ide/vars.yml
 
 ```
-deployment_name: "web-ide"                                                # 서비스 배포 명
+deployment_name: "web-ide"                                                # Service Deployed Name
 
 # STEMCELL
 stemcell_os: "ubuntu-bionic"                                              # stemcell os
@@ -211,8 +211,8 @@ public_networks_name: "vip"                                               # publ
 eclipse_che_azs: [z7]                                                     # eclipse-che : azs
 eclipse_che_instances: 0                                                  # eclipse-che : instances (default : 0)
 eclipse_che_vm_type: "large"                                              # eclipse-che : vm type
-eclipse_che_public_ips: "<ECLIPSE_CHE_PUBLIC_IPS>"                        # eclipse-che : public ips (e.g. ["00.00.00.00" , "11.11.11.11"], 초기 배포시 [])
-eclipse_che_buffer_ips: "<ECLIPSE_CHE_BUFFER_IPS>"                        # eclipse-che : OnDemand 에서 사용할 여분의 public ips
+eclipse_che_public_ips: "<ECLIPSE_CHE_PUBLIC_IPS>"                        # eclipse-che : public ips (e.g. ["00.00.00.00" , "11.11.11.11"], At initial deployment [])
+eclipse_che_buffer_ips: "<ECLIPSE_CHE_BUFFER_IPS>"                        # eclipse-che : Extra public ips for On Demand
 
 
 # MARIA_DB
@@ -235,17 +235,17 @@ serviceDefinition_plan1_name: "<SERVICE_PLAN_NAME>"                       # serv
 serviceDefinition_plan1_desc: "WEB IDE SERVICE"
 serviceDefinition_bullet_name: "Web IDE OnDemand Server Use"
 serviceDefinition_bullet_desc: "Web IDE Service Using a OnDemand Server"
-serviceDefinition_org_limitation: "-1"                                    # serviceDefinition_org_limitation : 조직별 서비스 제한
-serviceDefinition_space_limitation: "-1"                                  # serviceDefinition_space_limitation : 공간별 서비스 제한
+serviceDefinition_org_limitation: "-1"                                    # serviceDefinition_org_limitation : Restrictions Service for Organizations
+serviceDefinition_space_limitation: "-1"                                  # serviceDefinition_space_limitation : Restrictions Service for Spacae
 
 # CF
 cloudfoundry_sslSkipValidation: "true"
 ```
 
-### <div id="2.5"/> 2.5. 서비스 설치
+### <div id="2.5"/> 2.5. Service Installation
 
-- 서버 환경에 맞추어 Deploy 스크립트 파일의 VARIABLES 설정을 수정한다.  
-  (선택) -o operations/cce.yml (CCE 조치를 적용하여 설치) 
+- Modify the VARIABLES settings in the Deploy script file to suit the server environment.  
+  (Optional) -o operations/cce.yml (Apply CCE when installing) 
 
 > $ vi ~/workspace/service-deployment/web-ide/deploy.sh
 

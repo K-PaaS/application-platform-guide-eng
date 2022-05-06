@@ -162,7 +162,7 @@ Succeeded
 ```
 ... ((Skip)) ...
 
-system_domain: "61.252.53.246.nip.io"		# Domain (Same as HAProxy Public IP when using nip.io)
+system_domain: "61.252.53.246.nip.io"		# Domain (Same HAProxy Public IP when using nip.io)
 paasta_admin_username: "admin"			# PaaS-TA Admin Username
 paasta_admin_password: "admin"			# PaaS-TA Admin Password
 paasta_nats_ip: "10.0.1.121"

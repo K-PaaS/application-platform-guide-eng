@@ -309,7 +309,7 @@ cf create-service-broker [SERVICE_BROKER] [USERNAME] [PASSWORD] [SERVICE_BROKER_
 [SERVICE_BROKER_URL] : Service Broker Access URL
 ```
 
-- web-ide 서비스 브로커를 등록한다.
+- Register a web-IDE service broker.
 > $ cf create-service-broker webide-service-broker admin cloudfoundry http://<webide-broker_ip>:8080
 ```
 $ cf create-service-broker webide-service-broker admin cloudfoundry http://10.30.56.56:8080
@@ -318,7 +318,7 @@ OK
 ```
 <br>
 
-- 등록된 WEB-IDE 서비스 브로커를 확인한다.
+- Check the registered WEB-IDE service broker.
 > $ cf service-brokers  
 ```
 Getting service brokers as admin...
@@ -328,7 +328,7 @@ webide-service-broker         http://10.30.56.56:8080
 ```
 <br>
 
-- 접근 가능한 서비스 목록을 확인한다.
+- Check the list of accessible services.
 > $ cf service-access
 ```
 Getting service access as admin...
@@ -337,9 +337,9 @@ broker: webide-service-broker
    webide     dedicated-vm   none      
 ```
 <br>
-서비스 브로커 등록시 최초에는 접근을 허용하지 않는다. 따라서 access는 none으로 설정된다.
+Access is initially not permitted when registering as a service broker. Therefore, access is set to none.
 
-- 특정 조직에 해당 서비스 접근 허용을 할당하고 접근 서비스 목록을 다시 확인한다. (전체 조직)
+- Assign permission to a specific organization to access the service and recheck the access service list. (Overall Organization)
 > $ cf enable-service-access webide <br>
 ```
 Enabling access to all plans of service webide for all orgs as admin...
@@ -355,43 +355,43 @@ broker: webide-service-broker
 ```
 <br>
 
-### <div id='3.2'/> 3.2. 서비스 신청
-#### <div id='3.2.1'/> 3.2.1. 서비스 신청 - 포탈
+### <div id='3.2'/> 3.2. Application for service
+#### <div id='3.2.1'/> 3.2.1. Application for service - Portal
 
-1. 운영자 포털에 접속하여 운영관리 > 카탈로그 > 앱서비스를 클릭하여 앱 서비스 등록을 클릭한다..  
+1. Access the Operator Portal go to Manage Operations > Catalog > App Service and click Register App Service.  
 
-- 아래의 내용을 상세 페이지에 입력한다.
+- Enter the following information on the detail page.
 
-> ※ 카탈로그 관리 > 앱 서비스
-> - 이름 : WEB IDE
-> - 분류 :  개발 지원 도구
-> - 서비스 : webide
-> - 썸네일 : [WEB IDE 서비스 썸네일]
-> - 문서 URL : https://github.com/PaaS-TA/PAAS-TA-WEB-IDE-BROKER
-> - 앱 바인드 사용 : N
-> - 공개 : Y
-> - 대시보드 사용 : Y
-> - 온디멘드 : N
-> - 태그 : paasta / tag6, free / tag2
-> - 요약 : WEB IDE
-> - 설명 :
-> 웹 프로그래밍을 위한 WEB IDE - eclipse-che
+> ※ Catalog Management > App Service
+> - Name : WEB IDE
+> - Category :  Development Support Tools
+> - Service : webide
+> - Thumbnail : [WEB IDE 서비스 썸네일]
+> - Document URL : https://github.com/PaaS-TA/PAAS-TA-WEB-IDE-BROKER
+> App bind usage : N
+> - Public : Y
+> - Dashboard usage : Y
+> - On demand : N
+> - Tag : paasta / tag6, free / tag2
+> - Summary : WEB IDE
+> - Description :
+> WEB IDE for Web Programming - eclipse-che
 >  
 > ![3-2-2]
 
-- PaaS-TA 사용자 포탈에 접속하여, 카탈로그를 통해 서비스를 신청한다.   
+- Access the PaaS-TA User Portal, and apply for services through the catalog.   
 
 ![003]
 
-- 대시보드 URL을 통해 서비스에 접근한다.    
+- Access the service through the dashboard URL.    
 
 ![004]  
 
 
-#### <div id="3.2.2"/>  3.2.2. 서비스 신청 - CLI
-CLI 를 통한 WEB-IDE 서비스 신청 방법을 설명한다.
+#### <div id="3.2.2"/>  3.2.2. Application for Service - CLI
+Guide on how to apply for the WEB-IDE service through the CLI.
 
-- PaaS-TA Marketplace에서 서비스가 있는지 확인을 한다.
+- Check if the service is available at PaaS-TA Marketplace.
 
 > $ cf marketplace
 ```
@@ -403,16 +403,16 @@ webide     dedicated-vm   A paasta web ide service for application development.p
 ```
 <br>
 
-- 서비스 인스턴스 신청 명령어
+- Service Instance Application Commands
 ```
 cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 
-[SERVICE] : Marketplace에서 보여지는 서비스 명
-[PLAN] : 서비스에 대한 정책
-[SERVICE_INSTANCE] : 생성할 서비스 인스턴스 이름
+[SERVICE] : Name shown at the Marketplace
+[PLAN] : Policies for Services
+[SERVICE_INSTANCE] : Name of the service instance to create
 ```
 
-- Marketplace에서 원하는 서비스가 있으면 서비스 신청(Provision)을 한다.
+-If there is a service you want on the Marketplace, apply for a service (Provision).
 
 > $ cf create-service webide dedicated-vm webide-service  
 ```
@@ -423,7 +423,7 @@ Create in progress. Use 'cf services' or 'cf service webide' to check operation 
 ```
 <br>
 
-- 생성된 WEB-IDE VM 인스턴스를 확인한다.
+- Check the created WEB-IDE VM instance.
 
 > bosh -e micro-bosh -d web-ide vms  
 ```
@@ -445,14 +445,14 @@ Succeeded
 ```
 <br>
 
-- 생성된 WEB-IDE 서비스 인스턴스를 확인한다.
+- Check the generated WEB-IDE service instance.
 
 > $ cf service webide-service
 ```
- ... (생략) ...
+ ... (Skip) ...
  Dashboard:        http://115.68.46.178:8080
  Service broker:   webide-service-broker
- ... (생략) ...
+ ... (Skip) ...
 ```
 <br>
 
@@ -464,21 +464,21 @@ Succeeded
 
 
 
-## <div id='4'/> 4. WEB-IDE 에서 CF CLI 사용법
+## <div id='4'/> 4. Use guide of CF CLI in WEB-IDE
 
-### <div id='4.1'/> 4.1. WEB-IDE New Project 화면
-***※ [PaaS-TA 운영자 포탈 4.3.3 카탈로그 관리 서비스 가이드](/use-guide/portal/PAAS-TA_ADMIN_PORTAL_USE_GUIDE_V1.1.md#4.3.3) 참고***  
+### <div id='4.1'/> 4.1. WEB-IDE New Project Screen
+***※ Refer to [PaaS-TA Operator Portal 4.3.3 Catalog Management Service Guide] (/use-guide/portal/PAAS-TA_ADMIN_PORTAL_USE_GUIDE_V1.1.md#4.3.3) ***  
 
-- 사용할 언어를 선택하고 Create workspace and project 로 새로운 프로젝트를 시작한다.
+- Select the language to be used and start a new project with Create workspace and project.
 
 ![](./images/webide/web-ide-08-1.png)
 
 <br>
 
 
-### <div id='4.2'/> 4.2. WEB-IDE Workspace 화면
+### <div id='4.2'/> 4.2. WEB-IDE Workspace Screen
 
-- WEB-IDE를 처음 생성 시 Workspace를 새로 생성하는 화면이 열리고 프로젝트를 설정에 맞게 생성하여 작업을 진행한다.
+- When creating WEB-IDE for the first time, a new workspace screen opens and the project is created according to the settings to proceed with the work.
 
 ![](./images/webide/web-ide-on-02.jpeg)
 
@@ -488,27 +488,27 @@ Succeeded
 
 <br>
 
-### <div id='4.3'/> 4.3. WEB-IDE Teminal에서의 CF CLI 실행
+### <div id='4.3'/> 4.3. Run CF CLI on the WEB-IDE Terminal
 
-- -cf api 명령을 이용해 endpoint를 지정한다.
+- use -cf api command to set endpoint.
 
 > ![](./images/webide/web-ide-12.png)
 
-- cf login 명령어로 로그인하고 조직과 공간을 선택한다.
+- Log in with the cf login command and select the organization and space.
 
 > ![](./images/webide/web-ide-13.png)
 
-- cf push 를 이용해 cf에 앱을 업로드한다.
+- use cf push to upload app in cf.
 
 > ![](./images/webide/web-ide-14.png)
 
 
 
 
-## <div id='5'/> 2. WEB IDE IP 증설
-### <div id="5.1"/> 5.1. 서비스 확인
+## <div id='5'/> 2. WEB IDE IP Expansion
+### <div id="5.1"/> 5.1. Service Check
 
-현재 생성된 WEB-IDE VM 인스턴스를 확인한다.
+Check the currently created WEB-IDE VM instance.
 
 > bosh -e micro-bosh -d web-ide vms  
 ```
@@ -532,10 +532,10 @@ Succeeded
 
 
 
-### <div id="5.2"/> 5.2. Deployment 파일 수정
+### <div id="5.2"/> 5.2. Deployment File Modification
 
-기존 설치할때 사용했던 Deployment YAML에서 eclipse_che_instances의 값을 배포된 eclipse-che의 수만큼 변경을 해주고 eclipse_che_public_ips에 설치된 public ip를 입력한다.  
-그리고 WEB-IDE에 추가시킬 IP를 eclipse_che_buffer_ips에 추가한다.
+Change the value of eclipse_che_instances in the Deployment YAML used to install as much as the eclipse-che deployed, and enter the public IP installed in eclipse_che_public_ips.
+Then add the IP to add to WEB-IDE to eclipse_che_buffer_ips.
 
 > $ vi ~/workspace/service-deployment/web-ide/vars.yml
 
@@ -547,17 +547,17 @@ eclipse_che_azs: [z7]                                                   # eclips
 eclipse_che_instances: 1                                                # eclipse-che : instances (1), ondemand service default 0
 eclipse_che_vm_type: "large"                                            # eclipse-che : vm type
 eclipse_che_public_ips: ["115.68.46.178"]                               # eclipse-che : public ips (e.g. ["00.00.00.00" , "11.11.11.11"])
-eclipse_che_buffer_ips: ["115.68.46.178", "52.153.36.143"]              # eclipse-che : OnDemand 에서 사용할 여분의 public ips
-eclipse_che_instance_name: "eclipse-che"                                # eclipse-che : 작업 이름
+eclipse_che_buffer_ips: ["115.68.46.178", "52.153.36.143"]              # eclipse-che : Extra public IPs to be used at OnDemand
+eclipse_che_instance_name: "eclipse-che"                                # eclipse-che : Instance Name
 
 ........
 
 ```
 
 
-### <div id="5.3"/> 5.3. 서비스 재 설치
+### <div id="5.3"/> 5.3. Service Reinstallation
 
-- 서비스를 재 설치한다.  
+- Reinstall the Service.  
 ```
 $ cd ~/workspace/service-deployment/web-ide
 $ sh ./deploy.sh  
@@ -589,9 +589,9 @@ Task 581 done
 ```  
 
 
-### <div id="5.4"/> 5.4. 서비스 설치 확인
+### <div id="5.4"/> 5.4. Service Installation Check
 
-설치 완료된 서비스를 확인한다.  
+Check the installed service.  
 
 > $ bosh -e micro-bosh -d web-ide vms
 

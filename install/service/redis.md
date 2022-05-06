@@ -223,7 +223,7 @@ service_instance_space_limitation: "-1"                                  # Limit
 
 ### <div id="2.5"/> 2.5. Service Installation
 
-- Modify the VARIABLES settings in the Deploy script file to suit the server environment, and select whether to add the option file.
+- Modify the VARIABLES settings in the Deploy script file to suit the server environment, and select whether to add the option file. 
      (Optional) -o operations/cce.yml (Apply CCE when installting)
 
 > $ vi ~/workspace/service-deployment/redis/deploy.sh

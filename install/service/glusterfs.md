@@ -277,7 +277,7 @@ Succeeded
 ```
 
 ## <div id="3"/>3. GlusterFS Linkage Sample App Description
-This Sample Web App is distributed to PaaS-TA and can be used with the service of GlusterFS on Provision and Bind.
+This Sample Web App is deployed to PaaS-TA and can be used with the service of GlusterFS on Provision and Bind.
 
 ### <div id="3.1"/> 3.1. Service Broker Registration  
 

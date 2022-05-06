@@ -30,7 +30,7 @@
 This document (PaaS-TA AP Portal API Installation Guide) shows how to install PaaS-TA AP Portal API using BOSH.
 
 ### <div id="1.2"/> 1.2. Range
-The installation scope was written based on the basic installation of the Portal API to verify the PaaS-TA AP Portal.
+The installation range was written based on the basic installation of the Portal API to verify the PaaS-TA AP Portal.
 
 
 ### <div id="1.3"/> 1.3. References

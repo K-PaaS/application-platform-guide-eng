@@ -333,7 +333,7 @@ broker: api-gateway-service-broker
    api-gateway   dedicated-vm   none
 ```
 
-- 애플리케이션 Gateway 서비스의 서비스 접근 허용을 설정(전체)하고 서비스 접근 정보를 재확인 한다.  
+- Set (all) permission for service access of the application gateway service and reconfirm service access information.  
 > $ cf enable-service-access api-gateway   
 ```
 Enabling access to all plans of service api-gateway for all orgs as admin...
@@ -349,64 +349,64 @@ broker: api-gateway-service-broker
    api-gateway   dedicated-vm   all
 ```
 
-### <div id='3.2'/> 3.2. 서비스 신청
-#### <div id='3.2.1'/> 3.2.1. 서비스 신청 - 포탈
+### <div id='3.2'/> 3.2. Service Application
+#### <div id='3.2.1'/> 3.2.1. Service Application - Portal
 
-PaaS-TA 운영자 포탈에 접속하여 서비스를 등록한다.  
+Access the PaaS-TA operator portal and register the service.  
 
-> ※ 운영관리 > 카탈로그 > 앱서비스 등록
-> - 이름 : 애플리케이션 Gateway 서비스
-> - 분류 :  개발 지원 도구
-> - 서비스 : api-gateway
-> - 썸네일 : [애플리케이션 Gateway 서비스 썸네일]
-> - 문서 URL : https://github.com/PaaS-TA/PAAS-TA-API-GATEWAY-SERVICE-BROKER
-> - 서비스 생성 파라미터 : password / 패스워드
-> - 앱 바인드 사용 : N
-> - 공개 : Y
-> - 대시보드 사용 : Y
-> - 온디멘드 : N
-> - 태그 : paasta / tag1, free / tag2
-> - 요약 : 애플리케이션 Gateway 서비스
-> - 설명 :
-> API 등록 및 API 라이프 사이클 관리등의 기능을 제공하는 애플리케이션 Gateway 서비스인 WSO2 서비스를 dedicated 방식으로 제공합니다.  
-> 서비스 관리자 계정은 serviceadmin/<서비스 신청 시 입력한 Password> 입니다.
+> ※ Operation Management > Catalog > App service registration
+> - Name : Application Gateway Service
+> - Classification :  Development Support Tools
+> - Service : api-gateway
+> - Thumbnail : [Application Gateway Service Thumbnail]
+> - Document URL : https://github.com/PaaS-TA/PAAS-TA-API-GATEWAY-SERVICE-BROKER
+> - Service Creating Parameter : password 
+> - Using App bind : N
+> - Public : Y
+> - Using Dashboard : Y
+> - OnDemand : N
+> - Tag : paasta / tag1, free / tag2
+> - Outline : Application Gateway Service
+> - Description :
+> WSO2 service, an application gateway service that provides functions such as API registration and API lifecycle management, is provided in a dedicated manner.  
+> The service admin account is serviceadmin/<Password entered when applying for a service>.
 >  
 > ![002]
 
--	PaaS-TA 사용자  포탈에 접속하여, 카탈로그를 통해 서비스를 신청한다.   
+-	Access the PaaS-TA user portal and apply for services through the catalog.   
 
 ![003]
 
--	대시보드 URL을 통해 서비스에 접근한다.  (서비스의 관리자 계정은 serviceadmin/[서비스 신청시 입력받은 패스워드])  
+-	Access the service through the dashboard URL. (The administrator account of the service is serviceadmin/[Password entered when applying for the service])  
 
 ![004]  
 
-#### <div id='3.2.2'/> 3.2.2. 서비스 신청 - CLI
-CLI 를 통한 Gateway 서비스 신청 방법을 설명한다.
+#### <div id='3.2.2'/> 3.2.2. Service Application - CLI
+Explains how to apply for the Gateway service through the CLI.
 
-- 서비스 인스턴스 신청 명령어
+- Service Instance Application Commands
 ```
 cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 
-[SERVICE] : Marketplace에서 보여지는 서비스 명
-[PLAN] : 서비스에 대한 정책
-[SERVICE_INSTANCE] : 생성할 서비스 인스턴스 이름
+[SERVICE] : Service name shown at the Marketplace
+[PLAN] : Policies for Services
+[SERVICE_INSTANCE] : Name of the service instance to create
 ```
 
-- Gateway 서비스를 신청한다. (password 변수 설정)
+- Apply for Gateway service. (Set password variable)
 > $ cf create-service api-gateway dedicated-vm gateway -c '{"password":"{password}"}'
 ```
 Creating service instance gateway in org system / space dev as admin...
 OK
 ```
 
-- 서비스 상세의 대시보드 URL 정보를 확인하여 서비스에 접근한다.
+- Access the service by checking the service details dashboard URL information.
 > $ cf service gateway
  ```
- ... (생략) ...
+ ... (Skip) ...
 dashboard:        https://13.124.4.62:9443/carbon|https://13.124.4.62:9443/publisher|https://13.124.4.62:9443/devportal|https://13.124.4.62:9443/admin
 service broker:   api-gateway-service-broker
- ... (생략) ...
+ ... (Skip) ...
  ```
 
 

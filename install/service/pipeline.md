@@ -462,7 +462,7 @@ name                           url
 delivery-pipeline-broker       http://10.0.161.22:8080
 ```  
 
-- 접근 가능한 서비스 목록을 확인한다.
+- Check the list of accessible.
 >$ cf service-access  
 
 ```
@@ -472,9 +472,9 @@ broker: delivery-pipeline-broker
    delivery-pipeline   delivery-pipeline-shared      none
    delivery-pipeline   delivery-pipeline-dedicated   none
 ```
-서비스 브로커 생성시 디폴트로 접근을 허용하지 않는다.
+Do not allow access by default when creating a service broker.
 
-- 특정 조직에 해당 서비스 접근 허용을 할당하고 접근 서비스 목록을 다시 확인한다. (전체 조직)  
+- Assign permission to a specific organization to access the service and recheck the access service list. (Overall Organization) 
 > $ cf enable-service-access delivery-pipeline   
 ```
 Enabling access to all plans of service delivery-pipeline for all orgs as admin...   
@@ -489,20 +489,20 @@ broker: delivery-pipeline-broker
    delivery-pipeline   delivery-pipeline-dedicated   all
 ```
 
-### <div id='3.2'/> 3.2. UAAC Client 등록
-UAAC Client 계정 등록 절차에 대한 순서를 확인한다.
+### <div id='3.2'/> 3.2. UAAC Client Registration
+Check the procedure for UAAC Client account registration.
 
-- 배포 파이프라인 UAAC Client를 등록한다.
+- Register deployment pipeline UAAC Client.
 ```
-### uaac client add 설명
-uaac client add {클라이언트 명} -s {클라이언트 비밀번호} --redirect_URL{대시보드 URL} --scope {퍼미션 범위} --authorized_grant_types {권한 타입} --authorities={권한 퍼미션} --autoapprove={자동승인권한}  
-클라이언트 명 : uaac 클라이언트 명 (pipeclient)  
-클라이언트 비밀번호 : uaac 클라이언트 비밀번호  
-대시보드 URL: 성공적으로 리다이렉션 할 대시보드 URL   
-퍼미션 범위: 클라이언트가 사용자를 대신하여 얻을 수있는 허용 범위 목록  
-권한 타입 : 서비스팩이 제공하는 API를 사용할 수 있는 권한 목록  
-권한 퍼미션 : 클라이언트에 부여 된 권한 목록  
-자동승인권한: 사용자 승인이 필요하지 않은 권한 목록  
+### uaac client add Description
+uaac client add {Client name} -s {Client Password} --redirect_URL{Dashboard URL} --scope {Permission Range} --authorized_grant_types {Authority Type} --authorities={Authority Permission} --autoapprove={Automatic Authorization}  
+Client Name : uaac client name (pipeclient)  
+Client Password : uaac Client password  
+Dashboard URL: Dashboard URL to be successfully redirected   
+Permission Range : Permissible range list that the clients can earn on behalf of the users 
+AUthority Type : Authority list to use APIs provided by service packs  
+Authority Permission : Authority list granted to clients  
+Authomatic Authorization : Authority list that do not require user approval  
 ```
 
 >$ uaac client add pipeclient -s clientsecret --redirect_uri "[DASHBOARD_URL]" /  
@@ -512,18 +512,18 @@ uaac client add {클라이언트 명} -s {클라이언트 비밀번호} --redire
 >--autoapprove="openid , cloud_controller_service_permissions.read"  
 
 ```  
-### uaac endpoint 설정
+### uaac endpoint Setting
 $ uaac target https://uaa.<DOMAIN> --skip-ssl-validation
 
-### target 확인
+### target Check
 $ uaac target
 Target: https://uaa.<DOMAIN>
 Context: uaa_admin, from client uaa_admin
 
-### uaac 로그인
+### uaac Login
 $ uaac token client get <UAA_CLIENT_ADMIN_ID> -s <UAA_CLIENT_ADMIN_SECRET>
 
-### 배포파이프라인 uaac client 등록
+### Deployment Pipeline uaac client Registration
 $ uaac client add pipeclient -s clientsecret --redirect_uri "http://101.55.50.208:8084 http://101.55.50.208:8084/dashboard" \
    --scope "cloud_controller_service_permissions.read , openid , cloud_controller.read , cloud_controller.write , cloud_controller.admin" \
    --authorized_grant_types "authorization_code , client_credentials , refresh_token" \
@@ -532,17 +532,17 @@ $ uaac client add pipeclient -s clientsecret --redirect_uri "http://101.55.50.20
 ```  
 
 
-### <div id='3.3'/> 3.3. Java Offline Buildpack 등록
-배포 파이프라인 서비스 사용을 위해 Java Offline Buildpack을 등록한다.
+### <div id='3.3'/> 3.3. Java Offline Buildpack Registration
+Register Java Offline Buildpack to use deployment pipeline service.
 
-- Java Offline Buildpack 다운로드 
+- Java Offline Buildpack Download 
 > wget -O java-buildpack-offline-v4.37.zip https://nextcloud.paas-ta.org/index.php/s/8rGJXEFa8odFDLk/download 
 
-**buildpack 등록**  
+**buildpack Registration**  
 
 > $ cf create-buildpack java_buildpack_offline ..\buildpack\java-buildpack-offline-v4.25.zip 3   
 
-**buildpack 등록 확인**  
+**buildpack Registration Check**  
 
 > $ cf buildpacks 
 ```
@@ -562,79 +562,79 @@ nginx_buildpack          10         true      false    nginx_buildpack-cflinuxfs
 r_buildpack              11         true      false    r_buildpack-cflinuxfs3-v1.0.10.zip
 binary_buildpack         12         true      false    binary_buildpack-cflinuxfs3-v1.0.32.zip
 ```
-※ 참고 URL : https://github.com/cloudfoundry/java-buildpack  
+※ Reference URL : https://github.com/cloudfoundry/java-buildpack  
 
   
-### <div id='3.4'/> 3.4. 서비스 신청
-#### <div id='3.4.1'/> 3.4.1. 서비스 신청 - 포탈
-1. PaaS-Ta 운영자 포탈에 접속하여 로그인한다.
+### <div id='3.4'/> 3.4. Service Registration
+#### <div id='3.4.1'/> 3.4.1. Service Registration - Portal
+1. Access the PaaS-Ta operator portal and log in.
 ![3-1-1]
 
-2. 로그인 후 서비스 관리 > 서비스 브로커 페이지에서 배포 파이프라인 서비스 브로커를 확인한다.
+2. Login > Service Management > Check the Distribution Pipeline Service Broker on the Service Broker page.
 ![3-1-2]
 
-3. 서비스 관리 > 서비스 제어 페이지에서 배포 파이프라인 서비스 플랜 접근 가능 권한을 확인한다.
+3. Service Management> Check the Service Control page for access to the deployment pipeline service plan.
 ![3-1-3]
 
-4. 운영관리 > 카탈로그 > 앱서비스 페이지를 확인하여 "파이프라인" 서비스 이름을 클릭한다.  
+4. Operation Management > Catalog > Check the App Service page and click on the "Pipeline" service name.  
 ![3-2-1]
 
-- 아래의 내용을 상세 페이지에 입력한다.
+- Enter the following information on the detail page.
 
-> ※ 카탈로그 관리 > 앱 서비스
-> - 이름 : 파이프라인
-> - 분류 :  개발 지원 도구
-> - 서비스 : delivery-pipeline
-> - 썸네일 : [배포 파이프라인 서비스 썸네일]
-> - 문서 URL : https://github.com/PaaS-TA/DELIVERY-PIPELINE-SERVICE-BROKER
-> - 서비스 생성 파라미터 : owner
-> - 앱 바인드 사용 : N
-> - 공개 : Y
-> - 대시보드 사용 : Y
-> - 온디멘드 : N
-> - 태그 : paasta / tag6, free / tag2
-> - 요약 : 개발용으로 만들어진 파이프라인
-> - 설명 :
-> 개발용으로 만들어진 파이프라인
-> 배포 파이프라인 Server, 배포 파이프라인 서비스 브로커로 최소사항을 구성하였다.
+> ※ Catalog Management > App Service
+> - Name : Pipeline
+> - Classification :  Development Support Tools
+> - Service : delivery-pipeline
+> - Thumbnail : [Deployment Pipeline Service Thumbnail]
+> - Document URL : https://github.com/PaaS-TA/DELIVERY-PIPELINE-SERVICE-BROKER
+> - Service Creating Parameter : owner
+> - Using App Bind : N
+> - Public : Y
+> - Using Dashboard : Y
+> - OnDemand : N
+> - Tagd : paasta / tag6, free / tag2
+> - Outline : A pipeline designed for development
+> - Description :
+> A pipeline designed for development
+> Configured as minimum using Deployment Pipeline Server, Deployment Pipeline Service Broker.
 >  
 > ![3-2-2]
 
-- PaaS-TA 사용자  포탈에 접속하여, 카탈로그를 통해 서비스를 신청한다.   
+- Access to PaaS-TA user portal then apply for service through catalog.   
 
 ![003]
 
-- 대시보드 URL을 통해 서비스에 접근한다.    
+- Access to service through Dashborad URL.    
 
 ![004]  
 
 
-#### <div id='3.4.2'/> 3.4.2. 서비스 신청 - CLI
-CLI 를 통한 파이프라인 서비스 신청 방법을 설명한다.
+#### <div id='3.4.2'/> 3.4.2. Service Registration - CLI
+Explains how to apply for pipeline service via CLI.
 
-- 서비스 인스턴스 신청 명령어
+- Service Instance Application Commands
 ```
 cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 
-[SERVICE] : Marketplace에서 보여지는 서비스 명
-[PLAN] : 서비스에 대한 정책
-[SERVICE_INSTANCE] : 생성할 서비스 인스턴스 이름
+[SERVICE] : Service Name shown at the Marketplace
+[PLAN] : Policies for Services
+[SERVICE_INSTANCE] : Name of the service instance to create
 ```
 
-- 파이프라인 서비스를 신청한다. (PaaS-TA user_id 설정)
+- Apply for pipeline service. (PaaS-TA user_id Setting)
 > cf create-service delivery-pipeline delivery-pipeline-shared pipeline-service -c '{"owner":"{user_id}"}'  
 ```
 Creating service instance pipeline-service in org system / space dev as admin...
 OK
 ```
 
-- 서비스 상세의 대시보드 URL 정보를 확인하여 서비스에 접근한다.
+- Access the service by checking the service details dashboard URL information.
 > $ cf service pipeline-service
  ```
- ... (생략) ...
+ ... (Skip) ...
  Dashboard:        http://101.55.50.208:8084/dashboard/2bcbe484-e235-441e-bdb6-ef88f73cb516/
  Service broker:   delivery-pipeline-broker
- ... (생략) ...
+ ... (Skip) ...
  ```
 
 

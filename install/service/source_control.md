@@ -7,53 +7,53 @@
   1.2. [Range](#1.2)  
   1.3. [References](#1.3)  
 
-2. [형상관리 서비스 설치](#2)  
+2. [Configuration Management Service Installation](#2)  
   2.1. [Prerequisite](#2.1)   
-  2.2. [Stemcell 확인](#2.2)    
-  2.3. [Deployment 다운로드](#2.3)   
-  2.4. [Deployment 파일 수정](#2.4)  
-  2.5. [서비스 설치](#2.5)    
-  2.6. [서비스 설치 확인](#2.6)  
+  2.2. [Stemcell Check](#2.2)    
+  2.3. [Deployment Download](#2.3)   
+  2.4. [Deployment File Modification](#2.4)  
+  2.5. [Service Installation](#2.5)    
+  2.6. [Service Installation Check](#2.6)  
   
-3. [형상관리 서비스 관리 및 신청](#3)  
- 3.1. [서비스 브로커 등록](#3.1)  
- 3.2. [UAA Client 등록](#3.2)  
- 3.3. [서비스 신청](#3.3)  
-　3.3.1. [서비스 신청 - 포탈](#3.3.1)   
-　3.3.2. [서비스 신청 - CLI](#3.3.2)   
+3. [Configuration management service management and application](#3)  
+ 3.1. [Service Broker Registration](#3.1)  
+ 3.2. [UAA Client Registration](#3.2)  
+ 3.3. [Service Registration](#3.3)  
+　3.3.1. [Service Registration - Portal](#3.3.1)   
+　3.3.2. [Service Registration - CLI](#3.3.2)   
     
 
-## <div id='1'/> 1. 문서 개요
+## <div id='1'/> 1. Document Outline
 
-### <div id='1.1'/> 1.1. 목적
-본 문서(형상관리 서비스팩 설치 가이드)는 PaaS-TA에서 제공되는 서비스팩인 형상관리 서비스팩을 Bosh를 이용하여 설치 하는 방법을 기술하였다.  
+### <div id='1.1'/> 1.1. Purpose
+This document (Figure Management Service Pack Installation Guide) describes how to install the shape management service pack, which is a service pack provided by PaaS-TA, using Bosh.  
 
-### <div id='1.2'/> 1.2. 범위
-설치 범위는 형상관리 서비스팩 검증하기 위한 기본 설치를 기준으로 작성하였다.
+### <div id='1.2'/> 1.2. Range
+The installation range was prepared based on the basic installation for verifying the shape management service pack.
 
-### <div id='1.3'/> 1.3. 참고 자료
+### <div id='1.3'/> 1.3. References
 BOSH Document: [http://bosh.io](http://bosh.io)  
 Cloud Foundry Document: [https://docs.cloudfoundry.org](https://docs.cloudfoundry.org)  
 
-## <div id="2"/> 2. 형상관리 서비스 설치  
+## <div id="2"/> 2. Configuration Management Service Installation  
 
 ### <div id="2.1"/> 2.1. Prerequisite  
 
-본 설치 가이드는 Linux 환경에서 설치하는 것을 기준으로 하였다.  
-서비스팩 설치를 위해서는 먼저 BOSH CLI v2 가 설치 되어 있어야 하고 BOSH 에 로그인이 되어 있어야 한다.  
-BOSH CLI v2 가 설치 되어 있지 않을 경우 먼저 BOSH2.0 설치 가이드 문서를 참고 하여 BOSH CLI v2를 설치를 하고 사용법을 숙지 해야 한다.  
-UAA client가 설치 되어 있지 않을 경우 UAA client의 설치가 필요하다.
+This installation guide is based on installing in a Linux environment. 
+To install the service pack, BOSH CLI v2 must be installed and logged in to BOSH.  
+If BOSH CLI v2 is not installed, you should first refer to the BOSH 2.0 installation guide document to install BOSH CLI v2 and familiarize the usage.  
+If the UAA client is not installed, installation of the UAA client is required.
 
-- UAA client 설치 (BOSH Dependency 설치 필요)
+- UAA client Installation (BOSH Dependency installation required)
 ```
 $ sudo gem install cf-uaac
 $ uaac -v
 ```
 
-### <div id="2.2"/> 2.2. Stemcell 확인  
+### <div id="2.2"/> 2.2. Stemcell Cgeck  
 
-Stemcell 목록을 확인하여 서비스 설치에 필요한 Stemcell이 업로드 되어 있는 것을 확인한다.  
-본 가이드의 Stemcell은 ubuntu-bionic 1.76를 사용한다.  
+Check the Stemcell list to make sure that the Stemcell required for service installation is uploaded.  
+The Stemcell of this guide uses ubuntu-bionic 1.76. 
 
 > $ bosh -e ${BOSH_ENVIRONMENT} stemcells
 
@@ -70,37 +70,38 @@ bosh-openstack-kvm-ubuntu-bionic-go_agent  1.76      ubuntu-bionic  -    ce507ae
 Succeeded
 ```
 
-만약 해당 Stemcell이 업로드 되어 있지 않다면 [bosh.io 스템셀](https://bosh.io/stemcells/) 에서 해당되는 IaaS환경과 버전에 해당되는 스템셀 링크를 복사 후 다음과 같은 명령어를 실행한다.
+If the corresponding Stemcell is not uploaded, copy the Stemcell link to the corresponding IaaS environment and version from [bosh.io Stemcell](https://bosh.io/stemcells/) and run the following command.
+
 
 ```
-# Stemcell 업로드 명령어 예제
+# Example of Stemcell upload command
 $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell -n {STEMCELL_URL}
 ```
 
-### <div id="2.3"/> 2.3. Deployment 다운로드  
+### <div id="2.3"/> 2.3. Deployment Download  
 
-서비스 설치에 필요한 Deployment를 Git Repository에서 받아 서비스 설치 작업 경로로 위치시킨다.  
+Download the deployment needed from Git Repository and place the file in the service installation directory.  
 
 - Service Deployment Git Repository URL : https://github.com/PaaS-TA/service-deployment/tree/v5.1.6
 
 ```
-# Deployment 다운로드 파일 위치 경로 생성 및 설치 경로 이동
+# Deployment File Download, make directory, change directory
 $ mkdir -p ~/workspace
 $ cd ~/workspace
 
-# Deployment 파일 다운로드
+# Deployment File Download
 $ git clone https://github.com/PaaS-TA/service-deployment.git -b v5.1.6
 
-# common_vars.yml 파일 다운로드(common_vars.yml가 존재하지 않는다면 다운로드)
+# common_vars.yml File Download (download if common_vars.yml doesn't exist)
 $ git clone https://github.com/PaaS-TA/common.git
 ```
 
-### <div id="2.4"/> 2.4. Deployment 파일 수정
+### <div id="2.4"/> 2.4. Deployment File Modification
 
-BOSH Deployment manifest는 Components 요소 및 배포의 속성을 정의한 YAML 파일이다.  
-Deployment 파일에서 사용하는 network, vm_type, disk_type 등은 Cloud config를 활용하고, 활용 방법은 PaaS-TA AP 설치 가이드를 참고한다.  
+The BOSH Deployment manifest is a YAML file that defines the properties of components elements and deployments.  
+Cloud config is used for network, vm_type, and disk_type used in Deployment files, and refer to the PaaS-TA AP installation guide for the usage.  
 
-- Cloud config 설정 내용을 확인한다.   
+- Check the Cloud config settings.   
 
 > $ bosh -e micro-bosh cloud-config   
 
@@ -115,7 +116,7 @@ azs:
     availability_zone: ap-northeast-2a
   name: z2
 
-... ((생략)) ...
+... ((SKip)) ...
 
 disk_types:
 - disk_size: 1024
@@ -123,7 +124,7 @@ disk_types:
 - disk_size: 1024
   name: 1GB
 
-... ((생략)) ...
+... ((Skip)) ...
 
 networks:
 - name: default
@@ -141,7 +142,7 @@ networks:
     static:
     - 10.0.1.10 - 10.0.1.120
 
-... ((생략)) ...
+... ((Skip)) ...
 
 vm_types:
 - cloud_properties:
@@ -157,26 +158,26 @@ vm_types:
     instance_type: t2.small
   name: small
 
-... ((생략)) ...
+... ((Skip)) ...
 
 Succeeded
 ```
 
-- common_vars.yml을 서버 환경에 맞게 수정한다. 
-- 형상관리 서비스에서 사용하는 변수는 system_domain이다.
+- Modify common_vars.yml to suit the server environment. 
+- The variable used by the configuration management service is system_domain.
 
 > $ vi ~/workspace/common/common_vars.yml
 ```
-... ((생략)) ...
+... ((Skip)) ...
 
-system_domain: "61.252.53.246.nip.io"		# Domain (nip.io를 사용하는 경우 HAProxy Public IP와 동일)
+system_domain: "61.252.53.246.nip.io"		# Domain (Same as HAProxy Public IP when using nip.io)
 
-... ((생략)) ...
+... ((Skip)) ...
 
 ```
 
 
-- Deployment YAML에서 사용하는 변수 파일을 서버 환경에 맞게 수정한다.
+- Modify the variable file used by Deployment YAML to suit the server environment.
 
 > $ vi ~/workspace/service-deployment/source-control-service/vars.yml
 
@@ -238,10 +239,10 @@ uaa_client_sc_id: "scclient"                                   # source-control-
 uaa_client_sc_secret: "clientsecret"                           # source-control-service uaa client secret
 ```
 
-### <div id="2.5"/> 2.5. 서비스 설치
+### <div id="2.5"/> 2.5. Service Installation
 
-- 서버 환경에 맞추어 Deploy 스크립트 파일의 VARIABLES 설정을 수정하고, Option file을 추가할지 선택한다.  
-     (선택) -o operations/cce.yml (CCE 조치를 적용하여 설치)
+- Modify the VARIABLES settings in the Deploy script file to suit the server environment, and select whether to add the option file.  
+     (Optional) -o operations/cce.yml (Apply CCE when installing)
 
 > $ vi ~/workspace/service-deployment/source-control-service/deploy.sh
 
@@ -250,8 +251,8 @@ uaa_client_sc_secret: "clientsecret"                           # source-control-
   
 # VARIABLES
 COMMON_VARS_PATH="<COMMON_VARS_FILE_PATH>"	# common_vars.yml File Path (e.g. ../../common/common_vars.yml)
-CURRENT_IAAS="${CURRENT_IAAS}"			# IaaS Information (PaaS-TA에서 제공되는 create-bosh-login.sh 미 사용시 aws/azure/gcp/openstack/vsphere 입력)
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"		# bosh director alias name (PaaS-TA에서 제공되는 create-bosh-login.sh 미 사용시 bosh envs에서 이름을 확인하여 입력)
+CURRENT_IAAS="${CURRENT_IAAS}"			# IaaS Information (When not using create-bosh-login.sh provided by PaaS-TA, enter aws/azure/gcp/openstack/vsphere)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"		# bosh director alias name (When not using create-bosh-login.sh provided by PaaS-TA, check the name at bosh envs and enter)
 
 # DEPLOY
 bosh -e ${BOSH_ENVIRONMENT} -n -d source-control-service deploy --no-redact source-control-service.yml \
@@ -261,16 +262,16 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d source-control-service deploy --no-redact sour
     -l vars.yml
 ```
 
-- 서비스를 설치한다.  
+- Install service.  
 ```
 $ cd ~/workspace/service-deployment/source-control-service  
 $ sh ./deploy.sh  
 ```  
 
 
-### <div id="2.6"/> 2.6. 서비스 설치 확인
+### <div id="2.6"/> 2.6. Service Installation Check
 
-설치 완료된 서비스를 확인한다.
+Check the installed service.
 
 > $ bosh -e micro-bosh -d source-control-service vms  
 
@@ -295,14 +296,14 @@ sourcecontrol-webui/840278e2-e1a2-4a30-b904-68538c7cd06f   running        z5  10
 Succeeded
 ```
 
-## <div id="3"/>3.  형상관리 서비스 관리 및 신청
+## <div id="3"/>3.  Configuration management service management and application
 
-### <div id="3.1"/> 3.1. 서비스 브로커 등록
+### <div id="3.1"/> 3.1. Service Broker Registration
 
-서비스의 설치가 완료 되면, PaaS-TA 포탈에서 서비스를 사용하기 위해 형상관리 서비스 브로커를 등록해 주어야 한다.  
-서비스 브로커 등록 시에는 개방형 클라우드 플랫폼에서 서비스 브로커를 등록 할 수 있는 권한을 가진 사용자로 로그인 되어 있어야 한다. 
+Once the service is installed, a configuration management service broker must be registered to use the service on the PaaS-TA portal.  
+When registering a service broker, you must be logged in as a user with permission to register a service broker on an open cloud platform. 
 
-- 서비스 브로커 목록을 확인한다  
+- Check the list of service brokers  
 > $ cf service-brokers
 
 ```
@@ -312,16 +313,16 @@ name   url
 No service brokers found
 ```
 
-- 서비스 브로커 등록 명령어
+- Service broker registering command
 ```
 cf create-service-broker [SERVICE_BROKER] [USERNAME] [PASSWORD] [SERVICE_BROKER_URL]
 
-[SERVICE_BROKER] : 서비스 브로커 명
-[USERNAME] / [PASSWORD] : 서비스 브로커에 접근할 수 있는 사용자 ID / PASSWORD
-[SERVICE_BROKER_URL] : 서비스 브로커 접근 URL
+[SERVICE_BROKER] : Service Broker Name
+[USERNAME] / [PASSWORD] : Usser ID / PASSWORD with access to the service broker
+[SERVICE_BROKER_URL] : Service Broker Access URL
 ```
 
-- 형상관리 서비스 브로커를 등록한다.
+- Register configuration management service broker.
 
 > $ cf create-service-broker paasta-sourcecontrol-broker admin cloudfoundry http://<sourcecontrol-broker_ip>:8080
 ```
@@ -330,7 +331,7 @@ Creating service broker paasta-sourcecontrol-broker as admin...
 OK       
 ```
 
-- 등록된 형상관리 서비스 브로커를 확인한다.  
+- Check the registered configuration management service broker.  
 > $ cf service-brokers
 
 ```
@@ -340,7 +341,7 @@ name                         url
 paasta-sourcecontrol-broker   http://10.30.107.126:8080
 ```
 
-- 형상관리 서비스의 서비스 접근 정보를 확인한다.  
+- Check service access information of configuration management service.  
 > $ cf service-access -b paasta-sourcecontrol-broker  
 
 ```
@@ -350,7 +351,7 @@ broker: paasta-sourcecontrol-broker
    p-paasta-sourcecontrol   Default   none
 ```
 
-- 형상관리 서비스의 서비스 접근 허용을 설정(전체)하고 서비스 접근 정보를 재확인 한다.  
+-Set (all) permission for configuration management service access and reconfirm service access information.  
 > $ cf enable-service-access p-paasta-sourcecontrol    
 ```
 Enabling access to all plans of service p-paasta-sourcecontrol for all orgs as admin...
@@ -364,21 +365,21 @@ broker: paasta-sourcecontrol-broker
    p-paasta-sourcecontrol   Default   all  
 ```
 
-### <div id="3.2"/> 3.2. UAA Client 등록
+### <div id="3.2"/> 3.2. UAA Client Registration
 
-- uaac server의 endpoint를 설정한다.
+- Set endpoint of uaac server.
 
 ```
-# endpoint 설정
+# endpoint Setting
 $ uaac target https://uaa.<DOMAIN> --skip-ssl-validation
 
-# target 확인
+# target Check
 $ uaac target
 Target: https://uaa.<DOMAIN>
 Context: uaa_admin, from client uaa_admin
 ```
 
-- uaac 로그인을 한다.
+- Log in to uaac.
 
 ```
 $ uaac token client get <UAA_CLIENT_ADMIN_ID> -s <UAA_CLIENT_ADMIN_SECRET>
@@ -387,19 +388,19 @@ Target: https://uaa.<DOMAIN>
 Context: admin, from client admin
 ```
 
-- 형상관리 서비스 계정을 생성 한다. 
+- Create a configuration management service account. 
 ```
-### uaac client add 설명
-uaac client add <CF_UAA_CLIENT_ID> -s <CF_UAA_CLIENT_SECRET> --redirect_uri <형상관리서비스 대시보드 URI> --scope <퍼미션 범위> --authorized_grant_types <권한 타입> --authorities=<권한 퍼미션> --autoapprove=<자동승인권한>  
+### uaac client add Description
+uaac client add <CF_UAA_CLIENT_ID> -s <CF_UAA_CLIENT_SECRET> --redirect_uri <Configuration Management Service Dashboard URI> --scope <Permission Range> --authorized_grant_types <Authorization Type> --authorities=<Authorization Permission> --autoapprove=<Automatic Authorization>  
 
-<CF_UAA_CLIENT_ID> : uaac 클라이언트 id  
-<CF_UAA_CLIENT_SECRET> : uaac 클라이언트 secret  
-<형상관리서비스 대시보드 URI> : 성공적으로 리다이렉션 할 형상관리서비스 대시보드 URI 
+<CF_UAA_CLIENT_ID> : uaac Client id  
+<CF_UAA_CLIENT_SECRET> : uaac Client secret  
+<Configuration Management Service Dashboard URI> : Configuration Management Services Dashboard URI to be Redirected Successfully 
 ("http://<source-control-service의 haproxy public IP>:8080, http://<source-control-service의 haproxy public IP>:8080/repositories, http://<source-control-service의 haproxy public IP>:8080/repositories/user")  
-<퍼미션 범위> : 클라이언트가 사용자를 대신하여 얻을 수있는 허용 범위 목록  
-<권한 타입> : 서비스가 제공하는 API를 사용할 수 있는 권한 목록  
-<권한 퍼미션> : 클라이언트에 부여 된 권한 목록  
-<자동승인권한> : 사용자 승인이 필요하지 않은 권한 목록  
+<Permission Range> : Permissible range list that the clients can earn on behalf of the users  
+<Authorization Type> : Authority list to use APIs provided by service  
+<Authorization Permission> : Authority list granted to clients  
+<Automatic Authorization> : Authority list that do not require user approval   
 ```
 > $ uaac client add scclient -s clientsecret --redirect_uri "http://[DASHBOARD_URL]:8080 http://[DASHBOARD_URL]:8080/repositories http://[DASHBOARD_URL]:8080/repositories/user" \
   --scope "cloud_controller_service_permissions.read , openid , cloud_controller.read , cloud_controller.write , cloud_controller.admin" \
@@ -407,14 +408,14 @@ uaac client add <CF_UAA_CLIENT_ID> -s <CF_UAA_CLIENT_SECRET> --redirect_uri <형
   --authorities="uaa.resource" \
   --autoapprove="openid , cloud_controller_service_permissions.read"
 ```  
-# e.g. 형상관리 서비스 계정 생성
+# e.g. Creating a Configuration Management Service Account
 $ uaac client add scclient -s clientsecret --redirect_uri "http://115.68.47.179:8080 http://115.68.47.179:8080/repositories http://115.68.47.179:8080/repositories/user" \
   --scope "cloud_controller_service_permissions.read , openid , cloud_controller.read , cloud_controller.write , cloud_controller.admin" \
   --authorized_grant_types "authorization_code , client_credentials , refresh_token" \
   --authorities="uaa.resource" \
   --autoapprove="openid , cloud_controller_service_permissions.read"
 
-# e.g. 형상관리 서비스 계정 생성 확인
+# e.g. Configuration Management Service Account Verification
 $ uaac clients
 scclient
     scope: cloud_controller.read cloud_controller.write cloud_controller_service_permissions.read openid
@@ -428,77 +429,77 @@ scclient
     lastmodified: 1542894096080
 ```  
 
-### <div id='3.3'/> 3.3. 서비스 신청
-#### <div id='3.3.1'/> 3.3.1. 서비스 신청 - 포탈
-1. PaaS-Ta 운영자 포탈에 접속하여 로그인한다.
+### <div id='3.3'/> 3.3. Service Registration
+#### <div id='3.3.1'/> 3.3.1. Service Registration - Portal
+1. Access the PaaS-Ta operator portal and log in.
 ![3-1-1]
 
-2. 로그인 후 서비스 관리 > 서비스 브로커 페이지에서 형상관리 서비스 브로커를 확인한다.
+2. Login > Service Management > Check the Configuration Management Service Broker on Service Broker page.
 ![3-1-2]
 
-3. 서비스 관리 > 서비스 제어 페이지에서 배포 형상관리 서비스 플랜 접근 가능 권한을 확인한다.
+3. Service Management > Check the Service Control page for access to the deployment configuration management service plan.
 ![3-1-3]
 
-4. 운영관리 > 카탈로그 > 앱서비스 페이지를 확인하여 "형상관리" 서비스 이름을 클릭한다.  
+4. Operation Management > Catalog > Check the App Service page and click on the "Configuration Management" service name.  
 ![3-2-1]
 
-- 아래의 내용을 상세 페이지에 입력한다.
+- Enter the following information on the detail page.
 
-> ※ 카탈로그 관리 > 앱 서비스
-> - 이름 : 형상관리
-> - 분류 :  개발 지원 도구
-> - 서비스 : p-paasta-sourcecontrol
-> - 썸네일 : [형상관리 서비스 썸네일]
-> - 문서 URL : https://github.com/PaaS-TA/SOURCE-CONTROL-SERVICE-BROKER
-> - 서비스 생성 파라미터 : owner
-> - 서비스 생성 파라미터 : org_name
-> - 앱 바인드 사용 : N
-> - 공개 : Y
-> - 대시보드 사용 : Y
-> - 온디멘드 : N
-> - 태그 : paasta / tag6, free / tag2
-> - 요약 : 형상관리
-> - 설명 :
-> 형상관리 서비스로써 GIT 과 SVN 레파지토리를 제공합니다.
-> 형상관리 Server, 형상관리 서비스 브로커로 최소 사항을 구성하였다.
+> ※ Catalog Management > App Service
+> - Name : Configuration Management
+> - Classification :  Development Support Tools
+> - Service : p-paasta-sourcecontrol
+> - Thumbnail : [Configuration Management Service Thumbnail]
+> - Document URL : https://github.com/PaaS-TA/SOURCE-CONTROL-SERVICE-BROKER
+> - Service Creating Parameter : owner
+> - Service Creating Parameter : org_name
+> - Using App bind : N
+> - Public : Y
+> - Using Dashboard : Y
+> - OnDemand : N
+> - Tag : paasta / tag6, free / tag2
+> - Outline : Configuration Management
+> - Description :
+> GIT and SVN repository are provided as configuration management services.  
+> Minimum requirements were made by configuration management server and configuration management service broker.
 >  
 > ![3-2-2]
 
-- PaaS-TA 사용자  포탈에 접속하여, 카탈로그를 통해 서비스를 신청한다.   
+- Access to PaaS-TA user portal then apply for service through catalog.   
 
 ![003]
 
-- 대시보드 URL을 통해 서비스에 접근한다.    
+- Access the service through the dashboard URL.    
 
 ![004]  
 
 
-#### <div id="3.3.2"/>  3.3.2. 서비스 신청 - CLI
-CLI 를 통한 형상관리 서비스 신청 방법을 설명한다.
+#### <div id="3.3.2"/>  3.3.2. Service Registration  - CLI
+Describes how to apply for configuration management services through the CLI.
 
-- 서비스 인스턴스 신청 명령어
+- Service Instance Application Commands
 ```
 cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 
-[SERVICE] : Marketplace에서 보여지는 서비스 명
-[PLAN] : 서비스에 대한 정책
-[SERVICE_INSTANCE] : 생성할 서비스 인스턴스 이름
+[SERVICE] : Service name shown at the Marketplace
+[PLAN] : Policies for Services
+[SERVICE_INSTANCE] : Name of the service instance to create
 ```
 
-- 형상관리 서비스 사용을 위해 서비스를 신청 한다. (PaaS-TA user_id, org 이름 설정)
+-Apply for service for the use of configuration management services. (PaaS-TA user_id, org name setting)
 > $ cf create-service p-paasta-sourcecontrol Default paasta-sourcecontrol -c '{"owner":"{user_id}", "org_name":"{org_name}"}'  
 ```
 Creating service instance paasta-sourcecontrol in org system / space dev as admin...
 OK
 ```
 
-- 서비스 상세의 대시보드 URL 정보를 확인하여 서비스에 접근한다.
+- Access the service by checking the service details dashboard URL information.
 > $ cf service paasta-sourcecontrol
  ```
- ... (생략) ...
+ ... (Skip) ...
  Dashboard:        http://115.68.47.179:8080/repositories/user/b840ecb4-15fb-4b35-a9fc-185f42f0de37
  Service broker:   paasta-sourcecontrol-broker
- ... (생략) ...
+ ... (Skip) ...
  ```
  
 [source_controller_service_guide01]:.images/source-control/source_controller_service_guide01.PNG

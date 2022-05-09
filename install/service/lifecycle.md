@@ -2,31 +2,31 @@
 
 ## Table of Contents
 
-1. [문서 개요](#1)  
-  1.1. [목적](#1.1)  
-  1.2. [범위](#1.2)   
-  1.3. [참고자료](#1.3)   
+1. [Document Outline](#1)  
+  1.1. [Purpose](#1.1)  
+  1.2. [Range](#1.2)   
+  1.3. [References](#1.3)   
 
-2. [라이프사이클 관리 서비스 설치](#2)  
+2. [Lifecycle managing service installation](#2)  
   2.1. [Prerequisite](#2.1)   
-  2.2. [Stemcell 확인](#2.2)    
-  2.3. [Deployment 다운로드](#2.3)   
-  2.4. [Deployment 파일 수정](#2.4)  
-  2.5. [서비스 설치](#2.5)     
-  2.6. [서비스 설치 확인](#2.6)  
+  2.2. [Stemcell Check](#2.2)    
+  2.3. [Deployment Download](#2.3)   
+  2.4. [Deployment File Modification](#2.4)  
+  2.5. [Service Installation](#2.5)     
+  2.6. [Service Installation Check](#2.6)  
   
-3. [라이프사이클 관리 서비스 관리 및 신청](#3)  
- 3.1. [서비스 브로커 등록](#3.1)   
- 3.2. [서비스 신청](#3.2)  
-　3.2.1. [서비스 신청 - 포탈](#3.2.1)   
-　3.2.2. [서비스 신청 - CLI](#3.2.2)   
+3. [Lifecycle managing service management and application](#3)  
+ 3.1. [Service Broker Registration](#3.1)   
+ 3.2. [Service Application](#3.2)  
+　3.2.1. [Service Application - Portal](#3.2.1)   
+　3.2.2. [Service Application - CLI](#3.2.2)   
 
 
 
 
-## <div id="1"/> 1. 문서 개요
+## <div id="1"/> 1. Document Outline
 
-### <div id="1.1"/> 1.1. 목적
+### <div id="1.1"/> 1.1. Purpose
 
 본 문서(라이프사이클 관리 서비스팩 설치 가이드)는 PaaS-TA에서 제공되는 서비스팩인 라이프사이클 관리 서비스팩을 Bosh를 이용하여 설치 하는 방법을 기술하였다.  
 

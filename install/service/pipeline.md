@@ -248,11 +248,11 @@ binary_storage_internal_static_ips: "<BINARY_STORAGE_PRIVATE_IP>"  # binary stor
 binary_storage_proxy_port: "10008"                                 # binary storage Proxy Server Port(Object Storage access Port) (default : 10008)
 binary_storage_auth_port: 15001                                    # binary storage keystone port (e.g. 15001) -- Do Not Use "5000"
 binary_storage_username: "paasta-pipeline"                         # binary storage First generated user name(Object Storage Access Username)
-binary_storage_password: "paasta-pipeline"                         # binary storage 최초 생성되는 유저 비밀번호(Object Storage 접속 유저 비밀번호)
-binary_storage_tenantname: "paasta-pipeline"                       # binary storage 최초 생성되는 테넌트 이름(Object Storage 접속 테넌트 이름)
-binary_storage_email: "email@email.com"                            # binary storage 최소 생성되는 유저의 이메일
-binary_storage_binary_desc: "paasta-pipeline-object service"       # binary storage 설명
-binary_storage_container: "delivery-pipeline-container"            # binary storage 최소 생성되는container 이름
+binary_storage_password: "paasta-pipeline"                         # binary storage First generated user password(Object Storage Access User Password)
+binary_storage_tenantname: "paasta-pipeline"                       # binary storage First generated tenant name(Object Storage Access Tenant Name)
+binary_storage_email: "email@email.com"                            # binary storage First generated user email
+binary_storage_binary_desc: "paasta-pipeline-object service"       # binary storage Description
+binary_storage_container: "delivery-pipeline-container"            # binary storage First generated container Name
 
 # COMMON_API
 common_api_port: "8081"                                          # common api port 
@@ -306,9 +306,9 @@ scheduler_vm_type: "small"                                       # scheduler vm 
 scheduler_internal_static_ips: "<SCHEDULER_PRIVATE_IP>"          # scheduler's private IP (e.g. "10.0.161.42")
 ```
 
-### <div id='2.5'/> 2.5. 서비스 설치
+### <div id='2.5'/> 2.5. Service Installation
 
-- 서버 환경에 맞추어 Deploy 스크립트 파일의 VARIABLES 설정을 수정하고, Option file을 추가할지 선택한다.  
+- Modify the VARIABLES settings in the Deploy script file to suit the server environment, and select whether to add the option file.  
 
 > $ vi ~/workspace/service-deployment/pipeline-service/deploy.sh
 
@@ -317,8 +317,8 @@ scheduler_internal_static_ips: "<SCHEDULER_PRIVATE_IP>"          # scheduler's p
 
 # VARIABLES
 COMMON_VARS_PATH="<COMMON_VARS_FILE_PATH>"	# common_vars.yml File Path (e.g. ../../common/common_vars.yml)
-CURRENT_IAAS="${CURRENT_IAAS}"			# IaaS Information (PaaS-TA에서 제공되는 create-bosh-login.sh 미 사용시 aws/azure/gcp/openstack/vsphere 입력)
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"		# bosh director alias name (PaaS-TA에서 제공되는 create-bosh-login.sh 미 사용시 bosh envs에서 이름을 확인하여 입력)
+CURRENT_IAAS="${CURRENT_IAAS}"			# IaaS Information (When not using create-bosh-login.sh provided by PaaS-TA, enter aws/azure/gcp/openstack/vsphere)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"		# bosh director alias name (When not using create-bosh-login.sh provided by PaaS-TA, check the name from bosh envs and enter)
 
 # DEPLOY
 bosh -e ${BOSH_ENVIRONMENT} -n -d pipeline-service deploy --no-redact pipeline-service.yml \
@@ -328,16 +328,16 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d pipeline-service deploy --no-redact pipeline-s
     -l vars.yml
 ```
 
-- 서비스를 설치한다.  
+- Install Service.  
 ```
 $ cd ~/workspace/service-deployment/pipeline-service  
 $ sh ./deploy.sh  
 ```
 
 
-### <div id='2.6'/> 2.6. 서비스 설치 확인
+### <div id='2.6'/> 2.6. Service Installation Check
 
-설치 된 서비스를 확인한다.  
+Check the installed service.  
 
 > $ bosh -e micro-bosh -d pipeline-service vms  
 
@@ -370,9 +370,9 @@ postgres/6a8a4d71-e46f-49ca-b992-407441a90965                              runni
 Succeeded
 ```
 
-### <div id='2.7'/> 2.7. [선택] 확장 언어 설치
+### <div id='2.7'/> 2.7. [Optional] Extended Language Installation
 
-- 확장 언어 스크립트를 ci_server 에 복사하고 실행한다.   
+- Copy and run extended language scripts to ci_server.   
 ```
 $ cd ~/workspace/service-deployment/pipeline-service/scripts/
 $ bosh -d pipeline-service scp php-ci-server-script.sh ci_server/0:/tmp/
@@ -383,13 +383,13 @@ $ sh /var/vcap/php-ci-server-script.sh
 ```
 
 
-- 서버 환경에 맞추어 스크립트 파일의 계정 정보를 수정한다. 
+- Modify the account information in the script file to suit the server environment. 
 
 > $ vi ~/workspace/service-deployment/pipeline-service/scripts/php-mariadb-script.sh
 
 ```
 #!/bin/bash
-mysql_path=/var/vcap/store/mariadb-10.5.15-linux-x86_64/bin/mysql #경로 확인 및 수정
+mysql_path=/var/vcap/store/mariadb-10.5.15-linux-x86_64/bin/mysql #Verifying and Modifying Paths
 mysql_port='<mysql_port>'           #mariadb port : (e.g. 13306)
 mysql_user='<mysql_user>'           #mariadb user : (e.g. root)
 mysql_password='<mysql_password>'   #mariadb password 
@@ -406,7 +406,7 @@ ${mysql_path} -u${mysql_user} -p${mysql_password} -P${mysql_port} -Ddelivery_pip
 echo 'php data insert complete'
 ```
 
-- 확장 언어 스크립트를 mariadb 에 복사하고 실행하여, 파이프라인 서비스에 적용한다.  
+- Copy and run extended language scripts to mariadb, and apply to pipeline services.  
 ```
 $ cd ~/workspace/service-deployment/pipeline-service/scripts/
 $ bosh -d pipeline-service scp php-mariadb-script.sh mariadb/0:/tmp/
@@ -416,8 +416,8 @@ $ mv /tmp/php-mariadb-script.sh /var/vcap/
 $ sh /var/vcap/php-mariadb-script.sh
 ```
 
-## <div id='3'/> 3. 배포 파이프라인 서비스 관리 및 신청 
-PaaS-TA 운영자 포탈을 통해 배포파이프라인 서비스를 등록 및 공개하면, PaaS-TA 사용자 포탈을 통해 서비스를 신청 하여 사용할 수 있다.
+## <div id='3'/> 3. Manage and apply for deployment pipeline services 
+If you register and disclose the distribution pipeline service through the PaaS-TA operator portal, you can apply for and use the service through the PaaS-TA user portal.
 
 ### <div id='3.1'/> 3.1. 서비스 브로커 등록
 

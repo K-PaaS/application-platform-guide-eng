@@ -610,7 +610,7 @@ binary_buildpack         12         true      false    binary_buildpack-cflinuxf
 
 
 #### <div id='3.4.2'/> 3.4.2. Service Registration - CLI
-Explains how to apply for pipeline service via CLI.
+Describes how to apply for pipeline service through CLI.
 
 - Service Instance Application Commands
 ```

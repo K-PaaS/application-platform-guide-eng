@@ -23,33 +23,33 @@
 
 
 
-## <div id="1"/> 1. 문서 개요
+## <div id="1"/> 1. Document Outline
 
-### <div id="1.1"/> 1.1. 목적
+### <div id="1.1"/> 1.1. Purpose
 
-본 문서(애플리케이션 Gateway 서비스팩 설치 가이드)는 PaaS-TA에서 제공되는 서비스팩인 애플리케이션 Gateway 서비스팩을 Bosh를 이용하여 설치 하는 방법을 기술하였다.  
+This document (Application Gateway Service Pack Installation Guide) describes how to install the Application Gateway Service Pack, which is a service pack provided by PaaS-TA, using Bosh  
 
-### <div id="1.2"/> 1.2. 범위
+### <div id="1.2"/> 1.2. Range
 
-설치 범위는 애플리케이션 Gateway 서비스팩을 검증하기 위한 기본 설치를 기준으로 작성하였다.  
+The installation scope was prepared based on the basic installation to verify the application gateway service pack.  
 
-### <div id="1.3"/> 1.3. 참고자료
+### <div id="1.3"/> 1.3. References
 BOSH Document: [http://bosh.io](http://bosh.io)  
 Cloud Foundry Document: [https://docs.cloudfoundry.org](https://docs.cloudfoundry.org)  
-애플리케이션 Gateway 서비스(WSO2) Document : [https://apim.docs.wso2.com/en/3.2.0/](https://apim.docs.wso2.com/en/3.2.0/)
+Application Gateway Service(WSO2) Document : [https://apim.docs.wso2.com/en/3.2.0/](https://apim.docs.wso2.com/en/3.2.0/)
 
-## <div id="2"/> 2. 애플리케이션 Gateway 서비스 설치  
+## <div id="2"/> 2. Application Gateway Service Installation  
 
 ### <div id="2.1"/> 2.1. Prerequisite  
 
-본 설치 가이드는 Linux 환경에서 설치하는 것을 기준으로 하였다.  
-서비스팩 설치를 위해서는 먼저 BOSH CLI v2 가 설치 되어 있어야 하고 BOSH 에 로그인이 되어 있어야 한다.  
-BOSH CLI v2 가 설치 되어 있지 않을 경우 먼저 BOSH2.0 설치 가이드 문서를 참고 하여 BOSH CLI v2를 설치를 하고 사용법을 숙지 해야 한다.  
+This installation guide is based on installing in a Linux environment.   
+To install the service pack, BOSH CLI v2 must be installed and logged in to BOSH.  
+If BOSH CLI v2 is not installed, you should first refer to the BOSH 2.0 installation guide document to install BOSH CLI v2 and familiarize the usage. 
 
-### <div id="2.2"/> 2.2. Stemcell 확인
+### <div id="2.2"/> 2.2. Stemcell Check
 
-Stemcell 목록을 확인하여 서비스 설치에 필요한 Stemcell이 업로드 되어 있는 것을 확인한다.  
-본 가이드의 Stemcell은 ubuntu-bionic 1.76를 사용한다.  
+Check the Stemcell list to make sure that the Stemcell required for service installation is uploaded.  
+The Stemcell of this guide uses ubuntu-bionic 1.76.  
 
 > $ bosh -e ${BOSH_ENVIRONMENT} stemcells
 
@@ -66,37 +66,37 @@ bosh-openstack-kvm-ubuntu-bionic-go_agent  1.76      ubuntu-bionic  -    ce507ae
 Succeeded
 ```
 
-만약 해당 Stemcell이 업로드 되어 있지 않다면 [bosh.io 스템셀](https://bosh.io/stemcells/) 에서 해당되는 IaaS환경과 버전에 해당되는 스템셀 링크를 복사 후 다음과 같은 명령어를 실행한다.
+If the corresponding Stemcell is not uploaded, copy the Stemcell link to the corresponding IaaS environment and version from [bosh.io Stemcell](https://bosh.io/stemcells/) and run the following command.
 
 ```
-# Stemcell 업로드 명령어 예제
+# Example of Stemcell Upload Command
 $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell -n {STEMCELL_URL}
 ```
 
-### <div id="2.3"/> 2.3. Deployment 다운로드  
+### <div id="2.3"/> 2.3. Deployment Download  
 
-서비스 설치에 필요한 Deployment를 Git Repository에서 받아 서비스 설치 작업 경로로 위치시킨다.  
+Download the deployment needed from Git Repository and place the file in the service installation directory.
 
 - Service Deployment Git Repository URL : https://github.com/PaaS-TA/service-deployment/tree/v5.1.6
 
 ```
-# Deployment 다운로드 파일 위치 경로 생성 및 설치 경로 이동
+# Deployment file download, make directory, change directory
 $ mkdir -p ~/workspace
 $ cd ~/workspace
 
-# Deployment 파일 다운로드
+# Deployment File Download
 $ git clone https://github.com/PaaS-TA/service-deployment.git -b v5.1.6
 
-# common_vars.yml 파일 다운로드(common_vars.yml가 존재하지 않는다면 다운로드)
+# common_vars.yml File Download(download if common_vars.yml doesn't exist)
 $ git clone https://github.com/PaaS-TA/common.git
 ```
 
-### <div id="2.4"/> 2.4. Deployment 파일 수정
+### <div id="2.4"/> 2.4. Deployment File Modification
 
-BOSH Deployment manifest는 Components 요소 및 배포의 속성을 정의한 YAML 파일이다.  
-Deployment 파일에서 사용하는 network, vm_type, disk_type 등은 Cloud config를 활용하고, 활용 방법은 PaaS-TA AP 설치 가이드를 참고한다.  
+The BOSH Deployment manifest is a YAML file that defines the properties of components elements and deployments. 
+Cloud config is used for network, vm_type, and disk_type used in Deployment files, and refer to the PaaS-TA AP installation guide for the usage.  
 
-- Cloud config 설정 내용을 확인한다.   
+- Check Cloud config settings.   
 
 > $ bosh -e micro-bosh cloud-config   
 
@@ -111,7 +111,7 @@ azs:
     availability_zone: ap-northeast-2a
   name: z2
 
-... ((생략)) ...
+... ((Skip)) ...
 
 disk_types:
 - disk_size: 1024
@@ -119,7 +119,7 @@ disk_types:
 - disk_size: 1024
   name: 1GB
 
-... ((생략)) ...
+... ((Skip)) ...
 
 networks:
 - name: default
@@ -137,7 +137,7 @@ networks:
     static:
     - 10.0.1.10 - 10.0.1.120
 
-... ((생략)) ...
+... ((Skip)) ...
 
 vm_types:
 - cloud_properties:
@@ -153,31 +153,31 @@ vm_types:
     instance_type: t2.small
   name: small
 
-... ((생략)) ...
+... ((Skip)) ...
 
 Succeeded
 ```
 
 
 
-- common_vars.yml을 서버 환경에 맞게 수정한다. 
-- Gateway 서비스 에서 사용하는 변수는 bosh_url, bosh_client_admin_id, bosh_client_admin_secret, bosh_director_port, bosh_oauth_port이다.
+- Modify common_vars.yml to suit the server environment. 
+- Variables used in Gateway service are: bosh_url, bosh_client_admin_id, bosh_client_admin_secret, bosh_director_port, and bosh_oauth_port.
 
 > $ vi ~/workspace/common/common_vars.yml
 ```
-... ((생략)) ...
+... ((Skip)) ...
 
 bosh_url: "https://10.0.1.6"			# BOSH URL (e.g. "https://00.000.0.0")
 bosh_client_admin_id: "admin"			# BOSH Client Admin ID
-bosh_client_admin_secret: "ert7na4jpew48"	# BOSH Client Admin Secret('echo $(bosh int ~/workspace/paasta-deployment/bosh/{iaas}/creds.yml --path /admin_password)' 명령어를 통해 확인 가능)
+bosh_client_admin_secret: "ert7na4jpew48"	# BOSH Client Admin Secret('echo $(bosh int ~/workspace/paasta-deployment/bosh/{iaas}/creds.yml --path /admin_password)' Can be checked through commads)
 bosh_director_port: 25555			# BOSH director port
 bosh_oauth_port: 8443				# BOSH oauth port
 
-... ((생략)) ...
+... ((Skip)) ...
 
 ```
 
-- Deployment YAML에서 사용하는 변수 파일을 서버 환경에 맞게 수정한다.
+- Modify the variable files used by Deployment YAML to suit the server environment.
 
 > $ vi ~/workspace/service-deployment/gateway-service/vars.yml
 
@@ -220,10 +220,10 @@ api_gateway_public_ips: "<API_GATEWAY_PUBLIC_IPS>"                   # api-gatew
 api_gateway_admin_password: "<API_GATEWAY_ADMIN_PASSWORD>"           # api-gateway : api-gateway super admin password (e.g. "admin!Service") special characters Only(-!^*)
 ```
 
-### <div id="2.5"/> 2.5. 서비스 설치
+### <div id="2.5"/> 2.5. Service Installation
 
-- 서버 환경에 맞추어 Deploy 스크립트 파일의 VARIABLES 설정을 수정하고, Option file을 추가할지 선택한다.  
-     (선택) -o operations/cce.yml (CCE 조치를 적용하여 설치) 
+- Modify the VARIABLES settings in the Deploy script file to suit the server environment, and select whether to add the option file.  
+     (Optional) -o operations/cce.yml (Apply CCE when installing) 
 
 > $ vi ~/workspace/service-deployment/gateway-service/deploy.sh
 
@@ -232,8 +232,8 @@ api_gateway_admin_password: "<API_GATEWAY_ADMIN_PASSWORD>"           # api-gatew
 
 # VARIABLES
 COMMON_VARS_PATH="<COMMON_VARS_FILE_PATH>"  # common_vars.yml File Path (e.g. ../../common/common_vars.yml)
-CURRENT_IAAS="${CURRENT_IAAS}"              # IaaS Information (PaaS-TA에서 제공되는 create-bosh-login.sh 미 사용시 aws/azure/gcp/openstack/vsphere 입력)
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"      # bosh director alias name (PaaS-TA에서 제공되는 create-bosh-login.sh 미 사용시 bosh envs에서 이름을 확인하여 입력)
+CURRENT_IAAS="${CURRENT_IAAS}"              # IaaS Information (When not using create-bosh-login.sh provided by PaaS-TA, enter aws/azure/gcp/openstack/vsphere)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"      # bosh director alias name (When not using create-bosh-login.sh provided by PaaS-TA,Check the name at bosh envs and enter)
 
 # DEPLOY
 bosh -e ${BOSH_ENVIRONMENT} -n -d gateway-service deploy --no-redact gateway-service.yml \
@@ -244,15 +244,15 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d gateway-service deploy --no-redact gateway-ser
 
 ```
 
-- 서비스를 설치한다.  
+- Install Service.  
 ```
 $ cd ~/workspace/service-deployment/gateway-service  
 $ sh ./deploy.sh  
 ```  
 
-### <div id="2.6"/> 2.6. 서비스 설치 확인
+### <div id="2.6"/> 2.6. Service Installation Check
 
-설치 완료된 서비스를 확인한다.  
+Check the installed Service.  
 
 > $ bosh -e micro-bosh -d gateway-service vms  
 
@@ -276,16 +276,16 @@ service-broker/6bcc651a-f94e-4b38-aee7-3640407315b6  running        z3  10.0.81.
 Succeeded
 ```
 
-## <div id="3"/>3.  애플리케이션 Gateway 서비스 관리 및 신청
+## <div id="3"/>3.  Application Gateway Service Management and Registration
 
-PaaS-TA 운영자 포탈을 통해 서비스를 등록하고 공개하면, PaaS-TA 사용자 포탈을 통해 서비스를 신청 하여 사용할 수 있다.
+If you register and disclose the service through the PaaS-TA operator portal, you can apply for and use the service through the PaaS-TA user portal.
 
-### <div id="3.1"/> 3.1. 서비스 브로커 등록
+### <div id="3.1"/> 3.1. Service Broker Registration
 
-서비스의 설치가 완료 되면, PaaS-TA 포탈에서 서비스를 사용하기 위해 애플리케이션 Gateway 서비스 브로커를 등록해 주어야 한다.  
-서비스 브로커 등록 시에는 개방형 클라우드 플랫폼에서 서비스 브로커를 등록 할 수 있는 권한을 가진 사용자로 로그인 되어 있어야 한다.  
+Once the service is installed, an application gateway service broker must be registered to use the service on the PaaS-TA portal.  
+When registering a service broker, you must be logged in as a user with authority to register a service broker on an open cloud platform.  
 
-- 서비스 브로커 목록을 확인한다  
+- Check the list of service brokers  
 > $ cf service-brokers
 
 ```
@@ -295,16 +295,16 @@ name   url
 No service brokers found
 ```
 
-- 서비스 브로커 등록 명령어
+- Service Broker Registration Commands
 ```
 cf create-service-broker [SERVICE_BROKER] [USERNAME] [PASSWORD] [SERVICE_BROKER_URL]
 
-[SERVICE_BROKER] : 서비스 브로커 명
-[USERNAME] / [PASSWORD] : 서비스 브로커에 접근할 수 있는 사용자 ID / PASSWORD
-[SERVICE_BROKER_URL] : 서비스 브로커 접근 URL
+[SERVICE_BROKER] : Service Broker Name
+[USERNAME] / [PASSWORD] : User ID / PASSWORD with access to service broker
+[SERVICE_BROKER_URL] : Service Broker Access URL
 ```
 
-- 애플리케이션 Gateway 서비스 브로커를 등록한다.  
+- Register Application Gateway Service Broker.  
 
 > $ cf create-service-broker api-gateway-service-broker admin cloudfoundry http://<service-broker_ip>:8080
 ```
@@ -313,7 +313,7 @@ Creating service broker api-gateway-service-broker as admin...
 OK                                                              
 ```
 
-- 등록된 애플리케이션 Gateway 서비스 브로커를 확인한다.  
+- Check the registered application gateway service broker.  
 > $ cf service-brokers
 
 ```
@@ -323,7 +323,7 @@ name                         url
 api-gateway-service-broker   http://10.0.81.123:8080
 ```
 
-- 애플리케이션 Gateway 서비스의 서비스 접근 정보를 확인한다.  
+- Check service access information of application gateway service.  
 > $ cf service-access -b api-gateway-service-broker  
 
 ```

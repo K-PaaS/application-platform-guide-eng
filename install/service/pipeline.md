@@ -595,7 +595,7 @@ binary_buildpack         12         true      false    binary_buildpack-cflinuxf
 > - Tag : paasta / tag6, free / tag2
 > - Outline : A pipeline designed for development
 > - Description :
-> A pipeline designed for development
+> A pipeline designed for development.  
 > Minimum requirements were made by Deployment Pipeline Server and Deployment Pipeline Service Broker.
 >  
 > ![3-2-2]

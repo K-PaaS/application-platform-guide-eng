@@ -570,7 +570,7 @@ binary_buildpack         12         true      false    binary_buildpack-cflinuxf
 1. Access the PaaS-Ta operator portal and log in.
 ![3-1-1]
 
-2. Login > Service Management > Check the Distribution Pipeline Service Broker on the Service Broker page.
+2. Login > Service Management > Check the Deployment Pipeline Service Broker on the Service Broker page.
 ![3-1-2]
 
 3. Service Management> Check the Service Control page for access to the deployment pipeline service plan.

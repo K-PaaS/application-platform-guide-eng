@@ -419,12 +419,12 @@ $ sh /var/vcap/php-mariadb-script.sh
 ## <div id='3'/> 3. Manage and apply for deployment pipeline services 
 If you register and disclose the distribution pipeline service through the PaaS-TA operator portal, you can apply for and use the service through the PaaS-TA user portal.
 
-### <div id='3.1'/> 3.1. 서비스 브로커 등록
+### <div id='3.1'/> 3.1. Service Broker Registration
 
-배포 파이프라인 서비스팩 배포가 완료되었으면 파스-타 포탈에서 서비스 팩을 사용하기 위해서 먼저 배포 파이프라인 서비스 브로커를 등록해 주어야 한다.
-서비스 브로커 등록 시 개방형 클라우드 플랫폼에서 서비스 브로커를 등록할 수 있는 사용자로 로그인이 되어있어야 한다.
+Once the deployment of the deployment pipeline service pack has been completed, you must first register the deployment pipeline service broker to use the service pack on the PAAS-TA Portal.
+When registering as a service broker, you must be logged in as a user who can register a service broker on an open cloud platform.
 
-- 서비스 브로커 목록을 확인한다.
+- Check the list of service brokers.
 
 > $ cf service-brokers   
 ```  
@@ -434,16 +434,16 @@ name   url
 No service brokers found
 ```  
 
-- 서비스 브로커 등록 명령어
+- Register Service Broker Command
 ```
 cf create-service-broker [SERVICE_BROKER] [USERNAME] [PASSWORD] [SERVICE_BROKER_URL]
 
-[SERVICE_BROKER] : 서비스 브로커 명
-[USERNAME] / [PASSWORD] : 서비스 브로커에 접근할 수 있는 사용자 ID / PASSWORD
-[SERVICE_BROKER_URL] : 서비스 브로커 접근 URL
+[SERVICE_BROKER] : Service broker name
+[USERNAME] / [PASSWORD] : User ID / PASSWORD with access to service broker
+[SERVICE_BROKER_URL] : Service Broker Access URL
 ```
 
-- 배포 파이프라인 서비스 브로커를 등록한다.
+- Register deployment pipeline service broker.
 
 > $ cf create-service-broker delivery-pipeline admin cloudfoundry http://<delivery-pipeline-service-broker_ip>:8080   
 ```  
@@ -452,7 +452,7 @@ Creating service broker delivery-pipeline-broker as admin...
 OK
 ```  
 
-- 등록된 배포 파이프라인 서비스 브로커를 확인한다.
+- Check the registered deployment pipeline service broker.
 
 > $ cf service-brokers  
 ```  

@@ -500,9 +500,9 @@ Client Name : uaac client name (pipeclient)
 Client Password : uaac Client password  
 Dashboard URL: Dashboard URL to be successfully redirected   
 Permission Range : Permissible range list that the clients can earn on behalf of the users 
-AUthority Type : Authority list to use APIs provided by service packs  
+Authority Type : Authority list to use APIs provided by service packs  
 Authority Permission : Authority list granted to clients  
-Authomatic Authorization : Authority list that do not require user approval  
+Automatic Authorization : Authority list that do not require user approval  
 ```
 
 >$ uaac client add pipeclient -s clientsecret --redirect_uri "[DASHBOARD_URL]" /  

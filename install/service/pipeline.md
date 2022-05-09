@@ -596,7 +596,7 @@ binary_buildpack         12         true      false    binary_buildpack-cflinuxf
 > - Outline : A pipeline designed for development
 > - Description :
 > A pipeline designed for development
-> Configured as minimum using Deployment Pipeline Server, Deployment Pipeline Service Broker.
+> Minimum requirements were made by Deployment Pipeline Server and Deployment Pipeline Service Broker.
 >  
 > ![3-2-2]
 

@@ -301,7 +301,7 @@ Succeeded
 ### <div id="3.1"/> 3.1. Service Broker Registration
 
 Once the service is installed, a configuration management service broker must be registered to use the service on the PaaS-TA portal.  
-When registering a service broker, you must be logged in as a user with permission to register a service broker on an open cloud platform. 
+When registering a service broker, you must be logged in as a user with authority to register a service broker on an open cloud platform. 
 
 - Check the list of service brokers  
 > $ cf service-brokers

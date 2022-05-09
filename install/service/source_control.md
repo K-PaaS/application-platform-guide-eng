@@ -18,9 +18,9 @@
 3. [Configuration management service management and application](#3)  
  3.1. [Service Broker Registration](#3.1)  
  3.2. [UAA Client Registration](#3.2)  
- 3.3. [Service Registration](#3.3)  
-　3.3.1. [Service Registration - Portal](#3.3.1)   
-　3.3.2. [Service Registration - CLI](#3.3.2)   
+ 3.3. [Service Application](#3.3)  
+　3.3.1. [Service Application - Portal](#3.3.1)   
+　3.3.2. [Service Application - CLI](#3.3.2)   
     
 
 ## <div id='1'/> 1. Document Outline
@@ -429,8 +429,8 @@ scclient
     lastmodified: 1542894096080
 ```  
 
-### <div id='3.3'/> 3.3. Service Registration
-#### <div id='3.3.1'/> 3.3.1. Service Registration - Portal
+### <div id='3.3'/> 3.3. Service Application
+#### <div id='3.3.1'/> 3.3.1. Service Application - Portal
 1. Access the PaaS-Ta operator portal and log in.
 ![3-1-1]
 
@@ -474,7 +474,7 @@ scclient
 ![004]  
 
 
-#### <div id="3.3.2"/>  3.3.2. Service Registration  - CLI
+#### <div id="3.3.2"/>  3.3.2. Service Application  - CLI
 Describes how to apply for configuration management services through the CLI.
 
 - Service Instance Application Commands

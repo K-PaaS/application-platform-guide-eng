@@ -2,71 +2,71 @@
 
 ## Table of Contents
 
-1. [문서 개요](#1)  
-  1.1. [목적](#1.1)  
-  1.2. [범위](#1.2)   
-  1.3. [참고자료](#1.3)  
+1. [Document Outline](#1)  
+  1.1. [Purpose](#1.1)  
+  1.2. [Range](#1.2)   
+  1.3. [References](#1.3)  
 
-2. [Logging 서비스 설치](#2)  
+2. [Logging Service Installation](#2)  
   2.1. [Prerequisite](#2.1)   
-  2.2. [Stemcell 확인](#2.2)    
-  2.3. [Deployment 다운로드](#2.3)   
-  2.4. [Deployment 파일 수정](#2.4)  
-  2.5. [서비스 설치](#2.5)      
-  2.6. [서비스 설치 확인](#2.6)  
+  2.2. [Stemcell Check](#2.2)    
+  2.3. [Deployment Download](#2.3)   
+  2.4. [Deployment File Modification](#2.4)  
+  2.5. [Service Installation](#2.5)      
+  2.6. [Sercice Installation Check](#2.6)  
 
-3. [Logging 서비스 관리](#3)  
-  3.1. [Logging 서비스 UAA Client 등록](#3.1)  
-  3.2. [Logging 서비스 사용 활성화](#3.2)  
+3. [Logging Service management](#3)  
+  3.1. [Logging Service UAA Client Registration](#3.1)  
+  3.2. [Logging Service Usage Enable](#3.2)  
 
 
 
-## <div id="1"/> 1. 문서 개요
+## <div id="1"/> 1. Document Outline
 
-### <div id="1.1"/> 1.1. 목적
+### <div id="1.1"/> 1.1. Purpose
 
-본 문서(Logging 서비스팩 설치 가이드)는 PaaS-TA에서 제공되는 서비스팩인 Logging 서비스팩을 Bosh를 이용하여 설치 하는 방법을 기술하였다.  
+This document (Logging Service Pack Installation Guide) describes how to install the Logging service pack, which is a service pack provided by PaaS-TA, using Bosh.  
 
-### <div id="1.2"/> 1.2. 범위
+### <div id="1.2"/> 1.2. Range
 
-설치 범위는 Logging 서비스팩을 검증하기 위한 기본 설치를 기준으로 작성하였다.
+The installation range was prepared based on the basic installation to verify the Logging service pack.
 
-### <div id="1.3"/> 1.3. 참고자료
+### <div id="1.3"/> 1.3. References
 BOSH Document: [http://bosh.io](http://bosh.io)  
 Cloud Foundry Document: [https://docs.cloudfoundry.org](https://docs.cloudfoundry.org)  
 
-## <div id="2"/> 2. Logging 서비스 설치  
+## <div id="2"/> 2. Logging Service Installation  
 
 ### <div id="2.1"/> 2.1. Prerequisite 
 
-본 설치 가이드는 Linux 환경에서 설치하는 것을 기준으로 하였다.  
-서비스팩 설치를 위해서는 먼저 BOSH CLI v2 가 설치 되어 있어야 하고 BOSH 에 로그인이 되어 있어야 한다.  
-BOSH CLI v2 가 설치 되어 있지 않을 경우 먼저 BOSH2.0 설치 가이드 문서를 참고 하여 BOSH CLI v2를 설치를 하고 사용법을 숙지 해야 한다.  
-UAA client가 설치 되어 있지 않을 경우 UAA client의 설치가 필요하다.
+This installation guide is based on installing in a Linux environment.  
+To install the service pack, BOSH CLI v2 must be installed and logged in to BOSH.  
+If BOSH CLI v2 is not installed, you should first refer to the BOSH 2.0 installation guide document to install BOSH CLI v2 and familiarize the usage.  
+If the UAA client is not installed, installation of the UAA client is required.
 
-- UAA client 설치 (BOSH Dependency 설치 필요)
+- UAA client Installation (BOSH Dependency installation required)
 ```
 $ sudo gem install cf-uaac
 $ uaac -v
 ```
 
-※ "firehose-to-syslog" uaac client 확인  
+※ "firehose-to-syslog" uaac client check  
 
-uaac client에 "firehose-to-syslog"가 등록되어 있는지 확인 하여, 등록되어 있는 경우에는 "authorities"를 확인하여 "cloud_controller.admin" 권한을 부여한다.  
+Verify if "firehose-to-syslog" is registered in uaac client, If registered, check "authorities" and grant "cloud_controller.admin" permission.  
 
 ```
-# endpoint 설정
+# endpoint Setting
 $ uaac target https://uaa.<DOMAIN> --skip-ssl-validation
 
-# target 확인
+# target Check
 $ uaac target
 Target: https://uaa.<DOMAIN>
 Context: uaa_admin, from client uaa_admin
 
-# uaac 로그인
+# uaac Login
 $ uaac token client get <UAA_ADMIN_CLIENT_ID> -s <UAA_ADMIN_CLIENT_SECRET>
 
-# "firehose-to-syslog" uaac client 확인
+# "firehose-to-syslog" uaac client Check
 $ uaac client get firehose-to-syslog
 scope: cloud_controller.admin_read_only cloud_controller.global_auditor openid routing.router_groups.write network.write scim.read cloud_controller.admin uaa.user cloud_controller.read
     password.write routing.router_groups.read cloud_controller.write network.admin doppler.firehose scim.write
@@ -74,13 +74,13 @@ client_id: firehose-to-syslog
 resource_ids: none
 authorized_grant_types: client_credentials
 autoapprove:
-authorities: uaa.none doppler.firehose                   >>>>>>>>  cloud_controller.admin 권한 여부 확인
+authorities: uaa.none doppler.firehose                   >>>>>>>>  Verify cloud_controller.admin authorization
 lastmodified: 1552530293656
 
-# "firehose-to-syslog" uaac client 변경
+# "firehose-to-syslog" uaac client modification
 $ uaac client update firehose-to-syslog --authorities "doppler.firehose, uaa.none, cloud_controller.admin"
 
-# "firehose-to-syslog" uaac client 확인
+# "firehose-to-syslog" uaac client Check
 $ uaac client get firehose-to-syslog
 scope: cloud_controller.admin_read_only cloud_controller.global_auditor openid routing.router_groups.write network.write scim.read cloud_controller.admin uaa.user cloud_controller.read
     password.write routing.router_groups.read cloud_controller.write network.admin doppler.firehose scim.write
@@ -92,10 +92,10 @@ authorities: uaa.none doppler.firehose cloud_controller.admin
 lastmodified: 1552530293656
 ```
 
-### <div id="2.2"/> 2.2. Stemcell 확인  
+### <div id="2.2"/> 2.2. Stemcell Check  
 
-Stemcell 목록을 확인하여 서비스 설치에 필요한 Stemcell이 업로드 되어 있는 것을 확인한다.  
-본 가이드의 Stemcell은 ubuntu-xenial 621.94를 사용한다.  
+Check the Stemcell list to make sure that the Stemcell required for service installation is uploaded.  
+Stemcell in this guide uses ubuntu-xenial 621.94.  
 
 > $ bosh -e micro-bosh stemcells  
 
@@ -112,37 +112,37 @@ bosh-aws-xen-hvm-ubuntu-xenial-go_agent  621.94*  ubuntu-xenial  -    ami-0297ff
 Succeeded
 ```  
 
-만약 해당 Stemcell이 업로드 되어 있지 않다면 [bosh.io 스템셀](https://bosh.io/stemcells/) 에서 해당되는 IaaS환경과 버전에 해당되는 스템셀 링크를 복사 후 다음과 같은 명령어를 실행한다.
+If the corresponding Stemcell is not uploaded, copy the Stemcell link to the corresponding IaaS environment and version from [bosh.io Stemcell] (https://bosh.io/stemcells/) and run the following command.
 
 ```
-# Stemcell 업로드 명령어 예제
+# Example of Stemcell Upload Command
 bosh -e ${BOSH_ENVIRONMENT} upload-stemcell -n {STEMCELL_URL}
 ```
 
-### <div id="2.3"/> 2.3. Deployment 다운로드
+### <div id="2.3"/> 2.3. Deployment Download
 
-서비스 설치에 필요한 Deployment를 Git Repository에서 받아 서비스 설치 작업 경로로 위치시킨다.  
+Download the deployment needed from Git Repository and place the file in the service installation directory.  
 
 - Service Deployment Git Repository URL : https://github.com/PaaS-TA/service-deployment/tree/v5.0.6
 
 ```
-# Deployment 다운로드 파일 위치 경로 생성 및 설치 경로 이동
+# Deployment file download, make directory, change directory
 $ mkdir -p ~/workspace
 $ cd ~/workspace
 
-# Deployment 파일 다운로드
+# Deployment File Download
 $ git clone https://github.com/PaaS-TA/service-deployment.git -b v5.0.6
 
-# common_vars.yml 파일 다운로드(common_vars.yml가 존재하지 않는다면 다운로드)
+# common_vars.yml File Download(download if common_vars.yml doesn't exist)
 $ git clone https://github.com/PaaS-TA/common.git
 ```
 
-### <div id="2.4"/> 2.4. Deployment 파일 수정
+### <div id="2.4"/> 2.4. Deployment File Modification
 
-BOSH Deployment manifest는 Components 요소 및 배포의 속성을 정의한 YAML 파일이다.  
-Deployment 파일에서 사용하는 network, vm_type, disk_type 등은 Cloud config를 활용하고, 활용 방법은 PaaS-TA AP 설치 가이드를 참고한다.  
+The BOSH Deployment manifest is a YAML file that defines the properties of components elements and deployments.  
+Cloud config is used for network, vm_type, and disk_type used in Deployment files, and refer to the PaaS-TA AP installation guide for the usage.  
 
-- Cloud config 설정 내용을 확인한다.   
+- Check the Cloud config settings.   
 
 > $ bosh -e micro-bosh cloud-config   
 
@@ -157,7 +157,7 @@ azs:
     availability_zone: ap-northeast-2a
   name: z2
 
-... ((생략)) ...
+... ((Skip)) ...
 
 disk_types:
 - disk_size: 1024
@@ -165,7 +165,7 @@ disk_types:
 - disk_size: 1024
   name: 1GB
 
-... ((생략)) ...
+... ((Skip)) ...
 
 networks:
 - name: default
@@ -183,7 +183,7 @@ networks:
     static:
     - 10.0.1.10 - 10.0.1.120
 
-... ((생략)) ...
+... ((Skip)) ...
 
 vm_types:
 - cloud_properties:
@@ -199,29 +199,29 @@ vm_types:
     instance_type: t2.small
   name: small
 
-... ((생략)) ...
+... ((Skip)) ...
 
 Succeeded
 ```
 
-- common_vars.yml을 서버 환경에 맞게 수정한다. 
-- Logging 서비스에서 사용하는 변수는 system_domain, uaa_client_admin_id, uaa_client_admin_secret 이다.
+- Modify common_vars.yml to suit the server environment. 
+- Variables used in Logging service are : system_domain, uaa_client_admin_id, and uaa_client_admin_secret.
 
 > $ vi ~/workspace/common/common_vars.yml
 ```
-... ((생략)) ...
+... ((Skip)) ...
 
 # PAAS-TA INFO
-system_domain: "61.252.53.246.nip.io"		# Domain (nip.io를 사용하는 경우 HAProxy Public IP와 동일)
+system_domain: "61.252.53.246.nip.io"		# Domain (Same as HAProxy Public IP when using nip.io)
 uaa_client_admin_id: "admin"			# UAAC Admin Client Admin ID
-uaa_client_admin_secret: "admin-secret"		# UAAC Admin Client에 접근하기 위한 Secret 변수
+uaa_client_admin_secret: "admin-secret"		# Secret Variables for Accessing the UAAC Admin Client
 
-... ((생략)) ...
+... ((Skip)) ...
 
 ```
 
 
-- Deployment YAML에서 사용하는 변수 파일을 서버 환경에 맞게 수정한다.
+- Modify the variable files used by Deployment YAML to suit the server environment.
 
 > $ vi ~/workspace/service-deployment/logging-service/vars.yml
 
@@ -300,9 +300,9 @@ retention_period: 7                                              # logging servi
 laas_logo: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAABGCAYAAABll74gAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3FpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQyIDc5LjE2MDkyNCwgMjAxNy8wNy8xMy0wMTowNjozOSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpkYzhkNmI4YS1kZWNkLThkNGItOThiNC0zMjRjZjU1OTE0NmYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MkRBNUQ0REMyQ0EwMTFFOEI2QkZBQUY2QUYwM0UzRjkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MkRBNUQ0REIyQ0EwMTFFOEI2QkZBQUY2QUYwM0UzRjkiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjQ5YzFjOTUyLWE2MDEtZTI0NC1iMzIzLTMzYTIyNzI1NDcxYiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpkYzhkNmI4YS1kZWNkLThkNGItOThiNC0zMjRjZjU1OTE0NmYiLz4gPC9y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"
 ```  
 
-### <div id="2.5"/> 2.5. 서비스 설치
+### <div id="2.5"/> 2.5. Service Installation
 
-- 서버 환경에 맞추어 Deploy 스크립트 파일의 VARIABLES 설정을 수정하고, Option file을 추가할지 선택한다.  
+- Modify the VARIABLES settings in the Deploy script file to suit the server environment, and select whether to add the option file.   
 
 > $ vi ~/workspace/service-deployment/logging-service/deploy.sh
 
@@ -311,8 +311,8 @@ laas_logo: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAABGCAYAAABll74gAA
 
 # VARIABLES
 COMMON_VARS_PATH="<COMMON_VARS_FILE_PATH>"  # common_vars.yml File Path (e.g. ../../common/common_vars.yml)
-CURRENT_IAAS="${CURRENT_IAAS}"              # IaaS Information (PaaS-TA에서 제공되는 create-bosh-login.sh 미 사용시 aws/azure/gcp/openstack/vsphere 입력)
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"      # bosh director alias name (PaaS-TA에서 제공되는 create-bosh-login.sh 미 사용시 bosh envs에서 이름을 확인하여 입력)
+CURRENT_IAAS="${CURRENT_IAAS}"              # IaaS Information (When not using create-bosh-login.sh provided by PaaS-TA,enter aws/azure/gcp/openstack/vsphere)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"      # bosh director alias name (When not using create-bosh-login.sh provided by PaaS-TA, check the name at bosh envs and enter)
 
 # DEPLOY
 bosh -e ${BOSH_ENVIRONMENT} -n -d logging-service deploy --no-redact logging-service.yml \
@@ -321,16 +321,16 @@ bosh -e ${BOSH_ENVIRONMENT} -n -d logging-service deploy --no-redact logging-ser
     -l vars.yml
 ```
 
-- 서비스를 설치한다.  
+- Install service.  
 ```
 $ cd ~/workspace/service-deployment/logging-service
 $ sh ./deploy.sh  
 ```  
 
 
-### <div id="2.6"/> 2.6. 서비스 설치 확인
+### <div id="2.6"/> 2.6. Service Installation Check
 
-설치 완료된 서비스를 확인한다.  
+Check the installed service.  
 
 > $ bosh -e micro-bosh -d logging-service vms
 ```
@@ -355,27 +355,27 @@ visualization/d1ac0c78-aa4c-465d-9193-64f2e2de269a         running        z5  10
 
 ```
 
-## <div id="3"/>3.  Logging 서비스 관리
+## <div id="3"/>3.  Logging Service Management
 
-서비스 설치가 완료 되면, PaaS-TA 포탈에서 서비스를 사용하기 위해 Logging 서비스 UAA Client 등록 및 Logging 서비스 활성화 코드 등록을 해 주어야 한다.
+When the service installation is completed, the logging service UAA Client registration and logging service activation code must be registered to use the service on the PaaS-TA portal.
 
 
-### <div id="3.1"/>  3.1.	UAA Client 등록
+### <div id="3.1"/>  3.1.	UAA Client Registration
 
--	uaac server의 endpoint를 설정한다.
+-	Set endpoint of uaac server.
 
 ```
-# endpoint 설정
+# endpoint Setting
 $ uaac target https://uaa.<DOMAIN> --skip-ssl-validation
 
-# target 확인
+# target Check
 $ uaac target
 Target: https://uaa.<DOMAIN>
 Context: uaa_admin, from client uaa_admin
 
 ```
 
--	uaac 로그인을 한다.
+-	Log in to uaac.
 
 ```
 $ uaac token client get <UAA_ADMIN_CLIENT_ID> -s <UAA_ADMIN_CLIENT_SECRET>
@@ -385,18 +385,18 @@ Context: admin, from client admin
 
 ```
 
--	Logging 서비스 계정을 생성 한다. 
+-	Create a Logging service account. 
 ```
-### uaac client add 설명
-uaac client add <CF_UAA_CLIENT_ID> -s <CF_UAA_CLIENT_SECRET> --redirect_uri <Logging 서비스 URI> --scope <퍼미션 범위> --authorized_grant_types <권한 타입> --authorities=<권한 퍼미션> --autoapprove=<자동승인권한>  
+### uaac client add description
+uaac client add <CF_UAA_CLIENT_ID> -s <CF_UAA_CLIENT_SECRET> --redirect_uri <Logging Service URI> --scope <Permission Range> --authorized_grant_types <Authorization Type> --authorities=<Authority Permission> --autoapprove=<Automatic Authorization>  
 
-<CF_UAA_CLIENT_ID> : uaac 클라이언트 id  
-<CF_UAA_CLIENT_SECRET> : uaac 클라이언트 secret  
-<Logging 서비스 URI> : 성공적으로 리다이렉션 할 Logging 서비스 접근 URI (http://<logging-service의 router public IP>)  
-<퍼미션 범위> : 클라이언트가 사용자를 대신하여 얻을 수있는 허용 범위 목록  
-<권한 타입> : 서비스가 제공하는 API를 사용할 수 있는 권한 목록  
-<권한 퍼미션> : 클라이언트에 부여 된 권한 목록  
-<자동승인권한> : 사용자 승인이 필요하지 않은 권한 목록  
+<CF_UAA_CLIENT_ID> : uaac client id  
+<CF_UAA_CLIENT_SECRET> : uaac client secret  
+<Logging Service URI> : Logging Service Access URI to be Redirected Successfully (router public IP of http://<logging-service>)  
+<Permission Range> : Permissible range list that the clients can earn on behalf of the users  
+<Authority Type> : Authority list to use APIs provided by service packs   
+<Authority Permission> : Authority list granted to clients 
+<Automatic Authorization> : Authority list that do not require user approval  
 ``` 
 > uaac client add laasclient -s clientsecret --redirect_uri " http://[DASHBOARD_URL]" \
 >  --scope "cloud_controller_service_permissions.read , openid , cloud_controller.read , cloud_controller.write , cloud_controller.admin" \
@@ -404,14 +404,14 @@ uaac client add <CF_UAA_CLIENT_ID> -s <CF_UAA_CLIENT_SECRET> --redirect_uri <Log
 >  --authorities="uaa.resource" \
 >--autoapprove="openid , cloud_controller_service_permissions.read"
 ```  
-# e.g. Logging 서비스 계정 생성
+# e.g. Create a Logging Service Account
 $ uaac client add laasclient -s clientsecret --redirect_uri " http://115.68.47.181" \
   --scope "cloud_controller_service_permissions.read , openid , cloud_controller.read , cloud_controller.write , cloud_controller.admin" \
   --authorized_grant_types "authorization_code , client_credentials , refresh_token" \
   --authorities="uaa.resource" \
 --autoapprove="openid , cloud_controller_service_permissions.read"
 
-# e.g. Logging 서비스 계정 생성 확인
+# e.g. Verify created Logging service account
 $ uaac clients
 laasclient
     scope: cloud_controller.read cloud_controller.write cloud_controller_service_permissions.read openid
@@ -426,23 +426,23 @@ laasclient
 
 ```  
 
-## <div id="3.2"/>  3.2. Logging 서비스 활성화 코드 등록
+## <div id="3.2"/>  3.2. Logging Service Activation Code Registration
 
--	PaaS-TA 운영자 포탈에 접속한다.
+-	Access the PaaS-Ta operator portal and log in.
 ![002]
 
--	운영관리의 코드관리 메뉴로 이동하여 다음과 같이 코드를 등록한다.
+-	Go to the code management menu of the operation management and register the code as follows.
 
 > ※ Group Table  
-> 코드 ID  : LAAS  
-> 코드 이름 : Logging Service  
+> Code ID  : LAAS  
+> Code Name : Logging Service  
 > ![003]
 >
 > ※ Detail Table  
 > Key : laas_base_url  
-> Value : http://<Logging Service 접근 IP>/app/laas  
-> 요약 : Logging Service Base URL  
-> 사용 : Y  
+> Value : http://<Logging Service Access IP>/app/laas  
+> Outline : Logging Service Base URL  
+> Use : Y  
 > ![004]
 
 ![005]

@@ -592,7 +592,7 @@ binary_buildpack         12         true      false    binary_buildpack-cflinuxf
 > - Public : Y
 > - Using Dashboard : Y
 > - OnDemand : N
-> - Tagd : paasta / tag6, free / tag2
+> - Tag : paasta / tag6, free / tag2
 > - Outline : A pipeline designed for development
 > - Description :
 > A pipeline designed for development

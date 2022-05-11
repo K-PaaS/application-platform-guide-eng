@@ -373,7 +373,7 @@ broker: app-lifecycle-service-broker
 > - Description :
 > TAIGA is provided in a dedicated manner, providing systematic Agile development support and communication-oriented documentation and knowledge sharing support required for project collaboration.  
 > 
-> The service administrator's account is serviceadmin/(Password is entered when applying for a service).
+> The service administrator's account is serviceadmin/< Password is entered when applying for a service >.
 >  
 > ![002]
 

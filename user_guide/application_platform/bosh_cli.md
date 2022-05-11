@@ -156,15 +156,15 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 	|1          |-c, --config              |Designate BOSH configuration file|
 	|2          |--ca-cert                 |Specify the CA certificate used for the Director and UAA connection|
 	|3          |--client                  |Define Username or UAA Client|
-	|4          |-n                        |입력 사용이 필요한 확인|
+	|4          |-n                        |Don't ask for user input|
 	|5          |--json                    |Change output format to JSON|
 	|6          |--tty                     |Include all commonly displayed text in the output when the command is not redirected|
 	|7          |--no-color                |Disable colors|
 	|8          |--deployment, -d          |Specify a placement for deploy commands|
 	|9          |-h, --help                |See help message|
 	|10         |--column=                 |Show filtered columns only|
-	|11         |-e, --enviroment          |SHA256 체크섬 사용|
-	|12         |--sha2     |Set BOSH deployment file|
+	|11         |-e, --enviroment          |Director environment name or URL|
+	|12         |--sha2     |Use SHA256 checksum|
 	|13         |--parallel=                |Maximum number of parallel operations|
 	|14         |--client-secret=                |Password or UAA client password reset|
 
@@ -591,21 +591,21 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='26'/>***bosh finalize-release***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh finalize-release [path] [--force] [--version=ver] [--dir=dir]
 
-- **설명**
+- **Description**
 
 	선택적으로 주어진 버전으로 최종 릴리스로 릴리스 타볼의 내용을 기록
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|path|릴리즈 tarball 지정|O|
-	|--force|릴리스 디렉토리에서 커밋되지 않은 변경 사항을 무시하도록 지정|X|
-	|--version|사용자 정의 릴리스 버전을 제공|X|
+	|path|Set release tarball|O|
+	|--force|Specify to ignore uncommitted changes in the release directory|X|
+	|--version|Provides a custom release version|X|
 	|--dir|디렉토리 위치 지정|X|
 
 - **사용 예시**

@@ -1,12 +1,12 @@
 ### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > BOSH CLI
 
 ## Table Contents
-1. [개요](#1)
-	* [문서 목적](#2)
-	* [문서 범위](#3)
-	* [참고 자료](#4)
+1. [Outline](#1)
+	* [Document Purpose](#2)
+	* [Document Range](#3)
+	* [References](#4)
 
-1. [BOSH CLI 기본 사용법](#5)
+1. [BOSH CLI Basic Usage](#5)
 
 
 1. [BOSH CLI - Environments](#6)
@@ -122,67 +122,67 @@
 
 
 
-## <div id='1'/>문서 개요
+## <div id='1'/>Document Outline
 
-### <div id='2'/>문서 목적 
-본 문서는 BOSH에 대한 설치 및 운영 관리를 위한 도구인 BOSH CLI v2에 대해 기본 사용법 및 사용 예시를 통해 BOSH를 이해하는데 목적이 있다. 
+### <div id='2'/>Document Purpose 
+The purpose of this document is to understand BOSH through basic usage and use examples for BOSH CLI v2, a tool for installation and operation management of BOSH. 
 
-### <div id='3'/>문서 범위 
+### <div id='3'/>Document Range 
 
-본 문서에서는 BOSH CLI V2 사용법에 대해서 작성하였다.
+This document describes how to use BOSH CLI V2.
 
-### <div id='4'/>참고 자료 
+### <div id='4'/>References 
 
-본 문서는 Cloud Foundry의 BOSH Document([http://bosh.io](http://bosh.io))를 참고로 작성하였다.
+Rhis document referred to BOSH Document([http://bosh.io](http://bosh.io)) of Cloud Foundry.
 
-## <div id='5'/>BOSH CLI 기본 사용법
+## <div id='5'/>BOSH CLI Basic Usage
 
-CLI는 BOSH 배포와 Release를 관리하기 위해 도움을 주는 커맨드 라인 명령어로 아래와 같이 구분된다.
+To help BOSH deployment and Release management, CLI is divided in the Command Line Commands as below.
 
-- bosh-cli: BOSH를 관리하기 위한 CLI
+- bosh-cli: A CLI to manage BOSH
 
 
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh [<options>] <command> [<args>]
 		
-	bosh 명령어에 대괄호로 묶인 인자인 <options>과 <args>는 명령어에 따라 선택적으로 사용되고, <command> 인자는 필수 인자이다.
+	<options> and <args>, which are the factors enclosed in square brackets in the bosh command, are used selectively according to the command, and the <command> factor is an essential factor.
 
 - **Options**
 
-	|**번호**   |**옵션**                  |**설명**|
+	|**Numbers**   |**Options**                  |**Description**|
 	|----------|-------------------------|--------------------------------|
-	|1          |-c, --config              |BOSH configuration file 지정|
-	|2          |--ca-cert                 |Director 및 UAA 연결에 사용 되는 CA 인증서 지정|
-	|3          |--client                  |사용자 이름 또는 UAA 클라이언트 재정의|
+	|1          |-c, --config              |Designate BOSH configuration file|
+	|2          |--ca-cert                 |Specify the CA certificate used for the Director and UAA connection|
+	|3          |--client                  |Define Username or UAA Client|
 	|4          |-n                        |입력 사용이 필요한 확인|
-	|5          |--json                    |출력 형식을 JSON으로 변경|
-	|6          |--tty                     |명령이 리디렉션되지 않을 때 일반적으로 표시되는 모든 텍스트를 출력에 포함|
-	|7          |--no-color                |색상을 비활성화|
-	|8          |--deployment, -d          |Deploy 명령을 위한 배치 지정|
-	|9          |-h, --help                |Help 메시지 보기|
-	|10         |--column=                 |지정된 열만 표시하도록 필터링|
+	|5          |--json                    |Change output format to JSON|
+	|6          |--tty                     |Include all commonly displayed text in the output when the command is not redirected|
+	|7          |--no-color                |Disable colors|
+	|8          |--deployment, -d          |Specify a placement for deploy commands|
+	|9          |-h, --help                |See help message|
+	|10         |--column=                 |Show filtered columns only|
 	|11         |-e, --enviroment          |SHA256 체크섬 사용|
-	|12         |--sha2     |BOSH 배포파일 지정|
-	|13         |--parallel=                |병렬 작업의 최대 수|
-	|14         |--client-secret=                |암호 또는 UAA 클라이언트 암호 재정의|
+	|12         |--sha2     |Set BOSH deployment file|
+	|13         |--parallel=                |Maximum number of parallel operations|
+	|14         |--client-secret=                |Password or UAA client password reset|
 
 ##  <div id='6'/>BOSH CLI - Environments
 
 ### <div id='7'/>***bosh environments***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh environments (Alias: envs)
 
-- **설명**
+- **Description**
 
-		BOSH CLI에 등록 한 디렉터의 별명이 지정된 환경을 나열
+		Lists the environment in which the director registered with the BOSH CLI is nicknamed
 
-- **파라미터**
+- **Parameter**
 
-- **사용 예시**
+- **Usage Example**
  
 		$ bosh envs
 		URL              Alias
@@ -194,11 +194,11 @@ CLI는 BOSH 배포와 Release를 관리하기 위해 도움을 주는 커맨드 
 
 ### <div id='8'/>***bosh create-env***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh create-env [deploymentFile] [--state path] [-v ...] [-o ...] [--vars-store path]
 
-- **설명**
+- **Description**
 
 	BOSH CLI를 통해 Manifest File을 기반으로 단일 VM을 생성. 일반적으로 Director 환경을 만드는 데 사용
 

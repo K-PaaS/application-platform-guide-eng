@@ -332,11 +332,11 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 - **Parameter**
 
-	|**Parameter Name**|**Description**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|BOSH 지정 한 Director 환경 이름 명칭|O|
+	|my-env|BOSH Specified Director Environment Name|O|
 
-- **사용 예시**
+- **Usage Example**
 
 		$ bosh -e my-env l
 		User (): admin
@@ -345,21 +345,21 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='14'/>***bosh log-out***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] log-out 
 
-- **설명**
+- **Description**
 
-	현재 접속 한 디렉터 로그아웃
+	Logs out currently logged in user
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|BOSH 지정 한 Director 환경 이름 명칭|O|
+	|my-env|BOSH Specified Director Environment Name|O|
 
-- **사용 예시**
+- **Usage Example**
 
 		$ bosh log-out 
 		Logged out from '192.168.10.241'
@@ -371,21 +371,21 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='16'/>***bosh Stemcells***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] stemcells (Alias: ss)
 
-- **설명**
+- **Description**
 
-	업로드 한 릴리즈 조회
+	View uploaded releases
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
+	|my-env|Specified Director Environment Name|O|
 
-- **사용 예시**
+- **Usage Example**
 
 		$ bosh -e my-env ss
 		Using environment '192.168.56.6' as '?'
@@ -404,24 +404,24 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='17'/>***bosh upload-stemcell***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] upload-stemcell [location] [--sha1=digest] [--fix]
 
-- **설명**
+- **Description**
 
-	스템셀 업로드
+	Stemcell upload
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|location|스템셀 파일 위치 및 URL 지정|X|
-	|--sha1|스템셀 파일 sha1um 값 확인|X|
-	|--fix|이전에 업로드 한 스템 셀을 동일한 이름과 버전으로 교체|X|
+	|my-env|Specified Director Environment Name|O|
+	|location|Set stemcell file location and URL|X|
+	|--sha1|Check stem cell file sh1um value|X|
+	|--fix|Replacing previously uploaded stem cells with the same name and version|X|
 
-- **사용 예시**
+- **Usage Example**
 
 		$ bosh -e my-env us ~/Downloads/bosh-stemcell-3468.17-warden-boshlite-ubuntu-trusty-go_agent.tgz
 
@@ -430,45 +430,45 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='18'/>***bosh delete-stemcell***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] delete-stemcell [name]/[version]
 
-- **설명**
+- **Description**
 
-	업로드 한 스템셀 삭제
+	Delete uploaded stemcell
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|name|삭제 할 스템셀 명|O|
-	|version|삭제 할 스템셀 버전|O|
+	|my-env|Specified Director Environment Name|O|
+	|name|Name of the stemcell to delete|O|
+	|version|version of the stemcell to be deleted|O|
 
-- **사용 예시**
+- **Usage Example**
 
 		$ bosh -e my-env delete-stemcell bosh-warden-boshlite-ubuntu-trusty-go_agent/3468.17
 
 ### <div id='19'/>***bosh repack-stemcell***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh repack-stemcell src.tgz dst.tgz [--name=name] [--version=ver] [--cloud-properties=json-string]
 
-- **설명**
+- **Description**
 
-	기존 스템셀의 이름, 버전 및 클라우드 등록 정보와 같은 업데이트 된 등록 정보로 새로운 스템셀 타르볼을 생성
-	참조 URL: https://bosh.io/docs/repack-stemcell.html 
+	Create a new stem cell tarball with updated properties such as the name, version, and cloud properties of an existing stem cell
+	Reference URL: https://bosh.io/docs/repack-stemcell.html 
 
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|name|업데이트 등록 스템셀 명|O|
-	|version|업데이트 등록 스템셀 버전|X|
-	|cloud-properties|업데이트 등록 스템셀 cloud-properties, Json 형식|X|
+	|name|Update registration stemcell name|O|
+	|version|Update registration stemcell version|X|
+	|cloud-properties|Update registration stemcell cloud-properties, Json format|X|
 
 - **사용 예시**
 
@@ -479,22 +479,22 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='21'/>***bosh init-release***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh init-release [--git] [--dir=dir]
 
-- **설명**
+- **Description**
 
-	dir에 릴리즈에 관련한 구성 파일을 생성 dir을 사용 않할 경우는 현재 디렉토리
+	Create a configuration file for the release in dir Current directory if you are not using dir
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|--git|BOSH 릴리즈 Git repository에 적절한 .gitignore 파일을 생성|X|
-	|--dir|디렉토리에 대한 빈 릴리스 구성 파일 생성|X|
+	|--git|Create appropriate .gitignore file for BOSH release Git repository|X|
+	|--dir|Create an empty release configuration file for directory|X|
 
-- **파라미터**
+- **Parameter**
 
 		$ bosh init-release --git --dir release-dir
 		$ cd release-dir
@@ -502,11 +502,11 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='22'/>***bosh generate-job***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh generate-job [name] [--dir=dir]
 
-- **설명**
+- **Description**
 
 	dir에 릴리즈에 대한 Job에 관련 한 빈 파일 생성
 

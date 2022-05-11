@@ -369,7 +369,8 @@ Access the PaaS-TA operator portal and register the service.
 > - Outline : Application Gateway Service
 > - Description :
 > WSO2 service, an application gateway service that provides functions such as API registration and API lifecycle management, is provided in a dedicated manner.  
-> The service admin account is serviceadmin/<Password entered when applying for a service>.
+>  
+> The service administrator's account is serviceadmin/<Password entered when applying for a service>.  
 >  
 > ![002]
 

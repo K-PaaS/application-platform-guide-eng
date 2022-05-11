@@ -235,8 +235,8 @@ postgres_port: "<APP_LIFECYCLE_POSTGRES_PORT>"                                  
 
 # VARIABLES
 COMMON_VARS_PATH="<COMMON_VARS_FILE_PATH>"    # common_vars.yml File Path (e.g. ../../common/common_vars.yml)
-CURRENT_IAAS="${CURRENT_IAAS}"                # IaaS Information (PaaS-TA에서 제공되는 create-bosh-login.sh 미 사용시 aws/azure/gcp/openstack/vsphere 입력)
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"        # bosh director alias name (PaaS-TA에서 제공되는 create-bosh-login.sh 미 사용시 bosh envs에서 이름을 확인하여 입력)
+CURRENT_IAAS="${CURRENT_IAAS}"                # IaaS Information (When not using create-bosh-login.sh provided by PaaS-TA, enter aws/azure/gcp/openstack/vsphere)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"        # bosh director alias name (When not using create-bosh-login.sh provided by PaaS-TA, check the name at bosh envs and enter)
 
 # DEPLOY
 bosh -e ${BOSH_ENVIRONMENT} -n -d lifecycle-service deploy --no-redact lifecycle-service.yml \
@@ -371,45 +371,46 @@ broker: app-lifecycle-service-broker
 > - Tag : paasta / tag1, free / tag2
 > - outline : Lifecycle Management Service
 > - Description :
-> 체계적인 Agile 개발 지원과 프로젝트 협업에 필요한 커뮤니케이션 중심의 문서 및 지식 공유 지원 기능을 제공하는 TAIGA를 dedicated 방식으로 제공합니다.
-> 서비스 관리자 계정은 serviceadmin/<서비스 신청 시 입력한 Password> 입니다.
+> TAIGA is provided in a dedicated manner, providing systematic Agile development support and communication-oriented documentation and knowledge sharing support required for project collaboration.  
+> 
+> The service administrator's account is serviceadmin/(Password is entered when applying for a service).
 >  
 > ![002]
 
--	PaaS-TA 사용자  포탈에 접속하여, 카탈로그를 통해 서비스를 신청한다.   
+-	Access the PaaS-TA User Portal, and apply for services through the catalog.   
 
 ![003]
 
--	대시보드 URL을 통해 서비스에 접근한다.  (서비스의 관리자 계정은 serviceadmin/[서비스 신청시 입력받은 패스워드])  
+-	Access to service through dashboard URL.  (The administrator account of the service is serviceadmin/[Password is entered when applying for the service])  
 
 ![004]  
 
-#### <div id='3.2.2'/> 3.2.2. 서비스 신청 - CLI
-CLI 를 통한 Lifecycle 서비스 신청 방법을 설명한다.
+#### <div id='3.2.2'/> 3.2.2. Service Application - CLI
+Explains how to apply for Lifecycle service through the CLI.
 
-- 서비스 인스턴스 신청 명령어
+- Service Instance Application Commands
 ```
 cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 
-[SERVICE] : Marketplace에서 보여지는 서비스 명
-[PLAN] : 서비스에 대한 정책
-[SERVICE_INSTANCE] : 생성할 서비스 인스턴스 이름
+[SERVICE] : Service name shown at the Marketplace
+[PLAN] : Policies for Services
+[SERVICE_INSTANCE] : Name of the service instance to create
 ```
 
-- Lifecycle 서비스를 신청한다. (password 변수 설정)
+- Apply for Lifecycle Service. (Set password  variable)
 > $ cf create-service app-lifecycle dedicated-vm lifecycle -c '{"password":"password"}'
 ```
 Creating service instance app-lifecycle in org system / space dev as admin...
 OK
 ```
 
-- 서비스 상세의 대시보드 URL 정보를 확인하여 서비스에 접근한다.
+- Access the service by checking the service details dashboard URL information.
 > $ cf service app-lifecycle
  ```
- ... (생략) ...
+ ... (Skip) ...
 dashboard:        http://13.124.4.62/admin/|http://13.124.4.62/discover
 service broker:   app-lifecycle-service-broker
- ... (생략) ...
+ ... (Skip) ...
  ```
 
 

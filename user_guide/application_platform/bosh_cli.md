@@ -458,7 +458,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 - **Description**
 
-	Create a new stem cell tarball with updated properties such as the name, version, and cloud properties of an existing stem cell
+	Creates a new stem cell tarball with updated properties such as the name, version, and cloud properties of an existing stem cell
 	Reference URL: https://bosh.io/docs/repack-stemcell.html 
 
 
@@ -470,7 +470,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 	|version|Update registration stemcell version|X|
 	|cloud-properties|Update registration stemcell cloud-properties, Json format|X|
 
-- **사용 예시**
+- **Usage Example**
 
 		$ bosh repack-stemcell --name=acme-ubuntu-encrypted --cloud-properties='{"encrypted": true, "kms_key_arn": "arn:aws:kms:us-east-1:088444384256:key/4ffbe966-d138-4f4d-a077-4c234d05b3b1"}' bosh-stemcell-3363.9-aws-xen-hvm-ubuntu-trusty-go_agent.tgz acme-encrypted-stemcell.tgz
 
@@ -485,7 +485,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 - **Description**
 
-	Create a configuration file for the release in dir Current directory if you are not using dir
+	Creates a configuration file for the release in dir Current directory if dir is not used
 
 - **Parameter**
 
@@ -508,32 +508,32 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 - **Description**
 
-	dir에 릴리즈에 대한 Job에 관련 한 빈 파일 생성
+	Creates an empty job file for a release in dir
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|name|릴리즈 Job 명칭|O|
-	|--dir|디렉토리에 대한 Job 관련 빈 릴리스 구성 파일 생성|X|
+	|name|Release Job Name|O|
+	|--dir|Creates an empty release component file related to Job about the directory|X|
 
-- **사용 예시**
+- **Usage Example**
 
 		$ bosh generate-job jenkins
 
 ### <div id='23'/>***bosh generate-package***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh generate-pakage [name] [--dir=dir]
 
-- **설명**
+- **Description**
 
-	dir에 릴리즈에 대한 pakage에 관련 한 빈 파일 생성
+	Create empty file for package for release in dir
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**parameter Name**|**설명**|**필수****(O/X)**|
 	|----------|-------------------------|--------------------------------|
 	|name|릴리즈 pakage 명칭|O|
 	|--dir|디렉토리에 pakage Job 관련 빈 릴리스 구성 파일 생성|X|

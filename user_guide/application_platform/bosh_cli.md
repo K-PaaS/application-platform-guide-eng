@@ -597,7 +597,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 - **Description**
 
-	선택적으로 주어진 버전으로 최종 릴리스로 릴리스 타볼의 내용을 기록
+	Create final release from dev release tarball
 
 - **Parameter**
 
@@ -606,9 +606,9 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 	|path|Set release tarball|O|
 	|--force|Specify to ignore uncommitted changes in the release directory|X|
 	|--version|Provides a custom release version|X|
-	|--dir|디렉토리 위치 지정|X|
+	|--dir|Set directory location|X|
 
-- **사용 예시**
+- **Usage Example**
 
 		$ cd release-dir
 		$ bosh finalize-release /tmp/my-release.tgz
@@ -618,22 +618,22 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='27'/>***bosh reset-release***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh reset-release [--dir=dir]
 
-- **설명**
+- **Description**
 
-	릴리스 디렉토리에 보관 된 dev 릴리스, blob 등의 임시 아티팩트를 제거
+	Removes temporary artifacts such as dev releases, blobs, etc. kept in the release directory
+	
+- **Parameter**
 
-- **파라미터**
-
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|--dir|디렉토리 위치 지정|O|
+	|--dir|Set directory location|O|
 
 
-- **사용 예시**
+- **Usage Example**
 
 		$ bosh reset-release ~/Download/jenkins
 
@@ -642,15 +642,15 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='29'/>***bosh blob*** 
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh blobs
 
-- **설명**
+- **Description**
 
-	릴리즈 Blobstore에 등록 한 blob 출력
+	Outputs registered Blob at Release Blobstore
 
-- **사용 예시**
+- **Usage Example**
 
 		$ cd release-dir
 		$ bosh blobs
@@ -665,22 +665,22 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='30'/>***bosh add-blob***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh add-blob [src-path] [dst-path]
 
-- **설명**
+- **Description**
 
-	릴리즈 Blobstore에 로컬 blob 추가
+	add local blob at release Blobstore
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|src-path|로컬 Blob 디렉토리|O|
-	|dst-path|릴리즈 내 blob 디렉토리|X|
+	|src-path|Local Blob Directory|O|
+	|dst-path|Blob directory within the release|X|
 
-- **사용 예시**
+- **Usage Example**
 
 		$ cd release-dir
 		$ bosh add-blob ~/Downloads/stress-1.0.4.tar.gz stress/stress-1.0.4.tar.gz
@@ -688,21 +688,21 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='31'/>***bosh reomove-blob***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh remove-blob [blob-path]
 
-- **설명**
+- **Description**
 
-	릴리즈 Blobstore에 존재 하는 Blob 삭제
+	Delete a Blob that exists in the Release Blobstore
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|blob-path|릴리즈 내 blob 디렉토리|O|
+	|blob-path|blob directory within the release|O|
 
-- **사용 예시**
+- **Usage Example**
 
 		$ cd release-dir
 		$ bosh remove-blob stress/stress-1.0.4.tar.gz
@@ -710,15 +710,15 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='32'/>***bosh sync-blob***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh sync-blobs
 
-- **설명**
+- **Description**
 
-	릴리즈 내 blobstore의 blob 동기화
+	synchronize blob of blobstore within release
 
-- **사용 예시**
+- **Usage Example**
 
 		$ cd release-dir
 		$ bosh sync-blobs
@@ -728,17 +728,17 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='34'/>***bosh releases***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] releases (Alias: rs)
 
-- **설명**
+- **Description**
 
-	업로드 한 릴리즈 조회
+	View uploaded releases
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
 	|my-env|지정 한 Director 환경 이름 명칭|O|
 

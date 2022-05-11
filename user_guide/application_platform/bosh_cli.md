@@ -289,7 +289,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 - **Description**
 
-	Delete the previously created VM based on the manifest, and provide the same flag as provided in the create-env command to the delete-env command.
+	Deletes previously created VM based on the manifest. Same flags provided to create-env command should be given to the delete-env command.
 
 - **Parameter**
 
@@ -301,7 +301,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 	|-o|option Manifest File ex) jumpbox-user.yml, uaa.yml…|X|
 	|--vars -store path|creds.yml file, authentication key and Job Password yml file path|X|
 
-- **사용 예시**
+- **Usage Example**
 
 		$ bosh delete-env ~/workspace/bosh-deployment/bosh.yml \
   		--state state.json \
@@ -322,17 +322,17 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='13'/>***bosh log-in***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] l
 
-- **설명**
+- **Description**
 
-	주어진 사용자를 Director에 로그인합니다.
+	Logs in given user into the Director.
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**필수****(O/X)**|
 	|----------|-------------------------|--------------------------------|
 	|my-env|BOSH 지정 한 Director 환경 이름 명칭|O|
 

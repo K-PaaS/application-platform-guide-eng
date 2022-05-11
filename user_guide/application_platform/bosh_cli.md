@@ -533,60 +533,59 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 - **Parameter**
 
-	|**parameter Name**|**설명**|**필수****(O/X)**|
+	|**parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|name|릴리즈 pakage 명칭|O|
-	|--dir|디렉토리에 pakage Job 관련 빈 릴리스 구성 파일 생성|X|
+	|name|Release pakage name|O|
+	|--dir|Create a blank release configuration file related to package Job in the directory|X|
 
-- **사용 예시**
+- **Usage Example**
 
 		$ bosh generate-package jenkins
 
 ### <div id='24'/>***bosh vendor-package***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh vendor-package [name] src-dir [--dir=dir]
 
-- **설명**
+- **Description**
 
-	다른 릴리스의 패키지를 dir의 릴리스로 제공, 릴리즈를 만들 때 CLI가 특정 패키리를 참조 하도록 디렉토리에 spec.lock을 포함
-	설명 참조 https://bosh.io/docs/package-vendoring.html 
+	Provide packages from other releases as releases of dir, including spec.lock in the directory so that the CLI references a specific package when creating a release
+	References https://bosh.io/docs/package-vendoring.html 
 
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|name|릴리즈 pakage명칭|O|
-	|--dir|디렉토리에 대한 package 관련 빈 릴리스 구성 파일 생성|X|
+	|name|Release package name|O|
+	|--dir|Creating a package-related empty release configuration file for a directory|X|
 
-- **사용 예시**
+- **Usage Example**
 
 		$ bosh vendor-package golang-1.8-linux ~/workspace/golang-release
 
 ### <div id='25'/>***bosh create-release***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh create-release [--force] [--version=ver] [--timestamp-version] [--final] [--tarball=path] [--dir=dir] (Alias: cr)
 
-- **설명**
+- **Description**
 
-	dir에 저장된 릴리스의 새 버전을 생성
+	Creates a new version of release saved at the dir
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|--force|릴리스 디렉토리에서 커밋되지 않은 변경 사항을 무시하도록 지정|X|
-	|--version|사용자 정의 릴리스 버전을 제공|X|
-	|--version|사용자 정의 릴리스 버전을 제공|X|
-	|--timestamp-version|타임 스탬프 기반의 dev 릴리즈 버전을 생성|X|
-	|--tarball|릴리스 타르볼의 대상을 지정|X|
-	|--sha2|SHA256 체크섬 사용 지정|X|
+	|--force|Specify to ignore uncommitted changes in the release directory|X|
+	|--version|Provides a custom release version|X|
+	|--timestamp-version|Create a time stamp-based dev release version|X|
+	|--tarball|Specify the target for the release tarball|X|
+	|--sha2|Specify SHA256 Checksum Usage|X|
 
-- **사용 예시**
+- **Usage Example**
 
 		$ bosh create-release --force
 

@@ -1836,123 +1836,123 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 	|--cpi|Show CPI log|X|
 
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e vbox t 281
 		$ bosh -e vbox t 281 --debug
 
 ### <div id='81'/>***bosh cancle-task***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] cancel-task [id] (Alias: ct)
 
-- **설명**
+- **Description**
 
-	task 취소. 다음 checkpoint 에서 task를 취소 한다. task가 취소될 때까지 대기하지 않는다
+	Cancel task. Cancel the task at the next checkpoint. Do not wait until the task is cancelled
 
-- **파라미터**
+- **Parameter**
 	
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|id|task 아이디|O|
+	|my-env|Specified Director Environment Name|O|
+	|id|task ID|O|
 
 
 ## <div id='82'/>BOSH CLI - Snapshot
 
 ### <div id='83'/>***bosh snapshots***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] -d [my-dep] snapshots
 
-- **설명**
+- **Description**
 
-	deployment의 스냅샷 목록을 출력 한다.
+	Outputs a snapshot list of deployment.
 
-- **파라미터**
+- **Parameter**
 	
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|my-dep|배포 명 지정|O|
+	|my-env|Specified Director Environment Name|O|
+	|my-dep|Specify deployment name|O|
 
 
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e my-env -d my-dep snapshots
 
 
 ### <div id='84'/>***bosh take-snapshot***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] -d [my-dep] take-snapshot [group/instance-id]
 
-- **설명**
+- **Description**
 
-	특정 인스턴스 또는 deployment에 대한 스냅샷을 생성 한다.
+	Take a snapshot of a specific instance or deployment.
 
-- **파라미터**
+- **Parameter**
 	
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|my-dep|배포 명 지정|O|
-	|group/instance-id|그룹 또는 그룹과 인스턴스 아이디|X|
+	|my-env|Specified Director Environment Name|O|
+	|my-dep|pecify deployment name|O|
+	|group/instance-id|Group or group and instance ID|X|
 
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e my-env -d my-dep take-snapshot cell
 
 
 ### <div id='85'/>***bosh delete-snapshot***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] -d [my-dep] delete-snapshot [cid]
 
-- **설명**
+- **Description**
 
-	특정 스냅샷을 삭제 한다.
+	Delete specific snapshot.
 
-- **파라미터**
+- **parameter**
 	
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|my-dep|배포 명 지정|O|
-	|cid|스냅샷 아이디 지정|O|
+	|my-env|Specified Director Environment Name|O|
+	|my-dep|Specify deployment name|O|
+	|cid|Set Snapshot ID|O|
 
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e my-env -d my-dep delete-snapshot 1acsda-ccas
 
 
 ### <div id='86'/>***bosh delete-snapshots***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] -d [my-dep] delete-snapshots
 
-- **설명**
+- **Description**
 
-	스냅샷을 전체 삭제 한다.
+	Delete ALL snapshots.
 
-- **파라미터**
+- **Parameter**
 	
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|my-dep|배포 명 지정|O|
+	|my-env|Specified Director Environment Name|O|
+	|my-dep|Specify deployment name|O|
 
 
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e my-env -d my-dep delete-snapshots
 
@@ -1961,74 +1961,74 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='88'/>***bosh update-resurrection***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] update-resurrection [on/off]
 
-- **설명**
+- **Description**
 
-	디렉터가 지정한 환경에 대해 recovery를 활성/비활성화
+	Enable/Disable Recovery for a Director-Specified Environment
 
-- **파라미터**
+- **Parameter**
 	
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|on/off|활성/비활성화|O|
+	|my-env|Specified Director Environment Name|O|
+	|on/off|Able/Disable|O|
 
 
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e my-env update-resurrection on
 
 
 ### <div id='89'/>***bosh cloud-check***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] -d [my-dep] cloud-check [--report] [--auto] (Alias: cck)
 
-- **설명**
+- **Description**
 
-	리소스에 대해 일관적인 검사를 하고 대화 형 복구를 허용 한다.
+	Consistently inspects resources and allows interactive recovery.
 
-- **파라미터**
+- **Parameter**
 	
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|my-dep|배포 명 지정|O|
-	|--report|Report 생성|X|
-	|--auto|자동으로 Problem해결|X|
+	|my-env|Specified Director Environment Name|O|
+	|my-dep|Specify deployment name|O|
+	|--report|Create Report|X|
+	|--auto| Resolve problems automatically|X|
 
 
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e vbox -d cf cloud-check --report --auto
 
 
 ### <div id='90'/>***bosh locks***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] locks
 
-- **설명**
+- **Description**
 
-	최근 lock 목록 조회
+	View recent lock list
 
-- **파라미터**
+- **Parameter**
 	
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
+	|my-env|Specified Director Environment Name|O|
 
 
 
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e my-env locks
 
@@ -2037,17 +2037,17 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='92'/>***bosh clean-up***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] clean-up [--all]
 
-- **설명**
+- **Description**
 
-	releases, stemcells, orphaned disks 그리고 사용되지 않는 다른 리소스를 clean up 한다
+	Clean up releases, stemcells, orphaned disks, and other unused resources
 
-- **파라미터**
+- **Parameter**
 	
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
 	|my-env|지정 한 Director 환경 이름 명칭|O|
 	|--all|orphaned disks에 강제 clean up적용|X|

@@ -1312,161 +1312,162 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='59'/>***bosh restart***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] -d [my-dep] restart [group[/instance-id]] [--skip-drain] [--canaries=] [--max-in-flight=]
 
-- **설명**
+- **Description**
 
-	디렉터가 지정한 배포의 인스턴스에 대한 VM을 재시작 한다.
+	Restart the instance related VM specified by director.
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|my-dep|배포 명 지정|O|
-	|group[/instance-id]|그룹 또는 그룹과 인스턴스 아이디|X|
-	|--skip-drain|drain scripts를 건너 뛴다.|X|
-	|--canaries=|배포 명 지정|X|
-	|--max-in-flight=|Manifest의 max-in-flight 값을 덮어 쓴다.|X|
+	|my-env|Specified Director Environment Name|O|
+	|my-dep|Specify deployment name|O|
+	|group[/instance-id]|Group or group and instance ID|X|
+	|--skip-drain|Skip drain scripts.|X|
+	|--canaries=|specify deployment name|X|
+	|--max-in-flight=|Overwrite the max-in-flight value of Manifest.|X|
 
 
-- **사용 예시**
+- **Used Example*
 
 		$ bosh -e my-env -d my-dep restart
 
 ### <div id='60'/>***bosh start***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] -d [my-dep] start [group[/instance-id]] [--canaries=] [--max-in-flight=]
 
-- **설명**
+- **Description**
 
-	디렉터가 지정한 배포의 인스턴스에 대한 VM을 시작 한다.
+	Starts the VM for the instance of the deployment specified by the director.
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|my-dep|배포 명 지정|O|
-	|group[/instance-id]|그룹 또는 그룹과 인스턴스 아이디|X|
-	|--canaries=|배포 명 지정|X|
-	|--max-in-flight=|Manifest의 max-in-flight 값을 덮어 쓴다.|X|
+	|my-env|Specified Director Environment Name|O|
+	|my-dep|specify deployment name|O|
+	|group[/instance-id]|Group or group and instance ID|X|
+	|--canaries=|specify deployment name|X|
+	|--max-in-flight=|Overwrite the max-in-flight value of Manifest.|X|
 
 
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e my-env -d my-dep start
 
 
 ### <div id='61'/>***bosh stop***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] -d [my-dep] stop [group[/instance-id]] [--skip-drain] [--canaries=] [--max-in-flight=]
 
-- **설명**
+- **Description**
 
-	디렉터가 지정한 배포의 인스턴스에 대한 VM을 시작 한다.
+	Starts the VM for the instance of the deployment specified by the director.
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|my-dep|배포 명 지정|O|
-	|group[/instance-id]|그룹 또는 그룹과 인스턴스 아이디|X|
-	|--canaries=|배포 명 지정|X|
-	|--max-in-flight=|Manifest의 max-in-flight 값을 덮어 쓴다.|X|
-	|--skip-drain|drain scripts를 건너 뛴다.|X|
-	|hard|강제로 VM 삭제, 영구 디스크는 유지|X|
+	|my-env|Specified Director Environment Name|O|
+	|my-dep|specify deployment name|O|
+	|group[/instance-id]|Group or group and instance ID|X|
+	|--canaries=|specify deployment name|X|
+	|--max-in-flight=|Overwrite the max-in-flight value of Manifest.|X|
+	|--skip-drain|Skip drain scripts.|X|
+	|hard|Force delete VM, keep permanent disk|X|
 
 
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e my-env -d my-dep stop
 
 
 ### <div id='62'/>***bosh ignore***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] -d [my-dep] ignore group/instance-id
 
-- **설명**
+- **Description**
 
-	bosh deploy와 같은 다른 명령의 영향을 받지 않도록 인스턴스를 무시
+	Ignore instances to avoid being affected by other commands, such as bosh deploy
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|my-dep|배포 명 지정|O|
-	|group[/instance-id]|그룹 또는 그룹과 인스턴스 아이디|X|
+	|my-env|Specified Director Environment Name|O|
+	|my-dep|specify deployment name|O|
+	|group[/instance-id]|Group or group and instance ID
+|X|
 
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e my-env -d my-dep ignore cell
 
 ### <div id='63'/>***bosh unignore***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] -d [my-dep] unignore group/instance-id
 
-- **설명**
+- **Description**
 
-	bosh deploy와 같은 다른 명령의 영향을받지 않도록 인스턴스를 무시하지 않는다
+	DO NOT ignore instances so that they are not affected by other commands such as bosh deploy
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|my-dep|배포 명 지정|O|
-	|group[/instance-id]|그룹 또는 그룹과 인스턴스 아이디|X|
+	|my-env|Specified Director Environment Name|O|
+	|my-dep|Specify deployment name|O|
+	|group[/instance-id]|Group or group and instance ID|X|
 
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e my-env -d my-dep unignore cell
 
 ### <div id='64'/>***bosh logs***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] -d [my-dep] logs [group[/instance-id]] [--follow] [--num] [--gw-*] [--quiet]
 
-- **설명**
+- **Description**
 
-	하나 이상의 인스턴스에서 로그를 다운로드
+	Download logs from one or more instances
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Paremeter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|my-dep|배포 명 지정|O|
-	|group[/instance-id]|그룹 또는 그룹과 인스턴스 아이디|X|
-	|--dir|로그의 디렉토리 지정|X|
-	|--job|특정 Job의 로그 설정|X|
-	|--only|로그 필터링|X|
-	|--agent|bosh agent 로그만 포함|X|
-	|--follow|Additional flags for following logs via SSH 로그를 실행|X|
-	|--num|Additional flags for following logs via SSH 마지막 행 수를 출력|X|
-	|--gw|Additional flags for following logs via SSH ssh 게이트웨이 구성|X|
-	|--quiet|Additional flags for following logs via SSH 헤더 출력 생략|X|
+	|my-env|Specified Director Environment Name|O|
+	|my-dep|Specify deployment name|O|
+	|group[/instance-id]|Group or group and instance ID|X|
+	|--dir|Specify Log Directory|X|
+	|--job|Log settings for a specific Job|X|
+	|--only|Log Filtering|X|
+	|--agent|include bosh agent log only|X|
+	|--follow|Execute Additional flags for following logs via SSH Log|X|
+	|--num|Output Additional flags for following logs via SSH last row number|X|
+	|--gw|Constructs Additional flags for following logs via SSH ssh gateway|X|
+	|--quiet|Suppress Additional flags for following logs via SSH header outputs|X|
 
 
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e vbox -d cf logs diego-cell/209c42e5-3c1a-432a-8445-ab8d7c9f69b0
 		$ bosh -e vbox -d cf logs diego-cell/209c42e5-3c1a-432a-8445-ab8d7c9f69b0 --job=rep --job=silkd
@@ -1479,23 +1480,23 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='66'/>***bosh vms***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] -d [my-dep] vms [--vitals]
 
-- **설명**
+- **Description**
 
-	Director 가 관리하는 또는 deployment 의 모든 vm 조회
+	View all vm's managed by the director or deployments
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|my-dep|배포 명 지정|O|
-	|--vitals|RAM CPU disk 와 같은 vm의 기본  정보 조회|X|
+	|my-env|Specified Director Environment Name|O|
+	|my-dep|Specify deployment name|O|
+	|--vitals|View VM's default informations such as RAM CPU disk|X|
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e vbox vms
 		$ bosh -e vbox -d cf vms
@@ -1503,24 +1504,24 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='67'/>***bosh delete-vms*** 
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] -d [my-dep] delete-vm [cid]
 
 
-- **설명**
+- **Description**
 
-	인스턴스의 Lifecycle을 거치지 않고 VM을 삭제
+	Delete VM without goinf through Lifecycle of Instance
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|my-dep|배포 명 지정|O|
-	|cid|인스턴스 아이디 지정|X|
+	|my-env|Specified Director Environment Name|O|
+	|my-dep|Specify deployment name|O|
+	|cid|Specify Instance ID|X|
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e vbox -d cf delete-vm i-fs384238fjwjf8
 
@@ -1529,17 +1530,17 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='69'/>***bosh disks***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] -d [my-dep] disks [--orphaned]
 
-- **설명**
+- **Description**
 
-	Director가 관리하는 또는 deployment의 모든 disk 조회
+	View all disks of deployment or Director managed disks
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**설명**|**필수****(O/X)**|
 	|----------|-------------------------|--------------------------------|
 	|my-env|지정 한 Director 환경 이름 명칭|O|
 	|my-dep|배포 명 지정|O|

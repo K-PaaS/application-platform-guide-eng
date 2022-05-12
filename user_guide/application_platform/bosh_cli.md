@@ -1287,19 +1287,19 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 - **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|my-dep|배포 명 지정|O|
-	|group[/instance-id]|그룹 또는 그룹과 인스턴스 아이디|X|
-	|--fix|응답 하지 않는 VM을 대체 |X|
-	|--skip-drain|drain scripts를 건너 뛴다.|X|
-	|--canaries=|배포 명 지정|X|
-	|--max-in-flight=|Manifest의 max-in-flight 값을 덮어 쓴다.|X|
-	|--dry-run|배포를 변경 하지 않고 작업을 실행 한다.|X|
+	|my-env|Specified Director Environment Name|O|
+	|my-dep|Specified Deployment Name|O|
+	|group[/instance-id]|Group or group and instance ID|X|
+	|--fix|Replacing VMs that are not responding |X|
+	|--skip-drain|Skip drain scripts.|X|
+	|--canaries=|Specify deployment name|X|
+	|--max-in-flight=|Overwrite the max-in-flight value of Manifest.|X|
+	|--dry-run|Execute the task without changing the deployment.|X|
 
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e vbox -d cf recreate
 		$ bosh -e vbox -d cf recreate --fix

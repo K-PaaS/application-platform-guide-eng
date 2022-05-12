@@ -1540,58 +1540,58 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 - **Parameter**
 
-	|**Parameter Name**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|my-dep|배포 명 지정|O|
-	|--orphaned|사용하지 않는 DISK를 나열|X|
+	|my-env|Specified Director Environment Name|O|
+	|my-dep|Specify deployment name|O|
+	|--orphaned|List orphaned DISK|X|
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e vnps -d cf disks  
 
 ### <div id='70'/>***bosh attach-disk***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] -d [my-dep] attach-disk [group/instance-id] disk-cid
 
-- **설명**
+- **Description**
 
-	인스턴스에 disk attach. 만약 attach된 disk 가 있다면 가장 최근 attach 된 disk를 replace한다.
+	Attaches disk to an instance, replacing and orphaning the currently attached disk (if any).
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|my-dep|배포 명 지정|O|
-	|--orphaned|사용하지 않는 DISK를 나열|X|
-	|group/instance-id|그룹 또는 그룹과 인스턴스 아이디|X|
+	|my-env|Specified Director Environment Name|O|
+	|my-dep|Specify deployment name|O|
+	|--orphaned|List orphaned DISK|X|
+	|group/instance-id|Group or group and instance ID|X|
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e vbox -d cf attach-disk postgres/209c42e5-3c1a-432a-8445-ab8d7c9f69b0 vol-shw8f293f2f2
 
 ### <div id='71'/>***bosh delete-disk***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] -d [my-dep] delete-disk [cid]
 
-- **설명**
+- **Description**
 
-	사용하지 않는 disk 삭제
+	Delete unusing disk
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|my-dep|배포 명 지정|O|
-	|--cid|삭제 할 DISK 아이디 지정|X|
+	|my-env|Specified Director Environment Name|O|
+	|my-dep|Specify deployment name|O|
+	|--cid|Specify DISK ID to delete|X|
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e vbox -d cf delete-disk vol-shw8f293f2f2
 
@@ -1600,27 +1600,27 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='73'/>***bosh ssh***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] -d [my-dep] ssh [destination] [-r] [-c=cmd] [--opts=opts] [--gw-* ...]
 
-- **설명**
+- **Description**
 
-	인스턴스 한개 또는 여러 개에 SSH설정
+	Set SSH to one or more Instances
 
-- **파라미터**
+- **Parameter**
 	
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|my-dep|배포 명 지정|O|
-	|-c|커맨드 라인 설정|X|
-	|destination|SSH 목적지 지정 그룹 또는 그룹과 인스턴스 아이디|X|
-	|--opts|ssh에 옵션을 전달 ex) 포트 포워딩|X|
-	|--gw-*|SSH 게이트웨이를 구성|X|
-	|-r, --recursive|directory의 반복 복사 허용|X|
+	|my-env|Specified Director Environment Name|O|
+	|my-dep|Specify deployment name|O|
+	|-c|Specify command line|X|
+	|destination|Set SSH destination group or group and inctance ID|X|
+	|--opts|send option to ssh ex) Port forwarding|X|
+	|--gw-*|Construct SSH Gateway|X|
+	|-r, --recursive|Allow repeated copies of directory|X|
 
-- **사용 예시**
+- **Used Example**
 
 		# execute command on all instances in a deployment
 		$ bosh -e vbox -d cf ssh -c 'uptime'
@@ -1643,26 +1643,26 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='74'/>***bosh scp***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] -d [my-dep] scp src/dst:[file] src/dst:[file] [-r] [--gw-* ...]
 
-- **설명**
+- **Description**
 
-	인스턴스로 또는 인스턴스로 부터 SCP  (to/from)설정
+	Set SCP (to/from) on or from an instance
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|my-dep|배포 명 지정|O|
-	|src/dst:<file>|복사 받을 script.sh file 경로|O|
-	|src/dst:<file>|복사 될 script.sh file 경로|O|
-	|-r, --recursive|directory의 반복 복사 허용|X|
-	|--gw-*|SCP gateway설정|X|
+	|my-env|Specified Director Environment Name|O|
+	|my-dep|Specify deployment name|O|
+	|src/dst:<file>|Path to script.sh file to be copied|O|
+	|src/dst:<file>|Path of script.sh file to be copied|O|
+	|-r, --recursive|Allow repeated copies of directory|X|
+	|--gw-*|SCP gateway setting|X|
 
-- **사용 예시**
+- **Used Example**
 
 		# copy file from this machine to machines a deployment
 		$ bosh -e vbox -d cf scp ~/Downloads/script.sh :/tmp/script.sh
@@ -1683,23 +1683,23 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='76'/>***bosh errands***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] -d [my-dep] errands (Alias:es)
 
-- **설명**
+- **Description**
 
-	deployment로 정의 된 모든 errand 목록 조회
+	View list of all errands defined as deployment
 
-- **파라미터**
+- **Parameter**
 	
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|my-dep|배포 명 지정|O|
+	|my-env|Specified Director Environment Name|O|
+	|my-dep|Specify deployment name|O|
 
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e vbox -d cf es
 		Using environment '192.168.56.6' as '?'
@@ -1716,29 +1716,29 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='77'/>***bosh run-errand***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e <my-env> -d <my-dep> run-errand <name> [--keep-alive] [--when-changed] [--download-logs] [--logs-dir=<dir>] [--instance=<instance-group/instance-id>]
 
-- **설명**
+- **Description**
 
-	errand job 을 name 단위로 실행
+	Execute errand job by name 
 
-- **파라미터**
+- **Parameter**
 	
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|my-dep|배포 명 지정|O|
-	|name|실행 할 errand 이름|O|
-	|--keep-alive|errand가 실행 되는 곳에서 VM 유지|X|
-	|--when-changed|errand가 skip 설정: 이전에 이미 실행하였고 (성공적으로 마침) errand job 설정값이 바뀌지 않았을 경우|X|
-	|--download-logs|errand log를 통채로 --logs-dir에 명시된 경로에 저장|X|
-	|--logs-dir=<dir>|errand log를 저장 할 파일 경로|X|
-	|instance=<instance-group/instance-id> (v2.0.31+)|errand를 실행하기위해 어떤 인스턴스를 사용할지 결정|X|
+	|my-env|Specified Director Environment Name|O|
+	|my-dep|Specify deployment name|O|
+	|name|Name of the errand to be executed|O|
+	|--keep-alive|Keep VMs where errand runs|X|
+	|--when-changed|errand sets skip: When it ran (successfully) before and if the errand job value has not changed|X|
+	|--download-logs|Save the errand log as a whole in the path specified in --logs-dir|X|
+	|--logs-dir=<dir>|File Path to sace errand log|X|
+	|instance=<instance-group/instance-id> (v2.0.31+)|Decide which instance to use to run errand|X|
 
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e vbox -d cf run-errand smoke-tests
 		$ bosh -e vbox -d cf run-errand smoke-tests --keep-alive
@@ -1769,26 +1769,26 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='79'/>***bosh tasks***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] tasks [--recent[=num]] [--all] (Alias: ts)
 
-- **설명**
+- **Description**
 
-	활성 및 이전에 실행 한 작업에 대한 task를 출력
+	Outputs tasks for active and previously run operations
 
-- **파라미터**
+- **Parameter**
 	
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|--recent|최근 순 4개 task 조회|X|
-	|num|최근 순 조회하고 싶은 task 숫자|X|
-	|--all|active tasks 모두 조회|X|
-	|-d, -deployment  |deployment 단위로 필터링 해서 조회|X|
+	|my-env|Specified Director Environment Name|O|
+	|--recent|View 4 most recent tasks|X|
+	|num|number of recent tasks to view|X|
+	|--all|View all active tasks|X|
+	|-d, -deployment  |View by filtering deployment|X|
 
 
-- **사용 예시**
+- **Used Example**
 
 		# currently active tasks
 		$ bosh -e vbox ts
@@ -1816,24 +1816,24 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='80'/>***bosh task***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] task [id] [--debug] [--result] [--event] [--cpi] (Alias: t)
 
-- **설명**
+- **Description**
 
-	task 아이디를 기준으로 상세 조회. 
+	Detailed inquiry based on task ID. 
 
-- **파라미터**
+- **Parameter**
 	
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|id|task 아이디|O|
-	|--debug|Debug 로그 출력|X|
-	|--result|Result 로그 출력|X|
-	|--event|Event 로그 출력|X|
-	|--cpi|CPI 로그 출력|X|
+	|my-env|Specified Director Environment Name|O|
+	|id|task ID|O|
+	|--debug|Show Debug log|X|
+	|--result|Show Result log|X|
+	|--event|Show Event log|X|
+	|--cpi|Show CPI log|X|
 
 
 - **사용 예시**

@@ -2049,34 +2049,34 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 	
 	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|--all|orphaned disks에 강제 clean up적용|X|
+	|my-env|Specified Director Environment Name|O|
+	|--all|Apply force clean up in orphaned disks|X|
 
 
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e my-env clean-up --all
 
 
 ### <div id='93'/>***bosh help***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh help
 
-- **설명**
+- **Description**
 
-	사용 가능한 모든 명령어와 global option 목록 조회 각각의 command에 대해서는 -h 사용
+	Use -h for all available commands and global option list lookup respective commands
 
 
-- **파라미터**
+- **Parameter**
 	
-		없음
+		None
 
 
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh help
 
@@ -2085,26 +2085,26 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='94'/>***bosh interpolate***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh interpolate manifest.yml [-v ...] [-o ...] [--vars-store path] [--path op-path] (Alias: int)
 
-- **설명**
+- **Description**
 
-	결과 값 이 sudout로 넘겨지는 Manifest.yml에 추가적으로 merge할 yml 파일이나 설정 값을 입력
+	In Manifest.yml where the result value is passed over to sudout, enter the yml file or setting value to merge additionally
 
 
-- **파라미터**
+- **Parameter**
 	
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|-v|수정/입력 하는 variable list|X|
-	|-o|수정/입력 하는 operation file list|X|
-	|--vars-store path|디렉터 접근 아이디 Key 및 각 JOB 패스워드 등이 존재하는 설정 파일 생성 위치|X|
-	|--path op-path|Manifest의 해당 값 출력|X|
+	|-v|Modifying/entering variable list|X|
+	|-o|Modifying/entering operation file list|X|
+	|--vars-store path|The location where the file that contains ID Key that has an access to Director and passwords for each JOB is created|X|
+	|--path op-path|Output the corresponding value of Manifest|X|
 
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh int bosh-deployment/bosh.yml \
   			--vars-store ./creds.yml \

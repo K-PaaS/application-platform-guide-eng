@@ -1175,16 +1175,16 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 - **Description**
 
-	디렉터가 지정한 이름의 배포 목록 조회
+	View deployment list 디렉터가 지정한 이름의 배포 목록 조회
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|my-dep|배포 명 지정|O|
+	|my-env|Specified Director Environment Name|O|
+	|my-dep|Specified deployment name|O|
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e vbox -d cf dep
 		Using environment '192.168.56.6' as client 'admin'
@@ -1204,26 +1204,26 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='55'/>***bosh deploy***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] -d [my-dep] deploy [manifest.yml] [-v ...] [-o ...]
 
-- **설명**
+- **Description**
 
-	디렉터가 지정 한 배포명의 Manifest 파일를 통한 VM 설치
+	Installing VMs through Manifest Files with Director-Specified Deployment Names
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|my-dep|배포 명|O|
-	|-v|Manifest Replace 변수 ex) internal_ip, deployment_name|X|
+	|my-env|Specified Director Environment Name|O|
+	|my-dep|Deployment Name|O|
+	|-v|Manifest Replace Variable ex) internal_ip, deployment_name|X|
 	|-o|option Manifest File ex) jumpbox-user.yml, uaa.yml…|X|
-	|manifest.yml|배포 Manifest 파일|O|
+	|manifest.yml|Deployment Manifest File|O|
 
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e vbox -d cf deploy cf.yml -v system_domain=sys.example.com -o large-footprint.yml
 
@@ -1231,61 +1231,61 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='56'/>***bosh delete-deployment***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] -d [my-dep] delete-deployment [--force] (Alias: deld)
 
-- **설명**
+- **Description**
 
-	디렉터가 지정 한 배포명의 VM을 삭제 한다.
+	Delete VM with deployment name specified by director.
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|my-dep|배포 명|O|
-	|--force|다양한 오류 (IaaS, blobstore, database)를 무시 지정|X|
+	|my-env|Specified Director Environment Name|O|
+	|my-dep|Deployment Name|O|
+	|--force|Ignore various errors (IaaS, blobstore, database)|X|
 
 
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e vbox -d cf deld
 
 ### <div id='57'/>***bosh manifest***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] -d [my-dep] manifest (Alias: man)
 
-- **설명**
+- **Description**
 
-	디렉터가 지정 한 배포명의 Manifest 파일을 출력 한다.
+	Outputs the Manifest file with the distribution name specified by the director.
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|my-dep|배포 명|O|
+	|my-env|Specified Director Environment Name|O|
+	|my-dep|Deployment Name|O|
 
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e vbox -d cf man > /tmp/manifest.yml
 
 ### <div id='58'/>***bosh recreate***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] -d [my-dep] recreate [group[/instance-id]] [--skip-drain] [--fix] [--canaries=] [--max-in-flight=] [--dry-run]
 
-- **설명**
+- **Description**
 
-	디렉터가 지정한 배포의 인스턴스에 대한 VM을 재생성 한다.
+	Recreate the VM for the director-specified instance of the deployment..
 
-- **파라미터**
+- **Parameter**
 
 	|**파라미터 명**|**설명**|**필수****(O/X)**|
 	|----------|-------------------------|--------------------------------|

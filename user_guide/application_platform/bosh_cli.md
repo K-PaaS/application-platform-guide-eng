@@ -182,7 +182,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 - **Parameter**
 
-- **Usage Example**
+- **Used Example**
  
 		$ bosh envs
 		URL              Alias
@@ -212,7 +212,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 	|-o|option Manifest File ex) jumpbox-user.yml, uaa.yml...|X|
 	|--vars -store path|creds.yml file, Authentication key and Job Password yml file path|X|
 
-- **Usage Example**
+- **Used Example**
 
 		$ bosh create-env ~/workspace/bosh-deployment/bosh.yml \
   		--state state.json \
@@ -264,7 +264,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 	|----------|-------------------------|--------------------------------|
 	|my-env|Specified Director Environment Name|O|
 
-- **Usage Example**
+- **Used Example**
  
 		$ bosh -e vbox env
 		Using environment '192.168.56.6' as '?'
@@ -301,7 +301,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 	|-o|option Manifest File ex) jumpbox-user.yml, uaa.yml…|X|
 	|--vars -store path|creds.yml file, authentication key and Job Password yml file path|X|
 
-- **Usage Example**
+- **Used Example**
 
 		$ bosh delete-env ~/workspace/bosh-deployment/bosh.yml \
   		--state state.json \
@@ -336,7 +336,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 	|----------|-------------------------|--------------------------------|
 	|my-env|BOSH Specified Director Environment Name|O|
 
-- **Usage Example**
+- **Used Example**
 
 		$ bosh -e my-env l
 		User (): admin
@@ -359,7 +359,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 	|----------|-------------------------|--------------------------------|
 	|my-env|BOSH Specified Director Environment Name|O|
 
-- **Usage Example**
+- **Used Example**
 
 		$ bosh log-out 
 		Logged out from '192.168.10.241'
@@ -385,7 +385,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 	|----------|-------------------------|--------------------------------|
 	|my-env|Specified Director Environment Name|O|
 
-- **Usage Example**
+- **Used Example**
 
 		$ bosh -e my-env ss
 		Using environment '192.168.56.6' as '?'
@@ -421,7 +421,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 	|--sha1|Check stem cell file sh1um value|X|
 	|--fix|Replacing previously uploaded stem cells with the same name and version|X|
 
-- **Usage Example**
+- **Used Example**
 
 		$ bosh -e my-env us ~/Downloads/bosh-stemcell-3468.17-warden-boshlite-ubuntu-trusty-go_agent.tgz
 
@@ -446,7 +446,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 	|name|Name of the stemcell to delete|O|
 	|version|version of the stemcell to be deleted|O|
 
-- **Usage Example**
+- **Used Example**
 
 		$ bosh -e my-env delete-stemcell bosh-warden-boshlite-ubuntu-trusty-go_agent/3468.17
 
@@ -470,7 +470,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 	|version|Update registration stemcell version|X|
 	|cloud-properties|Update registration stemcell cloud-properties, Json format|X|
 
-- **Usage Example**
+- **Used Example**
 
 		$ bosh repack-stemcell --name=acme-ubuntu-encrypted --cloud-properties='{"encrypted": true, "kms_key_arn": "arn:aws:kms:us-east-1:088444384256:key/4ffbe966-d138-4f4d-a077-4c234d05b3b1"}' bosh-stemcell-3363.9-aws-xen-hvm-ubuntu-trusty-go_agent.tgz acme-encrypted-stemcell.tgz
 
@@ -517,7 +517,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 	|name|Release Job Name|O|
 	|--dir|Creates an empty release component file related to Job about the directory|X|
 
-- **Usage Example**
+- **Used Example**
 
 		$ bosh generate-job jenkins
 
@@ -538,7 +538,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 	|name|Release pakage name|O|
 	|--dir|Create a blank release configuration file related to package Job in the directory|X|
 
-- **Usage Example**
+- **Used Example**
 
 		$ bosh generate-package jenkins
 
@@ -561,7 +561,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 	|name|Release package name|O|
 	|--dir|Creating a package-related empty release configuration file for a directory|X|
 
-- **Usage Example**
+- **Used Example**
 
 		$ bosh vendor-package golang-1.8-linux ~/workspace/golang-release
 
@@ -585,7 +585,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 	|--tarball|Specify the target for the release tarball|X|
 	|--sha2|Specify SHA256 Checksum Usage|X|
 
-- **Usage Example**
+- **Used Example**
 
 		$ bosh create-release --force
 
@@ -608,7 +608,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 	|--version|Provides a custom release version|X|
 	|--dir|Set directory location|X|
 
-- **Usage Example**
+- **Used Example**
 
 		$ cd release-dir
 		$ bosh finalize-release /tmp/my-release.tgz
@@ -633,7 +633,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 	|--dir|Set directory location|O|
 
 
-- **Usage Example**
+- **Used Example**
 
 		$ bosh reset-release ~/Download/jenkins
 
@@ -650,7 +650,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 	Outputs registered Blob at Release Blobstore
 
-- **Usage Example**
+- **Used Example**
 
 		$ cd release-dir
 		$ bosh blobs
@@ -680,7 +680,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 	|src-path|Local Blob Directory|O|
 	|dst-path|Blob directory within the release|X|
 
-- **Usage Example**
+- **Used Example**
 
 		$ cd release-dir
 		$ bosh add-blob ~/Downloads/stress-1.0.4.tar.gz stress/stress-1.0.4.tar.gz
@@ -702,7 +702,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 	|----------|-------------------------|--------------------------------|
 	|blob-path|blob directory within the release|O|
 
-- **Usage Example**
+- **Used Example**
 
 		$ cd release-dir
 		$ bosh remove-blob stress/stress-1.0.4.tar.gz
@@ -718,7 +718,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 	synchronize blob of blobstore within release
 
-- **Usage Example**
+- **Used Example**
 
 		$ cd release-dir
 		$ bosh sync-blobs
@@ -740,9 +740,9 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
+	|my-env|Specified Director Environment Name|O|
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e my-env rs
 		Using environment '192.168.56.6' as client 'admin'
@@ -774,24 +774,24 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='35'/>***bosh upload-release***
 
-- **기본 Syntax**
+- **Basice Syntax**
 
 		$ bosh -e [my-env] upload-release [location] [--version=ver] [--sha1=digest] [--fix] (Alias: ur)
 
-- **설명**
+- **Description**
 
-	릴리즈 업로드
+	Release Upload
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|location|릴리즈 파일 위치 및 URL 지정|O|
-	|--sha1|릴리즈 파일 sha1um 값 확인|X|
-	|--fix|이전에 업로드 한 릴리즈를 동일한 이름과 버전으로 교체|X|
+	|my-env|Specified Director Environment Name|O|
+	|location|Specified release file location and URL|O|
+	|--sha1|Check release file sh1um value|X|
+	|--fix|Replace previously uploaded releases with the same name and version|X|
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e my-env ur
 		$ bosh -e my-env ur https://bosh.io/d/github.com/concourse/concourse?v=2.7.3
@@ -800,71 +800,71 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='36'/>***bosh delete-release*** 
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] delete-release [name]/[version]
 
-- **설명**
+- **Basic**
 
-	업로드 한 릴리즈 삭제
+	Delete uploaded release
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|name|삭제 할 릴리즈 명|O|
-	|version|삭제 할 릴리즈 버전|O|
+	|my-env|Specified Director Environment Name|O|
+	|name|Name of the release to delete|O|
+	|version|Version of the release to delete|O|
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e my-env delete-release cf-smoke-tests/94
 
 ### <div id='37'/>***bosh export-release***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] -d my-dep export-release [name]/[version] [os]/[version] [--dir=dir]
 
-- **설명**
+- **Description**
 
-	특정 스템셀에 대한 릴리즈를 컴파일 하고 내보낸다
+	Compile and export releases for the specified stemcells
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|name|릴리즈 명|O|
-	|version|릴리즈 버전|O|
-	|os|스템셀 os 명|O|
-	|version|스템셀 os 버전|O|
-	|dir|내보내기 디렉토리|X|
+	|my-env|Specified Director Environment Name|O|
+	|name|Release Name|O|
+	|version|Release Version|O|
+	|os|Stemcell os Name|O|
+	|version|Stemcell os Version|O|
+	|dir|Export Directory|X|
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e my-env -d my-dep export-release cf-smoke-tests/94 ubuntu-trusty/3369
 
 ### <div id='38'/>***bosh inspect-release***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] inspect-release [name]/[version]
 
-- **설명**
+- **Description**
 
-	모든 Job, Job의 메타데이터 패키지 및 릴리즈 버전과 관련 된 패키지를 출력
+	All Jobs, metadata packages for the Job, and packages associated with the release version
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|name|릴리즈 명|O|
-	|version|릴리즈 버전|O|
+	|my-env|Specified Director Environment Name|O|
+	|name|Release Name|O|
+	|version|Release Version|O|
 
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e gcp-test inspect-release consul/155
 		Using environment '192.168.56.6' as client 'admin'
@@ -905,23 +905,23 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='40'/>***bosh configs***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] configs [--type=my-type] [--name=my-name]
 
-- **설명**
+- **Description**
 
-	Director의 모든 구성을 출력
+	Outputs all configurations of the Director
 
-- **파라미터**
+- **Parameter**
 	
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|--name|config 명 기본 Default|X|
-	|--type|config type 명|X|
+	|my-env|Specified Director Environment Name|O|
+	|--name|Default config name|X|
+	|--type|config type ㅜname|X|
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e my-env configs
 		Using environment '192.168.50.6' as client 'admin'
@@ -939,46 +939,46 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='41'/>***bosh update-config***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] update-config [my-type] [config.yml] [--name=my-name]
 
-- **설명**
+- **Description**
 
-	Director에서 구성을 추가하거나 업데이트
+	Add or update configuration in Director
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|my-typ|config type 명|O|
-	|config.yml|config type의 property Manifest 파일|O|
-	|--name|config 명 기본 Default|X|
+	|my-env|Specified Director Environment Name|O|
+	|my-typ|config type Name|O|
+	|config.yml|config type of property Manifest file|O|
+	|--name|Default config name|X|
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e my-env config my-type config.yml
 
 ### <div id='42'/>***bosh delete-config***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] delete-config [my-type] [--name=my-name]
 
-- **설명**
+- **Description**
 
-	Director의 my-type 구성을 삭제
+	Deleter  my-type component from Director
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|my-type|config type 명|O|
-	|--name|config 명 기본 Default|X|
+	|my-env|Specified Director Environment Name|O|
+	|my-type|config type Name|O|
+	|--name|Default config name|X|
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e my-env config my-type config.yml
 
@@ -986,44 +986,44 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='44'/>***bosh  cloud-configs***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] cloud-config (Alias: cc)
 
-- **설명**
+- **Description**
 
-	Deployment Property 설정
+	Deployment Property Setting
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
+	|my-env|Specified Director Environment Name|O|
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e my-env cloud-config
 
 ###  <div id='45'/>***bosh update-cloud-config***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] update-cloud-config [config.yml] [-v ...] [-o ...] (Alias: ucc)
 
-- **설명**
+- **Description**
 
-	Director의 cloud-conifg 구성 요소를 추가 하거나 수정
+	Add or modify the cloud-conifg component of the Director
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|config.yml|property Manifest 파일|O|
-	|-v|Manifest Replace 변수 ex) internal_ip, deployment_name|X|
+	|my-env|Specified Director Environment Name|O|
+	|config.yml|property Manifest File|O|
+	|-v|Manifest Replace variable ex) internal_ip, deployment_name|X|
 	|-o|option Manifest File ex) jumpbox-user.yml, uaa.yml…|X|
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e my-env ucc cc.yml
 
@@ -1032,45 +1032,45 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='47'/>***bosh runtime-configs***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e my-env runtime-config (Alias: rc)
 
-- **설명**
+- **Description**
 
-	Director의 runtime-conifg 구성 요소를 출력
+	Outputs the runtime-conifg component of the Director
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
+	|my-env|Specified Director Environment Name|O|
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e my-env runtime-config
 
 ### <div id='48'/>***bosh update-runtime-config***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e my-env update-runtime-config [config.yml] [-v ...] [-o ...] (Alias: urc)
 
-- **설명**
+- **Description**
 
-	Director의 cloud-conifg 구성 요소를 추가 하거나 수정
+	Add or modify the cloud-conifg component of the Director
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|config.yml|property Manifest 파일|O|
-	|-v|Manifest Replace 변수 ex) internal_ip, deployment_name|X|
+	|my-env|Specified Director Environment Name|O|
+	|config.yml|property Manifest File|O|
+	|-v|Manifest Replace Variable ex) internal_ip, deployment_name|X|
 	|-o|option Manifest File ex) jumpbox-user.yml, uaa.yml…|X|
 
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e my-env urc runtime.yml
 
@@ -1078,45 +1078,45 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='50'/>***bosh cpi-configs***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e my-env cpi-config
 
-- **설명**
+- **Description**
 
-	Director의 cpi-conifg 구성 요소를 출력
+	Output the cpi-conifg component of the Director
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
+	|my-env|Specified Director Environment Name|O|
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e my-env cpi-config
 
 ### <div id='51'/>***bosh update-cpi-config***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e my-env update-cpi-config config.yml [-v ...] [-o ...]
 
-- **설명**
+- **Description**
 
-	Director의 cpi-conifg 구성 요소를 추가 하거나 수정
+	Add or modify the cpi-conifg component of the Director
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
-	|config.yml|property Manifest 파일|O|
-	|-v|Manifest Replace 변수 ex) internal_ip, deployment_name|X|
+	|my-env|Specified Director Environment Name|O|
+	|config.yml|property Manifest File|O|
+	|-v|Manifest Replace Variable ex) internal_ip, deployment_name|X|
 	|-o|option Manifest File ex) jumpbox-user.yml, uaa.yml…|X|
 
 
-- **사용 예시**
+- **Used Example**
 
 		$ bosh -e my-env update-cpi-config runtime.yml
 
@@ -1124,22 +1124,22 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='53'/>***bosh deployments***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] deployments (Alias: ds)
 
-- **설명**
+- **Description**
 
-	디렉터가 설치 한 전체 배포 목록을 출력.
+	Outputs a complete list of deployments installed by the director.
 
-- **파라미터**
+- **Parameter**
 
-	|**파라미터 명**|**설명**|**필수****(O/X)**|
+	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|my-env|지정 한 Director 환경 이름 명칭|O|
+	|my-env|Specified Director Environment Name|O|
 
 
-- **파라미터**
+- **Parameter**
 
 		$ bosh -e my-env ds
 		Using environment '192.168.56.6' as client 'admin'
@@ -1169,11 +1169,11 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='54'/>***bosh deployment***
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] -d [my-dep] deployment
 
-- **설명**
+- **Description**
 
 	디렉터가 지정한 이름의 배포 목록 조회
 

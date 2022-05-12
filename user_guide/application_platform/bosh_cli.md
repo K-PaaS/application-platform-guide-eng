@@ -1175,7 +1175,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 - **Description**
 
-	View deployment list 디렉터가 지정한 이름의 배포 목록 조회
+	View deployment list of names specified by the director
 
 - **Parameter**
 

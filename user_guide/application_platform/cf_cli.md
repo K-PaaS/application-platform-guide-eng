@@ -1,12 +1,12 @@
 ### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > cf CLI
 
 ## Table of Contents
-1. [개요](#개요)
-     * [문서 목적](#문서-목적)
-     * [범위](#범위)
-     * [참고 자료](#참고-자료)
+1. [Outline](#개요)
+     * [Document Purpose](#문서-목적)
+     * [Range](#범위)
+     * [References](#참고-자료)
 
-1. [OpenPaaS CLI기본 사용법](#ID-OpenPaaS-CLI-USAGE)
+1. [Basic OpenPaaS CLI Usage](#ID-OpenPaaS-CLI-USAGE)
 
 1. [GETTING STARTED](#ID-GETTING-STARTED)
      * [login](#login)
@@ -177,41 +177,41 @@
     * [plugins](#plugins)
     * [install-plugin](#install-plugin)
 
-## 개요
+## Outline
 ---
 
-#### 문서 목적
+#### Document Purpose
 
-본 문서는 OpenPaaS에 대한 설치 및 운영 관리를 위한 도구인 OpenPaaS CLI에 대해 기본 사용법 및 사용 예시를 통해 OpenPaaS를 이해하는데 목적이 있습니다.
+The purpose of this document is to understand OpenPaaS through basic usage and use examples for OpenPaaS CLI, a tool for installing and managing operations for OpenPaaS.
 
-#### 범위
+#### Range
 
-본 문서는 OpenPaaS CLI 분류 및 기본 사용법에 대해서 작성하였습니다.
+This document is written about OpenPaaS CLI classification and basic usage.
 
-#### 참고 자료
+#### References
 
- 본 문서는 Cloud Foundry의 CF Document를 참고로 작성하였습니다.
+ This document is based on the CF document of Cloud Foundry.
 
  [***https://docs.cloudfoundry.org/devguide/installcf/***](https://docs.cloudfoundry.org/devguide/installcf/)
 
-## <div id='ID-OpenPaaS-CLI-USAGE'/> OpenPaaS CLI기본 사용법
+## <div id='ID-OpenPaaS-CLI-USAGE'/> Basic OpenPaaS CLI Usage
 
-OpenPaaS CLI : OpenPaaS를 관리하기 위한 CLI 도구입니다.
+OpenPaaS CLI : CLI tool to manage OpenPaaS.
 
-CLI는 OpenPaaS배포와 Release를 관리하기 위해 도움을 주는 커맨드 라인 유틸리티로 사용법은 다음과 같습니다.
+CLI is a command-line utility that helps you manage OpenPaaS deployments and releases, and is used as follows.
 
 
 
- - **기본 Syntax**
+ - **Basic Syntax**
 
 
  ```
 cf [global options] command <arguments...> [command options]
  ```
 
-OpenPaaS command 명령어에 따라 약어를 제공해 줍니다. 예를 들어 App start CLI명령어는 start 이지만 st도 사용가능합니다.
+Provides abbreviations according to the OpenPaaS command. As an example, the App start CLI command is start, but st can be used too..
 
-- **약어 사용예시**
+- **Abbreviation used example**
 
 ```
 $ cf start
@@ -219,7 +219,7 @@ $ cf start
 $ cf st
 ```
 
-OpenPaaS 명령어에 대괄호로 묶인 인자인 [command options]은 명령어에 따라 선택적으로 사용되고, command  `<arguments>` 인자는 필수 인자입니다. OpenPaaS 운영 및 관리하기 위한 도구인 OpenPaaS CLI 아래와 같은 명령어들을 제공하고 있습니다.
+[command options], a square-braced factor in OpenPaaS commands, is optionally used according to the command, and the command '<arguments>' factor is a required factor. OpenPaaS CLI, a tool for operating and managing OpenPaaS, provides the following commands.
 
 
 ## <div id='ID-GETTING-STARTED'/> GETTING STARTED
@@ -228,7 +228,7 @@ OpenPaaS 명령어에 대괄호로 묶인 인자인 [command options]은 명령�
 #### login
 
 
-- **기본 Syntax**
+- **Basic Syntax**
 
 
 ```
@@ -236,34 +236,34 @@ $ cf login [-a API_URL] [-u USERNAME] [-p PASSWORD] [-o ORG] [-s SPACE]
 ```
 
 
-- **설명**
+- **Description**
 
 
 ```
-OpenPaaS에 로그인 하기 위한 명령어
+Command used to log in to OpenPaaS
 ```
 
 
-- **파라미터**
+- **Parameter**
 
 
-| 파라미터명   |           설명                 | 필수(O/X) |
+| Parameter Name   |           Description                 | Necessity(O/X) |
 |-------------|-----------------------------|-----------|
-|-a API_URL    |CLI가 접속 하려는 OpenPaaS  URL<br>Ex) https://api.10.244.0.34.xip.io    |X        |
-|-u USERNAMEL  |OpenPaaS에 접속하는 사용자 id               |X        |
-|-p PASSWORD   |OpenPaaS에 접속하는 사용자 password         |X        |
-|-o ORG        |OpenPaaS에 접속하는 사용자의 소속조직 명      |X        |
-|-s SPACE      |OpenPaaS에 접속하는 사용자의 소속조직 스페이스직 명      |X        |
+|-a API_URL    |OpenPaaS  URL CLI uses to access<br>Ex) https://api.10.244.0.34.xip.io    |X        |
+|-u USERNAMEL  |ID of the user accessing OpenPaaS               |X        |
+|-p PASSWORD   |Password of the user accessing OpenPaaS          |X        |
+|-o ORG        |Organization name of the user accessing OpenPaaS      |X        |
+|-s SPACE      |Space name of the user accessing OpenPaaS      |X        |
 
 
-- **사용예시**
+- **Used Example**
 
 
 ```
-# 파라미터 지정한 경우
+# When parameter is specified
 $ cf login --skip-ssl-validation -a https://api.10.244.0.34.xip.io -u admin -p admin -o crossent -s development
 
-# 파라미터 지정하지 않을 경우
+# When parameter is not specified
 $ cf login
 API endpoint: https://api.10.244.0.34.xip.io
 
@@ -291,7 +291,7 @@ Space:          development
 ```
 
 #### logout
-- **기본 Syntax**
+- **Basic Syntax**
 
 
 ```
@@ -299,20 +299,20 @@ $ cf logout
 ```
 
 
-- **설명**
+- **Description**
 
 
 ```
-cf에 logout합니다.
+logout cf.
 ```
 
 
-- **파라미터**
+- **Parameter**
 
-  -없음
+  -None
 
 
-- **사용예시**
+- **Used Example**
 
 ```
 $ cf logout
@@ -320,7 +320,7 @@ $ cf logout
 ```
 
 #### passwd
-- **기본 Syntax**
+- **Basic Syntax**
 
 
 ```
@@ -329,20 +329,20 @@ $ cf passwd
 
 
 
-- **설명**
+- **Description**
 
 
 ```
-OpenPaaS 사용자계정의 패스워드를 변경합니다.
+Change users password in OpenPaaS.
 ```
 
 
-- **파라미터**
+- **Parameter**
 
-  -없음
+  -None
 
 
-- **사용예시**
+- **Used Example**
 
 
 ```
@@ -358,40 +358,40 @@ Please log in again
 ```
 
 #### target
-- **기본 Syntax**
+- **Basic Syntax**
 
 
 ```
 $ cf target [-o ORG] [-s SPACE]
 ```
 
-- **설명**
+- **Description**
 
 
 ```
-로그인한 사용자가 사용할 Target 조직 및 스페이스 설정합니다.
+Set the target organization and space to be used by the logged-in user.
 ```
 
 
-- **파라미터**
+- **Parameter**
 
-| 파라미터명   |           설명                 | 필수(O/X) |
+| Parameter Name   |           Description                 | Necessity(O/X) |
 |-------------|-----------------------------|-----------|
-|-o ORG      |Target 조직                    |X        |
-|-s SPACE    |Target 스페이스                |X        |
+|-o ORG      |Target Organization                    |X        |
+|-s SPACE    |Target Space                |X        |
 
 
 
-- **사용예시**
+- **Used Example**
 
 ```
-# 파라미터 지정한 경우
+# When parameter is specified
 $ cf target -o cf -s development
 API endpoint:   https://api.10.244.0.34.xip.io (API version: 2.29.0)   
 User:           admin   
 Org:            cf   
 Space:          development
-# 파라미터 지정하지 않은 경우(현재 Target된 정보가 출력)
+# When parameter is not specified(Outputs currently targeted information)
 $ cf target
 API endpoint:   https://api.10.244.0.34.xip.io (API version: 2.29.0)   
 User:           admin   
@@ -401,37 +401,37 @@ Space:          development
 
 
 #### api
-- **기본 Syntax**
+- **Basic Syntax**
 
 ```
 $ cf api <URL>
 ```
 
 
-- **설명**
+- **Description**
 
 
 ```
-Target api를 조회하거나 target api URL을 설정합니다.
+View Target api or Sets target api URL.
 ```
 
 
 
-- **파라미터**
+- **Parameter**
 
-| 파라미터명   |           설명                 | 필수(O/X) |
+| Parameter Name   |           Description                 | Necessity(O/X) |
 |-------------|-----------------------------|-----------|
 |URL         |Api Target URL                   |O        |
 
 
-- **사용예시**
+- **Used Example**
 
 ```
 $ cf api --skip-ssl-validation api.10.244.0.34.xip.io
 ```
 
 #### auth
-- **기본 Syntax**
+- **Basic Syntax**
 
 
 ```
@@ -439,24 +439,24 @@ $ cf auth <USERNAME> <PASSWORD>
 ```
 
 
-- **설명**
+- **Description**
 
 
 ```
-OpenPaaS login시 로그인만 되며 스페이스, 타겟은 지정되지 않습니다.
+OpenPaaS login only logs in, no spaces and targets are specified.
 ```
 
 
-- **파라미터**
+- **Parameter**
 
-| 파라미터명   |           설명                 | 필수(O/X) |
+| Parameter Name   |           Description                 | Necessity(O/X) |
 |-------------|--------------------------------|-----------|
-|USERNAME     |로그인 사용자 ID                 |O        |
-|PASSWORD    |로그인 사용자 PASSWORD            |O        |
+|USERNAME     |Login user ID                 |O        |
+|PASSWORD    |Lodin user PASSWORD            |O        |
 
 
 
-- **사용예시**
+- **Used Example**
 
 ```
 $ cf api --skip-ssl-validation api.10.244.0.34.xip.io
@@ -465,7 +465,7 @@ $ cf api --skip-ssl-validation api.10.244.0.34.xip.io
 
 
 #### apps
-- **기본 Syntax**
+- **Basic Syntax**
 
 
 ```
@@ -473,19 +473,19 @@ $cf apps
 ```
 
 
-- **설명**
+- **Description**
 
 
 ```
-타겟 스페이스에 App 목록을 조회합니다.
+View list of Apps in the target space.
 ```
 
 
-- **파라미터**
+- **Parameter**
 
-  -없음
+  -None
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf apps
@@ -493,7 +493,7 @@ $cf apps
 
 #### app
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -501,23 +501,23 @@ $cf apps
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  App의 상태를 조회합니다.
+  Checks the status of App.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |APP_NAME     |APP명                          |O        |
+  |APP_NAME     |APP name                          |O        |
 
 
-    - **사용예시**
+    - **Used Example**
 
     ```
     $ cf app spring-music
@@ -525,7 +525,7 @@ $cf apps
     
 #### <div id='push-p'/> push,p
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -533,38 +533,38 @@ $cf apps
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  App을 OpenPaaS에 배포 하고 app을 Start합니다.
+  Deploy the app to OpenPaaS and start the app.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |APP_NAME     |push하는 App명(지정하지 않으면 디렉토리명)                         |O        |
-  |-b BUILDPACK |custom빌드팩 URL  |X        |
+  |APP_NAME     |Name of th app to be pushed(directory name if not specified)                         |O        |
+  |-b BUILDPACK |custom buildpack URL  |X        |
   |-c COMMAND   |App start command              |X        |
-  |-d DOMAIN    |App 도메인                      |X        |
-  |-f MANIFEST_PATH    |Manifest 파일 경로       |X        |
-  |-i NUM_INSTANCES     |App 인스턴스 갯수        |X        |
-  |-m MEMORY     |인스턴스 메모리 용량             |X        |
-  |-k DISK     |디스크 사용 용량                  |X        |
-  |-n HOST     |호스트명 <br> ex) my-subdomain)  |X        |
-  |-p PATH     |App의 디렉토리 경로 또는 App file(zip,war등)경로   |X        |
-  |-s STACK    |App이 실행되는 운영체제 파일시스템(default: cflinuxfs2)       |X        |
-  |-t TIMEOUT  |App이 실행되는동안 CLI가 대기하는 timeout시간                          |X        |
-  |--no-hostname     |App에 root 도메인을 매핑                          |X        |
-  |--no-manifest     |Manifest 파일을 무시합니다.                         |X        |
-  |--no-route     |Push된 앱에 라우트 정보를 삭제하고 App에 라우트 정보를 매핑하지 않음   |X        |
-  |--no-start     |App을 push하고 Start하지 않음                       |X        |
-  |--random-route    |App에게 라우트 정보를 랜덤하게 생성                |X        |
+  |-d DOMAIN    |App Domain                      |X        |
+  |-f MANIFEST_PATH    |Manifest file path       |X        |
+  |-i NUM_INSTANCES     |Number of app instances        |X        |
+  |-m MEMORY     |Instance memory capacity             |X        |
+  |-k DISK     |Disk Usage Capacity                  |X        |
+  |-n HOST     |Host name <br> ex) my-subdomain)  |X        |
+  |-p PATH     |The app's directory path or App file (zip, war, etc.) path   |X        |
+  |-s STACK    |The operating system file system on which the app runs(default: cflinuxfs2)       |X        |
+  |-t TIMEOUT  |Timeout time the CLI waits while the app is running                          |X        |
+  |--no-hostname     |Map root domain to App                          |X        |
+  |--no-manifest     |Ignore Manifest File.                         |X        |
+  |--no-route     |Delete route information to a pushed app and do not map route information to an app   |X        |
+  |--no-start     |Push App but do not Start                       |X        |
+  |--random-route    |Create random route infromation to App                |X        |
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf push spring-music
@@ -572,7 +572,7 @@ $cf apps
 
 #### scale
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -580,27 +580,27 @@ $cf apps
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  App의 메모리,디스크 크기 및 인스턴스 갯수를 조정합니다.
+  Adjust the app's memory, disk size, and number of instances.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |APP_NAME     |APP명                           |O        |
-  |-i INSTANCES |인스턴스 갯수                    |X        |
-  |-k DISK      |디스크 용량                      |X        |
-  |-m MEMORY    |메모리 용량                      |X        |
-  |-f           |App 강제 restart                |X        |
+  |APP_NAME     |APP Name                           |O        |
+  |-i INSTANCES |Number of Instances                    |X        |
+  |-k DISK      |Disk Memory                      |X        |
+  |-m MEMORY    |Memoey Capacity                      |X        |
+  |-f           |Force App restart                |X        |
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf scale spring-music -i 2 -m 512m
@@ -609,7 +609,7 @@ $cf apps
 
 #### delete
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -617,25 +617,25 @@ $cf apps
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  App을 삭제합니다.
+  Delete App.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |APP_NAME     |APP명                           |O        |
-  |--f          |확인 없이 App 삭제               |X        |
-  |--r          |App에 매핑된 라우트 정보 삭제     |X        |
+  |APP_NAME     |APP Name                           |O        |
+  |--f          |Delete App without confirmation               |X        |
+  |--r          |Delete the route information mapped to the App     |X        |
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $  cf delete spring-music
@@ -644,7 +644,7 @@ $cf apps
 
 #### rename
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -652,24 +652,24 @@ $cf apps
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  App명을 변경합니다.
+  Change App Name.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |APP_NAME     |APP명                           |O        |
-  |NEW_APP_NAME |변경하려는 App명                 |O        |
+  |APP_NAME     |APP Name                           |O        |
+  |NEW_APP_NAME |Name of the App to change                 |O        |
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $  cf rename spring-music new-spring-music
@@ -677,7 +677,7 @@ $cf apps
 
 #### <div id='start-st'/> start,st
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -685,30 +685,30 @@ $cf apps
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  App을 기동 합니다.
+  Start the App.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |APP_NAME     |APP명                           |O        |
+  |APP_NAME     |APP Name                           |O        |
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $  cf start spring-music
   ```
 #### <div id='stop-sp'/> stop,sp
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -716,23 +716,23 @@ $cf apps
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  App을 중지 합니다.
+  Stop the App.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |APP_NAME     |APP명                           |O        |
+  |APP_NAME     |APP Name                           |O        |
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $  cf stop spring-music
@@ -740,7 +740,7 @@ $cf apps
 
 #### <div id='restart-rs'/> restart, rs
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -748,23 +748,23 @@ $cf apps
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  App을 재기동 합니다.
+  Restart the App.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |APP_NAME     |APP명                           |O        |
+  |APP_NAME     |APP Name                           |O        |
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $cf restart spring-music
@@ -772,7 +772,7 @@ $cf apps
 
 ####  <div id='restage-rg'/> restage, rg
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -780,23 +780,23 @@ $cf apps
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  App을 restage합니다.(환경변수 설정 또는 서비스 바인딩시 사용)
+  Restage the app (used when setting environment variables or binding services)
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |APP_NAME     |APP명                           |O        |
+  |APP_NAME     |APP Name                           |O        |
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $cf restage spring-music
@@ -804,7 +804,7 @@ $cf apps
 
 #### restart-app-instance
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -812,23 +812,23 @@ $cf apps
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  App의 인스턴스중 특정 인스턴스를 재기동 합니다.
+  Restart a specific instance of the app.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |APP_NAME     |APP명                           |O        |
-  |INDEX        |인스턴스 인덱스                   |O        |
+  |APP_NAME     |APP Name                           |O        |
+  |INDEX        |Instance Index                   |O        |
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $cf restart-app-instance spring-music 1
@@ -836,7 +836,7 @@ $cf apps
 
 #### events
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -844,11 +844,11 @@ $cf apps
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-    App에서 발생한 최근 Event정보를 조회합니다. (start/stop/scale등의 이력)
+    View recent event information that occurred in the app. (History of start/stop/scale, etc.)
   ```
 
 

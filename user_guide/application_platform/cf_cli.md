@@ -2209,7 +2209,7 @@ View list of Apps in the target space.
 
 
   ```
-  공유 도메인정보를 삭제합니다...
+  Creates route information...
   ```
 
 
@@ -2219,8 +2219,8 @@ View list of Apps in the target space.
   | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
   |SPACE_NAME   |Space Name                           |O         |
-  |DOMAIN       |삭제 확인메시지 없이 공유 도메인을 삭제합니다. <br>   - 도메인 정보가 입력되어있어야 합니다.   |O         |
-  |-n HOSTNAME  |호스트 명                          |X         |
+  |DOMAIN       |Domain name.                      |O         |
+  |-n HOSTNAME  |Host Name                          |X         |
 
 
   - **Used Example**
@@ -2240,25 +2240,25 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  공유 도메인정보를 삭제합니다.
+  Updates route information.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SPACE_NAME   |스페이스명                           |O         |
-  |DOMAIN       |삭제 확인메시지 없이 공유 도메인을 삭제합니다. <br>   - 도메인 정보가 입력되어있어야 합니다.   |O         |
-  |-n HOSTNAME  |호스트 명                          |X         |
+  |SPACE_NAME   |Space Name                           |O         |
+  |DOMAIN       |Domain Name.                      |O         |
+  |-n HOSTNAME  |Host Name                          |X         |
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf update-route development cf.or.kr
@@ -2268,7 +2268,7 @@ View list of Apps in the target space.
 
 #### check-route
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -2276,24 +2276,24 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  라우트 정보가 존재하는지 체크합니다.
+  Checks if route information exists.
   ```
 
 
-  - **파라미터**
+  - **parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |HOST         |호스트 명                                    |O         |
-  |DOMAIN       |삭제 확인메시지 없이 공유 도메인을 삭제합니다.    |O         |
+  |HOST         |Host Name                                     |O         |
+  |DOMAIN       |Domain Name.    |O         |
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf check-route spring-music cf.or.kr
@@ -2302,7 +2302,7 @@ View list of Apps in the target space.
 
 #### map-route
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -2310,25 +2310,25 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  App에게 URL route정보를 할당합니다.
+  Assigns URL route information to the app.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |APP_NAME     |App명                           |O         |
-  |DOMAIN       |App에게 할당할 도메인             |O         |
-  |-n HOSTNAME  |App에게 할당할 Host              |X         |
+  |APP_NAME     |App Name                           |O         |
+  |DOMAIN       |Domain to assign to the App             |O         |
+  |-n HOSTNAME  |Host to assign to the App              |X         |
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf map-route spring-music cf.or.kr -n test
@@ -2337,7 +2337,7 @@ View list of Apps in the target space.
 
 #### unmap-route
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -2345,25 +2345,25 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  App에게 URL route정보를 삭제합니다.
+  Delete URL route information form App.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |APP_NAME     |App명                           |O         |
-  |DOMAIN       |App에게 할당할 도메인             |O         |
-  |-n HOSTNAME  |App에게 할당할 Host              |X         |
+  |APP_NAME     |App Name                           |O         |
+  |DOMAIN       |Domain to assign to the App             |O         |
+  |-n HOSTNAME  |Host to assign to the App              |X         |
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf unmap-route spring-music cf.or.kr -n spring-music
@@ -2371,7 +2371,7 @@ View list of Apps in the target space.
 
 #### delete-route
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -2379,25 +2379,25 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  App에게 URL route정보를 삭제합니다.
+  Deletes URL route information from the App.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |DOMAIN       |App에게 할당할 도메인             |O         |
-  |-n HOSTNAME  |App에게 할당할 Host              |X         |
-  |-f           |삭제 확인메시지 없이 라우트 정보를 삭제합니다.              |X         |
+  |DOMAIN       |Domain to assign to the App             |O         |
+  |-n HOSTNAME  |Host to assign to the App              |X         |
+  |-f           |Deletes route information without confiration message.              |X         |
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf delete-route spring-music cf.or.kr -n spring-music
@@ -2405,7 +2405,7 @@ View list of Apps in the target space.
 
 #### delete-orphaned-routes
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -2413,23 +2413,23 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  App에 매핑되지 않은 라우트 정보를 모두 삭제한다
+  Delete all route information that is not mapped to the app
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |-f           |삭제 확인메시지 없이 라우트 정보를 삭제합니다.           |X         |
+  |-f           |Deletes route information without confiration message.           |X         |
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf delete-orphaned-routes
@@ -2440,7 +2440,7 @@ View list of Apps in the target space.
 
 #### buildpacks
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -2448,21 +2448,21 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  빌드팩 목록을 조회합니다.
+  Inquires list of buildpacks.
   ```
 
 
-  - **파라미터**
+  - **parameter**
 
 
-    - 없음
+    - None
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf buildpacks
@@ -2471,7 +2471,7 @@ View list of Apps in the target space.
 
 #### create-buildpack
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -2479,21 +2479,21 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  빌드팩을 생성합니다.
+  Creates Buildpack.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |BUILDPACK     |빌드팩명                           |O         |
-  |-p PATH       |빌드팩 경로                      |O         |
+  |BUILDPACK     |Buildpack Name                           |O         |
+  |-p PATH       |Buildpack Path                      |O         |
   |-i POSITIONE  |빌드팩 auto-detection동안 빌드팩 체크 순서  <br> ex)1.2.3              |O         |
   |--enable      |스테이징시 사용                  |X         |
   |--disable     |스테이징시 미사용                |X         |

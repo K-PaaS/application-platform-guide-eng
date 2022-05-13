@@ -1624,12 +1624,12 @@ View list of Apps in the target space.
 
   | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SERVICE_INSTANCE          |서비스 인스턴스명                            |O        |
-  |-p CREDENTIALS            |서비스 인스턴스 명                           |X        |
-  |-l SYSLOG-DRAIN-URL       |서비스 인스턴스 명                           |X        |
+  |SERVICE_INSTANCE          |Service Instance Name                           |O        |
+  |-p CREDENTIALS            |Variable provided in a file to be exposed in the VCAP_SERVICES environment for bound applications                           |X        |
+  |-l SYSLOG-DRAIN-URL       |URL to which logs for bound applications will be streamed                           |X        |
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf create-user-provided-service spring-music-db -p '{"username":"admin","password":"pa55woRD"}'
@@ -1637,7 +1637,7 @@ View list of Apps in the target space.
 
 #### <div id='update-user-provided-service-uups'/> update-user-provided-service,uups
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -1645,25 +1645,25 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  user-provided service instance 정보를 수정합니다.
+  Modifies information of user-provided service instance.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SERVICE_INSTANCE          |서비스 인스턴스명                            |O        |
+  |SERVICE_INSTANCE          |Service Instance Name                            |O        |
   |-p CREDENTIALS            |서비스 인스턴스 명                           |X        |
-  |-l SYSLOG-DRAIN-URL       |서비스 인스턴스 명                           |X        |
+  |-l SYSLOG-DRAIN-URL       |URL to which logs for bound applications will be streamed                           |X        |
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $  cf update-user-provided-service spring-music-db -p '{"username":"admin","password":"pa55woRD"}'
@@ -1673,7 +1673,7 @@ View list of Apps in the target space.
 
 #### <div id='orgs-o'/> orgs,o
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -1681,20 +1681,20 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  조직정보 목록을 조회합니다...
+  Inquires list of organization information...
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
-   - 없음
+   - None
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf orgs
@@ -1704,7 +1704,7 @@ View list of Apps in the target space.
 
 #### org
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -1712,24 +1712,24 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  조직 상세 정보를 조회합니다.
+  Inquires detailed information of organization조직 상세 정보를 조회합니다.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |ORG_NAME      |조직명                         |O        |
-  |--guid       |조직의 guid를 조회합니다.           |X        |
+  |ORG_NAME      |Organization Name                         |O        |
+  |--guid       |Inquires the guid of the organization.           |X        |
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf org cf
@@ -1738,7 +1738,7 @@ View list of Apps in the target space.
 
 #### <div id='create-org-co'/> create-org,co
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -1746,24 +1746,24 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  조직정보를 생성합니다.
+  Creates Organizations inforamtion.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |ORG_NAME      |조직명                         |O        |
-  |-q QUOTA_NAME |조직에게 할당할 quota           |X        |
+  |ORG_NAME      |Organization Name                         |O        |
+  |-q QUOTA_NAME |Quota to be assigned to the organization           |X        |
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $cf create-org test -q default
@@ -1773,7 +1773,7 @@ View list of Apps in the target space.
 
 #### delete-org
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -1781,24 +1781,24 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  조직정보 목록을 조회합니다.
+  Inquires list of the organization's information.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |ORG_NAME      |조직명                          |O        |
-  |-f           |확인메시지 없이 조직정보 삭제합니다.  |X        |
+  |ORG_NAME      |Organization Name                          |O        |
+  |-f           |Deletes organization information without confirming.  |X        |
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf delete-org cf -f

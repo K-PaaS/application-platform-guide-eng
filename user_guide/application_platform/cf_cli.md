@@ -1354,7 +1354,7 @@ View list of Apps in the target space.
   | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
   |SERVICE_INSTANCE  |Service instance name                                        |O        |
-  |-f                |deletes the service instance without confirming.             |X        |
+  |-f                |deletes the service instance without confirmation message.             |X        |
 
   - **Used Example**
 
@@ -1625,7 +1625,7 @@ View list of Apps in the target space.
   | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
   |SERVICE_INSTANCE          |Service Instance Name                           |O        |
-  |-p CREDENTIALS            |Variable provided in a file to be exposed in the VCAP_SERVICES environment for bound applications                           |X        |
+  |-p CREDENTIALS            |Credentials exposed in the VCAP_SERVICES environment variable for bound applications                           |X        |
   |-l SYSLOG-DRAIN-URL       |URL to which logs for bound applications will be streamed                           |X        |
 
 
@@ -1659,7 +1659,7 @@ View list of Apps in the target space.
   | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
   |SERVICE_INSTANCE          |Service Instance Name                            |O        |
-  |-p CREDENTIALS            |서비스 인스턴스 명                           |X        |
+  |-p CREDENTIALS            |Credentials exposed in the VCAP_SERVICES environment variable for bound applications                          |X        |
   |-l SYSLOG-DRAIN-URL       |URL to which logs for bound applications will be streamed                           |X        |
 
 
@@ -1795,7 +1795,7 @@ View list of Apps in the target space.
   | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
   |ORG_NAME      |Organization Name                          |O        |
-  |-f           |Deletes organization information without confirming.  |X        |
+  |-f           |Deletes organization information without confirmation message.  |X        |
 
 
   - **Used Example**
@@ -1807,7 +1807,7 @@ View list of Apps in the target space.
 
 #### rename-org
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -1815,24 +1815,24 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  조직명을 변경합니다.
+  Modifies organization name.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |ORG_NAME       |조직명                          |O        |
-  |NEW_ORG_NAME   |변경할 조직명                    |O        |
+  |ORG_NAME       |Organization name                          |O        |
+  |NEW_ORG_NAME   |New organization name                    |O        |
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf rename cf new-cf
@@ -1842,7 +1842,7 @@ View list of Apps in the target space.
 
 #### spaces
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -1850,20 +1850,20 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  스페이스 목록을 가져온다.
+  Inquires list of space.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
-   - 없음
+   - None
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf spaces
@@ -1872,7 +1872,7 @@ View list of Apps in the target space.
 
 #### space
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -1880,23 +1880,23 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  스페이스 상세정보를 조회합니다.
+  Inquires detailed list of space.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SPACE_NAME   |스페이스명                           |O          |
+  |SPACE_NAME   |Space Name                           |O          |
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf space development
@@ -1904,7 +1904,7 @@ View list of Apps in the target space.
 
 #### create-space
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -1912,24 +1912,24 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  스페이스 정보를 생성합니다.
+  Creates Space Information.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SPACE_NAME   |스페이스명                           |O         |
-  |-o ORG_NAME  |스페이스에 매핑될 조직명               |X         |
-  |-q SPACE-QUOTA-NAME    |스페이스에 할당될 QUOTA명    |X         |
+  |SPACE_NAME   |Space Name                           |O         |
+  |-o ORG_NAME  |Organization name to be mapped to space               |X         |
+  |-q SPACE-QUOTA-NAME    |QUOTA name to be assigned to the space    |X         |
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf create-space -o cf -q cf-space-quota
@@ -1937,7 +1937,7 @@ View list of Apps in the target space.
 
 #### delete-space
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -1945,23 +1945,23 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  스페이스정보를 삭제합니다.
+  Deletes space information.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SPACE_NAME   |스페이스명                           |O         |
-  |-f           |삭제 확인메시지 없이 스페이스 삭제합니다. |X         |
+  |SPACE_NAME   |Space Name                           |O         |
+  |-f           |Deletes space without confirmation message. |X         |
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf delete-space development
@@ -1969,7 +1969,7 @@ View list of Apps in the target space.
 
 #### rename-space
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -1977,23 +1977,23 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  스페이스 명을 변경합니다.
+  Modifies space name.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SPACE_NAME     |스페이스명                           |O         |
-  |NEW_SPACE_NAME |삭제 확인메시지 없이 스페이스 삭제합니다. |O         |
+  |SPACE_NAME     |Space Name                           |O         |
+  |NEW_SPACE_NAME |Deletes space without confirmation message. |O         |
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf rename-space development new_development
@@ -2003,7 +2003,7 @@ View list of Apps in the target space.
 
 #### domains
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -2011,21 +2011,21 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  도메인 정보 목록을 조회합니다.
+  Inquires domain information list.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-    - 없음
+    - None
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf domains
@@ -2034,7 +2034,7 @@ View list of Apps in the target space.
 
 #### create-domain
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -2042,24 +2042,24 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  도메인 정보 목록을 생성합니다. 생성된 도메인은 설정된 조직에서 사용가능하다.
+  Generates a list of domain information. The generated domain is available in the configured organization.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |ORG_NAME     |조직명                           |O         |
-  |DOMAIN       |도메인명                          |O         |
+  |ORG_NAME     |Organizaion Name                           |O         |
+  |DOMAIN       |Domain Name                          |O         |
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf create-domain cf-org cf.or.kr
@@ -2068,7 +2068,7 @@ View list of Apps in the target space.
 
 #### delete-domain
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -2076,24 +2076,24 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  도메인 정보를 삭제합니다.
+  Deletes domain information.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |DOMAIN       |도메인명                           |O         |
-  |-f           |삭제 확인메시지 없이 도메인을 삭제합니다. |X         |
+  |DOMAIN       |Domain name                           |O         |
+  |-f           |Deletes domian without confirmation message. |X         |
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf delete-domain cf.or.kr
@@ -2102,7 +2102,7 @@ View list of Apps in the target space.
 
 #### create-shared-domain
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -2110,23 +2110,23 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  공유 도메인정보를 생성한다
+  Generates shared domain information
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |DOMAIN       |조직명                           |O         |
+  |DOMAIN       |Domain Name                           |O         |
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf create-shared-domain cf.or.kr
@@ -2134,7 +2134,7 @@ View list of Apps in the target space.
 
 #### delete-shared-domain
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -2142,23 +2142,23 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  공유 도메인정보를 삭제합니다.
+  Delete shared domain information.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |DOMAIN       |조직명                           |O         |
-  |-f           |삭제 확인메시지 없이 도메인을 삭제합니다.    |X         |
+  |DOMAIN       |Domain Name                           |O         |
+  |-f           |Deletes domain without confirmation message.    |X         |
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf delete-shared-domain cf.or.kr
@@ -2168,7 +2168,7 @@ View list of Apps in the target space.
 
 #### <div id='routes-r'/> routes, r
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -2176,19 +2176,19 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  현재 조직/스페이스에 존재하는 라우트 정보목롤을 조회합니다.
+  Inquires the route information role that currently exists in the organization/space.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
-    - 없음
+    - None
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf routes
@@ -2197,7 +2197,7 @@ View list of Apps in the target space.
 
 #### create-route
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -2205,7 +2205,7 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
@@ -2213,17 +2213,17 @@ View list of Apps in the target space.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SPACE_NAME   |스페이스명                           |O         |
+  |SPACE_NAME   |Space Name                           |O         |
   |DOMAIN       |삭제 확인메시지 없이 공유 도메인을 삭제합니다. <br>   - 도메인 정보가 입력되어있어야 합니다.   |O         |
   |-n HOSTNAME  |호스트 명                          |X         |
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf create-route development cf.or.kr
@@ -2232,7 +2232,7 @@ View list of Apps in the target space.
 
 #### update-route
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```

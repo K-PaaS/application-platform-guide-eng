@@ -1248,12 +1248,12 @@ View list of Apps in the target space.
   - **Parameter**
 
 
-  | Parameter Name   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SERVICE_INSTANCE   |서비스 인스턴스명           |O        |
-  |--guid             |서비스 인스턴스의 Guid를 조회합니다.   |X        |
+  |SERVICE_INSTANCE   |Service Instance Name           |O        |
+  |--guid             |Inquires Guid of Servcie Instance.   |X        |
 
-  - **사용예시**
+  - **Used Guide**
 
   ```
   $ cf service spring-music-db
@@ -1262,7 +1262,7 @@ View list of Apps in the target space.
 
 #### create-service
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -1270,25 +1270,25 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  마켓플레이스에서 제공하는 서비스로 서비스 인스턴스를 만든다.
+  Makes service instance with the service provided from the marketplace.
   ```
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SERVICE      |마켓플레이스에 있는 서비스명                                              |O        |
-  |PLAN         |서비스 플랜명                                                           |O        |
-  |SERVICE_INSTANCE   |만들 서비스 인스턴스명                                             |O        |
-  |-c PARAMETERS_AS_JSON |서비스 설정정보를 json 형태로 입력 <br> Ex) -c '{"ram_gb":4}'    |X        |
-  |-t TAGS      |서비스 인스턴스 테그                                                     |X        |
+  |SERVICE      |Name shown at the marketplace                                              |O        |
+  |PLAN         |Service plan name                                                           |O        |
+  |SERVICE_INSTANCE   |instance name of the service to create                                             |O        |
+  |-c PARAMETERS_AS_JSON |Enter service settings information in json format <br> Ex) -c '{"ram_gb":4}'    |X        |
+  |-t TAGS      |Service Instance Tag                                                     |X        |
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf create-service spring-music-db silver p-mysql
@@ -1297,7 +1297,7 @@ View list of Apps in the target space.
 
 #### update-service
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -1305,25 +1305,25 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  서비스 인스턴스를 수정합니다.
+   Modifies service instance.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SERVICE_INSTANCE        |서비스 인스턴스명                                               |O        |
-  |-p NEW_PLAN             |서비스 플랜명                                                  |O        |
-  |-c PARAMETERS_AS_JSON   |서비스 설정정보를 json 형태로 입력 <br> Ex) -c '{"ram_gb":4}'    |O        |
-  |-t TAGS                 |서비스 인스턴스 테그                                            |X        |
+  |SERVICE_INSTANCE        |Service instance name                                               |O        |
+  |-p NEW_PLAN             |Service plan name                                                  |O        |
+  |-c PARAMETERS_AS_JSON   |Enter service settings information in json format <br> Ex) -c '{"ram_gb":4}'    |O        |
+  |-t TAGS                 |Service Instance Tag                                            |X        |
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf update-service spring-music-db -p gold_plan
@@ -1332,7 +1332,7 @@ View list of Apps in the target space.
 
 #### delete-service
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -1340,23 +1340,23 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  서비스 인스턴스를 삭제합니다.
+  Delete Service Instance.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SERVICE_INSTANCE  |서비스 인스턴스명                                        |O        |
-  |-f                |삭제 확인 메시지 없이 서비스 인스턴스 삭제합니다.             |X        |
+  |SERVICE_INSTANCE  |Service instance name                                        |O        |
+  |-f                |deletes the service instance without confirming.             |X        |
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf delete-service spring-music-db
@@ -1364,7 +1364,7 @@ View list of Apps in the target space.
 
 #### rename-service
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -1372,23 +1372,23 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  서비스 인스턴스명을 수정합니다.
+  Modifies service instance name.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SERVICE_INSTANCE       |서비스 인스턴스명                       |O        |
-  |NEW_SERVICE_INSTANCE   |변경하려는 서비스 인스턴스명             |O        |
+  |SERVICE_INSTANCE       |Service instance name                       |O        |
+  |NEW_SERVICE_INSTANCE   |New service instace name             |O        |
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf rename-service spring-music-db new_spring-music-db
@@ -1396,7 +1396,7 @@ View list of Apps in the target space.
 
 #### <div id='create-service-key-csk'/> create-service-key,csk
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -1404,25 +1404,25 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  서비스 인스턴스의 key를 생성합니다.
+  Creates service instance key.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SERVICE_INSTANCE       |서비스 인스턴스명                       |O        |
-  |SERVICE_KEY            |서비스 인스턴스 key명                   |O        |
-  |-c PARAMETERS_AS_JSON  |서비스 인스턴스 설정(JSON Parameter)    |X        |
+  |SERVICE_INSTANCE       |Service instance name                       |O        |
+  |SERVICE_KEY            |Service instance key name                   |O        |
+  |-c PARAMETERS_AS_JSON  |Sets service instance(JSON Parameter)    |X        |
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf create-service-key spring-music-db mykey -c '{"permissions":"read-only"}'
@@ -1430,7 +1430,7 @@ View list of Apps in the target space.
 
 #### <div id='service-keys-sk'/> service-keys,sk
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -1438,23 +1438,23 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  서비스 인스턴스의 key 목록을 조회합니다.
+  Inquires service instance key list.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SERVICE_INSTANCE       |서비스 인스턴스명                       |O        |
+  |SERVICE_INSTANCE       |Service Instance Name                       |O        |
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf service-keys spring-music-db
@@ -1462,7 +1462,7 @@ View list of Apps in the target space.
 
 #### service-key
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -1470,26 +1470,26 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  서비스 인스턴스의 key의 상세정보를 조회합니다.
+  Inquires details of thekey of service instance.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SERVICE_INSTANCE  |서비스 인스턴스명                       |O        |
-  |SERVICE_KEY       |서비스 인스턴스 key명                   |O        |
-  |--guid            |서비스 인스턴스 guid를 조회합니다.         |X        |
+  |SERVICE_INSTANCE  |Service Instance Name                       |O        |
+  |SERVICE_KEY       |Service Instance key name                   |O        |
+  |--guid            |Inquires service instance guid.         |X        |
 
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf service-key spring-music-db mykey
@@ -1497,7 +1497,7 @@ View list of Apps in the target space.
 
 #### <div id='delete-service-key-dsk'/> delete-service-key,dsk
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -1505,26 +1505,26 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  서비스 key를 삭제합니다.
+  Deletes Service key.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SERVICE_INSTANCE  |서비스 인스턴스명                       |O        |
-  |SERVICE_KEY       |서비스 인스턴스 key명                   |O        |
-  |--guid            |서비스 인스턴스 guid를 조회합니다.         |X        |
+  |SERVICE_INSTANCE  |Service Instance Name                       |O        |
+  |SERVICE_KEY       |Service Instance Key Name                   |O        |
+  |--guid            |Inquires Service Instance Guid.         |X        |
 
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf delete-service-key spring-music-db mykey
@@ -1532,7 +1532,7 @@ View list of Apps in the target space.
 
 #### <div id='bind-service-bs'/> bind-service,bs
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -1540,26 +1540,26 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  App과 서비스 인스턴스를 바인딩합니다.<br> - 서비스 인스턴스와 APP을 바인딩해야 App에서 서비스 사용가능
+  Binds sertive instance and app.<br> - Service Instance and APP must be bound in order to use the service in App
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |APP_NAME     |APP명                                            |O        |
-  |SERVICE_INSTANCE  |서비스 인스턴스 명                           |O        |
-  |-c PARAMETERS_AS_JSON   |바인딩 설정 파라미터 (json형태)         |X        |
+  |APP_NAME     |APP Name                                            |O        |
+  |SERVICE_INSTANCE  |Service instance name                           |O        |
+  |-c PARAMETERS_AS_JSON   |Bind setting parameter (json form)         |X        |
 
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf bind-service spring-music spring-music-db -c '{"permissions":"read-only"}'
@@ -1569,7 +1569,7 @@ View list of Apps in the target space.
 
 #### <div id='unbind-service-us'/> unbind-service,us
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -1577,25 +1577,25 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  App과 서비스 인스턴스를 언바인딩합니다.
+  Unbind app and service instance.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |APP_NAME          |서비스 인스턴스명                            |O        |
-  |SERVICE_INSTANCE  |서비스 인스턴스 명                           |O        |
+  |APP_NAME          |App Name                            |O        |
+  |SERVICE_INSTANCE  |Service Instance Name                           |O        |
 
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf unbind-service spring-music spring-music-db
@@ -1603,7 +1603,7 @@ View list of Apps in the target space.
 
 #### <div id='create-user-provided-service-cups'/> create-user-provided-service,cups
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -1611,18 +1611,18 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  Market place에서 제공하는 서비스를 사용하지 않고 사용자가 별도의 서비스를 구성하여 APP과 바인딩합니다.
+  Without using the services provided by Marketplace, the user configures a separate service to bind to the APP.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
   |SERVICE_INSTANCE          |서비스 인스턴스명                            |O        |
   |-p CREDENTIALS            |서비스 인스턴스 명                           |X        |

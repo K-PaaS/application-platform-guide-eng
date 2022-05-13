@@ -1,9 +1,9 @@
 ### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > 사용자 포털
 
 ## Table of Contents
-1. [문서 개요](#1)
-     * [1.1. 목적](#2)
-     * [1.2. 범위](#3)
+1. [Document Outline](#1)
+     * [1.1. Purpose](#2)
+     * [1.2. Range](#3)
 2. [PaaS-TA 사용자 포탈 계정 생성](#4)
      * [2.1.  PaaS-TA 사용자 포탈 계정 생성](#5)
      * [2.2.  PaaS-TA 사용자 포탈 비밀번호 재설정](#6)

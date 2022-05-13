@@ -852,14 +852,14 @@ View list of Apps in the target space.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |APP_NAME     |APP명                           |O        |
+  |APP_NAME     |APP Name                           |O        |
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf events spring-music
@@ -868,7 +868,7 @@ View list of Apps in the target space.
 
 #### files
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -876,24 +876,24 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  App의 file및 디렉토리 목록을 조회합니다.
+  View the file and directory list of the app.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |APP_NAME     |APP명                           |O        |
-  |PATH         |APP의 디렉토리                   |X        |
-  |-i INSTANCE  |App인스턴스 인덱스               |X        |
+  |APP_NAME     |APP Name                           |O        |
+  |PATH         |Directory of the APP                   |X        |
+  |-i INSTANCE  |App Instance Index               |X        |
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $  cf files spring-music
@@ -901,7 +901,7 @@ View list of Apps in the target space.
 
 #### logs
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -909,31 +909,31 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  App에서 발생한 로그를 조회합니다.
+  View the log that occurred in the app.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Description(O/X) |
   |-------------|--------------------------------|-----------|
-  |APP_NAME     |APP명                           |O        |
-  |PATH         |APP의 디렉토리                   |X        |
-  |-i INSTANCE  |App인스턴스 인덱스               |X        |
+  |APP_NAME     |APP Name                           |O        |
+  |PATH         |Directory of the APP                   |X        |
+  |-i INSTANCE  |App Instance Index               |X        |
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $  cf logs spring-music
   ```
 #### <div id='env-e'/> env,e
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -941,22 +941,22 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  App의 환경변수를 조회합니다.
+ Inquire environment variables of the app.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |APP_NAME     |APP명                           |O        |
+  |APP_NAME     |APP Name                           |O        |
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf env spring-music
@@ -964,7 +964,7 @@ View list of Apps in the target space.
 
 #### <div id='set-env-se'/> set-env,se
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -972,25 +972,25 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  App의 환경변수를 설정합니다. (적용시 restage필요)
+  Set environment variables for the app. (Requires restage when applied)
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |APP_NAME     |APP명                           |O        |
-  |ENV_VAR_NAME |App의 환경변수 Key               |O        |
-  |ENV_VAR_VALUE|App의 환경변수 Value               |O        |
+  |APP_NAME     |APP Name                           |O        |
+  |ENV_VAR_NAME |App's environment variable Key               |O        |
+  |ENV_VAR_VALUE|App's environment variable Value               |O        |
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf se spring-music author Jim
@@ -1000,7 +1000,7 @@ View list of Apps in the target space.
 
 #### unset-env
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -1008,24 +1008,24 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  App에 설정된 환경변수를 삭제합니다.(적용시 restage필요)
+  Delete the environment variable set in the app (restage required when applied)
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Descriprion                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |APP_NAME     |APP명                           |O        |
-  |ENV_VAR_NAME |App의 환경변수 Key               |O        |
+  |APP_NAME     |APP Name                           |O        |
+  |ENV_VAR_NAME |App's variable environment Key               |O        |
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf unset-env spring-music author
@@ -1033,7 +1033,7 @@ View list of Apps in the target space.
 
 #### stacks
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -1041,21 +1041,21 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  OpenPaaS의 stack목록(운영체제 파일시스템) 목록을 조회합니다.
+  Lsit the stack list (operating system file system) list of OpenPaaS.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-    - 없음
+    - None
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $  cf stacks
@@ -1063,7 +1063,7 @@ View list of Apps in the target space.
 
 #### stack
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -1071,24 +1071,24 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  OpenPaaS의 stack목록(운영체제 파일시스템) 목록을 조회합니다.
+  View the stack list (operating system file system) list of OpenPaaS.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |APP_NAME     |APP명                           |O        |
-  |--guid       |Stack guid를 조회            |X        |
+  |APP_NAME     |APP Name                           |O        |
+  |--guid       |Inquire Stack guid            |X        |
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $  cf stack cflinuxfs2
@@ -1096,7 +1096,7 @@ View list of Apps in the target space.
 
 #### copy-source
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -1104,26 +1104,26 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  App의 소스를 다른 App에 복사합니다. 파일이 덥어 쓰이지 않으면 자동 restart합니다.
+  ACopy the source of the app to another app. If the file is not overwritten, it will be automatically restarted
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SOURCE-APP   |원본 APP명                        |O        |
-  |TARGET-APP   |소스가 복사될 대상 App명            |X        |
-  |-o TARGET-ORG |타겟 조직                         |O        |
-  |-s TARGET-SPACE|타겟 스페이스                    |X        |
-  |--no-restart   |소스 복사 후 restart하지 않음  |X        |
+  |SOURCE-APP   |Original APP Name                        |O        |
+  |TARGET-APP   |Name of the app to which the source will be copied            |X        |
+  |-o TARGET-ORG |Target Organization                         |O        |
+  |-s TARGET-SPACE|Target Space                    |X        |
+  |--no-restart   |Copy source and do not restart  |X        |
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf copy-source spring-music another-music
@@ -1131,7 +1131,7 @@ View list of Apps in the target space.
 
 #### create-app-manifest
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -1139,23 +1139,23 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  App의 manifest파일을 생성합니다.
+  Create App's manifest file.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SOURCE-APP   |원본 APP명                        |O        |
-  |-p /path/<app-name>.yml   |파일이 생성될 위치와 파일명(-p 를 사용하지 않으면 자동생성된다)            |X        |
+  |SOURCE-APP   |Original APP Name                        |O        |
+  |-p /path/<app-name>.yml   |Location and filename where the file will be created (automatically generated if -p is not used)            |X        |
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $  cf create-app-manifest spring-music -p ./spring-music-manifest.yml
@@ -1165,7 +1165,7 @@ View list of Apps in the target space.
 
 #### <div id='marketplace-m'/> marketplace,m
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -1173,23 +1173,23 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  cf 마켓플레이스에서 제공하는 서비스 목록을 조회합니다.
+  Inquires the list of services provided by the cf marketplace.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |-s SERVICE_NAME   |서비스의 plan이 조회된다.    |X        |
+  |-s SERVICE_NAME   |Inquries plan of the service.    |X        |
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $  cf create-app-manifest spring-music -p ./spring-music-manifest.yml
@@ -1197,7 +1197,7 @@ View list of Apps in the target space.
 
 #### <div id='services-s'/> services,s
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -1205,23 +1205,23 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  타겟 스페이스에 서비스 인스턴스 목록을 조회합니다.
+  Inquires the list of service instances in the target space.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |-s SERVICE_NAME   |서비스의 plan이 조회된다.    |X        |
+  |-s SERVICE_NAME   |Inquires plan of the service.    |X        |
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $  cf create-app-manifest spring-music -p ./spring-music-manifest.yml
@@ -1229,7 +1229,7 @@ View list of Apps in the target space.
 
 #### service
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -1237,18 +1237,18 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  서비스 인스턴스의 정보를 조회합니다.
+  Inquires information of service instances.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           설명                 | 필수(O/X) |
   |-------------|--------------------------------|-----------|
   |SERVICE_INSTANCE   |서비스 인스턴스명           |O        |
   |--guid             |서비스 인스턴스의 Guid를 조회합니다.   |X        |

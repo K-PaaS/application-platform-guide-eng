@@ -2947,7 +2947,7 @@ View list of Apps in the target space.
   |QUOTA        |QUOTA Name                         |O         |
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf set-quota cf-quota
@@ -2956,7 +2956,7 @@ View list of Apps in the target space.
 
 #### create-quota
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -2964,28 +2964,28 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  Quota정보를 생성합니다.
+  Generate Quota information.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |QUOTA                       |QUOTA명                                                       |O         |
-  |-m TOTAL_MEMORY             |메모리 할당량  <br> Ex) 1024M, 1G, 10G                         |X         |
-  |-i INSTANCE_MEMORY          |App instance가 가질수 있는 최대할당량 (-1은 무한대) <br>  Ex) 1024M, 1G, 10G                        |X         |
-  |-r ROUTES                   |최대 라우트 수                                                 |X         |
-  |-s SERVICE_INSTANCES        |최대 서비스 인스턴스 수                                         |X         |
-  |--allow-paid-service-plans  |과금 서비스 plan 사용가능                                       |X        |
+  |QUOTA                       |QUOTA Name                                                       |O         |
+  |-m TOTAL_MEMORY             |Total amount of memory a space can have  <br> Ex) 1024M, 1G, 10G                         |X         |
+  |-i INSTANCE_MEMORY          |Maximum amount of memory an application instance can have (-1 equals to infinity) <br>  Ex) 1024M, 1G, 10G                        |X         |
+  |-r ROUTES                   |Total number of route                                                 |X         |
+  |-s SERVICE_INSTANCES        |Total number of service instance                                         |X         |
+  |--allow-paid-service-plans  |Can provision instances of paid service plans                                       |X        |
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf create-quota cf-quota -m 500m -i 256m -r 2000 -s 500
@@ -2994,7 +2994,7 @@ View list of Apps in the target space.
 
 #### delete-quota
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -3002,24 +3002,24 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  Quota정보를 삭제합니다.
+  Deletes Quota information.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |QUOTA        |QUOTA명                                                  |O         |
-  |-f           |삭제 확인메시지 없이 QUOTA 정보를 삭제                      |X         |
+  |QUOTA        |QUOTA Name                                                  |O         |
+  |-f           |Deletes QUOTA information without confirmation message                      |X         |
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf delete-quota cf-quota
@@ -3028,7 +3028,7 @@ View list of Apps in the target space.
 
 #### update-quota
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -3036,29 +3036,29 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  Quota정보를 수정합니다.
+  Modifies Quota information.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |QUOTA                       |QUOTA명                                                       |O         |
-  |-m TOTAL_MEMORY             |메모리 할당량  <br> Ex) 1024M, 1G, 10G                         |X         |
-  |-i INSTANCE_MEMORY          |App instance가 가질수 있는 최대할당량 (-1은 무한대) <br>  Ex) 1024M, 1G, 10G                        |X         |
-  |-n NEW_NAME                 |QUOTA명 변경시 변경할 이름                                      |X         |
-  |-r ROUTES                   |최대 라우트 수                                                 |X         |
-  |-s SERVICE_INSTANCES        |최대 서비스 인스턴스 수                                         |X         |
-  |--allow-paid-service-plans  |과금 서비스 plan 사용가능                                       |X        |
-  |--disallow-paid-service-plans  |과금 서비스 plan 사용 불가                                       |X        |
+  |QUOTA                       |QUOTA Name                                                       |O         |
+  |-m TOTAL_MEMORY             |Total amount of memory a space can have  <br> Ex) 1024M, 1G, 10G                         |X         |
+  |-i INSTANCE_MEMORY          |Maximum amount of memory an application instance can have (-1은 무한대) <br>  Ex) 1024M, 1G, 10G                        |X         |
+  |-n NEW_NAME                 |New name when changing QUOTA name                                      |X         |
+  |-r ROUTES                   |Total number of routes                                                 |X         |
+  |-s SERVICE_INSTANCES        |Total number of service instance                                         |X         |
+  |--allow-paid-service-plans  |Can provision instances of paid service plans                                       |X        |
+  |--disallow-paid-service-plans  |Cannot provision instances of paid service plans                                      |X        |
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf update-quota cf-quota -m 500m -i 256m -r 2000 -s 500
@@ -3067,7 +3067,7 @@ View list of Apps in the target space.
 
 #### shared-private-domain
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -3075,24 +3075,24 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  private도메인을 다른 조직과 공유합니다.
+  Share private Domain with other organization.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |QUOTA                 |QUOTA명                        |O         |
-  |DOMAIN                |도메인명                        |O         |
+  |QUOTA                 |QUOTA Name                        |O         |
+  |DOMAIN                |Domain Name                        |O         |
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf shared-private-domain cf-org sharedomain.or.kr
@@ -3101,7 +3101,7 @@ View list of Apps in the target space.
 
 #### unshared-private-domain
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -3109,18 +3109,18 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  다른 조직과 share한 도메인 정보를 unshare합니다.
+  Unshare domain information shared with other organizations.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter   |           설명                 | 필수(O/X) |
   |-------------|--------------------------------|-----------|
   |ORG                   |도메인명                        |O         |
   |DOMAIN                |도메인명                        |O         |

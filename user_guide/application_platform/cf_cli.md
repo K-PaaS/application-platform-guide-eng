@@ -2607,7 +2607,7 @@ View list of Apps in the target space.
   |PASSWORD     |Password                         |O         |
 
 
-  - **사용예시**
+  - **Used Example**
 
   ```
   $ cf create-user cfuser userpassword
@@ -2616,7 +2616,7 @@ View list of Apps in the target space.
 
 #### delete-user
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -2624,24 +2624,24 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-    새로운 사용자 계정을 삭제합니다.
+    Deletes newly created user account.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |USERNAME     |사용자 ID                       |O         |
-  |-f           |삭제 확인메시지 없이 사용자 정보를 삭제                         |X         |
+  |USERNAME     |User ID                       |O         |
+  |-f           |Deletes user information without confirmation message                         |X         |
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf delete-user cfuser
@@ -2650,7 +2650,7 @@ View list of Apps in the target space.
 
 #### org-users
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -2658,23 +2658,23 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  조직에 소속된 사용자를 조회합니다.
+  Inquires users under a certain organization.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |ORG_NAME     |조직명                          |O         |
+  |ORG_NAME     |Organizaion Name                          |O         |
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf org-users cforg
@@ -2682,7 +2682,7 @@ View list of Apps in the target space.
 
 #### set-org-role
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -2690,26 +2690,26 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  사용자에게 특정조직의 role을 설정합니다.
+  Assigns user a role in a specific organization.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |USERNAME     |사용자명                          |O         |
-  |ORG          |조직명                          |O         |
-  |ROLE        |역할명 <br>  - OrgManager : 사용자 관리 및 plan설정/변경 권한 <br> - BillingManager : 빌링계정 및 과금정보 생성 및 관리 <br>  - OrgAuditor : 조직 quota사용률 및 사용자 role을 조회             |O         |
+  |USERNAME     |Username                          |O         |
+  |ORG          |Organization name                          |O         |
+  |ROLE        |Role Name <br>  - OrgManager : Authority to manage User and modifies/plan setting <br> - BillingManager : Generates and manages billing and billing informations <br>  - OrgAuditor : Inquires organizational quota utilization and user role             |O         |
 
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf set-org-role cfuser cforg OrgManager
@@ -2718,7 +2718,7 @@ View list of Apps in the target space.
 
 #### unset-org-role
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -2726,26 +2726,26 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  사용자에게 특정조직의 role을 설정을 해제합니다..
+  Removes users assigned role in a specific organization.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |USERNAME     |사용자명                          |O         |
-  |ORG          |조직명                          |O         |
-  |ROLE        |역할명 <br>  - OrgManager : 사용자 관리 및 plan설정/변경 권한 <br> - BillingManager : 빌링계정 및 과금정보 생성 및 관리 <br>  - OrgAuditor : 조직 quota사용률 및 사용자 role을 조회             |O         |
+  |USERNAME     |Username                          |O         |
+  |ORG          |Organizaion Name                          |O         |
+  |ROLE        |Role Name <br>  - OrgManager : Authority to manage User and modifies/plan setting <br> - BillingManager :enerates and manages billing and billing informations <br>  - OrgAuditor : Inquires organizational quota utilization and user role             |O         |
 
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf unset-org-role cfuser cforg OrgManager
@@ -2754,7 +2754,7 @@ View list of Apps in the target space.
 
 #### space-users
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -2762,24 +2762,24 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  조직의 스페이스에 할당된 사용자 목록정보를 조회합니다.
+  Inquires user list information assigned to an organization's space.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |ORG          |조직명                          |O         |
-  |SPACE        |스페이스명                       |O         |
+  |ORG          |Oraganization Name                          |O         |
+  |SPACE        |Space Name                       |O         |
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf space-users development
@@ -2788,7 +2788,7 @@ View list of Apps in the target space.
 
 #### set-space-role
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -2796,25 +2796,25 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  사용자에게 조직의 스페이스에 role을 할당합니다.
+  Assigns user a role in a specific organization's space.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |USERNAME     |사용자명                         |O         |
-  |ORG          |조직명                           |O         |
-  |SPACE        |스페이스명                       |O         |
-  |ROLE         |역할명  <br>  - SpaceManager: 스페이스의 관리자로 스페이스 내의 사용자 계정 관리 및 인스턴스 수, 서비스 바인딩 상태 및 스페이스 내의 리소스 상태를 조회 및 변경 <br> - SpaceDeveloper: 서비스 관리로 App 배포 <br> - SpaceAuditor: 서비스 관리로 App을 배포   |O         |
+  |USERNAME     |Username                         |O         |
+  |ORG          |Organization Name                           |O         |
+  |SPACE        |Space Name                       |O         |
+  |ROLE         |Role Name  <br>  - SpaceManager: Inquires and modifies the number of user accounts and instances in the space, service binding status, and resource status in the space as an administrator of the space <br> - SpaceDeveloper: Deploys App to service Management  <br> - SpaceAuditor: Inquires service bindings, number of instances, app utilization, etc. in space    |O         |
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf set-space-role cfuser cforg development OrgManager
@@ -2823,7 +2823,7 @@ View list of Apps in the target space.
 
 #### unset-space-role
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -2831,25 +2831,25 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  사용자에게 조직의 스페이스에 role을 회수합니다.
+  Reclaims roles from the user in the organization's space.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |USERNAME     |사용자명                         |O         |
-  |ORG          |조직명                           |O         |
-  |SPACE        |스페이스명                       |O         |
-  |ROLE         |역할명  <br>  - SpaceManager: 스페이스의 관리자로 스페이스 내의 사용자 계정 관리 및 인스턴스 수, 서비스 바인딩 상태 및 스페이스 내의 리소스 상태를 조회. <br> - SpaceDeveloper: 서비스 관리로 App 배포 <br> - SpaceAuditor: 스페이스 내의 서비스 바인딩, 인스턴스 수, app사용률등을 조회   |O         |
+  |USERNAME     |Username                         |O         |
+  |ORG          |Organization Name                           |O         |
+  |SPACE        |Space Name                       |O         |
+  |ROLE         |Role Name  <br>  - SpaceManager: Manages user accounts and view the number of instances in the space, service binding status, and resource status in the space as an administrator of the space. <br> - SpaceDeveloper: Deploys App to service Management <br> - SpaceAuditor: Inquires service bindings, number of instances, app utilization, etc. in space   |O         |
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf unset-space-role cfuser cforg development OrgManager
@@ -2860,7 +2860,7 @@ View list of Apps in the target space.
 
 #### quotas
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -2868,19 +2868,19 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  Quota 목록을 조회합니다.
+  Inquires Quota list.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
-    - 없음
+    - None
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf quotas
@@ -2889,7 +2889,7 @@ View list of Apps in the target space.
 
 #### quota
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -2897,24 +2897,24 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  Quota의 상세정보를 조회합니다.
+  Inquires Quota's detailed information.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |USERNAME     |QUOTA명                         |O         |
+  |QUOTA     |QUOTA Name                         |O         |
 
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf quota cf-quota
@@ -2922,7 +2922,7 @@ View list of Apps in the target space.
 
 #### set-quota
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -2930,21 +2930,21 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  조직에게 QUOTA를 할당합니다.
+  Sets QUOTA to organization.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |ORG          |직명                            |O         |
-  |QUOTA        |QUOTA명                         |O         |
+  |ORG          |Organization Name                            |O         |
+  |QUOTA        |QUOTA Name                         |O         |
 
 
   - **사용예시**

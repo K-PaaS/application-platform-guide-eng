@@ -3248,30 +3248,30 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  스페이스 Quota정보를 수정합니다.
+  Modifies Space Quota information.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SPACE-QUOTA-NAME            |스페이스 QUOTA명                                               |O         |
-  |-i MAX-INSTANCE-MEMORY      |App instance가 가질수 있는 최대할당량 (-1은 무한대) <br>  Ex) 1024M, 1G, 10G                        |X         |
-  |-m MEMORY                   |스페이스가 가질수 있는 최대 메모리                               |X         |
-  |-n NEW_NAME                 |변경하려는 SPACE-QUOTA명                                       |X         |
-  |-r ROUTES                   |스페이스가 가지는 최대 route 갯수                               |X         |
-  |-s SERVICES                 |스페이스가 가지는 최대 서비스 인스턴스 갯수                       |X         |
-  |--allow-paid-service-plans  |과금 서비스 plan 사용가능                                       |X        |
-  |--disallow-paid-service-plans  |과금 서비스 plan 사용 불가                                   |X        |
+  |SPACE-QUOTA-NAME            |Space QUOTA Name                                               |O         |
+  |-i MAX-INSTANCE-MEMORY      ||Maximum amount of memory an application instance can have (-1 equals to infinity) <br>  Ex) 1024M, 1G, 10G                        |X         |
+  |-m MEMORY                   |Maximum memory a space can have                               |X         |
+  |-n NEW_NAME                 |New SPACE-QUOTA Name to change                                       |X         |
+  |-r ROUTES                   |Maximum number of route a space can have                               |X         |
+  |-s SERVICES                 |Maximum number of service instance a space can have                       |X         |
+  |--allow-paid-service-plans  |Can provision instances of paid service plan                                       |X        |
+  |--disallow-paid-service-plans  |Cannot provision instances of paid service plan                                   |X        |
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf update-space-quota cf-space-quota -i 2G -m 10G -r 3000 -s 200
@@ -3280,7 +3280,7 @@ View list of Apps in the target space.
 
 #### delete-space-quota
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -3288,25 +3288,25 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  스페이스 Quota정보를 삭제합니다.
+  Deletes Space Quota Information.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SPACE-QUOTA-NAME     |스페이스 QUOTA명                                     |O         |
-  |-f           |삭제 확인메시지 없이 SPACE-QUOTA 정보를 삭제               |X         |
+  |SPACE-QUOTA-NAME     |Space QUOTA Name                                     |O         |
+  |-f           |Deletes SPACE-QUOTA information without confirmation message               |X         |
 
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf delete-space-quota cf-space-quota
@@ -3315,7 +3315,7 @@ View list of Apps in the target space.
 
 #### set-space-quota
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -3323,25 +3323,25 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  스페이스에 quota를 할당합니다.
+  Assignes quota to space.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SPACE-NAME            |스페이스명                    |O         |
-  |SPACE-QUOTA-NAME      |스페이스 Quota명              |O         |
+  |SPACE-NAME            |Space Name                    |O         |
+  |SPACE-QUOTA-NAME      |Space Quota Name              |O         |
 
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf set-space-quota development cf-space-quota
@@ -3350,7 +3350,7 @@ View list of Apps in the target space.
 
 #### unset-space-quota
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -3358,25 +3358,25 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  스페이스에 할당된 quota를 회수합니다.
+  Reclaims the quota assigned to the space.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SPACE        |스페이스명                   |O         |
-  |QUOTA        |스페이스 Quota명             |O         |
+  |SPACE        |Space Name                   |O         |
+  |QUOTA        |Space Quota Name             |O         |
 
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf unset-space-quota development cf-space-quota
@@ -3387,7 +3387,7 @@ View list of Apps in the target space.
 
 #### service-auth-tokens
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -3395,21 +3395,21 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  서비스 인증 토큰 목록을 조회합니다.
+  Inquires service authentication token list.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
-    - 없음
+    - None
 
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf service-auth-token
@@ -3418,7 +3418,7 @@ View list of Apps in the target space.
 
 #### create-service-auth-token
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -3426,26 +3426,26 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  스페이스에 할당된 quota를 회수합니다.
+  Create a service auth token.
   ```
 
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |LABEL        |서비스 토큰 라벨                 |O         |
-  |PROVIDER     |서비스 제공자                    |O         |
-  |TOKEN        |토큰명                          |O         |
+  |LABEL        |Service token label                 |O         |
+  |PROVIDER     |Service provider                    |O         |
+  |TOKEN        |Token Name                          |O         |
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf create-service-auth-token token-label mysql token
@@ -3454,7 +3454,7 @@ View list of Apps in the target space.
 
 #### update-service-auth-token
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -3462,26 +3462,26 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  Service auth token 정보를 수정합니다.
+  Modifies Service auth token information.
   ```
 
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |LABEL        |서비스 토큰 라벨                 |O         |
-  |PROVIDER     |서비스 제공자                    |O         |
-  |TOKEN        |토큰명                          |O         |
+  |LABEL        |Service Token Label                 |O         |
+  |PROVIDER     |Service Provider                    |O         |
+  |TOKEN        |Token Name                          |O         |
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf update-service-auth-token token-label mysql token
@@ -3490,7 +3490,7 @@ View list of Apps in the target space.
 
 #### delete-service-auth-token
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -3498,26 +3498,26 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  Service auth token 정보를 삭제합니다.
+  Deletes Service auth token information.
   ```
 
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |LABEL        |서비스 토큰 라벨                 |O         |
-  |PROVIDER     |서비스 제공자                    |O         |
-  |-f           |삭제 확인메시지 없이 SERVICE TOKEN 정보를 삭제      |X         |
+  |LABEL        |Service Token Label                 |O         |
+  |PROVIDER     |Service Provider                    |O         |
+  |-f           |Deletes SERVICE TOKEN information without confirmation message      |X         |
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf delete-service-auth-token token-label mysql
@@ -3526,7 +3526,7 @@ View list of Apps in the target space.
 
 #### service-brokers
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -3534,21 +3534,21 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  Service Broker정보 목록을 조회합니다.
+  Inquires list of Service Broker information.
   ```
 
 
 
-  - **파라미터**
+  - **Parameter**
 
-    - 없음
+    - None
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf service-brokers
@@ -3557,7 +3557,7 @@ View list of Apps in the target space.
 
 #### create-service-broker
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -3565,28 +3565,28 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  Service Broker정보를 등록합니다.
+  Registers Service Broker information.
   ```
 
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SERVICE_BROKERABEL        |서비스 브로커명             |O         |
-  |USERNAME                   |사용자명                   |O         |
-  |PASSWORD                   |패스워드                   |O         |
-  |URL                        |서비스 브로커 URL           |O         |
+  |SERVICE_BROKER        |Service Broker Name             |O         |
+  |USERNAME                   |Username                   |O         |
+  |PASSWORD                   |Password                   |O         |
+  |URL                        |Service Broker URL           |O         |
 
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf create-service-broker mysql-service-broker admin password http://p-mysql.10.244.0.34.xip.io
@@ -3595,7 +3595,7 @@ View list of Apps in the target space.
 
 #### update-service-broker
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -3603,28 +3603,28 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  Service Broker정보를 등록합니다.
+  Modifies Service Broker information.
   ```
 
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SERVICE_BROKERABEL        |서비스 브로커명             |O         |
-  |USERNAME                   |사용자명                   |O         |
-  |PASSWORD                   |패스워드                   |O         |
-  |URL                        |서비스 브로커 URL           |O         |
+  |SERVICE_BROKER        |Service Broker Name             |O         |
+  |USERNAME                   |Username                   |O         |
+  |PASSWORD                   |Password                   |O         |
+  |URL                        |Service Broker URL           |O         |
 
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf update-service-broker mysql-service-broker admin password http://p-mysql.10.244.0.34.xip.io
@@ -3633,7 +3633,7 @@ View list of Apps in the target space.
 
 #### delete-service-broker
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -3641,26 +3641,26 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  Service Broker정보를 삭제합니다.
+  Deletes Service Broker information.
   ```
 
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SERVICE_BROKER    |서비스 브로커명                                          |O         |
-  |-f                |삭제 확인메시지 없이 SERVICE BROKER 정보를 삭제       |X         |
+  |SERVICE_BROKER    |Service Broker Name                                          |O         |
+  |-f                |Deletes SERVICE BROKER information without confirmation message       |X         |
 
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf delete-service-broker mysql-service-broker
@@ -3669,7 +3669,7 @@ View list of Apps in the target space.
 
 #### rename-service-broker
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -3677,26 +3677,26 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  Service Broker명을 수정합니다.
+  Modifies Service Broker Name.
   ```
 
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SERVICE_BROKER     |서비스 브로커명             |O         |
-  |NEW_SERVICE_BROKER |변경할 서비스 브로커명       |O         |
+  |SERVICE_BROKER     |Service Broker Name             |O         |
+  |NEW_SERVICE_BROKER |New Service Broker Name       |O         |
 
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf rename-service-broker mysql-service-broker new_mysql-service-broker
@@ -3705,7 +3705,7 @@ View list of Apps in the target space.
 
 #### migrate-service-broker
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -3713,28 +3713,28 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  서비스 인스턴스에서 사용하는 서비스 및 플랜을 다른 플랜으로 변경합니다. <br> - App이 사용하는 서비스를 다른 서비스로 변경하려 할때 사용합니다.
+  Changes service and plan used by service instance to another plan. <br> - Use when changing the service used by App.
   ```
 
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |v1_SERVICE     |기존 서비스 명                         |O         |
-  |v1_PROVIDER    |기존 서비스를 제공하는 제공자            |O         |
-  |v1_PLAN        |기존 서비스 인스턴스에서 사용하는 플랜    |O         |
-  |v2_SERVICE     |신규 서비스 명                         |O         |
-  |v2_PLAN        |신규 서비스에서 사용하는 플랜            |O         |  
+  |v1_SERVICE     |Existing Service Name                         |O         |
+  |v1_PROVIDER    |Existing Service Provider            |O         |
+  |v1_PLAN        |Existing plan used at the service instance    |O         |
+  |v2_SERVICE     |New Service Name                         |O         |
+  |v2_PLAN        |Plan Used at the New Service            |O         |  
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf migrate-service-instances p-mysql mysql-provider silver  postgres silver
@@ -3743,7 +3743,7 @@ View list of Apps in the target space.
 
 #### purge-service-offering
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -3751,27 +3751,27 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  cf와 서비스 브로커간의 정보 불일치를 해결할때 사용합니다. <br>   (migrate-service-instances 명령 이후 사용)
+  Used to resolve information discrepancies between cf and service broker. <br>   (Use after migrate-service-instances command)
   ```
 
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SERVICE      |서비스 명                                  |O         |
-  |-p PROVIDER  |서비스 제공자                               |O         |
-  |-f           |삭제 확인메시지 없이 서비스 정보를 삭제한다    |O         |
+  |SERVICE      |Service Name                                  |O         |
+  |-p PROVIDER  |Service Provider                               |O         |
+  |-f           |Deletes Service Information without Confirmation Message    |O         |
 
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf purge-service-offering mysql
@@ -3780,7 +3780,7 @@ View list of Apps in the target space.
 
 #### service-access
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -3788,22 +3788,22 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  서비스 access 될 서비스 목록 조회합니다..
+  Inquires list of service to be accessed.
   ```
 
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-     - 없음
+     - None
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf service-access
@@ -3812,7 +3812,7 @@ View list of Apps in the target space.
 
 #### enable-service-access
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -3820,27 +3820,27 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  조직 또는 서비스 plan을 서비스에 접근 가능하도록 설정합니다.
+  Sets organization or service plan to be able to access the service.
   ```
 
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SERVICE      |서비스 명                        |O          |
-  |-p PLAN      |PLAN명                          |O          |
-  |-o ORG       |조직명                           |O          |
+  |SERVICE      |Service Name                        |O          |
+  |-p PLAN      |PLAN Name                          |O          |
+  |-o ORG       |Organization Name                           |O          |
 
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf enable-service-access mysql -p silver -o cf-org
@@ -3849,7 +3849,7 @@ View list of Apps in the target space.
 
 #### disable-service-access
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -3857,27 +3857,27 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  조직 또는 서비스 plan을 서비스에 접근 불가 하도록 설정합니다.
+  Sets organization or service plan to have no access to the service.
   ```
 
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SERVICE      |서비스 명                        |O          |
-  |-p PLAN      |PLAN명                          |O          |
-  |-o ORG       |조직명                           |O          |
+  |SERVICE      |Service Name                        |O          |
+  |-p PLAN      |PLAN Name                          |O          |
+  |-o ORG       |Organization Name                           |O          |
 
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf disable-service-access mysql -p silver -o cf-org
@@ -3888,7 +3888,7 @@ View list of Apps in the target space.
 
 #### security-group
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -3896,25 +3896,25 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  시큐리티 그룹 상세정보를 조회합니다.
+  Inquires detailed information of security group.
   ```
 
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SECURITY_GROUP      |서큐리티 그룹명                        |O          |
+  |SECURITY_GROUP      |Security Group Name                        |O          |
 
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf security-group cf-security-group
@@ -3923,7 +3923,7 @@ View list of Apps in the target space.
 
 #### security-groups
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -3931,22 +3931,22 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  시큐리티 그룹 목록을 조회합니다.
+  Inquires list of Security group.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-    - 없음
+    - None
 
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf security-groups
@@ -3955,7 +3955,7 @@ View list of Apps in the target space.
 
 #### create-security-group
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -3963,24 +3963,24 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  시큐리티 그룹정보를 생성합니다.
+  Generates Security group information.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SECURITY_GROUP      |서큐리티 그룹명                                           |O          |
-  |PATH_TO_JSON_RULES_FILE      |시큐리티 룰을 명세한 JSON 파일의 경로 및 파일명<br> ex) rule 파일 작성 예제 <br> [ <br> &nbsp;&nbsp;{   <br> &nbsp;&nbsp;&nbsp;&nbsp;"protocol": "tcp",     <br> &nbsp;&nbsp;&nbsp;&nbsp;"destination": "10.244.1.18", <br>     &nbsp;&nbsp;&nbsp;&nbsp;"ports": "3306" <br>&nbsp;&nbsp;} <br> ]     |O          |
+  |SECURITY_GROUP      |Security Group Name                                           |O          |
+  |PATH_TO_JSON_RULES_FILE      |Path and filename of the JSON file specifying the security rule<br>  Example of creating a rule file <br> [ <br> ex.) &nbsp;&nbsp;{   <br> &nbsp;&nbsp;&nbsp;&nbsp;"protocol": "tcp",     <br> &nbsp;&nbsp;&nbsp;&nbsp;"destination": "10.244.1.18", <br>     &nbsp;&nbsp;&nbsp;&nbsp;"ports": "3306" <br>&nbsp;&nbsp;} <br> ]     |O          |
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf create-security-group cf-security-group ./rule.json
@@ -3989,7 +3989,7 @@ View list of Apps in the target space.
 
 #### update-security-group
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -3997,23 +3997,23 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  시큐리티 그룹정보를 수정합니다.
+  Modifies Security Group's information.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SECURITY_GROUP      |서큐리티 그룹명                                           |O          |
-  |PATH_TO_JSON_RULES_FILE      |시큐리티 룰을 명세한 JSON 파일의 경로 및 파일명<br> ex) rule 파일 작성 예제 <br> [ <br> &nbsp;&nbsp;{   <br> &nbsp;&nbsp;&nbsp;&nbsp;"protocol": "tcp",     <br> &nbsp;&nbsp;&nbsp;&nbsp;"destination": "10.244.1.18", <br>     &nbsp;&nbsp;&nbsp;&nbsp;"ports": "3306" <br>&nbsp;&nbsp;} <br> ]     |O          |
+  |SECURITY_GROUP      |Sercurity Group Name                                          |O          |
+  |PATH_TO_JSON_RULES_FILE      |Path and filename of the JSON file specifying the security rule<br> Example of creating a rule file <br> [ <br> ex.) &nbsp;&nbsp;{   <br> &nbsp;&nbsp;&nbsp;&nbsp;"protocol": "tcp",     <br> &nbsp;&nbsp;&nbsp;&nbsp;"destination": "10.244.1.18", <br>     &nbsp;&nbsp;&nbsp;&nbsp;"ports": "3306" <br>&nbsp;&nbsp;} <br> ]     |O          |
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf update-security-group cf-security-group ./rule.json
@@ -4022,7 +4022,7 @@ View list of Apps in the target space.
 
 #### delete-security-group
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -4030,24 +4030,24 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  시큐리티 그룹정보를 삭제합니다.
+  Deletes Security Group's Information.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SECURITY_GROUP  |서큐리티 그룹명                                    |O          |
-  |-f              |삭제 확인메시지 없이 시큐리지 그룹 정보를 삭제합니다.    |X          |
+  |SECURITY_GROUP  |Security Group Name                                    |O          |
+  |-f              |Deletes Security Group Information without Confimation Message.    |X          |
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf update-security-group cf-security-group ./rule.json
@@ -4056,7 +4056,7 @@ View list of Apps in the target space.
 
 #### bind-security-group
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -4064,25 +4064,25 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  시큐리티 그룹 정보와 스페이스를 바인드 합니다.
+  Binds Security Group Information and Space.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SECURITY_GROUP  |서큐리티 그룹명                |O          |
-  |ORG             |조직명                        |O          |
-  |SPACE           |스페이스명                    |O         |
+  |SECURITY_GROUP  |Security Group Name                |O          |
+  |ORG             |Organization Name                        |O          |
+  |SPACE           |Space Name                    |O         |
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf update-security-group cf-security-group ./rule.json
@@ -4091,7 +4091,7 @@ View list of Apps in the target space.
 
 #### unbind-security-group
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -4099,25 +4099,25 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  시큐리티 그룹 정보와 스페이스를 언바인드 합니다.
+  Unbinds Security Group Information and Space.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SECURITY_GROUP  |서큐리티 그룹명                |O          |
-  |ORG             |조직명                        |O          |
-  |SPACE           |스페이스명                     |O          |
+  |SECURITY_GROUP  |Security Group Name                |O          |
+  |ORG             |Organization Name                        |O          |
+  |SPACE           |Space Name                     |O          |
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf unbind-security-group cf-security-group cf-group development
@@ -4126,7 +4126,7 @@ View list of Apps in the target space.
 
 #### bind-staging-security-group
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -4134,23 +4134,23 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  App staging처리를 하기 위해 시큐리티 그룹을 설정합니다.
+  Set up security groups for app staging processing.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SECURITY_GROUP  |서큐리티 그룹명                |O          |
+  |SECURITY_GROUP  |Security Group Name                |O          |
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf bind-staging-security-group cf-security-group
@@ -4159,7 +4159,7 @@ View list of Apps in the target space.
 
 #### staging-security-groups
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -4167,20 +4167,20 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  Staging security group 정보 목록을 조회합니다.
+  Inquires Staging security group information list.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
-    - 없음
+    - None
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf staging-security-groups
@@ -4189,7 +4189,7 @@ View list of Apps in the target space.
 
 #### unbind-staging-security-group
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -4197,23 +4197,23 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  App staging처리를 하기 위한 시큐리티 그룹을 설정을 해제 합니다.
+  Unset security groups for app staging processing.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SECURITY_GROUP  |서큐리티 그룹명                |O          |
+  |SECURITY_GROUP  |Security Gorup Name                |O          |
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf unbind-staging-security-group cf-security-group
@@ -4222,7 +4222,7 @@ View list of Apps in the target space.
 
 #### running-security-groups
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -4230,21 +4230,21 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  실행중인 시큐리트 그룹 목록을 조회합니다.
+  Inquires list of running security groups.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
-    - 없음
+    - None
 
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf unbind-staging-security-group cf-security-group
@@ -4255,7 +4255,7 @@ View list of Apps in the target space.
 
 #### <div id='running-environment-variable-group-revg'/> running-environment-variable-group, revg
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -4263,21 +4263,21 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  실환경변수 내용을 조회합니다.
+  Inquires the contents of the actual environment variable.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
-    - 없음
+    - None
 
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf running-environment-variable-group
@@ -4285,7 +4285,7 @@ View list of Apps in the target space.
 
 #### <div id='staging-environment-variable-group-sevg'/> staging-environment-variable-group, sevg
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -4293,21 +4293,21 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  스테이징시 사용되는 환경변수 내용을 조회합니다.
+  Inquires the contents of environment variables used during staging.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
-    - 없음
+    - Name
 
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf staging-environment-variable-group
@@ -4317,7 +4317,7 @@ View list of Apps in the target space.
 
 #### <div id='set-staging-environment-variable-group-ssevg'/> set-staging-environment-variable-group, ssevg
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -4325,25 +4325,25 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  스테이징시 사용되는 환경변수 내용을 설정한다
+  Set the contents of environment variables used during staging.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |ENV_VARIABLE  |환경변수 내용으로 KEY/VALUE로 구성              |O          |
+  |ENV_VARIABLE  |Consists of KEY/VALUE as environmental variable content              |O          |
 
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf set-staging-environment-variable-group '{"name":"value","name":"value"}'
@@ -4351,7 +4351,7 @@ View list of Apps in the target space.
 
 #### <div id='set-running-environment-variable-group-ssevg'/> set-running-environment-variable-group, ssevg
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -4359,25 +4359,25 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  환경변수 내용을 설정 합니다.
+  Set the contents of the environment variable.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |ENV_VARIABLE  |환경변수 내용으로 KEY/VALUE로 구성된다.                |O          |
+  |ENV_VARIABLE  |Consists of KEY/VALUE as environmental variable content.                |O          |
 
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf set-running-environment-variable-group '{"name":"value","name":"value"}'
@@ -4387,7 +4387,7 @@ View list of Apps in the target space.
 
 #### feature-flags
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -4395,21 +4395,21 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  feature flags 목록을 조회합니다.
+  Inquires list of feature flags.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
-    - 없음
+    - None
 
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf feature-flags
@@ -4418,7 +4418,7 @@ View list of Apps in the target space.
 
 #### feature-flag
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -4426,25 +4426,25 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  특정 Feature flag의 상태를 조회합니다.
+  Inquires the status of a specific Feature flag.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |FEATURE_NAME  |Feature flag 명. <br> - feature flag에는 6가지가 있다. <br> 1)user_org_creation <br> 2) private_domain_creation <br> 3) app_bits_upload <br> 4) app_scaling <br>  5) route_creation <br> 6) service_instance_creation               |O          |
+  |FEATURE_NAME  |Feature flag Name. <br> - There are 6 kinds of feature flag. <br> 1)user_org_creation <br> 2) private_domain_creation <br> 3) app_bits_upload <br> 4) app_scaling <br>  5) route_creation <br> 6) service_instance_creation               |O          |
 
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf feature-flag app_bits_upload
@@ -4453,7 +4453,7 @@ View list of Apps in the target space.
 
 #### enable-feature-flag
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -4461,24 +4461,24 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  특정 Feature flag의 상태를 enable로 변경합니다.
+  Change the status of a specific Feature flag to enable.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |FEATURE_NAME  |Feature flag 명. <br> - feature flag에는 6가지가 있다. <br> 1)user_org_creation <br> 2) private_domain_creation <br> 3) app_bits_upload <br> 4) app_scaling <br>  5) route_creation <br> 6) service_instance_creation               |O          |
+  |FEATURE_NAME  |Feature flag Name. <br> - There are 6 kinds of feature flag. <br> 1)user_org_creation <br> 2) private_domain_creation <br> 3) app_bits_upload <br> 4) app_scaling <br>  5) route_creation <br> 6) service_instance_creation               |O          |
 
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf enable-feature-flag app_bits_upload
@@ -4487,7 +4487,7 @@ View list of Apps in the target space.
 
 #### disable-feature-flag
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -4495,25 +4495,25 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  특정 Feature flag의 상태를 disable로 변경합니다.
+  Change the status of a particular Feature flag to disable.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |FEATURE_NAME  |Feature flag 명. <br> - feature flag에는 6가지가 있다. <br> 1)user_org_creation <br> 2) private_domain_creation <br> 3) app_bits_upload <br> 4) app_scaling <br>  5) route_creation <br> 6) service_instance_creation               |O          |
+  |FEATURE_NAME  |Feature flag Name. <br> - There are 6 kinds of feature flag. <br> 1)user_org_creation <br> 2) private_domain_creation <br> 3) app_bits_upload <br> 4) app_scaling <br>  5) route_creation <br> 6) service_instance_creation               |O          |
 
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf disable-feature-flag app_bits_upload
@@ -4524,7 +4524,7 @@ View list of Apps in the target space.
 
 #### curl
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -4532,21 +4532,21 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  OpenPaaS CLI명령어가 아닌 OpenPaaS API를 호출합니다.
+  Page OpenPaaS API, not OpenPaaS CLI command.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
   |PATH         |Cf api path <br>  Ex) /v2/spaces/2d94e7ee-9805-408d-a1eb-ceac319e603b/summary             |O          |
-  |-i           |Response header포함한 결과                                                                  |X          |
+  |-i           |Result including Response header                                                                  |X          |
   |-v           |Request/response에 CF_TRACE enable된 내용 포함                                              |X          |
   |-X METHOD    |HTTP method((GET,POST,PUT,DELETE,etc)                                                      |X          |
   |-H HEADER    |Request에 Custom Header를 포함합니다.                                                         |X          |

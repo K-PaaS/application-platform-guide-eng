@@ -3051,7 +3051,7 @@ View list of Apps in the target space.
   |-------------|--------------------------------|-----------|
   |QUOTA                       |QUOTA Name                                                       |O         |
   |-m TOTAL_MEMORY             |Total amount of memory a space can have  <br> Ex) 1024M, 1G, 10G                         |X         |
-  |-i INSTANCE_MEMORY          |Maximum amount of memory an application instance can have (-1은 무한대) <br>  Ex) 1024M, 1G, 10G                        |X         |
+  |-i INSTANCE_MEMORY          |Maximum amount of memory an application instance can have (-1 equals to infinity) <br>  Ex) 1024M, 1G, 10G                        |X         |
   |-n NEW_NAME                 |New name when changing QUOTA name                                      |X         |
   |-r ROUTES                   |Total number of routes                                                 |X         |
   |-s SERVICE_INSTANCES        |Total number of service instance                                         |X         |
@@ -3120,13 +3120,13 @@ View list of Apps in the target space.
   - **Parameter**
 
 
-  | Parameter   |           설명                 | 필수(O/X) |
+  | Parameter   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |ORG                   |도메인명                        |O         |
-  |DOMAIN                |도메인명                        |O         |
+  |ORG                   |Organization Name                        |O         |
+  |DOMAIN                |Domain Name                        |O         |
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf unshared-private-domain cf-org sharedomain.or.kr
@@ -3137,7 +3137,7 @@ View list of Apps in the target space.
 
 #### space-quotas
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -3145,21 +3145,21 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  Space-quota정보 목록을 조회합니다.
+  Inquires Space-quota information list.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-    - 없음
+    - None
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf space-quotas
@@ -3169,7 +3169,7 @@ View list of Apps in the target space.
 
 #### space-quota
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -3177,23 +3177,23 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  Space quota 상세정보를 조회합니다.
+  Inquires Space quota detailed information.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |SPACE_QUOTA_NAME       |스페이스 QUOTA명       |O         |
+  |SPACE_QUOTA_NAME       |Space QUOTA Name       |O         |
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf space-quota cf-space-quota
@@ -3202,7 +3202,7 @@ View list of Apps in the target space.
 
 #### create-space-quota
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -3210,21 +3210,21 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  스페이스 Quota정보를 생성합니다.
+  Generates Space Quota information.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |QUOTA                       |QUOTA명                                                       |O         |
-  |-m TOTAL_MEMORY             |메모리 할당량  <br> Ex) 1024M, 1G, 10G                         |X         |
+  |QUOTA                       |QUOTA Name                                                       |O         |
+  |-m TOTAL_MEMORY             |Total amount of memory a space can have  <br> Ex) 1024M, 1G, 10G                         |X         |
   |-i INSTANCE_MEMORY          |App instance가 가질수 있는 최대할당량 (-1은 무한대) <br>  Ex) 1024M, 1G, 10G                        |X         |
   |-r ROUTES                   |최대 라우트 수                                                 |X         |
   |-s SERVICE_INSTANCES        |최대 서비스 인스턴스 수                                         |X         |

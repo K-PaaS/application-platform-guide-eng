@@ -3225,13 +3225,13 @@ View list of Apps in the target space.
   |-------------|--------------------------------|-----------|
   |QUOTA                       |QUOTA Name                                                       |O         |
   |-m TOTAL_MEMORY             |Total amount of memory a space can have  <br> Ex) 1024M, 1G, 10G                         |X         |
-  |-i INSTANCE_MEMORY          |App instance가 가질수 있는 최대할당량 (-1은 무한대) <br>  Ex) 1024M, 1G, 10G                        |X         |
-  |-r ROUTES                   |최대 라우트 수                                                 |X         |
-  |-s SERVICE_INSTANCES        |최대 서비스 인스턴스 수                                         |X         |
-  |--allow-paid-service-plans  |과금 서비스 plan 사용가능                                       |X        |
+  |-i INSTANCE_MEMORY          |Maximum amount of memory an application instance can have (-1 equals to infinity) <br>  Ex) 1024M, 1G, 10G                        |X         |
+  |-r ROUTES                   |Total number of Routes                                                 |X         |
+  |-s SERVICE_INSTANCES        |Total number of service instance                                         |X         |
+  |--allow-paid-service-plans  |Can provision instances of paid service plans                                       |X        |
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf create-space-quota cf-space-quota -i 2G -m 10G -r 3000 -s 200
@@ -3240,7 +3240,7 @@ View list of Apps in the target space.
 
 #### update-space-quota
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```

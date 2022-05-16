@@ -256,7 +256,7 @@ Command used to log in to OpenPaaS
 |-s SPACE      |Space name of the user accessing OpenPaaS      |X        |
 
 
-- **Used Example**
+- **Use Example**
 
 
 ```
@@ -312,7 +312,7 @@ logout cf.
   -None
 
 
-- **Used Example**
+- **Use Example**
 
 ```
 $ cf logout
@@ -342,7 +342,7 @@ Change users password in OpenPaaS.
   -None
 
 
-- **Used Example**
+- **Use Example**
 
 
 ```
@@ -382,7 +382,7 @@ Set the target organization and space to be used by the logged-in user.
 
 
 
-- **Used Example**
+- **Use Example**
 
 ```
 # When parameter is specified
@@ -424,7 +424,7 @@ View Target api or Sets target api URL.
 |URL         |Api Target URL                   |O        |
 
 
-- **Used Example**
+- **Use Example**
 
 ```
 $ cf api --skip-ssl-validation api.10.244.0.34.xip.io
@@ -456,7 +456,7 @@ OpenPaaS login only logs in, no spaces and targets are specified.
 
 
 
-- **Used Example**
+- **Use Example**
 
 ```
 $ cf api --skip-ssl-validation api.10.244.0.34.xip.io
@@ -485,7 +485,7 @@ View list of Apps in the target space.
 
   -None
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf apps
@@ -517,7 +517,7 @@ View list of Apps in the target space.
   |APP_NAME     |APP name                          |O        |
 
 
-    - **Used Example**
+    - **Use Example**
 
     ```
     $ cf app spring-music
@@ -564,7 +564,7 @@ View list of Apps in the target space.
   |--no-start     |Push App but do not Start                       |X        |
   |--random-route    |Create random route infromation to App                |X        |
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf push spring-music
@@ -600,7 +600,7 @@ View list of Apps in the target space.
   |-f           |Force App restart                |X        |
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf scale spring-music -i 2 -m 512m
@@ -635,7 +635,7 @@ View list of Apps in the target space.
   |--r          |Delete the route information mapped to the App     |X        |
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $  cf delete spring-music
@@ -669,7 +669,7 @@ View list of Apps in the target space.
   |NEW_APP_NAME |Name of the App to change                 |O        |
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $  cf rename spring-music new-spring-music
@@ -701,7 +701,7 @@ View list of Apps in the target space.
   |APP_NAME     |APP Name                           |O        |
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $  cf start spring-music
@@ -732,7 +732,7 @@ View list of Apps in the target space.
   |APP_NAME     |APP Name                           |O        |
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $  cf stop spring-music
@@ -764,7 +764,7 @@ View list of Apps in the target space.
   |APP_NAME     |APP Name                           |O        |
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $cf restart spring-music
@@ -796,7 +796,7 @@ View list of Apps in the target space.
   |APP_NAME     |APP Name                           |O        |
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $cf restage spring-music
@@ -828,7 +828,7 @@ View list of Apps in the target space.
   |APP_NAME     |APP Name                           |O        |
   |INDEX        |Instance Index                   |O        |
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $cf restart-app-instance spring-music 1
@@ -859,7 +859,7 @@ View list of Apps in the target space.
   |-------------|--------------------------------|-----------|
   |APP_NAME     |APP Name                           |O        |
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf events spring-music
@@ -893,7 +893,7 @@ View list of Apps in the target space.
   |PATH         |Directory of the APP                   |X        |
   |-i INSTANCE  |App Instance Index               |X        |
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $  cf files spring-music
@@ -926,7 +926,7 @@ View list of Apps in the target space.
   |PATH         |Directory of the APP                   |X        |
   |-i INSTANCE  |App Instance Index               |X        |
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $  cf logs spring-music
@@ -956,7 +956,7 @@ View list of Apps in the target space.
   |-------------|--------------------------------|-----------|
   |APP_NAME     |APP Name                           |O        |
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf env spring-music
@@ -990,7 +990,7 @@ View list of Apps in the target space.
   |ENV_VAR_VALUE|App's environment variable Value               |O        |
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf se spring-music author Jim
@@ -1025,7 +1025,7 @@ View list of Apps in the target space.
   |ENV_VAR_NAME |App's variable environment Key               |O        |
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf unset-env spring-music author
@@ -1055,7 +1055,7 @@ View list of Apps in the target space.
     - None
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $  cf stacks
@@ -1088,7 +1088,7 @@ View list of Apps in the target space.
   |--guid       |Inquire Stack guid            |X        |
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $  cf stack cflinuxfs2
@@ -1123,7 +1123,7 @@ View list of Apps in the target space.
   |-s TARGET-SPACE|Target Space                    |X        |
   |--no-restart   |Copy source and do not restart  |X        |
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf copy-source spring-music another-music
@@ -1155,7 +1155,7 @@ View list of Apps in the target space.
   |SOURCE-APP   |Original APP Name                        |O        |
   |-p /path/<app-name>.yml   |Location and filename where the file will be created (automatically generated if -p is not used)            |X        |
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $  cf create-app-manifest spring-music -p ./spring-music-manifest.yml
@@ -1189,7 +1189,7 @@ View list of Apps in the target space.
   |-s SERVICE_NAME   |Inquries plan of the service.    |X        |
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $  cf create-app-manifest spring-music -p ./spring-music-manifest.yml
@@ -1221,7 +1221,7 @@ View list of Apps in the target space.
   |-s SERVICE_NAME   |Inquires plan of the service.    |X        |
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $  cf create-app-manifest spring-music -p ./spring-music-manifest.yml
@@ -1253,7 +1253,7 @@ View list of Apps in the target space.
   |SERVICE_INSTANCE   |Service Instance Name           |O        |
   |--guid             |Inquires Guid of Servcie Instance.   |X        |
 
-  - **Used Guide**
+  - **Use Guide**
 
   ```
   $ cf service spring-music-db
@@ -1288,7 +1288,7 @@ View list of Apps in the target space.
   |-c PARAMETERS_AS_JSON |Enter service settings information in json format <br> Ex) -c '{"ram_gb":4}'    |X        |
   |-t TAGS      |Service Instance Tag                                                     |X        |
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf create-service spring-music-db silver p-mysql
@@ -1323,7 +1323,7 @@ View list of Apps in the target space.
   |-c PARAMETERS_AS_JSON   |Enter service settings information in json format <br> Ex) -c '{"ram_gb":4}'    |O        |
   |-t TAGS                 |Service Instance Tag                                            |X        |
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf update-service spring-music-db -p gold_plan
@@ -1356,7 +1356,7 @@ View list of Apps in the target space.
   |SERVICE_INSTANCE  |Service instance name                                        |O        |
   |-f                |deletes the service instance without confirmation message.             |X        |
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf delete-service spring-music-db
@@ -1388,7 +1388,7 @@ View list of Apps in the target space.
   |SERVICE_INSTANCE       |Service instance name                       |O        |
   |NEW_SERVICE_INSTANCE   |New service instace name             |O        |
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf rename-service spring-music-db new_spring-music-db
@@ -1422,7 +1422,7 @@ View list of Apps in the target space.
   |-c PARAMETERS_AS_JSON  |Sets service instance(JSON Parameter)    |X        |
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf create-service-key spring-music-db mykey -c '{"permissions":"read-only"}'
@@ -1454,7 +1454,7 @@ View list of Apps in the target space.
   |SERVICE_INSTANCE       |Service Instance Name                       |O        |
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf service-keys spring-music-db
@@ -1489,7 +1489,7 @@ View list of Apps in the target space.
 
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf service-key spring-music-db mykey
@@ -1524,7 +1524,7 @@ View list of Apps in the target space.
 
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf delete-service-key spring-music-db mykey
@@ -1559,7 +1559,7 @@ View list of Apps in the target space.
 
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf bind-service spring-music spring-music-db -c '{"permissions":"read-only"}'
@@ -1595,7 +1595,7 @@ View list of Apps in the target space.
 
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf unbind-service spring-music spring-music-db
@@ -1629,7 +1629,7 @@ View list of Apps in the target space.
   |-l SYSLOG-DRAIN-URL       |URL to which logs for bound applications will be streamed                           |X        |
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf create-user-provided-service spring-music-db -p '{"username":"admin","password":"pa55woRD"}'
@@ -1663,7 +1663,7 @@ View list of Apps in the target space.
   |-l SYSLOG-DRAIN-URL       |URL to which logs for bound applications will be streamed                           |X        |
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $  cf update-user-provided-service spring-music-db -p '{"username":"admin","password":"pa55woRD"}'
@@ -1694,7 +1694,7 @@ View list of Apps in the target space.
    - None
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf orgs
@@ -1729,7 +1729,7 @@ View list of Apps in the target space.
   |--guid       |Inquires the guid of the organization.           |X        |
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf org cf
@@ -1763,7 +1763,7 @@ View list of Apps in the target space.
   |-q QUOTA_NAME |Quota to be assigned to the organization           |X        |
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $cf create-org test -q default
@@ -1798,7 +1798,7 @@ View list of Apps in the target space.
   |-f           |Deletes organization information without confirmation message.  |X        |
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf delete-org cf -f
@@ -1832,7 +1832,7 @@ View list of Apps in the target space.
   |NEW_ORG_NAME   |New organization name                    |O        |
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf rename cf new-cf
@@ -1863,7 +1863,7 @@ View list of Apps in the target space.
    - None
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf spaces
@@ -1896,7 +1896,7 @@ View list of Apps in the target space.
   |SPACE_NAME   |Space Name                           |O          |
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf space development
@@ -1929,7 +1929,7 @@ View list of Apps in the target space.
   |-o ORG_NAME  |Organization name to be mapped to space               |X         |
   |-q SPACE-QUOTA-NAME    |QUOTA name to be assigned to the space    |X         |
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf create-space -o cf -q cf-space-quota
@@ -1961,7 +1961,7 @@ View list of Apps in the target space.
   |SPACE_NAME   |Space Name                           |O         |
   |-f           |Deletes space without confirmation message. |X         |
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf delete-space development
@@ -1993,7 +1993,7 @@ View list of Apps in the target space.
   |SPACE_NAME     |Space Name                           |O         |
   |NEW_SPACE_NAME |Deletes space without confirmation message. |O         |
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf rename-space development new_development
@@ -2025,7 +2025,7 @@ View list of Apps in the target space.
     - None
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf domains
@@ -2059,7 +2059,7 @@ View list of Apps in the target space.
   |DOMAIN       |Domain Name                          |O         |
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf create-domain cf-org cf.or.kr
@@ -2093,7 +2093,7 @@ View list of Apps in the target space.
   |-f           |Deletes domian without confirmation message. |X         |
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf delete-domain cf.or.kr
@@ -2126,7 +2126,7 @@ View list of Apps in the target space.
   |DOMAIN       |Domain Name                           |O         |
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf create-shared-domain cf.or.kr
@@ -2158,7 +2158,7 @@ View list of Apps in the target space.
   |DOMAIN       |Domain Name                           |O         |
   |-f           |Deletes domain without confirmation message.    |X         |
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf delete-shared-domain cf.or.kr
@@ -2188,7 +2188,7 @@ View list of Apps in the target space.
 
     - None
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf routes
@@ -2223,7 +2223,7 @@ View list of Apps in the target space.
   |-n HOSTNAME  |Host Name                          |X         |
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf create-route development cf.or.kr
@@ -2258,7 +2258,7 @@ View list of Apps in the target space.
   |-n HOSTNAME  |Host Name                          |X         |
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf update-route development cf.or.kr
@@ -2293,7 +2293,7 @@ View list of Apps in the target space.
   |DOMAIN       |Domain Name.    |O         |
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf check-route spring-music cf.or.kr
@@ -2328,7 +2328,7 @@ View list of Apps in the target space.
   |-n HOSTNAME  |Host to assign to the App              |X         |
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf map-route spring-music cf.or.kr -n test
@@ -2363,7 +2363,7 @@ View list of Apps in the target space.
   |-n HOSTNAME  |Host to assign to the App              |X         |
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf unmap-route spring-music cf.or.kr -n spring-music
@@ -2397,7 +2397,7 @@ View list of Apps in the target space.
   |-f           |Deletes route information without confiration message.              |X         |
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf delete-route spring-music cf.or.kr -n spring-music
@@ -2429,7 +2429,7 @@ View list of Apps in the target space.
   |-f           |Deletes route information without confiration message.           |X         |
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf delete-orphaned-routes
@@ -2462,7 +2462,7 @@ View list of Apps in the target space.
     - None
 
 
-  - **Used Example**
+  - **Use Example**
 
   ```
   $ cf buildpacks
@@ -2494,13 +2494,13 @@ View list of Apps in the target space.
   |-------------|--------------------------------|-----------|
   |BUILDPACK     |Buildpack Name                           |O         |
   |-p PATH       |Buildpack Path                      |O         |
-  |-i POSITIONE  |빌드팩 auto-detection동안 빌드팩 체크 순서  <br> ex)1.2.3              |O         |
-  |--enable      |스테이징시 사용                  |X         |
-  |--disable     |스테이징시 미사용                |X         |
+  |-i POSITION  |Buildpack checking sequence during buildpack auto-detection  <br> ex)1.2.3              |O         |
+  |--enable      |Enable the buildpack to be used for staging                  |X         |
+  |--disable     |Disable the buildpack from being used for staging                |X         |
 
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf create-buildpack egov-buildpack ~/workspace/buildpack/egov -i 1
@@ -2509,7 +2509,7 @@ View list of Apps in the target space.
 
 #### update-buildpack
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -2517,28 +2517,28 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  빌드팩 정보를 수정합니다.
+  Modifies buildpack information.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |BUILDPACK     |빌드팩명                           |O         |
-  |-p PATH       |빌드팩 경로                      |O         |
-  |-i POSITIONE  |빌드팩 auto-detection동안 빌드팩 체크 순서  <br> ex)1.2.3              |O         |
-  |--enable      |스테이징시 사용                  |X         |
-  |--disable     |스테이징시 미사용                |X         |
+  |BUILDPACK     |Buildpack Name                           |O         |
+  |-p PATH       |Buildpack path                      |O         |
+  |-i POSITION  |Buildpack checking sequence during buildpack auto-detection  <br> ex)1.2.3              |O         |
+  |--enable      |Enable the buildpack to be used for staging                  |X         |
+  |--disable     |Disable the buildpack from being used for staging                |X         |
 
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf create-buildpack egov-buildpack ~/workspace/buildpack/egov -i 1
@@ -2546,7 +2546,7 @@ View list of Apps in the target space.
 
 #### delete-buildpack
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -2554,24 +2554,24 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  빌드팩을 삭제합니다.
+  Deletes Buildpack.
   ```
 
 
-  - **파라미터**
+  - **parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |BUILDPACK     |빌드팩명                           |O         |
-  |-f           |삭제 확인메시지 없이 빌드팩 정보를 삭제       |X         |
+  |BUILDPACK     |Buildpack Name                           |O         |
+  |-f           |Deletes buildpack information without confirmation message       |X         |
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf delete-buildpack egov-buildpack
@@ -2582,7 +2582,7 @@ View list of Apps in the target space.
 
 #### create-user
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -2590,21 +2590,21 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  새로운 사용자 계정을 생성합니다.
+  Creates new user account.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |USERNAME     |사용자 ID                        |O         |
-  |PASSWORD     |패스워드                         |O         |
+  |USERNAME     |User ID                        |O         |
+  |PASSWORD     |Password                         |O         |
 
 
   - **사용예시**

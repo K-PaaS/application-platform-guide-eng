@@ -26,7 +26,7 @@
      * [3.2.1.1.3.2.  Delete Domain](#21)
      * [3.2.1.1.4.  User Management](#22)
      * [3.2.1.1.4.1.  Invite User](#23)
-     * [3.2.1.1.4.2.  Cancel Member](#24)
+     * [3.2.1.1.4.2.  Remove Member](#24)
      * [3.2.1.2  Application and Service Environment Development](#29)
      * [3.2.1.2.1.  Application Management](#30)
      * [3.2.1.2.1.1.  Create Application](#31)
@@ -303,105 +303,105 @@ This chapter describes the three main categories of PaaS-TA user portals.
 1.  Click the ① "Trash bin"button of the domain to delete.
 ![3-2-1-1-3-2-0]
 
-2.  확인 팝업의 “삭제”버튼을 클릭하여 도메인 삭제를 완료한다.
+2.  Click the "Delete" button on the confirmation pop-up to complete the domain deletion.
 ![3-2-1-1-3-2-1]
 
 
-### <div id='22'/> 3.2.1.1.4.  사용자 관리
+### <div id='22'/> 3.2.1.1.4.  User Management
 ![3-2-1-1-4-0]
 
-### <div id='23'/> 3.2.1.1.4.1  사용자 초대
+### <div id='23'/> 3.2.1.1.4.1  Invite User
 
-1.  “+사용자 초대” 버튼을 클릭한다.
+1.  Click “+Invite User”.
 ![3-2-1-1-4-1-0]
 
-2.  초대 할 사용자 계정을 입력한다. 조직, 공간의 권한을 부여한다.
+2.  Enter the user account to invite. Empower the organization, the space.
 ![3-2-1-1-4-1-1]
 
-3.  “초대” 버튼을 클릭하여 사용자 초대를 완료한다.
+3.  Click “Invite” button to complete inviting.
 ![3-2-1-1-4-1-2]
 
-4.  초대 요청한 사용자에게 이메일이 수신된다. 초대에 요청된 사용자가 수신된 이메일의“초대 수락하기" 링크를 클릭하면 조직에 접근 가능하다.
-     > **수신 된 이메일 형식**
+4.  An email is sent to the user who has been invited. The invited user will have access to the organization when “Accept Invite" link has been clicked.
+     > **Email Format to Receive**
 ![inviteEmail]
 
-### <div id='24'/> 3.2.1.1.4.2.  멤버 취소
-1.  멤버 취소 할 사용자 계정의 “멤버 취소” 버튼을 클릭한다.<br>
-**'멤버취소'시 사용자 OrgManager(조직 관리자) 역할 체크를 해제하고, 멤버 취소를 실행해야 취소 설정이 완료된다.**
+### <div id='24'/> 3.2.1.1.4.2.  Remove Member
+1.  Click the "Remove Member" button of the user account to cancel the member.<br>
+**'When removing the member, the OrgManager role must be disabled to complete cancelling the member.**
 ![3-2-1-1-4-4-0]
 
 
-### <div id='29'/> 3.2.1.2  애플리케이션 및 서비스 개발환경
+### <div id='29'/> 3.2.1.2  Application and Service Environment Development
 
-### <div id='30'/> 3.2.1.2.1.  애플리케이션 관리
+### <div id='30'/> 3.2.1.2.1.  Application Management
 ![3-2-1-2-2-0]
 
-### <div id='31'/> 3.2.1.2.1.1.  애플리케이션 생성
-1.  "대시보드" 메뉴를 클릭하여 대시보드 페이지로 이동한다. 대시보의 조직과 공간을 설정하고, 애플리케이션 탭 메뉴를 선택한다.
+### <div id='31'/> 3.2.1.2.1.1.  Create Application
+1.  Click "Dashboard" menu to go to the Dashboard page. Set the organization and space of the dashboard, and select the Application tab menu.
 ![3-2-1-2-1-3-0]
 
-2.  ① "+" 클릭하여 카탈로그 메뉴로 이동한다.
+2.  Click ① "+" and proceed to catalog menu.
 ![3-2-1-2-1-3-1]
 
-3.  카탈로그 목록 ① 앱 개발환경을 클릭한다. 생성 할 ② 앱 개발 환경을 선택한다.
+3.  Click ① App Development Environment at the Catalog list. Select ② App Development Environment to create.
 ![3-2-2-3-0]
 
-4.  앱 개발환경 생성에 필요한 항목을 입력한다.
+4.  Enter necessary inputs needed to create an app development environment.
 ![3-2-2-3-1]
 
- -  **조직 목록**에서 조직을 선택한다. <br>
- -  **공간 목록**에서 공간을 선택한다. <br>
- -  **앱 이름**을 입력한다. **앱 URL**은 자동으로 입력되지만 수정가능하다.  <br>
- -  **메모리 목록**에서 메모리 용량을 선택한다. <br>
- -  **디스크 목록**에서 디스크 용량을 선택한다. <br>
- -  **앱 시작여부**를 설정한다. <br>
- -  사용자 앱을 사용 할 경우 파일을 업로드한다. <br>
+ -  Choose Organization from **Organization List**. <br>
+ -  Choose Space from**Space List**. <br>
+ -  Enter **App Name**. **App URL** is entered automatically but can be modified.  <br>
+ -  Choose memory capacity from **Memory List**. <br>
+ -  Choose Dist capacity from **Disk List**. <br>
+ -  Set **App Launch Status**. <br>
+ -  Upload file in case of user app being used. <br>
 
-5.  “사용자 앱 생성” 버튼 또는 “샘플 앱 생성” 버튼을 클릭하여 앱 개발환경 생성을 완료한다.
+5.  Click “Create User App” or “Create Sample App” to complete creating app development environment.
 
-### <div id='32'/> 3.2.1.2.1.2.  애플리케이션 이름 변경
-1.  목록에서 이름을 변경하려는 애플리케이션의 ① 서브메뉴를 클릭하여 ② "앱 이름 변경"을 클릭한다.
+### <div id='32'/> 3.2.1.2.1.2.  Modify Application Name
+1.  Click ① sub menu of the application of the application to rename in the list and click ② "Change App Name".
 ![3-2-1-2-2-4-0]
 
-2.  변경 할 애플리케이션 이름을 입력한다. “변경” 버튼을 클릭하여 애플리케이션 이름 변경을 완료한다.
+2.  Enter new name of the application. Click "Change" to complete application name change.
 ![3-2-1-2-2-4-1]
 
-### <div id='33'/> 3.2.1.2.1.3.  애플리케이션 실행/정지
-1.  정지하려는 애플리케이션의 애플리케이션의 ① 서브메뉴를 클릭하여 ②“정지”(■) 또는 “실행"(▶)을 클릭한다.
+### <div id='33'/> 3.2.1.2.1.3.  Run/ Stop Application
+1.  Click ① sub menu of the application to stop then click ②“Stop”(■) or “Run"(▶).
 ![3-2-1-2-2-3-0]
 
-2.  실행 할 애플리케이션 이름을 입력한다. “정지” 버튼을 클릭하여 애플리케이션 실행을 정지한다.
+2.  Enter the name of the application to run. Click the "Stop" button to stop running the application.
 ![3-2-1-2-2-3-1]
 
-### <div id='34'/> 3.2.1.2.1.4.  애플리케이션 삭제
-1.  목록에서 삭제하려는 애플리케이션의 ① 서브메뉴를 클릭하여 ②“삭제”를 클릭한다.
+### <div id='34'/> 3.2.1.2.1.4.  Delete Application
+1.  Click  ① sub menu of the application to delete from the list and click ②“Delete”.
 ![3-2-1-2-2-5-0]
 
-2.  확인 팝업의 “삭제” 버튼을 클릭하여 애플리케이션 삭제를 완료한다.
+2.  Click the "Delete" button on the confirmation pop-up to complete the application deletion.
 ![3-2-1-2-2-5-1]
 
-### <div id='36'/> 3.2.1.2.2.  서비스 관리
+### <div id='36'/> 3.2.1.2.2.  Service Management
 ![3-2-1-2-3-0]
 
-### <div id='37'/> 3.2.1.2.2.1.  서비스 생성
-1.  "대시보드" 메뉴를 클릭하여 대시보드 페이지로 이동한다. 대시보의 조직과 공간을 설정하고, 서비스 탭 메뉴를 선택한다.
+### <div id='37'/> 3.2.1.2.2.1.  Create Service
+1.  Click "Dashboard" menu to go to the Dashboard page. Set the organization and space of the dashboard, and select the Application tab menu.
 ![3-2-1-2-1-4-0]
 
-2. ① "+" 클릭하여 카탈로그 메뉴로 이동한다.
+2. Click ① "+" to proceed to catalog menu.
 ![3-2-1-2-1-4-1]
 
-3.   카탈로그 목록 ① 앱 개발환경을 클릭한다. 생성 할 ② 서비스 환경을 선택한다.
+3.   Click ① App development Environment from catalog list. Select ② Service Environment to create.
 ![3-2-2-4-0]
 
-4.  서비스 생성에 필요한 항목을 입력한다.
+4.  Enter the necessary inputs to create service.
 ![3-2-2-4-1]
 
- -  **지역 목록**에서 지역을 선택한다. <br>
- -  **조직 목록**에서 조직을 선택한다. <br>
- -  **공간 목록**에서 공간을 선택한다. <br>
- -  **서비스 이름**을 입력한다.  <br>
- -  **서비스 파라미터**를 입력한다. (서비스 파라미터 필요한 경우에만 표시된다.)  <br>
- -  **앱 목록**에서 연결 할 앱 또는 ‘연결 없이 시작’을 선택한다. <br>
+ -  Choose location from **Location List**. <br>
+ -  Choose organization from **Organization List**. <br>
+ -  Choose space from **Space List**. <br>
+ -  Enter **Service Name**.  <br>
+ -  Enter **Service Parameter**. (Appears only when service parameter is required.)  <br>
+ -  Choose an app to connect from **App List** or click ‘Start without connecting an app’. <br>
  -  **서비스 이용사양 선택 목록**에서 서비스 플랜을 선택한다. <br>
 
 5.  ‘생성” 버튼을 클릭하여 서비스 생성을 완료한다.

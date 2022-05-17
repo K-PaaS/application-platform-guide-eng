@@ -8,7 +8,7 @@
      * [2.1.  Create PaaS-TA User Portal Account](#5)
      * [2.2.  Reset PaaS-TA User Portal Password](#6)
      * [2.3.  Login to PaaS-TA User Portal and Create Organization](#7)
-3. [PaaS-TA User Portal Menual](#8)
+3. [PaaS-TA User Portal Manual](#8)
      * [3.1.  Construct PaaS-TA User Portal Menu](#9)
      * [3.2.  PaaS-TA User Portal Menu Description](#10)
      * [3.2.1.  Dashboard](#11)
@@ -139,168 +139,168 @@ This chapter describes the account creation and password reset screen for using 
 2.  Enter User's email address. Click “Reset Password”.
 ![2-2-1]
 
-3.  수신 된 이메일의 “비밀번호 재설정하기” 링크를 클릭한다.
+3.  Click the "Reset Password" link in the received email.
 
-     > **수신 된 이메일 형식**
+     > **Email Format to Receive**
      > ![passwordemail]
 
-4.  새로운 비밀번호를 입력한다.“변경”버튼을 클릭하여 비밀번호 재설정을 완료한다. 
+4.  Enter new password. Click “Change” button to complete password reset. 
 ![2-2-2]
 
 
-### <div id='7'/> 2.3.  PaaS-TA 사용자 포탈 로그인 후 조직 생성
-1.  사용자 계정과 비밀번호를 입력한다. “SIGN IN” 버튼을 클릭하여 사용자 포탈에 로그인한다.
+### <div id='7'/> 2.3.  Login to PaaS-TA User Portal and Create Organization
+1.  Enter user ID and Password. Click “SIGN IN” to login to the user portal.
 ![2-3-0]
 
-2.  계정 생성 후, 첫 로그인 시 대시보드 페이지로 이동된다.
+2.  After the account is created, Dashboard page will apear dirrectly at the first login.
 ![dashboard]
 
-3.  대시보드 페이지 ① "조직관리" 링크 클릭 또는 우측 메뉴의 ②"조직관리"를 클릭한다. 이동한 조직 대시보드 페이지에서 조직 생성을 한다. 본 문서의 3.2.1.1 를 통해 자세히 알아 볼 수 있다.
+3.  Dashboard Page ① "Organization Management" Click the link or ②"Organization Management" at the menu on the right side. After the account is created, it is moved to the Dashboard page at the first login. More information can be found in 3.2.1.1 of this document.
 ![2-3-1]
 
 
-# <div id='8'/> 3. PaaS-TA 사용자 포탈 매뉴얼
+# <div id='8'/> 3. PaaS-TA User Portal Manual
 
-본 장에서는 PaaS-TA 사용자 포탈의 메뉴 구성 및 화면 설명에 대해서 기술하였다.
+This chapter describes the menu configuration and screen description of the PaaS-TA user portal.
 
 
-### <div id='9'/> 3.1.  PaaS-TA 사용자 포탈 메뉴 구성
+### <div id='9'/> 3.1.  Construct PaaS-TA User Portal Menu
 
-PaaS-TA 사용자 포탈은 조직, 공간, 애플리케이션을 관리하는 부분과 개발환경 및 서비스를 생성하는 부분, 문서와 나의메뉴 등을 조회하는 정보 조회 부분으로 구성되어 있다.
+The PaaS-TA User Portal consists of a section that manages organizations, spaces, and applications, a section that generates development environments and services, and an information inquiry section that inquires documents and menus.
 
 <table>
   <tr>
-    <td>분류</td>
-    <td>메뉴</td>
-    <td>설명</td>
+    <td>Category</td>
+    <td>Menu</td>
+    <td>Description</td>
   </tr>
   <tr>
-    <td>조직, 공간, 애플리케이션 관리</td>
-    <td>대시보드</td>
-    <td>조직, 공간 생성 및 애플리케이션, 서비스, 도메인, 사용자 초대 등을 관리</td>
+    <td>Organization, Space, Application Management</td>
+    <td>Dashboard</td>
+    <td>Manages Organizaion, Space Creation and Application, Service, Domain, Invite User and etc.</td>
   </tr>
   <tr>
-    <td>개발환경, 서비스 생성</td>
-    <td>카탈로그</td>
-    <td>애플리케이션 개발환경 및 서비스 생성</td>
+    <td>Development Environment, Create Service</td>
+    <td>Catalog</td>
+    <td>Application Development Envicronment and Create Service</td>
   </tr>
   <tr>
-    <td rowspan="5">정보 조회</td>
+    <td rowspan="5">Inquire Information</td>
   </tr>
   <tr>
-    <td>문서</td>
-    <td>관리자가 등록한 문서 조회</td>
+    <td>Document</td>
+    <td>Inquire Documents Registered by the Administrator</td>
   </tr>
   <tr>
-    <td>나의 메뉴</td>
-    <td>내 계정 정보 및 조직 관리</td>
+    <td>My Menu</td>
+    <td>Manage My Account and Organization</td>
   </tr>
 </table>
 
 
-### <div id='10'/> 3.2.  PaaS-TA 사용자 포탈 메뉴 설명
+### <div id='10'/> 3.2.  PaaS-TA User Portal Menu Description
 
-본 장에서는 PaaS-TA 사용자 포탈의 크게 3가지 분류에 대한 설명을 기술한다.
+This chapter describes the three main categories of PaaS-TA user portals.
 
 
-### <div id='11'/> 3.2.1.   대시보드
-1.  상단 메뉴의 “대시보드” 버튼을 클릭하면 대시보드 페이지로 이동한다.
+### <div id='11'/> 3.2.1.   Dashboard
+1.  Click the "Dashboard" button on the top menu to go to the Dashboard page.
 ![3-2-1-0]
 
 
-### <div id='12'/> 3.2.1.1.  조직 및 공간
-### <div id='13'/> 3.2.1.1.1.  조직 관리
-① "조직관리" 링크 클릭 또는 우측 메뉴의 ②"조직관리"를 클릭하여 조직 대시보드 페이지로 이동한다.
+### <div id='12'/> 3.2.1.1.  Organization and Space
+### <div id='13'/> 3.2.1.1.1.  Organization Management
+① Click "Organization Management" link or ②"Organization Management" on menu to proceed to organization dashboard page.
 ![2-3-1]
 
-### <div id='14'/> 3.2.1.1.1.1.  조직 생성
-1. ① "조직관리" 링크 클릭 또는 우측 메뉴의 ②"조직관리"를 클릭하여 조직 대시보드 페이지로 이동한다.
+### <div id='14'/> 3.2.1.1.1.1.  Create Organization
+1. ① Click "Organization Management" link or ②"Organization Management" on the menu to proceed to organization dashboard.
 ![2-3-1]
 
-2.  “새 조직 추가” 버튼을 클릭하여 조직 생성 페이지로 이동한다.
+2.  Click “Add New Organization” to proceed to organization creating page.
 ![2-3-1-1]
 
-     > **"새 조직 추가"** 버튼 활성화는 [PaaS-TA Portal 배포 가이드 문서](https://github.com/PaaS-TA/Guide-3.0-Penne-/blob/master/Use-Guide/portal/PaaS-TA%20Portal%20%EB%B0%B0%ED%8F%AC%20%EA%B0%80%EC%9D%B4%EB%93%9C_v1.1.md#7-1) **2.2. 사용자의 조직 생성 Flag 활성화** 를 참고한다.
+     > **To enable "Add New Organization"** button, [PaaS-TA Portal Deployment Guide Document](https://github.com/PaaS-TA/Guide-3.0-Penne-/blob/master/Use-Guide/portal/PaaS-TA%20Portal%20%EB%B0%B0%ED%8F%AC%20%EA%B0%80%EC%9D%B4%EB%93%9C_v1.1.md#7-1) Refer to **2.2. Enable create user organization Flag**.
 
-3.  조직명을 입력한다. "조직생성" 버튼을 클릭하여 조직생성을 완료한다. 
+3.  Enter Organization Name. Click "Create Organization" to complete. 
 ![2-3-1-2]
- -  **[할당량]** <br>
- -  **메모리** : 메모리 할당량 (예) 1024M, 1G ,10G <br>
- -  **인스턴스 메모리** : 어플리케이션 인스턴스가 가질 수 있는 최대 할당량  (예) 1024M, 1G ,10G <br>
- -  **라우트** : 최대 라우트 수 <br>
- -  **서비스 인스턴스** : 최대 서비스 인스턴스 수 <br>
- -  **가격** :  과금 서비스 <br>
- -   **인스턴스** : 최대 인스턴스 수  <br>
- -  **라우트 포트** : 예약된 라우트 포트 번호 <br>
+ -  **[Quota]** <br>
+ -  **Memory** : Memory Quota (ex.) 1024M, 1G ,10G <br>
+ -  **Instance Memory** : Maximum quota a application instance can have (ex.) 1024M, 1G ,10G <br>
+ -  **Route** : Maximum number of routes <br>
+ -  **Service Instance** : Maximum number of service instance <br>
+ -  **Price** :  Billing servcie <br>
+ -   **Instance** : Maximum number of instance  <br>
+ -  **Route Port** : Reserved route port number <br>
 
-4.  확인 팝업의 "이동" 버튼을 클릭하여 조직관리 페이지에서 새로 생성된 조직을 확인한다.
+4.  Click the "Proced" button on the confirmation pop-up to view the newly created organization on the Organization Management page.
 ![2-3-1-3]
 ![2-3-1-4]
-     > 계정의 첫번째 새 조직 생성 시 3.2.1.1.1.1-3 의 화면으로 보여진다. 그 후 조직 추가 시“새 조직 추가” 버튼을 클릭하여 조직 생성을 한다. 
+     > 3.2.1.1.1.1-3 Screen appears when creating the first new organization for the account. Click “Create New Organization” when creating an organization afterward. 
 
-### <div id='15'/> 3.2.1.1.1.2.  조직명 변경
-1. ① "조직관리" 링크 클릭 또는 우측 메뉴의 ②"조직관리"를 클릭하여 조직 대시보드 페이지로 이동한다.
+### <div id='15'/> 3.2.1.1.1.2.  Modify Organization Name
+1. ① Click "Organization Management" Link or ②"Organization Management" at the menu to proceed to organization dashboard page.
 ![2-3-1]
 
-2.  우측의 "세부사항보기" 버튼 옆 ① 서브 메뉴를 클릭 하여 ② "이름변경"을 클릭한다.
+2.  Click "View details" on the  ① sub-menu at the right,, then click ② "Change Name".
 ![3-2-1-1-1-2-1]
 
-3.  변경할 조직명을 입력한다. "변경하기" 버튼을 클릭한다.
+3.  Enter new organization name. Click "Change".
 ![3-2-1-1-1-2-2]
 
-4. 팝업의 "변경" 버튼을 클릭하여 조직명 변경을 완료한다.
+4. Click the "Change" button on the pop-up to complete the organization name change.
 ![3-2-1-1-1-2-3]
 
 
-### <div id='16'/> 3.2.1.1.1.3.  조직 삭제
-1.  우측의 "세부사항보기" 버튼 옆 ① 서브 메뉴를 클릭 하여 ② "삭제"를 클릭한다.
+### <div id='16'/> 3.2.1.1.1.3.  Delete Organization
+1.  Click ② "Delete" on ① sub-menu at the right side beside "View Details".
 ![3-2-1-1-1-3-0]
 
-2.  확인 팝업의 “삭제” 버튼을 클릭하여 조직 삭제를 완료한다.
+2.  Click the "Delete" button on the confirmation pop-up to complete the deletion of the organization.
 ![3-2-1-1-1-3-1]
 
-### <div id='17'/> 3.2.1.1.2.  공간 관리
+### <div id='17'/> 3.2.1.1.2.  Space Management
 ![3-2-1-2-1-0]
 
-### <div id='18'/> 3.2.1.1.2.1.  공간 생성
-1. ① "조직관리" 링크 클릭 또는 우측 메뉴의 ②"조직관리"를 클릭하여 조직 대시보드 페이지로 이동한다.
+### <div id='18'/> 3.2.1.1.2.1.  Create Space
+1. ① Click "Organization Management" Link or ②"Organization Management" at the menu to proceed to organization dashboard page.
 ![2-3-1]
 
-2.  우측의 “세부사항보기”를 클릭한다.
+2.  Click “View Details” at the right side.
 ![3-2-1-1-2-1-0]
 
-3.  "+ 공간생성" 버튼을 클릭하여 공간명을 입력한다.
+3.  Click "+ Create Space" then enter space name.
 ![3-2-1-1-2-1-1]
 
-4.  “생성” 버튼을 클릭하여 공간 생성을 완료한다.
+4.  Click “Create” to complete creating space.
 ![3-2-1-1-2-1-2]
 
-### <div id='27'/> 3.2.1.1.2.2.  공간명 변경
-1.  공간명을 변경하기 위해 ① "메모장" 버튼을 클릭한다. 
+### <div id='27'/> 3.2.1.1.2.2.  Modify Space Name
+1.  Click  ① "Notepad" to modify space name. 
 ![3-2-1-2-1-1-0]
 
-2. 변경할 공간명을 입력한다. "변경하기”버튼을 클릭하여 공간명 변경을 완료한다.
+2. Enter new space name. Click "Change” to complete changing space name.
 ![3-2-1-2-1-1-1]
 
-### <div id='28'/> 3.2.1.1.2.3.  공간 삭제
-1.  ①“휴지통” 버튼을 클릭한다.
+### <div id='28'/> 3.2.1.1.2.3.  Delete Space
+1.  Click ①“Trash bin”.
 ![3-2-1-2-1-2-0]
 
-2.  확인 팝업의 “삭제”버튼을 클릭하여 공간 삭제를 완료한다.
+2.  Click the "Delete" button on the confirmation pop-up to complete the deletion of the space.
 ![3-2-1-2-1-2-1]
 
-### <div id='19'/> 3.2.1.1.3.  도메인 관리
+### <div id='19'/> 3.2.1.1.3.  Domain Management
 ![3-2-1-1-3-0]
 
-### <div id='20'/> 3.2.1.1.3.1.  도메인 추가
-1.  “+도메인 추가” 버튼을 클릭한다.
+### <div id='20'/> 3.2.1.1.3.1.  Add Domain
+1.  Click “+Add Domain”.
 ![3-2-1-1-3-1-0]
 
-2.  도메인을 입력한다. "추가" 버튼을 클릭하여 도메인 추가를 완료한다.
+2.  Enter the domain. Click the "Add" button to complete adding a domain.
 ![3-2-1-1-3-1-1]
 
-### <div id='21'/> 3.2.1.1.3.2.  도메인 삭제
-1.  삭제 할 도메인의 ① "휴지통" 버튼을 클릭한다.
+### <div id='21'/> 3.2.1.1.3.2.  Delete Domain
+1.  Click the ① "Trash bin"button of the domain to delete.
 ![3-2-1-1-3-2-0]
 
 2.  확인 팝업의 “삭제”버튼을 클릭하여 도메인 삭제를 완료한다.

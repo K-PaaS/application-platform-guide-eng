@@ -527,52 +527,52 @@ Click the name of the application created in the catalog list to go to the appli
 1.  Click “Unconnect” button of the service to unconnect from the list.
 ![3-2-1-3-4-2-0]
 
-2.  서비스 연결해제 확인 팝업“저장”버튼을 클릭하여 서비스 연결 해제를 완료한다.
+2.  Click "Save" button from the confirmation pop-up to complete the disconnect service.
 ![3-2-1-3-4-2-5]
 
-3.  App 재시작 확인 팝업“재시작”버튼을 클릭한다.
+3.  Click “Restart” button from the App restart confirmation pop-up.
 ![3-2-1-3-4-2-4]
 
-### <div id='56'/> 3.2.1.3.5.  환경변수
-1.  ①“환경변수”메뉴 또는 ② 전체보기를 클릭한다.
+### <div id='56'/> 3.2.1.3.5.  Environment Variable
+1.  Click ①“Environment Variable” menu or ② View all.
 ![3-2-1-3-5-0]
 
-### <div id='57'/> 3.2.1.3.5.1.  환경변수 추가
-1.  ①“+ 추가” 버튼을 클릭한다. 환경변수 이름과 값을 입력한다. ②“저장” 버튼을 클릭하여 환경변수 추가를 완료한다.
+### <div id='57'/> 3.2.1.3.5.1.  Add Environment Variable
+1.  CLick ①“+ Add” button. Enter environment variable name and value.Click ②“Save” button to complete adding environment variable.
 ![3-2-1-3-5-1-0]
 
-### <div id='58'/> 3.2.1.3.5.2.  환경변수 수정
-1.  목록에서 수정하려는 환경변수의 ① "메모장" 버튼을 클릭한다.
+### <div id='58'/> 3.2.1.3.5.2.  Modify Environment Variable
+1.  Click ① "Notepad" button of the environment variable to modify from the list.
 ![3-2-1-3-5-2-0]
 
-2.  환경변수 값을 수정한 후, “저장” 버튼을 클릭하여 환경변수 수정을 완료한다.
+2.  After modifying the value of the environment variable, click  "Save" button to complete the modification.
 ![3-2-1-3-5-2-1]
 
-### <div id='59'/> 3.2.1.3.5.3.  환경변수 삭제
-1.  목록에서 수정하려는 환경변수의 ①“휴지통" 버튼을 클릭한다.
+### <div id='59'/> 3.2.1.3.5.3.  Delete Environment Variable
+1.  Click ①“Trashbin" button of the environment variable to delete from the list.
 ![3-2-1-3-5-3-0]
 
-2.  확인 팝업의 “삭제” 버튼을 클릭하여 환경변수 삭제를 완료한다.
+2.  Click “Delete” button from the confirmation pop-up to complete delation of the environment variable.
 ![3-2-1-3-5-3-1]
 
-### <div id='60'/> 3.2.1.3.6.  라우트
-1.  ①“라우트”메뉴 또는 ② 전체보기를 클릭한다.
+### <div id='60'/> 3.2.1.3.6.  Route
+1.  Click ①“Route” menu or ② View all.
 ![3-2-1-3-6-0]
 
-### <div id='61'/> 3.2.1.3.6.1.  라우트 추가
-1.  “+연결”버튼을 클릭한다.
+### <div id='61'/> 3.2.1.3.6.1.  Add Route
+1.  Click “+Connect” button.
 ![3-2-1-3-6-1-0]
 
-2.  추가 할 라우트 이름을 입력한다.  "저장" 버튼을 클릭한다.
+2.  Enter the name of the route to add. Click "Save".
 
-3.  확인 팝업의 "확인" 버튼을 클릭하여 라우트 추가를 완료한다.
+3.  Click "Confirm" button from the confirmation pop-up to complete adding route.
 
-### <div id='62'/> 3.2.1.3.6.2.  라우트 연결 해제
-1.  목록에서 연결 해제 하는 라우트의 “연결해제” 버튼을 클릭한다.
+### <div id='62'/> 3.2.1.3.6.2.  Unconnect Route
+1.  Click “Unconnect” button of the route to remove from the list.
 ![3-2-1-3-6-2-0]
 
-### <div id='63'/> 3.2.1.3.7.  로그
-1.  ①“로그”메뉴 또는 ② 전체보기를 클릭한다.
+### <div id='63'/> 3.2.1.3.7.  Log
+1.  Click ①“Log” menu or ② View all.
 ![3-2-1-3-7-0]
 
 ### <div id='64'/> 3.2.1.3.7.1.  로그 관리

@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > 사용자 포털
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > User Portal
 
 ## Table of Contents
 1. [Document Outline](#1)
@@ -48,7 +48,7 @@
      * [3.2.1.3.1.4.  Delete Application](#48)
      * [3.2.1.3.1.5.  Number of Instance/Memory Capacity/Disk Capacity Setting](#49)
      * [3.2.1.3.2.  Event](#50)
-     * [3.2.1.3.2.1.  View More Event List](#51)
+     * [3.2.1.3.2.1.  View More Events](#51)
      * [3.2.1.3.3.  Status](#52)
      * [3.2.1.3.3.1.  SSH Access](#52-1)
      * [3.2.1.3.4.  Service](#53)
@@ -402,129 +402,129 @@ This chapter describes the three main categories of PaaS-TA user portals.
  -  Enter **Service Name**.  <br>
  -  Enter **Service Parameter**. (Appears only when service parameter is required.)  <br>
  -  Choose an app to connect from **App List** or click ‘Start without connecting an app’. <br>
- -  **서비스 이용사양 선택 목록**에서 서비스 플랜을 선택한다. <br>
+ -  Select Service Plan from **Service Specification Selection List**. <br>
 
-5.  ‘생성” 버튼을 클릭하여 서비스 생성을 완료한다.
+5.  Click "Create”  button to complete creating.
 ![3-2-2-4-2]
 
-### <div id='38'/> 3.2.1.2.2.2.  서비스 이름 변경
-1.  목록에서 이름을 변경하려는 서비스의 ① 서브메뉴를 클릭하여 ② "서비스 수정"을 클릭한다.
+### <div id='38'/> 3.2.1.2.2.2.  Modify Service Name
+1.  Click ① sub menu of the service to rename and click ② "Modify Service".
 ![3-2-1-2-3-4-0]
 
-2.  변경 할 서비스 이름을 입력한다. “변경” 버튼을 클릭하여 서비스 이름 변경을 완료한다.
+2. Enter the new name of the service. Click "Change" button to complete the service name change.
 ![3-2-1-2-3-4-1]
 
-### <div id='39'/> 3.2.1.2.2.4.  서비스 삭제
-1.   목록에서 삭제하려는 서비스의 ① 서브메뉴를 클릭하여 ②“삭제”를 클릭한다.
+### <div id='39'/> 3.2.1.2.2.4.  Delete Service
+1.   Click ① sub menu of the service to delete from the list and click ②“delete”.
 ![3-2-1-2-3-5-0]
 
-2.  확인 팝업의 “삭제” 버튼을 클릭하여 서비스 삭제를 완료한다.
+2.  Click “Delete” button on the confirmatio pop-up to complete deletion of the service.
 ![3-2-1-2-3-5-1]
 
-### <div id='40'/> 3.2.1.2.3.1.  User Provided 서비스 생성
-1.  “User Provided 생성” 버튼을 클릭한다.
+### <div id='40'/> 3.2.1.2.3.1.  Create User Provided Service
+1.  Click “Create User Provided”.
 ![3-2-1-2-3-3-0]
 
-2.  서비스 명, Credentials, Syslog Drain URL을 입력한다. “생성” 버튼을 클릭하여 User Provided 서비스 생성을 완료한다.
+2.  Enter Service Name, Credentials, and Syslog Drain URL. Click “Create” button to complete creating User Provided Service.
 ![3-2-1-2-3-3-1]
 
-### <div id='41'/> 3.2.1.2.3.2.  User Provided 서비스 수정
-1.  목록에서 이름을 변경하려는 User Provided 서비스의 ① 서브메뉴를 클릭하여 ② "서비스 수정"을 클릭한다.
+### <div id='41'/> 3.2.1.2.3.2.  Modify User Provided Service
+1.  Click ① sub menu of the User Provided Service to rename from the list and click ② "Modify Service".
 ![userprovide-service]
 
-2.  변경 할 서비스 서비스 명, Credentials, Syslog Drain URL을 입력한다. 확인 팝업의 “변경” 버튼을 클릭하여  User Provided 서비스 변경을 완료한다.
+2.  Enter Service Name, Credentials, and Syslog Drain URL of the service to modify.Click “Modify” button from the comfirmatio pop-up to complete User Provided Service Modification.
 ![userprovide-service2]
 
-### <div id='42'/> 3.2.1.2.3.3.  User Provided 서비스 삭제
-1.  목록에서 삭제하려는 User Provided 서비스의 ① 서브메뉴를 클릭하여 ②“삭제”를 클릭한다.
+### <div id='42'/> 3.2.1.2.3.3.  Delete User Provided Service
+1.  Click ① sub menu of the User Provided Service to delete from the list and click  ②“Delete”.
 ![userprovide-del]
 
-2.  확인 팝업의 “삭제” 버튼을 클릭하여  User Provided 서비스 삭제를 완료한다.
+2.  Click  "Delete" button on the confirmation pop-up to complete the deletion of the User Provided service.
 ![userprovide-del2]
 
-### <div id='43'/> 3.2.1.3.  애플리케이션
-### <div id='44'/> 3.2.1.3.1.  애플리케이션 대시보드
-카탈로그 목록에서 생성한 애플리케이션 이름을 클릭하여 애플리케이션 대시보드 페이지로 이동한다.
+### <div id='43'/> 3.2.1.3.  Application
+### <div id='44'/> 3.2.1.3.1.  Application Dashboard
+Click the name of the application created in the catalog list to go to the application dashboard page.
 ![3-2-1-3-1-0]
 
-### <div id='45'/> 3.2.1.3.1.1.  애플리케이션 이름 변경
-1.  ① 서브 메뉴를 클릭하여 리스트 ② "이름변경"을 클릭한다.
+### <div id='45'/> 3.2.1.3.1.1.  Modify Application Name
+1.  Click ① sub menu and click list ② "Change Name".
 ![3-2-1-3-1-1-0]
 
-2.  변경할 애플리케이션 이름을 입력한다. ①“저장”이미지 버튼을 클릭하여 애플리케이션 이름 변경을 완료한다.
+2.  Enter the new name of the application. Click imaged button ①“Save” to complete modifying application name.
 ![3-2-1-3-1-1-1]
 
-### <div id='46'/> 3.2.1.3.1.2.  애플리케이션 재시작
-1.  ① “리스테이지” 버튼을 클릭한다.
+### <div id='46'/> 3.2.1.3.1.2.  Restart Application
+1.  Click ① “Restage”.
 ![3-2-1-3-1-4-0]
 
-### <div id='47'/> 3.2.1.3.1.3.  애플리케이션 실행/중지
-1.  ①“실행” 또는 “중지”이미지 버튼을 클릭한다.
+### <div id='47'/> 3.2.1.3.1.3.  Run/Stop Application
+1.  Click ①“Run” or “Stop” imaged button.
 ![3-2-1-3-1-3-0-00]
 
-### <div id='48'/> 3.2.1.3.1.4.  애플리케이션 삭제
-1.  ① 서브 메뉴를 클릭하여 리스트 ② "삭제"을 클릭한다.
+### <div id='48'/> 3.2.1.3.1.4.  Delete Application
+1.  Click ① sub menu and click ② "delete" from the list.
 ![3-2-1-3-1-2-0]
 
-2.  확인 팝업의 “삭제”버튼을 클릭하여 애플리케이션 삭제를 완료한다.
+2.  CLick “delete” button from the confirmation pop-up to complete deletion of the application.
 ![3-2-1-3-1-2-1]
 
-### <div id='49'/> 3.2.1.3.1.5.  인스턴스 수/메모리 용량/디스크 용량 설정
-1.  ① 인스턴스 수, ② 메모리 용량, ③ 디스크 용량을 설정한 후, 각각의“저장” 버튼을 클릭한다.
+### <div id='49'/> 3.2.1.3.1.5.  Number of Instance/Memory Capacity/Disk Capacity Setting
+1.  After setting ① Number of Instance, ② Memory Capacity, ③ Disk Capacity, click “Save” button from each.
 ![3-2-1-3-1-5-0]
 
-### <div id='50'/> 3.2.1.3.2.  이벤트
-1.  ①“이벤트”메뉴 또는 ② 전체보기를 클릭한다.
+### <div id='50'/> 3.2.1.3.2.  Event
+1.  Click ①“Event” menu or ② View all.
 ![3-2-1-3-2-0]
 
-### <div id='51'/> 3.2.1.3.2.1.  이벤트 목록 더 보기
-1.  이벤트 개수가 5개 이상일 경우 “더 보기” 버튼이 활성화 된다.
+### <div id='51'/> 3.2.1.3.2.1.  View More Events
+1.  “View More” button appears when there are more than 5 events.
 ![3-2-1-3-2-1-0]
 
-### <div id='52'/> 3.2.1.3.3.  상태
-1.  ①“상태” 메뉴 또는 ② 전체보기를 클릭한다.
+### <div id='52'/> 3.2.1.3.3.  Status
+1.  Click ①“Status” menu or ② View all.
 ![3-2-1-3-3-0]
 
-2.  상태 리스트에서 Status, CPU, Memory, Disk, UPTIME(updatetime), RESTART를 확인 할 수 있다. "RESTART" 버튼을 클릭하면 인스턴스 재 시작이 가능하다.
+2.  Can check the following information from the status list: Status, CPU, Memory, Disk, UPTIME(updatetime), and RESTART. Instance can be restarted with "RESTART" button.
 ![3-2-1-3-3-1]
 
-### <div id='52-1'/> 3.2.1.3.3.1.  SSH 접속
-1.  ①“상태” 메뉴 또는 ② 전체보기를 클릭한다.
+### <div id='52-1'/> 3.2.1.3.3.1.  SSH Access
+1.  Click ①“Status” menu or ② View all.
 ![3-2-1-3-3-1-0]
 
-2.  접속하고 싶은 인스턴스 번호에 맞게 “SSH Connect” 버튼을 클릭한다.
+2.  Click “SSH Connect” according to the corresponding instance number to access.
 ![3-2-1-3-3-1-1]
 
-3.  해당 인스턴스에 SSH 접속 후 원하는 작업을 진행한다.
+3.  Proceed with the desired operation after accessing the corresponding instance with SSH.
 ![3-2-1-3-3-1-2]
 
-### <div id='53'/> 3.2.1.3.4.  서비스
-1.  ①“서비스”메뉴 또는 ② 전체보기를 클릭한다.
+### <div id='53'/> 3.2.1.3.4.  Service
+1.  Click ①“Service” menu or ② View all.
 ![3-2-1-3-4-0]
 
-### <div id='54'/> 3.2.1.3.4.1.  서비스 연결
-1.  “+서비스 연결” 버튼을 클릭한다 .
+### <div id='54'/> 3.2.1.3.4.1.  Connect Service
+1.  Click “+ Connect Service”.
 ![3-2-1-3-4-1-0]
 
-2.  목록에서 서비스를 선택 후 “연결” 버튼을 클릭한다.
+2.  Click “Connect” button after selecting service from the list.
 ![3-2-1-3-4-1-1] <br>
-     > **여기서 확인되는 서비스 목록은 앱 바인드가 가능한 서비스만 해당됩니다.** 
+     > **The list of services found are only for services that can be app bounded.** 
      
-3.  서비스 연결 확인 팝업“저장”버튼을 하여 서비스 연결을 완료한다.
+3.  Click “Save” button to complete connecting after checking the confirmation pop-up.
 ![3-2-1-3-4-2-3]
 
-4.  App 재시작 확인 팝업“재시작”버튼을 클릭한다.
+4.  Click App “Restart” button from the App restart confirmation pop-up screen.
 ![3-2-1-3-4-2-4]
      
-### <div id='78'/> 3.2.1.3.4.2.  서비스 정보
-1.  목록에서 서비스 접속 정보 확인 하기 위해 ① "메모장" 버튼을 클릭한다.
+### <div id='78'/> 3.2.1.3.4.2.  Service Information
+1.  Click ① "Notepad" button to check service access information from the list.
 ![3-2-1-3-4-2-2]
 
-2.  확인 팝업을 통해 Hostname, jdbcUrl, Name,Port, Username, Password 를 확인 할 수 있다.
+2.  Can check the following information through the confirmation pop-up screen: Hostname, jdbcUrl, Name,Port, Username, and Password.
 ![3-2-1-3-4-2-1]
 
-### <div id='55'/> 3.2.1.3.4.3.  서비스 연결 해제
-1.  목록에서 연결 해제하려는 서비스의 “연결해제” 버튼을 클릭한다.
+### <div id='55'/> 3.2.1.3.4.3.  Unconnect Service
+1.  Click “Unconnect” button of the service to unconnect from the list.
 ![3-2-1-3-4-2-0]
 
 2.  서비스 연결해제 확인 팝업“저장”버튼을 클릭하여 서비스 연결 해제를 완료한다.

@@ -61,82 +61,82 @@
      * [3.2.1.3.5.3.  Delete Environment Variable](#59)
      * [3.2.1.3.6.  Route](#60)
      * [3.2.1.3.6.1.  Add Route](#61)
-     * [3.2.1.3.6.2.  라우트 연결 해제](#62)
-     * [3.2.1.3.7.  로그](#63)
-     * [3.2.1.3.7.1.  로그 관리](#64)
+     * [3.2.1.3.6.2.  Unconnect Route](#62)
+     * [3.2.1.3.7.  Log](#63)
+     * [3.2.1.3.7.1.  Log Management](#64)
      * [3.2.1.3.7.2.  Tail Log](#90)
-     * [3.2.1.3.7.3.  오토스케일링 설정](#91)
-     * [3.2.1.3.7.4.  알람 설정](#92)
-     * [3.2.2.  카탈로그](#65)
-     * [3.2.2.1.  카탈로그 검색](#66)
-     * [3.2.3.  문서](#67)
-     * [3.2.4.  알림](#68)
-     * [3.2.5.  내 계정](#69)
-     * [3.2.5.1.  프로필](#70)
-     * [3.2.5.2.  로그인 정보](#71) 
-     * [3.2.5.2.1. 비밀번호 변경](#72)
-     * [3.2.5.3.  사용자 정보](#73)
-     * [3.2.5.3.1.  사용자 이름](#74)
-     * [3.2.5.3.2.  사용자 전화번호](#75)
-     * [3.2.5.3.3.  사용자 우편번호](#76)
-     * [3.2.5.3.1.  사용자 주소](#77)
-     * [3.2.5.4.  나의 조직](#81)
-     * [3.2.5.4.1  나의 조직 탈퇴](#79) 
-     * [3.2.5.6.  로그아웃](#80)
-     * [3.3.6.1.  대시보드 CAAS Deployments 조회](#82)
-     * [3.3.6.2.  대시보드 CAAS Pods 조회](#83)
-     * [3.3.6.3.  대시보드 CAAS Replica Sets조회](#84)
-     * [3.3.6.4.  대시보드 CAAS CAAS Pvc조회](#85)
+     * [3.2.1.3.7.3.  Auto scailing Setting](#91)
+     * [3.2.1.3.7.4.  Notification Setting](#92)
+     * [3.2.2.  Catalog](#65)
+     * [3.2.2.1.  Search Catalog](#66)
+     * [3.2.3.  Document](#67)
+     * [3.2.4.  Notification](#68)
+     * [3.2.5.  My Account](#69)
+     * [3.2.5.1.  Profile](#70)
+     * [3.2.5.2.  Login Information](#71) 
+     * [3.2.5.2.1. Change Password](#72)
+     * [3.2.5.3.  User Information](#73)
+     * [3.2.5.3.1.  User Name](#74)
+     * [3.2.5.3.2.  User Contact Number](#75)
+     * [3.2.5.3.3.  User Postal Code](#76)
+     * [3.2.5.3.1.  User Address](#77)
+     * [3.2.5.4.  My Organization](#81)
+     * [3.2.5.4.1  Leave My Organization](#79) 
+     * [3.2.5.6.  Logout](#80)
+     * [3.3.6.1.  Inquire Dashboard CAAS Deployments](#82)
+     * [3.3.6.2.  Inquire Dashboard CAAS Pods](#83)
+     * [3.3.6.3.  Inquire Dashboard CAAS Replica Sets](#84)
+     * [3.3.6.4.  Inquire Dashboard CAAS CAAS Pvc](#85)
      
      
 
-# <div id='1'/> 1. 문서 개요
+# <div id='1'/> 1. Document Outline
 
 
-### <div id='2'/> 1.1. 목적
+### <div id='2'/> 1.1. Purpose
       
-본 문서는 PaaS-TA 사용자 포탈 사용 방법에 대해 기술하였다.
+This document describes how to use the PaaS-TA user portal.
 
 
-### <div id='3'/> 1.2. 범위
+### <div id='3'/> 1.2. Range
       
-본 문서는 Windows 환경을 기준으로 PaaS-TA 사용자 포탈을 사용하는 방법에 대해 작성되었다.
+This document is written on how to use the PaaS-TA User Portal based on Windows environments.
 
 
-# <div id='4'/> 2.  PaaS-TA 사용자 포탈 계정 생성
+# <div id='4'/> 2.  Create PaaS-TA User Portal Account
 
-본 장에서는 PaaS-TA 사용자 포탈을 사용하기 위한 계정 생성 및 비밀번호 재설정 화면 설명에 대해서 기술하였다.
+This chapter describes the account creation and password reset screen for using the PaaS-TA user portal.
 
 
-### <div id='5'/> 2.1.  PaaS-TA 사용자 포탈 계정 생성
+### <div id='5'/> 2.1.  Create PaaS-TA User Portal Account
 
-1.  PaaS-TA 사용자 포탈에 접속한다.
+1.  Access to PaaS-TA User Portal.
 ![2-1-0]
 
-2.  “로그인” 버튼을 클릭한다. 
+2.  Click “Login”. 
 ![2-1-1]
 
-3.  “Create account” 링크를 클릭한다.
+3.  Click “Create account” Link.
 ![2-1-2]
 
-4.  사용할 이메일 계정을 입력한다.“인증 메일 보내기” 버튼을 클릭한다.
+4.  Enter the E-mail address to use. Click “Send authentication mail”.
 ![2-1-3]
 
-5.  수신 된 이메일의 “이메일 주소 확인" 링크를 클릭한다.<br>
+5.  Click the "Verify Email Address" link in the received email.<br>
 
-     > **수신 된 이메일 형식**
+     > **Email Format to Receive**
      > ![email]
 
-6.  사용자 이름, 비밀번호를 입력한다.“계정생성"버튼을 클릭하여 계정 생성을 완료한다.
+6.  Enter Username and Password. Click “Create Account" to complete the account creation.
 
 ![2-1-4]
 
 
-### <div id='6'/> 2.2.  PaaS-TA 사용자 포탈 비밀번호 재설정
-1.  “Reset password”링크를 클릭한다.
+### <div id='6'/> 2.2.  Reset PaaS-TA User Portal Password
+1.  Click “Reset password” link.
 ![2-2-0]
 
-2.  사용자의 이메일 계정을 입력한다. “비밀번호 재설정” 버튼을 클릭한다.
+2.  Enter User's email address. Click “Reset Password”.
 ![2-2-1]
 
 3.  수신 된 이메일의 “비밀번호 재설정하기” 링크를 클릭한다.

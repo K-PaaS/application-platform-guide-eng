@@ -4547,14 +4547,14 @@ View list of Apps in the target space.
   |-------------|--------------------------------|-----------|
   |PATH         |Cf api path <br>  Ex) /v2/spaces/2d94e7ee-9805-408d-a1eb-ceac319e603b/summary             |O          |
   |-i           |Result including Response header                                                                  |X          |
-  |-v           |Request/response에 CF_TRACE enable된 내용 포함                                              |X          |
+  |-v           |include  CF_TRACE enabled content at Request/response                                              |X          |
   |-X METHOD    |HTTP method((GET,POST,PUT,DELETE,etc)                                                      |X          |
-  |-H HEADER    |Request에 Custom Header를 포함합니다.                                                         |X          |
-  |-d DATA      |Request에 Http data를 포함합니다.                                                             |X          |
-  |--output FILE |Response결과를 stdout대신 FILE로 결과 저장                                                  |X          |
+  |-H HEADER    |Include Custom Header at Request.                                                         |X          |
+  |-d DATA      |Include Http data at Request.                                                             |X          |
+  |--output FILE |Saves the outcome of Response as FILE instead of stdout                                                  |X          |
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf curl /v2/spaces/2d94e7ee-9805-408d-a1eb-ceac319e603b/summar
@@ -4563,7 +4563,7 @@ View list of Apps in the target space.
 
 #### config
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -4571,26 +4571,26 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  CF CLI에 대한 설정.
+  Explanation about CF CLI.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |--async-timeout TIMEOUT_IN_MINUTES        |CLI 명령 전송시 async timeout 설정                     |X          |
-  |--trace (true / false / path/to/file   )    |CLI 명령 수행시 실행되는 cf api의 내용 출력 설정         |X          |
-  |--color true / false                      |CLI 명령 수행시 실행되는 cf api의 내용 color 설정        |X          |
-  |--locale (LOCALE / CLEAR)                 |CLI 명령 수행시 실행되는 cf api의 내용 locale 설정       |X          |
+  |--async-timeout TIMEOUT_IN_MINUTES        |Set async timeout when sending command CLI                     |X          |
+  |--trace (true / false / path/to/file   )    |Set the content output of cf api that runs when executing CLI commands         |X          |
+  |--color true / false                      |Set color content of the cf api that runs when executing CLI commands        |X          |
+  |--locale (LOCALE / CLEAR)                 |Set locale content of cf api that runs when executing CLI commands       |X          |
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf curl /v2/spaces/2d94e7ee-9805-408d-a1eb-ceac319e603b/summar
@@ -4598,7 +4598,7 @@ View list of Apps in the target space.
 
 #### oauth-token
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -4606,21 +4606,21 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  사용자가 cf login후 CF에서 받은 token 값 조회합니다.
+  Inquires token value received from CF by user after cf login.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
-    - 없음
+    - None
 
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $cf oauth-token
@@ -4631,7 +4631,7 @@ View list of Apps in the target space.
 
 #### add-plugin-repo
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -4639,25 +4639,25 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  OpenPaaS CLI plugin repository(저장소)를 추가합니다.
+  Add OpenPaaS CLI plugin repository(Storage).
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |REPO_NAME    |Repository 명                   |X          |
+  |REPO_NAME    |Repository Name                   |X          |
   |URL          |Repository URL                 |X          |
 
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   cf add-plugin-repo Diego-SSH http://plugins.cloudfoundry.org
@@ -4666,7 +4666,7 @@ View list of Apps in the target space.
 
 #### remove-plugin-repo
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -4674,25 +4674,25 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  CLI plugin repository(저장소)를 삭제합니다.
+  Delete CLI plugin repository(Storage).
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |REPO_NAME    |Repository 명                   |O          |
+  |REPO_NAME    |Repository Name                   |O          |
   |URL          |Repository URL                 |O         |
 
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   cf remove-plugin-repo Diego-SSH http://plugins.cloudfoundry.org
@@ -4701,7 +4701,7 @@ View list of Apps in the target space.
 
 #### list-plugin-repos
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -4709,20 +4709,20 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  CLI에 추가된 plugin repository(저장소)목록을 조회합니다.
+  Inquires list of plugin repository(Storage) added in CLI.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
-    - 없음
+    - None
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $cf list-plugin-repos
@@ -4731,7 +4731,7 @@ View list of Apps in the target space.
 
 #### repo-plugins
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -4739,24 +4739,24 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  Repository에 있는 플러그인 목록을 조회합니다.
+  Inquires the list of plug-ins in the Repository.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |REPO_NAME    |Repository 명                   |X          |
+  |REPO_NAME    |Repository Name                   |X          |
 
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf repo-plugins
@@ -4767,7 +4767,7 @@ View list of Apps in the target space.
 
 #### plugins
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -4775,24 +4775,24 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description**
 
 
   ```
-  추가된 plugin의 사용가능한 명령어 목록을 조회합니다.
+  Inquires the list of available commands for the added plugin.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |REPO_NAME    |Repository 명                   |X          |
+  |REPO_NAME    |Repository Name                   |X          |
 
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $ cf repo-plugins
@@ -4802,7 +4802,7 @@ View list of Apps in the target space.
 
 #### install-plugin
 
-  - **기본 Syntax**
+  - **Basic Syntax**
 
 
   ```
@@ -4810,24 +4810,25 @@ View list of Apps in the target space.
   ```
 
 
-  - **설명**
+  - **Description
+    **
 
 
   ```
-  추가된 plugin의 사용가능한 명령어 목록을 조회합니다.
+  Install CLI plugin.
   ```
 
 
-  - **파라미터**
+  - **Parameter**
 
 
-  | 파라미터명   |           설명                 | 필수(O/X) |
+  | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |URL or LOCAL-PATH/TO/PLUGIN   |Plugin URL 또는 로컬경로 또는 repository에 있는 플러그인명                |X          |
+  |URL or LOCAL-PATH/TO/PLUGIN   |Plugin URL or plug-in name in local path or repository                |X          |
   |-r REPO_NAME                  |Plugin repository명                                                   |X          |
 
 
-  - **사용예시**
+  - **Use Example**
 
   ```
   $cf install-plugin 'Usage Report' -r CF-Community

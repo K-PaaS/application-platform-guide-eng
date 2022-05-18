@@ -640,8 +640,8 @@ Click the name of the application created in the catalog list to go to the appli
 ![3-2-4-0]
 
 ### <div id='68'/> 3.2.4.  Notification
-1.  Click the ① "bell" image on the top menu이미지를 클릭한다. 
-- 알림 메시지는 5개까지 저장된다.
+1.  Click the ① "bell" image on the top menu. 
+- Up to 5 notifications can be saved.
 ![3-2-7-1-0]
 
 ### <div id='69'/> 3.2.5.  My Account
@@ -655,36 +655,36 @@ Click the name of the application created in the catalog list to go to the appli
 2.  Select a picture to use as a new profile picture then click “Apply Picture” to complete the process.
 ![3-2-7-2-2-1-00]
 
-### <div id='71'/> 3.2.5.2.  로그인 정보
+### <div id='71'/> 3.2.5.2.  Login Information
 ![3-2-7-2-1-0-1]
 
-### <div id='72'/> 3.2.5.2.1. 비밀번호 변경
-1.  ①“메모장” 버튼을 클릭한다.
+### <div id='72'/> 3.2.5.2.1. Change Password
+1.  Click ①“Notepad” button.
 ![3-2-7-2-1-2-0]
 
-2.  현재 비밀번호와 새 비밀번호를 입력한다. “변경하기” 버튼을 클릭하여 비밀번호 변경을 완료한다.
+2.  Enter recent password and new password. Click “Change” button to complete.
 ![3-2-7-2-1-2-1]
 
-### <div id='73'/> 3.2.5.3.  사용자 정보
+### <div id='73'/> 3.2.5.3.  User Information
 ![3-2-7-2-1-0]
 
-### <div id='74'/> 3.2.5.3.1  사용자 이름
-1. 새 이름을 입력한다. "변경하기" 버튼을 클릭하여 이름 변경을 완료한다.
+### <div id='74'/> 3.2.5.3.1  Use Name
+1. Enter new name. Click "Change" button to complete.
 ![userinfo-name]
 
-### <div id='75'/> 3.2.5.3.2  사용자 전화번호
-1. 새 전화번호를 입력할 때 숫자 입력만 가능하다.("-"제외 한 숫자만 입력) "변경하기" 버튼을 클릭하여 전화번호 변경을 완료한다.
+### <div id='75'/> 3.2.5.3.2  User Contact Number
+1. Only numbers can be entered.(numbers excluding "-") Click "Change" to complete the process.
 ![userinfo-phone]
 
-### <div id='76'/> 3.2.5.3.3 사용자 우편번호
-1. 새 우편번호를 입력할 때 15자 이하의 숫자와 영문 입력만 가능하다. "변경하기" 버튼을 클릭하여 우편번호 변경을 완료한다.
+### <div id='76'/> 3.2.5.3.3 User Postal Code
+1. When entering new postal code, up to 15 characters or less letters and number can be entered. Click "Change" button to complete the process.
 ![userinfo-cz]
 
-### <div id='77'/> 3.2.5.3.3 사용자 주소
-1.새 주소를 입력할 때 256자 이하만 가능하다. "변경하기" 버튼을 클릭하여 이름 변경을 완료한다.
+### <div id='77'/> 3.2.5.3.3 User Address
+1. When entering new address, up to 256 characters or less letters and number can be entered. Click "Change" button to complete the process.
 ![userinfo-add]
 
-### <div id='81'/>  3.2.5.4.  나의 조직
+### <div id='81'/>  3.2.5.4.  My Organization
 ![3-2-7-2-1-0-2]
 
 ### <div id='79'/> 3.2.5.4.1  나의 조직 탈퇴

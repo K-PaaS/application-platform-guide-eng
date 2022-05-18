@@ -216,11 +216,11 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
      > "Modify" 버튼 클릭 후 사용자 관리 리스트를 확인 시 [Status] **Approve**에서 **Disapprove**으로 변한다. Cannot log in to CF and Portal when its disapprove<br>
      ![31-1]
      
-5. ①"관리" 버튼 클릭 후 "계정 삭제"를 클릭하여 해당 계정을 삭제한다.<br>
+5. Click ①"Manage" button then click "Delete Account" to delete the Account.<br>
 ![32]
 ![33]
 
-### <a name="4.5"/>  4.5. 권한 관리
+### <a name="4.5"/>  4.5. Authority Management
 
 **관리자가 Cloud Foundry 시큐리티 그룹을 조회,수정,삭제기능을 제공 및 사용자 권한을 관리한다.<br>**
 

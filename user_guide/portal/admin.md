@@ -151,50 +151,50 @@ One can search by the type, item, name, whether it's private or public in the se
 3. Delete the service by clicking ②"Delete" button.<br>
 ![23]
 
-4. 카탈로그 화면에서 앱 서비스를 등록 시,  ①"앱 서비스 등록버튼"을 클릭한다. 
-이름, 분류, 서비스, 썸네일, 파라미터, 공개여부, 요약, 설명을 입력한다. ②"등록" 버튼을 누르면 새로운 서비스가 등록된다. <br>
+4. When registering app service at the catalog page, click  ①"Register App Service" button. 
+Enter name, classification, service, thumbnail, parameter, pubic availability, outline, and description. Click ②"Register" to complete registering the service. <br>
 ![24]
 
-※ **delivery-pipeline** 앱 서비스 등록 방법 예시
-1. 앱 서비스 등록 폼 화면에 앱 서비스 등록에 필요한 내용을 입력한다.
-2. 앱 서비스에 등록할 이름을 입력한다. 
-3. 분류는 "개발 지원 도구"로 지정한다.
-4. 서비스는 "delivery-pipeline-v2" 로 지정한다.
-5. 썸네일는 사용자가 등록하고자 하는 이미지를 지정하여 선택한다. 
-     > **썸네일 적용 시 'PaaS-TA 사용자'에서 카탈로그 서비스 리스트 및 서비스 등록 시 이미지를 확인 할 수 있다.**<br>
-6. 문서 URL을 넣어준다. 
-     > (예) https://github.com/PaaS-TA/DELIVERY-PIPELINE-UI <br>
-     > **문서 URL 적용 시 'PaaS-TA 사용자'카탈로그 서비스 등록 '문서보기' 버튼 활성화 된다.**
+※ **delivery-pipeline**, an example of registering an app service 
+1. Input necessary datas for registering an app service at the registering form screen.
+2. Enter the name to register at app service. 
+3. Set classification as "Development Support Tool".
+4. Set service as "delivery-pipeline-v2".
+5. Select an image the user wants to use for thumbnail. 
+     > **The applied Thumbnail can be checked at the 'PaaS-TA User' of Catalog service list and service registration.**<br>
+6. Insert document URL. 
+     > (Ex.) https://github.com/PaaS-TA/DELIVERY-PIPELINE-UI <br>
+     > **When Document URL is applied, 'PaaS-TA User' Catalog Service Registration 'View Document' button gets activated.**
      > ![pipeline-app-service-create]
 
-7. 서비스 생성시 필요한 파라미터값을 설정한다.
-    (예) owner : '자동입력' /  org_name : '자동입력'
-8. 앱 바인드 사용 은 "N"으로 선택한다.
-9. 대시보드 사용 시 "Y" 를 필수 설정한다. 대시보드 "N" 설정시 대시보드 버튼이 비 활성화 된다.
-     > **대시보드 적용 시 'PaaS-TA 사용자'에서 카탈로그 앱 서비스 "대시보드" 버튼 활성화 된다**
+7. Set needed parameter value when creating a service.
+    (Ex.) owner : 'Automatic-input' /  org_name : 'Automatic-input'
+8. Input "N" for App bind Usage.
+9. Requires "Y" when dashboard is being used. Setting dashboard as "N" disables dashboard button.
+     > **When dashboard is applied, catalog app service "Dashboard" button is activated in 'PaaS-TA User'**
      > ![pipeline-app-dashboard]
-10. 그 외 공개여부, 요약, 설명을 입력한다. "저장" 버튼을 클릭하여 서비스 등록을 완료한다.
+10. In addition, enter public availability, outline, and description. Click "Save" button to complete service registration.
      > ![pipeline]
 
      
-※ **sourcecontrol** 앱 서비스 등록 방법 예시
-1. 앱 서비스 등록 폼 화면에 앱 서비스 등록에 필요한 내용을 입력한다.
-2. 앱 서비스에 등록할 이름을 입력한다. 
-3. 분류는 "개발 지원 도구"로 지정한다.
-4. 서비스는 "paasta-sourcecontrol" 로 지정한다.
-5. 썸네일는 사용자가 등록하고자 하는 이미지를 지정하여 선택한다.
-6. 문서 URL을 넣어준다.
-     > (예) https://github.com/PaaS-TA/Guide-3.0-Penne-/blob/master/Service-Guide/Tools/PaaS-TA%20%ED%98%95%EC%83%81%EA%B4%80%EB%A6%AC%20%EC%84%9C%EB%B9%84%EC%8A%A4%ED%8C%A9%20%EC%84%A4%EC%B9%98%20%EA%B0%80%EC%9D%B4%EB%93%9C_v1.0.md <br>
-     > **문서 URL 적용 시 'PaaS-TA 사용자'카탈로그 서비스 등록 '문서보기' 버튼 활성화 된다.**<br>
-7. 서비스 생성시 필요한 파라미터값을 설정한다.
-    (예) owner : '자동입력' /  org_name : '자동입력'
-8. 앱 바인드 사용 은 "N"으로 선택한다.
-9. 대시보드 사용 시 "Y" 를 필수 설정한다. 대시보드 "N" 설정 시 대시보드 버튼이 비 활성화 된다.
-     > **대시보드 적용 시 'PaaS-TA 사용자'에서 카탈로그 앱 서비스 "대시보드" 버튼 활성화 된다**
-10. 그 외 공개여부, 요약, 설명을 입력한다. "저장" 버튼을 클릭하여 서비스 등록을 완료한다.
+※ **sourcecontrol** , an Example of App Service Registration
+1. Enter the contents necessary to register the app service on the app service registration form screen.
+2. Enter the App Service name to register. 
+3. Set classification as "Development Support Tool".
+4. Set Service as "paasta-sourcecontrol".
+5. Select an image the user wants to use for thumbnail.
+6. Insert Document URL.
+     > (Ex.) https://github.com/PaaS-TA/Guide-3.0-Penne-/blob/master/Service-Guide/Tools/PaaS-TA%20%ED%98%95%EC%83%81%EA%B4%80%EB%A6%AC%20%EC%84%9C%EB%B9%84%EC%8A%A4%ED%8C%A9%20%EC%84%A4%EC%B9%98%20%EA%B0%80%EC%9D%B4%EB%93%9C_v1.0.md <br>
+     > **When Document URL is applied, 'PaaS-TA User' Catalog Service Registration 'View Document' button gets activated.**<br>
+7. Set needed parameter value when creating service.
+    (Ex.) owner : 'Automatic-input' /  org_name : 'Automatic-input'
+8. Input "N" for App bind Usage.
+9. Requires "Y" when dashboard is being used. Setting dashboard as "N" disables dashboard button.
+     > **When dashboard is applied, catalog app service "Dashboard" button is activated in 'PaaS-TA User'**
+10. In addition, enter public availability, outline, and description. Click "Save" button to complete service registration.
      > ![sourcecontroller]
 
-### <a name="4.4"/>  4.4. 사용자 관리
+### <a name="4.4"/>  4.4. User Management
 
 **관리자가 사용자의 정보를 조회 및 계정 승인 기능을 한다.<br>**
 

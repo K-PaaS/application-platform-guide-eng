@@ -1,107 +1,107 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > 운영자 포털
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Operators Portal
 
 ## Table of Contents
-1. [문서 개요](#1)
-    * [1.1. 목적](#1.1)
-    * [1.2. 범위](#1.2)
-    * [1.3. 운영자 포탈 설치](#1.3)
-2. [PaaS-TA 운영자 포탈 시작](#2)
-    * [2.1. PaaS-TA 운영자 포탈 로그인](#2.1)
-    * [2.2. PaaS-TA 운영자 포탈 로그](#2.2)
-3. [PaaS-TA 운영자 포탈 대시보드](#3)
-    * [3.1. 대시보드 정보 조회](#3.1)
-4. [운영 관리 메뉴](#4)
-    * [4.1. 조직 및 공간 조회](#4.1)    
-    * [4.2. 클라이언트](#4.2)    
-    * [4.3. 카탈로그](#4.3)    
-    * [4.3.1 카탈로그 관리_앱 템플릿](#4.3.1)
-    * [4.3.2. 카탈로그 관리_앱 개발환경](#4.3.2)
-    * [4.3.3. 카탈로그 관리_서비스](#4.3.3)
-    * [4.4. 사용자 관리](#4.4)    
-    * [4.5. 권한 관리](#4.5)    
-    * [4.6. 코드 관리](#4.6)   
-    * [4.7. 설정 정보](#4.7)
-    * [4.8. 할당량 관리](#4.8)      
-    * [4.9. 분할 관리](#4.9)  
-5. [서비스 관리](#5)
-    * [5.1. 빌드팩](#5.1)
-    * [5.2. 서비스 브로커](#5.2)
-    * [5.3. 서비스 제어](#5.3)
-6. [보안 관리](#6)
-    * [6.1. 시큐리티 그룹](#6.1)
+1. [Document Outline](#1)
+    * [1.1. Purpose](#1.1)
+    * [1.2. Range](#1.2)
+    * [1.3. Install Operators Portal](#1.3)
+2. [Start PaaS-TA Operator Portal](#2)
+    * [2.1. PaaS-TA Operator Portal Login](#2.1)
+    * [2.2. PaaS-TA Operator Portal Log](#2.2)
+3. [PaaS-TA Operator Portal Dashboard](#3)
+    * [3.1. Inquire Dashboard Information](#3.1)
+4. [Operation Managing Menu](#4)
+    * [4.1. Inquire Organization and Space](#4.1)    
+    * [4.2. Client](#4.2)    
+    * [4.3. Catalog](#4.3)    
+    * [4.3.1 Catlog Managing App Template](#4.3.1)
+    * [4.3.2. Catalog Managing App Development Environment](#4.3.2)
+    * [4.3.3. Catalog Management Service](#4.3.3)
+    * [4.4. User Management](#4.4)    
+    * [4.5. Authorization Management](#4.5)    
+    * [4.6. Code Management](#4.6)   
+    * [4.7. Setting Information](#4.7)
+    * [4.8. Quota Management](#4.8)      
+    * [4.9. Division Management](#4.9)  
+5. [Service Management](#5)
+    * [5.1. Buildpack](#5.1)
+    * [5.2. Service Broker](#5.2)
+    * [5.3. Service Control](#5.3)
+6. [Security Management](#6)
+    * [6.1. Security Group](#6.1)
 
 
-## <a name="1"/>1.  문서 개요
+## <a name="1"/>1.  Document Outline
 
-### <a name="1.1"/>   1.1. 목적
+### <a name="1.1"/>   1.1. Purpose
 
-본 문서는 JAVA로 작성된 PaaS-TA 운영자 포탈 웹 사이트를 사용하고 관리하는 방법에 대해 설명한다.
+This document describes how to use and manage the PaaS-TA Operator Portal website written in JAVA.
 
-### <a name="1.2"/>   1.2. 범위
+### <a name="1.2"/>   1.2. Range
 
-이미 설치된 PaaS-TA 운영자 포탈 웹 사이트 사용하는 방법에 대해 기술하였다.
+Describes how to use the PaaS-TA operator portal website that is already installed.
 
-### <a name="1.3"/>  1.3. 운영자 포탈 설치
+### <a name="1.3"/>  1.3. Install Operators Portal
 
-본 사용 가이드는 설치에 대한 내용은 기술하지 않았다.
+This User Guide does not describe the installation process.
 
- 운영자 포탈 설치는 [PaaS-TA Portal 배포 가이드 문서](https://github.com/PaaS-TA/Guide-3.0-Penne-/blob/v3.5/Install-Guide/Portal/PaaS-TA%20Portal%20%EC%84%A4%EC%B9%98%EA%B0%80%EC%9D%B4%EB%93%9C.md)를 참고한다.
+ Refer to    [PaaS-TA Portal Deployment Guide Document](https://github.com/PaaS-TA/Guide-3.0-Penne-/blob/v3.5/Install-Guide/Portal/PaaS-TA%20Portal%20%EC%84%A4%EC%B9%98%EA%B0%80%EC%9D%B4%EB%93%9C.md) for Operators Portal Installation.
 
-## <a name="2"/>2.  PaaS-TA 운영자 포탈 시작
+## <a name="2"/>2.  Start PaaS-TA Operator Portal
 
-PaaS-TA 운영자 포탈 웹 사이트에 접속한다.
+Access to PaaS-TA Operators Portal Web site.
 
-### <a name="2.1"/>  2.1. PaaS-TA 운영자 포탈 로그인
+### <a name="2.1"/>  2.1. PaaS-TA Operator Portal Login
 
-1. PaaS-TA 운영자 포탈에 접속하면 인증을 위한 로그인 화면이 나타난다.
+1. Accessing the PaaS-TA Operator Portal will bring up a login screen for authentication.
 ![01]
 
-2. 아이디와 비밀번호를 입력후 "로그인" 버튼을 클릭한다.
+2. Enter User ID and Password then click "Login".
 ![02]
 
-### <a name="2.2"/>  2.2. PaaS-TA 운영자 포탈 로그아웃
+### <a name="2.2"/>  2.2. PaaS-TA Operator Portal Logout
 
-1. 로그인 후 메인화면 ① "로그아웃" 버튼을 클릭하여 로그아웃을 한다.
+1. Click ① "Logout" button from (the logged in) mainpage.
 ![03]
 
-## <a name="3"/>3.  PaaS-TA 운영자 포탈 대시보드
+## <a name="3"/>3.  PaaS-TA Operator Portal Dashboard
 
-PaaS-TA에 등록된 조직, 공간, APP, 사용자 통계 정보를 보여준다.
+Shows the Organizatiom, Space, App, Users statistic Informations registered in PaaS-TA.
 
-### <a name="3.1"/>  3.1. 대시보드 정보 조회
+### <a name="3.1"/>  3.1. Inquire Dashboard Information
 
-1. 조직의 ①공간, ②APP, ③사용자 정보를 보여준다.<br>
+1. Shows Organizations ①Space, ②APP, and ③ User information.<br>
 ![04] 
 
-2. ①조직명을 클릭하면 조직의 영역 상세 정보를 확인 할 수 있다.<br>
+2. Detailed information of Organizaions domain can be checked by clicking ①Organization Name.<br>
 ![05]
 
-## <a name="4"/>4.  운영 관리 메뉴
+## <a name="4"/>4.  Operation Managing Menu
 
-PaaS-TA 포탈의 운영에 필요한 관리를 수행하기 위한 메뉴이다.<br>
+A menu to perform the management necessary for the operation of the PaaS-TA portal.<br>
 
-### <a name="4.1"/>  4.1. 조직 및 공간 조회
+### <a name="4.1"/>  4.1. Inquire Organization and Space
 
-**관리자가 모든 사용자의 조직 및 공간을 관리한다.<br>**
+**The administrator manages the organization and space of all users.<br>**
 
-1. ①조직과 ②공간을 조회한다. ③검색어 조회도 가능하다.<br>
+1. Inquires ①Organization and ②Space. ③Search Terms can be inquired too.<br>
 ![06]
 
-2. 조직이름 옆의 ①상세정보 버튼을 클릭한다. ②조직 상세 정보를 조회한다.<br>
+2. Click ① Details button beside the organization name. Inquire detailed informations of the ② Organization.<br>
 ![07]
 
-3. 공간이름 옆의 ①상세정보 버튼을 클릭한다. ②공간 영역 상세 정보를 조회한다.<br>
+3. Click ①Detail button beside Space Name. Check detailed information of ②Space.<br>
 ![08]
 
 
-### <a name="4.2"/>  4.2. 클라이언트
+### <a name="4.2"/>  4.2. Client
 
-**관리자가 클라이언트 조회,등록,삭제 기능을 제공한다.<br>**
+**The Administrator provides client inquire, register, delete functions.<br>**
 
-1. 클라이언트 목록을 조회한다.<br>    
+1. Inquire Client list.<br>    
 ![09]
 
-2. **클라이언트 ID**를 클릭 후 클라이언트 상세화면을 이동한다. 클라이언트 상세화면에서 "삭제" 버튼을 클릭하면 클라이언트 ID 삭제가 가능하다.<br>
+2. Proceed to Client Details page by clicking **Client ID**. Client ID can be deleted by clicking the "Delete" button at the client detail page.<br>
 ![10]
 
 3. ①"클라이언트 등록" 버튼을 클릭한다. 클라이언트 아이디, 패스워드, 옵션, 옵션 가이드를 입력하고 ②"등록" 버튼을 클릭하여 등록한다.<br>

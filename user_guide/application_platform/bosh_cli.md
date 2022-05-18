@@ -1822,7 +1822,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 - **Description**
 
-	Detailed inquiry based on task ID. 
+	Detailed retrieve based on task ID. 
 
 - **Parameter**
 	

@@ -233,7 +233,7 @@ This chapter describes the three main categories of PaaS-TA user portals.
  -   **Instance** : Maximum number of instance  <br>
  -  **Route Port** : Reserved route port number <br>
 
-4.  Click the "Proced" button on the confirmation pop-up to view the newly created organization on the Organization Management page.
+4.  Click the "Proced" button on the confirm pop-up to view the newly created organization on the Organization Management page.
 ![2-3-1-3]
 ![2-3-1-4]
      > 3.2.1.1.1.1-3 Screen appears when creating the first new organization for the account. Click “Create New Organization” when creating an organization afterward. 
@@ -256,7 +256,7 @@ This chapter describes the three main categories of PaaS-TA user portals.
 1.  Click ② "Delete" on ① sub-menu at the right side beside "View Details".
 ![3-2-1-1-1-3-0]
 
-2.  Click the "Delete" button on the confirmation pop-up to complete the deletion of the organization.
+2.  Click the "Delete" button on the confirm pop-up to complete the deletion of the organization.
 ![3-2-1-1-1-3-1]
 
 ### <div id='17'/> 3.2.1.1.2.  Space Management
@@ -286,7 +286,7 @@ This chapter describes the three main categories of PaaS-TA user portals.
 1.  Click ①“Trash bin”.
 ![3-2-1-2-1-2-0]
 
-2.  Click the "Delete" button on the confirmation pop-up to complete the deletion of the space.
+2.  Click the "Delete" button on the confirm pop-up to complete the deletion of the space.
 ![3-2-1-2-1-2-1]
 
 ### <div id='19'/> 3.2.1.1.3.  Domain Management
@@ -303,7 +303,7 @@ This chapter describes the three main categories of PaaS-TA user portals.
 1.  Click the ① "Trash bin"button of the domain to delete.
 ![3-2-1-1-3-2-0]
 
-2.  Click the "Delete" button on the confirmation pop-up to complete the domain deletion.
+2.  Click the "Delete" button on the confirm pop-up to complete the domain deletion.
 ![3-2-1-1-3-2-1]
 
 
@@ -377,7 +377,7 @@ This chapter describes the three main categories of PaaS-TA user portals.
 1.  Click  ① sub menu of the application to delete from the list and click ②“Delete”.
 ![3-2-1-2-2-5-0]
 
-2.  Click the "Delete" button on the confirmation pop-up to complete the application deletion.
+2.  Click the "Delete" button on the confirm pop-up to complete the application deletion.
 ![3-2-1-2-2-5-1]
 
 ### <div id='36'/> 3.2.1.2.2.  Service Management
@@ -418,7 +418,7 @@ This chapter describes the three main categories of PaaS-TA user portals.
 1.   Click ① sub menu of the service to delete from the list and click ②“delete”.
 ![3-2-1-2-3-5-0]
 
-2.  Click “Delete” button on the confirmatio pop-up to complete deletion of the service.
+2.  Click “Delete” button on the confirm pop-up to complete deletion of the service.
 ![3-2-1-2-3-5-1]
 
 ### <div id='40'/> 3.2.1.2.3.1.  Create User Provided Service
@@ -432,14 +432,14 @@ This chapter describes the three main categories of PaaS-TA user portals.
 1.  Click ① sub menu of the User Provided Service to rename from the list and click ② "Modify Service".
 ![userprovide-service]
 
-2.  Enter Service Name, Credentials, and Syslog Drain URL of the service to modify.Click “Modify” button from the comfirmatio pop-up to complete User Provided Service Modification.
+2.  Enter Service Name, Credentials, and Syslog Drain URL of the service to modify.Click “Modify” button from the comfir pop-up to complete User Provided Service Modification.
 ![userprovide-service2]
 
 ### <div id='42'/> 3.2.1.2.3.3.  Delete User Provided Service
 1.  Click ① sub menu of the User Provided Service to delete from the list and click  ②“Delete”.
 ![userprovide-del]
 
-2.  Click  "Delete" button on the confirmation pop-up to complete the deletion of the User Provided service.
+2.  Click  "Delete" button on the confirm pop-up to complete the deletion of the User Provided service.
 ![userprovide-del2]
 
 ### <div id='43'/> 3.2.1.3.  Application
@@ -466,7 +466,7 @@ Click the name of the application created in the catalog list to go to the appli
 1.  Click ① sub menu and click ② "delete" from the list.
 ![3-2-1-3-1-2-0]
 
-2.  CLick “delete” button from the confirmation pop-up to complete deletion of the application.
+2.  CLick “delete” button from the confirm pop-up to complete deletion of the application.
 ![3-2-1-3-1-2-1]
 
 ### <div id='49'/> 3.2.1.3.1.5.  Number of Instance/Memory Capacity/Disk Capacity Setting
@@ -510,27 +510,27 @@ Click the name of the application created in the catalog list to go to the appli
 ![3-2-1-3-4-1-1] <br>
      > **The list of services found are only for services that can be app bounded.** 
      
-3.  Click “Save” button to complete connecting after checking the confirmation pop-up.
+3.  Click “Save” button to complete connecting after checking the confirm pop-up.
 ![3-2-1-3-4-2-3]
 
-4.  Click App “Restart” button from the App restart confirmation pop-up screen.
+4.  Click App “Restart” button from the App restart confirm pop-up screen.
 ![3-2-1-3-4-2-4]
      
 ### <div id='78'/> 3.2.1.3.4.2.  Service Information
 1.  Click ① "Notepad" button to check service access information from the list.
 ![3-2-1-3-4-2-2]
 
-2.  Can check the following information through the confirmation pop-up screen: Hostname, jdbcUrl, Name,Port, Username, and Password.
+2.  Can check the following information through the confirm pop-up screen: Hostname, jdbcUrl, Name,Port, Username, and Password.
 ![3-2-1-3-4-2-1]
 
 ### <div id='55'/> 3.2.1.3.4.3.  Unconnect Service
 1.  Click “Unconnect” button of the service to unconnect from the list.
 ![3-2-1-3-4-2-0]
 
-2.  Click "Save" button from the confirmation pop-up to complete the disconnect service.
+2.  Click "Save" button from the confirm pop-up to complete the disconnect service.
 ![3-2-1-3-4-2-5]
 
-3.  Click “Restart” button from the App restart confirmation pop-up.
+3.  Click “Restart” button from the App restart confirm pop-up.
 ![3-2-1-3-4-2-4]
 
 ### <div id='56'/> 3.2.1.3.5.  Environment Variable
@@ -552,7 +552,7 @@ Click the name of the application created in the catalog list to go to the appli
 1.  Click ①“Trashbin" button of the environment variable to delete from the list.
 ![3-2-1-3-5-3-0]
 
-2.  Click “Delete” button from the confirmation pop-up to complete delation of the environment variable.
+2.  Click “Delete” button from the confirm pop-up to complete delation of the environment variable.
 ![3-2-1-3-5-3-1]
 
 ### <div id='60'/> 3.2.1.3.6.  Route
@@ -565,7 +565,7 @@ Click the name of the application created in the catalog list to go to the appli
 
 2.  Enter the name of the route to add. Click "Save".
 
-3.  Click "Confirm" button from the confirmation pop-up to complete adding route.
+3.  Click "OK" button from the confirm pop-up to complete adding route.
 
 ### <div id='62'/> 3.2.1.3.6.2.  Unconnect Route
 1.  Click “Unconnect” button of the route to remove from the list.
@@ -575,84 +575,84 @@ Click the name of the application created in the catalog list to go to the appli
 1.  Click ①“Log” menu or ② View all.
 ![3-2-1-3-7-0]
 
-### <div id='64'/> 3.2.1.3.7.1.  로그 관리
-1.  ①“로그” 버튼을 클릭하여 최근 로그를 확인한다.
+### <div id='64'/> 3.2.1.3.7.1.  Log Management
+1.  Click ①“Log” to check the recent logs.
 ![3-2-1-3-7-1-0]
 
 ### <div id='90'/> 3.2.1.3.7.2.  Tail Log
-1.  ① **</>Tail Logs**링크를 클릭하여 Tail Logs 새 창을 확인한다. ② "URL LInk" 버튼을 클릭한다. 
+1.  Clock ① **</>Tail Logs** link to check the newly opened Tail Logs page. Click ② "URL LInk". 
 ![3-2-1-3-7-1-1] 
 
-2.  이동한 URL 홈페이지에서 Tail Logs 창을 확인하면 실시간으로 log가 출력된다.
+2.  Check Tail Logs tab to view the output of real time log from the URL page opened.
 ![3-2-1-3-7-1-2]
 
-### <div id='91'/> 3.2.1.3.7.3. 오토 스케일링
+### <div id='91'/> 3.2.1.3.7.3. Auto Scaling
 ```diff
-#### PaaS-TA 에서 제공하고있는 모니터링을 미리 설치를 한 후에 진행해야 한다.
+#### Install monitoring provided by PaaS-TA before proceeding.
 ```
 ![3-2-1-3-7-1-3]
-1.  ① 앱 레이아웃의 모니터링을 클릭한다. ② 설정 탭 버튼을 클릭한다.
+1.  Clcick monitoring of ① App Layout. Click ② Setting tab button.
 
-2.  인스턴스 수  : 오토 스케일링 할시 최소, 최대로 늘어날 인스턴스 수를 입력한다.
+2.  Number of Instance  : In case of auto-scaling, input the minimum and maximum number of instances.
 
-3.  CPU 임계 값(%) : (③ 체크박스를 체크하면 임계값 적용을 한다. 미체크 -> 미적용) 오토스케일링할시 최소, 최대 CPU값을 입력한다.\
-(인스턴스가 적용한 CPU보다 %가 높아질 경우 인스턴스수가 늘어난다. 반대로 최소%보다 낮아질 경우 인스턴스 수가 줄어든다)
+3.  CPU Threshold Value(%) : (③ Checked box being checked means threshold will be applied. Unchecked -> not applied) When Auto-scaling, enter minimum and maximum CPU value.\
+(Number of Instances increases when CPU percentage increases than the applied maximum instance. On the other hand, the number of instances decreases when instance is lower than the minimum instance)
 
-4. 메모리 임계 값(%)  :(③ 체크박스를 체크하면 임계값 적용을 한다. 미체크 -> 미적용) 오토스케일링할시 최소, 최대 메모리값을 입력한다.\
-(인스턴스가 적용한 메모리보다 %가 높아질 경우 인스턴스수가 늘어난다. 반대로 최소 %보다 낮아질 경우 인스턴스 수가 줄어든다)
+4. Memory Threshold Value(%)  :(③ ③ Checked box being checked means threshold will be applied. Unchecked -> not applied) When Auto-scaling, enter minimum and maximum memory value.\
+(Number of Instances increases when CPU percentage increases than the applied maximum instance. On the other hand, the number of instances decreases when instance is lower than the minimum instance)
 
-5. 측정시간(초) : 측정시간을 적용한다. 측정시간 만큼 각 인스턴스의 메모리 및 cpu 값의 평균치를 구해 오토스케일링을 적용한다.
+5. Time Measure(Second) : Apply time measurement. The average value of each instance's memory and cpu values for the measured time is calculated and auto-scaling is applied.
 
-6. 인스턴스 증감값 : 오토스케일링시 인스턴스가 늘어날 갯수를 적용한다.
+6. Instance increse/decrease value : Apply the number of instances to increase during auto-scaling.
 
-7. 가상머신 자동확장 : 인스턴스를 자동 생성 여부를 적용한다.
+7. Virtual Machine Auto-expansion : Apply whether to automatically create an instance.
 
-8. 가상머신 자동축소 : 인스턴스를 자동 삭제 여부를 적용한다.
+8. Virtual Machine Auto-reduction : Apply whether or not to automatically delete an instance.
 
-9. 변경을 누르면 설정이 적용된다.
+9. Click change to save the settings.
 
-### <div id='92'/> 3.2.1.3.7.4. 알람 설정
+### <div id='92'/> 3.2.1.3.7.4. Notification Setting
 ![3-2-1-3-7-1-4]
-1.  CPU 임계 값(%) : 알람 최소, 최대 CPU값을 입력한다.\
-(인스턴스가 적용한 CPU보다 %가 높아지거나 최소%보다 낮아질 경우 알람이 발생한다.)
+1.  CPU Threshold Value(%) : Enter minimum and maximum CPU value of notification.\
+(Notification appears when the instance increases/decreases than what is applied at the CPU value percentage.)
 
-4. 메모리 임계 값(%)  :알람 최소, 최대 메모리값을 입력한다.\
-(인스턴스가 적용한 메모리보다 %가 높아질 경우 인스턴스수가 늘어난다. 반대로 최소 %보다 낮아질 경우 인스턴스 수가 줄어든다)
+4. Memory Threshold Value(%)  :Enter the minimum and maximum memory value of notification.\
+(Number of Instances increases when CPU percentage increases than the applied maximum instance. On the other hand, the number of instances decreases when instance is lower than the minimum instance)
 
-5. 측정시간(초) : 측정시간을 적용한다. 측정시간 만큼 각 인스턴스의 메모리 및 cpu 값의 평균치를 구해 알람을 적용한다.
+5. Time Measure(Second) : Apply time measurement. The average value of each instance's memory and cpu values for the measured time is calculated and auto-scaling is applied.
 
-6. E-Mail : 알람 메세지를 받을 이메일을 입력한다. 버튼으로 키거나 끌수 있다.
+6. E-Mail : Enter an email address to receive notifications. Can be enabled/ disabled through a button.
 
-7. 알람 사용 : 버튼 온오프로 사용 미사용을 적용할수 있다.
+7. Notification Use : Can be enabled/ disabled through a  on and off buttons.
 
-8. 변경을 누르면 설정이 적용된다.
+8. Click change to save settings.
 
-### <div id='65'/> 3.2.2.  카탈로그
-1.  상단 메뉴의 “카탈로그” 버튼을 클릭하면 카탈로그 화면페이지로 이동한다.
+### <div id='65'/> 3.2.2.  Catalog
+1.  Go to Catalogs page by clicking the “Catalog” button at the menu on top.
 ![3-2-2-0]
 
-### <div id='66'/> 3.2.2.1.  카탈로그 검색
-1.  ① Catalog Search 에서 검색어를 입력하면 자동으로 검색 결과가 출력된다. 
+### <div id='66'/> 3.2.2.1.  Search Catalog
+1.  Results searched from ① Catalog Search automatically shows its outputs. 
 ![3-2-2-1-0]
 
-### <div id='67'/> 3.2.3.  문서
-1.  상단 메뉴의 “문서” 버튼을 클릭하면 문서 화면페이지로 이동한다.
+### <div id='67'/> 3.2.3.  Decument
+1.  Click the "Documents" button on the top menu to go to the document page.
 ![3-2-4-0]
 
-### <div id='68'/> 3.2.4.  알림
-1.  상단 메뉴의 ① "종"이미지를 클릭한다. 
+### <div id='68'/> 3.2.4.  Notification
+1.  Click the ① "bell" image on the top menu이미지를 클릭한다. 
 - 알림 메시지는 5개까지 저장된다.
 ![3-2-7-1-0]
 
-### <div id='69'/> 3.2.5.  내 계정
-1.  우측 메뉴의 "내 계정"을 클릭하여 내계정 대시보드로 이동한다.
+### <div id='69'/> 3.2.5.  My Account
+1.  Go to My accounts dashboard page by clicking "My Account" from the menu on right.
 ![3-2-7-2-0]
 
-### <div id='70'/> 3.2.5.1.  프로필
-1.  프로필 사진을 클릭하여 프로필 사진 변경 폼 레이어를 팝업 한다. 
+### <div id='70'/> 3.2.5.1.  Profile
+1.  Click a profile picture to pop up the profile picture change form layer. 
 ![3-2-7-2-2-1-0]
 
-2.  변경할 프로필 사진을 선택한 후, “사진등록”버튼을 클릭하여 프로필 사진 변경을 완료한다.
+2.  Select a picture to use as a new profile picture then click “Apply Picture” to complete the process.
 ![3-2-7-2-2-1-00]
 
 ### <div id='71'/> 3.2.5.2.  로그인 정보

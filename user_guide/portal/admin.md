@@ -220,7 +220,7 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 ![32]
 ![33]
 
-### <a name="4.5"/>  4.5. Authority Management
+### <a name="4.5"/>  4.5. Authorization Management
 
 **관리자가 Cloud Foundry 시큐리티 그룹을 조회,수정,삭제기능을 제공 및 사용자 권한을 관리한다.<br>**
 

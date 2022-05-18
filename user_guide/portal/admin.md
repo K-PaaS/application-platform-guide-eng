@@ -196,24 +196,24 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 
 ### <a name="4.4"/>  4.4. User Management
 
-**관리자가 사용자의 정보를 조회 및 계정 승인 기능을 한다.<br>**
+**The administrator checks the user's information and approves the account.<br>**
 
-1. 사용자 리스트를 조회한다. 사용자 계정, 이름, 전화번호, 관리자유무, 승인상태를 조회 할 수 있다. 검색창에서 검색어로 검색할 수 있다.<br>
+1. Retrieve User list. User account, name, phone number, presence or absence of administrator, and approval status can be inquired. can search with search terms in the search window.<br>
 ![25]
 
-2. ①"관리" 버튼 클릭 후 "비밀번호 초기화"를 클릭하여 비밀번호를 초기화 한다.<br>
+2. Click ①"Manage" button and click "Reset Password" to Reset the password.<br>
 ![26]
 
-3. ①"관리" 버튼 클릭 후 "운영자권한 삭제"를 클릭하여 운영권한 삭제를 한다.<br>
+3. Click ①"Manage" button then "Delete Operator Authority" to delete Operating Authority.<br>
 ![28]
 ![27]
-     > "실행" 버튼 클릭 후 사용자 관리 리스트 확인 시[관리자] **Y**에서 **N** 으로 변한다. 사용자 관리 리스트 [관리자] **N** 경우 ①"관리" 버튼 클릭 후 "운영자권한 부여"를 클릭한다. <br>
+     > When checking the user management list after clicking the "Run" button, [Administrator] changes from  **Y** to **N**. If User Management List [Administrator] is **N** , Click  ①"Management" button then "Give Operator Authority". <br>
      > ![27-1]
-4. ①"관리" 버튼 클릭 후 "가입 해제"를 클릭하여 CF 로그인을 차단한다. 비승인일시 "가입 승인"을 클릭하여 CF 로그인을 승인한다.<br>
+4. After clicking ①"Management" button, Click " Cancel sign in" to block CF login.  Approve CF login by clicking "Approve Sign in" when its not approved.<br>
 ![30]
 ![31]
 ![31-2]
-     > "수정" 버튼 클릭 후 사용자 관리 리스트를 확인 시 [상태] **승인**에서 **비승인**으로 변한다. 비승인시 포탈 및 CF 로그인 불가<br>
+     > "Modify" 버튼 클릭 후 사용자 관리 리스트를 확인 시 [Status] **Approve**에서 **Disapprove**으로 변한다. Cannot log in to CF and Portal when its disapprove<br>
      ![31-1]
      
 5. ①"관리" 버튼 클릭 후 "계정 삭제"를 클릭하여 해당 계정을 삭제한다.<br>

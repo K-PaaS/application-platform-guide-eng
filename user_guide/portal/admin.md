@@ -129,7 +129,7 @@ In the search window, search types, search items, disclosure status, and search 
 
 ### <a name="4.3.2"/>  4.3.2 Catalog Managing App Development Environment
 1. Retrieve Catalog App Development Environment list. It shows Name, Outline, Classification, Public Availability.
-One can search by the type, item, name, whether it's private or public in the search engine
+One can search by the type, item, name, whether it's private or public in the search engine.
 ![17]
 
 2. A page with detail appears when clicking the App Development Environment Name. Input datas to be modify then click ①"Save" button to complete modification.
@@ -141,14 +141,14 @@ One can search by the type, item, name, whether it's private or public in the se
 4. Click ①"Register App Development Environment" button from the Catalog page to Register.Enter the following at the App Development Environment Registering pop-up: Name, Classification, App Development Environment, Service, Thumbnail, Public Availability, Summary and Description. Complete registering by clicking ②"Register" button.
 ![20]
 
-### <a name="4.3.3"/>  4.3.3 카탈로그 관리 서비스
-1. 카탈로그 서비스 목록을 조회한다. 이름, 요약, 분류, 공개여부를 조회할 수 있다. 검색창에서 검색유형, 검색항목, 공개여부, 검색어로 검색이 가능하다.<br>
+### <a name="4.3.3"/>  4.3.3 Catalog Management Service 
+1. Retrieve Catalog Service List. Can check name, outline, classification, public availability. One can search by the type, item, name, whether it's private or public in the search engine.<br>
 ![21]
 
-2. 서비스 이름을 클릭하면 상세화면이 나온다. 수정 내역 완료 후 ①"저장"버튼을 클릭하여 저장한다.<br>
+2. Detail page shows up when clicking the service name. After modifying, click ①"Save" button to save.<br>
 ![22]
 
-3. ②"삭제" 버튼을 클릭하여 서비스를 삭제한다.<br>
+3. Delete the service by clicking ②"Delete" button.<br>
 ![23]
 
 4. 카탈로그 화면에서 앱 서비스를 등록 시,  ①"앱 서비스 등록버튼"을 클릭한다. 

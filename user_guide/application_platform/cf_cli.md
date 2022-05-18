@@ -945,7 +945,7 @@ View list of Apps in the target space.
 
 
   ```
- Inquire environment variables of the app.
+ Retrieve environment variables of the app.
   ```
 
 
@@ -1085,7 +1085,7 @@ View list of Apps in the target space.
   | Parameter   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
   |APP_NAME     |APP Name                           |O        |
-  |--guid       |Inquire Stack guid            |X        |
+  |--guid       |Retrieve Stack guid            |X        |
 
 
   - **Use Example**
@@ -1177,7 +1177,7 @@ View list of Apps in the target space.
 
 
   ```
-  Inquires the list of services provided by the cf marketplace.
+  Retrieve the list of services provided by the cf marketplace.
   ```
 
 
@@ -1209,7 +1209,7 @@ View list of Apps in the target space.
 
 
   ```
-  Inquires the list of service instances in the target space.
+  Retrieve the list of service instances in the target space.
   ```
 
 
@@ -1218,7 +1218,7 @@ View list of Apps in the target space.
 
   | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |-s SERVICE_NAME   |Inquires plan of the service.    |X        |
+  |-s SERVICE_NAME   |Retrieve plan of the service.    |X        |
 
 
   - **Use Example**
@@ -1241,7 +1241,7 @@ View list of Apps in the target space.
 
 
   ```
-  Inquires information of service instances.
+  Retrieve information of service instances.
   ```
 
 
@@ -1251,7 +1251,7 @@ View list of Apps in the target space.
   | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
   |SERVICE_INSTANCE   |Service Instance Name           |O        |
-  |--guid             |Inquires Guid of Servcie Instance.   |X        |
+  |--guid             |Retrieve Guid of Servcie Instance.   |X        |
 
   - **Use Guide**
 
@@ -1442,7 +1442,7 @@ View list of Apps in the target space.
 
 
   ```
-  Inquires service instance key list.
+  Retrieve service instance key list.
   ```
 
 
@@ -1474,7 +1474,7 @@ View list of Apps in the target space.
 
 
   ```
-  Inquires details of thekey of service instance.
+  Retrieve details of thekey of service instance.
   ```
 
 
@@ -1485,7 +1485,7 @@ View list of Apps in the target space.
   |-------------|--------------------------------|-----------|
   |SERVICE_INSTANCE  |Service Instance Name                       |O        |
   |SERVICE_KEY       |Service Instance key name                   |O        |
-  |--guid            |Inquires service instance guid.         |X        |
+  |--guid            |Retrieve service instance guid.         |X        |
 
 
 
@@ -1520,7 +1520,7 @@ View list of Apps in the target space.
   |-------------|--------------------------------|-----------|
   |SERVICE_INSTANCE  |Service Instance Name                       |O        |
   |SERVICE_KEY       |Service Instance Key Name                   |O        |
-  |--guid            |Inquires Service Instance Guid.         |X        |
+  |--guid            |Retrieve Service Instance Guid.         |X        |
 
 
 
@@ -1685,7 +1685,7 @@ View list of Apps in the target space.
 
 
   ```
-  Inquires list of organization information...
+  Retrieve list of organization information...
   ```
 
 
@@ -1716,7 +1716,7 @@ View list of Apps in the target space.
 
 
   ```
-  Inquires detailed information of organization조직 상세 정보를 조회합니다.
+  Retrieve detailed information of organization조직 상세 정보를 조회합니다.
   ```
 
 
@@ -1726,7 +1726,7 @@ View list of Apps in the target space.
   | Parameter Name   |           Description                | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
   |ORG_NAME      |Organization Name                         |O        |
-  |--guid       |Inquires the guid of the organization.           |X        |
+  |--guid       |Retrieve the guid of the organization.           |X        |
 
 
   - **Use Example**
@@ -1785,7 +1785,7 @@ View list of Apps in the target space.
 
 
   ```
-  Inquires list of the organization's information.
+  Retrieve list of the organization's information.
   ```
 
 
@@ -1854,7 +1854,7 @@ View list of Apps in the target space.
 
 
   ```
-  Inquires list of space.
+  Retrieve list of space.
   ```
 
 
@@ -1884,7 +1884,7 @@ View list of Apps in the target space.
 
 
   ```
-  Inquires detailed list of space.
+  Retrieve detailed list of space.
   ```
 
 
@@ -2015,7 +2015,7 @@ View list of Apps in the target space.
 
 
   ```
-  Inquires domain information list.
+  Retrieve domain information list.
   ```
 
 
@@ -2180,7 +2180,7 @@ View list of Apps in the target space.
 
 
   ```
-  Inquires the route information role that currently exists in the organization/space.
+  Retrieve the route information role that currently exists in the organization/space.
   ```
 
 
@@ -2452,7 +2452,7 @@ View list of Apps in the target space.
 
 
   ```
-  Inquires list of buildpacks.
+  Retrieve list of buildpacks.
   ```
 
 
@@ -2662,7 +2662,7 @@ View list of Apps in the target space.
 
 
   ```
-  Inquires users under a certain organization.
+  Retrieve users under a certain organization.
   ```
 
 
@@ -2705,7 +2705,7 @@ View list of Apps in the target space.
   |-------------|--------------------------------|-----------|
   |USERNAME     |Username                          |O         |
   |ORG          |Organization name                          |O         |
-  |ROLE        |Role Name <br>  - OrgManager : Authority to manage User and modifies/plan setting <br> - BillingManager : Generates and manages billing and billing informations <br>  - OrgAuditor : Inquires organizational quota utilization and user role             |O         |
+  |ROLE        |Role Name <br>  - OrgManager : Authority to manage User and modifies/plan setting <br> - BillingManager : Generates and manages billing and billing informations <br>  - OrgAuditor : Retrieve organizational quota utilization and user role             |O         |
 
 
 
@@ -2741,7 +2741,7 @@ View list of Apps in the target space.
   |-------------|--------------------------------|-----------|
   |USERNAME     |Username                          |O         |
   |ORG          |Organizaion Name                          |O         |
-  |ROLE        |Role Name <br>  - OrgManager : Authority to manage User and modifies/plan setting <br> - BillingManager :enerates and manages billing and billing informations <br>  - OrgAuditor : Inquires organizational quota utilization and user role             |O         |
+  |ROLE        |Role Name <br>  - OrgManager : Authority to manage User and modifies/plan setting <br> - BillingManager :enerates and manages billing and billing informations <br>  - OrgAuditor : Retrieve organizational quota utilization and user role             |O         |
 
 
 
@@ -2766,7 +2766,7 @@ View list of Apps in the target space.
 
 
   ```
-  Inquires user list information assigned to an organization's space.
+  Retrieve user list information assigned to an organization's space.
   ```
 
 
@@ -2812,7 +2812,7 @@ View list of Apps in the target space.
   |USERNAME     |Username                         |O         |
   |ORG          |Organization Name                           |O         |
   |SPACE        |Space Name                       |O         |
-  |ROLE         |Role Name  <br>  - SpaceManager: Inquires and modifies the number of user accounts and instances in the space, service binding status, and resource status in the space as an administrator of the space <br> - SpaceDeveloper: Deploys App to service Management  <br> - SpaceAuditor: Inquires service bindings, number of instances, app utilization, etc. in space    |O         |
+  |ROLE         |Role Name  <br>  - SpaceManager: Retrieve and modifies the number of user accounts and instances in the space, service binding status, and resource status in the space as an administrator of the space <br> - SpaceDeveloper: Deploys App to service Management  <br> - SpaceAuditor: Retrieve service bindings, number of instances, app utilization, etc. in space    |O         |
 
   - **Use Example**
 
@@ -2847,7 +2847,7 @@ View list of Apps in the target space.
   |USERNAME     |Username                         |O         |
   |ORG          |Organization Name                           |O         |
   |SPACE        |Space Name                       |O         |
-  |ROLE         |Role Name  <br>  - SpaceManager: Manages user accounts and view the number of instances in the space, service binding status, and resource status in the space as an administrator of the space. <br> - SpaceDeveloper: Deploys App to service Management <br> - SpaceAuditor: Inquires service bindings, number of instances, app utilization, etc. in space   |O         |
+  |ROLE         |Role Name  <br>  - SpaceManager: Manages user accounts and view the number of instances in the space, service binding status, and resource status in the space as an administrator of the space. <br> - SpaceDeveloper: Deploys App to service Management <br> - SpaceAuditor: Retrieve service bindings, number of instances, app utilization, etc. in space   |O         |
 
   - **Use Example**
 
@@ -2872,7 +2872,7 @@ View list of Apps in the target space.
 
 
   ```
-  Inquires Quota list.
+  Retrieve Quota list.
   ```
 
 
@@ -2901,7 +2901,7 @@ View list of Apps in the target space.
 
 
   ```
-  Inquires Quota's detailed information.
+  Retrieve Quota's detailed information.
   ```
 
 
@@ -3149,7 +3149,7 @@ View list of Apps in the target space.
 
 
   ```
-  Inquires Space-quota information list.
+  Retrieve Space-quota information list.
   ```
 
 
@@ -3181,7 +3181,7 @@ View list of Apps in the target space.
 
 
   ```
-  Inquires Space quota detailed information.
+  Retrieve Space quota detailed information.
   ```
 
 
@@ -3399,7 +3399,7 @@ View list of Apps in the target space.
 
 
   ```
-  Inquires service authentication token list.
+  Retrieve service authentication token list.
   ```
 
 
@@ -3538,7 +3538,7 @@ View list of Apps in the target space.
 
 
   ```
-  Inquires list of Service Broker information.
+  Retrieve list of Service Broker information.
   ```
 
 
@@ -3792,7 +3792,7 @@ View list of Apps in the target space.
 
 
   ```
-  Inquires list of service to be accessed.
+  Retrieve list of service to be accessed.
   ```
 
 
@@ -3900,7 +3900,7 @@ View list of Apps in the target space.
 
 
   ```
-  Inquires detailed information of security group.
+  Retrieve detailed information of security group.
   ```
 
 
@@ -3935,7 +3935,7 @@ View list of Apps in the target space.
 
 
   ```
-  Inquires list of Security group.
+  Retrieve list of Security group.
   ```
 
 
@@ -4171,7 +4171,7 @@ View list of Apps in the target space.
 
 
   ```
-  Inquires Staging security group information list.
+  Retrieve Staging security group information list.
   ```
 
 
@@ -4234,7 +4234,7 @@ View list of Apps in the target space.
 
 
   ```
-  Inquires list of running security groups.
+  Retrieve list of running security groups.
   ```
 
 
@@ -4267,7 +4267,7 @@ View list of Apps in the target space.
 
 
   ```
-  Inquires the contents of the actual environment variable.
+  Retrieve the contents of the actual environment variable.
   ```
 
 
@@ -4297,7 +4297,7 @@ View list of Apps in the target space.
 
 
   ```
-  Inquires the contents of environment variables used during staging.
+  Retrieve the contents of environment variables used during staging.
   ```
 
 
@@ -4399,7 +4399,7 @@ View list of Apps in the target space.
 
 
   ```
-  Inquires list of feature flags.
+  Retrieve list of feature flags.
   ```
 
 
@@ -4430,7 +4430,7 @@ View list of Apps in the target space.
 
 
   ```
-  Inquires the status of a specific Feature flag.
+  Retrieve the status of a specific Feature flag.
   ```
 
 
@@ -4610,7 +4610,7 @@ View list of Apps in the target space.
 
 
   ```
-  Inquires token value received from CF by user after cf login.
+  Retrieve token value received from CF by user after cf login.
   ```
 
 
@@ -4713,7 +4713,7 @@ View list of Apps in the target space.
 
 
   ```
-  Inquires list of plugin repository(Storage) added in CLI.
+  Retrieves list of plugin repository(Storage) added in CLI.
   ```
 
 
@@ -4743,7 +4743,7 @@ View list of Apps in the target space.
 
 
   ```
-  Inquires the list of plug-ins in the Repository.
+  Retrieves the list of plug-ins in the Repository.
   ```
 
 
@@ -4779,7 +4779,7 @@ View list of Apps in the target space.
 
 
   ```
-  Inquires the list of available commands for the added plugin.
+  Retrieves the list of available commands for the added plugin.
   ```
 
 

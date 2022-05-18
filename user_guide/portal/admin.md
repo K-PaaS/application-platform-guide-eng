@@ -9,9 +9,9 @@
     * [2.1. PaaS-TA Operator Portal Login](#2.1)
     * [2.2. PaaS-TA Operator Portal Log](#2.2)
 3. [PaaS-TA Operator Portal Dashboard](#3)
-    * [3.1. Inquire Dashboard Information](#3.1)
+    * [3.1. Retrieve Dashboard Information](#3.1)
 4. [Operation Managing Menu](#4)
-    * [4.1. Inquire Organization and Space](#4.1)    
+    * [4.1. Retrieve Organization and Space](#4.1)    
     * [4.2. Client](#4.2)    
     * [4.3. Catalog](#4.3)    
     * [4.3.1 Catlog Managing App Template](#4.3.1)
@@ -68,7 +68,7 @@ Access to PaaS-TA Operators Portal Web site.
 
 Shows the Organizatiom, Space, App, Users statistic Informations registered in PaaS-TA.
 
-### <a name="3.1"/>  3.1. Inquire Dashboard Information
+### <a name="3.1"/>  3.1. Retrieve Dashboard Information
 
 1. Shows Organizations ①Space, ②APP, and ③ User information.<br>
 ![04] 
@@ -80,14 +80,14 @@ Shows the Organizatiom, Space, App, Users statistic Informations registered in P
 
 A menu to perform the management necessary for the operation of the PaaS-TA portal.<br>
 
-### <a name="4.1"/>  4.1. Inquire Organization and Space
+### <a name="4.1"/>  4.1. Retrieve Organization and Space
 
 **The administrator manages the organization and space of all users.<br>**
 
-1. Inquires ①Organization and ②Space. ③Search Terms can be inquired too.<br>
+1. Retrieve ①Organization and ②Space. ③Search Terms can be retrieved too.<br>
 ![06]
 
-2. Click ① Details button beside the organization name. Inquire detailed informations of the ② Organization.<br>
+2. Click ① Details button beside the organization name. Retrieve detailed informations of the ② Organization.<br>
 ![07]
 
 3. Click ①Detail button beside Space Name. Check detailed information of ②Space.<br>
@@ -96,49 +96,49 @@ A menu to perform the management necessary for the operation of the PaaS-TA port
 
 ### <a name="4.2"/>  4.2. Client
 
-**The Administrator provides client inquire, register, delete functions.<br>**
+**The Administrator provides client retrieve, register, delete functions.<br>**
 
-1. Inquire Client list.<br>    
+1. Retrieve Client list.<br>    
 ![09]
 
 2. Proceed to Client Details page by clicking **Client ID**. Client ID can be deleted by clicking the "Delete" button at the client detail page.<br>
 ![10]
 
-3. ①"클라이언트 등록" 버튼을 클릭한다. 클라이언트 아이디, 패스워드, 옵션, 옵션 가이드를 입력하고 ②"등록" 버튼을 클릭하여 등록한다.<br>
+3. Click ①"Register Client" button. Register by clicking ②"Register" button after entering client ID, Password, Option and Option Guide.<br>
 ![11]
 
-### <a name="4.3"/>  4.3. 카탈로그
+### <a name="4.3"/>  4.3. Catalog
 
-**관리자가 카탈로그의 앱 템플릿, 앱 개발환경, 앱서비스 조회,등록,수정,삭제를 기능을 제공한다.<br>**
+**The Administrator provides catalog app template, app development environment, app service retrieve, register, modify, and delete functions.<br>**
 
 ![12]
 
-### <a name="4.3.1"/>  4.3.1 카탈로그 관리 앱 템플릿
-1. 카탈로그 앱 템플릿 목록을 조회한다. 이름, 요약, 분류, 공개여부를 조회할 수 있다.    
-검색창에서 검색유형, 검색항목, 공개여부, 검색어로 검색이 가능하다.
+### <a name="4.3.1"/>  4.3.1 Catalog Managing App Template
+1. Retrieve list of Catalog App Template. It shows Name, Outline, Classification, and Public Availability.    
+In the search window, search types, search items, disclosure status, and search terms can be used.
 ![13]
 
-2. 앱 템플릿 이름을 클릭하면 상세화면이 나온다. 수정할 내역이 있을 경우 수정 한 후 ①"저장"버튼을 클릭하여 저장한다.
+2. A page with detail appears when clicking the app template name. In need of modification, input the updated data then click ①"Save" button.
 ![14]
 
-3. ②"삭제" 버튼을 클릭하여 앱 템플릿을 삭제한다.
+3. Delete App Template by clicking ②"Delete" button.
 ![15]
 
-4. 앱 템플릿을 등록 시, ①"앱 템플릿 등록" 버튼을 클릭한다. 앱 템플릿 등록 팝업에 이름, 분류, 앱 개발환경, 서비스, 썸네일, 공개여부, 요약, 설명을 입력한다. ②"등록" 버튼을 누르면 새로운 앱 템플릿이 등록된다.
+4. Click ①"Register App Template" button when registering an app template. Enter the following at the App Template Register pop- up: Name, Classification, App Development Environment, Service Thumbnail, Public Availability, Summary and Description. A new App Template will be registerd by Clicking ②"Register" button.
 ![16]
 
-### <a name="4.3.2"/>  4.3.2 카탈로그 관리 앱 개발환경
-1. 카탈로그 앱 개발환경 목록을 조회한다. 이름, 요약, 분류, 공개여부를 조회할 수 있다.
-검색창에서 검색유형, 검색항목, 공개여부, 검색어로 검색이 가능하다.
+### <a name="4.3.2"/>  4.3.2 Catalog Managing App Development Environment
+1. Retrieve Catalog App Development Environment list. It shows Name, Outline, Classification, Public Availability.
+One can search by the type, item, name, whether it's private or public in the search engine
 ![17]
 
-2. 앱 개발환경 이름을 클릭하면 상세화면이 나온다. 수정 내역 완료 후 ①"저장"버튼을 클릭하여 저장(수정)한다.
+2. A page with detail appears when clicking the App Development Environment Name. Input datas to be modify then click ①"Save" button to complete modification.
 ![18]
 
-3. ②"삭제" 버튼을 클릭하여 앱 개발환경을 삭제한다.
+3. Delete App Development Environment by clicking ②"Delete" button.
 ![19]
 
-4. 카탈로그 화면에서 앱 개발환경을 등록하기 위해 ①"앱 개발환경 등록" 버튼을 클릭한다. 앱 개발환경 등록 팝업에 이름, 분류, 앱 개발환경, 서비스, 썸네일, 공개여부, 요약, 설명을 입력한다. ②"등록" 버튼을 누르면 새로운 앱 개발환경이 등록된다.
+4. Click ①"Register App Development Environment" button from the Catalog page to Register.Enter the following at the App Development Environment Registering pop-up: Name, Classification, App Development Environment, Service, Thumbnail, Public Availability, Summary and Description. Complete registering by clicking ②"Register" button.
 ![20]
 
 ### <a name="4.3.3"/>  4.3.3 카탈로그 관리 서비스

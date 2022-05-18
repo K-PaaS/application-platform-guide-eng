@@ -687,38 +687,38 @@ Click the name of the application created in the catalog list to go to the appli
 ### <div id='81'/>  3.2.5.4.  My Organization
 ![3-2-7-2-1-0-2]
 
-### <div id='79'/> 3.2.5.4.1  나의 조직 탈퇴
-1.  목록에서 탈퇴 할 조직의 ① "휴지통 버튼"을 클릭한다.
+### <div id='79'/> 3.2.5.4.1  Leave My Organization
+1.  Click ① "Trashbin" button of the organization to leave from the list.
 ![3-2-7-2-4-3-0]
 
-2.  확인 팝업의 “삭제”버튼을 클릭하여 조직 탈퇴를 완료한다.
+2.  Click “Delete” button from the confirm pop-up to complete the process.
 ![3-2-7-2-4-3-1]
 
-### <div id='80'/> 3.2.5.5.  계정 삭제
-1.  “계정삭제” 버튼을 클릭한다.
+### <div id='80'/> 3.2.5.5.  Delete Account
+1.  Click “Delete Account” button.
 ![3-2-7-2-2-2-1]
 
-2.  계정 삭제 확인 팝업에서 사용자 계정과 비밀번호를 입력한다. “삭제”버튼을 클릭하여 계정 삭제를 완료한다.
+2.  Enter user ID and password at the confirm pop-up. Click “Delete” button to complete the process.
 ![3-2-7-2-2-2-0]
 
-### <div id='81'/> 3.2.5.6.  로그아웃
-1.  좌측 메뉴의 “로그아웃”을 클릭한다.
+### <div id='81'/> 3.2.5.6.  Logout
+1.  Click “Logout” from menu on the left side.
 ![3-2-7-4-0]
 
 ### <div id='82'/> 3.3.6.1.  CAAS Deployments 
-1.  CAAS 서비스 설치한 조직의 Deployment 탭을 클릭한다.
+1.  Click Deployment tab of the CAAS service installed organization.
 ![cass-dashboard1]
 
 ### <div id='83'/> 3.3.6.2.  CAAS Pods
-1.  CAAS 서비스 설치한 조직의 Pods 탭을 클릭한다.
+1.  Click Pods tab of the CAAS service installed organization.
 ![cass-dashboard2]
 
 ### <div id='84'/> 3.3.6.3.  CAAS Replica Sets
-1.  CAAS 서비스 설치한 조직의  Replica Sets탭을 클릭한다.
+1.  Click Replica Sets tab of the CAAS service installed organization.
 ![cass-dashboard3]
 
 ### <div id='85'/> 3.3.6.4.  CAAS Pvc
-1.  CAAS 서비스 설치한 조직의 Pvc 탭을 클릭한다.
+1.  Click Pvc tab of the CAAS service installed organization.
 ![cass-dashboard4]
 
 [2-1-0]:./images/user-portal/2-1-0.png
@@ -880,4 +880,4 @@ Click the name of the application created in the catalog list to go to the appli
 [cass-dashboard4]:./images/user-portal/cass-dashboard4.png
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > 사용자 포털
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > User Portal

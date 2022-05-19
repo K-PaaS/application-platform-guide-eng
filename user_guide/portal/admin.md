@@ -253,7 +253,7 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 ![41]
 ![42]
 
-4. Click ①"Register" from **Detail Table**. Enter Key, Value, Summary, 사용여부 from the code detail registering pop up tab, then click ②"Register" button to complete registering.<br>
+4. Click ①"Register" from **Detail Table**. Enter Key, Value, Summary, usage from the code detail registering pop up tab, then click ②"Register" button to complete registering.<br>
 ![43]
 ![44]
 
@@ -362,8 +362,8 @@ This is a menu for performing service management on the PaaS-TA portal.<br>
 1. Look up the service list used in PaaS-TA Portal.<br>
 ![63]
 
-2. Click a service from service control list to check the service or the authorized activation of the service plan. Can modify the  ①"접근" 리스트를 클릭하여 하위 집합에 대한 권한 활성화 변경이 가능하다. The ② list service or service plan may be granted specified organizational rights.<br>
-**When "Acces" is ALL(Activated), Service plan of One or all organizations 하나 또는 모든 조직에 대한 서비스 또는 서비스 플랜 대한 액세스를 'NONE(비 활성화)'으로 변경해야한다.**<br>
+2. Click a service from service control list to check the authority activation of the service or the service plan. Can modify the  Click ①Access combobox to modify the authority activation of the selected service. The ② list service or service plan may be granted specified organizational rights.<br>
+**When "Acces" is ALL(Activated), Service plan of One or all the organizations service or service plan access should be changed to 'NONE(Deactivated)'.**<br>
 ![64]
 
 3. ① "Add Organization" 리스트에서 권한 추가 할 조직을 클릭하여 추가한다.

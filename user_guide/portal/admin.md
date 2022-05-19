@@ -331,39 +331,39 @@ This is a menu for performing service management on the PaaS-TA portal.<br>
 1. Check the information of the buildpack being used at PaaS-TA Portal.<br>
 ![50]
 
-2. Change the order of combo-box to change the order of buildpack..<br>
+2. change the value in the combobox to change the order of buildpack..<br>
 ![51]
 
-3. 빌드팩 사용유무를 변경하기 위해 사용유무 체크박스를 변경한다.<br>
+3. Click usage checkbox to change the usage status of buildpack.<br>
 ![52]
 
-4. 빌드팩 Lock유무를 변경하기 위해 Lock 체크박스를 변경한다.<br>
+4. Click Lock checkbox to change the Lock status of the buildpack.<br>
 ![53]
 
-### <a name="5.2"/>  5.2 서비스 브로커
+### <a name="5.2"/>  5.2 Service Broker
 
-**관리자가 서비스 브로커 URL를 등록,브로커 조회,수정,삭제 기능을 제공한다.<br>**
+**Administrators menu provides service broker URL registration, broker retrieve, modify and delete .<br>**
 
-1. PaaS-TA 포탈에서 사용하는 서비스 브로커 내역을 조회한다.<br>
+1. Look up the service broker list used in PaaS-TA Portal.<br>
 ![54]
 
-2. 서비스 브로커 리스트의 서비스 이름을 클릭하면 해당 서비스 브로커 상세를 볼 수 있다. 수정할 내역이 있을 경우 수정 후 ①"저장" 버튼을 클릭하여 서비스 브로커를 저장한다.<br>
+2. Click on the service name in the service broker list to view the details of the service broker. When there are modifications, click ①"Save" button after modifying to save the changes.<br>
 ![55]
 
-3. **5.2- 2** ②"삭제" 버튼을 클릭하여 서비스 브로커를 삭제한다.<br>
+3. **5.2- 2** Click ②"Delete" button to delete service broker.<br>
 
-4.  서비스 브로커 리스트의 ①"서비스 브로커 등록" 버튼을 클릭한다. 서비스 브로커 이름, 사용자 이름, 사용자 패스워드,URL 정보를 입력한다. ②"등록"버튼을 클릭하면 서비스 브로커 등록이 완료된다.<br>
+4.  Click ①"Register Service Broker" button from the service broker list. Enter Service Broker Name, User Name, User Password, URL information. Click ②"Register" button to complete registering service broker.<br>
 ![57]
 
-### <a name="5.3"/>  5.3 서비스 제어
+### <a name="5.3"/>  5.3 Service Control
 
-**관리자가 사용자에게 사용 할 수 있는 서비스 계획을 제어하고 제한된 서비스 가용성을 관리한다.<br>**
+**Administrators control service plans and manage limited service availability available to users.<br>**
 
-1. PaaS-TA 포탈에서 사용하는 서비스 내역을 조회한다.<br>
+1. Look up the service list used in PaaS-TA Portal.<br>
 ![63]
 
-2. 서비스 제어 리스트의 서비스를 클릭하면 해당 서비스 또는 서비스 플랜에 대한 권한 활성화를 볼 수 있다. ①"접근" 리스트를 클릭하여 하위 집합에 대한 권한 활성화 변경이 가능하다. ② 리스트 서비스 또는 서비스 플랜에 지정된 조직 권한을 부여할 수 있다.<br>
-**"접근"이 ALL(활성화)의 경우, 하나 또는 모든 조직에 대한 서비스 또는 서비스 플랜 대한 액세스를 'NONE(비 활성화)'으로 변경해야한다.**<br>
+2. Click a service from service control list to check the service or the authorized activation of the service plan. Can modify the  ①"접근" 리스트를 클릭하여 하위 집합에 대한 권한 활성화 변경이 가능하다. The ② list service or service plan may be granted specified organizational rights.<br>
+**When "Acces" is ALL(Activated), Service plan of One or all organizations 하나 또는 모든 조직에 대한 서비스 또는 서비스 플랜 대한 액세스를 'NONE(비 활성화)'으로 변경해야한다.**<br>
 ![64]
 
 3. ① "Add Organization" 리스트에서 권한 추가 할 조직을 클릭하여 추가한다.

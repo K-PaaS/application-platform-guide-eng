@@ -945,7 +945,7 @@ View list of Apps in the target space.
 
 
   ```
- Retrieve environment variables of the app.
+ Retrieves environment variables of the app.
   ```
 
 

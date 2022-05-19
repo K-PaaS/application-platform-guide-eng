@@ -246,18 +246,18 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 1. Retrieve the code used in Paas-TA Portal by code-group. Can check whether it is used, search type, and search term.<br>
 ![39]
 
-2. 코드 그룹의 코드 ID를 클릭하면 상세 코드 정보가 조회된다.<br>
+2. Can retrieve the detailed code informations by clicking the Code ID from code group.<br>
 ![40] 
 
-3. **Group Table** 에서 ①"등록" 버튼을 클릭한다. 팝업 창에서 코드ID와 코드이름을 입력하고 ②"등록" 버튼을 클릭하여 코드 등록을 한다.
+3. Click ①"Register" button from **Group Table**. Enter Code ID and Code Name at the pop up tab then click ②"Register" button.
 ![41]
 ![42]
 
-4. **Detail Table** 에서 ①"등록" 버튼을 클릭한다. 코드 상세 등록 팝업 창에서 Key, Value, 요약, 사용여부를 입력하고 ②"등록"버튼을 클릭하여 코드를 등록(추가)한다.<br>
+4. Click ①"Register" from **Detail Table**. Enter Key, Value, Summary, 사용여부 from the code detail registering pop up tab, then click ②"Register" button to complete registering.<br>
 ![43]
 ![44]
 
-5. **Detail Table** 에서 해당 코드(Key, Value, 요약, 사용)를 클릭한다. 코드 상세 팝업에서 ①"삭제" 버튼을 클릭하여 코드 삭제를 한다.
+5. Click appropriate code(Key, Value, Summary, 사용) from**Detail Table**. 코드 상세 팝업에서 ①"삭제" 버튼을 클릭하여 코드 삭제를 한다.
 ![45]
 
 ### <a name="4.7"/>  4.7. 설정 정보

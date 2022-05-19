@@ -9,9 +9,9 @@
     * [2.1. PaaS-TA Operator Portal Login](#2.1)
     * [2.2. PaaS-TA Operator Portal Log](#2.2)
 3. [PaaS-TA Operator Portal Dashboard](#3)
-    * [3.1. Retrieve Dashboard Information](#3.1)
+    * [3.1. Check Dashboard Information](#3.1)
 4. [Operation Managing Menu](#4)
-    * [4.1. Retrieve Organization and Space](#4.1)    
+    * [4.1. Check Organization and Space](#4.1)    
     * [4.2. Client](#4.2)    
     * [4.3. Catalog](#4.3)    
     * [4.3.1 Catlog Managing App Template](#4.3.1)
@@ -68,7 +68,7 @@ Access to PaaS-TA Operators Portal Web site.
 
 Shows the Organizatiom, Space, App, Users statistic Informations registered in PaaS-TA.
 
-### <a name="3.1"/>  3.1. Retrieve Dashboard Information
+### <a name="3.1"/>  3.1. Check Dashboard Information
 
 1. Shows Organizations ①Space, ②APP, and ③ User information.<br>
 ![04] 
@@ -80,14 +80,14 @@ Shows the Organizatiom, Space, App, Users statistic Informations registered in P
 
 A menu to perform the management necessary for the operation of the PaaS-TA portal.<br>
 
-### <a name="4.1"/>  4.1. Retrieve Organization and Space
+### <a name="4.1"/>  4.1. Check Organization and Space
 
 **The administrator manages the organization and space of all users.<br>**
 
-1. Retrieve ①Organization and ②Space. ③Search Terms can be retrieved too.<br>
+1. Check ①Organization and ②Space. ③Search Terms can also be checked.<br>
 ![06]
 
-2. Click ① Details button beside the organization name. Retrieve detailed informations of the ② Organization.<br>
+2. Click ① Details button beside the organization name. Check detailed informations of the ② Organization.<br>
 ![07]
 
 3. Click ①Detail button beside Space Name. Check detailed information of ②Space.<br>
@@ -96,9 +96,9 @@ A menu to perform the management necessary for the operation of the PaaS-TA port
 
 ### <a name="4.2"/>  4.2. Client
 
-**The Administrator provides client retrieve, register, delete functions.<br>**
+**The Administrator provides client Check, register, delete functions.<br>**
 
-1. Retrieve Client list.<br>    
+1. Check Client list.<br>    
 ![09]
 
 2. Proceed to Client Details page by clicking **Client ID**. Client ID can be deleted by clicking the "Delete" button at the client detail page.<br>
@@ -109,12 +109,12 @@ A menu to perform the management necessary for the operation of the PaaS-TA port
 
 ### <a name="4.3"/>  4.3. Catalog
 
-**The Administrator provides catalog app template, app development environment, app service retrieve, register, modify, and delete functions.<br>**
+**The Administrator provides catalog app template, app development environment, app service check, register, modify, and delete functions.<br>**
 
 ![12]
 
 ### <a name="4.3.1"/>  4.3.1 Catalog Managing App Template
-1. Retrieve list of Catalog App Template. It shows Name, Outline, Classification, and Public Availability.    
+1. Check list of Catalog App Template. It shows Name, Outline, Classification, and Public Availability.    
 In the search window, search types, search items, disclosure status, and search terms can be used.
 ![13]
 
@@ -128,7 +128,7 @@ In the search window, search types, search items, disclosure status, and search 
 ![16]
 
 ### <a name="4.3.2"/>  4.3.2 Catalog Managing App Development Environment
-1. Retrieve Catalog App Development Environment list. It shows Name, Outline, Classification, Public Availability.
+1. Check Catalog App Development Environment list. It shows Name, Outline, Classification, Public Availability.
 One can search by the type, item, name, whether it's private or public in the search engine.
 ![17]
 
@@ -142,7 +142,7 @@ One can search by the type, item, name, whether it's private or public in the se
 ![20]
 
 ### <a name="4.3.3"/>  4.3.3 Catalog Management Service 
-1. Retrieve Catalog Service List. Can check name, outline, classification, public availability. One can search by the type, item, name, whether it's private or public in the search engine.<br>
+1. Check Catalog Service List. Can check name, outline, classification, public availability. One can search by the type, item, name, whether it's private or public in the search engine.<br>
 ![21]
 
 2. Detail page shows up when clicking the service name. After modifying, click ①"Save" button to save.<br>
@@ -198,7 +198,7 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 
 **The administrator checks the user's information and approves the account.<br>**
 
-1. Retrieve User list. User account, name, phone number, presence or absence of administrator, and approval status can be inquired. can search with search terms in the search window.<br>
+1. Check User list. User account, name, phone number, presence or absence of administrator, and approval status can be checked. can search with search terms in the search window.<br>
 ![25]
 
 2. Click ①"Manage" button and click "Reset Password" to Reset the password.<br>
@@ -222,9 +222,9 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 
 ### <a name="4.5"/>  4.5. Authorization Management
 
-**Administrator provides and manages authority to Cloud Foundry sercurity groups retrieve, modify, and delete.<br>**
+**Administrator provides and manages authority to Cloud Foundry sercurity groups Check, modify, and delete.<br>**
 
-1. Retrieves user and authorized groups.<br>
+1. Checks user and authorized groups.<br>
 ![34]
 
 2. Enter the group name by clicking ①"Create Group" . Click ②"Save" button to complete creating authorized group.   
@@ -243,10 +243,10 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 
 **Administrator manages the PaaS-TA Portal Code.<br>**
 
-1. Retrieve the code used in Paas-TA Portal by code-group. Can check whether it is used, search type, and search term.<br>
+1. Check the code used in Paas-TA Portal by code-group. Can check whether it is used, search type, and search term.<br>
 ![39]
 
-2. Can retrieve the detailed code informations by clicking the Code ID from code group.<br>
+2. Can check the detailed code informations by clicking the Code ID from code group.<br>
 ![40] 
 
 3. Click ①"Register" button from **Group Table**. Enter Code ID and Code Name at the pop up tab then click ②"Register" button.
@@ -257,20 +257,20 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 ![43]
 ![44]
 
-5. Click appropriate code(Key, Value, Summary, 사용) from**Detail Table**. Complete deleting the code by clicking ①"Delete" Button at the code detail pop up tab.
+5. Click appropriate code(Key, Value, Summary, Usage) from**Detail Table**. Complete deleting the code by clicking ①"Delete" Button at the code detail pop up tab.
 ![45]
 
 ### <a name="4.7"/>  4.7. Setting Information
 
-**Administrator provides the Setting PaaS-TA 포탈의 설정 정보를 조회,등록,수정 기능을 제공한다.<br>**
+**Administrator provides ta function to retreive, register, and modify settings information on the Paas-ta portal.<br>**
 
-1. PaaS-TA 포탈에서 사용하는 설정 정보들을 조회한다.
+1. Check setting informations used in PaaS-TA Portal.
 ![60]
 
-2. PaaS-TA 포탈에서 사용하는 설정 정보들을 수정하고 저장한다.
+2. Modify and save the settings used at PaaS-TA Portal.
 ![62]
 
-### <a name="4.8"/>  4.8. 할당량 관리
+### <a name="4.8"/>  4.8. Quota Management
 
 **관리자가 PaaS-TA 포탈의 조직 및 공간 할당량을 조회,등록,수정,삭제를 기능을 제공한다.<br>**
 

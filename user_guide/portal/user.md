@@ -83,10 +83,10 @@
      * [3.2.5.4.  My Organization](#81)
      * [3.2.5.4.1  Leave My Organization](#79) 
      * [3.2.5.6.  Logout](#80)
-     * [3.3.6.1.  Retrieve Dashboard CAAS Deployments](#82)
-     * [3.3.6.2.  Retrieve Dashboard CAAS Pods](#83)
-     * [3.3.6.3.  Retrieve Dashboard CAAS Replica Sets](#84)
-     * [3.3.6.4.  Retrieve Dashboard CAAS CAAS Pvc](#85)
+     * [3.3.6.1.  Check Dashboard CAAS Deployments](#82)
+     * [3.3.6.2.  Check Dashboard CAAS Pods](#83)
+     * [3.3.6.3.  Check Dashboard CAAS Replica Sets](#84)
+     * [3.3.6.4.  Check Dashboard CAAS CAAS Pvc](#85)
      
      
 
@@ -166,7 +166,7 @@ This chapter describes the menu configuration and screen description of the PaaS
 
 ### <div id='9'/> 3.1.  Construct PaaS-TA User Portal Menu
 
-The PaaS-TA User Portal consists of a section that manages organizations, spaces, and applications, a section that generates development environments and services, and an information retrieve section that retrieves documents and menus.
+The PaaS-TA User Portal consists of a section that manages organizations, spaces, and applications, a section that generates development environments and services, and an information check section that checks documents and menus.
 
 <table>
   <tr>
@@ -185,11 +185,11 @@ The PaaS-TA User Portal consists of a section that manages organizations, spaces
     <td>Application Development Envicronment and Create Service</td>
   </tr>
   <tr>
-    <td rowspan="5">Retrieve Information</td>
+    <td rowspan="5">Check Information</td>
   </tr>
   <tr>
     <td>Document</td>
-    <td>Retrieve Documents Registered by the Administrator</td>
+    <td>Check Documents Registered by the Administrator</td>
   </tr>
   <tr>
     <td>My Menu</td>

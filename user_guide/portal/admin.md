@@ -96,7 +96,7 @@ A menu to perform the management necessary for the operation of the PaaS-TA port
 
 ### <a name="4.2"/>  4.2. Client
 
-**The Administrator provides client Check, register, delete functions.<br>**
+**The Administrator Menu provides client Check, register, delete functions.<br>**
 
 1. Check Client list.<br>    
 ![09]
@@ -109,7 +109,7 @@ A menu to perform the management necessary for the operation of the PaaS-TA port
 
 ### <a name="4.3"/>  4.3. Catalog
 
-**The Administrator provides catalog app template, app development environment, app service check, register, modify, and delete functions.<br>**
+**The Administrator Menu provides catalog app template, app development environment, app service check, register, modify, and delete functions.<br>**
 
 ![12]
 
@@ -222,7 +222,7 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 
 ### <a name="4.5"/>  4.5. Authorization Management
 
-**Administrator provides and manages authority to Cloud Foundry sercurity groups Check, modify, and delete.<br>**
+**Administrator menu provides and manages authority to Cloud Foundry sercurity groups Check, modify, and delete.<br>**
 
 1. Checks user and authorized groups.<br>
 ![34]
@@ -262,7 +262,7 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 
 ### <a name="4.7"/>  4.7. Setting Information
 
-**Administrator provides ta function to retreive, register, and modify settings information on the Paas-ta portal.<br>**
+**Administrator menu provides ta function to retreive, register, and modify settings information on the Paas-ta portal.<br>**
 
 1. Check setting informations used in PaaS-TA Portal.
 ![60]
@@ -272,7 +272,7 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 
 ### <a name="4.8"/>  4.8. Quota Management
 
-**관리자가 PaaS-TA 포탈의 조직 및 공간 할당량을 조회,등록,수정,삭제를 기능을 제공한다.<br>**
+**Operator Menu provides checking, registering, modifying and deleting of PaaS-TA Portal's organization and space's quota.<br>**
 
 ![46]
 

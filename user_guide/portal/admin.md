@@ -22,7 +22,7 @@
     * [4.6. Code Management](#4.6)   
     * [4.7. Setting Information](#4.7)
     * [4.8. Quota Management](#4.8)      
-    * [4.9. Division Management](#4.9)  
+    * [4.9. Split Management](#4.9)  
 5. [Service Management](#5)
     * [5.1. Buildpack](#5.1)
     * [5.2. Service Broker](#5.2)
@@ -198,7 +198,7 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 
 **The administrator checks the user's information and approves the account.<br>**
 
-1. Check User list. User account, name, phone number, presence or absence of administrator, and approval status can be checked. can search with search terms in the search window.<br>
+1. Look up to the User list. User account, name, phone number, presence or absence of administrator, and approval status can be checked. can search with search terms in the search window.<br>
 ![25]
 
 2. Click ①"Manage" button and click "Reset Password" to Reset the password.<br>
@@ -276,38 +276,38 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 
 ![46]
 
-1. "조직 할당량 등록" 버튼을 클릭하여 조직 할당량을 등록한다.<br>
+1. Click "Register Organization Quota" to register the organization's quota.<br>
 ![47]
 
-2. 조직 할당량 등록 팝업에 이름, 메모리, 인스턴스 메모리, 라우트, 서비스 인스턴스, APP 인스턴스, 무료여부, 예약된 라우트 포트를 입력한다. "등록" 버튼을 클릭하여 조직 할당량을 등록한다.<br>
+2. Enter Name, Memory,Instance, Route, Service Instance, App Instance, Public Availability, and reserved route at the Organization quota registering pop up tab. Click "Register" and register organization quota.<br>
 ![48]
 
-3. 수정 할 조직 할당량을 클릭한다. 조직 할당량 상세 팝업에서 ① "저장" 버튼을 클릭하여 조직 할당량을 저장(수정)한다.
+3. Click the organization quota to modify. Save the modified organization quota by clicking ① "Save" .
 ![49]
 
-4. 삭제 할 조직 할당량을 클릭한다. 조직 할당량 상세 팝업에서 ② "삭제" 버튼을 클릭하여 조직 할당량을 삭제한다.
+4. Select the organization quota to delete. Complete deleting the organization quota by clicking  ② "Delete" button from organization quota details tab.
 ![49]
 
-5. "공간 할당량 등록" 버튼을 클릭하여 공 할당량을 등록한다.<br>
+5. Register space quota by clicking "Register Space Quota".<br>
 ![58]
 
-6. 공간 할당량 등록 팝업에 이름, 생성조직명, 메모리, 인스턴스 메모리, 라우트, 서비스 인스턴스, APP 인스턴스, 무료여부, 예약된 라우트 포트를 입력한다. "등록" 버튼을 클릭하여 공간 할당량을 등록한다.<br>
+6. Enter the Name, Organization Name, Memory, Instance Memory, Route, Service Instance, App Instance, Public Availability, Reserved Route of the space to register at the pop up tab. Complete registering space quota by clicking "Register" button.<br>
 ![59]
 
-7. 수정 할 공간 할당량을 클릭한다. 공간 할당량 상세 팝업에서 ①"저장" 버튼을 클릭하여 공간 할당량을 저장(수정)한다.
+7. Click the quota of the space to modify. Modify from the space quota details pop up tab and click  ①"Save" button to complete.
 ![61]
 
-8. 삭제 할 공간 할당량을 클릭한다. 공간 할당량 상세 팝업에서 ② "삭제" 버튼을 클릭하여 공간 할당량을 삭제한다.
+8. Select the space quota to delete. Click ② "Delete" button from the space quota details pop up tab to Delete.
 ![61]
 
-### <a name="4.9"/>  4.9. 분할 관리
+### <a name="4.9"/>  4.9. Split Management
 
-**관리자가 새 격리 세그먼트를 만든 후, Cloud Foundry 배포의 조직과 공간 및 새 격리 세그먼트 간의 관계를 생성하고 관리한다.<br>**
+**The Administrator creates new isolation segment, After an admin creates a new isolation segment, the admin can then create and manage relationships between the orgs and spaces of a Cloud Foundry deployment and the new isolation segment.<br>**
 
-1. PaaS-TA 포탈에서 사용하는 분활 관리 내역을 조회한다.<br>
+1. Checks the split management history used in PaaS-TA portal.<br>
 ![isolationSegments01]
 
-2. Segment Name 입력 칸에 생성할 이름을 입력한다. "Segment 등록" 버튼을 클릭하여 등록한다.<br>
+2. Enter the name to be used when creating at Segment Name text box. Register by clicking "Register Segment" button.<br>
 ![isolationSegments02]
 
 3. 분할 관리 리스트 이름을 클릭하면 조직 정보가 조회된다. ① "Add Organization" 리스트에서 추가 할 조직을 클릭하여 추가한다.

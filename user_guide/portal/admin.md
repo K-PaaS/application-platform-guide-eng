@@ -22,7 +22,7 @@
     * [4.6. Code Management](#4.6)   
     * [4.7. Setting Information](#4.7)
     * [4.8. Quota Management](#4.8)      
-    * [4.9. Split Management](#4.9)  
+    * [4.9. Isolation Management](#4.9)  
 5. [Service Management](#5)
     * [5.1. Buildpack](#5.1)
     * [5.2. Service Broker](#5.2)
@@ -300,38 +300,38 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 8. Select the space quota to delete. Click ② "Delete" button from the space quota details pop up tab to Delete.
 ![61]
 
-### <a name="4.9"/>  4.9. Split Management
+### <a name="4.9"/>  4.9. Isolation Management
 
 **The Administrator creates new isolation segment, After an admin creates a new isolation segment, the admin can then create and manage relationships between the orgs and spaces of a Cloud Foundry deployment and the new isolation segment.<br>**
 
-1. Checks the split management history used in PaaS-TA portal.<br>
+1. You can look up the isolation management history used in PaaS-TA portal.<br>
 ![isolationSegments01]
 
 2. Enter the name to be used when creating at Segment Name text box. Register by clicking "Register Segment" button.<br>
 ![isolationSegments02]
 
-3. 분할 관리 리스트 이름을 클릭하면 조직 정보가 조회된다. ① "Add Organization" 리스트에서 추가 할 조직을 클릭하여 추가한다.
+3. Selected Organization's information retrieves when clicked from the isolation management list. Add organization from  ① "Add Organization" list.
 ![isolationSegments03]
 
-4. Organization Name 리스트 이름을 클릭하면 조직 상세 정보가 조회된다. ① "Isolation Segments Name" 리스트에서 모든 분할관리에 포한 된 조직을 확인 할 수 있다.
+4. Organization details can be checked by clicking Organization Name from the list. Organizations included in all isolation management can be checked in the  ① "Isolation Segments Name" list.
 ![isolationSegments04]
 
-5. ①"삭제" 버튼을 클릭하여 분할 관리를 삭제한다.
+5. Click ①"Delete" button to delete isolation management.
 ![isolationSegments05]
 
 
-## <a name="5"/>5.  서비스 관리
+## <a name="5"/>5.  Service Mangament
 
-PaaS-TA 포탈의 서비스 관리를 수행하기 위한 메뉴이다.<br>
+This is a menu for performing service management on the PaaS-TA portal.<br>
 
-### <a name="5.1"/>  5.1. 빌드팩
+### <a name="5.1"/>  5.1. Buildpack
 
-**관리자가 빌드팩의 조회,수정,사용유무 및 Lock유무를 관리한다.<br>**
+**The administrator manages the retrieving, modification, use, and lock of the build pack.<br>**
 
-1. PaaS-TA 포탈에서 사용하는 빌드팩 정보들을 조회한다.<br>
+1. Check the information of the buildpack being used at PaaS-TA Portal.<br>
 ![50]
 
-2. 빌드팩 순서를 변경하기 위해 순서 콤보박스를 변경한다.<br>
+2. Change the order of combo-box to change the order of buildpack..<br>
 ![51]
 
 3. 빌드팩 사용유무를 변경하기 위해 사용유무 체크박스를 변경한다.<br>

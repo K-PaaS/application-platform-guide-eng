@@ -213,7 +213,7 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 ![30]
 ![31]
 ![31-2]
-     > "Modify" 버튼 클릭 후 사용자 관리 리스트를 확인 시 [Status] **Approve**에서 **Disapprove**으로 변한다. Cannot log in to CF and Portal when its disapprove<br>
+     > When checking the user management list by clicking "Modify", [Status] changes from **Approve** to **Disapprove**. Cannot log in to CF and Portal when its disapprove<br>
      ![31-1]
      
 5. Click ①"Manage" button then click "Delete Account" to delete the Account.<br>
@@ -222,28 +222,28 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 
 ### <a name="4.5"/>  4.5. Authorization Management
 
-**관리자가 Cloud Foundry 시큐리티 그룹을 조회,수정,삭제기능을 제공 및 사용자 권한을 관리한다.<br>**
+**Administrator provides and manages authority to Cloud Foundry sercurity groups retrieve, modify, and delete.<br>**
 
-1. 권한 그룹과 사용자를 조회한다.<br>
+1. Retrieves user and authorized groups.<br>
 ![34]
 
-2. ①"그룹 생성" 버튼을 클릭 후 그룹 이름을 입력한다. ②"저장" 버튼 클릭하여 권한그룹을 생성한다.   
+2. Enter the group name by clicking ①"Create Group" . Click ②"Save" button to complete creating authorized group.   
 ![35]
 
-3. ① 권한 그룹에서 삭제할 그룹을 선택한다. 확인 폼 레이어가 팝업되면 ②"삭제"를 클릭하여 권한 그룹을 삭제한다.
+3. Select the group to remove from ① Authorized group. When Confirm form layer pops up, click "Delete" to delete authorized group.
 ![36]
 
-4. ① 권한 그룹 리스트에서 해당 그룹을 클릭하여 사용자를 확인한다. ②"유저 등록" 버튼을 클릭한다. ③ 리스트에서 사용자를 클릭한다. ④"저장"버튼을 클릭하여 유저를 등록한다.
+4. Check user of the appropriate group by clicking ① Authorized group from the list. CLick ②"Register User". Click the selected user from the  ③ List. Register user by clicking the ④"Save" button.
 ![37]
 
-5. ① 권한 그룹 리스트에서 해당 그룹을 클릭하여 사용자를 확인한다. 사용자 리스트에서 삭제할 사용자 ②체크박스 선택한다. ③ 활성화 된 "유저 삭제" 버튼을 클릭한다. 팝업의 ④ "삭제" 를 클릭하여 유저를 삭제한다.
+5. Confirm the user from ① Authorized Group's list. Check the ② Check Box of the user to delete from the list. Click the ③ enabled "Delete User" button. Complete deletion by clicking ④ "Delete" from the confirm pop up screen.
 ![38]
 
-### <a name="4.6"/>  4.6. 코드 관리
+### <a name="4.6"/>  4.6. Code Management
 
-**관리자가 PaaS-TA 포탈의 코드를 관리한다.<br>**
+**Administrator manages the PaaS-TA Portal Code.<br>**
 
-1. PaaS-TA 포탈에서 사용하는 코드를 코드그룹별로 조회한다. 사용여부, 검색유형, 검색어로도 조회가 가능하다.<br>
+1. Retrieve the code used in Paas-TA Portal by code-group. Can check whether it is used, search type, and search term.<br>
 ![39]
 
 2. 코드 그룹의 코드 ID를 클릭하면 상세 코드 정보가 조회된다.<br>

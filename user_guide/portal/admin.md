@@ -257,12 +257,12 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 ![43]
 ![44]
 
-5. Click appropriate code(Key, Value, Summary, 사용) from**Detail Table**. 코드 상세 팝업에서 ①"삭제" 버튼을 클릭하여 코드 삭제를 한다.
+5. Click appropriate code(Key, Value, Summary, 사용) from**Detail Table**. Complete deleting the code by clicking ①"Delete" Button at the code detail pop up tab.
 ![45]
 
-### <a name="4.7"/>  4.7. 설정 정보
+### <a name="4.7"/>  4.7. Setting Information
 
-**관리자가 PaaS-TA 포탈의 설정 정보를 조회,등록,수정 기능을 제공한다.<br>**
+**Administrator provides the Setting PaaS-TA 포탈의 설정 정보를 조회,등록,수정 기능을 제공한다.<br>**
 
 1. PaaS-TA 포탈에서 사용하는 설정 정보들을 조회한다.
 ![60]

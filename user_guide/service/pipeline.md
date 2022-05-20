@@ -13,120 +13,122 @@
 	* [2.3. Pipeline Deployment Access](#2-3)
 3. [Pipeline Deployment User Manual](#3)
 	* [3.1. Pipeline Deployment User's Menu Configuration](#3-1)
-	* [3.2. 배포 파이프라인 사용자 메뉴 설명](#3-2)
-	* [3.2.1. 사용자 관리](#3-2-1)
-	* [3.2.1.1. 사용자 대시보드](#3-2-1-1)
-	* [3.2.1.1.1. 사용자 목록 검색 조회](#3-2-1-1-1)
-	* [3.2.1.1.2. 사용자 상세 조회/수정](#3-2-1-1-2)
-	* [3.2.2. 파이프라인](#3-2-2)
-	* [3.2.2.1. 나의 파이프라인](#3-2-2-1)
-	* [3.2.2.2. 파이프라인 신규 생성](#3-2-2-2)
-	* [3.2.2.2.1. 파이프라인 신규 생성(1)](#3-2-2-2-1)
-	* [3.2.2.2.2. 파이프라인 신규 생성(2)](#3-2-2-2-2)
-	* [3.2.2.2.3. 파이프라인 신규 생성(3)](#3-2-2-2-3)
-	* [3.2.2.3.   파이프라인 대시보드](#3-2-2-3)
-	* [3.2.2.3.1. 파이프라인 목록 검색 조회](#3-2-2-3-1)
-	* [3.2.2.3.2. 파이프라인 상세 정보 조회](#3-2-2-3-2)
-	* [3.2.2.3.3. 파이프라인 수정](#3-2-2-3-3)
-	* [3.2.2.3.4. 파이프라인 삭제](#3-2-2-3-4)
-	* [3.2.2.4.   파이프라인 상세](#3-2-2-4)
-	* [3.2.2.4.1. 참여자 관리](#3-2-2-4-1)
-	* [3.2.2.4.1.1. 참여자 추가](#3-2-2-4-1-1)
-	* [3.2.2.4.1.2.    참여자 목록 검색 조회](#3-2-2-4-1-2)
-	* [3.2.2.4.1.3.    참여자 상세 정보 조회/수정](#3-2-2-4-1-3)
-	* [3.2.2.4.1.4.    참여자 삭제](#3-2-2-4-1-4)
-	* [3.2.2.4.2. 빌드 Job](#3-2-2-4-2)
-	* [3.2.2.4.2.1.    빌드 Job 생성](#3-2-2-4-2-1)
-	* [3.2.2.4.2.2.    빌드 Job 구성 조회/수정](#3-2-2-4-2-2)
-	* [3.2.2.4.2.3.    빌드 Job 실행](#3-2-2-4-2-3)
-	* [3.2.2.4.2.4.    빌드 Job 정지](#3-2-2-4-2-4)
-	* [3.2.2.4.2.5.    빌드 Job 로그/히스토리](#3-2-2-4-2-5)
-	* [3.2.2.4.2.6.    빌드 Job 로그 다운로드](#3-2-2-4-2-6)
-	* [3.2.2.4.2.7.    빌드 Job 추가](#3-2-2-4-2-7)
-	* [3.2.2.4.2.8.    빌드 Job 복제](#3-2-2-4-2-8)
-	* [3.2.2.4.2.9.    빌드 Job 삭제](#3-2-2-4-2-9)
-	* [3.2.2.4.3. 테스트 Job](#3-2-2-4-3)
-	* [3.2.2.4.3.1.    테스트 Job 생성](#3-2-2-4-3-1)
-	* [3.2.2.4.3.2.    테스트 Job 구성 조회/수정](#3-2-2-4-3-2)
-	* [3.2.2.4.3.3.    테스트 Job 실행](#3-2-2-4-3-3)
-	* [3.2.2.4.3.4.    테스트 Job 정지](#3-2-2-4-3-4)
-	* [3.2.2.4.3.5.    테스트 Job 로그/히스토리](#3-2-2-4-3-5)
-	* [3.2.2.4.3.6.    테스트 Job 추가](#3-2-2-4-3-6)
-	* [3.2.2.4.3.7.    테스트 Job 품질 이슈 결과](#3-2-2-4-3-7)
-	* [3.2.2.4.3.8.    테스트 Job 복제](#3-2-2-4-3-8)
-	* [3.2.2.4.3.9.    테스트 Job 삭제](#3-2-2-4-3-9)
-	* [3.2.2.4.4. 배포 Job](#3-2-2-4-4)
-	* [3.2.2.4.4.1.    배포 Job 생성](#3-2-2-4-4-1)
-	* [3.2.2.4.4.2.    배포 Job 구성 조회/수정](#3-2-2-4-4-2)
-	* [3.2.2.4.4.3.    배포 Job 실행](#3-2-2-4-4-3)
-	* [3.2.2.4.4.4.    배포 Job 정지](#3-2-2-4-4-4)
-	* [3.2.2.4.4.5.    배포 Job 로그/히스토리](#3-2-2-4-4-5)
-	* [3.2.2.4.4.6.    배포 Job 현재 작업으로 롤백](#3-2-2-4-4-6)
-	* [3.2.2.4.4.7.    배포 Job 추가](#3-2-2-4-4-7)
-	* [3.2.2.4.4.8.    배포 Job 복제](#3-2-2-4-4-8)
-	* [3.2.2.4.4.9.    배포 Job 삭제](#3-2-2-4-4-9)
-	* [3.2.2.4.5. Job 작업 정렬](#3-2-2-4-5)
-	* [3.2.2.4.6. 새 작업 그룹 추가](#3-2-2-4-6)
-	* [3.2.3.     파이프라인 관리](#3-2-3)
-	* [3.2.3.1.   Cloud Foundry 정보 관리](#3-2-3-1)
-	* [3.2.3.1.1. Cloud Foundry 계정 등록](#3-2-3-1-1)
-	* [3.2.3.1.2. Cloud Foundry 계정 수정](#3-2-3-1-2)
-	* [3.2.4.     품질 관리](#3-2-4)
-	* [3.2.4.1.   품질 이슈](#3-2-4-1)
-	* [3.2.4.2.   코딩 규칙](#3-2-4-2)
-	* [3.2.4.3.   품질 프로파일](#3-2-4-3)
-	* [3.2.4.3.1. 품질 프로파일 생성](#3-2-4-3-1)
-	* [3.2.4.3.2. 품질 프로파일 복제](#3-2-4-3-2)
-	* [3.2.4.3.3. 품질 프로파일 수정](#3-2-4-3-3)
-	* [3.2.4.3.4. 품질 프로파일 프로젝트 연결](#3-2-4-3-4)
-	* [3.2.4.3.5. 품질 프로파일 삭제](#3-2-4-3-5)
-	* [3.2.4.4.   품질 게이트](#3-2-4-4)
-	* [3.2.4.4.1. 품질 게이트 생성](#3-2-4-4-1)
-	* [3.2.4.4.2. 품질 게이트 복제](#3-2-4-4-2)
-	* [3.2.4.4.3. 품질 게이트 수정](#3-2-4-4-3)
-	* [3.2.4.4.4. 품질 게이트 조건 추가](#3-2-4-4-4)
-	* [3.2.4.4.5. 품질 게이트 프로젝트 연결](#3-2-4-4-5)
-	* [3.2.4.4.6. 품질 게이트 삭제](#3-2-4-4-6)
+	* [3.2. Pipeline Deployment User Menu Setting](#3-2)
+	* [3.2.1. User Management
+	* 
+	* ](#3-2-1)
+	* [3.2.1.1. User Dashboard](#3-2-1-1)
+	* [3.2.1.1.1. Check User List Search](#3-2-1-1-1)
+	* [3.2.1.1.2. User Detail Check/ Modify](#3-2-1-1-2)
+	* [3.2.2. Pipeline](#3-2-2)
+	* [3.2.2.1. My Pipeline](#3-2-2-1)
+	* [3.2.2.2. Create New Pipeline](#3-2-2-2)
+	* [3.2.2.2.1. Create New Pipeline(1)](#3-2-2-2-1)
+	* [3.2.2.2.2. Create New Pipeline(2)](#3-2-2-2-2)
+	* [3.2.2.2.3. Create New Pipeline(3)](#3-2-2-2-3)
+	* [3.2.2.3.   Pipeline Dashboard](#3-2-2-3)
+	* [3.2.2.3.1. Pipeline List Search Check](#3-2-2-3-1)
+	* [3.2.2.3.2. Pipeline Detail Information Check](#3-2-2-3-2)
+	* [3.2.2.3.3. Modify Pipeline](#3-2-2-3-3)
+	* [3.2.2.3.4. Delete Pipeline](#3-2-2-3-4)
+	* [3.2.2.4.   Pipeline Details](#3-2-2-4)
+	* [3.2.2.4.1. Manage Participants](#3-2-2-4-1)
+	* [3.2.2.4.1.1. Add Participants](#3-2-2-4-1-1)
+	* [3.2.2.4.1.2.    Check Participants Lish Search](#3-2-2-4-1-2)
+	* [3.2.2.4.1.3.    Check/ Modify Participants Detail Information](#3-2-2-4-1-3)
+	* [3.2.2.4.1.4.    Delete Participants](#3-2-2-4-1-4)
+	* [3.2.2.4.2. Build Job](#3-2-2-4-2)
+	* [3.2.2.4.2.1.    Create Build Job ](#3-2-2-4-2-1)
+	* [3.2.2.4.2.2.    Check/ Modify Build Job Configuration](#3-2-2-4-2-2)
+	* [3.2.2.4.2.3.    Run Build Job](#3-2-2-4-2-3)
+	* [3.2.2.4.2.4.    Stop Build Job](#3-2-2-4-2-4)
+	* [3.2.2.4.2.5.    Build Job Log/ History](#3-2-2-4-2-5)
+	* [3.2.2.4.2.6.    Build Job Log Download](#3-2-2-4-2-6)
+	* [3.2.2.4.2.7.    Add Build Job](#3-2-2-4-2-7)
+	* [3.2.2.4.2.8.    Copy Build Job](#3-2-2-4-2-8)
+	* [3.2.2.4.2.9.    Delete Build Job](#3-2-2-4-2-9)
+	* [3.2.2.4.3. Test Job](#3-2-2-4-3)
+	* [3.2.2.4.3.1.    Create Test Job](#3-2-2-4-3-1)
+	* [3.2.2.4.3.2.    Check/ Modify Test Job Configuration](#3-2-2-4-3-2)
+	* [3.2.2.4.3.3.    Run Test Job](#3-2-2-4-3-3)
+	* [3.2.2.4.3.4.    Stop Test Job](#3-2-2-4-3-4)
+	* [3.2.2.4.3.5.    Test Job Log/ History](#3-2-2-4-3-5)
+	* [3.2.2.4.3.6.    Add Test Job](#3-2-2-4-3-6)
+	* [3.2.2.4.3.7.    Test Job Quality Issue Results](#3-2-2-4-3-7)
+	* [3.2.2.4.3.8.    Copy Test Job](#3-2-2-4-3-8)
+	* [3.2.2.4.3.9.    Delete Test Job](#3-2-2-4-3-9)
+	* [3.2.2.4.4. Deployment Job](#3-2-2-4-4)
+	* [3.2.2.4.4.1.    Create Deployment Job](#3-2-2-4-4-1)
+	* [3.2.2.4.4.2.    Check/ Modify Deployment Job Configuration](#3-2-2-4-4-2)
+	* [3.2.2.4.4.3.    Run Deployment Job](#3-2-2-4-4-3)
+	* [3.2.2.4.4.4.    Stop Deployment Job](#3-2-2-4-4-4)
+	* [3.2.2.4.4.5.    Deployment Job Log/ History](#3-2-2-4-4-5)
+	* [3.2.2.4.4.6.    Deployment Job Rollback to Current Job](#3-2-2-4-4-6)
+	* [3.2.2.4.4.7.    Add Deployment Job](#3-2-2-4-4-7)
+	* [3.2.2.4.4.8.    Copy Deployment Job](#3-2-2-4-4-8)
+	* [3.2.2.4.4.9.    Delete Deployment Job](#3-2-2-4-4-9)
+	* [3.2.2.4.5. Job Sorting Icon](#3-2-2-4-5)
+	* [3.2.2.4.6. Add New Job Group](#3-2-2-4-6)
+	* [3.2.3.     Pipeline Management](#3-2-3)
+	* [3.2.3.1.   Cloud Foundry Information Management](#3-2-3-1)
+	* [3.2.3.1.1. Cloud Foundry Account Registration](#3-2-3-1-1)
+	* [3.2.3.1.2. Cloud Foundry Account Modification](#3-2-3-1-2)
+	* [3.2.4.     Quality Management](#3-2-4)
+	* [3.2.4.1.   Quality Issue](#3-2-4-1)
+	* [3.2.4.2.   Coding Rules](#3-2-4-2)
+	* [3.2.4.3.   Quality Profile](#3-2-4-3)
+	* [3.2.4.3.1. Create Quality Profile](#3-2-4-3-1)
+	* [3.2.4.3.2. Copy Quality Profile](#3-2-4-3-2)
+	* [3.2.4.3.3. Modify Quality Profile](#3-2-4-3-3)
+	* [3.2.4.3.4. Connect Quality Profile Project](#3-2-4-3-4)
+	* [3.2.4.3.5. Delete Quality Profile](#3-2-4-3-5)
+	* [3.2.4.4.   Quality Gate](#3-2-4-4)
+	* [3.2.4.4.1. Create Quality Gate](#3-2-4-4-1)
+	* [3.2.4.4.2. Copy Quality Gate](#3-2-4-4-2)
+	* [3.2.4.4.3. Modify Quality Gate](#3-2-4-4-3)
+	* [3.2.4.4.4. Add Quality Gate Conditions](#3-2-4-4-4)
+	* [3.2.4.4.5. Connect Quality Gate Project](#3-2-4-4-5)
+	* [3.2.4.4.6. Delete Quality Gate](#3-2-4-4-6)
 
-# <div id='1'/> 1. 문서 개요
+# <div id='1'/> 1. Document Outline
 
-## <div id='1-1'/> 1.1 목적
-본 문서는 배포 파이프라인 서비스를 사용할 사용자의 사용 방법에 대해 기술하였다.
+## <div id='1-1'/> 1.1 Purpose
+This document describes how to use the pipeline deployment service.
 
-## <div id='1-2'/> 1.2 범위
-본 문서는 Windows 환경을 기준으로 배포 파이프라인 서비스를 사용할 사용자의 사용 방법에 대해 작성되었다.
+## <div id='1-2'/> 1.2 Range
+This document is written about how to use the deployment pipeline service based on the Windows environment.
 
-# <div id='2'/> 2. 배포 파이프라인 서비스 신청
+# <div id='2'/> 2. Pipeline Deployment Service Registration
 
-## <div id='2-1'/> 2.1 PaaS-TA 사용자 포탈 접속
-1. PaaS-Ta 사용자 포탈에 접속하여 “로그인”을 클릭한다.  
+## <div id='2-1'/> 2.1 PaaS-TA User Portal Access
+1. Click log-in from the PaaS-Ta User Portal.  
 ![002]
 
-2. 사용자 계정과 비밀번호를 입력한 후 “LOGIN” 버튼을 클릭하여 사용자 포탈에 로그인한다.  
+2. Login to the Portal by entering User ID and Password then click “LOGIN”.  
 ![003]
 
-3. 로그인 한 후 카탈로그 페이지로 이동한다.  
+3. Go to Catalog page after logging in.  
 ![004]
 
 
-## <div id='2-2'/> 2.2 배포 파이프라인 서비스 신청
-1. 배포 파이프라인 서비스를 선택한다.  
+## <div id='2-2'/> 2.2 Pipeline Deployment Service Registration
+1. Select Pipelin Deployment Service.  
 ![005]
 
-2. 신청하고자 하는 공간을 선택한다. 이미 배포 파이프라인을 사용중인 ORG에서는 아래 첨부 사진과 같이 에러가 출력된다.  
+2. Select a space to apply for. In the ORG that already uses pipeline deployment, an error will occur as shown in the picture bellow.  
 ![006]
 
-3. 서비스 이름을 입력한다. 이미 신청한 배포 파이프라인의 이름이 있을 경우 아래 첨부 사진과 같이 에러가 출력된다.  
+3. Enter Service Name. If the name of the requested pipeline deployment already exists, an error will occur as shown in the picture bellow..  
 ![007]
 
-4. 신청을 진행한 후 스페이스 페이지의 서비스 탭에서 파이프라인 서비스 생성을 확인한다.  
+4. After applying, go to service tab of the space page to check if the pipeline service has been successfully created.  
 ![008]
 
-## <div id='2-3'/> 2.3 배포 파이프라인 접속
-1. PaaS-TA 포탈의 스페이스 페이지에서 신청된 배포 파이프라인의 “대시보드” 버튼을 클릭하여 접속을 진행한다.  
+## <div id='2-3'/> 2.3 Pipeline Deployment Access
+1. Click “Dashboard” button of the applied pipeline deployment from the PaaS-TA Portals Space page and access.  
 ![009]
 
-2. 배포 파이프라인 접속을 확인한다.  
+2. Check the connection of pipeline deployment.  
 ![010]
 
 3. 이 때 ***배포 파이프라인 서비스를 처음 생성한 사용자가 관리자가 된다.*** 우측 상단의 사용자 관리 메뉴를 클릭하여 사용자 대시보드로 이동한다.

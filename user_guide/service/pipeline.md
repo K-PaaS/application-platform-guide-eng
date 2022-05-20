@@ -1,14 +1,14 @@
 ### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Pipeline Service
 
 
-# [PaaS-TA 배포 파이프라인 서비스 사용자 가이드]
+# [PaaS-TA Pipeline Deployment Service User Guide]
 
-## 목차
-1. [문서 개요](#1)
-	* [1.1. 목적](#1-1)
-	* [1.2. 범위](#1-2)
-2. [배포 파이프라인 서비스 신청](#2)
-	* [2.1. PaaS-TA 사용자 포탈 접속](#2-1)
+## Table of Contents
+1. [Document Outline](#1)
+	* [1.1. Purpose](#1-1)
+	* [1.2. Range](#1-2)
+2. [Pipeline Deployment Service Registration 배포 파이프라인 서비스 신청](#2)
+	* [2.1. PaaS-TA User Portal 포탈 접속](#2-1)
 	* [2.2. 배포 파이프라인 서비스 신청](#2-2)
 	* [2.3. 배포 파이프라인 접속](#2-3)
 3. [배포 파이프라인 사용자 매뉴얼](#3)

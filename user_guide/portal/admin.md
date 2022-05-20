@@ -362,30 +362,30 @@ This is a menu for performing service management on the PaaS-TA portal.<br>
 1. Look up the service list used in PaaS-TA Portal.<br>
 ![63]
 
-2. Click a service from service control list to check the authority activation of the service or the service plan. Can modify the  Click ①Access combobox to modify the authority activation of the selected service. The ② list service or service plan may be granted specified organizational rights.<br>
+2. Click a service from service control list to check the authority activation of the service or the service plan. Can modify the  Click ①Access combobox to modify the authority activation of the selected service. ② Organization authority can be granted to the selected service or service plan.<br>
 **When "Acces" is ALL(Activated), Service plan of One or all the organizations service or service plan access should be changed to 'NONE(Deactivated)'.**<br>
 ![64]
 
-3. ① "Add Organization" 리스트에서 권한 추가 할 조직을 클릭하여 추가한다.
+3. Add organization to give authority from the ① "Add Organization" list by clicking.
 ![65]
 
-4. ①"삭제" 버튼을 클릭하여 조직을 삭제한다. 삭제가 완료 되면, 처음의 접근 상태 "ALL"로 변경된다. <br>
+4. Delete Organization by clicking ①"Delete". When the deletion is completed, the initial access status will be changed to "ALL". <br>
 ![66]
 ![67]
 
 
-## <a name="6"/>6.  보안 관리
+## <a name="6"/>6.  Security Management
 
-PaaS-TA 포탈의 보안 관리를 수행하기 위한 메뉴이다.<br>
+A menu for security management of the PaaS-TA portal.<br>
     
-### <a name="6.1"/>  6.1 시큐리티 그룹
+### <a name="6.1"/>  6.1 Security Group
 
-**관리자가 staging, running 규칙을 사용하여 앱 및 작업 준비하고 특정 spaces에 대한 접근제어 관리한다.**<br>
+**Administrator manages staging, running 규칙을 사용하여 앱 및 작업 준비하고 특정 spaces에 대한 접근제어 관리한다.**<br>
 
-1. PaaS-TA 포탈에서 사용하는 시큐리티 그룹 정보들을 조회한다.<br>
+1. Check the security group information used in PaaS-TA Portal.<br>
 ![securitygroups01]
 
-2. ①"시큐리티 그룹 등록" 버튼을 클릭하여 시큐리트 그룹을 등록한다. <br>
+2. Register security group by clicking ①"Register Security Group". <br>
 ![securitygroups02]
 
 3. 시큐리티 그룹 등록 팝업에 이름을 입력(필수)하고 staging default설정(필수), running default설정(필수) 체크박스를 선택한다. 팝업의 탭의 내용 입력 부분에 설명, 규칙(필수), 로그, 포트, 프로토콜을 입력한다. ① "+" 를 클릭하여 탭을 증가시킨다. ② "텝 삭제" 버튼을 클릭하여 탭을 삭제한다.<br>

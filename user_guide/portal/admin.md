@@ -380,7 +380,7 @@ A menu for security management of the PaaS-TA portal.<br>
     
 ### <a name="6.1"/>  6.1 Security Group
 
-**Administrator manages staging, running 규칙을 사용하여 앱 및 작업 준비하고 특정 spaces에 대한 접근제어 관리한다.**<br>
+**Administrator manages access control of a specific space and prepares tasks and app by using staging and running rules.**<br>
 
 1. Check the security group information used in PaaS-TA Portal.<br>
 ![securitygroups01]
@@ -388,7 +388,7 @@ A menu for security management of the PaaS-TA portal.<br>
 2. Register security group by clicking ①"Register Security Group". <br>
 ![securitygroups02]
 
-3. 시큐리티 그룹 등록 팝업에 이름을 입력(필수)하고 staging default설정(필수), running default설정(필수) 체크박스를 선택한다. 팝업의 탭의 내용 입력 부분에 설명, 규칙(필수), 로그, 포트, 프로토콜을 입력한다. ① "+" 를 클릭하여 탭을 증가시킨다. ② "텝 삭제" 버튼을 클릭하여 탭을 삭제한다.<br>
+3. Enter Name(required), staging default(required), running default(required) at the security registering pop up tab and select checkbox. At the pop tabs input box, enter description, rules(required), log, port, and protocol. Click ① "+" to add tabs. To delete tabs, click ② "Delete Tab" button.<br>
 ![securitygroups03]
 
 4. 시큐리티 그룹 등록 팝업에서 ①"파일 내보내기" 버튼을 클릭하여 시큐리트 그룹 정보를 ②.txt 파일로 확인 할 수 있다.

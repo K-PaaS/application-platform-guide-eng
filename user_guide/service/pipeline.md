@@ -14,9 +14,7 @@
 3. [Pipeline Deployment User Manual](#3)
 	* [3.1. Pipeline Deployment User's Menu Configuration](#3-1)
 	* [3.2. Pipeline Deployment User Menu Setting](#3-2)
-	* [3.2.1. User Management
-	* 
-	* ](#3-2-1)
+	* [3.2.1. User Management](#3-2-1)
 	* [3.2.1.1. User Dashboard](#3-2-1-1)
 	* [3.2.1.1.1. Check User List Search](#3-2-1-1-1)
 	* [3.2.1.1.2. User Detail Check/ Modify](#3-2-1-1-2)

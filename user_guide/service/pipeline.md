@@ -129,54 +129,54 @@ This document is written about how to use the deployment pipeline service based 
 2. Check the connection of pipeline deployment.  
 ![010]
 
-3. 이 때 ***배포 파이프라인 서비스를 처음 생성한 사용자가 관리자가 된다.*** 우측 상단의 사용자 관리 메뉴를 클릭하여 사용자 대시보드로 이동한다.
+3. At this, ***The user who first created the pipeline deployment becomes the administrator.*** Go to user dashboard by clicking user management menu at the right top .
 
-***※ 처음 접속하는 사용자는 관리자의 승인이 없을 경우 접속할 수 없습니다.***
+***※ Users who connect for the first time will not be able to access without administrator approval.***
 
 
-# <div id='3'/> 3. 배포 파이프라인 사용자 매뉴얼
-본 장에서는 배포 파이프라인의 메뉴 구성 및 화면 설명에 대해서 기술하였다.
+# <div id='3'/> 3. Pipeline Deployment User Manual
+This chapter describes the menu configuration and screen description of the distribution pipeline.
 
-## <div id='3-1'/> 3.1 배포 파이프라인 사용자 메뉴 구성
-배포 파이프라인 서비스는 파이프라인을 조회 및 관리하는 부분과 Cloud Foundry 계정 정보를 관리하는 부분, 소스 코드의 품질을 관리하는 부분, 부여된 권한에 따라 사용자를 관리할 수 있는 사용자 관리 부분으로 구성되어 있다.
+## <div id='3-1'/> 3.1 Pipeline Deployment User's Menu Configuration
+The Pipeline deployment service consists of the following parts: Pipeline search and management, Cloud Foundry account  information management, source code quality management, and user managment that administrates the users accoring to the given authorities.
 
-***※ 기본적으로 사용자는 사용자 관리, 파이프라인 관리, 품질 관리 메뉴가 보이지 않는다.***
+***※ Users cannot see: user management, pipeline management, and quality management menu.***
 <table>
   <tr>
-    <td>메뉴</td>
-    <td>분류</td>
-		<td>설명</td>
+    <td>Menu</td>
+    <td>Classification</td>
+		<td>Description</td>
   </tr>
   <tr>
-    <td>사용자 관리</td>
-    <td>사용자 대시보드</td>
-	  <td>파이프라인을 사용하는 사용자들의 정보 조회 및 관리</td>
+    <td>User Management</td>
+    <td>User Dashboard</td>
+	  <td>Check and manages the information for pipeline users</td>
   </tr>
   <tr>
-		<td>파이프라인</td>
-		<td>파이프라인 대시보드</td>
-		<td>파이프라인 등록, 목록 및 상세 조회, 삭제, 참여자 권한 등의 기능을 관리</td>
+		<td>Pipeline</td>
+		<td>Pipeline Dashboard</td>
+		<td>Manages the functions of Pipeline registration,list and details search, delete, and  participant authority</td>
   </tr>
 	<tr>
-		<td>파이프라인 관리</td>
-		<td>Cloud Foundry 정보 관리</td>
-		<td>Cloud Foundry 계정 정보를 관리</td>
+		<td>Pipeline Management</td>
+		<td>Cloud Foundry Information Mangement</td>
+		<td>Manages the account information of Cloud Foundry</td>
   </tr>
 	<tr>
-		<th rowspan="4">품질 관리</th>
-		<td>품질 이슈</td>
-		<td>수행된 소스 코드의 오류 해결 여부 및 오류의 수준, 활성화 상태를 관리</td>
+		<th rowspan="4">Quality Management</th>
+		<td>Quatlitu Issue</td>
+		<td>Manages whether or not the source code performed is error tolerance and resolution, activation status</td>
   </tr>
 	<tr>
-		<td>코딩 규칙</td>
-		<td>표준화된 소스 코드의 코딩 양식을 관리</td>
+		<td>Coding Rules</td>
+		<td>Manage coding forms for standardized source code</td>
 	</tr>
 	<tr>
-		<td>품질 프로파일</td>
-		<td>소스 코드의 품질을 분석하기 위한 기준이 되는 코딩 규칙을 관리</td>
+		<td>Quality Profile</td>
+		<td>Manages coding rules that serve as standard for analyzing the quality of source code</td>
 	</tr>
 	<tr>
-		<td>품질 게이트</td>
+		<td>Quality Gate</td>
 		<td>소스 코드의 품질 분석 결과 정해진 품질 기준 값을 초과하거나 미달하지 않았는지에 대한 기준을 관리</td>
 	</tr>
 </table>

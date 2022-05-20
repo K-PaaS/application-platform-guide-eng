@@ -388,25 +388,25 @@ A menu for security management of the PaaS-TA portal.<br>
 2. Register security group by clicking ①"Register Security Group". <br>
 ![securitygroups02]
 
-3. Enter Name(required), staging default(required), running default(required) at the security registering pop up tab and select checkbox. At the pop tabs input box, enter description, rules(required), log, port, and protocol. Click ① "+" to add tabs. To delete tabs, click ② "Delete Tab" button.<br>
+3. Enter Name(required), staging default(required), running default(required) at the security registering tab and select checkbox. At the pop tabs input box, enter description, rules(required), log, port, and protocol. Click ① "+" to add tabs. To delete tabs, click ② "Delete Tab" button.<br>
 ![securitygroups03]
 
-4. 시큐리티 그룹 등록 팝업에서 ①"파일 내보내기" 버튼을 클릭하여 시큐리트 그룹 정보를 ②.txt 파일로 확인 할 수 있다.
+4. Click ①"Export File" button from the security registering tab to check the information of security group as ②.txt file.
 ![securitygroups04]
 
-5. 시큐리티 그룹 등록 팝업에서 ①"파일 불러오기" 버튼을 클릭하여 시큐리트 그룹 정보를 ②.txt 파일로 확인 할 수 있다. 불러온 파일은 추가 된 새 탭에서 확인 할 수 있다.
+5. Security group informations can be checked as ②.txt file by clicking ①"Open File" at the security group regisering tab. The imported file will be opened at a new tab.
 ![securitygroups05]
 
-6. 시큐리티 그룹 등록 팝업에서 ①"org"를 클릭한다. ②"space"를 클릭한다. ③"등록" 버튼을 클릭하여 org,space 를 등록한다.
+6. Click ①"org" from the secrurity group register pop up. Click ②"space". Register org and space by clicking ③"Register" button.
 ![securitygroups06]
 
-7. 시큐리티 그룹 등록 팝업에서 ①"삭제" 버튼을 클릭하여 org,space 를 삭제한다. ②"등록 "버튼을 클릭하여 시큐리티 그룹 정보를 저장한다.
+7. Click ①"Delete" button from the security group register pop up to delete org and space. Save the group information by clicking ②"Register".
 ![securitygroups07]
 
-8. 수정 할 시큐리티 그룹을 선택한다. 시큐리티 그룹 상세 팝업에서 ①"수정" 버튼을 클릭하여 시큐리티 그룹을 수정한다.<br>
+8. Select the security group to modify. Click ①"Modify" from the group details pop up to modify security group.<br>
 ![securitygroups08]
 
-9. 삭제 할 시큐리티 그룹을 선택한다. 시큐리티 그룹 상세 팝업에서 ①"삭제" 버튼을 클릭하여 시큐리티 그룹을 삭제한다.<br>
+9. Select a security group to delete. Complete deleting the security group by clicking ①"Delete" button from the details pop up.<br>
 ![securitygroups09] 
 
 
@@ -500,4 +500,4 @@ A menu for security management of the PaaS-TA portal.<br>
 [isolationSegments04]:./images/admin-portal/isolationSegments04.png	
 [isolationSegments05]:./images/admin-portal/isolationSegments05.png	
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > 운영자 포털
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Operator Portal

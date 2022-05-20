@@ -388,7 +388,7 @@ A menu for security management of the PaaS-TA portal.<br>
 2. Register security group by clicking ①"Register Security Group". <br>
 ![securitygroups02]
 
-3. Enter Name(required), staging default(required), running default(required) in the security registering tab and check the checkbox. At the tab's input box, enter description, rules(required), log, port, and protocol. Click ① "+" to add tabs. To delete tabs, click ② "Delete Tab" button.<br>
+3. Enter Name(required), staging default(required), running default(required) in the security registering tab and check the checkbox. Fill out description, rules(required), log, port, and protocol. To add more information, click ① "+" to add more tabs. To delete the tab, click ② "Delete Tab" button.<br>
 ![securitygroups03]
 
 4. Click ①"Export File" button from the security registering tab to check the information of security group as ②.txt file.

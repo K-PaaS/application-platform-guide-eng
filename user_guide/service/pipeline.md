@@ -177,18 +177,18 @@ The Pipeline deployment service consists of the following parts: Pipeline search
 	</tr>
 	<tr>
 		<td>Quality Gate</td>
-		<td>소스 코드의 품질 분석 결과 정해진 품질 기준 값을 초과하거나 미달하지 않았는지에 대한 기준을 관리</td>
+		<td>Manages criteria for quality analysis of source codes that exceed or fall short of a set quality reference value</td>
 	</tr>
 </table>
 
 
-## <div id='3-2'/> 3.2 배포 파이프라인 사용자 메뉴 설명
-본 장에서는 배포 파이프라인의 4개 메뉴에 대한 설명을 기술한다.
+## <div id='3-2'/> 3.2 Pipeline Deployment User Menu Setting
+This chapter describes about the 4 menus in the pipeline deployment.
 
-### <div id='3-2-1'/> 3.2.1. 사용자 관리
+### <div id='3-2-1'/> 3.2.1. User Management
 사용자 관리 메뉴는 관리자에게만 보이는 메뉴로써 본 장에서는 배포 파이프라인 서비스를 사용하는 사용자들의 권한 관리 및 정보 조회와 관리에 대한 설명을 기술한다.
 
-#### <div id='3-2-1-1'/> 3.2.1.1. 사용자 대시보드
+#### <div id='3-2-1-1'/> 3.2.1.1. User Dashboard
 
 ##### <div id='3-2-1-1-1'/> 3.2.1.1.1. 사용자 목록 검색 조회
 1. 상단의 우측 메뉴에 “사용자 관리” 버튼을 클릭한다.  

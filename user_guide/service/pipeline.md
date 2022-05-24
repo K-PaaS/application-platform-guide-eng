@@ -262,7 +262,7 @@ This chapter describes the two methods of how to manage pipeline.
 ##### <div id='3-2-2-3-1'/> 3.2.2.3.1. Pipeline List Search Check
 1. A desired pipeline can be searched by entering the Pipeline name. Or the Pipeline list could be arranged by the sequence of created dates, updated dates, and alphabetical order..  
 ![033]
-2.	Click “ENTER” or “Magnifying glass” button to search.  
+2.	Click “ENTER” or “Magnifying glass” image button to search.  
 ![034]
 3.	If you select a search type filter for both a list inquire/search list inquire, it will be reflected immediately.  
 ![035]
@@ -305,34 +305,34 @@ This chapter describes overall participant management, such as adding, modifying
 ![046]
 
 ###### <div id='3-2-2-4-1-2'/> 3.2.2.4.1.2. Check Participants List Search
-1.	참여자 목록에서 검색할 수 있는 조건은 참여자 아이디 검색 1개이다.  
+1.	The condition that can be searched in the participant list is one participant ID.  
 ![047]
-2.	검색어를 입력 후 “ENTER”를 하거나 “돋보기” 버튼을 클릭한 후 검색 조회를 한다.  
+2.	After entering the search word, click “ENTER” or “Magnifying glass” image button to check.  
 ![048]
 
-###### <div id='3-2-2-4-1-3'/> 3.2.2.4.1.3.	참여자 상세 정보 조회/수정
-1.	참여자 목록에서 정보 조회할 참여자 아이디를 선택한다.  
+###### <div id='3-2-2-4-1-3'/> 3.2.2.4.1.3.	Check/ Modify Participants Detail Information
+1.	Select the ID of the participant to check from the participant list.  
 ![049]
-2.	참여자 상세 정보 조회/수정 페이지로 이동하여 참여자의 상세 정보를 조회한다.  
+2.	Go to the check/modify page for participant details and check the participants details.  
 ![050]
-3.	수정하고자 하는 권한을 선택하여 “수정” 버튼을 클릭한다.  
+3.	Select the authority to modify and click "Modify" button.  
 ![051]
-4.	참여자 목록에서 수정된 참여자의 권한을 확인한다.  
+4.	Check the modified authority of the participant from the participants list.  
 ![052]
 
 
-###### <div id='3-2-2-4-1-4'/> 3.2.2.4.1.4.	참여자 삭제
-1.	참여자 목록에서 삭제할 참여자 아이디를 선택한다.  
+###### <div id='3-2-2-4-1-4'/> 3.2.2.4.1.4.	Delete Participant
+1.	Select a participant to delete from the list.  
 ![053]
-2.	참여자 상세 정보 조회/수정 페이지로 이동한다.  
+2.	Go to detailed information check/modify page of the selected participant.  
 ![053-2]
-3.	“참여자 삭제” 버튼을 클릭한다.  
+3.	Click “Delete Participant” button.  
 ![054]
-4.	참여자 목록에서 참여자가 삭제되었음을 확인한다.  
+4.	Check from the list if the participant is deleted.  
 ![055]
 
 
-##### <div id='3-2-2-4-2'/> 3.2.2.4.2. 빌드 Job
+##### <div id='3-2-2-4-2'/> 3.2.2.4.2. Build Job
 ###### <div id='3-2-2-4-2-1'/> 3.2.2.4.2.1. 빌드 Job 생성
 1.	파이프라인 상세 페이지에서 ‘이곳을 클릭하여 새 작업 추가’ 버튼을 클릭한다.  
 ![056]

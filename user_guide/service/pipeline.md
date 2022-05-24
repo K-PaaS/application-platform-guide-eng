@@ -499,35 +499,35 @@ This chapter describes overall contributor management, such as adding, modifying
 
 ***※	Adding a Test job is only possible for administrators and pipeline contributors with creation authority.***
 
-###### <div id='3-2-2-4-3-8'/> 3.2.2.4.3.8.	테스트 Job 복제
-1.	파이프라인 상세페이지에서 테스트 Job의 “복제” 버튼을 클릭한다.  
+###### <div id='3-2-2-4-3-8'/> 3.2.2.4.3.8.	Duplicate Test Job
+1.	On the Pipeline Details page, click the "Duplicate" button on the Test Job.  
 ![099]
-2.	테스트 Job 이 복제된 것을 확인한다.  
+2.	Check the duplicated Test Job.  
 ![100]
 
-***※	테스트 Job 복제는 관리자와 생성 권한을 가진 파이프라인 참여자만 가능하다.***
+***※	Test Job Duplication can only be done by the administrator and pipeline contributors with creation authority.***
 
-###### <div id='3-2-2-4-3-8'/> 3.2.2.4.3.9.	테스트 Job 삭제
-1.	파이프라인 상세페이지에서 테스트 Job의 “삭제” 버튼을 클릭한다.  
+###### <div id='3-2-2-4-3-8'/> 3.2.2.4.3.9.	Delete Test Job
+1.	Click “Delete” button of Test job from the pipeline details page.  
 ![101]
-2.	테스트 Job 이 삭제된 것을 확인한다.  
+2.	Check if the Test Job has been deleted.  
 ![102]
 
-***※	테스트 Job 삭제는 관리자와 생성 권한을 가진 파이프라인 참여자만 가능하다.***
+***※	Test Job deletion can only be done by the administrator and pipeline contributors with creation authority.***
 
 
-##### <div id='3-2-2-4-4'/> 3.2.2.4.4.	배포 Job
-###### <div id='3.2.2.4.4.1'/> 3.2.2.4.4.1.	배포 Job 생성
-1. Job의 “추가” 버튼을 클릭한다.<br>  
+##### <div id='3-2-2-4-4'/> 3.2.2.4.4.	Deployment Job
+###### <div id='3.2.2.4.4.1'/> 3.2.2.4.4.1.	Create Deployment Job
+1. Click the “Add” button from Job.<br>  
 ![103]
 2.	구성 페이지로 이동하여 작업 유형을 배포(Deploy)로 선택한 후 유형에서 원하는 배포 유형을 선택, 파이프라인 관리에서 저장해 놓은 Cloud Foundry 정보를 선택한다. (Cloud Foundry 정보를 가져오기 위해서는 선행 과정이 필요하다. 과정은 3.2.3.1. Cloud Foundry 정보 관리 항목을 참고한다). 그다음 MANIFEST 사용 여부를 체크 후 입력 유형과 작업 트리거를 차례로 입력한다.  
 ![104]
-3.	“저장” 버튼을 클릭하고, 파이프라인 상세페이지에서 배포 Job이 생성된 것을 확인한다.  
+3.	Click “Save” button and check the newly created deployment Job from the pipeline details page.  
 ![105]
 
-***※	배포 Job 생성은 관리자와 파이프라인 참여자 중 생성 권한을 가진 참여자만 생성이 가능하다.***
+***※	Creating a Deployment Job can only be done by administrator and authorized pipeline contributors.***
 
-###### <div id='3-2-2-4-4-2'/> 3.2.2.4.4.2.	배포 Job 구성 조회/수정
+###### <div id='3-2-2-4-4-2'/> 3.2.2.4.4.2.	Check/ Modify Deployment Job Configuration
 1.	생성된 배포 Job 의 “구성” 아이콘을 클릭한다.  
 ![106]
 2.	구성 상세페이지로 이동하여 생성 시 저장해 놓았던 구성 정보들을 조회한다.  

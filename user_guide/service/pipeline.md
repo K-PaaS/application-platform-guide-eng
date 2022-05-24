@@ -186,60 +186,60 @@ The Pipeline deployment service consists of the following parts: Pipeline search
 This chapter describes about the 4 menus in the pipeline deployment.
 
 ### <div id='3-2-1'/> 3.2.1. User Management
-사용자 관리 메뉴는 관리자에게만 보이는 메뉴로써 본 장에서는 배포 파이프라인 서비스를 사용하는 사용자들의 권한 관리 및 정보 조회와 관리에 대한 설명을 기술한다.
+The user management menu is visible only to the administrators. This chapter describes about the authentication managing and information check, and manages users of pipeline deployment service.
 
 #### <div id='3-2-1-1'/> 3.2.1.1. User Dashboard
 
-##### <div id='3-2-1-1-1'/> 3.2.1.1.1. 사용자 목록 검색 조회
-1. 상단의 우측 메뉴에 “사용자 관리” 버튼을 클릭한다.  
+##### <div id='3-2-1-1-1'/> 3.2.1.1.1. Check User List Search
+1. CLick “User Management” button at the top right menu.  
 ![011]
 
-2. 사용자 대시보드로 이동한다.  
+2. Go to user dashboard.  
 ![012]
 
-3. 사용자 대시보드 목록에서 검색할 수 있는 조건에는 사용자 아이디를 검색어로 하는 검색과 검색 타입이 관리자/사용자인 검색 2개가 있다. 검색어를 입력 후 “ENTER”를 하거나 “돋보기” 버튼을 클릭한다.  
+3. There are two conditions that can be searched in the user dashboard list: a search with a user ID as a search term and a search whose type is an administrator/user. Click "Enter" or "Magnifying class" button to search.  
 ![013]  
 ![014]
 
-##### <div id='3-2-1-1-2'/> 3.2.1.1.2. 사용자 상세 조회/수정
-1. 사용자 대시보드에서 아이디를 선택하여 사용자 상세 조회/수정 페이지로 이동한다.  
+##### <div id='3-2-1-1-2'/> 3.2.1.1.2. User Detail Check/ Modify
+1. Select ID from the user dashboard and proceed to user details check/ modify page.  
 ![015]
 
-2. 사용자의 정보를 상세 조회한다.  
+2. Check the detailed information of the user.  
 ![016]
 
-3. 정보를 수정하고자 할 때 입력 값을 새롭게 입력한다. 권한은 관리자/사용자로 선택할 수 있다.  
+3. When you want to modify the information, enter a new input value. Authentications can be selected as administrator/user.  
 ![017]
 
-4. 입력 값을 수정 후 “수정” 버튼을 클릭한다.  
+4. After entering the new value, click “Modify” button.  
 ![018]
 
-5. 수정된 정보를 확인한다.    
+5. Check the modified information.    
 ![019]
 
 
-### <div id='3-2-2'/> 3.2.2. 파이프라인
-본 장에서는 파이프라인을 관리하는 2개 방법에 대한 설명을 기술한다.
+### <div id='3-2-2'/> 3.2.2. Pipeline
+This chapter describes the two methods of how to manage pipeline.
 
-***※ 기본적으로 사용자는 파이프라인을 보기만 할 수 있고, 생성, 조회, 수정, 삭제할 수 없다. 하지만 파이프라인 참여자 권한이 부여되었을 경우에는 조건에 따라 파이프라인 생성, 조회, 수정, 삭제가 가능해진다.***
+***※ Users can only see Pipeline and cannot create, modify, check, and delete until when they have participant authorization.***
 
-#### <div id='3-2-2-1'/> 3.2.2.1. 나의 파이프라인
-1.	어떤 페이지에 있든 상관없이 Drop down 메뉴의 나의 파이프라인 버튼을 클릭하면 대시보드로 이동한다.  
+#### <div id='3-2-2-1'/> 3.2.2.1. My Pipeline
+1.	No matter which page you are on, click the My Pipeline button on the drop down menu to go to the dashboard.  
 ![020]  
 ![021]
-2.	나의 파이프라인에서 목록의 파이프라인 명을 클릭하면 해당 파이프라인의 상세 페이지로 이동한다.  
+2.	Click the name of the pipeline from My Pipeline's list and proceed to the selected pipeline's detailed page.  
 ![022]  
 ![023]
 
-#### <div id='3-2-2-2'/> 3.2.2.2. 파이프라인 신규 생성
-##### <div id='3-2-2-2-1'/> 3.2.2.2.1. 파이프라인 신규 생성(1)
+#### <div id='3-2-2-2'/> 3.2.2.2. Create New Pipeline
+##### <div id='3-2-2-2-1'/> 3.2.2.2.1. Create New Pipeline(1)
 1. 상단 메뉴의 “파이프라인 목록” 을 클릭하면 파이프라인 명 입력만으로 즉시 파이프라인을 신규 생성할 수 있다.  
 ![024]
 2. 등록 버튼을 누른 후 대시보드에 추가된 파이프라인을 확인할 수 있다.  
 ![025]
 3. Drop down 메뉴에도 등록된 파이프라인을 확인할 수 있다.  
 ![026]
-##### <div id='3-2-2-2-2'/> 3.2.2.2.2. 파이프라인 신규 생성(2)
+##### <div id='3-2-2-2-2'/> 3.2.2.2.2. Create New Pipeline(2)
 1.	오른쪽 상단의 “신규 생성” 버튼을 클릭한다.
 ***※ 사용자는 “신규 생성” 버튼이 활성화되지 않는다.***  
 ![027]
@@ -250,7 +250,7 @@ This chapter describes about the 4 menus in the pipeline deployment.
 4.	생성된 후 파이프라인 대시보드에서 새로 추가된 파이프라인 명을 확인한다.    
 ![030]
 
-##### <div id='3-2-2-2-3'/> 3.2.2.2.3. 파이프라인 신규 생성(3)
+##### <div id='3-2-2-2-3'/> 3.2.2.2.3. Create New Pipeline(3)
 ***※ 사용자는 파이프라인에 대한 참여자 권한이 주어지지 않으면 파이프라인 상세 페이지로 이동할 수 없다.***
 1. 오른쪽 상단의 “신규 생성” 버튼을 클릭한다.    
 ![031]

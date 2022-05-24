@@ -43,7 +43,7 @@
 	* [3.2.2.4.2.5.    Build Job Log/ History](#3-2-2-4-2-5)
 	* [3.2.2.4.2.6.    Build Job Log Download](#3-2-2-4-2-6)
 	* [3.2.2.4.2.7.    Add Build Job](#3-2-2-4-2-7)
-	* [3.2.2.4.2.8.    Copy Build Job](#3-2-2-4-2-8)
+	* [3.2.2.4.2.8.    Duplicate Build Job](#3-2-2-4-2-8)
 	* [3.2.2.4.2.9.    Delete Build Job](#3-2-2-4-2-9)
 	* [3.2.2.4.3. Test Job](#3-2-2-4-3)
 	* [3.2.2.4.3.1.    Create Test Job](#3-2-2-4-3-1)
@@ -53,7 +53,7 @@
 	* [3.2.2.4.3.5.    Test Job Log/ History](#3-2-2-4-3-5)
 	* [3.2.2.4.3.6.    Add Test Job](#3-2-2-4-3-6)
 	* [3.2.2.4.3.7.    Test Job Quality Issue Results](#3-2-2-4-3-7)
-	* [3.2.2.4.3.8.    Copy Test Job](#3-2-2-4-3-8)
+	* [3.2.2.4.3.8.    Duplicate Test Job](#3-2-2-4-3-8)
 	* [3.2.2.4.3.9.    Delete Test Job](#3-2-2-4-3-9)
 	* [3.2.2.4.4. Deployment Job](#3-2-2-4-4)
 	* [3.2.2.4.4.1.    Create Deployment Job](#3-2-2-4-4-1)
@@ -63,7 +63,7 @@
 	* [3.2.2.4.4.5.    Deployment Job Log/ History](#3-2-2-4-4-5)
 	* [3.2.2.4.4.6.    Deployment Job Rollback to Current Job](#3-2-2-4-4-6)
 	* [3.2.2.4.4.7.    Add Deployment Job](#3-2-2-4-4-7)
-	* [3.2.2.4.4.8.    Copy Deployment Job](#3-2-2-4-4-8)
+	* [3.2.2.4.4.8.    Duplicate Deployment Job](#3-2-2-4-4-8)
 	* [3.2.2.4.4.9.    Delete Deployment Job](#3-2-2-4-4-9)
 	* [3.2.2.4.5. Job Sorting Icon](#3-2-2-4-5)
 	* [3.2.2.4.6. Add New Job Group](#3-2-2-4-6)
@@ -76,13 +76,13 @@
 	* [3.2.4.2.   Coding Rules](#3-2-4-2)
 	* [3.2.4.3.   Quality Profile](#3-2-4-3)
 	* [3.2.4.3.1. Create Quality Profile](#3-2-4-3-1)
-	* [3.2.4.3.2. Copy Quality Profile](#3-2-4-3-2)
+	* [3.2.4.3.2. Duplicate Quality Profile](#3-2-4-3-2)
 	* [3.2.4.3.3. Modify Quality Profile](#3-2-4-3-3)
 	* [3.2.4.3.4. Connect Quality Profile Project](#3-2-4-3-4)
 	* [3.2.4.3.5. Delete Quality Profile](#3-2-4-3-5)
 	* [3.2.4.4.   Quality Gate](#3-2-4-4)
 	* [3.2.4.4.1. Create Quality Gate](#3-2-4-4-1)
-	* [3.2.4.4.2. Copy Quality Gate](#3-2-4-4-2)
+	* [3.2.4.4.2. Duplicate Quality Gate](#3-2-4-4-2)
 	* [3.2.4.4.3. Modify Quality Gate](#3-2-4-4-3)
 	* [3.2.4.4.4. Add Quality Gate Conditions](#3-2-4-4-4)
 	* [3.2.4.4.5. Connect Quality Gate Project](#3-2-4-4-5)
@@ -338,7 +338,7 @@ This chapter describes overall contributor management, such as adding, modifying
 ![056]
 2.	Proceed to configuration details page.  
 ![057]
-3. Select a job type and select the desired repository as the input type. Enter the ID and password of the selected repository, and the path of the repository to click the "Retrieve" button. Select the retrieved Branch and choose the suitable job trigger..<br>  
+3. Select a job type and select the desired repository as the input type. Enter the ID and password of the selected repository, and the path of the repository to click the "Retrieve" button. Select the retrieved Branch and choose the suitable job trigger.<br>  
 ![058]
 
 4.	Check the newly created Build Job from the Pipeline details page.  
@@ -353,7 +353,7 @@ This chapter describes overall contributor management, such as adding, modifying
 ![061]
 3. When modifying, re-enter the information to modify in each input form and click "Save" button.  
 ![062]
-4. Go to the configuration detail page and check the modified information..  
+4. Go to the configuration detail page and check the modified information.  
 ![063]
 
 ***※ All pipeline Contributors can check the build job configuration. However, modifications can only be made by administrators and pipeline Contributors with creation authority.***
@@ -393,7 +393,7 @@ This chapter describes overall contributor management, such as adding, modifying
 6.	Click the "List" button on the Log/History page to go to the Pipeline Details page.  
 ![075]
 
-***※	The build Job log/history is visible to the administrator and all pipeline Contributors, but the Run and Stop buttons can only be seen by Contributors with creation and execution authrities.***
+***※	The build Job log/history is visible to the administrator and all pipeline Contributors, but the Run and Stop buttons can only be seen by Contributors with creation and execution authority.***
 
 ###### <div id='3-2-2-4-2-6'/> 3.2.2.4.2.6.	Build Job Log Download
 1.	If the build job execution is successful, the "Download" button is activated on the Log/History page. Click the "Download" button enabled .<br>  
@@ -412,92 +412,92 @@ This chapter describes overall contributor management, such as adding, modifying
 ![080]
 4.	Check the added Build Job.<br>  
 ![081]
-5.	When the selected job from the job trigger is checked as new job group's configuration, The job new job will be created. (이후에 새 작업 그룹 추가 항목에서 설명하겠습니다.)
+5.	If you choose 'Make a new job group for this Job' for the Job Trigger, the Job will be added into a new group. (This will be dealt in details later in the explanation of 'Add a new Job group'.)
 
-***※	빌드 Job 추가는 관리자와 생성 권한을 가진 파이프라인 참여자만 가능하다.***
+***※	Adding a build job is only possible for administrators and pipeline contributors with creation authority.***
 
-###### <div id='3-2-2-4-2-8'/> 3.2.2.4.2.8.	빌드 Job 복제
-1.	파이프라인 상세페이지에서 빌드 Job의 “복제” 버튼을 클릭한다.  
+###### <div id='3-2-2-4-2-8'/> 3.2.2.4.2.8.	Duplicate Build Job
+1.	On the Pipeline Details page, click the "Duplicate" button on the Build Job.  
 ![082]
-2. 빌드 Job 이 복제된 것을 확인한다.  
+2. Check the duplicated Build Job.  
 ![083]
 
-***※	빌드 Job 복제는 관리자와 생성 권한을 가진 파이프라인 참여자만 가능하다.***
+***※	Build Job Duplication can only be done by the administrator and pipeline contributors with creation authority.***
 
-###### <div id='3-2-2-4-2-9'/> 3.2.2.4.2.9.	빌드 Job 삭제
-1.	파이프라인 상세페이지에서 빌드 Job의 “삭제” 버튼을 클릭한다.  
+###### <div id='3-2-2-4-2-9'/> 3.2.2.4.2.9.	Delete Build Job
+1.	Click “Delete” button of Build job from the pipeline details page.  
 ![084]
-2.	빌드 Job 이 삭제된 것을 확인한다.  
+2.	Check if the Build Job has been deleted.  
 ![084-2]
 
-***※	빌드 Job 삭제는 관리자와 생성 권한을 가진 파이프라인 참여자만 가능하다.***
+***※	Build Job deletion can only be done by the administrator and pipeline contributors with creation authority.***
 
 
-##### <div id='3-2-2-4-3'/> 3.2.2.4.3. 테스트 Job
-###### <div id='3-2-2-4-3-1'/> 3.2.2.4.3.1. 테스트 Job 생성
-1.	Job의 “추가” 버튼을 클릭한다.  
+##### <div id='3-2-2-4-3'/> 3.2.2.4.3. Test Job
+###### <div id='3-2-2-4-3-1'/> 3.2.2.4.3.1. Create Test Job
+1.	Click “Add” button from the Job.  
 ![084-3]
-2.	구성 페이지로 이동하여 작업 유형을 테스트(Test)로 선택한 후 입력 유형에서 원하는 품질 프로파일과 품질 게이트, 작업 그룹을 선택한다. 그 후에 작업 트리거는 각자의 상황에 맞게 선택한다.  
+2.	Go to configuration page and select job type as Test then enter the desired quality profile, quality gate, and Job group. Select suitable job trigger.  
 ![085]
-3.	“저장” 버튼을 클릭하고, 파이프라인 상세페이지에서 테스트 Job 생성된 것을 확인한다.  
+3.	Click “Save” button and check the created test job at the pipeline details page.  
 ![086]
 
-***※	테스트 Job 생성은 관리자와 파이프라인 참여자 중 생성 권한을 가진 참여자만 생성이 가능하다.***
+***※	Creating of Test Job can only be done by the administrator and pipeline contributors with creation authority***
 
-###### <div id='3-2-2-4-3-2'/> 3.2.2.4.3.2. 테스트 Job 구성 조회/수정
-1.	생성된 테스트 Job 의 “구성” 아이콘을 클릭한다.  
+###### <div id='3-2-2-4-3-2'/> 3.2.2.4.3.2. Check/ Modify Test Job Configuration
+1.	Click the “configuration” icon of the created test job.  
 ![087]
-2.	구성 상세페이지로 이동하여 생성 시 저장해 놓았던 구성 정보들을 조회한다.  
+2.	Go to the configuration details page and look up the configuration information saved when creating.  
 ![087-2]
-3.	수정 시에는 각 입력 폼에 수정할 정보들을 다시 입력한 후 “저장” 버튼을 클릭한다.  
+3.	When modifying, re-enter the information to modify in each input form and click "Save" button.  
 ![088]
-4.	구성 상세페이지로 이동하여 수정된 정보들을 확인한다.  
+4.	Go to the configuration detail page and check the modified information.  
 ![089]
 
-***※	테스트 Job 구성 조회는 파이프라인 참여자이면 모두 조회가 가능하다. 하지만 수정은 관리자와 파이프라인 참여자 중 생성 권한을 가진 참여자만 수정이 가능하다.***
+***※	All pipeline Contributors can check the Test job configuration. However, modifications can only be made by administrators and pipeline Contributors with creation authority.***
 
-###### <div id='3-2-2-4-3-3'/> 3.2.2.4.3.3.	테스트 Job 실행
-1.	파이프라인 상세페이지에서 테스트 Job의 “실행” 아이콘을 클릭한다.  
+###### <div id='3-2-2-4-3-3'/> 3.2.2.4.3.3.	Run Test Job
+1.	Click “Run” icon of Test Job from the Pipeline details page.  
 ![090]
-2.	실행이 될 때 파란색으로 바뀌며 깜빡이는 것을 확인할 수 있다. (실행 중에 “로그/히스토리” 아이콘을 클릭하여 실시간으로 로그를 조회할 수 있다.)  
+2.	Once it starts running, the bar turns blue and blinks. (View logs in real time by clicking the "log/history" icon while running.)  
 ![091]
-3. 실행이 완료되면 초록색으로 바뀌며 작업 부분에 Test(실행완료) 로 표시된다.
+3. Once the execution is done, the bar turns green and the Build status changes into Build(Completed).
 
-***※	테스트 Job 실행은 관리자와 파이프라인 참여자 중 생성 권한과 실행 권한을 가진 참여자만 가능하다.***
+***※	Test Job execution is only available for administrators and pipeline Contributors with creation and execution authority.***
 
-###### <div id='3-2-2-4-3-4'/> 3.2.2.4.3.4.	테스트 Job 정지
-1.	실행 중인 테스트 Job을 정지 및 취소하고 싶을 때 “정지” 아이콘을 클릭한다.  
+###### <div id='3-2-2-4-3-4'/> 3.2.2.4.3.4.	Stop Test Job
+1.	Click the "Stop" icon when you want to stop or cancel a running build Job.  
 ![092]
-2.	정지된 빌드 Job은 주황색으로 바뀌는 것을 확인할 수 있다  
+2.	The stopped Test Job's bar turns orange.  
 ![093]
 
-***※	테스트 Job 정지는 관리자와 파이프라인 참여자 중 생성 권한과 실행 권한을 가진 참여자만 가능하다.***
+***※	Stopping of Test Job is only available for administrators and pipeline Contributors with creation and execution authority.***
 
-###### <div id='3-2-2-4-3-5'/> 3.2.2.4.3.5.	테스트 Job 로그/히스토리
-1.	빌드 Job 실행이 진행 중일 때 “로그/히스토리” 아이콘을 클릭하여 실시간으로 로그를 조회할 수 있다.  
+###### <div id='3-2-2-4-3-5'/> 3.2.2.4.3.5.	Test Job Log/ History
+1.	Logs can be seen real time by clicking the "log/history" icon when the Test job is running.  
 ![094]
-2.	로그 조회 페이지로 이동한다. 실시간으로 로그가 보이고 있는 것을 확인한다.  
+2.	Go to log check page. Check the logs in real time.  
 ![095]
-3.	테스트 Job 실행이 완료된 것을 확인하고, 히스토리를 확인한다.  
+3.	Confirm that the Test job execution is complete, and verify the history.  
 ![096]
-4.	“실행”, “취소”, “구성”, “목록” 버튼은 3.2.2.4.2.5. 빌드 Job 로그/히스토리 항목을 참고한다.
+4.	For “Run”, “Cancel”, “Configuration”, “List” buttons, check 3.2.2.4.2.5. Build Job log/history.
 
-***※	테스트 Job 로그/히스토리는 관리자와 모든 파이프라인 참여자가 조회 가능하나 실행 및 정지 버튼은 생성 권한과 실행 권한을 가진 참여자만 가능하다.***
+***※	The build Job log/history is visible to the administrator and all pipeline Contributors, but the Run and Stop buttons can only be seen by Contributors with creation and execution authority.***
 
 
-###### <div id='3-2-2-4-3-6'/> 3.2.2.4.3.6.	테스트 Job 품질 이슈 결과
-1.	테스트 Job의 로그/히스토리 “품질 이슈 결과” 버튼을 누르면 수행된 소스 코드의 오류 해결 여부 및 오류의 수준, 활성화 상태를 관리하는 품질 관리 대시보드로 이동한다.  
+###### <div id='3-2-2-4-3-6'/> 3.2.2.4.3.6.	Test Job Quality Issue Results
+1.	Click the Log/History "Quality Issue Results" button of the test Job to go to the Quality Management Dashboard that manages the error resolution status, level of error, and activation status of the source code performed.  
 ![097]
-2.	품질 관리 대시보드에 대해서는 이후 3.2.4 품질 관리 부분을 참고한다.
+2.	Refer to 3.2.4 for quality control dashboards.
 
-***※	테스트 Job 품질 이슈 결과는 관리자와 모든 파이프라인 참여자가 조회 가능하다.***
+***※	Test Job uality Issue Results can be checked by all pipeline contributors and administrators.***
 
-###### <div id='3-2-2-4-3-7'/> 3.2.2.4.3.7.	테스트 Job 추가
-1.	파이프라인 상세페이지에서 테스트 Job의 “추가” 버튼을 클릭한다.  
+###### <div id='3-2-2-4-3-7'/> 3.2.2.4.3.7.	Add Test Job
+1.	click the "Add" button on the Test Job on the Pipeline Details page.  
 ![098]
-2.	그 이후의 과정은 3.2.2.4.2.7. 빌드 Job 추가 항목을 참고한다.
+2.	Refer to 3.2.2.4.2.7. Add Build Job  for the next procedures.
 
-***※	테스트 Job 추가는 관리자와 생성 권한을 가진 파이프라인 참여자만 가능하다.***
+***※	Adding a Test job is only possible for administrators and pipeline contributors with creation authority.***
 
 ###### <div id='3-2-2-4-3-8'/> 3.2.2.4.3.8.	테스트 Job 복제
 1.	파이프라인 상세페이지에서 테스트 Job의 “복제” 버튼을 클릭한다.  

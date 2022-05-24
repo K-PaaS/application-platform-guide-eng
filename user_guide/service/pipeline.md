@@ -260,7 +260,7 @@ This chapter describes the two methods of how to manage pipeline.
 
 #### <div id='3-2-2-3'/> 3.2.2.3. Pipeline Dashboard
 ##### <div id='3-2-2-3-1'/> 3.2.2.3.1. Pipeline List Search Check
-1. The conditions that can be checked from the list are Pipeline's Name and Date/ Update/ Name 목록에서 검색할 수 있는 조건은 파이프라인 명과 날짜/업데이트/이름순 필터 2개이다.  
+1. A desired pipeline can be searched by entering the Pipeline name. Or the Pipeline list could be arranged by the sequence of created dates, updated dates, and alphabetical order..  
 ![033]
 2.	Click “ENTER” or “Magnifying glass” button to search.  
 ![034]

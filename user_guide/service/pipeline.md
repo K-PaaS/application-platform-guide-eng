@@ -30,11 +30,11 @@
 	* [3.2.2.3.3. Modify Pipeline](#3-2-2-3-3)
 	* [3.2.2.3.4. Delete Pipeline](#3-2-2-3-4)
 	* [3.2.2.4.   Pipeline Details](#3-2-2-4)
-	* [3.2.2.4.1. Manage Participants](#3-2-2-4-1)
-	* [3.2.2.4.1.1. Add Participants](#3-2-2-4-1-1)
-	* [3.2.2.4.1.2.    Check Participants List Search](#3-2-2-4-1-2)
-	* [3.2.2.4.1.3.    Check/ Modify Participants Detail Information](#3-2-2-4-1-3)
-	* [3.2.2.4.1.4.    Delete Participants](#3-2-2-4-1-4)
+	* [3.2.2.4.1. Manage Contributors](#3-2-2-4-1)
+	* [3.2.2.4.1.1. Add Contributors](#3-2-2-4-1-1)
+	* [3.2.2.4.1.2.    Check Contributors List Search](#3-2-2-4-1-2)
+	* [3.2.2.4.1.3.    Check/ Modify Contributors Detail Information](#3-2-2-4-1-3)
+	* [3.2.2.4.1.4.    Delete Contributors](#3-2-2-4-1-4)
 	* [3.2.2.4.2. Build Job](#3-2-2-4-2)
 	* [3.2.2.4.2.1.    Create Build Job ](#3-2-2-4-2-1)
 	* [3.2.2.4.2.2.    Check/ Modify Build Job Configuration](#3-2-2-4-2-2)
@@ -155,7 +155,7 @@ The Pipeline deployment service consists of the following parts: Pipeline search
   <tr>
 		<td>Pipeline</td>
 		<td>Pipeline Dashboard</td>
-		<td>Manages the functions of Pipeline registration,list and details search, delete, and  participant authority</td>
+		<td>Manages the functions of Pipeline registration,list and details search, delete, and  contributors authority</td>
   </tr>
 	<tr>
 		<td>Pipeline Management</td>
@@ -221,7 +221,7 @@ The user management menu is visible only to the administrators. This chapter des
 ### <div id='3-2-2'/> 3.2.2. Pipeline
 This chapter describes the two methods of how to manage pipeline.
 
-***※ Users can only see Pipeline and cannot create, modify, check, and delete until when they have participant authorization.***
+***※ Users can only see Pipeline and cannot create, modify, check, and delete until when they have contributors authorization.***
 
 #### <div id='3-2-2-1'/> 3.2.2.1. My Pipeline
 1.	No matter which page you are on, click the My Pipeline button on the drop down menu to go to the dashboard.  
@@ -251,7 +251,7 @@ This chapter describes the two methods of how to manage pipeline.
 ![030]
 
 ##### <div id='3-2-2-2-3'/> 3.2.2.2.3. Create New Pipeline(3)
-***※ Users does not have authority as a participant of the pipeline and cannot proceed to the pipeline's detaild page.***
+***※ Users does not have authority as a contributors of the pipeline and cannot proceed to the pipeline's detaild page.***
 1. Click “Create New” button at the top right.    
 ![031]
 2. Go to Create New Pipeline Page.    
@@ -291,44 +291,44 @@ This chapter describes the two methods of how to manage pipeline.
 
 
 #### <div id='3-2-2-4'/> 3.2.2.4. Pipeline Details
-This chapter describes overall participant management, such as adding, modifying, deleting, and authorizing participants participating in the pipeline. Also talks about how to create, execute, delete, log/history check, and manage participants for one pipeline.
-##### <div id='3-2-2-4-1'/> 3.2.2.4.1. Manage Participants
-###### <div id='3-2-2-4-1-1'/> 3.2.2.4.1.1. Add Participants
-***※	Administrators are pipeline creators, so they are participants with creation authority by default..***
-1.	Select Participants tab from the pipeline details page.  
+This chapter describes overall contributor management, such as adding, modifying, deleting, and authorizing Contributors Contributing in the pipeline. Also talks about how to create, execute, delete, log/history check, and manage contributors for one pipeline.
+##### <div id='3-2-2-4-1'/> 3.2.2.4.1. Manage Contributors
+###### <div id='3-2-2-4-1-1'/> 3.2.2.4.1.1. Add Contributors
+***※	Administrators are pipeline creators, so they are contributors with creation authority by default..***
+1.	Select Contributors tab from the pipeline details page.  
 ![043]
-2.	Click “Add Participant” button at the top right.  
+2.	Click “Add Contributor” button at the top right.  
 ![044]
-3.	Go to the Add Participants page to search for users who are currently invited to the pipeline deployment and select. Select one of the authority between: view, create, or execute and click the "Add" button.  
+3.	Go to the Add Contributors page to search for users who are currently invited to the pipeline deployment and select. Select one of the authority between: view, create, or execute and click the "Add" button.  
 ![045]
-4.	Check the added participant at the participants tab.  
+4.	Check the added contributor at the Contributors tab.  
 ![046]
 
-###### <div id='3-2-2-4-1-2'/> 3.2.2.4.1.2. Check Participants List Search
-1.	The condition that can be searched in the participant list is one participant ID.  
+###### <div id='3-2-2-4-1-2'/> 3.2.2.4.1.2. Check Contributors List Search
+1.	The condition that can be searched in the contributor list is one contributor ID.  
 ![047]
 2.	After entering the search word, click “ENTER” or “Magnifying glass” image button to check.  
 ![048]
 
-###### <div id='3-2-2-4-1-3'/> 3.2.2.4.1.3.	Check/ Modify Participants Detail Information
-1.	Select the ID of the participant to check from the participant list.  
+###### <div id='3-2-2-4-1-3'/> 3.2.2.4.1.3.	Check/ Modify Contributors Detail Information
+1.	Select the ID of the contributor to check from the contributor list.  
 ![049]
-2.	Go to the check/modify page for participant details and check the participants details.  
+2.	Go to the check/modify page for contributor details and check the contributors details.  
 ![050]
 3.	Select the authority to modify and click "Modify" button.  
 ![051]
-4.	Check the modified authority of the participant from the participants list.  
+4.	Check the modified authority of the contributor from the contributors list.  
 ![052]
 
 
-###### <div id='3-2-2-4-1-4'/> 3.2.2.4.1.4.	Delete Participant
-1.	Select a participant to delete from the list.  
+###### <div id='3-2-2-4-1-4'/> 3.2.2.4.1.4.	Delete Contributor
+1.	Select a contributor to delete from the list.  
 ![053]
-2.	Go to detailed information check/modify page of the selected participant.  
+2.	Go to detailed information check/modify page of the selected contributor.  
 ![053-2]
-3.	Click “Delete Participant” button.  
+3.	Click “Delete Contributor” button.  
 ![054]
-4.	Check from the list if the participant is deleted.  
+4.	Check from the list if the Contributor is deleted.  
 ![055]
 
 
@@ -344,7 +344,7 @@ This chapter describes overall participant management, such as adding, modifying
 4.	Check the newly created Build Job from the Pipeline details page.  
 ![059]
 
-***※ Creating a Build Job can only be done by administrator and authorized participants of pipeline.***
+***※ Creating a Build Job can only be done by administrator and authorized contributors of pipeline.***
 
 ###### <div id='3-2-2-4-2-2'/> 3.2.2.4.2.2. Check/ Modify Build Job Configuration
 1. Click the “Configuration” icon of the created Build Job.<br>  
@@ -356,7 +356,7 @@ This chapter describes overall participant management, such as adding, modifying
 4. Go to the configuration detail page and check the modified information..  
 ![063]
 
-***※ All pipeline participants can check the build job configuration. However, modifications can only be made by administrators and pipeline participants with creation authority.***
+***※ All pipeline Contributors can check the build job configuration. However, modifications can only be made by administrators and pipeline Contributors with creation authority.***
 
 ###### <div id='3-2-2-4-2-3'/> 3.2.2.4.2.3. Run Build Job
 1. Click “Run” icon from the Pipeline details page.<br>  
@@ -366,7 +366,7 @@ This chapter describes overall participant management, such as adding, modifying
 3. Once the execution is done, the bar turns green and the Build status changes into Build(Completed).  
 ![066]
 
-***※	Build Job execution is only available for administrators and pipeline participants with creation and execution authority.***
+***※	Build Job execution is only available for administrators and pipeline Contributors with creation and execution authority.***
 
 
 ###### <div id='3-2-2-4-2-4'/> 3.2.2.4.2.4. Stop Build Job
@@ -375,7 +375,7 @@ This chapter describes overall participant management, such as adding, modifying
 2.	The stopped Build Job's bar turns orange.  
 ![068]
 
-***※	Stopping of Build Job is only available for administrators and pipeline participants with creation and execution authority.***
+***※	Stopping of Build Job is only available for administrators and pipeline Contributors with creation and execution authority.***
 
 
 ###### <div id='3-2-2-4-2-5'/> 3.2.2.4.2.5.	Build Job Log/History
@@ -393,26 +393,26 @@ This chapter describes overall participant management, such as adding, modifying
 6.	Click the "List" button on the Log/History page to go to the Pipeline Details page.  
 ![075]
 
-***※	The build Job log/history is visible to the administrator and all pipeline participants, but the Run and Stop buttons can only be seen by participants with creation and execution authrities.***
+***※	The build Job log/history is visible to the administrator and all pipeline Contributors, but the Run and Stop buttons can only be seen by Contributors with creation and execution authrities.***
 
 ###### <div id='3-2-2-4-2-6'/> 3.2.2.4.2.6.	Build Job Log Download
-1.	빌드 Job 실행이 성공하면 로그/히스토리 페이지에서 “다운로드” 버튼이 활성화된다. 활성화된 “다운로드” 버튼을 클릭한다.<br>  
+1.	If the build job execution is successful, the "Download" button is activated on the Log/History page. Click the "Download" button enabled .<br>  
 ![076]
-2.	Build 된 파일(ex. war, jar, zip 등)이 다운로드 된다.  
+2.	Built files will be downloaded(ex. war, jar, zip and etc.).  
 ![077]
 
-***※	빌드 Job 로그 다운로드는 관리자와 모든 파이프라인 참여자가 가능하다.***
+***※	Downloading the build Job log is available to administrators and all pipeline Contributors.***
 
-###### <div id='3-2-2-4-2-7'/> 3.2.2.4.2.7.	빌드 Job 추가
-1.	파이프라인 상세페이지에서 빌드 Job의 “추가” 버튼을 클릭한다.  
+###### <div id='3-2-2-4-2-7'/> 3.2.2.4.2.7.	Add Build Job
+1.	click the "Add" button on the Build Job on the Pipeline Details page.  
 ![078]
-2.	구성 상세페이지로 이동한다.  
+2.	Go to the Configuration Details page.  
 ![079]
-3.	빌드 Job 생성과 같이 입력 폼에 알맞은 값들을 입력한 후 ”저장” 버튼을 클릭한다.(작업 유형은 빌드 이외에도 테스트, 배포 유형 선택이 가능하다.)  
+3.	Enter the appropriate values in the input form, such as creating a build job, and click the "Save" button.(Job types can be selected aside from build. Such as Test or deployment.)  
 ![080]
-4.	추가된 빌드 Job 을 확인한다.<br>  
+4.	Check the added Build Job.<br>  
 ![081]
-5.	작업 트리거에서 이 작업(Job)을 새 작업 그룹으로 구성을 체크하면 새로운 그룹으로 Job이 추가된다. (이후에 새 작업 그룹 추가 항목에서 설명하겠습니다.)
+5.	When the selected job from the job trigger is checked as new job group's configuration, The job new job will be created. (이후에 새 작업 그룹 추가 항목에서 설명하겠습니다.)
 
 ***※	빌드 Job 추가는 관리자와 생성 권한을 가진 파이프라인 참여자만 가능하다.***
 

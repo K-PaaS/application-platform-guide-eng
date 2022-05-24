@@ -333,69 +333,69 @@ This chapter describes overall participant management, such as adding, modifying
 
 
 ##### <div id='3-2-2-4-2'/> 3.2.2.4.2. Build Job
-###### <div id='3-2-2-4-2-1'/> 3.2.2.4.2.1. 빌드 Job 생성
-1.	파이프라인 상세 페이지에서 ‘이곳을 클릭하여 새 작업 추가’ 버튼을 클릭한다.  
+###### <div id='3-2-2-4-2-1'/> 3.2.2.4.2.1. Create Build Job 
+1.	Click ‘click here to add new Job’ button from the pipeline details page.  
 ![056]
-2.	구성 상세페이지로 이동한다.  
+2.	Proceed to configuration details page.  
 ![057]
-3. 작업 유형을 선택한 후 원하는 저장소를 입력 유형으로 선택한다. 그 후에 선택한 저장소의 아이디와 비밀번호를 입력 후 해당하는 저장소의 경로를 입력하여 “조회” 버튼을 클릭한다. 조회한 Branch를 선택 후 작업 트리거는 각자의 상황에 맞게 선택한다.<br>  
+3. Select a job type and select the desired repository as the input type. Enter the ID and password of the selected repository, and the path of the repository to click the "Retrieve" button. Select the retrieved Branch and choose the suitable job trigger..<br>  
 ![058]
 
-4.	생성된 빌드 Job 을 파이프라인 상세 페이지에서 확인한다.  
+4.	Check the newly created Build Job from the Pipeline details page.  
 ![059]
 
-***※ 빌드 Job 생성은 관리자와 파이프라인 참여자 중 생성 권한을 가진 참여자만 생성이 가능하다.***
+***※ Creating a Build Job can only be done by administrator and authorized participants of pipeline.***
 
-###### <div id='3-2-2-4-2-2'/> 3.2.2.4.2.2. 빌드 Job 구성 조회/수정
-1. 생성된 빌드 Job 의 “구성” 아이콘을 클릭한다.<br>  
+###### <div id='3-2-2-4-2-2'/> 3.2.2.4.2.2. Check/ Modify Build Job Configuration
+1. Click the “Configuration” icon of the created Build Job.<br>  
 ![060]
-2. 구성 상세페이지로 이동하여 생성 시 저장해 놓았던 구성 정보들을 조회한다.  
+2. Go to the configuration details page and look up the configuration informations saved when creating.  
 ![061]
-3. 수정 시에는 각 입력 폼에 수정할 정보들을 다시 입력한 후 “저장” 버튼을 클릭한다.  
+3. When modifying, re-enter the information to modify in each input form and click "Save" button.  
 ![062]
-4. 구성 상세페이지로 이동하여 수정된 정보들을 확인한다.  
+4. Go to the configuration detail page and check the modified information..  
 ![063]
 
-***※ 빌드 Job 구성 조회는 파이프라인 참여자이면 모두 조회가 가능하다. 하지만 수정은 관리자와 파이프라인 참여자 중 생성 권한을 가진 참여자만 수정이 가능하다.***
+***※ All pipeline participants can check the build job configuration. However, modifications can only be made by administrators and pipeline participants with creation authority.***
 
-###### <div id='3-2-2-4-2-3'/> 3.2.2.4.2.3. 빌드 Job 실행
-1. 파이프라인 상세페이지에서 “실행” 아이콘을 클릭한다.<br>  
+###### <div id='3-2-2-4-2-3'/> 3.2.2.4.2.3. Run Build Job
+1. Click “Run” icon from the Pipeline details page.<br>  
 ![064]
-2. 실행이 될 때 파란색으로 바뀌며 깜빡이는 것을 확인할 수 있다. (실행 중에 “로그/히스토리” 아이콘을 클릭하여 실시간으로 로그를 조회할 수 있다.)  
+2. Once it starts running, the bar turns blue and blinks. (View logs in real time by clicking the "log/history" icon while running.)  
 ![065]
-3. 실행이 완료되면 초록색으로 바뀌며 작업 부분에 Build(실행완료) 로 표시된다.  
+3. Once the execution is done, the bar turns green and the Build status changes into Build(Completed).  
 ![066]
 
-***※	빌드 Job 실행은 관리자와 파이프라인 참여자 중 생성 권한과 실행 권한을 가진 참여자만 가능하다.***
+***※	Build Job execution is only available for administrators and pipeline participants with creation and execution authority.***
 
 
-###### <div id='3-2-2-4-2-4'/> 3.2.2.4.2.4. 빌드 Job 정지
-1.	실행 중인 빌드 Job을 정지 및 취소하고 싶을 때 “정지” 아이콘을 클릭한다.  
+###### <div id='3-2-2-4-2-4'/> 3.2.2.4.2.4. Stop Build Job
+1.	Click the "Stop" icon when you want to stop or cancel a running build Job.  
 ![067]
-2.	정지된 빌드 Job은 주황색으로 바뀌는 것을 확인할 수 있다.  
+2.	The stopped Build Job's bar turns orange.  
 ![068]
 
-***※	빌드 Job 정지는 관리자와 파이프라인 참여자 중 생성 권한과 실행 권한을 가진 참여자만 가능하다.***
+***※	Stopping of Build Job is only available for administrators and pipeline participants with creation and execution authority.***
 
 
-###### <div id='3-2-2-4-2-5'/> 3.2.2.4.2.5.	빌드 Job 로그/히스토리
-1.	빌드 Job 실행이 진행 중일 때 “로그/히스토리” 아이콘을 클릭하여 실시간으로 로그를 조회할 수 있다.  
+###### <div id='3-2-2-4-2-5'/> 3.2.2.4.2.5.	Build Job Log/History
+1.	 Logs can be seen real time by clicking the "log/history" icon when the build job is running.  
 ![069]
-2.	로그 조회 페이지로 이동한다. 실시간으로 로그가 보이고 있는 것을 확인한다.  
+2.	Go to log check page. Check the logs in real time.  
 ![070]
-3.	빌드 Job 실행이 완료된 것을 확인하고, 히스토리를 확인한다.  
+3.	Confirm that the build job execution is complete, and verify the history.  
 ![071]
-4.	로그/히스토리 페이지에서 상단의 “취소” 버튼 또는 “실행” 버튼을 클릭하여 Job을 취소하고, 실행할 수 있다.  
+4.	Cancel and run a Job by clicking the "Cancel" or "Run" button at the top of the Log/History page.  
 ![072]  
 ![073]
-5.	로그/히스토리 페이지에서 “구성” 버튼을 클릭하면 빌드 Job 구성 조회 페이지로 이동한다.  
+5.	Click the "Configure" button on the Log/History page to go to the Build Job Configuration check page.  
 ![074]
-6.	로그/히스토리 페이지에서 “목록” 버튼을 클릭하면 파이프라인 상세페이지로 이동한다.  
+6.	Click the "List" button on the Log/History page to go to the Pipeline Details page.  
 ![075]
 
-***※	빌드 Job 로그/히스토리는 관리자와 모든 파이프라인 참여자가 조회 가능하나 실행 및 정지 버튼은 생성 권한과 실행 권한을 가진 참여자만 가능하다.***
+***※	The build Job log/history is visible to the administrator and all pipeline participants, but the Run and Stop buttons can only be seen by participants with creation and execution authrities.***
 
-###### <div id='3-2-2-4-2-6'/> 3.2.2.4.2.6.	빌드 Job 로그 다운로드
+###### <div id='3-2-2-4-2-6'/> 3.2.2.4.2.6.	Build Job Log Download
 1.	빌드 Job 실행이 성공하면 로그/히스토리 페이지에서 “다운로드” 버튼이 활성화된다. 활성화된 “다운로드” 버튼을 클릭한다.<br>  
 ![076]
 2.	Build 된 파일(ex. war, jar, zip 등)이 다운로드 된다.  

@@ -32,7 +32,7 @@
 	* [3.2.2.4.   Pipeline Details](#3-2-2-4)
 	* [3.2.2.4.1. Manage Participants](#3-2-2-4-1)
 	* [3.2.2.4.1.1. Add Participants](#3-2-2-4-1-1)
-	* [3.2.2.4.1.2.    Check Participants Lish Search](#3-2-2-4-1-2)
+	* [3.2.2.4.1.2.    Check Participants List Search](#3-2-2-4-1-2)
 	* [3.2.2.4.1.3.    Check/ Modify Participants Detail Information](#3-2-2-4-1-3)
 	* [3.2.2.4.1.4.    Delete Participants](#3-2-2-4-1-4)
 	* [3.2.2.4.2. Build Job](#3-2-2-4-2)
@@ -186,7 +186,7 @@ The Pipeline deployment service consists of the following parts: Pipeline search
 This chapter describes about the 4 menus in the pipeline deployment.
 
 ### <div id='3-2-1'/> 3.2.1. User Management
-The user management menu is visible only to the administrators. This chapter describes about the authentication managing and information check, and manages users of pipeline deployment service.
+The user management menu is visible only to the administrators. This chapter describes about the authorization management and information check, and manages users of pipeline deployment service.
 
 #### <div id='3-2-1-1'/> 3.2.1.1. User Dashboard
 
@@ -208,7 +208,7 @@ The user management menu is visible only to the administrators. This chapter des
 2. Check the detailed information of the user.  
 ![016]
 
-3. When you want to modify the information, enter a new input value. Authentications can be selected as administrator/user.  
+3. When you want to modify the information, enter a new input value. Authority can be selected between administrator/user.  
 ![017]
 
 4. After entering the new value, click “Modify” button.  
@@ -233,78 +233,78 @@ This chapter describes the two methods of how to manage pipeline.
 
 #### <div id='3-2-2-2'/> 3.2.2.2. Create New Pipeline
 ##### <div id='3-2-2-2-1'/> 3.2.2.2.1. Create New Pipeline(1)
-1. 상단 메뉴의 “파이프라인 목록” 을 클릭하면 파이프라인 명 입력만으로 즉시 파이프라인을 신규 생성할 수 있다.  
+1. Click “Pipeline List” from the menu on top to create a new Pipeline just by entering the name.  
 ![024]
-2. 등록 버튼을 누른 후 대시보드에 추가된 파이프라인을 확인할 수 있다.  
+2. After clicking register button, the added pipeline can be checked at the dashboard.  
 ![025]
-3. Drop down 메뉴에도 등록된 파이프라인을 확인할 수 있다.  
+3. The registered Pipeline can also be checked from the Drop down Menu.  
 ![026]
 ##### <div id='3-2-2-2-2'/> 3.2.2.2.2. Create New Pipeline(2)
-1.	오른쪽 상단의 “신규 생성” 버튼을 클릭한다.
-***※ 사용자는 “신규 생성” 버튼이 활성화되지 않는다.***  
+1.	Click “Create New” button at the top right.
+***※  “Create New” button is not activated to the Users.***  
 ![027]
-2.	파이프라인 신규 생성 페이지로 이동한다.    
+2.	Go to Create New Pipeline Page.    
 ![028]
-3.	파이프라인 명은 필수로 입력받기 때문에 파이프라인 명을 반드시 입력한 후 “생성” 버튼을 클릭한다.    
+3.	Pipeline name is REQUIRED. Make sure to enter the Pipeline name and click “Create” button.    
 ![029]
-4.	생성된 후 파이프라인 대시보드에서 새로 추가된 파이프라인 명을 확인한다.    
+4.	Go to Pipeline dashboard page and check the created pipelines name.    
 ![030]
 
 ##### <div id='3-2-2-2-3'/> 3.2.2.2.3. Create New Pipeline(3)
-***※ 사용자는 파이프라인에 대한 참여자 권한이 주어지지 않으면 파이프라인 상세 페이지로 이동할 수 없다.***
-1. 오른쪽 상단의 “신규 생성” 버튼을 클릭한다.    
+***※ Users does not have authority as a participant of the pipeline and cannot proceed to the pipeline's detaild page.***
+1. Click “Create New” button at the top right.    
 ![031]
-2. 파이프라인 신규 생성 페이지로 이동한다.    
+2. Go to Create New Pipeline Page.    
 ![032]
-3. 이후 생성 과정은 3.2.2.2.2. 파이프라인 신규 생성(2) 참고.
+3. Refer to 3.2.2.2.2. Create New Pipeline(2) for the next procedures.
 
-#### <div id='3-2-2-3'/> 3.2.2.3. 파이프라인 대시보드
-##### <div id='3-2-2-3-1'/> 3.2.2.3.1. 파이프라인 목록 검색 조회
-1. 목록에서 검색할 수 있는 조건은 파이프라인 명과 날짜/업데이트/이름순 필터 2개이다.  
+#### <div id='3-2-2-3'/> 3.2.2.3. Pipeline Dashboard
+##### <div id='3-2-2-3-1'/> 3.2.2.3.1. Pipeline List Search Check
+1. The conditions that can be checked from the list are Pipeline's Name and Date/ Update/ Name 목록에서 검색할 수 있는 조건은 파이프라인 명과 날짜/업데이트/이름순 필터 2개이다.  
 ![033]
-2.	검색어를 입력 후 “ENTER”를 하거나 “돋보기” 버튼을 클릭한다.  
+2.	Click “ENTER” or “Magnifying glass” button to search.  
 ![034]
-3.	목록 조회/검색 목록 조회일 때 모두 검색 타입 필터를 선택하면 즉시 반영된다.  
+3.	If you select a search type filter for both a list inquire/search list inquire, it will be reflected immediately.  
 ![035]
 
-##### <div id='3-2-2-3-2'/> 3.2.2.3.2. 파이프라인 상세 정보 조회
-1.	파이프라인 대시보드에서 파이프라인 명을 눌러 파이프라인 상세 페이지로 이동한다.  
+##### <div id='3-2-2-3-2'/> 3.2.2.3.2. Pipeline Detail Information Check
+1.	Go to Pipeline details page by clicking the pipeline's name from the pipeline dashboard.  
 ![036]
-2.	파이프라인 상세페이지에서 오른쪽 상단에 “정보보기/수정” 버튼을 클릭한다.  
+2.	Click “View/Modify information” button at the top right of pipeline details page.  
 ![037]
-3.	파이프라인 정보보기/수정 페이지로 이동하여 해당 파이프라인의 정보를 상세 조회한다.  
+3.	Check the details of the selected Pipeline from the view/modify Pipeline Information page.  
 ![038]
 
 
-##### <div id='3-2-2-3-3'/> 3.2.2.3.3. 파이프라인 수정
-1.	파이프라인 정보보기/수정 페이지에서 입력 값을 수정 후 “수정” 버튼을 클릭한다.  
+##### <div id='3-2-2-3-3'/> 3.2.2.3.3. Modify Pipeline
+1.	On the View/Modify Pipeline Information page, modify the input value and click the "Modify" button.  
 ![039]
 
-2.	수정하고 나면 파이프라인 상세 페이지로 이동한다. 다시 “정보보기/수정” 버튼을 클릭하여 변경된 값을 확인한다.  
+2.	Once modified, go to the Pipeline Details page. Click the "View/Modify information" button again to check the changed value.  
 ![040]
 
-##### <div id='3-2-2-3-4'/> 3.2.2.3.4. 파이프라인 삭제
-1.	파이프라인 정보보기/수정 페이지에서 “파이프라인 삭제” 버튼을 클릭한다.  
+##### <div id='3-2-2-3-4'/> 3.2.2.3.4. Delete Pipeline
+1.	On the View/Modify Pipeline Information page, click the "Delete Pipeline" button.  
 ![041]
-2.	삭제 후에 파이프라인 대시보드로 이동하여 파이프라인이 삭제되었는지 확인한다.  
+2.	Go to the pipeline dashboard to verify that the pipeline has been deleted.  
 ![042]
 
 
-#### <div id='3-2-2-4'/> 3.2.2.4. 파이프라인 상세
-본 장에서는 파이프라인에 참여하는 참여자 추가, 수정, 삭제 및 권한 부여 등 전반적인 참여자 관리와 하나의 파이프라인에 대한 Job들을 생성 및 실행, 삭제, 로그/히스토리 조회, 참여자 등을 관리하는 방법에 대해 기술한다.
-##### <div id='3-2-2-4-1'/> 3.2.2.4.1. 참여자 관리
-###### <div id='3-2-2-4-1-1'/> 3.2.2.4.1.1. 참여자 추가
-***※	관리자는 파이프라인 생성자이므로 기본적으로 생성 권한을 가진 참여자이다.***
-1.	파이프라인 상세페이지에서 참여자 탭을 선택한다.  
+#### <div id='3-2-2-4'/> 3.2.2.4. Pipeline Details
+This chapter describes overall participant management, such as adding, modifying, deleting, and authorizing participants participating in the pipeline. Also talks about how to create, execute, delete, log/history check, and manage participants for one pipeline.
+##### <div id='3-2-2-4-1'/> 3.2.2.4.1. Manage Participants
+###### <div id='3-2-2-4-1-1'/> 3.2.2.4.1.1. Add Participants
+***※	Administrators are pipeline creators, so they are participants with creation authority by default..***
+1.	Select Participants tab from the pipeline details page.  
 ![043]
-2.	우측 상단에 “참여자 추가” 버튼을 클릭한다.  
+2.	Click “Add Participant” button at the top right.  
 ![044]
-3.	참여자 추가 페이지로 이동하여 현재 배포 파이프라인에 초대된 사용자를 검색하고, 선택한다. 권한은 보기, 생성, 실행 권한 중 한 개를 선택하여 “추가” 버튼을 클릭한다.  
+3.	Go to the Add Participants page to search for users who are currently invited to the pipeline deployment and select. Select one of the authority between: view, create, or execute and click the "Add" button.  
 ![045]
-4.	참여자 탭에서 추가된 참여자를 확인한다.  
+4.	Check the added participant at the participants tab.  
 ![046]
 
-###### <div id='3-2-2-4-1-2'/> 3.2.2.4.1.2. 참여자 목록 검색 조회
+###### <div id='3-2-2-4-1-2'/> 3.2.2.4.1.2. Check Participants List Search
 1.	참여자 목록에서 검색할 수 있는 조건은 참여자 아이디 검색 1개이다.  
 ![047]
 2.	검색어를 입력 후 “ENTER”를 하거나 “돋보기” 버튼을 클릭한 후 검색 조회를 한다.  

@@ -98,16 +98,16 @@ Add, delete, and check Repository Contributor authority, check Instance User aut
 1.	On the Configuration Management Repository List page, click the name of the repository to add authority.  
 ![011]
 
-2.	Go to Repository details page. Click Contributor which is loacted at the most right part between “View Information/Modify” and “Create New” at the Repository Details Page.
+2.	Once it's clicked, it will take you to the Repository Details page. Among the three tabs in the page, click the rightmost tab, Contributor tab, which is located below the 'View/Edit Details' and 'Create New' buttons.
 
 3.	Click “Add Contributor” button once the page appears.  
 ![012]
 
-4.	[소스 컨트롤러 사용자 검색] 안에서 참여자 권한 추가할 사용자를 입력한다. 사용자 검색 목록에서 사용자를 확인 후, “+” 이미지를 클릭한다.  
+4.	Enter the User to give authority within [Search Source Controller User]. After checking the user in the user search list, click "+" image.  
 ![013]
 
-5.	[소스 컨트롤러 사용자 검색] 하단에 [참여자 초대]와 권한, 설명에 대한 내용이 보인다.
-[참여자 초대]에는 추가된 사용자의 아이디, 이름, 이메일에 대한 정보 확인 후, 필수 조건인 권한(쓰기 권한/보기 권한)을 설정을 완료하면 “초대”버튼을 클릭한다.  
+5.	Bellow [Search Source Controller User], [Invite Contributor], Authority and descriptions are shown.
+[Invite Contributor]에는 추가된 사용자의 아이디, 이름, 이메일에 대한 정보 확인 후, 필수 조건인 권한(쓰기 권한/보기 권한)을 설정을 완료하면 “초대”버튼을 클릭한다.  
 ![014]
 
 6.	알림 메시지 “[ ]참여자가 추가되었습니다.”가 나오면 레파지토리 참여자 권한 추가된다.  

@@ -675,90 +675,90 @@ This chapter describes quality issues and coding rules, quality profiles, and qu
 
 #### <div id='3-2-4-3'/> 3.2.4.3. Quality Profile
 ##### <div id='3-2-4-3-1'/> 3.2.4.3.1. Create Quality Profile
-1.	품질 관리 메뉴에서 품질 프로파일을 선택하여 품질 프로파일 대시보드로 이동한다.  
+1.	From the quality management menu, click quality profile and proceed to the quality profile dashboard.  
 ![149]
-2.	우측 상단의 “생성” 버튼을 클릭한다.  
+2.	Click “create” button at the top right.  
 ![150]
-3.	품질 프로파일 명을 입력하고, 개발언어를 선택하여 “생성” 버튼을 클릭한다.  
+3.	Enter the quality profile name and select the development language then click  “Create” button.  
 ![151]
-4.	품질 프로파일이 생성된 것을 확인한다.  
+4.	Check the created quality profile.  
 ![152]
 
 ##### <div id='3-2-4-3-2'/> 3.2.4.3.2. Duplicate Quality Profile
-1.	품질 프로파일 대시보드에서 “복제” 버튼을 클릭한다.  
+1.	Click “Duplicate” button from the quality profile dashboard.  
 ![153]
-2.	복제할 품질 프로파일의 이름을 입력하고, “복제” 버튼을 클릭한다.  
+2.	Enter the quality profile to duplicate then click “Duplicate” button.  
 ![154]
-3.	복제된 품질 프로파일을 확인한다.  
+3.	Check the duplicated quality profile.  
 ![155]
 
-##### <div id='3-2-4-3-3'/> 3.2.4.3.3. 품질 프로파일 수정
-1.	품질 프로파일 대시보드에서 “수정” 버튼을 클릭한다.  
+##### <div id='3-2-4-3-3'/> 3.2.4.3.3. Modify Quality Profile
+1.	Click “Modify” button from the quality profile dashboard.  
 ![156]
-2.	수정할 품질 프로파일 팝업창이 뜨면 품질 프로파일 명을 수정하고 “수정” 버튼을 클릭한다.  
+2.	Modify the quality profile name from the pop up window and click “Modify” button.  
 ![157]
-3. 품질 프로파일 명이 수정되었음을 확인한다.  
+3. 	Check the modified quality profile name.  
 ![158]
 
-##### <div id='3-2-4-3-4'/> 3.2.4.3.4. 품질 프로파일 프로젝트 연결
-1.	품질 프로파일 대시보드에서 연결된 프로젝트 항목을 확인한다. (첫 번째 사진은 테스트 Job 구성 조회 시 품질 프로파일을 Default-QualityProfile 로 설정한 것이다. 그러므로 두 번째 사진에서 예시로 새로 생성한 품질 프로파일[QualityProfile_hrjin]에는 연결된 프로젝트가 보이지 않는다.)  
+##### <div id='3-2-4-3-4'/> 3.2.4.3.4. Connect Quality Profile Project
+1.	Check the connected project list from the quality profile dashboard. (The first picture shows the quality profile set to Default-Quality Profile when retrieving the test Job configuration. Therefore, the newly created quality profile example [QualityProfile_hrjin] in the second picture does not show any connected projects.)  
 ![159]
-2.	연결된 프로젝트가 없을 경우 “미연결” 탭을 클릭한다.  
+2.	When there is no project connected, click “Not Connected” tab.  
 ![160]
-3.	해당 품질 프로파일과 연결할 테스트 Job 프로젝트를 선택한다. 품질 프로파일 1개 당 여러 프로젝트 연결이 가능하다.  
+3.	Select a test Job project to connect with the corresponding quality profile. Multiple project connections are possible per quality profile.  
 ![161]
-##### <div id='3-2-4-3-5'/> 3.2.4.3.5. 품질 프로파일 삭제
-1.	품질 프로파일 대시보드에서 “삭제” 버튼을 클릭한다.  
+##### <div id='3-2-4-3-5'/> 3.2.4.3.5. Delete Quatlity Profile
+1.	Click “Delete” button from the quality profile dashboard.  
 ![162]
-2.	품질 프로파일이 삭제되었음을 확인한다.  
+2.	Check the deleted quality profile.  
 ![163]
 
 
-#### <div id='3-2-4-4'/> 3.2.4.4. 품질 게이트
-##### <div id='3-2-4-4-1'/> 3.2.4.4.1. 품질 게이트 생성
-1.	품질 관리 메뉴에서 품질 게이트를 선택하여 품질 게이트 대시보드로 이동한다.  
+#### <div id='3-2-4-4'/> 3.2.4.4. Quality Gate
+##### <div id='3-2-4-4-1'/> 3.2.4.4.1. Create Quality Gate
+1.	From the quality management menu, click quality gate and proceed to the quality gate dashboard.  
 ![164]
-2.	우측 상단의 “생성” 버튼을 클릭한다.  
+2.	Click “Create” button at the top right.  
 ![165]
-3.	품질 게이트 명을 입력하고, “생성” 버튼을 클릭한다.  
+3.	Enter Quality Gate Name and click “Create” button.  
 ![166]
-4.	품질 게이트가 생성된 것을 확인한다.  
+4.	Check the created quality gate.  
 ![167]
 
-##### <div id='3-2-4-4-2'/> 3.2.4.4.2. 품질 게이트 복제
-1.	품질 게이트 대시보드에서 “복제” 버튼을 클릭한다.  
+##### <div id='3-2-4-4-2'/> 3.2.4.4.2. Duplicate Quality Gate
+1.	Click “Duplicate” button from the quality gate dashboard.  
 ![168]
-2.	복제할 품질 게이트의 이름을 입력하고, “복제” 버튼을 클릭한다.  
+2.	Enter the quality gate to duplicate then click “Duplicate” button.  
 ![169]
-3.	복제된 품질 게이트를 확인한다.  
+3.	Check the duplicated quality gate.  
 ![170]
 
-##### <div id='3-2-4-4-3'/> 3.2.4.4.3. 품질 게이트 수정
-1.	품질 게이트 대시보드에서 “수정” 버튼을 클릭한다.  
+##### <div id='3-2-4-4-3'/> 3.2.4.4.3. Modify Quality Gate
+1.	Click “Modify” button from the quality gate dashboard.  
 ![171]
-2.	수정할 품질 게이트 팝업창이 뜨면 품질 게이트 명을 수정하고 “수정” 버튼을 클릭한다.  
+2.	Modify the quality gate name from the pop up window and click “Modify” button.  
 ![172]
-3.	품질 게이트 명이 수정되었음을 확인한다.  
+3.	Check the modified quality gate name.  
 ![173]
 
-##### <div id='3-2-4-4-4'/> 3.2.4.4.4. 품질 게이트 조건추가
-1.	품질 게이트 대시보드에서 Job 테스트 시 통과 기준이 되는 조건을 설정할 수 있는 조건 추가 부분을 확인한다. 사용자가 직접 조건을 추가하고 기준 설정이 가능하다.  
+##### <div id='3-2-4-4-4'/> 3.2.4.4.4. Add Quality Gate Conditions
+1.	Check the additional conditions that can set the conditions for passing the Job test from the quality gate dashboard. The user can add conditions and set criteria.  
 ![174]
-2.	조건에 따라 어느 기준 이상/이하가 될 시에 테스트를 통과시키도록 한다.  
+2.	If the value is more/less than a certain standard set, depending on the conditions,  테스트를 통과시키도록 한다.  
 ![175]
-3.	현재 ‘Default-QualityGate’ 가 기본 품질 게이트로 설정되어 있는데 이것을 참고로 한다.  
+3.	Refer to ‘Default-QualityGate’ which is the default standard set for quality gate as of the moment.  
 ![176]
 
-##### <div id='3-2-4-4-5'/> 3.2.4.4.5. 품질 게이트 프로젝트 연결
-1. 품질 게이트 대시보드에서 연결된 프로젝트 항목을 확인한다. (첫 번째 사진은 테스트 Job 구성 조회 시 품질 게이트를 test-QualityGate 로 설정한 것이다. 그러므로 두번째 사진에서 연결된 프로젝트에 test2 파이프라인의 테스트 Job 이 보인다.)<br>  
+##### <div id='3-2-4-4-5'/> 3.2.4.4.5. Connect Quality Gate Project
+1. Check the list of connected projects from the quality gate dashboard. (The first picture shows the quality gate set to test-QualityGate when retrieving the configuration of the test Job. Therefore, in the second picture, it is visible that the test Job of the test2 pipeline in the connected project.)<br>  
 ![159]
-2. 품질 게이트도 품질 프로파일과 마찬가지로 품질 게이트 1개당 여러 프로젝트 연결이 가능하다.  
+2. The quality gate, like the quality profile, can connect multiple projects per quality gate.  
 ![177]
 
-##### <div id='3-2-4-4-6'/> 3.2.4.4.6. 품질 게이트 삭제
-1.	품질 게이트 대시보드에서 “삭제” 버튼을 클릭한다.  
+##### <div id='3-2-4-4-6'/> 3.2.4.4.6. Delete Quality Gate
+1.	Click “Delete” button from the quality gate dashboard.  
 ![178]
-2.	품질 게이트가 삭제되었음을 확인한다.  
+2.	Check the deleted quality gate.  
 ![179]
 
 

@@ -65,7 +65,7 @@
 	* [3.2.2.4.4.7.    Add Deployment Job](#3-2-2-4-4-7)
 	* [3.2.2.4.4.8.    Duplicate Deployment Job](#3-2-2-4-4-8)
 	* [3.2.2.4.4.9.    Delete Deployment Job](#3-2-2-4-4-9)
-	* [3.2.2.4.5. Job Sorting Icon](#3-2-2-4-5)
+	* [3.2.2.4.5. Job Sorting](#3-2-2-4-5)
 	* [3.2.2.4.6. Add New Job Group](#3-2-2-4-6)
 	* [3.2.3.     Pipeline Management](#3-2-3)
 	* [3.2.3.1.   Cloud Foundry Information Management](#3-2-3-1)
@@ -581,100 +581,100 @@ As an example, set the application name as ‘test-hrjin’ and click “Rollbac
 
 ***※	Deployment Job Rollback to Current Job is permitted only to administrators and contributors with creation and execution authorities.***
 
-###### <div id='3-2-2-4-4-7'/> 3.2.2.4.4.7.	배포 Job 추가
-1.	파이프라인 상세페이지에서 테스트 Job의 “추가” 버튼을 클릭한다.  
+###### <div id='3-2-2-4-4-7'/> 3.2.2.4.4.7.	Add Deployment Job
+1.	Click “Add” button of deployment job from the Pipeline details page.  
 ![121]
-2.	그 이후의 과정은 3.2.2.4.2.7. 빌드 Job 추가, 3.2.2.4.3.7. 테스트 Job 추가 항목을 참고한다.
+2.	Refer to 3.2.2.4.2.7. Add Build Job and 3.2.2.4.3.7. Add Test Job for the next procedures.
 
-***※	배포 Job 추가는 관리자와 생성권한을 가진 파이프라인 참여자만 가능하다.***
+***※	Adding of Deployment Job is permitted to Administrators and contributors with creation authority only.***
 
-###### <div id='3-2-2-4-4-8'/> 3.2.2.4.4.8.	배포 Job 복제
-1.	파이프라인 상세페이지에서 배포 Job의 “복제” 버튼을 클릭한다.  
+###### <div id='3-2-2-4-4-8'/> 3.2.2.4.4.8.	Duplicate Deployment Job
+1.	Click “Duplicate” button of Deployment Job from the pipeline details page.  
 ![122]
-2.	배포 Job 이 복제된 것을 확인한다.  
+2.	Check the duplicated Deployment Job.  
 ![123]
 
-***※	배포 Job 복제는 관리자와 생성권한을 가진 파이프라인 참여자만 가능하다.***
+***※	Deployment Job Duplication is permitted only to Administrators and Contributors with creation authority.***
 
-###### <div id='3-2-2-4-4-9'/> 3.2.2.4.4.9.	배포 Job 삭제
-1.	파이프라인 상세페이지에서 배포 Job의 “삭제” 버튼을 클릭한다.  
+###### <div id='3-2-2-4-4-9'/> 3.2.2.4.4.9.	Delete Deployment Job
+1.	Click “Delete” button of Deployment Job from the pipeline details page.  
 ![124]
-2.	배포 Job 이 삭제된 것을 확인한다.  
+2.	Check the deleted deployment Job.  
 ![125]
 
-***※	배포 Job 삭제는 관리자와 생성권한을 가진 파이프라인 참여자만 가능하다.***
+***※	Deletion of Deployment Job is permitted to Administrator and Contributors with creation authority only.***
 
-##### <div id='3-2-2-4-5'/> 3.2.2.4.5. Job 작업 정렬
-1.	파이프라인 상세페이지에서 각 Job의 “작업 정렬” 아이콘을 클릭한다.  
+##### <div id='3-2-2-4-5'/> 3.2.2.4.5. Job Sorting
+1.	From the pipeline details page, click “Job sorting” icon of each Job.  
 ![126]
-2.	현재 작업 그룹 내에서 정렬할 수 있는 나머지 Job의 번호의 목록이 drop down 메뉴로 보인다.  
+2.	A list of the remaining Job numbers that can be sorted within the current workgroup appears in drop down menu.  
 ![127]
-3.	그중 정렬하고자 하는 번호를 클릭 시 그 번호의 Job 과 위치가 서로 바뀌게 되며 정렬된다.  
+3.	Click the number of the Job to re-arrange and they will interchange places.  
 ![128]
 
-***※	Job 작업 정렬은 관리자와 생성권한을 가진 파이프라인 참여자만 가능하다.***
+***※	Job Sorting is permitted to Administrators and Contributors with creation authority only.***
 
-##### <div id='3-2-2-4-6'/> 3.2.2.4.6. 새 작업 그룹 추가
-1.	파이프라인 상세페이지에서 “새 작업 그룹 추가” 버튼을 클릭한다.  
+##### <div id='3-2-2-4-6'/> 3.2.2.4.6. Add New Job Group
+1.	Click “Add New Job Group” button from the pipeline details page.  
 ![129]
-2.	Job 구성 상세페이지로 이동한다.  
+2.	Go to Job configuration details page.  
 ![130]
-3.	새로운 Job 한 개를 생성한 뒤 파이프라인 상세페이지로 이동한다. 이전 작업 그룹 아래로 점선이 생기며 새로 생성한 Job이 새로운 그룹 내로 나눠진 것을 확인할 수 있다.  
+3.	Create a new Job and go back to pipeline details page. A dotted line will be created below the previous Job group and the newly created Job is separated.  
 ![131]
 
-***※	Job 새 작업  그룹 추가는 관리자와 생성권한을 가진 파이프라인 참여자만 가능하다.***
+***※	Adding of New Job Group is permitted only to Administrators and Contributors with creation authority only.***
 
-### <div id='3-2-3'/> 3.2.3. 파이프라인 관리
-본 장에서는 Cloud Foundry 정보를 등록하여 Job을 배포할 Cloud Foundry target URL을 연동하는 과정에 대하여 기술한다.
-#### <div id='3-2-3-1'/> 3.2.3.1. Cloud Foundry 정보 관리
-###### <div id='3-2-3-1-1'/> 3.2.3.1.1. Cloud Foundry 계정등록
-1. Cloud Foundry 정보 관리 대시보드에서 우측 상단에 “Cloud Foundry 계정 등록” 버튼을 클릭한다.  
+### <div id='3-2-3'/> 3.2.3. Pipeline Management
+This chapter describes the process of linking the Cloud Foundry target URL to deploy the Job by registering Cloud Foundry information.
+#### <div id='3-2-3-1'/> 3.2.3.1. Cloud Foundry Information Management
+###### <div id='3-2-3-1-1'/> 3.2.3.1.1. Cloud Foundry Account Registration
+1. Click “Register Cloud Foundry Account” button from top right of Cloud Foundry Information Management Dashboard.  
 ![132]
-2. Cloud Foundry 계정 등록 페이지로 이동한다.  
+2. Go to Cloud Foundry Account Registering Page.  
 ![133]
-3. 계정 명을 입력한 후 아이디와 비밀번호에는 Cloud Foundry 로그인에 필요한 아이디와 비밀번호를 입력한다.  
+3. After entering the account name, enter the ID and password required for the Cloud Foundry login.  
 ![134]
-4. URL에는 “URL 관리” 버튼을 클릭한 후 팝업 창이 뜨면 “URL 등록” 버튼을 클릭하여 Cloud Foundry 계정 정보를 등록하도록 한다.<br>  
+4. Click "URL Management" button on the URL and when pop up window appears, click "URL Register" button to register the Cloud Foundry account information.<br>  
 ![135]
-5. Cloud Foundry API 명(ex. api)을 입력하고, Job 배포 계정으로 사용하고자 하는 Cloud Foundry target API URL(ex. https://api.115.68.46.186.nip.io) 을 입력한 후 “URL 저장” 버튼을 클릭한다.  
+5. Enter Cloud Foundry API Name(ex. api), and Job deployment account to use as Cloud Foundry target API URL(ex. https://api.115.68.46.186.nip.io) and click “Save URL”.  
 ![136]
-6. URL이 등록되었음을 확인한다.<br>  
+6. Verify the registered URL.<br>  
 ![137]
-7. 다시 계정 등록 화면으로 돌아와 등록한 URL을 선택 후 나머지 값을 입력한다. 마지막으로 “등록” 버튼을 클릭한다.  
+7. Go back to account registering page's registered URL and input the remaining values. Click “Register” to complete the process.  
 ![138]
-8. Cloud Foundry 정보 관리 대시보드에서 Cloud Foundry 계정 정보가 정상적으로 등록되었음을 확인한다.  
+8. Verify if the Cloud Foundry account information was successfully registered at Cloud Foundry Information Management Dashboard.  
 ![139]
 
-###### <div id='3-2-3-1-2'/> 3.2.3.1.2. Cloud Foundry 계정수정
-1.	Cloud Foundry 정보 관리 대시보드에서 수정하고자 하는 계정을 클릭한다.  
+###### <div id='3-2-3-1-2'/> 3.2.3.1.2. Cloud Foundry Account Modification
+1.	Select the account to modify from the Cloud Foundry information management dashboard.  
 ![140]
-2.	수정할 값들을 입력하고 “수정” 버튼을 클릭한다.  
+2.	Input the values to modify and click “Modify” button.  
 ![141]
-3.	다시 대시보드를 통해 계정 상세 페이지로 이동 후 수정되었는지 확인한다.
+3.	Go back to account details page through dashboard and check if the modification was completely done.
 
-### <div id='3-2-4'/> 3.2.4. 품질 관리
-본 장에서는 테스트 Job을 통해 검사한 소스 코드와 관련하여 품질 이슈와 코딩 규칙, 품질 프로파일, 품질 게이트에 대한 설명을 기술한다.
-#### <div id='3-2-4-1'/> 3.2.4.1. 품질 이슈
-1.	품질 관리 메뉴에서 품질 이슈를 클릭하여 품질 이슈 대시보드로 이동한다.  
+### <div id='3-2-4'/> 3.2.4. Quality Management
+This chapter describes quality issues and coding rules, quality profiles, and quality gates in relation to source codes inspected through the test Job.
+#### <div id='3-2-4-1'/> 3.2.4.1. Quality Issue
+1.	Go to Quality Issue Dashboard by clicking Quality Issue from the Quality Management Menu.  
 ![142]
-2.	“규칙상세” 버튼을 클릭한다.  
+2.	Click “Rule Details” button.  
 ![143]
-3.	오른쪽 상단의 “목록” 버튼을 클릭하면 Job 테스트 목록이 있는 품질 이슈 대시보드로 이동한다.
+3.	Click “List” button at the top right to proceed to the quality issue dashboard with the Job test list.
 
-#### <div id='3-2-4-2'/> 3.2.4.2. 코딩 규칙
-1.	품질 관리 메뉴에서 코딩 규칙을 클릭하여 코딩 규칙 대시보드로 이동한다.  
+#### <div id='3-2-4-2'/> 3.2.4.2. Coding Rules
+1.	On the Quality Management menu, click Coding Rules to navigate to the Coding Rules dashboard.  
 ![144]
-2.	“프로파일에 추가” 버튼을 클릭한 뒤 프로파일 추가 팝업 창에서 이슈 수준을 정한 후 “추가” 버튼을 클릭한다.  
+2.	Click the "Add to Profile" button, set the issue level in the Add Profile pop-up window, and click the "Add" button.  
 ![145]
-3. 왼쪽 하단에 품질 프로파일 메뉴에서 이전 단계에서 선택한 Default^Default-QualityProfle 을 클릭하여 추가한 코딩 규칙이 추가되었는지 확인한다.<br>  
+3. In the lower left corner of the Quality Profile menu, click Default^Default-QualityProfile selected in the previous step to verify that the coding rule has been added.<br>  
 ![146]
-4.	“프로파일에 제거” 버튼을 클릭한다.  
+4.	Click "Remove from Profile" button.  
 ![147]
-5.	제거한 코딩 규칙이 품질 프로파일에서 삭제된 것을 확인한다.  
+5.	Confirm if the coding rule has been removed from the quality profile.  
 ![148]
 
-#### <div id='3-2-4-3'/> 3.2.4.3. 품질 프로파일
-##### <div id='3-2-4-3-1'/> 3.2.4.3.1. 품질 프로파일 생성
+#### <div id='3-2-4-3'/> 3.2.4.3. Quality Profile
+##### <div id='3-2-4-3-1'/> 3.2.4.3.1. Create Quality Profile
 1.	품질 관리 메뉴에서 품질 프로파일을 선택하여 품질 프로파일 대시보드로 이동한다.  
 ![149]
 2.	우측 상단의 “생성” 버튼을 클릭한다.  
@@ -684,7 +684,7 @@ As an example, set the application name as ‘test-hrjin’ and click “Rollbac
 4.	품질 프로파일이 생성된 것을 확인한다.  
 ![152]
 
-##### <div id='3-2-4-3-2'/> 3.2.4.3.2. 품질 프로파일 복제
+##### <div id='3-2-4-3-2'/> 3.2.4.3.2. Duplicate Quality Profile
 1.	품질 프로파일 대시보드에서 “복제” 버튼을 클릭한다.  
 ![153]
 2.	복제할 품질 프로파일의 이름을 입력하고, “복제” 버튼을 클릭한다.  

@@ -41,44 +41,44 @@
 
 
 
-# <div id='1'/> 1. 문서 개요
+# <div id='1'/> 1. Document Outline
 
-### <div id='2'/> 1.1. PaaS-TA 포탈 계정 생성
-본 문서는 형상관리 사용자 사용 방법에 대해 기술하였다.
+### <div id='2'/> 1.1. Create PaaS-TA Portal Account
+This document describes how to use configuration management user.
 
-### <div id='3'/> 1.2. 범위
-본 문서는 Windows 환경을 기준으로 형상관리 사용자 포탈을 사용하는 방법에 대해 작성하였다.
+### <div id='3'/> 1.2. Range
+This document is written on how to use the Configuration Management User Portal based on Windows environment.
 
-# <div id='4'/> 2. PaaS-TA 사용자 포탈 서비스
+# <div id='4'/> 2. PaaS-TA User Portal Service
 
-### <div id='5'/> 2.1. PaaS-TA 포탈 계정 생성
-형상관리 서비스를 생성하기에 전, PaaS-TA 사용자 포탈 사용자 계정이 필수이다. PaaS-TA 계정 생성 및 비밀번호 재설정에 관련된 자세한 내용은 PaaS-TA 사용자 포탈 가이드를 참고한다.
-
-
-# <div id='6'/> 3. 형상관리 사용자 포탈 서비스
+### <div id='5'/> 2.1. Create PaaS-TA Portal Account
+Before creating a configuration management service, creating of PaaS-TA user portal account is required. For creating a user account or reset password for PaaS-TA, refer to PaaS-TA User Portal Guide.
 
 
-### <div id='7'/> 3.1. 설치 전 준비사항
-형상관리 서비스는 조직 별 한 개의 서비스를 생성할 수 있다. 형상관리 서비스 생성 관련된 자세한 내용은 PaaS-TA 사용자 포탈 가이드를 참고한다.
+# <div id='6'/> 3. Configuration Management User Portal Service
 
 
-### <div id='8'/>  3.1.1. 로그인
-1.	PaaS-TA 사용자 포탈에 접속한다.  
+### <div id='7'/> 3.1. Preparation Needed before Creating Configuration Management Service
+One Configuration Management Service can be created per organization. Refer to PaaS-TA User Portal Guide for details of creating configuration management service.
+
+
+### <div id='8'/>  3.1.1. Login
+1.	Access to PaaS-TA User Portal.  
 ![002]
 
-2. "로그인" 버튼을 클릭한다.  
+2. Click "Login" button.  
 ![003]
 
-3.	사용할 이메일 계정과 비밀번호를 입력하고, “SING IN” 버튼을 클릭한다.  
+3.	Enter the email address and password to use and click “SIGN IN” button.  
 ![004]
 
-4.	로그인 완료 후, 대시보드 화면으로 이동된다.  대시보드 화면에서 조직명을 입력 후 “조직생성”버튼을 클릭하여 조직 대시 보드 화면에서 조직 생성을 한다.  
+4.	When logged in, it goes to dashboard page. Enter the organization name to create and click “Create Organization” button.  
 ![005]
 
-5.	조직생성 완료 후 화면에는 조직, 공간, 도메인, 사용자가 생성된다. 상단의 “카탈로그” 메뉴를 클릭하여 카탈로그 목록 화면으로 이동한다.
+5.	When an Organization is created, organization, space, domain and user appears on screen. Click “Catalog” menu on top and proceed to catalog list page.
   !![006]
 
-6.	카탈로그 맨 하단의 [통합개발도구] 항목에 “형상관리 서비스” 이미지를 클릭하여 형상관리 서비스 상세 화면으로 이동한다.  
+6.	At the very bottom part of catalog's [Integrated Development Tool] List, click  “Configuration Management Service” image to go to the configuration management's details page.  
 ![007]
 
 7.	형상관리 서비스의 상세 페이지에서는 형상관리 서비스 생성을 하기 위한 내용을 입력한다. 서비스 이름을 영문으로 입력하고 “생성”버튼을 클릭하면 형상관리 서비스 인스턴스가 생성이 되고 공간 대시보드로 이동한다.  

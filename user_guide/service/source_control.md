@@ -107,17 +107,17 @@ Add, delete, and check Repository Contributor authority, check Instance User aut
 ![013]
 
 5.	Bellow [Search Source Controller User], [Invite Contributor], Authority and descriptions are shown.
-[Invite Contributor]에는 추가된 사용자의 아이디, 이름, 이메일에 대한 정보 확인 후, 필수 조건인 권한(쓰기 권한/보기 권한)을 설정을 완료하면 “초대”버튼을 클릭한다.  
+After checking the informations of User ID, Name, Email added in [Invite Contributor], Give the required authority (Modify/View) and click “Invite” when completed.  
 ![014]
 
-6.	알림 메시지 “[ ]참여자가 추가되었습니다.”가 나오면 레파지토리 참여자 권한 추가된다.  
+6.	When notification with “[Contributor has been Invited]” message appears, the repository contributor authority has been given.  
 ![015]
 
 
-### <div id='11'/> 3.1.2.1.2. 레파지토리 참여자 권한 삭제
-1.	사용자 목록에서 참여자 권한 삭제할 사용자를 클릭한다.
+### <div id='11'/> 3.1.2.1.2. Delete Repository Contributor Authority
+1.	Click the contributor to remove authority from the users list.
 
-2.	형상관리 레파지토리 목록 페이지 있는 레파지토리 명을 클릭한다.
+2.	Click the repository name from the contribution management repository list.
 
 3.	클릭 후 레파지토리 상세보기 페이지로 이동한다. 레파지토리 상세보기 페이지에서 “정보보기/수정” 버튼과 “신규생성” 버튼 하단의 탭 중 가장 오른쪽에 있는 참여자(Contributor)을 클릭한다.
 

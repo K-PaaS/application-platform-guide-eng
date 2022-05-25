@@ -366,7 +366,7 @@ This chapter describes overall contributor management, such as adding, modifying
 3. Once the execution is done, the bar turns green and the Build status changes into Build(Completed).  
 ![066]
 
-***※	Build Job execution is only available for administrators and pipeline Contributors with creation and execution authority.***
+***※	Build Job execution is only permitted to administrators and pipeline Contributors with creation and execution authority.***
 
 
 ###### <div id='3-2-2-4-2-4'/> 3.2.2.4.2.4. Stop Build Job
@@ -375,7 +375,7 @@ This chapter describes overall contributor management, such as adding, modifying
 2.	The stopped Build Job's bar turns orange.  
 ![068]
 
-***※	Stopping of Build Job is only available for administrators and pipeline Contributors with creation and execution authority.***
+***※	Stopping of Build Job is only permitted to administrators and pipeline Contributors with creation and execution authority.***
 
 
 ###### <div id='3-2-2-4-2-5'/> 3.2.2.4.2.5.	Build Job Log/History
@@ -401,7 +401,7 @@ This chapter describes overall contributor management, such as adding, modifying
 2.	Built files will be downloaded(ex. war, jar, zip and etc.).  
 ![077]
 
-***※	Downloading the build Job log is available to administrators and all pipeline Contributors.***
+***※	Downloading the build Job log is permitted to administrators and all pipeline Contributors.***
 
 ###### <div id='3-2-2-4-2-7'/> 3.2.2.4.2.7.	Add Build Job
 1.	click the "Add" button on the Build Job on the Pipeline Details page.  
@@ -463,7 +463,7 @@ This chapter describes overall contributor management, such as adding, modifying
 ![091]
 3. Once the execution is done, the bar turns green and the Build status changes into Build(Completed).
 
-***※	Test Job execution is only available for administrators and pipeline Contributors with creation and execution authority.***
+***※	Test Job execution is only permitted to administrators and pipeline Contributors with creation and execution authority.***
 
 ###### <div id='3-2-2-4-3-4'/> 3.2.2.4.3.4.	Stop Test Job
 1.	Click the "Stop" icon when you want to stop or cancel a running build Job.  
@@ -471,7 +471,7 @@ This chapter describes overall contributor management, such as adding, modifying
 2.	The stopped Test Job's bar turns orange.  
 ![093]
 
-***※	Stopping of Test Job is only available for administrators and pipeline Contributors with creation and execution authority.***
+***※	Stopping of Test Job is only permitted to administrators and pipeline Contributors with creation and execution authority.***
 
 ###### <div id='3-2-2-4-3-5'/> 3.2.2.4.3.5.	Test Job Log/ History
 1.	Logs can be seen real time by clicking the "log/history" icon when the Test job is running.  
@@ -520,7 +520,7 @@ This chapter describes overall contributor management, such as adding, modifying
 ###### <div id='3.2.2.4.4.1'/> 3.2.2.4.4.1.	Create Deployment Job
 1. Click the “Add” button from Job.<br>  
 ![103]
-2.	구성 페이지로 이동하여 작업 유형을 배포(Deploy)로 선택한 후 유형에서 원하는 배포 유형을 선택, 파이프라인 관리에서 저장해 놓은 Cloud Foundry 정보를 선택한다. (Cloud Foundry 정보를 가져오기 위해서는 선행 과정이 필요하다. 과정은 3.2.3.1. Cloud Foundry 정보 관리 항목을 참고한다). 그다음 MANIFEST 사용 여부를 체크 후 입력 유형과 작업 트리거를 차례로 입력한다.  
+2.	Go to configuration page and select the job type to Deploy, and the Cloud Foundry information that has been saved during Pipeline management. (Procedures for bringing Cloud Foundry information has to be done first. Refer to 3.2.3.1. Cloud Foundry information management). Select wheter to use MANIFEST or not. then enter input type and job trigger.  
 ![104]
 3.	Click “Save” button and check the newly created deployment Job from the pipeline details page.  
 ![105]
@@ -528,58 +528,58 @@ This chapter describes overall contributor management, such as adding, modifying
 ***※	Creating a Deployment Job can only be done by administrator and authorized pipeline contributors.***
 
 ###### <div id='3-2-2-4-4-2'/> 3.2.2.4.4.2.	Check/ Modify Deployment Job Configuration
-1.	생성된 배포 Job 의 “구성” 아이콘을 클릭한다.  
+1.	Click the “Configuration” icon of the created Deployment Job.  
 ![106]
-2.	구성 상세페이지로 이동하여 생성 시 저장해 놓았던 구성 정보들을 조회한다.  
+2.	Go to Configuration details page and check the configured informations saved.  
 ![104]
-3.	수정 시에는 각 입력 폼에 수정할 정보들을 다시 입력한 후 “저장” 버튼을 클릭한다.  
+3.	To modify, re-enter the inputs and click “Save” button.  
 ![107]
-4.	구성 상세페이지로 이동하여 수정된 정보들을 확인한다.
+4.	Check the modified informations at the configuration details page.
 
-***※	 배포 Job 구성 조회는 파이프라인 참여자이면 모두 조회가 가능하다. 하지만 수정은 관리자와 파이프라인 참여자 중 생성 권한을 가진 참여자만 수정이 가능하다.***
+***※	 All pipeline contributors can check out the Deployment Job configurations. However, modifying is only permitted to the administrators and the contributors with the permission to create.***
 
-###### <div id='3-2-2-4-4-3'/> 3.2.2.4.4.3.	배포 Job 실행
-1.	파이프라인 상세페이지에서 배포 Job의 “실행” 아이콘을 클릭한다.  
+###### <div id='3-2-2-4-4-3'/> 3.2.2.4.4.3.	Run Deployment Job
+1.	Click “Run” icon of Deployment Job from the pipeline details page.  
 ![108]
-2.	실행이 될 때 파란색으로 바뀌며 깜빡이는 것을 확인할 수 있다. (실행 중에 “로그/히스토리” 아이콘을 클릭하여 실시간으로 로그를 조회할 수 있다.)  
+2.	Once it starts running, the bar turns blue and blinks. (View logs in real time by clicking the "log/history" icon while running.)  
 ![109]
-3. 실행이 완료되면 초록색으로 바뀌며 작업 부분에 Deploy(실행완료) 로 표시된다.  
+3. Once the execution is done, the bar turns green and the Build status changes into Build(Completed).  
 ![110]
 
-***※	배포 Job 실행은 관리자와 파이프라인 참여자 중 생성 권한과 실행 권한을 가진 참여자만 가능하다.***
+***※	Deployment Job execution is only permitted to administrators and pipeline Contributors with creation and execution authority.***
 
-###### <div id='3-2-2-4-4-4'/> 3.2.2.4.4.4.	배포 Job 정지
-1.	실행 중인 배포 Job을 정지 및 취소하고 싶을 때 “정지” 아이콘을 클릭한다.  
+###### <div id='3-2-2-4-4-4'/> 3.2.2.4.4.4.	Stop Deployment Job
+1.	Click the "Stop" icon when you want to stop or cancel a running deployment Job.  
 ![111]
-2.	정지된 배포 Job이 주황색으로 바뀌는 것을 확인할 수 있다.  
+2.	The stopped Deployment Job's bar turns orange.  
 ![112]
 
-***※	배포 Job 정지는 관리자와 파이프라인 참여자 중 생성권한과 실행 권한을 가진 참여자만 가능하다.***
+***※	Stopping of Deployment Job is only permitted to administrators and pipeline Contributors with creation and execution authority.***
 
-###### <div id='3-2-2-4-4-5'/> 3.2.2.4.4.5.	배포 Job 로그/히스토리
-1.	배포 Job 실행이 진행 중일 때 “로그/히스토리” 아이콘을 클릭하여 실시간으로 로그를 조회할 수 있다.  
+###### <div id='3-2-2-4-4-5'/> 3.2.2.4.4.5.	Deployment Job Log/History
+1.	Logs can be seen real time by clicking the "log/history" icon when the deployment job is running.  
 ![113]
-2.	로그 조회 페이지로 이동한다. 실시간으로 로그가 보이고 있는 것을 확인한다.  
+2.	Go to log check page to check the logs in real-time.  
 ![114]
-3.	배포 Job 실행이 완료된 것을 확인하고, 히스토리를 확인한다.  
+3.	Confirm that the deployment job execution is complete, and verify the history.  
 ![115]
-4.	PaaS-TA 포탈로 Cloud Foundry 계정을 만들어 배포한 결과 PaaS-TA 포탈 대시보드에서 공간의 애플리케이션 부분에 ‘testtest’라는 애플리케이션이 배포되었음을 확인할 수 있다.  
+4.	As a result of creating and deploying a Cloud Foundry account with the PaaS-TA portal, you can see that an application called 'testtest' was deployed in the application portion of the space in the PaaS-TA portal dashboard.  
 ![116]
 
-***※	배포 Job 로그/히스토리는 관리자와 모든 파이프라인 참여자가 조회 가능하나 실행 및 정지 버튼은 생성권한과 실행 권한을 가진 참여자만 가능하다.***
+***※	The deployment Job log/history is visible to the administrator and all pipeline Contributors, but the Run and Stop buttons can only be seen by Contributors with creation and execution authrity.***
 
-###### <div id='3-2-2-4-4-6'/> 3.2.2.4.4.6.	배포 Job 현재 작업으로 롤백
-1.	배포 Job 의 로그/히스토리 페이지에서 “현재 작업으로 롤백” 버튼을 클릭한다.  
+###### <div id='3-2-2-4-4-6'/> 3.2.2.4.4.6.	Deployment Job Rollback to Current Job
+1.	Click “Rollback to Current Job” button of Deployment Job at the Log/History page.  
 ![117]
-2.	현재 작업으로 롤백하는 창이 뜨고 Cloud Foundry 정보와 조직/공간 입력 값을 수정할 수 있다.
-예를 들어 애플리케이션 명을 ‘test-hrjin’이라 수정하고 “롤백” 버튼을 클릭한다.  
+2.	A window appears to roll back to the current task and allows you to modify Cloud Foundry information and organizational/space input values.
+As an example, set the application name as ‘test-hrjin’ and click “Rollback” button.  
 ![118]
-3.	롤백을 진행한다.  
+3.	Progress Rollback.  
 ![119]
-4.	롤백 진행 후 PaaS-TA 포탈에서 확인한 결과 ‘test-hrjin’ 이란 이름의 애플리케이션이 배포 완료되었다.  
+4.	After the rollback, an application named 'test-hrjin' was successfully deployed at the PaaS-TA Portal.  
 ![120]
 
-***※	배포 Job 현재 작업으로 롤백은 관리자와 생성권한과 실행 권한을 가진 참여자만 가능하다.***
+***※	Deployment Job Rollback to Current Job is permitted only to administrators and contributors with creation and execution authorities.***
 
 ###### <div id='3-2-2-4-4-7'/> 3.2.2.4.4.7.	배포 Job 추가
 1.	파이프라인 상세페이지에서 테스트 Job의 “추가” 버튼을 클릭한다.  

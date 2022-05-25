@@ -744,7 +744,7 @@ This chapter describes quality issues and coding rules, quality profiles, and qu
 ##### <div id='3-2-4-4-4'/> 3.2.4.4.4. Add Quality Gate Conditions
 1.	Check the additional conditions that can set the conditions for passing the Job test from the quality gate dashboard. The user can add conditions and set criteria.  
 ![174]
-2.	If the value is more/less than a certain standard set, depending on the conditions,  테스트를 통과시키도록 한다.  
+2.	Based on the criterias, if the test result meets the standard score, it may pass..  
 ![175]
 3.	Refer to ‘Default-QualityGate’ which is the default standard set for quality gate as of the moment.  
 ![176]

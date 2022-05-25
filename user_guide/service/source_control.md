@@ -81,26 +81,26 @@ One Configuration Management Service can be created per organization. Refer to P
 6.	At the very bottom part of catalog's [Integrated Development Tool] List, click  “Configuration Management Service” image to go to the configuration management's details page.  
 ![007]
 
-7.	형상관리 서비스의 상세 페이지에서는 형상관리 서비스 생성을 하기 위한 내용을 입력한다. 서비스 이름을 영문으로 입력하고 “생성”버튼을 클릭하면 형상관리 서비스 인스턴스가 생성이 되고 공간 대시보드로 이동한다.  
+7.	On the detailed page of the configuration management service, input the content for creating the configuration management service.Enter the service name in English and click the "Create" button to complete creating configuration management service instance and proceeds to space dashboard.  
 ![008]
 
-8.	공간 대시보드에서 서비스 항목에 입력한 형상관리 서비스 인스턴스를 확인한다. 형상관리 서비스 인스턴스의 우측의 “대시보드” 버튼을 클릭하여 형상관리 대시보드로 이동한다.  
+8.	Check the Configuration Management Service Instance that was entered at space dashboard. Go to Configuration Management Dashboard by clicking “Dashboard” button at the right side of Configuration Management Service Instance.  
 ![009]
 
-9.	형상관리 서비스 생성 후 최초 대시보드 이용 시 패스워드를 입력한다. 비밀번호는 6~16자로 입력한다.  
+9.	When using the dashboard for the fist time after creating a Configuration Management Serive, enter password between 6~16 letters.  
 ![010]
 
-### <div id='9'/> 3.1.2. 레파지토리 참여자 권한 관리
-레파지토리 참여자 권한 관리하는 목적은 레파지토리에 대한 권한을 참여자에게 공유하기 위함이다.
-레파지토리 참여자 권한 추가, 삭제, 조회가 있으며 인스턴스 사용자 권한 조회, 사용자 아이디 레파지토리 참여자 검색, 인스턴스 아이디 검색 조건 별 사용자 정보 검색이 있다.
+### <div id='9'/> 3.1.2. Repository Contributor Authority Management
+The purpose of managing the Repository Contributor Authority is to give authorities to the contributors. The managment are the followings: 
+Add, delete, and check Repository Contributor authority, check Instance User authority, search User ID repository contributor, and search instance ID through fiiltering.
 
-### <div id='10'/> 3.1.2.1.1. 레파지토리 참여자 권한 추가
-1.	형상관리 레파지토리 목록 페이지 있는 권한 추가할 레파지토리 명을 클릭한다.  
+### <div id='10'/> 3.1.2.1.1. Add Repository Contributor Authority
+1.	On the Configuration Management Repository List page, click the name of the repository to add authority.  
 ![011]
 
-2.	클릭 후 레파지토리 상세보기 페이지로 이동한다. 레파지토리 상세보기 페이지에서 “정보보기/수정” 버튼과 “신규생성” 버튼 하단의 탭 중 가장 오른쪽에 있는 참여자(Contributor)을 클릭한다.
+2.	Go to Repository details page. Click Contributor which is loacted at the most right part between “View Information/Modify” and “Create New” at the Repository Details Page.
 
-3.	탭 화면이 전환된 후 “참여자 추가” 버튼을 클릭한다.  
+3.	Click “Add Contributor” button once the page appears.  
 ![012]
 
 4.	[소스 컨트롤러 사용자 검색] 안에서 참여자 권한 추가할 사용자를 입력한다. 사용자 검색 목록에서 사용자를 확인 후, “+” 이미지를 클릭한다.  

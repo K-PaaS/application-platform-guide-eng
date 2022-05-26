@@ -87,7 +87,7 @@ One Configuration Management Service can be created per organization. Refer to P
 8.	Check the Configuration Management Service Instance that was entered at space dashboard. Go to Configuration Management Dashboard by clicking “Dashboard” button at the right side of Configuration Management Service Instance.  
 ![009]
 
-9.	When using the dashboard for the fist time after creating a Configuration Management Serive, enter password between 6~16 letters.  
+9.	When using the dashboard for the fist time after creating a Configuration Management Service, enter password between 6~16 letters.  
 ![010]
 
 ### <div id='9'/> 3.1.2. Repository Contributor Authority Management
@@ -136,7 +136,7 @@ After checking the informations of User ID, Name, Email added in [Invite Contrib
 2.	A list of all the contributors created at the repository can be checked. Repository Contributor Authority can be checked easily by checking the Use/Stop image and Owner/Write/View image located on the right side of the page.  
 ![017]
 
-3.	Detailed Contributor Autorities can be checked by clicking the contributor's ID. Detailed information includes ID, Name, Email, Authority, and description of the user.  
+3.	Detailed Contributor Authorities can be checked by clicking the contributor's ID. Detailed information includes ID, Name, Email, Authority, and description of the user.  
 ![018]
 
 
@@ -144,7 +144,7 @@ After checking the informations of User ID, Name, Email added in [Invite Contrib
 1.	Click repository name to check the contributor authority from the repository list.  
 ![019]
 
-2.	Contributor's list can be checked by clicking “Contributor” loacted at the right side of repository details tab. Contributor can be searched with the conditions of three following combobox:  “Contributor ID search”, “All/View/Modify", or “All/Use/Stop”.  
+2.	Contributor's list can be checked by clicking “Contributor” located at the right side of repository details tab. Contributor can be searched with the conditions of three following combobox:  “Contributor ID search”, “All/View/Modify", or “All/Use/Stop”.  
 ![020]
 
 
@@ -155,31 +155,31 @@ After checking the informations of User ID, Name, Email added in [Invite Contrib
 2.	Using of capital letters doesn't matter at the Users list page. Contributors can be searched according to authority other than the search function (all/Administrator/user) and (all/use/stop).  
 ![022]
 
-3.	사용자 목록 페이지에 사용자 아이디 또는 이름이 생성 및 추가가 되어 있지 않는 상태에는 “조회된 데이터가 없습니다.”라는 메시지가 보입니다.  
+3.	Message saying “No data has been checked.” will appear when the created User ID or Name is not added to the Users list page.  
 ![023]
 
 
-### <div id='15'/> 3.1.2.1.6. 인스턴스 아이디 검색 조건 별 사용자 정보 검색
-1.	사용자 목록 페이지에서 왼쪽 첫 번째에 있는 검색을 통해 레파지토리 참여자 검색이 가능하다. 아이디 또는 이름을 입력 후 Enter(돋보기 이미지 클릭은 이와 동일)를 누르면 검색이 활성화된다.  
+### <div id='15'/> 3.1.2.1.6. Search for user information by instance ID search criteria
+1.	Repository Contributors can be seached from the search tab at the left side of Users list page. Enter or click the magnifying glass after entering the ID or Name to search.  
 ![024]
 
-2.	사용자 목록 페이지에서 사용자 아이디 또는 이름 입력에는 영문 대소문자 구별이 없다. 검색기능 이외의 권한(전체/관리자/사용자)과 사용 여부(전체/사용/정지)에 따라서도 쉽게 참여자 검색이 가능하다.  
+2.	Using of capital letters doesn't matter at the Users list page. Contributors can be searched according to authority other than the search function (all/Administrator/user) and (all/use/stop).  
 ![025]
 
 
-### <div id='16'/> 3.1.3. 레파지토리 생성
-1.	PaaS-TA 개발자 포탈에 접속한다. (로그인 되어 있으면 생략한다.)
+### <div id='16'/> 3.1.3. Create Repository
+1.	Access to PaaS-TA Developers Portal. (Skip when already logged in.)
 
-2.	로그인 완료 후, 조직 생성 페이지에서 메뉴 상단에 “대시보드”를 클릭하여 조직 대시보드 페이지로 이동하고 화면 중앙의 “dev”공간 명을 클릭하여 공간 대시보드로 이동한다.  
+2.	After logging in, click “Dashboard” from the top of creating organization page's menu to proceed to the organization dashboard page. Click the “dev” space name located at the center of the screen to go to the space dashboard.  
 ![026]
 
-3.	공간 대시보드 형상관리 서비스 인스턴스에 “대시보드” 버튼을 클릭하여 형상관리 대시보드로 이동한다.  
+3.	Click “Dashboard” button to go to configuration management dashboard from space dashboard configuration managagement service instance.  
 ![027]
 
-4.	형상관리 서비스 생성 후 최초 대시보드 이용 시 패스워드를 입력한다. 비밀번호는 6~16자로 입력한다. (형상관리 서비스 생성 등록 시 형상관리 대시보드로 이동된다.)  
+4.	When using the dashboard for the fist time after creating a Configuration Management Service, enter password between 6~16 letters. (When registering created configuration management service, it automatically goes to configuration management dashboard.)  
 ![028]
 
-5.	메뉴 상단에 “신규생성”버튼을 클릭합니다.  
+5.	Click “Create New” button from the menu on top.  
 ![029]
 
 6.	레파지토리 신규 생성 페이지에서 레파지토리명은 영문으로 입력하고 유형(Git, SVN)을 선택 후, “생성” 버튼을 클릭한다. 알림 메시지 “레파지토리가 신규 생성되었습니다.” 나오면 “확인” 버튼을 눌러주면 레파지토리 생성이 된다.

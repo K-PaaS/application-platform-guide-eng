@@ -65,7 +65,7 @@
      * [3.2.1.3.7.  Log](#63)
      * [3.2.1.3.7.1.  Log Management](#64)
      * [3.2.1.3.7.2.  Tail Log](#90)
-     * [3.2.1.3.7.3.  Auto scailing Setting](#91)
+     * [3.2.1.3.7.3.  Auto scaling Setting](#91)
      * [3.2.1.3.7.4.  Notification Setting](#92)
      * [3.2.2.  Catalog](#65)
      * [3.2.2.1.  Search Catalog](#66)
@@ -116,7 +116,7 @@ This chapter describes the account creation and password reset screen for using 
 2.  Click “Login”. 
 ![2-1-1]
 
-3.  Click “Create account” Link.
+3.  Click “Create Account” Link.
 ![2-1-2]
 
 4.  Enter the E-mail address to use. Click “Send authentication mail”.
@@ -149,13 +149,13 @@ This chapter describes the account creation and password reset screen for using 
 
 
 ### <div id='7'/> 2.3.  Login to PaaS-TA User Portal and Create Organization
-1.  Enter user ID and Password. Click “SIGN IN” to login to the user portal.
+1.  Enter user ID and Password. Click “SIGN IN” to log in to the user portal.
 ![2-3-0]
 
-2.  After the account is created, Dashboard page will apear dirrectly at the first login.
+2.  After the account is created, Dashboard page will appear directly at the first login.
 ![dashboard]
 
-3.  Dashboard Page ① "Organization Management" Click the link or ②"Organization Management" at the menu on the right side. After the account is created, it is moved to the Dashboard page at the first login. More information can be found in 3.2.1.1 of this document.
+3.  Dashboard Page ① "Organization Management" Click the link or ②" Organization Management" at the menu on the right side. After the account is created, it is moved to the Dashboard page at the first login. More information can be found in 3.2.1.1 of this document.
 ![2-3-1]
 
 
@@ -214,10 +214,10 @@ This chapter describes the three main categories of PaaS-TA user portals.
 ![2-3-1]
 
 ### <div id='14'/> 3.2.1.1.1.1.  Create Organization
-1. ① Click "Organization Management" link or ②"Organization Management" on the menu to proceed to organization dashboard.
+1. ① Click "Organization Management" link or ②"Organization Management" on the menu to proceed to the organization dashboard.
 ![2-3-1]
 
-2.  Click “Add New Organization” to proceed to organization creating page.
+2.  Click “Add New Organization” to proceed to the organization creating page.
 ![2-3-1-1]
 
      > **To enable "Add New Organization"** button, [PaaS-TA Portal Deployment Guide Document](https://github.com/PaaS-TA/Guide-3.0-Penne-/blob/master/Use-Guide/portal/PaaS-TA%20Portal%20%EB%B0%B0%ED%8F%AC%20%EA%B0%80%EC%9D%B4%EB%93%9C_v1.1.md#7-1) Refer to **2.2. Enable create user organization Flag**.
@@ -242,7 +242,7 @@ This chapter describes the three main categories of PaaS-TA user portals.
 1. ① Click "Organization Management" Link or ②"Organization Management" at the menu to proceed to organization dashboard page.
 ![2-3-1]
 
-2.  Click "View details" on the  ① sub-menu at the right,, then click ② "Change Name".
+2.  Click "View details" on the  ① sub-menu at the right, then click ② "Change Name".
 ![3-2-1-1-1-2-1]
 
 3.  Enter new organization name. Click "Change".
@@ -266,7 +266,7 @@ This chapter describes the three main categories of PaaS-TA user portals.
 1. ① Click "Organization Management" Link or ②"Organization Management" at the menu to proceed to organization dashboard page.
 ![2-3-1]
 
-2.  Click “View Details” at the right side.
+2.  Click “View Details” on the right side.
 ![3-2-1-1-2-1-0]
 
 3.  Click "+ Create Space" then enter space name.
@@ -326,8 +326,8 @@ This chapter describes the three main categories of PaaS-TA user portals.
 ![inviteEmail]
 
 ### <div id='24'/> 3.2.1.1.4.2.  Remove Member
-1.  Click the "Remove Member" button of the user account to cancel the member.<br>
-**'When removing the member, the OrgManager role must be disabled to complete cancelling the member.**
+1.  Click the "Remove Member" button of the user account to cancel the membership.<br>
+**'When removing the member, the OrgManager role must be disabled to complete canceling the member.**
 ![3-2-1-1-4-4-0]
 
 
@@ -432,14 +432,14 @@ This chapter describes the three main categories of PaaS-TA user portals.
 1.  Click ① sub menu of the User Provided Service to rename from the list and click ② "Modify Service".
 ![userprovide-service]
 
-2.  Enter Service Name, Credentials, and Syslog Drain URL of the service to modify.Click “Modify” button from the comfir pop-up to complete User Provided Service Modification.
+2.  Enter Service Name, Credentials, and Syslog Drain URL of the service to modify.Click “Modify” button from the confirm pop-up to complete User Provided Service Modification.
 ![userprovide-service2]
 
 ### <div id='42'/> 3.2.1.2.3.3.  Delete User Provided Service
 1.  Click ① sub menu of the User Provided Service to delete from the list and click  ②“Delete”.
 ![userprovide-del]
 
-2.  Click  "Delete" button on the confirm pop-up to complete the deletion of the User Provided service.
+2.  Click the "Delete" button on the confirm pop-up to complete the deletion of the User Provided service.
 ![userprovide-del2]
 
 ### <div id='43'/> 3.2.1.3.  Application
@@ -591,9 +591,9 @@ Click the name of the application created in the catalog list to go to the appli
 #### Install monitoring provided by PaaS-TA before proceeding.
 ```
 ![3-2-1-3-7-1-3]
-1.  Clcick monitoring of ① App Layout. Click ② Setting tab button.
+1.  Click monitoring of ① App Layout. Click ② Setting tab button.
 
-2.  Number of Instance  : In case of auto-scaling, input the minimum and maximum number of instances.
+2.  Number of Instances: In case of auto-scaling, input the minimum and maximum number of instances.
 
 3.  CPU Threshold Value(%) : (③ Checked box being checked means threshold will be applied. Unchecked -> not applied) When Auto-scaling, enter minimum and maximum CPU value.\
 (Number of Instances increases when CPU percentage increases than the applied maximum instance. On the other hand, the number of instances decreases when instance is lower than the minimum instance)
@@ -601,29 +601,29 @@ Click the name of the application created in the catalog list to go to the appli
 4. Memory Threshold Value(%)  :(③ ③ Checked box being checked means threshold will be applied. Unchecked -> not applied) When Auto-scaling, enter minimum and maximum memory value.\
 (Number of Instances increases when CPU percentage increases than the applied maximum instance. On the other hand, the number of instances decreases when instance is lower than the minimum instance)
 
-5. Time Measure(Second) : Apply time measurement. The average value of each instance's memory and cpu values for the measured time is calculated and auto-scaling is applied.
+5. Time Measure(Second): Apply time measurement. The average value of each instance's memory and CPU values for the measured time is calculated and auto-scaling is applied.
 
-6. Instance increse/decrease value : Apply the number of instances to increase during auto-scaling.
+6. Instance increse/decrease value: Apply the number of instances to increase during auto-scaling.
 
-7. Virtual Machine Auto-expansion : Apply whether to automatically create an instance.
+7. Virtual Machine Auto-expansion: Apply whether to automatically create an instance.
 
-8. Virtual Machine Auto-reduction : Apply whether or not to automatically delete an instance.
+8. Virtual Machine Auto-reduction: Apply whether or not to automatically delete an instance.
 
-9. Click change to save the settings.
+9. Click Change to save the settings.
 
 ### <div id='92'/> 3.2.1.3.7.4. Notification Setting
 ![3-2-1-3-7-1-4]
 1.  CPU Threshold Value(%) : Enter minimum and maximum CPU value of notification.\
 (Notification appears when the instance increases/decreases than what is applied at the CPU value percentage.)
 
-4. Memory Threshold Value(%)  :Enter the minimum and maximum memory value of notification.\
+4. Memory Threshold Value(%):Enter the minimum and maximum memory value of notification.\
 (Number of Instances increases when CPU percentage increases than the applied maximum instance. On the other hand, the number of instances decreases when instance is lower than the minimum instance)
 
-5. Time Measure(Second) : Apply time measurement. The average value of each instance's memory and cpu values for the measured time is calculated and auto-scaling is applied.
+5. Time Measure(Second): Apply time measurement. The average value of each instance's memory and CPU values for the measured time is calculated and auto-scaling is applied.
 
-6. E-Mail : Enter an email address to receive notifications. Can be enabled/ disabled through a button.
+6. E-Mail: Enter an email address to receive notifications. Can be enabled/ disabled through a button.
 
-7. Notification Use : Can be enabled/ disabled through a  on and off buttons.
+7. Notification Use: Can be enabled/ disabled through on and off buttons.
 
 8. Click change to save settings.
 
@@ -677,7 +677,7 @@ Click the name of the application created in the catalog list to go to the appli
 ![userinfo-phone]
 
 ### <div id='76'/> 3.2.5.3.3 User Postal Code
-1. When entering new postal code, up to 15 characters or less letters and number can be entered. Click "Change" button to complete the process.
+1. When entering a new postal code, up to 15 characters or less letters and number can be entered. Click "Change" button to complete the process.
 ![userinfo-cz]
 
 ### <div id='77'/> 3.2.5.3.3 User Address

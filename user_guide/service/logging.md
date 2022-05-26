@@ -126,7 +126,7 @@ In the "Discover" menu, click the ① area at the top to select the desired cond
 ![015]
 
 - Fields Setting  
-Select the field in the Available Fields list from the area ① of the "Discover" menu. (②) 하여 조회 화면(③)에 표시되는 Field를 설정한다.
+"Discover" 메뉴의 ① 의 영역에 있는 Available Fields 목록에서 원하는 Field(②)를 선택하면 조회 화면(③)에 해당 Field 표시된다.
 ![016]
 ![017]
 

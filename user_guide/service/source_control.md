@@ -103,14 +103,14 @@ Add, delete, and check Repository Contributor authority, check Instance User aut
 3.	Click “Add Contributor” button once the page appears.  
 ![012]
 
-4.	Enter the User to give authority within [Search Source Controller User]. After checking the user in the user search list, click "+" image.  
+4.	Enter the User to give authority within [Search Source Controller User]. After checking the user in the user search list, click "+" icon.  
 ![013]
 
 5.	Bellow [Search Source Controller User], [Invite Contributor], Authority and descriptions are shown.
 After checking the informations of User ID, Name, Email added in [Invite Contributor], Give the required authority (Modify/View) and click “Invite” when completed.  
 ![014]
 
-6.	When notification with “[Contributor has been Invited]” message appears, the repository contributor authority has been given.  
+6.	When notification “[Contributor has been Invited]” appears, the repository contributor authority has been given.  
 ![015]
 
 
@@ -119,40 +119,40 @@ After checking the informations of User ID, Name, Email added in [Invite Contrib
 
 2.	Click the repository name from the contribution management repository list.
 
-3.	클릭 후 레파지토리 상세보기 페이지로 이동한다. 레파지토리 상세보기 페이지에서 “정보보기/수정” 버튼과 “신규생성” 버튼 하단의 탭 중 가장 오른쪽에 있는 참여자(Contributor)을 클릭한다.
+3.	Once it's clicked, it will take you to the Repository Details page. Among the three tabs in the page, click the rightmost tab, Contributor tab, which is located below the 'View/Edit Details' and 'Create New' buttons.
 
-4.	탭 화면이 전환된 후 삭제할 레파지토리 참여 권한을 클릭한다.  
+4.	Once the screen appears, click the repository contributor authority to delete.  
 ![016]
 
-    또는, 레파지토리 참여자 권한 추가와 동일 한 조건에서, [소스 컨트롤러 사용자 검색] 안에서 참여자 권한 추가할 사용자를 입력한다. 사용자 검색 목록에서 사용자를 확인 후, “-” 이미지를 클릭한다.  
+    Or, adding authority to Repository Contributors likewise, enter the name of the contributor whose authority is to be removed in [Search Source Controller User]. Check the searched user and click '-' icon beside it.  
 ![013]
 
-5.	알림 메시지 “참여자가 삭제되었습니다.”가 나오면 레파지토리 참여자 권한이 삭제된다.
+5.	When Notification “Contributor has been Deleted.” appears, the repository contributor authority has been deleted successfully.
 
 
-### <div id='12'/> 3.1.2.1.3. 레파지토리 참여자 권한 조회
-1.	레파지토리 상세보기 페이지에서 “정보보기/수정” 버튼과 “신규생성” 버튼 하단의 탭 중 가장 오른쪽에 있는 참여자(Contributor)을 클릭한다.
+### <div id='12'/> 3.1.2.1.3. Check Repository Contributor Authority
+1.	From the Repository Details page. Among the three tabs in the page, click the rightmost tab, Contributor tab, which is located below the 'View/Edit Details' and 'Create New' buttons.
 
-2.	레파지토리 생성된 참여자들의 리스트가 모두 확인된다. 페이지 화면 맨 오른쪽에 있는 사용/정지 이미지와 소유자/쓰기/보기의 이미지로 쉽게 레파지토리 참여자 권한 조회를 할 수 있다.  
+2.	A list of all the contributors created at the repository can be checked. Repository Contributor Authority can be checked easily by checking the Use/Stop image and Owner/Write/View image located on the right side of the page.  
 ![017]
 
-3.	디테일한 참여자 권한을 확인할 경우 참여자 아이디를 클릭하여 확인할 수 있다. 참여자 정보에는 아이디, 이름, 이메일, 권한, 사용자에 대한 설명이 있다.  
+3.	Detailed Contributor Autorities can be checked by clicking the contributor's ID. Detailed information includes ID, Name, Email, Authority, and description of the user.  
 ![018]
 
 
-### <div id='13'/> 3.1.2.1.4. 인스턴스 사용자 권한 조회
-1.	레파지토리 목록 페이지에서 참여자 권한 조회를 할 레파지토리 명을 클릭한다.  
+### <div id='13'/> 3.1.2.1.4. Check Instance User Authority
+1.	Click repository name to check the contributor authority from the repository list.  
 ![019]
 
-2.	레파지토리 상세보기 페이지의 탭 오른쪽의 “참여자(Contributor)”을 클릭하면 참여자 목록을 조회할 수 있다. 참여자(Contributor)에서는 “참여자 아이디 또는 검색”과 “전체/보기/수정", “전체/사용/정지” 세 가지의 조건의 콤보 박스로 참여자를 찾을 수 있다.  
+2.	Contributor's list can be checked by clicking “Contributor” loacted at the right side of repository details tab. Contributor can be searched with the conditions of three following combobox:  “Contributor ID search”, “All/View/Modify", or “All/Use/Stop”.  
 ![020]
 
 
-### <div id='14'/> 3.1.2.1.5. 사용자 아이디 레파지토리 참여자 검색
-1.	사용자 목록 페이지에서 왼쪽 첫 번째에 있는 검색을 통해 레파지토리 참여자 검색이 가능하다. 아이디 또는 이름을 입력 후 Enter(돋보기 이미지 클릭은 이와 동일)를 누르면 검색이 활성화된다.  
+### <div id='14'/> 3.1.2.1.5. Search for User ID Repository Contributors
+1.	Repository Contributor can be searched at the search box located at the left side of Users list page. Enter ID or Name and click the magnifying glass image to look up to the list.  
 ![021]
 
-2.	사용자 목록 페이지에서 사용자 아이디 또는 이름 입력에는 영문 대소문자 구별이 없다. 검색기능 이외의 권한(전체/관리자/사용자)과 사용 여부(전체/사용/정지)에 따라서 참여자 검색이 가능하다.  
+2.	Using of capital letters doesn't matter at the Users list page. Contributors can be searched according to authority other than the search function (all/Administrator/user) and (all/use/stop).  
 ![022]
 
 3.	사용자 목록 페이지에 사용자 아이디 또는 이름이 생성 및 추가가 되어 있지 않는 상태에는 “조회된 데이터가 없습니다.”라는 메시지가 보입니다.  

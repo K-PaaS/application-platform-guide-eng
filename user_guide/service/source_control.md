@@ -133,7 +133,7 @@ After checking the informations of User ID, Name, Email added in [Invite Contrib
 ### <div id='12'/> 3.1.2.1.3. Check Repository Contributor Authority
 1.	From the Repository Details page. Among the three tabs in the page, click the rightmost tab, Contributor tab, which is located below the 'View/Edit Details' and 'Create New' buttons.
 
-2.	A list of all the contributors who created the repository can be checked. Repository Contributor Authority can be checked easily by checking the Use/Stop image and Owner/Write/View image located on the right side of the page.  
+2.	A list of all the contributors who created their repositories can be checked. Whether the contributor is managing configuration can be checked by the Active/Inactive image located on the right side of the page. The status of Repository Contributor Authority can be checked by Owner/Write/View images next to the Active/Inactive images.  
 ![017]
 
 3.	Detailed Contributor Authorities can be checked by clicking the contributor's ID. Detailed information includes ID, Name, Email, Authority, and description of the user.  
@@ -144,7 +144,7 @@ After checking the informations of User ID, Name, Email added in [Invite Contrib
 1.	Click repository name to check the contributor authority from the repository list.  
 ![019]
 
-2.	Contributor's list can be checked by clicking “Contributor” located at the right side of repository details tab. Contributor can be searched with the conditions of three following combobox:  “Contributor ID search”, “All/View/Modify", or “All/Use/Stop”.  
+2.	Contributor's list can be checked by clicking “Contributor” located at the right side of repository details tab. Contributor can be searched with the conditions of three following combobox:  “Contributor ID search”, “All/View/Modify", or “All/Active/Inactive”.  
 ![020]
 
 
@@ -152,7 +152,7 @@ After checking the informations of User ID, Name, Email added in [Invite Contrib
 1.	Repository Contributor can be searched at the search box located at the left side of Users list page. Enter ID or Name and click the magnifying glass image to look up to the list.  
 ![021]
 
-2.	Using of capital letters doesn't matter at the Users list page. Contributors can be searched according to authority other than the search function (all/Administrator/user) and (all/use/stop).  
+2.	Using of capital letters doesn't matter at the Users list page. Contributors can be searched according to authority other than the search function (All/Administrator/User) and (All/Active/Inactivep).  
 ![022]
 
 3.	Message saying “No data has been checked.” will appear when the created User ID or Name is not added to the Users list page.  
@@ -163,7 +163,7 @@ After checking the informations of User ID, Name, Email added in [Invite Contrib
 1.	Repository Contributors can be seached from the search tab at the left side of Users list page. Enter or click the magnifying glass after entering the ID or Name to search.  
 ![024]
 
-2.	Using of capital letters doesn't matter at the Users list page. Contributors can be searched according to authority other than the search function (all/Administrator/user) and (all/use/stop).  
+2.	Using of capital letters doesn't matter at the Users list page. Contributors can be searched according to authority other than the search function (All/Administrator/User) and (All/Active/Inactive).  
 ![025]
 
 
@@ -259,7 +259,7 @@ This chapter describes the usage of 7 menus of the PaaS-TA User Portal.
 1.	Click My ID on the Configuration Management Repository List page. Click “User Management” shown on the second part of the list.  
 ![040]
 
-2.	Administrators can check all user IDs, Names, Created Dates, and Modified dates from the list within the next screen. Check whether the user is using or not on the right side of the list.  
+2.	On the next screen, the list of all user IDs, Names, Created Dates, and Modified dates appears. On the right side of the list, the Active/Inactive images show whether the users using configuration management.  
 ![041]
 
 

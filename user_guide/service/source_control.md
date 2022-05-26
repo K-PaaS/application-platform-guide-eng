@@ -226,35 +226,35 @@ Can check the File,Commit, and Contributor at the repository details page.
 
 2.	Folder/File Name, Final Commit, File size, last updates can be checked from the “File” List as default.
 
-3.	URL can be copied from the right side of view repository details through “Repository Clonegb”.  
+3.	URL can be copied from View Repository Details through “Repository Clonegb”.  
 ![035]
 
 
 ### <div id='23'/> 3.1.3.1.6.1. Check Repository Branch List
-1.	“파일(file)” 의 하단에 있는 “브렌치 : “ 를 클릭하면 사용한 브렌치의 리스트를 확인할 수 있으며, 빈칸의 검색을 통해 빠르게 조회할 수 있다.  
+1.	Click “Branch”: drop-down to check the branch used before. To search quickly, enter in the branch name at the branch search box.  
 ![036]
 
 
-### <div id='24'/> 3.1.3.1.6.2. 레파지토리 태그 목록 조회
-1.	“파일(file)”의 하단에 있는  “Tag : “ 를 클릭하면 사용한 Tag의 리스트를 확인할 수 있으며, 빈칸의 검색을 통해 빠르게 조회할 수 있다.  
+### <div id='24'/> 3.1.3.1.6.2. Check Repository Tag List
+1.	Click “Tag”: drop-down to check the Tag used before. To search quickly, enter in the Tag name at the Tag search box.  
 ![037]
 
 
-### <div id='25'/> 3.1.3.1.7. 레파지토리 브라우저 목록 조회
-1.	레파지토리 브라우저 목록에서는 폴더/파일명, 최종 변경사항, 파일 크기, 마지막 업데이트를 확인할 수 있다. 첫 화면에서 폴더 이미지와 함께 src와 target을 볼 수 있다.  
+### <div id='25'/> 3.1.3.1.7. Check Repository Browser List
+1.	Folder/File Name, Final Commit, File size, last updates can be checked from the Repository Browser List. SRC and Target can be seen at the first screen with the folder image.  
 ![038]
 
-2.	[폴더] 이미지를 클릭 하면 main을 포함한 이외의 소스 내용과 정보를 확인할 수 있다.
-“[폴더]…”는 그전 페이지로 돌아가는 기능을 수행한다.
+2.	Click [Folder] image to see other sources and informations including the main.
+“[Folder]…” performs to functions as going back to the previous page.
 
 
-### <div id='26'/>  3.1.3.1.8. 레파지토리 변경 목록 조회
-1.	레파지토리 상세보기 페이지의 탭 중간의 “커밋(Commit)”을 클릭하면 변경된 목록을 조회할 수 있다.  
+### <div id='26'/>  3.1.3.1.8. Check Repository Modified List
+1.	Click “Commit” at the center of View Repository Details to check the list of modified repository.  
 ![039]
 
 
-### <div id='27'/> 3.1.4. 사용자 관리
-### <div id='28'/> 3.1.4.1.1.	모든 사용자 조회
+### <div id='27'/> 3.1.4. User Management
+### <div id='28'/> 3.1.4.1.1.	Check All Users
 본 장에서는 PaaS-TA 사용자 포탈의 7개 메뉴에 대한 설명을 기술한다.
 1.	형상관리 레파지토리 목록 페이지 상단에 있는 나의 아이디를 클릭한다. 클릭 후 보이는 목록 두 번째의 “사용자 관리”를 클릭한다.  
 ![040]

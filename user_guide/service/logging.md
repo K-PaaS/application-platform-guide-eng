@@ -118,19 +118,19 @@ Click "Share" from "Discover" menu.
 
 #### <div id='3-2-1-5'/> 3.2.1.5. Set Search Conditions
 - Set Time Range
-"Discover" 메뉴에서 상단의 ① 영역을 클릭하여, Time Range에서 원하는 조건을 선택한다.
+In the "Discover" menu, click the ① area at the top to select the desired condition of Time Range.
 ![014]
 
 - Set query
-"Discover" 메뉴의 검색 query 영역(①)에 원하는 조건을 설정하고 데이터를 조회한다.
+In the "Discover" menu, click the ① area at the top to select the desired condition of query.
 ![015]
 
 - Set Fields
-"Discover" 메뉴의 ① 의 영역에서 Available Fields 목록의 Field를 선택(②)하여 조회 화면(③)에 표시되는 Field를 설정한다.
+Select the field in the Available Fields list from the area ① of the "Discover" menu. (②) 하여 조회 화면(③)에 표시되는 Field를 설정한다.
 ![016]
 ![017]
 
-- Fields 설정 해제
+- Unset Fields
 "Discover" 메뉴의 ① 의 영역에서 Selected Fields 목록의 Field를 선택(②)하여 조회 설정을 해제 한다.
 ![018]
 

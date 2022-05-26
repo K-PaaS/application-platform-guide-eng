@@ -89,43 +89,43 @@ Management | Manage Stored Objects
 This chapter describes the 4 menus of the Logging service.
 
 ### <div id='3-2-1'/> 3.2.1. Discover
-본 장에서는 로그 데이터의 검색 및 필터링, 검색의 저장 및 공유에 대해 기술한다.
+This chapter describes the search and filtering of log data, and the storing and sharing of searches.
 
-좌측의 "Discover" 메뉴를 클릭한다.
+Click "Discover" on the left side.
 ![007]
 
-#### <div id='3-2-1-1'/> 3.2.1.1. 신규 검색
-"Discover"메뉴에서 상단의 "New"를 클릭한다.
+#### <div id='3-2-1-1'/> 3.2.1.1. Search New
+Click "New" from "Discover" menu.
 ![008]
 
-#### <div id='3-2-1-2'/> 3.2.1.2. 검색 저장
-"Discover" 메뉴에서 상단의 "Save"를 클릭한다.
+#### <div id='3-2-1-2'/> 3.2.1.2. Save Search
+Click "Save" from "Discover" menu.
 ![009]
 
-검색 명을 입력한 후, "Save" 버튼을 클릭한다.
+Click "Save" after entering the search word.
 ![010]
 
-#### <div id='3-2-1-3'/> 3.2.1.3. 검색 열기
-"Discover" 메뉴에서 상단의 "Open"을 클릭한다.
+#### <div id='3-2-1-3'/> 3.2.1.3. Open Search
+Click "Open" from "Discover" menu.
 ![011]
 
-검색 목록에서 "검색 객체 명"을 클릭한다.
+Click "Search Object Name" from the search list.
 ![012]
 
-#### <div id='3-2-1-4'/> 3.2.1.4. 검색 공유
-"Discover" 메뉴에서 상단의 "Share"를 클릭한다.
+#### <div id='3-2-1-4'/> 3.2.1.4. Share Search
+Click "Share" from "Discover" menu.
 ![013]
 
-#### <div id='3-2-1-5'/> 3.2.1.5. 검색 조건 설정
-- Time Range 설정
+#### <div id='3-2-1-5'/> 3.2.1.5. Set Search Conditions
+- Set Time Range
 "Discover" 메뉴에서 상단의 ① 영역을 클릭하여, Time Range에서 원하는 조건을 선택한다.
 ![014]
 
-- query 설정
+- Set query
 "Discover" 메뉴의 검색 query 영역(①)에 원하는 조건을 설정하고 데이터를 조회한다.
 ![015]
 
-- Fields 설정
+- Set Fields
 "Discover" 메뉴의 ① 의 영역에서 Available Fields 목록의 Field를 선택(②)하여 조회 화면(③)에 표시되는 Field를 설정한다.
 ![016]
 ![017]
@@ -137,7 +137,7 @@ This chapter describes the 4 menus of the Logging service.
 ### <div id='3-2-2'/> 3.2.2. Visualize
 본 장에서는 로그 데이터의 시각화 구성 및 관리에 대해 기술한다.
 
-#### <div id='3-2-2-1'/> 3.2.2.1. visualization 생성
+#### <div id='3-2-2-1'/> 3.2.2.1. Create Visualization
 좌측의 "Visualize" 메뉴를 클릭한다.
 ![019]
 
@@ -159,7 +159,7 @@ Select visualization type 목록에서 type을 클릭한다.
 시각화 명을 입력한 후, "Save" 버튼을 클릭한다.
 ![025]
 
-#### <div id='3-2-2-2'/> 3.2.2.2. visualization 수정
+#### <div id='3-2-2-2'/> 3.2.2.2. Modify Visualization
 좌측의 "Visualize" 메뉴를 클릭한다.
 ![026]
 
@@ -170,7 +170,7 @@ Select visualization type 목록에서 type을 클릭한다.
 ![028]
 ![029]
 
-#### <div id='3-2-2-3'/> 3.2.2.3. visualization 공유
+#### <div id='3-2-2-3'/> 3.2.2.3. Share Visualization
 좌측의 "Visualize" 메뉴를 클릭한다.
 ![026]
 
@@ -180,7 +180,7 @@ Select visualization type 목록에서 type을 클릭한다.
 상단의 "Share"를 클릭한다.
 ![030]
 
-#### <div id='3-2-2-4'/> 3.2.2.4. visualization 새로 고침
+#### <div id='3-2-2-4'/> 3.2.2.4. Refresh Visualization
 좌측의 "Visualize" 메뉴를 클릭한다.
 ![026]
 

@@ -221,16 +221,16 @@ Can check the File,Commit, and Contributor at the repository details page.
 
 
 ### <div id='22'/> 3.1.3.1.6. Check Repository File List
-1.	레파지토리 상세보기 페이지의 탭 첫 번째 왼쪽의 “파일(file)”을 클릭하면 브렌치, 태그, 참여자에 대한 정보 확인이 가능하다.  
+1.	Click “File” at the left side of repository details page tab to check informations about branch, tag, and contributor.  
 ![034]
 
-2.	“파일(file)” 목록에서는 기본적으로 폴더/파일명, 최종 변경사항, 파일 크기, 마지막 업데이트를 확인할 수 있다.
+2.	Folder/File Name, Final Commit, File size, last updates can be checked from the “File” List as default.
 
-3.	레파지토리 상세보기 오른쪽의 “레파지토리 클론”을 통해 URL 복사가 가능하다.  
+3.	URL can be copied from the right side of view repository details through “Repository Clonegb”.  
 ![035]
 
 
-### <div id='23'/> 3.1.3.1.6.1. 레파지토리 브렌치 목록 조회
+### <div id='23'/> 3.1.3.1.6.1. Check Repository Branch List
 1.	“파일(file)” 의 하단에 있는 “브렌치 : “ 를 클릭하면 사용한 브렌치의 리스트를 확인할 수 있으며, 빈칸의 검색을 통해 빠르게 조회할 수 있다.  
 ![036]
 

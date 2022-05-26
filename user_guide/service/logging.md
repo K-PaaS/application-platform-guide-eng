@@ -40,53 +40,53 @@
 
 ---
 
-# <div id='1'/> 1. 문서 개요
-## <div id='1-1'/> 1.1 목적
-본 문서는 Logging 서비스의 사용 방법에 대해 기술하였다.
+# <div id='1'/> 1. Document Outline
+## <div id='1-1'/> 1.1 Purpose
+This document describes how to use the Logging service.
 
-## <div id='1-2'/> 1.2 범위
-본 문서는 Windows 환경을 기준으로 Logging 서비스를 사용하는 방법에 대해 작성되었다.
+## <div id='1-2'/> 1.2 Range
+This document is written about how to use the Logging service based on a Windows environment.
 
-# <div id='2'/> 2. Logging 서비스 접속
+# <div id='2'/> 2. Logging Service Access
 
-## <div id='2-1'/> 2.1 PaaS-TA 사용자 포탈 접속
-- PaaS-TA 사용자 포탈에 접속하여 “로그인” 버튼을 클릭한다.
+## <div id='2-1'/> 2.1 PaaS-TA User Portal Access
+- Click “Login” button from the accessed PaaS-TA User Portal.
 
 ![001]
 
-- 사용자 계정과 비밀번호를 입력한 후 “SIGN IN” 버튼을 클릭하여 PaaS-TA 사용자 포탈에 로그인 한다.
+- Enter User ID and Password and click “SIGN IN” button and log in to PaaS-TA User Portal.
 ![002]
 
-- 로그인 한 후 "애플리케이션명"을 클릭하여 애플리케이션 상세 페이지로 이동한다.
+- Click "Application Name" after logging in and go to the application details page.
 ![003]
 
-## <div id='2-2'/> 2.2 Logging 서비스 접속
+## <div id='2-2'/> 2.2 Logging Service Access
 
-- PaaS-TA 포탈의 애플리케이션 상세 페이지로 이동하여 "로그" 메뉴를 선택한다.
+- Click "Log" Menu from the PaaS-TA Portal Application Details page.
 ![004]
 
-- 애플리케이션 로그 페이지의 "Log Service"를 클릭한다.
+- Click "Log Service" from the Application Log page.
 ![005]
 
-- PaaS-TA Logging 서비스 접속을 확인한다.
+- Check the access to PaaS-TA Logging Service.
 ![006]
 
-# <div id='3'/> 3. Logging 서비스 사용자 매뉴얼
-본 장에서는 Logging 서비스의 메뉴 구성 및 화면 설명에 대해서 기술하였다.
+# <div id='3'/> 3. Logging Service User Manual
+This chapter describes the menu configuration and screen description of the logging service.
 
-## <div id='3-1'/> 3.1 Logging 서비스 사용자 메뉴 구성
+## <div id='3-1'/> 3.1 Logging Service User Menu Configuration
 
-Logging 서비스는 다음과 같은 메뉴로 구성되어 있다.
+Logging Service Menu is configured as shown below.
 
-메뉴 | 설명
+Menu | Description
 :--- | :---
-Discover | 로그 데이터의 검색 및 필터링
-Visulize | 로그 데이터의 시각화 구성 및 관리
-Dashboard | 사용자가 배치하고 공유할 수 있는 시각화의 모음
-Management | 저장된 객체 관리
+Discover | Retrieving and filtering log data
+Visulize | Configuring and managing visualizations of log data
+Dashboard | A collection of visualizations that users can arrange and share
+Management | Manage Stored Objects
 
-## <div id='3-2'/> 3.2 Logging 서비스 사용자 메뉴 설명
-본 장에서는 Logging 서비스의 4개 메뉴에 대한 설명을 기술한다.
+## <div id='3-2'/> 3.2 Logging Service Menu Description
+This chapter describes the 4 menus of the Logging service.
 
 ### <div id='3-2-1'/> 3.2.1. Discover
 본 장에서는 로그 데이터의 검색 및 필터링, 검색의 저장 및 공유에 대해 기술한다.

@@ -133,7 +133,7 @@ After checking the informations of User ID, Name, Email added in [Invite Contrib
 ### <div id='12'/> 3.1.2.1.3. Check Repository Contributor Authority
 1.	From the Repository Details page. Among the three tabs in the page, click the rightmost tab, Contributor tab, which is located below the 'View/Edit Details' and 'Create New' buttons.
 
-2.	A list of all the contributors created at the repository can be checked. Repository Contributor Authority can be checked easily by checking the Use/Stop image and Owner/Write/View image located on the right side of the page.  
+2.	A list of all the contributors who created the repository can be checked. Repository Contributor Authority can be checked easily by checking the Use/Stop image and Owner/Write/View image located on the right side of the page.  
 ![017]
 
 3.	Detailed Contributor Authorities can be checked by clicking the contributor's ID. Detailed information includes ID, Name, Email, Authority, and description of the user.  
@@ -241,30 +241,30 @@ Can check the File,Commit, and Contributor at the repository details page.
 
 
 ### <div id='25'/> 3.1.3.1.7. Check Repository Browser List
-1.	Folder/File Name, Final Commit, File size, last updates can be checked from the Repository Browser List. SRC and Target can be seen at the first screen with the folder image.  
+1.	Folder/File Name, Final Commit, File and size, last updates can be checked from the Repository Browser List. SRC and Target can be seen on the first screen with the folder image.  
 ![038]
 
-2.	Click [Folder] image to see other sources and informations including the main.
-“[Folder]…” performs to functions as going back to the previous page.
+2.	Click [Folder] image to see other sources and information including the main.
+“[Folder]…” performs functions as going back to the previous page.
 
 
 ### <div id='26'/>  3.1.3.1.8. Check Repository Modified List
-1.	Click “Commit” at the center of View Repository Details to check the list of modified repository.  
+1.	Click “Commit” at the center of View Repository Details to check the list of the modified repository.  
 ![039]
 
 
 ### <div id='27'/> 3.1.4. User Management
 ### <div id='28'/> 3.1.4.1.1.	Check All Users
-본 장에서는 PaaS-TA 사용자 포탈의 7개 메뉴에 대한 설명을 기술한다.
-1.	형상관리 레파지토리 목록 페이지 상단에 있는 나의 아이디를 클릭한다. 클릭 후 보이는 목록 두 번째의 “사용자 관리”를 클릭한다.  
+This chapter describes the usage of 7 menus of the PaaS-TA User Portal.
+1.	Click My ID on the Configuration Management Repository List page. Click “User Management” shown on the second part of the list.  
 ![040]
 
-2.	이동된 화면 목록에서 상단 관리자 기준으로 모든 사용자 아이디, 이름, 생성일, 수정일을 확인할 수 있다. 또한 목록 우측에서는 사용자의 사용 여부 확인이 가능하다.  
+2.	Administrators can check all user IDs, Names, Created Dates, and Modified dates from the list within the next screen. Check whether the user is using or not on the right side of the list.  
 ![041]
 
 
-### <div id='29'/> 3.1.4.1.2. 사용자 생성
-1.	모든 사용자 조회와 동일한 순서로 화면 이동을 한다.
+### <div id='29'/> 3.1.4.1.2. Create User
+1.	Follow the procedures done to go to the Create Users page.
 
 2.	사용자 생성 클릭 후 이동하는 페이지에서 사용자 생성을 위한 필수 조건인 아이디, 이름, 이메일, 비밀번호 정보를 입력한다. 아이디 생성 시, 영•소문자, 숫자 포함하여 2 ~ 12자리 입력을 하고, 비밀번호는 6 ~ 16자리로 입력한다.  
 ![042]

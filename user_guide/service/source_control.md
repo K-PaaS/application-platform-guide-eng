@@ -182,7 +182,7 @@ After checking the informations of User ID, Name, Email added in [Invite Contrib
 5.	Click “Create New” button from the menu on top.  
 ![029]
 
-6.	레파지토리 신규 생성 페이지에서 레파지토리명은 영문으로 입력하고 유형(Git, SVN)을 선택 후, “생성” 버튼을 클릭한다. 알림 메시지 “레파지토리가 신규 생성되었습니다.” 나오면 “확인” 버튼을 눌러주면 레파지토리 생성이 된다.
+6.	Input the repository name in english at the create new repository page, select type(Git, SVN), and click “Create” button. Click “OK” when notification with the message of “Repository was newly created.” appears.
   - Repository Name : XXX (English)
   - Type : Git
   - Repository Description : XXX  
@@ -190,37 +190,37 @@ After checking the informations of User ID, Name, Email added in [Invite Contrib
 
 
 ### <div id='17'/> 3.1.3.1.1. Check All Repositories
-1.	레파지토리 목록 페이지에서는 레파지토리 생성된 목록을 확인한다.
+1.	Check the created repository list from the repository list page.
 
 
-### <div id='18'/> 3.1.3.1.2. 사용자 레파지토리 리스트 조회
-1.	레파지토리 목록 페이지에서 레파지토리 검색, 콤보 박스 형상관리 유형, 전체 레파지토리 및 업데이트 순 검색을 통해 사용자 레파지토리 목록을 확인한다.
+### <div id='18'/> 3.1.3.1.2. Check User Repository List
+1.	Check the user's repository list by searching the Repository List page, combobox configuration management type, all repository and updating sequence from the repository list page.
 
 
-### <div id='19'/> 3.1.3.1.3. 레파지토리 삭제
-1.	레파지토리 목록에서 레파지토리 명을 클릭 후, 레파지토리 상세조회 페이지로 이동한다.  
+### <div id='19'/> 3.1.3.1.3. Delete Repository
+1.	Go to repository details page by clicking the repository name at the repository list page.  
 ![019]
 
-2.	레파지토리 상세 보기 페이지에서 오른쪽의 “정보보기/수정” 버튼을 클릭한다.  
+2.	Click “View information/Modify” button at the right side of repository details page.  
 ![031]
 
-3.	정보보기/ 수정 페이지에서 왼쪽 아래의 “레파지토리 삭제” 버튼을 클릭한다.  
+3.	Click “Delete Repository” button at the right-buttom part of the view information/modify page.  
 ![032]
 
 
-### <div id='20'/>  3.1.3.1.4. 레파지토리 수정
-1.	레파지토리 목록에서 레파지토리 명을 클릭 후, 레파지토리 상세조회 페이지로 이동한다.  
+### <div id='20'/>  3.1.3.1.4. Modify Repository
+1.	Click the repository name from the repository list and proceed to repository details page.  
 ![019]
 
-2.	레파지토리 상세 보기 페이지에서 오른쪽 “수정” 버튼을 클릭한다. 알림 메시지 “수정되었습니다.” 나오면 레파지토리 수정이 완료된다.  
+2.	Modify by clicking the “Modify” button at the right side of view repository details page. Modification is completed when notification with the message of “Modification Completed.” appears.  
 ![033]
 
 
-### <div id='21'/> 3.1.3.1.5. 레파지토리 상세 조회
-레파지토리 상세보기 페이지에서 파일(file), 커밋(Commit), 참여자(Contributor) 확인할 수 있다.
+### <div id='21'/> 3.1.3.1.5. Check Repository Details
+Can check the File,Commit, and Contributor at the repository details page.
 
 
-### <div id='22'/> 3.1.3.1.6. 레파지토리 파일 목록 조회
+### <div id='22'/> 3.1.3.1.6. Check Repository File List
 1.	레파지토리 상세보기 페이지의 탭 첫 번째 왼쪽의 “파일(file)”을 클릭하면 브렌치, 태그, 참여자에 대한 정보 확인이 가능하다.  
 ![034]
 

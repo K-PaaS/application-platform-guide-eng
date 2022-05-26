@@ -209,7 +209,7 @@ CLI is a command-line utility that helps you manage OpenPaaS deployments and rel
 cf [global options] command <arguments...> [command options]
  ```
 
-Provides abbreviations according to the OpenPaaS command. As an example, the App start CLI command is start, but st can be used too..
+Provides abbreviations according to the OpenPaaS command. As an example, the App start CLI command is started, but it can be used too.
 
 - **Abbreviation used example**
 
@@ -412,7 +412,7 @@ $ cf api <URL>
 
 
 ```
-View Target api or Sets target api URL.
+View Target API or Set target API URL.
 ```
 
 
@@ -1045,7 +1045,7 @@ View list of Apps in the target space.
 
 
   ```
-  Lsit the stack list (operating system file system) list of OpenPaaS.
+  List the stack list (operating system file system) list of OpenPaaS.
   ```
 
 
@@ -1108,7 +1108,7 @@ View list of Apps in the target space.
 
 
   ```
-  ACopy the source of the app to another app. If the file is not overwritten, it will be automatically restarted
+  copy the source of the app to another app. If the file is not overwritten, it will be automatically restarted
   ```
 
 
@@ -1251,7 +1251,7 @@ View list of Apps in the target space.
   | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
   |SERVICE_INSTANCE   |Service Instance Name           |O        |
-  |--guid             |Retrieve Guid of Servcie Instance.   |X        |
+  |--guid             |Retrieve Guid of Service Instance.   |X        |
 
   - **Use Guide**
 
@@ -1354,7 +1354,7 @@ View list of Apps in the target space.
   | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
   |SERVICE_INSTANCE  |Service instance name                                        |O        |
-  |-f                |deletes the service instance without confirmation message.             |X        |
+  |-f                |deletes the service instance without a confirmation message.             |X        |
 
   - **Use Example**
 
@@ -1474,7 +1474,7 @@ View list of Apps in the target space.
 
 
   ```
-  Retrieve details of thekey of service instance.
+  Retrieve details of the key of the service instance.
   ```
 
 
@@ -1750,7 +1750,7 @@ View list of Apps in the target space.
 
 
   ```
-  Creates Organizations inforamtion.
+  Creates organization information.
   ```
 
 
@@ -2090,7 +2090,7 @@ View list of Apps in the target space.
   | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
   |DOMAIN       |Domain name                           |O         |
-  |-f           |Deletes domian without confirmation message. |X         |
+  |-f           |Deletes domain without confirmation message. |X         |
 
 
   - **Use Example**
@@ -2349,7 +2349,7 @@ View list of Apps in the target space.
 
 
   ```
-  Delete URL route information form App.
+  Delete URL route information from App.
   ```
 
 
@@ -2394,7 +2394,7 @@ View list of Apps in the target space.
   |-------------|--------------------------------|-----------|
   |DOMAIN       |Domain to assign to the App             |O         |
   |-n HOSTNAME  |Host to assign to the App              |X         |
-  |-f           |Deletes route information without confiration message.              |X         |
+  |-f           |Deletes route information without confirmation message.              |X         |
 
 
   - **Use Example**
@@ -2426,7 +2426,7 @@ View list of Apps in the target space.
 
   | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |-f           |Deletes route information without confiration message.           |X         |
+  |-f           |Deletes route information without confirmation message.           |X         |
 
 
   - **Use Example**
@@ -3327,7 +3327,7 @@ View list of Apps in the target space.
 
 
   ```
-  Assignes quota to space.
+  Assign quota to space.
   ```
 
 
@@ -4044,7 +4044,7 @@ View list of Apps in the target space.
   | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
   |SECURITY_GROUP  |Security Group Name                                    |O          |
-  |-f              |Deletes Security Group Information without Confimation Message.    |X          |
+  |-f              |Deletes Security Group Information without Confirmation Message.    |X          |
 
 
   - **Use Example**
@@ -4430,7 +4430,7 @@ View list of Apps in the target space.
 
 
   ```
-  Retrieve the status of a specific Feature flag.
+  Retrieve the status of a specific feature flag.
   ```
 
 

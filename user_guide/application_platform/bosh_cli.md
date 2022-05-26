@@ -535,7 +535,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 	|**parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|name|Release pakage name|O|
+	|name|Release package name|O|
 	|--dir|Create a blank release configuration file related to package Job in the directory|X|
 
 - **Used Example**
@@ -550,7 +550,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 - **Description**
 
-	Provide packages from other releases as releases of dir, including spec.lock in the directory so that the CLI references a specific package when creating a release
+	Provide packages from other releases as releases of dir, including spec. lock in the directory so that the CLI references a specific package when creating a release
 	References https://bosh.io/docs/package-vendoring.html 
 
 
@@ -774,7 +774,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 ### <div id='35'/>***bosh upload-release***
 
-- **Basice Syntax**
+- **Basic Syntax**
 
 		$ bosh -e [my-env] upload-release [location] [--version=ver] [--sha1=digest] [--fix] (Alias: ur)
 
@@ -1012,7 +1012,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 - **Description**
 
-	Add or modify the cloud-conifg component of the Director
+	Add or modify the cloud-config component of the Director
 
 - **Parameter**
 
@@ -1038,7 +1038,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 - **Description**
 
-	Outputs the runtime-conifg component of the Director
+	Outputs the runtime-config component of the Director
 
 - **Parameter**
 
@@ -1058,7 +1058,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 - **Description**
 
-	Add or modify the cloud-conifg component of the Director
+	Add or modify the cloud-config component of the Director
 
 - **Parameter**
 
@@ -1084,7 +1084,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 - **Description**
 
-	Output the cpi-conifg component of the Director
+	Output the cpi-config component of the Director
 
 - **Parameter**
 
@@ -1104,7 +1104,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 - **Description**
 
-	Add or modify the cpi-conifg component of the Director
+	Add or modify the cpi-config component of the Director
 
 - **Parameter**
 
@@ -1198,7 +1198,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
       	dns/3
       	...
 
-		1 deployments
+		1 deployment
 
 		Succeeded
 
@@ -1283,7 +1283,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 - **Description**
 
-	Recreate the VM for the director-specified instance of the deployment..
+	Recreate the VM for the director-specified instance of the deployment.
 
 - **Parameter**
 
@@ -1511,7 +1511,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 - **Description**
 
-	Delete VM without goinf through Lifecycle of Instance
+	Delete VM without going through Lifecycle of Instance
 
 - **Parameter**
 
@@ -1849,7 +1849,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 - **Description**
 
-	Cancel task. Cancel the task at the next checkpoint. Do not wait until the task is cancelled
+	Cancel task. Cancel the task at the next checkpoint. Do not wait until the task is canceled
 
 - **Parameter**
 	

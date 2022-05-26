@@ -183,13 +183,13 @@ After checking the informations of User ID, Name, Email added in [Invite Contrib
 ![029]
 
 6.	레파지토리 신규 생성 페이지에서 레파지토리명은 영문으로 입력하고 유형(Git, SVN)을 선택 후, “생성” 버튼을 클릭한다. 알림 메시지 “레파지토리가 신규 생성되었습니다.” 나오면 “확인” 버튼을 눌러주면 레파지토리 생성이 된다.
-  - 레파지토리 명 : XXX (영문)
-  - 유형 : Git
-  - 레파지토리 설명 : XXX  
+  - Repository Name : XXX (English)
+  - Type : Git
+  - Repository Description : XXX  
 ![030]
 
 
-### <div id='17'/> 3.1.3.1.1. 모든 레파지토리 조회
+### <div id='17'/> 3.1.3.1.1. Check All Repositories
 1.	레파지토리 목록 페이지에서는 레파지토리 생성된 목록을 확인한다.
 
 

@@ -61,19 +61,19 @@ Access to PaaS-TA Operators Portal Web site.
 
 ### <a name="2.2"/>  2.2. PaaS-TA Operator Portal Logout
 
-1. Click ① "Logout" button from (the logged in) mainpage.
+1. Click ① "Logout" button from (the logged in) main page.
 ![03]
 
 ## <a name="3"/>3.  PaaS-TA Operator Portal Dashboard
 
-Shows the Organizatiom, Space, App, Users statistic Informations registered in PaaS-TA.
+Shows the Organization, Space, App, Users statistic Information registered in PaaS-TA.
 
 ### <a name="3.1"/>  3.1. Check Dashboard Information
 
 1. Shows Organizations ①Space, ②APP, and ③ User information.<br>
 ![04] 
 
-2. Detailed information of Organizaions domain can be checked by clicking ①Organization Name.<br>
+2. Detailed information on the Organizations domain can be checked by clicking ①Organization Name.<br>
 ![05]
 
 ## <a name="4"/>4.  Operation Managing Menu
@@ -87,24 +87,24 @@ A menu to perform the management necessary for the operation of the PaaS-TA port
 1. Check ①Organization and ②Space. ③Search Terms can also be checked.<br>
 ![06]
 
-2. Click ① Details button beside the organization name. Check detailed informations of the ② Organization.<br>
+2. Click ① Details button beside the organization name. Check detailed information of the ② Organization.<br>
 ![07]
 
-3. Click ①Detail button beside Space Name. Check detailed information of ②Space.<br>
+3. Click ①Detail button beside Space Name. Check detailed information on ②Space.<br>
 ![08]
 
 
 ### <a name="4.2"/>  4.2. Client
 
-**The Administrator Menu provides client Check, register, delete functions.<br>**
+**The Administrator Menu provides client Check, register, and delete functions.<br>**
 
 1. Check Client list.<br>    
 ![09]
 
-2. Proceed to Client Details page by clicking **Client ID**. Client ID can be deleted by clicking the "Delete" button at the client detail page.<br>
+2. Proceed to Client Details page by clicking **Client ID**. The client ID can be deleted by clicking the "Delete" button at the client detail page.<br>
 ![10]
 
-3. Click ①"Register Client" button. Register by clicking ②"Register" button after entering client ID, Password, Option and Option Guide.<br>
+3. Click ①"Register Client" button. Register by clicking ②"Register" button after entering client ID, Password, Option, and Option Guide.<br>
 ![11]
 
 ### <a name="4.3"/>  4.3. Catalog
@@ -114,7 +114,7 @@ A menu to perform the management necessary for the operation of the PaaS-TA port
 ![12]
 
 ### <a name="4.3.1"/>  4.3.1 Catalog Managing App Template
-1. Check list of Catalog App Template. It shows Name, Outline, Classification, and Public Availability.    
+1. Checklist of Catalog App Template. It shows Name, Outline, Classification, and Public Availability.    
 In the search window, search types, search items, disclosure status, and search terms can be used.
 ![13]
 
@@ -124,25 +124,25 @@ In the search window, search types, search items, disclosure status, and search 
 3. Delete App Template by clicking ②"Delete" button.
 ![15]
 
-4. Click ①"Register App Template" button when registering an app template. Enter the following at the App Template Register pop- up: Name, Classification, App Development Environment, Service Thumbnail, Public Availability, Summary and Description. A new App Template will be registerd by Clicking ②"Register" button.
+4. Click ①"Register App Template" button when registering an app template. Enter the following at the App Template Register pop-up: Name, Classification, App Development Environment, Service Thumbnail, Public Availability, Summary, and Description. A new App Template will be registered by Clicking ②"Register" button.
 ![16]
 
 ### <a name="4.3.2"/>  4.3.2 Catalog Managing App Development Environment
-1. Check Catalog App Development Environment list. It shows Name, Outline, Classification, Public Availability.
+1. Check Catalog App Development Environment list. It shows Name, Outline, Classification, and Public Availability.
 One can search by the type, item, name, whether it's private or public in the search engine.
 ![17]
 
-2. A page with detail appears when clicking the App Development Environment Name. Input datas to be modify then click ①"Save" button to complete modification.
+2. A page with detail appears when clicking the App Development Environment Name. Input data to be modified then click ①"Save" button to complete modification.
 ![18]
 
 3. Delete App Development Environment by clicking ②"Delete" button.
 ![19]
 
-4. Click ①"Register App Development Environment" button from the Catalog page to Register.Enter the following at the App Development Environment Registering pop-up: Name, Classification, App Development Environment, Service, Thumbnail, Public Availability, Summary and Description. Complete registering by clicking ②"Register" button.
+4. Click ①"Register App Development Environment" button from the Catalog page to Register. Enter the following at the App Development Environment Registering pop-up: Name, Classification, App Development Environment, Service, Thumbnail, Public Availability, Summary, and Description. Complete registering by clicking ②"Register" button.
 ![20]
 
 ### <a name="4.3.3"/>  4.3.3 Catalog Management Service 
-1. Check Catalog Service List. Can check name, outline, classification, public availability. One can search by the type, item, name, whether it's private or public in the search engine.<br>
+1. Check Catalog Service List. Can check name, outline, classification, and public availability. One can search by the type, item, name, whether it's private or public in the search engine.<br>
 ![21]
 
 2. Detail page shows up when clicking the service name. After modifying, click ①"Save" button to save.<br>
@@ -151,16 +151,16 @@ One can search by the type, item, name, whether it's private or public in the se
 3. Delete the service by clicking ②"Delete" button.<br>
 ![23]
 
-4. When registering app service at the catalog page, click  ①"Register App Service" button. 
+4. When registering an app service on the catalog page, click the ①"Register App Service" button. 
 Enter name, classification, service, thumbnail, parameter, pubic availability, outline, and description. Click ②"Register" to complete registering the service. <br>
 ![24]
 
 ※ **delivery-pipeline**, an example of registering an app service 
-1. Input necessary datas for registering an app service at the registering form screen.
-2. Enter the name to register at app service. 
+1. Input necessary data for registering an app service at the registering form screen.
+2. Enter the name to register an the app service. 
 3. Set classification as "Development Support Tool".
 4. Set service as "delivery-pipeline-v2".
-5. Select an image the user wants to use for thumbnail. 
+5. Select an image the user wants to use for the thumbnail. 
      > **The applied Thumbnail can be checked at the 'PaaS-TA User' of Catalog service list and service registration.**<br>
 6. Insert document URL. 
      > (Ex.) https://github.com/PaaS-TA/DELIVERY-PIPELINE-UI <br>
@@ -177,7 +177,7 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
      > ![pipeline]
 
      
-※ **sourcecontrol** , an Example of App Service Registration
+※ **source control**, an Example of App Service Registration
 1. Enter the contents necessary to register the app service on the app service registration form screen.
 2. Enter the App Service name to register. 
 3. Set classification as "Development Support Tool".
@@ -198,10 +198,10 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 
 **The administrator checks the user's information and approves the account.<br>**
 
-1. Look up to the User list. User account, name, phone number, presence or absence of administrator, and approval status can be checked. can search with search terms in the search window.<br>
+1. Look up the User list. User account, name, phone number, presence or absence of administrator, and approval status can be checked. can search with search terms in the search window.<br>
 ![25]
 
-2. Click ①"Manage" button and click "Reset Password" to Reset the password.<br>
+2. Click ①"Manage" button and click "Reset Password" to reset the password.<br>
 ![26]
 
 3. Click ①"Manage" button then "Delete Operator Authority" to delete Operating Authority.<br>
@@ -209,7 +209,7 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 ![27]
      > When checking the user management list after clicking the "Run" button, [Administrator] changes from  **Y** to **N**. If User Management List [Administrator] is **N** , Click  ①"Management" button then "Give Operator Authority". <br>
      > ![27-1]
-4. After clicking ①"Management" button, Click " Cancel sign in" to block CF login.  Approve CF login by clicking "Approve Sign in" when its not approved.<br>
+4. After clicking ①"Management" button, Click " Cancel sign-in" to block CF login.  Approve CF login by clicking "Approve Sign in" when it's not approved.<br>
 ![30]
 ![31]
 ![31-2]
@@ -222,12 +222,12 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 
 ### <a name="4.5"/>  4.5. Authorization Management
 
-**Administrator menu provides and manages authority to Cloud Foundry sercurity groups Check, modify, and delete.<br>**
+**Administrator menu provides and manages authority to Cloud Foundry security groups Check, modify, and delete.<br>**
 
 1. Checks user and authorized groups.<br>
 ![34]
 
-2. Enter the group name by clicking ①"Create Group" . Click ②"Save" button to complete creating authorized group.   
+2. Enter the group name by clicking ①"Create Group". Click ②"Save" button to complete creating authorized group.   
 ![35]
 
 3. Select the group to remove from ① Authorized group. When Confirm form layer pops up, click "Delete" to delete authorized group.
@@ -236,7 +236,7 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 4. Check user of the appropriate group by clicking ① Authorized group from the list. CLick ②"Register User". Click the selected user from the  ③ List. Register user by clicking the ④"Save" button.
 ![37]
 
-5. Confirm the user from ① Authorized Group's list. Check the ② Check Box of the user to delete from the list. Click the ③ enabled "Delete User" button. Complete deletion by clicking ④ "Delete" from the confirm pop up screen.
+5. Confirm the user from ① Authorized Group's list. Check the ② Check Box of the user to delete from the list. Click the ③ enabled "Delete User" button. Complete deletion by clicking ④ "Delete" from the confirm pop-up screen.
 ![38]
 
 ### <a name="4.6"/>  4.6. Code Management
@@ -246,25 +246,25 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 1. Check the code used in Paas-TA Portal by code-group. Can check whether it is used, search type, and search term.<br>
 ![39]
 
-2. Can check the detailed code informations by clicking the Code ID from code group.<br>
+2. Can check the detailed code information by clicking the Code ID from code group.<br>
 ![40] 
 
-3. Click ①"Register" button from **Group Table**. Enter Code ID and Code Name at the pop up tab then click ②"Register" button.
+3. Click ①"Register" button from **Group Table**. Enter Code ID and Code Name at the pop-up tab then click ②"Register" button.
 ![41]
 ![42]
 
-4. Click ①"Register" from **Detail Table**. Enter Key, Value, Summary, usage from the code detail registering pop up tab, then click ②"Register" button to complete registering.<br>
+4. Click ①"Register" from **Detail Table**. Enter Key, Value, Summary, usage from the code detail registering pop-up tab, then click ②"Register" button to complete registering.<br>
 ![43]
 ![44]
 
-5. Click appropriate code(Key, Value, Summary, Usage) from**Detail Table**. Complete deleting the code by clicking ①"Delete" Button at the code detail pop up tab.
+5. Click appropriate code(Key, Value, Summary, Usage) from**Detail Table**. Complete deleting the code by clicking ①"Delete" Button at the code detail pop-up tab.
 ![45]
 
 ### <a name="4.7"/>  4.7. Setting Information
 
-**Administrator menu provides ta function to retreive, register, and modify settings information on the Paas-ta portal.<br>**
+**Administrator menu provides ta function to retrieve, register, and modify settings information on the Paas-ta portal.<br>**
 
-1. Check setting informations used in PaaS-TA Portal.
+1. Check setting information used in PaaS-TA Portal.
 ![60]
 
 2. Modify and save the settings used at PaaS-TA Portal.
@@ -272,37 +272,37 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 
 ### <a name="4.8"/>  4.8. Quota Management
 
-**Operator Menu provides checking, registering, modifying and deleting of PaaS-TA Portal's organization and space's quota.<br>**
+**Operator Menu provides checking, registering, modifying, and deleting of PaaS-TA Portal's organization and space quota.<br>**
 
 ![46]
 
 1. Click "Register Organization Quota" to register the organization's quota.<br>
 ![47]
 
-2. Enter Name, Memory,Instance, Route, Service Instance, App Instance, Public Availability, and reserved route at the Organization quota registering pop up tab. Click "Register" and register organization quota.<br>
+2. Enter Name, Memory, Instance, Route, Service Instance, App Instance, Public Availability, and reserved route at the Organization quota registering pop-up tab. Click "Register" and register the organization quota.<br>
 ![48]
 
-3. Click the organization quota to modify. Save the modified organization quota by clicking ① "Save" .
+3. Click the organization quota to modify. Save the modified organization quota by clicking ① "Save".
 ![49]
 
-4. Select the organization quota to delete. Complete deleting the organization quota by clicking  ② "Delete" button from organization quota details tab.
+4. Select the organization quota to delete. Complete deleting the organization quota by clicking the ② "Delete" button from the organization quota details tab.
 ![49]
 
 5. Register space quota by clicking "Register Space Quota".<br>
 ![58]
 
-6. Enter the Name, Organization Name, Memory, Instance Memory, Route, Service Instance, App Instance, Public Availability, Reserved Route of the space to register at the pop up tab. Complete registering space quota by clicking "Register" button.<br>
+6. Enter the Name, Organization Name, Memory, Instance Memory, Route, Service Instance, App Instance, Public Availability, and Reserved Route of the space to register at the pop-up tab. Complete registering space quota by clicking "Register" button.<br>
 ![59]
 
-7. Click the quota of the space to modify. Modify from the space quota details pop up tab and click  ①"Save" button to complete.
+7. Click the quota of the space to modify. Modify from the space quota details pop-up tab and click the ①"Save" button to complete.
 ![61]
 
-8. Select the space quota to delete. Click ② "Delete" button from the space quota details pop up tab to Delete.
+8. Select the space quota to delete. Click ② "Delete" button from the space quota details pop-up tab to Delete.
 ![61]
 
 ### <a name="4.9"/>  4.9. Isolation Management
 
-**The Administrator creates new isolation segment, After an admin creates a new isolation segment, the admin can then create and manage relationships between the orgs and spaces of a Cloud Foundry deployment and the new isolation segment.<br>**
+**The Administrator creates a new isolation segment, After an admin creates a new isolation segment, the admin can then create and manage relationships between the orgs and spaces of a Cloud Foundry deployment and the new isolation segment.<br>**
 
 1. You can look up the isolation management history used in PaaS-TA portal.<br>
 ![isolationSegments01]
@@ -363,7 +363,7 @@ This is a menu for performing service management on the PaaS-TA portal.<br>
 ![63]
 
 2. Click a service from service control list to check the authority activation of the service or the service plan. Can modify the  Click ①Access combobox to modify the authority activation of the selected service. ② Organization authority can be granted to the selected service or service plan.<br>
-**When "Acces" is ALL(Activated), Service plan of One or all the organizations service or service plan access should be changed to 'NONE(Deactivated)'.**<br>
+**When "Acces" is ALL(Activated), Service plan of One or all the organization's service or service plan access should be changed to 'NONE(Deactivated)'.**<br>
 ![64]
 
 3. Add organization to give authority from the ① "Add Organization" list by clicking.
@@ -380,24 +380,24 @@ A menu for security management of the PaaS-TA portal.<br>
     
 ### <a name="6.1"/>  6.1 Security Group
 
-**Administrator manages access control of a specific space and prepares tasks and app by using staging and running rules.**<br>
+**Administrator manages access control of a specific space and prepares tasks and apps by using staging and running rules.**<br>
 
 1. Check the security group information used in PaaS-TA Portal.<br>
 ![securitygroups01]
 
-2. Register security group by clicking ①"Register Security Group". <br>
+2. Register the security group by clicking ①"Register Security Group". <br>
 ![securitygroups02]
 
-3. Enter Name(required), staging default(required), running default(required) in the security registering tab and check the checkbox. Fill out description, rules(required), log, port, and protocol. To add more information, click ① "+" to add more tabs. To delete the tab, click ② "Delete Tab" button.<br>
+3. Enter Name(required), staging default(required), running default(required) in the security registering tab, and check the checkbox. Fill out description, rules(required), log, port, and protocol. To add more information, click ① "+" to add more tabs. To delete the tab, click ② "Delete Tab" button.<br>
 ![securitygroups03]
 
 4. Click ①"Export File" button from the security registering tab to check the information of security group as ②.txt file.
 ![securitygroups04]
 
-5. Security group informations can be checked as ②.txt file by clicking ①"Open File" at the security group regisering tab. The imported file will be opened at a new tab.
+5. Security group information can be checked as ②.txt file by clicking ①"Open File" at the security group registering tab. The imported file will be opened in a new tab.
 ![securitygroups05]
 
-6. Click ①"org" from the secrurity group register pop up. Click ②"space". Register org and space by clicking ③"Register" button.
+6. Click ①"org" from the security group register pop up. Click ②"space". Register org and space by clicking ③"Register" button.
 ![securitygroups06]
 
 7. Click ①"Delete" button from the security group register pop up to delete org and space. Save the group information by clicking ②"Register".

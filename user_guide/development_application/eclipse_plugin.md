@@ -180,30 +180,29 @@ This chapter describes how to connect an open platform server.
 
 ### 4.1 Add Server
 
-1. 서버를 추가하기 위해 “Servers” 탭에서 “New” – “Server”을 클릭한다.  
+1. Click “New” – “Server” from the “Servers” tab to add a server.  
      ![](./images/openpaas-eclipse/image28.png)
 
-2. “Define a New Server” 대화창이 표시된다. 이 대화창은 서버의 타입을 선택하고 생성하는 화면이다.  
-    리스트에서 “Open PaaS” – “개방형 플랫폼”을 선택한 후,”Server
-    name”란을 작성한다. (만약 작성하지 않으면 기본 값인 “Open PaaS”이다.)  
-    모두 진행되었으면 “Next” 버튼을 클릭하여 다음 페이지로 이동한다.  
-    “Cancel” 버튼을 클릭하면 진행되던 과정은 취소되고 화면이 종료된다.  
+2. A “Define a New Server” dialog box appears. This dialog box is the screen to select the type and create a server.  
+    Select “Open PaaS” – “Open Cloud Platform” from the list. 
+    Input ”Server name”. (If there is no server name entered, the default name “Open PaaS” will be given.)  
+    Click “Next” to proceed to the next page.  
+    Click “Cancel” button to cancel the process and exit the screen.  
      ![](./images/openpaas-eclipse/image30.png)
 
-3. “Open PaaS 계정” 대화창이 표시된다. 이 대화창은 조직과 스페이스 접근하기 위해 Open PaaS의 계정으로 로그인을 하기 위한 대화창이다.  
-    이메일과 비밀번호란을 작성하고 계정 확인 버튼을 클릭하여 계정의
-    유효성을 체크한다.  
-    계정이 정상적으로 확인되면 “Next” 버튼이 활성화된다.  
-    “Next” 버튼을 눌러서 다음 화면으로 이동한다.  
-    “Cancel” 버튼을 클릭하면 진행되던 과정은 취소되고 화면이 종료된다.  
+3. “Open PaaS Account” dialog box appears. This dialog box log in to Open PaaS to access to the organization and space Open PaaS.  
+    Enter email and password and click the Confirm Account button to check the validity of the account.  
+    When the account is successfully verified, "Next" button is activated.  
+    Click “Next” to proceed to the next page.  
+    Click “Cancel” button to cancel the process and exit the screen.  
     ![](./images/openpaas-eclipse/image32.png)
 
-     > *위 “URL”란에 표시되어 있는 URL 주소는 임의의 주소이며, 아래 절차를 따라 실제 Open PaaS가 배포되어 있는 플랫폼 서버 정보를 등록해야 한다.  
-     > [***4.2 플랫폼 서버 정보 등록***](#42-플랫폼-서버-정보-등록)을 참고한다.
+     > *The URL address shown in the "URL" column above is an arbitrary address. Must follow the procedure below to register the platform server information where the actual Open PaaS is deployed.  
+     > Refer to [***4.2 Register Platform Server Information***](#42-플랫폼-서버-정보-등록).
      
 
-4. “조직 및 스페이스” 목록 대화창이 표시된다. 이 대화창은 해당 계정이 가지고 있는 모든 조직과 스페이스를 보여주며, 관리를 원하는 조직과 스페이스를 선택 할 수 있는 대화창이다.  
-    관리를 원하는 조직과 스페이스를 선택하고 “Next” 버튼을 눌러 다음 화면으로 이동한다. (만약 조직 또는 스페이스가 없다면 생성을 해야한다. 현재 이클립스 개발환경에서는 조직 또는 스페이스를 생성할 수 없으므로 CLI 를 설치해서 조직과 스페이스를 생성해야한다. CLI의 설치 및 사용법은 [***OpenPaas CLi 가이드.md***](OpenPaas CLi 가이드.md)을 참고한다.)  
+4. “Organization and Space” list dialog box appears. This dialog box shows all the organization and space the corresponding account has. It can select organization and space to manage.  
+    Select the organization and space to manage and click “Next” and proceed to the next page. (create organization or space if there is are none. Space and Organization cannot be created in Eclipse Development Environment as of the moment CLI has to be installed to create. Refer to [***OpenPaas CLi 가이드.md***](OpenPaas CLi 가이드.md)installation and use guide of CLI.)  
     “Cancel” 버튼을 클릭하면 진행되던 과정은 취소되고 화면이 종료된다.  
     ![](./images/openpaas-eclipse/image35.png)
 

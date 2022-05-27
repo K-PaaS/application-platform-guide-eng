@@ -121,8 +121,7 @@ The installation procedure of the Kepler version of the Eclipse Integrated Devel
 
 # 3. Install Open PaaS Development Environment
 
-In this section, Open PaaS to the e-Government Standard Framework and Eclipse Integrated Development Environment
-Describe the procedure for installing the development environment. When using the e-government standard framework development environment which includes Open PaaS development environment, it can be used without any other installation. For Eclipse, use “openpaas\_dev\_env.zip” file provided as plugin Open PaaS development environment when installing.
+In this chapter, the procedure of installing Open PaaS development environment to the e-Government Standard Framework and Eclipse IDE will be described. If you're using the e-Government Standard Framework Development Environment which includes Open PaaS development environment, there is no need for extra installation. For Eclipse, use “openpaas_dev_env.zip” file to install Open PaaS development environment which is provided as a plugin.
 
 ### 3.1 Install Open PaaS Development Environment at e-Government Standard Framework
 
@@ -131,17 +130,14 @@ The procedures for installing an Open PaaS development environment in an e-gover
 1. Execute e-Government Standard Framework's development environment and click “Install New Software…” from the “Help” menu.  
      ![](./images/openpaas-eclipse/image13.png)
 
-2. 설치를 진행하기 위한 “Available Software” 대화창이 표시된다.  
-    Open PaaS 개발환경 파일의 경로를 설정하기 위해, “Add…” 버튼을
-    클릭한다.  
-    “Cancel” 버튼을 클릭하면 진행되던 과정은 취소되고 화면이 종료된다.  
+2. A “Available Software” dialog window will be displayed to proceed to installation.  
+    To set the path for Open PaaS development environment, click “Add…” button.  
+    Click “Cancel” to stop the process and close screen.  
      ![](./images/openpaas-eclipse/image15.png)
 
-3. “Add Repository” 대화창의 “Name”란에 Open PaaS 개발환경을 입력하고,
-    오른쪽의 “Archive” 버튼을 클릭하여 다운로드 받은
-    “openpaas\_dev\_env.jar” 파일의 위치를 찾아 선택한 후 확인 버튼을
-    누르고, “Add Repository” 대화창의 “OK” 버튼을 클릭한다. “Cancel”
-    버튼을 클릭하면 취소된다.  
+3. Enter the Open PaaS development environment in the “Name” field of the “Add Repository” dialog window
+    Click “Archive” button on the right to find the “openpaas\_dev\_env.jar” file downloaded and click “OK” button from the “Add Repository” dialog window “OK”.
+    Click “Cancel” to cancel the process.    
      ![](./images/openpaas-eclipse/image17.png)
 
 4. 대화창에 “Core / Open PaaS” 카테고리가 표시되며,  

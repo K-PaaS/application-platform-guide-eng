@@ -77,13 +77,13 @@ Install JDK before installing e-Government Framework development enviroment beca
 (7 or higher version of Java is recommended.)
 If the e-Government Standard Framework Development Environment is not being used, Eclipse IDE Kepler can be installed.
 
-아래 설명에서 사용된 버전은 아래와 같다.
+The versions used in the guide.
 * jdk-8u60
 * Eclipse-jee-kepler-SR2-win32-x86\_64
 * openpaas\_dev\_env.jar
 * eGovFrameDev-3.1.1
 
-### 2.2 자바 개발 킷 설치
+### 2.2 Install JAVA Development kit
 
 1. 아래 링크에 접속하여 “JavaSE Download” 페이지가 표시되면 중앙의 “JDK Download” 링크를 클릭하여 라이선스 동의 페이지로 이동한다.
 [***http://www.oracle.com/technetwork/java/javase/downloads/index.html***](http://www.oracle.com/technetwork/java/javase/downloads/index.html)

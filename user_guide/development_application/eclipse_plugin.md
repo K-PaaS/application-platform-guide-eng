@@ -136,31 +136,27 @@ The procedures for installing an Open PaaS development environment in an e-gover
      ![](./images/openpaas-eclipse/image15.png)
 
 3. Enter the Open PaaS development environment in the “Name” field of the “Add Repository” dialog window
-    Click “Archive” button on the right to find the “openpaas\_dev\_env.jar” file downloaded and click “OK” button from the “Add Repository” dialog window “OK”.
+    Click “Archive” button on the right to find the “openpaas\_dev\_env.jar” file downloaded and click “OK” button from the “Add Repository” dialog box “OK”.
     Click “Cancel” to cancel the process.    
      ![](./images/openpaas-eclipse/image17.png)
 
-4. 대화창에 “Core / Open PaaS” 카테고리가 표시되며,  
-    카테고리 좌측의 체크박스를 클릭하여 선택하고 “Next” 버튼을 클릭하여
-    다음 단계로 넘어간다.  
-    “Cancel” 버튼을 클릭하면 진행되던 과정은 취소되고 화면이 종료된다.  
+4.  As “Core / Open PaaS” catelogy appears on the dialog box,  
+    Select from checkbox on the left side of the category and click “Next” to proceed to the next step.  
+    Click “Cancel” button to cancel the process and exit the screen.  
      ![](./images/openpaas-eclipse/image18.png)
 
-5. “Install Details” 에서 Open PaaS 개발환경에 대한 정보를 확인할 수
-    있으며, “Next” 버튼을 클릭한다.  
-    “Cancel” 버튼을 클릭하면 진행되던 과정은 취소되고 화면이 종료된다.  
+5. Information about Open PaaS Development Environment can be checked at “Install Details”. Click “Next” to proceed.  
+    Click “Cancel” button to cancel the process and exit the screen.  
      ![](./images/openpaas-eclipse/image19.png)
 
-6. 다음에서 Open PaaS 개발환경의 라이선스를 확인 할 수 있으며, 이에
-    동의하면 “I accept the terms of the license agreement” 라디오 버튼에
-    체크하고 “Finish” 버튼을 클릭한다.  
-    “Cancel” 버튼을 클릭하면 진행되던 과정은 취소되고 화면이 종료된다.  
+6.  License of Open PaaS Development Environment can be checked at the next page.
+    Click “I accept the terms of the license agreement” after checking the lisence and click “Finish”.  
+    Click “Cancel” button to cancel the process and exit the screen.  
      ![](./images/openpaas-eclipse/image20.png)
 
-7. “Installing Software” 대화창과 함께 설치가 진행되며, “Security
-    Warning” 경고창이 표시되면 무시하고 “OK” 버튼을 클릭하여 설치를
-    재개한다.  
-    “Cancel” 버튼을 클릭하면 설치 되지 않고 종료된다.  
+7. Installation happens with “Installing Software” dialog box.
+   When “Security Warning” Caution screen appears, click “OK” to resume installation.  
+   Cancel installation by clicking “Cancel” button.  
      ![](./images/openpaas-eclipse/image21.png)
 
 8. 설치가 완료되면 “Software Updates” 대화창이 나타나고, Open PaaS

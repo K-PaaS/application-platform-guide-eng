@@ -159,27 +159,26 @@ The procedures for installing an Open PaaS development environment in an e-gover
    Cancel installation by clicking “Cancel” button.  
      ![](./images/openpaas-eclipse/image21.png)
 
-8. 설치가 완료되면 “Software Updates” 대화창이 나타나고, Open PaaS
- 개발환경이 정상적으로 적용되기 위해서는 재시작이 필요하므로, “Yes”
- 버튼을 클릭하여 전자정부 표준프레임워크를 재시작한다.  
- 만약 “No” 버튼을 클릭하면 전자정부 프레임워크는 재시작되지 않고 Open
- PaaS 개발환경을 이용 할 수 없다.  
+8. When the installation is completed, “Software Updates” dialog box appears.
+ To let the Open PaaS development environment be applied properly, Restart is necessary.
+ Click “Yes” to let the e-Government Standard Framework restart.  
+ If not, click “No” button and the e-Government Standard Framework does not restarts and Open PaaS Development Environment cannot be used.  
      ![](./images/openpaas-eclipse/image25.png)
 
-9. 재시작을 완료하면 설치가 완료된다.
+9. If restarted, the installation has been completed.
 
-### 3.2 이클립스 통합개발환경에 Open PaaS 개발환경 설치
+### 3.2 Install Open PaaS Development Environment at Eclipse Integrated Development Environment
 
-이클립스 통합개발환경에 Open PaaS 개발환경을 설치하는 절차는 “3.1 전자정부 표준프레임워크에 Open PaaS 개발환경을 설치”와 같으므로 참고한다.
+For procedures of installing Open PaaS Development Environment at Eclipse IDE, refer to “3.1 Install Open PaaS Development Environment at e-Government Standard Framework”.
 
-### 3.3 Open PaaS 개발환경이 포함된 전자정부 표준프레임워크 개발환경 사용
-전자정부 표준프레임워크 개발환경에는 Open PaaS 개발환경이 설치되어 있으므로, 추가적으로 설치할 필요없이 본 가이드의 4.개방형 플랫폼 서버 연결관리부터 진행할 수 있다.
+### 3.3 Usage of e-Government Standard Framework Development Environment with Open PaaS Development Environment included
+No other installation is required since Open PaaS Development Environment is installed at e-Government Standard Framework Development Environment. It is possible to start with 4.Open Platform Server Connection Management.
 
-# 4. 개방형 플랫폼 서버 연결 관리
+# 4. Open Platform Server Connection Management
 
-본 절에서는 개방형 플랫폼 서버를 연결하는 방법에 대해 기술한다.
+This chapter describes how to connect an open platform server.
 
-### 4.1 서버 추가
+### 4.1 Add Server
 
 1. 서버를 추가하기 위해 “Servers” 탭에서 “New” – “Server”을 클릭한다.  
      ![](./images/openpaas-eclipse/image28.png)

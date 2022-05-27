@@ -141,158 +141,158 @@ This chapter describes the visualization composition and management of log data.
 Click "Visualize" menu on the left.
 ![019]
 
-"Visualize" 메뉴에서 "+" 또는 "+ Create a visualization" 버튼을 클릭한다.
+Click "+" or "+ Create a visualization" button from the "Visualize" menu.
 ![020]
 
-Select visualization type 목록에서 type을 클릭한다.
+Click type from Select Visualization Type list.
 ![021]
 
-색인 패턴을 클릭(①)하거나 저장된 검색 목록에서 "검색 명"을 클릭(②)한다.
+Click the index(①) or the "Search Name"(②) at the search list history(saved).
 ![022]
 
-데이터 및 옵션(①)을 편집 하여 시각화를 구성한다.
+Configure visualization by editing data and option(①).
 ![023]
 
-상단의 "Save"를 클릭한다.
+Click the "Save" button on top.
 ![024]
 
-시각화 명을 입력한 후, "Save" 버튼을 클릭한다.
+After entering the visualization name, click the "Save" button.
 ![025]
 
 #### <div id='3-2-2-2'/> 3.2.2.2. Modify Visualization
-좌측의 "Visualize" 메뉴를 클릭한다.
+Click "Visualize" menu on the left.
 ![026]
 
-시각화 목록에서 "시각화 객체 명"을 클릭한다.
+Click on "Visualization Object Name" in the visualization list.
 ![027]
 
-데이터 및 옵션(①)을 수정 후, "Save"를 클릭한다.
+Modify data and options(①), click "Save".
 ![028]
 ![029]
 
 #### <div id='3-2-2-3'/> 3.2.2.3. Share Visualization
-좌측의 "Visualize" 메뉴를 클릭한다.
+Click "Visualize" menu on the left.
 ![026]
 
-시각화 목록에서 "시각화 객체 명"을 클릭한다.
+Click on "Visualization Object Name" in the visualization list.
 ![027]
 
-상단의 "Share"를 클릭한다.
+Click "Share" on top.
 ![030]
 
 #### <div id='3-2-2-4'/> 3.2.2.4. Refresh Visualization
-좌측의 "Visualize" 메뉴를 클릭한다.
+Click "Visualize" menu on the left.
 ![026]
 
-시각화 목록에서 "시각화 객체 명"을 클릭한다.
+Click on "Visualization Object Name" in the visualization list.
 ![027]
 
-상단의 "Refresh"를 클릭한다.
+Click "Refresh" on top.
 ![031]
 
 #### <div id='3-2-2-5'/> 3.2.2.5. visualization Time Range 설정
-좌측의 "Visualize" 메뉴를 클릭한다.
+Click "Visualize" menu on the left.
 ![026]
 
-시각화 목록에서 "시각화 객체 명"을 클릭한다.
+Click on "Visualization Object Name" in the visualization list.
 ![027]
 
-상단의 ① 영역을 클릭하여, Time Range에서 원하는 조건을 선택한다.
+Click ① area and select the desired conditions from Time Range.
 ![032]
 
-#### <div id='3-2-2-6'/> 3.2.2.6. visualization 삭제
-좌측의 "Visualize" 메뉴를 클릭한다.
+#### <div id='3-2-2-6'/> 3.2.2.6. Delete Visualization
+Click "Visualize" menu on the left.
 ![026]
 
-시각화 목록에서 시각화 객체를 선택(①)한 후, ② 아이콘을 클릭한다.
+Select Visualized Object (①) from the Visualize Menu then click ② icon.
 ![033]
 
 ### <div id='3-2-3'/> 3.2.3. Dashboard
-본 장에서는 저장된 검색 객체와 저장된 시각화 객체를 이용한 대시보드의 구성 및 관리에 대해 기술한다.
+This chapter describes the configuration and management of dashboards using stored search objects and stored visualization objects.
 
-#### <div id='3-2-3-1'/> 3.2.3.1. Dashboard 생성
-좌측의 "Dashboard" 메뉴를 클릭한다.
+#### <div id='3-2-3-1'/> 3.2.3.1. Create Dashboard
+Click "Dashboard" menu on the left.
 ![034]
 
-"+" 또는 "+ Create a dashboard" 버튼을 클릭한다.
+Click "+" or "+ Create a dashboard" button.
 ![035]
 
-상단의 "Add"(①) 또는 "Add" 버튼(②)을 클릭한다.
+Click the "Add"(①) on top or "Add" button(②).
 ![036]
 
-Add Panels의 "Visualization" / "Saved Search" 을 클릭하여 저장된 객체 목록을 조회한다.
+CLick "Visualization" / "Saved Search" of Add Panels to check the saved object list.
 ![037]
 
-조회된 저장된 객체 목록에서 "객체 명"을 클릭(①)하여 대시보드를 구성한다.
+From the retrieved saved object list, click "Object Name"(①) to configure dashboard.
 ![038]
 
-상단의 "Save"를 클릭한다.
+Click "Save" on top.
 ![039]
 
-대시보드 명을 입력한 후, "Save" 버튼을 클릭한다.
+Eneter dashboard name and click "Save" button.
 ![040]
 
-#### <div id='3-2-3-2'/> 3.2.3.2. Dashboard 수정
-좌측의 "Dashboard" 메뉴를 클릭한다.
+#### <div id='3-2-3-2'/> 3.2.3.2. Modify Dashboard
+Click "Dashboard" menu on the left.
 ![041]
 
-대시보드 목록에서 "대시보드 명"을 클릭한다.
+Click "Dashboard Name" from the dashboard list.
 ![042]
 
-대시보드를 수정 한 후 상단의 "Save"를 클릭한다.
+After modifying the dashboard, click the "Save" button on top.
 ![043]
 
-#### <div id='3-2-3-3'/> 3.2.3.3. Dashboard 공유
-좌측의 "Dashboard" 메뉴를 클릭한다.
+#### <div id='3-2-3-3'/> 3.2.3.3. Share Dashboard
+Click "Dashboard" menu on the left.
 ![041]
 
-대시보드 목록에서 "대시보드 명"을 클릭한다.
+Click "Dashboard Name" from the dashboard list.
 ![042]
 
-상단의 "Share"를 클릭한다.
+Click "Share" on top.
 ![044]
 
-#### <div id='3-2-3-4'/> 3.2.3.4. Dashboard 옵션 및 Time Range
-좌측의 "Dashboard" 메뉴를 클릭한다.
+#### <div id='3-2-3-4'/> 3.2.3.4. Dashboard Option and Time Range
+Click "Dashboard" menu on the left.
 ![041]
 
-대시보드 목록에서 "대시보드 명"을 클릭한다.
+Click "Dashboard Name" from the dashboard list.
 ![042]
 
-- 옵션 설정
-상단의 "Options"를 클릭하고, "Use dark theme"를 선택(①)하여 테마 적용을 변경한다.
+- Option Setting
+Click the "Options" on top and apply theme by clicking "Use dark theme"(①).
 ![045]
 ![046]
 
-- Time Range 설정
-상단의 ① 영역을 클릭하여, Time Range 영역에서 원하는 조건을 선택한다.
+- Time Range Setting
+Click ① area on top, and selects the desired conditions from Time Range area.
 ![047]
 
-#### <div id='3-2-3-5'/> 3.2.3.5. Dashboard 삭제
-좌측의 "Dashboard" 메뉴를 클릭한다.
+#### <div id='3-2-3-5'/> 3.2.3.5. Delete Dashboard
+Click "Dashboard" menu on the left.
 ![041]
 
-대시보드 목록에서 대시보드 객체를 선택(①)한 후, ② 아이콘을 클릭한다.
+Select Dashboard Object (①) from the Dashboard List and click ② icon.
 ![048]
 
 ### <div id='3-2-4'/> 3.2.4. Management
-본 장에서는 저장된 객체 관리에 대해 기술한다.
+This chapter describes stored object management.
 
-좌측의 "Management" 메뉴를 클릭하고, "Saved Objects"를 클릭한다.
+Click "Management" menu at the left, and click "Saved Objects".
 ![049]
-#### <div id='3-2-4-1'/> 3.2.4.1. Saved Objects 조회
-"Dashboards" / "Searches" / "Visualization" 을 클릭하여 각 객체 목록을 조회한다.
+#### <div id='3-2-4-1'/> 3.2.4.1. Check Saved Objects
+Click "Dashboards" / "Searches" / "Visualization" and check each object list.
 ![050]
 
-#### <div id='3-2-4-2'/> 3.2.4.2. Saved Objects 수정
-"Dashboards" / "Searches" / "Visualization" 의 객체 목록에서 "객체 명"(①)을 클릭한다.
+#### <div id='3-2-4-2'/> 3.2.4.2. Modify Saved Objects
+Click "Object Name"(①)from each object list of the following: "Dashboards" / "Searches" / "Visualization".
 ![051]
 
-객체 상세 페이지에서 내용을 수정한 후, 하단의 "Save dashboard Object" 버튼을 클릭한다.
+After modifying the contents from each object detail page, click "Save dashboard Object" button at the bottom.
 ![052]
 
 #### <div id='3-2-4-3'/> 3.2.4.3. Saved Objects Export
-- 선택 Export
+- Selected Exportation
 "Dashboards" / "Searches" / "Visualization" 의 객체 목록에서 객체를 선택(①)한 후, "Export" 버튼을 클릭한다.
 ![053]
 

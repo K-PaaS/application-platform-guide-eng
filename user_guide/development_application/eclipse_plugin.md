@@ -108,31 +108,27 @@ For installing e-Government Standard Framework, Refer to e-Goverments Standard F
 
 The installation procedure of the Kepler version of the Eclipse Integrated Development Environment is as follows.
 
-1. 이클립스 홈페이지의 [이클립스 통합개발환경 다운로드 페이지](http://www.eclipse.org/downloads/)에 접속한다.  
+1. Access to [Eclipse IDE Download Page](http://www.eclipse.org/downloads/) from the Eclipse's mainpage.  
      ![](./images/openpaas-eclipse/image7.png)
 
-2. 이클립스 통합개발환경 케플러 버전을 설치하기 위해서는 다운로드 페이지의 오른쪽 사이드바에 “MORE DOWNLOADS”에 “Eclipse Kepler(4.3)”을 클릭한다.  
+2. To download Eclipse IDE Kepler Version, click “MORE DOWNLOADS” at the sidebar on the  right side from the download page. Click “Eclipse Kepler(4.3)”.  
      ![](./images/openpaas-eclipse/image8.png)
 
-3. 다운로드 화면이 표시되면, “Eclipse IDE for Java EE Developers” 의 우측에 사용하고 있는 운영체제에 적합한 다운로드 링크를 클릭하여 다운로드한다.  
+3. When the download screen appears, Download from the right side of “Eclipse IDE for Java EE Developers” by clicking the appropriate link.  
      ![](./images/openpaas-eclipse/image11.png)
 
-4. 다운로드 받은 파일의 압축을 해제하고 “eclipse.exe” 파일을 실행하여 별도의 설치 없이 이클립스를 사용할 수 있다.
+4. Unzip the downloaded file and run “eclipse.exe” file to access Eclipes without any other installation.
 
-# 3. Open PaaS 개발환경 설치
+# 3. Install Open PaaS Development Environment
 
-본 절에서는 전자정부 표준프레임워크과 이클립스 통합개발환경에 Open PaaS
-개발환경을 설치하는 절차를 기술한다. Open PaaS 개발환경이 포함되어 있는
-전자정부 표준프레임워크 개발환경을 사용하는 경우 별도의 설치 없이
-사용가능하며, 이클립스의 경우 “openpaas\_dev\_env.zip” 파일을 이용하여
-플러그인으로 제공되는 Open PaaS 개발환경을 설치하여 사용한다.
+In this section, Open PaaS to the e-Government Standard Framework and Eclipse Integrated Development Environment
+Describe the procedure for installing the development environment. When using the e-government standard framework development environment which includes Open PaaS development environment, it can be used without any other installation. For Eclipse, use “openpaas\_dev\_env.zip” file provided as plugin Open PaaS development environment when installing.
 
-### 3.1 전자정부 표준프레임워크에 Open PaaS 개발환경 설치
+### 3.1 Install Open PaaS Development Environment at e-Government Standard Framework
 
-전자정부 표준프레임워크 개발환경에 Open PaaS 개발환경을 설치하는 절차는
-다음과 같다.
+The procedures for installing an Open PaaS development environment in an e-government standard framework development environment are as follows:
 
-1. 전자정부 표준프레임워크 개발환경을 실행한 후 “Help” 메뉴의 “Install New Software…” 를 클릭한다.  
+1. Execute e-Government Standard Framework's development environment and click “Install New Software…” from the “Help” menu.  
      ![](./images/openpaas-eclipse/image13.png)
 
 2. 설치를 진행하기 위한 “Available Software” 대화창이 표시된다.  

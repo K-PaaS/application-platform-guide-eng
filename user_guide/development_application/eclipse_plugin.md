@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Eclipse Tools for ClF 사용
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Eclipse Tools for Using ClF
 
 # Table Of Contents
 
@@ -46,44 +46,36 @@
 
 # Executive Summary
 
-The purpose of this document is on developing the Open PaaS-based application by providing the necessary environment configuration and instructions on the usage to the developers by installing the Open PaaS Development Environment on e-Government Standard Framework's Development Environment. The guide assumes that the user has basic knowledge about JAVA and JAVA web application development.
+The purpose of this document is to provide the developers with the necessary environment and the instruction guide when they develop Open PaaS based applications as they download Open PaaS into e-Government Framework development environment. The users of the guide are assumed to have basic knowledge about JAVA and JAVA web application development.
 
 The guide is prepared according to the 2 steps below.
 * Open PaaS Development Environment Installation
 * Open PaaS Development Environment Usage
 
 
-# 1. 문서 개요
+# 1. Document Outline
 
-### 1.1 목적
-본 문서는 전자정부 표준프레임워크 개발환경 및 이클립스 통합개발환경에서
-Open PaaS 개발환경을 설치하고, Open PaaS 개발환경을 통해 자바 웹
-애플리케이션을 Open PaaS 환경에 배포, 관리 및 서비스팩 관리에 대한
-가이드를 제공한다.
+### 1.1 Purpose
+This document provides a guide on the following: install Open PaaS development environment on e-Government Standard Framework Development Environment and Eclipse IDE, manage and deploy Java Web Application to Open PaaS environment through Open PaaS Development Environment, and manage Servicepack.
 
-### 1.2 범위
-본 문서에서 제공하는 가이드는) 전자정부 표준프레임워크 3.2.0 및 이클립스
-케플러 버전(Kepler, 4.3.x 버전을 기준으로 작성하였다.
+### 1.2 Range
+The guide provided from this document is written based from e-Government Standard Framework 3.2.0 and Kepler Version of Eclipse (Kepler, 4.3.x).
 
-### 1.3 참고자료
-본 문서는 클라우드 파운드리(Cloud Foundry)의 클라우드 파운드리 이클립스
-플러그인 문서를 참조하였다.  
-클라우드 파운드리 이클립스 플러그인 문서 :
+### 1.3 References
+This document refered to Cloud Foundry Eclipse Pulgin Document from Cloud Foundry.  
+The Cloud Froundry Eclipse Plugin Document:
 http://www.eclipse.org/cft/documentation/projectPageLink/CFTProjectPagedocumentation.html
 
-# 2. 개발환경 설치 전 준비사항
+# 2. Preparations Before Installing the Development Environment
 
-### 2.1 설치 전 준비사항
+### 2.1 Preparation Before Installing
 
-본 문서는 전자정부 프레임워크 3.1.1 버전 개발환경에서 설치하는 것을
-기준으로 작성하였다. 전자정부 프레임워크 개발환경은 자바 언어로 작성되어
-전자정부 프레임워크 개발환경 실행을 위해서는 자바 개발 킷(JDK) 또는 자바
-실행 환경(JRE)가 설치되어 있어야 한다. Open PaaS 개발환경은 전자정부
-프레임워크 개발환경에서 플러그인의 형태로 동작하므로 자바 개발 킷 설치
-후 전자정부 프레임워크 개발환경을 설치한다. (Java의 버전은 7이상의
-버전을 권장한다.) 또한 만약 전자정부 프레임워크 개발환경을 사용하지
-않는다면 이클립스 통합개발환경 케플러(Kepler) 버전과 유사하므로
-이클립스를 설치해도 무관하다
+This document provides guide on installing the 3.1.1 Version of e-Government Standard Framework development environment.
+The language used in e-Government Standard Framework development environment is JAVA.
+To execute e-Government Standard Framework development environment, Java Development Kit (JDK) or Java Runtime Environment (JRE) should be installed.
+Install JDK before installing e-Government Framework development enviroment because Open PaaS Development Environment works as plugin form.
+(7 or higher version of Java is recommended.)
+If the e-Government Standard Framework Development Environment is not being used, Eclipse IDE Kepler can be installed.
 
 아래 설명에서 사용된 버전은 아래와 같다.
 * jdk-8u60

@@ -46,15 +46,11 @@
 
 # Executive Summary
 
-본 문서는 개발자들이 Open PaaS 개발환경을 전자정부 프레임워크 개발환경에
-설치하여 Open PaaS 기반의 애플리케이션을개발하기 위해 필요한 환경 구성
-및 사용 방법을 제공하는데 목적이 있다.  
-본 가이드의 사용자는 자바 및 자바 웹 애플리케이션 개발에 대한 기본적인
-지식이 있다는 것을 가정하였다.
+The purpose of this document is on developing the Open PaaS-based application by providing the necessary environment configuration and instructions on the usage to the developers by installing the Open PaaS Development Environment on e-Government Standard Framework's Development Environment. The guide assumes that the user has basic knowledge about JAVA and JAVA web application development.
 
-아래의 2가지 단계에 따라 가이드가 작성 되어 있다.
-* Open PaaS개발환경 설치
-* Open PaaS개발환경 사용법
+The guide is prepared according to the 2 steps below.
+* Open PaaS Development Environment Installation
+* Open PaaS Development Environment Usage
 
 
 # 1. 문서 개요

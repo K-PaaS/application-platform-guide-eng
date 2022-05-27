@@ -70,12 +70,10 @@ http://www.eclipse.org/cft/documentation/projectPageLink/CFTProjectPagedocumenta
 
 ### 2.1 Preparation Before Installing
 
-This document provides guide on installing the 3.1.1 Version of e-Government Standard Framework development environment.
-The language used in e-Government Standard Framework development environment is JAVA.
-To execute e-Government Standard Framework development environment, Java Development Kit (JDK) or Java Runtime Environment (JRE) should be installed.
-Install JDK before installing e-Government Framework development enviroment because Open PaaS Development Environment works as plugin form.
-(7 or higher version of Java is recommended.)
-If the e-Government Standard Framework Development Environment is not being used, Eclipse IDE Kepler can be installed.
+This document provides the installation guide using the 3.1.1 version of e-Government Standard Framework development environment.
+The language used in e-Government Standard Framework development environment is JAVA, which means Java Development Kit (JDK) or Java Runtime Environment (JRE) should be installed for the execution.
+Install JDK before installing e-Government Framework development enviroment because Open PaaS Development Environment works as a plugin form. (7 or higher version of Java is recommended.)
+If you don't use the e-Government Standard Framework Development Environment, it is alright to install Eclipse instead as it is similar to Eclipse IDE Kepler.
 
 The versions used in the guide.
 * jdk-8u60

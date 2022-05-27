@@ -34,8 +34,8 @@
 	- [3.2.4. Management](#3-2-4)
 	- [3.2.4.1. Check Saved Objects](#3-2-4-1)
 	- [3.2.4.2. Modify Saved Objects](#3-2-4-2)
-	- [3.2.4.3. Saved Objects Export](#3-2-4-3)
-	- [3.2.4.4. Saved Objects Import](#3-2-4-4)
+	- [3.2.4.3. Export Saved Objects](#3-2-4-3)
+	- [3.2.4.4. Import Saved Objects](#3-2-4-4)
 	- [3.2.4.5. Delete Saved Objects](#3-2-4-5)
 
 ---
@@ -76,12 +76,12 @@ This chapter describes the menu configuration and screen description of the logg
 
 ## <div id='3-1'/> 3.1 Logging Service User Menu Configuration
 
-Logging Service Menu is configured as shown below.
+The logging Service Menu is configured as shown below.
 
 Menu | Description
 :--- | :---
 Discover | Retrieving and filtering log data
-Visulize | Configuring and managing visualizations of log data
+Visualize | Configuring and managing visualizations of log data
 Dashboard | A collection of visualizations that users can arrange and share
 Management | Manage Stored Objects
 
@@ -118,20 +118,20 @@ Click "Share" from "Discover" menu.
 
 #### <div id='3-2-1-5'/> 3.2.1.5. Set Search Conditions
 - Time Range Setting  
-In the "Discover" menu, click the ① area at the top to select the desired condition of Time Range.
+In the "Discover" menu, click the ① area at the top to select the desired condition of the Time Range.
 ![014]
 
 - Query Setting  
-In the "Discover" menu, click the ① area at the top to select the desired condition of query.
+In the "Discover" menu, click the ① area at the top to select the desired condition of the query.
 ![015]
 
 - Fields Setting  
-Select the desired Field(②) from Available Fields list in the (①) area of the "Discover" menu to view the selected field(②) .
+Select the desired Field(②) from the Available Fields list in the (①) area of the "Discover" menu to view the selected field(②).
 ![016]
 ![017]
 
 - Unset Fields  
-From the  ① area of "Discover" menu's Selected Fields List, select(②) the Field to remove.
+From the  ① area of the "Discover" menu's Selected Fields List, select(②) the Field to remove.
 ![018]
 
 ### <div id='3-2-2'/> 3.2.2. Visualize
@@ -166,7 +166,7 @@ Click "Visualize" menu on the left.
 Click on "Visualization Object Name" in the visualization list.
 ![027]
 
-Modify data and options(①), click "Save".
+Modify data and options(①), and click "Save".
 ![028]
 ![029]
 
@@ -190,7 +190,7 @@ Click on "Visualization Object Name" in the visualization list.
 Click "Refresh" on top.
 ![031]
 
-#### <div id='3-2-2-5'/> 3.2.2.5. visualization Time Range 설정
+#### <div id='3-2-2-5'/> 3.2.2.5. Visualization Time Range Setting
 Click "Visualize" menu on the left.
 ![026]
 
@@ -220,16 +220,16 @@ Click "+" or "+ Create a dashboard" button.
 Click the "Add"(①) on top or "Add" button(②).
 ![036]
 
-CLick "Visualization" / "Saved Search" of Add Panels to check the saved object list.
+Click "Visualization" / "Saved Search" of Add Panels to check the saved object list.
 ![037]
 
-From the retrieved saved object list, click "Object Name"(①) to configure dashboard.
+From the retrieved saved object list, click "Object Name"(①) to configure the dashboard.
 ![038]
 
 Click "Save" on top.
 ![039]
 
-Eneter dashboard name and click "Save" button.
+Enter dashboard name and click "Save" button.
 ![040]
 
 #### <div id='3-2-3-2'/> 3.2.3.2. Modify Dashboard
@@ -260,19 +260,19 @@ Click "Dashboard Name" from the dashboard list.
 ![042]
 
 - Option Setting
-Click the "Options" on top and apply theme by clicking "Use dark theme"(①).
+Click the "Options" on top and apply the theme by clicking "Use dark theme"(①).
 ![045]
 ![046]
 
 - Time Range Setting
-Click ① area on top, and selects the desired conditions from Time Range area.
+Click ① area on top, and selects the desired conditions from the Time Range area.
 ![047]
 
 #### <div id='3-2-3-5'/> 3.2.3.5. Delete Dashboard
 Click "Dashboard" menu on the left.
 ![041]
 
-Select Dashboard Object (①) from the Dashboard List and click ② icon.
+Select Dashboard Object (①) from the Dashboard List and click the ② icon.
 ![048]
 
 ### <div id='3-2-4'/> 3.2.4. Management
@@ -288,35 +288,35 @@ Click "Dashboards" / "Searches" / "Visualization" and check each object list.
 Click "Object Name"(①)from each object list of the following: "Dashboards" / "Searches" / "Visualization".
 ![051]
 
-After modifying the contents from each object detail page, click "Save dashboard Object" button at the bottom.
+After modifying the contents from each object detail page, click the "Save dashboard Object" button at the bottom.
 ![052]
 
-#### <div id='3-2-4-3'/> 3.2.4.3. Saved Objects Export
+#### <div id='3-2-4-3'/> 3.2.4.3. Export Saved Objects
 - Selected Exportation
-"Dashboards" / "Searches" / "Visualization" 의 객체 목록에서 객체를 선택(①)한 후, "Export" 버튼을 클릭한다.
+Select object to export from "Dashboards" / "Searches" / "Visualization" each object's list(①) and click "Export" button.
 ![053]
 
-- 전체 Export
-"Export Everything" 버튼을 클릭한다.
+- Export All
+Click the "Export Everything" button.
 ![054]
 
-#### <div id='3-2-4-4'/> 3.2.4.4. Saved Objects Import
-"Import" 버튼을 클릭한다.
+#### <div id='3-2-4-4'/> 3.2.4.4. Import Saved Objects
+Click "Import" button.
 ![055]
 
-디렉토리에서 객체 파일을 선택한 후, "열기" 버튼을 클릭한다.
+Click the object file from the directory and click the "Open" button.
 ![056]
 
-#### <div id='3-2-4-5'/> 3.2.4.5. Saved Objects 삭제
-- 객체 목록에서 삭제
-"Dashboards" / "Searches" / "Visualization" 의 객체 목록에서 객체를 선택(①)한 후, ② 아이콘을 클릭한다.
+#### <div id='3-2-4-5'/> 3.2.4.5. Delete Saved Objects
+- Delete from object list
+Select object from object list of "Dashboards" / "Searches" / "Visualization"(①), click ② icon.
 ![057]
 
-- 객체 상세 페이지에서 삭제
-"Dashboards" / "Searches" / "Visualization" 의 객체 목록에서 "객체 명"(①)을 클릭한다.
+- Delete from the object details page
+Click "Object Name"(①) from the object list of "Dashboards" / "Searches" / "Visualization".
 ![058]
 
-객체 상세 페이지에서 상단의 "Delete dashboard/search/visualization" 버튼(①)을 클릭한다.
+Click the (①) button from the object details page of "Delete dashboard/search/visualization".
 ![059]
 
 

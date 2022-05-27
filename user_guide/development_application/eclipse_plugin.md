@@ -83,30 +83,30 @@ The versions used in the guide.
 
 ### 2.2 Install JAVA Development kit
 
-1. 아래 링크에 접속하여 “JavaSE Download” 페이지가 표시되면 중앙의 “JDK Download” 링크를 클릭하여 라이선스 동의 페이지로 이동한다.
+1. Access to the link below and when “JavaSE Download” page appears, click the “JDK Download” link shown at the center and it goes to lisence agreement page.
 [***http://www.oracle.com/technetwork/java/javase/downloads/index.html***](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
-2. 라이선스에 동의한 후 개발환경에 맞는 자바 개발 킷 설치 파일을 다운로드 받는다.
-3. 설치 파일을 실행하여 화면에 표시되는 절차에 따라 설치를 완료한다.    
+2. Agree to the lisence and download the JDK according to the development environment.
+3. Run the installation file and follow the procedures shown at the screen.    
      ![java install](./images/openpaas-eclipse/image2.jpeg)
 
-4. 명령 프롬프트에서 자바 명령어 실행을 위해 시스템 속성의 환경
-    변수를 설정한다.  
+4.  Set environment variables for system properties to execute Java commands in command prompt.   
+
      ![env var1](./images/openpaas-eclipse/image3.jpeg)  
      ![env var2](./images/openpaas-eclipse/image4.jpeg)  
      ![env var3](./images/openpaas-eclipse/image5.jpeg)
 
-5. 명령 프롬프트에서 “java –version” 명령을 실행하여 설치된 자바 버전이
-    정상적으로 출력되는지 확인한다.  
+5. Run the command "java –version" at the command prompt to check if the installed JAVA Version outputs properly.  
+  
      ![java version](./images/openpaas-eclipse/image6.jpeg)
 
-### 2.3 전자정부 표준프레임워크 설치
+### 2.3 Install e-Government Standard Framework
 
-전자정부 표준프레임워크 설치는 전자정부 표준프레임워크의 [개발자 개발 환경 설치 가이드의 개발자 개발환경 설치](http://www.egovframe.go.kr/wiki/doku.php?id=egovframework:dev2:clntinstall)를 참고한다.  
-> **버전은 3.1.1 버전을 사용한다**
+For installing e-Government Standard Framework, Refer to e-Goverments Standard Framework's [Guide on installing development environment for developers](http://www.egovframe.go.kr/wiki/doku.php?id=egovframework:dev2:clntinstall).  
+> **3.1.1 Version was used**
 
-### 2.4 이클립스 통합개발환경 케플러 버전 설치
+### 2.4 Install Kepler Version of Eclipse Integrated Development Environment
 
-이클립스 통합개발환경 케플러 버전의 설치 절차는 다음과 같다.
+The installation procedure of the Kepler version of the Eclipse Integrated Development Environment is as follows.
 
 1. 이클립스 홈페이지의 [이클립스 통합개발환경 다운로드 페이지](http://www.eclipse.org/downloads/)에 접속한다.  
      ![](./images/openpaas-eclipse/image7.png)

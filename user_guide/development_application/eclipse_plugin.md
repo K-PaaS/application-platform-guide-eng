@@ -202,46 +202,42 @@ This chapter describes how to connect an open platform server.
      
 
 4. “Organization and Space” list dialog box appears. This dialog box shows all the organization and space the corresponding account has. It can select organization and space to manage.  
-    Select the organization and space to manage and click “Next” and proceed to the next page. (create organization or space if there is are none. Space and Organization cannot be created in Eclipse Development Environment as of the moment CLI has to be installed to create. Refer to [***OpenPaas CLi 가이드.md***](OpenPaas CLi 가이드.md)installation and use guide of CLI.)  
-    “Cancel” 버튼을 클릭하면 진행되던 과정은 취소되고 화면이 종료된다.  
+    Select the organization and space to manage and click “Next” and proceed to the next page. (create organization or space if there is are none. Space and Organization cannot be created in Eclipse Development Environment as of the moment CLI has to be installed to create. Refer to [***OpenPaas CLi Guide.md***](OpenPaas CLi 가이드.md)installation and use guide of CLI.)  
+    Click “Cancel” button to cancel the process and exit the screen.  
     ![](./images/openpaas-eclipse/image35.png)
 
-5. “Add and Remove” 대화창이 표시된다.  
-    이 대화창은 Open PaaS 환경에 애플리케이션을 배포 및 삭제 할 수 있는
-    대화창이다.  
-    “Available”은 배포 가능한 애플리케이션 목록이고, “Configured”는 배포
-    되어 있거나 배포 예정인 애플리케이션 목록이다.  
-    “Available”에서 배포를 원하는 애플리케이션을 선택 한 뒤, “Add”
-    버튼을 클릭하여 “Configured”로 옮기고, “Finish” 버튼을 누르면
-    애플리케이션 배포가 완료된다.  
-    애플리케이션 배포가 완료되면서 관리를 하려는 서버의 추가도 완료가
-    된다.  
-    “Cancel” 버튼을 클릭하면 진행되던 과정은 취소되고 화면이 종료된다.  
+5. “Add and Remove” Screen appears.  
+    This dialog box purpose is deploy or delete application to an Open PaaS Environment.  
+    List of applications that can be deployed are marked as “Available”. “Configured” for applications that are already or expected to be deployed.  
+    Click the application to deploy from “Available”.   
+    Click “Add” to move to “Configured” and click “Finish” to complete
+    application deployment.  
+    When the application deployment is finished, the server to manage will be added.  
+    Click “Cancel” button to cancel the process and exit the screen.  
     ![](./images/openpaas-eclipse/image37.png)
 
-### 4.2 플랫폼 서버 정보 등록
+### 4.2 Register Platform Server Information
 
-1. “플랫폼 서버 관리…” 버튼을 클릭하여, “플랫폼 서버 URL 관리” 대화창을
-  실행한다.  
-  플랫폼 서버 URL을 추가하기 위해 “추가” 버튼을 클릭한다.    
+1. Click “Manage Platform Server…” and execute “Manage Platform Server URL” dialog box.  
+  Click “Add” button to add Platform Server URL.    
     ![](./images/openpaas-eclipse/image33_1.png)
 
-2. 추가 및 플랫폼 URL 유효성 검사 대화창이 표시된다.  
-  해당 플랫폼 서버의 이름과 URL을 작성 후, “Finish” 버튼을 클릭한다.  
-  “Cancel” 버튼을 클릭하면 플랫폼이 추가 되지 않고 화면이 종료된다.    
+2. The Add and Platform URL Validation dialog window is displayed.  
+  Enter server name and URL of the selected platform and click “Finish”.  
+  Click “Cancel” button to cancel the process and exit the screen.    
      ![](./images/openpaas-eclipse/image34_1.png)
 
-3. 현재 상태에서는 플랫폼 서버 URL 추가 사항이 반영되지 않았으므로
-  “플랫폼 서버 URL 관리” 대화창에서 “Finish” 버튼을 눌러 최종 완료를 한다.
-  만약 “Cancel” 버튼을 클릭하면 지금까지 진행한 모든 작업들이 취소된다.    
+3. The added Platform Server URL are not reflected in the current state.
+  Click “Finish” from the “Manage Platform Server URL” dialog box to complete the process.
+  Click “Cancel” button to cancel the process and exit the screen.    
      ![](./images/openpaas-eclipse/image33_2.png)
 
 
-### 4.3 서버 복제
+### 4.3 Duplicate Server
 
-개방형 플랫폼 서버 연결 정보에서 목표 스페이스는 수정할 수 없으며,
-동일한 개방형 플랫폼 서버에서 다른 목표 스페이스로 변경하기 위해서는 기존
-개방형 플랫폼 서버 연결 정보를 복제하여 목표 스페이스를 다시 설정해야 한다.
+Targeted Space cannot be modified from Open Platfrom Server Connection Information.
+To change from the same open platform server to a different target space,
+space must be reset by replicating Open Platform Server Connection Information.
 
 1. 서버 복제를 위해 “Servers” 탭에서 복제를 원하는 서버를 선택 한 후,
     오른쪽 버튼을 누르고 “서버 복제”를 선택한다.  

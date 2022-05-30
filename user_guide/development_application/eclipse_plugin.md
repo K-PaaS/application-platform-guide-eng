@@ -350,27 +350,25 @@ This chapter describes the procedure for managing applications and service packs
 
 ##### Add when adding a server
 
-[***“서버 추가”***](#41-서버-추가) 과정과 동일하므로 해당 내용 참고
+Refer to [***“Add Server”***](#41-서버-추가) for the procedures
 
 
 
 
-### 5.2 애플리케이션 목록 확인
+### 5.2 Application List Check
 
-애플리케이션 목록 조회를 원하는 개방형 플랫폼 서버를 더블 클릭하여 서버 편집기를 실행한다.  
-편집기에서 애플리케이션이라는 목록을 찾으면 아래에 리스트로 배포되어 있는 애플리케이션 목록을 확인 할 수 있다.  
+Double-click the open platform server to check the application list to run the server editor.  
+List of deployed applications can be found from the application list found at the editor.  
 ![](./images/openpaas-eclipse/image67.png)
 
-### 5.3 애플리케이션 라우트 관리
+### 5.3 Application Route Management
 
-1. 애플리케이션 라우트 관리를 원하는 개방형 플랫폼 서버를 더블 클릭하여
-    서버 편집기를 실행한다.  
-    편집기에서 라우트라는 목록을 찾는다.  
-    “제거…” 버튼을 클릭한다.  
+1. Double-click the Open Platform of the application route to manage and execute the server editor.  
+    Find “Route” list from the editor.  
+    Click “Remove…” button.  
     ![](./images/openpaas-eclipse/image68.png)
 
-2.  “클라우드 라우트 목록” 대화창이 표시된다. 이 대화창은 클라우드 라우트 목록을 조회 또는 제거 할 수 있는
-    대화창이다.  
+2.  “Cloud Route List” dialog box appears. This dialog box allows to check or remove cloud route list.  
     제거를 원하는 라우트를 클릭 한 뒤, “제거”를 클릭하고 “Finish” 버튼을
     클릭하면 라우트가 삭제된다.  
     “Cancel” 버튼을 클릭하면 삭제될 라우트들이 복구된다.  

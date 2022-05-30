@@ -422,7 +422,7 @@ Informations shown are as follows:
 
 3. “Add or Modify Application URL” dialog box appears. This dialog box allows to modify application.  
       Enter the subdomain of your choice and select domain. “Deployed URL” will be entered automatically.  
-      작성이 완료 되었으면 “Finish” 버튼을 클릭한다.  
+      Click “Finish” button after inputting.  
     ![](./images/openpaas-eclipse/image81.png)
 
 4. 현재 상태에서는 “매핑된 URL” 수정 사항이 플랫폼 서버에 반영되지 않았으므로 “매핑된 URL” 설정 대화창에서 “Finish” 버튼을 눌러야 최종 완료가 된다. 만약 “Cancel” 버튼을 클릭하면 지금까지 진행한 모든 작업들이 취소된다.  

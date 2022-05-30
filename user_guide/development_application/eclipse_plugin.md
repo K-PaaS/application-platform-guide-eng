@@ -286,7 +286,7 @@ This chapter describes the procedure for managing applications and service packs
     “Buildpack URL” can be used as an registered option when you want to use a buildpack that is not supported in the platform. It can be left as a blank when there is no buildpack to use.  
     Check “Save Manifest File” checkbox.  
     Click “Next” button to proceed to the next page.  
-    Click “Finish” button to deploy with the selected status.  
+    Click “Finish” button to reflect the current status and deploy.  
     Click "Cancel” to cancel deployment.  
     ![](./images/openpaas-eclipse/image50.png)
 
@@ -294,61 +294,61 @@ This chapter describes the procedure for managing applications and service packs
     Enter the “Subdomain” name.(Default name is the current project name.)  
     Select Domain.  
     “Deployed URL” will be automatically be combine the subdomain and domain.  
-    메모리 제한란에 메모리 제한값을 입력한다. (기본 값은 512이다.)  
-    모두 설정 하였으면 “Next” 버튼을 클릭하여 다음 페이지로 이동한다.  
-    “Finish” 버튼을 클릭하면 현재까지의 상태가 반영되어 배포가 된다.  
-    “Cancel” 버튼을 클릭하면 배포가 취소된다.  
+    Enter the memory limit at the memory limit input box. (Default value is 512.)  
+    After setting, click “Next” to proceed to the next page.  
+    Click “Finish” button to reflect the current status and deploy.  
+    Click "Cancel” to cancel deployment.  
     ![](./images/openpaas-eclipse/image52.png)
 
-5. “서비스팩 선택” 대화창이 표시된다. 이 대화창은 애플리케이션에 바인딩 할 서비스팩 인스턴스를 추가 또는 바인딩 할 수 있다.  
-      해당 애플리케이션과 바인딩을 원하는 서비스팩 인스턴스를 선택한다.  
-      만약 원하는 서비스팩 인스턴스가 없다면, 서비스팩 추가라는 아이콘의 버튼을 클릭하여 서비스팩 인스턴스를 생성한다.  
-      서비스팩 인스턴스 추가하는 방법은 [***5.6 서비스팩 인스턴스 추가***](#56-서비스팩-인스턴스-추가)를 참고한다.  
-      원하는 서비스팩 인스턴스를 선택한 뒤, “Next” 버튼을 클릭하여 다음 페이지로 진행한다.  
-      “Finish” 버튼을 클릭하면 현재까지의 상태가 반영되어 배포가 된다.  
-      “Cancel” 버튼을 클릭하면 배포가 취소된다.  
+5. “Select Servicepack” dialog box appears. This dialog box can add or bind a service pack instance to bind to the application.  
+      Select the service pack instance to bind with the application.  
+      If there is no wanted service instance, click “Add Servicepack” icon and create servicepack instance.  
+      Refer to [***5.6 Add Servicepack Instance***](#56-서비스팩-인스턴스-추가) for instructions on how to add servicepack instance.  
+      Select the servicepack instance of your choice and click “Next” to proceed to the next page.  
+      Click “Finish” button to reflect the current status and deploy.  
+      Click "Cancel” to cancel deployment.  
     ![](./images/openpaas-eclipse/image53.png)
 
-6. “환경 변수” 대화창이 표시된다. 이 대화창은 애플리케이션에 환경 변수를 추가, 수정, 및 삭제를 할 수 있는 대화창이다.  
-      환경 변수 추가 및 삭제, 수정은 [***5.4 애플리케이션 인스턴스 관리***](#54-애플리케이션-인스턴스-관리)를 참고한다.  
-      환경 변수를 추가 및 삭제, 수정을 완료 후, “Finish” 버튼을 클릭하여 배포를 완료한다.  
-      “Cancel” 버튼을 클릭하면 배포가 취소된다.  
+6. “Environment Variables” dialog box appears. This dialog box allows to add, modify, and delete environment variables in an application.  
+      Refer to [***5.4 Application Instance Management***](#54-애플리케이션-인스턴스-관리) for environment variable add, delete, and modify.  
+      Click “Finish” button to reflect the current status of modifying the environment variable and deploying.  
+      Click "Cancel” to cancel deployment.  
     ![](./images/openpaas-eclipse/image56.png)
 
-7. 배포가 완료되면 서버 편집기의 “애플리케이션과 서비스팩” 탭에서 배포된 애플리케이션을 확인 할 수 있다.  
+7. Once the deployment is complete, the deployed applications can be checked from the "Applications and Service Packs" tab of the Server Editor.  
     ![](./images/openpaas-eclipse/image58.png)
 
-##### 드래그로 추가
+##### Add by dragging
 
-1. 애플리케이션 배포를 원하는 개방형 플랫폼 서버를 더블 클릭하여 서버 편집기를 실행한다.  
-      배포를 원하는 프로젝트를 애플리케이션 섹션으로 드래그하면 배포가 완료 된다.  
-      만약 처음으로 배포하는 경우 배포를 위한 설정을 위해 다음 단계를 진행해야 한다.  
+1. Double-click the open platform server to deploy the application to run the server editor.  
+      Drag the project you want to deploy to the application section to complete the deployment.  
+      If deployment is done for the first time, next step must be taken to set up for deployment.  
     ![](./images/openpaas-eclipse/image60.png)
 
-2. [***“Add and Remove”***](#51-애플리케이션-배포) 과정과 동일하므로 해당 내용의 2번부터 참고한다.
+2. Has the same procedure as [***“Add and Remove”***](#51-애플리케이션-배포). Refer from number 2 of the chapter.
 
-##### 애플리케이션 추가/삭제 버튼으로 추가하기
+##### Add with Application Add/Delete button
 
-1. 애플리케이션 배포를 원하는 개방형 플랫폼 서버를 더블 클릭하여 서버 편집기를 실행한다.  
-      애플리케이션을 배포하기 위해 애플리케이션 추가/삭제 버튼을 클릭한다.  
+1.    Double-click the open platform server to deploy the application to run the server editor.  
+      Click the Add/Delete Application button to deploy the application..  
     ![](./images/openpaas-eclipse/image61.png)
 
-2. [***“Add and Remove”***](#51-애플리케이션-배포) 과정과 동일하므로 참고한다.
+2. Refer to [***“Add and Remove”***](#51-애플리케이션-배포) for the procedures.
 
-##### 프로젝트 컨텍스트 메뉴로 추가하기
+##### Add by project context menu
 
-1. “Package Exlporer” 에서 배포를 원하는 프로젝트를 선택한 뒤, 마우스 오른쪽 버튼을 클릭 후. “Run As” – “Run on Server”를 선택한다.  
+1. Select a project to deploy from “Package Explorer” and select “Run As” – “Run on Server” by right clicking .  
     ![](./images/openpaas-eclipse/image63.png)
 
-2. "Run On Server” 대화창이 표시된다. 이 대화창은 배포를 원하는 서버를 선택하는 대화창이다.  
-      “Servers” 리스트에 있는 “Cloud” – “Open PaaS” 를 선택한다.(만약 리스트 화면에 “Cloud” – “Open PaaS”가 보이지 않는다면 서버를 추가하거나, “How do you want to select the server?” 에서 “Choose an existing server”를 라디오 버튼을 선택한다.)  
-      “Next” 버튼을 클릭하여 배포를 진행한다.  
-      “Finish” 버튼을 클릭하면 즉시 배포가 된다.  
+2. "Run On Server” dialog box appears. This dialog box allows to select the server to depoy.  
+      From “Servers”list, select “Cloud” – “Open PaaS”.(If “Cloud” – “Open PaaS” cannot be found from the list, add server or click “Choose an existing server” from “How do you want to select the server?” radio button.)  
+      Click “Next” button to start deployment.  
+      Click Finish” button to complete deployment.  
     ![](./images/openpaas-eclipse/image66.png)
 
-3. [***“Add and Remove”***](#51-애플리케이션-배포) 과정과 동일하므로 참고한다.
+3. Refer to [***“Add and Remove”***](#51-애플리케이션-배포) for the next procedures.
 
-##### 서버 추가시 추가하기
+##### Add when adding a server
 
 [***“서버 추가”***](#41-서버-추가) 과정과 동일하므로 해당 내용 참고
 

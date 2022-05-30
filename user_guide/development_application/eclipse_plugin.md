@@ -425,45 +425,45 @@ Informations shown are as follows:
       Click “Finish” button after inputting.  
     ![](./images/openpaas-eclipse/image81.png)
 
-4. 현재 상태에서는 “매핑된 URL” 수정 사항이 플랫폼 서버에 반영되지 않았으므로 “매핑된 URL” 설정 대화창에서 “Finish” 버튼을 눌러야 최종 완료가 된다. 만약 “Cancel” 버튼을 클릭하면 지금까지 진행한 모든 작업들이 취소된다.  
+4. The “Mapped URL” is not reflected to the current platform server state. Click “Finish” button from the “Mapped URL” setting dialog box to complete. If “Cancel” button is clicked, the process done so far gets cancelled.  
     ![](./images/openpaas-eclipse/image83.png)
 
 ##### Remove Mapped URL
 
 1. Do [***“Check Mapped URL List”***](#매핑된-url-목록-조회) process.
 
-2. 매핑할 URL을 삭제하기 위해 목록에서 수정을 원하는 매핑된 URL을 선택한다. 그리고 오른쪽에 “삭제” 버튼을 클릭한다.  
-     그리고 “Finish” 버튼을 눌러야 최종 완료가 된다. 만약 “Cancel” 버튼을 클릭하면 지금까지 진행한 모든 작업들이 취소된다.    
+2. To delete the URL to be mapped, select the mapped URL to modify from the list. Click “Delete” button at the right and click “Finish” to complete the process.
+    Click “Cancel” to cancel all the process done.    
     ![](./images/openpaas-eclipse/image84.png)
 
-##### 인스턴스 수 변경
+##### Modify Number of Instances
 
-일반 섹션에서 인스턴스 수 항목을 찾는다.  
-원하는 인스턴스 수만큼 변경 후 설정 버튼을 클릭한다.  
-인스턴스 변경이 완료 된다.    
+Look up for the number of instance from the general section.  
+Modify the number of instances to as much as you want and click set button.  
+Number of instance modification  is completed.    
 ![](./images/openpaas-eclipse/image85.png)
 
-##### 메모리 제한
+##### Memory Limit
 
-일반(애플리케이션 재시작 필요) 섹션에서 메모리 제한(MB) 항목을 찾는다.  
-원하는 메모리 제한만큼 변경 후 설정 버튼을 클릭한다.  
-메모리 제한 변경이 완료 된다.    
+Look for memory limit(MB) from the General(Application restart required) section.  
+After changing the memory limit to as much as you want, click the set button.  
+Memory limit modification is completed.    
 ![](./images/openpaas-eclipse/image87.png)
 
-##### 환경 변수 목록 조회
+##### Check Environment Variable List
 
-1. 일반(애플리케이션 재시작 필요) 섹션에서 환경변수 항목을 찾아 옆의 “수정” 버튼을 클릭한다.  
+1. Look for Environment Variable from the General(Application restart required) section and click “Modify” button from the side.  
     ![](./images/openpaas-eclipse/image86.png)
 
-2. “환경변수” 대화창이 표시된다. 이 대화창은 환경 변수를 관리 할 수 있는 대화창이다.  
-      이 대화창의 첫 페이지는 환경 변수 목록을 보여준다.  
+2. “Environment Variable” dialog box appears. This dialog box allows to manage environment variables.  
+      The first page of this dialog box shows the environment variable list.  
     ![](./images/openpaas-eclipse/image053.png)
 
-##### 환경 변수 추가
+##### Add Environment Variable
 
-1. [***“환경 변수 목록 조회”***](#환경-변수-목록-조회) 과정을 진행한다
+1. Do [***“Check Environment Variable List”***](#환경-변수-목록-조회) process
 
-2. 환경 변수를 추가하기 위해 오른쪽에 “추가” 버튼을 클릭한다.  
+2. Click “Add” button at the right to add the environment variable.  
     ![](./images/openpaas-eclipse/image88.png)
 
 3. “변수 이름과 값을 입력해 주십시오.” 대화창이 표시된다.  

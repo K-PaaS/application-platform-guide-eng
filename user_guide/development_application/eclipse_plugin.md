@@ -268,31 +268,32 @@ This chapter describes the procedure for managing applications and service packs
 
 ### 5.1 Application Deployment
 
-#####  “Add and Remove”로 추가하기
+#####  Add by “Add and Remove”
 
-1. “Servers” 탭에서 애플리케이션 배포를 원하는 관리 서버를 선택 한 뒤, 오른쪽 버튼을 클릭하고, “Add and Remove”를 클릭한다.    
+1. Select the management server for application deployment from the “Servers” tab, right click and click “Add and Remove”.    
      ![](./images/openpaas-eclipse/image46.png)
 
-2. “Add and Remove” 대화창이 표시된다. 이 대화창은 Open PaaS 환경에 애플리케이션을 배포 및 삭제 할 수 있는 대화창이다.  
-    "Available”은 배포 가능한 애플리케이션 목록이고, “Configured”는 배포 되어 있거나 배포 예정인 애플리케이션 목록이다.  
-    “Available”에서 배포를 원하는 애플리케이션을 선택 한 뒤, “Add” 버튼을 클릭하여 “Configured”로 옮기고, “Finish”를 누르면 배포가 완료된다.  
-    만약 첫 배포라면 배포를 위한 설정을 위해 다음 단계들이 있다.  
+2. “Add and Remove” dialog box appears. This dialog box allows to deploy and delete applications in an Open PaaS environment.  
+    List of applications that can be deployed are marked as “Available”. “Configured” for applications that are already or expected to be deployed.  
+    Click the application to deploy from “Available”.   
+    Click “Add” to move to “Configured” and click “Finish” to complete application deployment.  
+    For first deployment, there are several settings to do.  
     ![](./images/openpaas-eclipse/image47.png)
 
-3. (여기서부터는 첫 배포시에만 해당)  
-    “애플리케이션 상세 정보” 대화창이 표시된다. 이 대화창은 애플리케이션의 이름과 빌드팩 URL과 매니페스트 파일 저장 여부를 설정 해 줄 수 있는 대화창이다.  
-    “이름”란에 원하는 이름을 입력한다. (기본 값은 현재 프로젝트명이다.)  
-    “빌드팩 URL”은 해당 플랫폼에서 지원하지 않은(?) 다른 빌드팩을 사용 하고 싶을 때, 옵션 사항으로 등록하여 사용 할 수 있다. 만약 따로 사용할 빌드팩이 없다면 빈칸으로 비워두어도 무방하다.  
-    매니페스트 파일 저장 여부를 체크박스로 표시한다.  
-    “Next” 버튼을 클릭하여 다음 페이지로 진행한다.  
-    “Finish” 버튼을 클릭하면 현재까지의 상태가 반영되어 배포가 된다.  
-    "Cancel” 버튼을 클릭하면 배포가 취소된다.  
+3. (For first deployment ONLY)  
+    “Application Detailed Information” dialog box appears. This dailog box allows to set the name of the application, the build pack URL, and whether to save the manifest file.  
+    Enter the name at “Name” input box. (Default name is the current project name.)  
+    “Buildpack URL” can be used as an registered option when you want to use a buildpack that is not supported in the platform. It can be left as a blank when there is no buildpack to use.  
+    Check “Save Manifest File” checkbox.  
+    Click “Next” button to proceed to the next page.  
+    Click “Finish” button to deploy with the selected status.  
+    Click "Cancel” to cancel deployment.  
     ![](./images/openpaas-eclipse/image50.png)
 
-4. “배포 실행” 대화창이 표시된다. 이 대화창은 애플리케이션의 도메인과 서브도메인을 지정해주고, “배포된 URL”을 확인하며, 메모리 제한 설정과 배포된 애플리케이션의 시작 여부를 설정 할 수 있다.  
-    “서브도메인”에 원하는 서브도메인명을 입력한다.(기본 값은 현재 프로젝트명이다.)  
-    도메인을 선택한다.  
-    “배포된 URL”은 서브도메인과 도메인이 자동으로 결합되어 만들어지니 가만히 두어도 무방하다.  
+4. “Execute Deployment” dialog box appears. This dialog box specifies the domain and subdomain of the application, checks the "Deployed URL", and sets the memory limit and whether the deployed application should be started.  
+    Enter the “Subdomain” name.(Default name is the current project name.)  
+    Select Domain.  
+    “Deployed URL” will be automatically be combine the subdomain and domain.  
     메모리 제한란에 메모리 제한값을 입력한다. (기본 값은 512이다.)  
     모두 설정 하였으면 “Next” 버튼을 클릭하여 다음 페이지로 이동한다.  
     “Finish” 버튼을 클릭하면 현재까지의 상태가 반영되어 배포가 된다.  

@@ -18,7 +18,7 @@
 4. [Open Platform Server Connection Management](#4-개방형-플랫폼-서버-연결-관리)  
      4.1. [Add Server](#41-서버-추가)  
      4.2. [Register Platform Server Information](#42-플랫폼-서버-정보-등록)  
-     4.3. [Duplicate Server](#43-서버-복제)  
+     4.3. [Replicate Server](#43-서버-복제)  
      4.4. [Modify Server](#44-서버-수정)  
 5. [Application and Servicepack Management](#5-애플리케이션-및-서비스팩-관리)  
      5.1. [Application Deployment](#51-애플리케이션-배포)  
@@ -233,44 +233,40 @@ This chapter describes how to connect an open platform server.
      ![](./images/openpaas-eclipse/image33_2.png)
 
 
-### 4.3 Duplicate Server
+### 4.3 Replicate Server
 
 Targeted Space cannot be modified from Open Platfrom Server Connection Information.
 To change from the same open platform server to a different target space,
 space must be reset by replicating Open Platform Server Connection Information.
 
-1. 서버 복제를 위해 “Servers” 탭에서 복제를 원하는 서버를 선택 한 후,
-    오른쪽 버튼을 누르고 “서버 복제”를 선택한다.  
+1. Select the server to replicate from the “Servers” tab,
+    right click and click “Replicate Server”.  
      ![](./images/openpaas-eclipse/image38.png)
 
-2. “조직 및 스페이스 목록” 대화창이 표시된다. 이 대화창은 복제를 원하는 조직의 스페이스를 선택하는 대화창이다.  
-    복제를 원하는 스페이스를 선택 한 뒤, “Finish” 버튼을 클릭한다.  
-    “Cancel” 버튼을 클릭하면 조직의 스페이스가 복제되지 않고
-    화면이 종료된다.  
+2. “Organization and Space List” dialog box appears. The purpose of this dialog box is to select the organization and space to replicate.  
+    Select the space to replicate and click “Finish”.  
+    Click “Cancel” to quit replicating spcae from the organization.  
      ![](./images/openpaas-eclipse/image40.png)
 
-3. 해당 스페이스의 이름으로 서버 복제가 완료 되어 “Servers” 탭의
-    리스트에 추가된다.  
+3. The selected space will be replicated with the name of its own and will be added to the list of “Servers” tab.  
     ![](./images/openpaas-eclipse/image42.png)
 
-### 4.4 서버 수정
+### 4.4 Modify Server
 
-서버 수정은 관리 서버 이름만 수정 가능하다
+Server modification can only modify the management server name
 
-1. 관리 서버 이름 수정을 원하는 “Servers” 탭에서 더블 클릭한다.  
+1. Double click the management server name to modify from the “Servers” tab.  
      ![](./images/openpaas-eclipse/image44.png)
 
-2. “개요” 대화창이 표시된다. 이 대화창은 서버의 정보 조회와 계정 정보, 서버 상태를 관리 할 수
-    있는 대화창이다.  
-    서버 이름을 클릭하여 수정을 한 뒤, 메뉴의 “File” – “Save”를 누른다.  
+2. “Outline” dialog box appears. The purpose of this dialog box is to check server and account's information, and manage server status.  
+    Modify the server's name and click “File” – “Save” from the menu.  
      ![](./images/openpaas-eclipse/image45.png)
 
-# 5. 애플리케이션 및 서비스팩 관리
+# 5. Application and Servicepack Management
 
-본 절에서는 Open PaaS 개발환경에서 애플리케이션 및 서비스팩을 관리하는
-절차를 기술한다.
+This chapter describes the procedure for managing applications and service packs in an Open PaaS Development Environment.
 
-### 5.1 애플리케이션 배포
+### 5.1 Application Deployment
 
 #####  “Add and Remove”로 추가하기
 

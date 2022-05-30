@@ -387,50 +387,50 @@ Informations shown are as follows:
 * Application Servicepack List : Name , vendor, plan, version
 * Instance List : Host, Port, CPU, Memory, Disk, run hour
 
-##### 매핑된 URL 목록 조회
+##### Check Mapped URL List
 
-1. 일반 섹션에서 매핑된 URL 목록 항목을 찾는다.  
-      “연필” 모양의 아이콘을 클릭한다.  
+1. Locate the mapped URL list item in the General section..  
+      Click the “Pencil” icon.  
      ![](./images/openpaas-eclipse/image73.png)
 
-2. “매핑된 URL 설정” 대화창이 표시된다.  
-      이 대화창은 ”매핑된 URL”을 관리 할 수 있는 대화창이다.  
-      이 대화창의 첫 페이지에서 “매핑된 URL” 목록을 확인 할 수 있다.
+2. “Create Mapped URL” dialog box appears.  
+      This dialog box lets you manage ”Mapped URL”.  
+      List of “Mapped URL” can be found at the fist page of the dialog box.
 
-##### 매핑된 URL 추가
+##### Add Mapped URL
 
-1. [***“매핑된 URL 목록 조회”***](#매핑된-url-목록-조회) 과정을 진행한다.
+1. Do [***“Check Mapped URL List”***](#매핑된-url-목록-조회) process.
 
-2. “매핑할 URL”을 추가하기 위해 오른쪽에 “추가” 버튼을 클릭한다.  
+2. Click “Add” button at the right to add “URL to be mapped”.  
     ![](./images/openpaas-eclipse/image75.png)
 
-3. “추가 또는 애플리케이션 URL 수정” 대화창이 표시된다. 이 대화창은 애플리케이션을 추가 할 수 있는 대화창이다.  
-      원하는 서브도메인을 작성하고, 도메인을 선택하면 “배포된 URL”이 자동으로 작성된다.  
-      작성이 완료 되었으면 “Finish” 버튼을 클릭한다.  
-      "Cancel” 버튼을 클릭하면 종료된다.    
+3. “Add or Modify Application URL” dialog box appears. Applications can be added through this dialog box.  
+      Enter the subdomain of your choice and select domain. “Deployed URL” will be entered automatically.  
+      Click “Finish” after inputting.  
+      Click "Cancel” button to dismiss.    
      ![](./images/openpaas-eclipse/image77.png)
 
-4. 현재 상태에서는 “매핑된 URL” 추가 사항이 플랫폼 서버에 반영되지 않았으므로 “매핑된 URL” 설정 대화창에서 “Finish” 버튼을 눌러야 최종 완료가 된다. 만약 “Cancel” 버튼을 클릭하면 지금까지 진행한 모든 작업들이 취소된다.  
+4. The “Mapped URL” is not reflected to the current platform server state. Click “Finish” button from the “Mapped URL” setting dialog box to complete. If “Cancel” button is clicked, the process done so far gets cancelled.  
     ![](./images/openpaas-eclipse/image79.png)
   
-##### 매핑된 URL 수정
+##### Modify Mapped URL
  
-1. [***“매핑된 URL 목록 조회”***](#매핑된-url-목록-조회) 과정을 진행한다.
+1. Do [***“Check Mapped URL List”***](#매핑된-url-목록-조회) process.
 
-2. “매핑할 URL”을 수정하기 위해 목록에서 수정을 원하는 “매핑된 URL”을 선택한다. 그리고 오른쪽에 “수정” 버튼을 클릭한다.    
+2. To modify “URL to Map”, select “Mapped URL” to modify from the list and click “Modify” button.    
     ![](./images/openpaas-eclipse/image80.png)
 
-3. “추가 또는 애플리케이션 URL 수정” 대화창이 표시된다. 이 대화창은 애플리케이션을 수정 할 수 있는 대화창이다.  
-      원하는 서브도메인을 수정하고, 도메인을 선택하면 “배포된 URL”이 자동으로 작성된다.  
+3. “Add or Modify Application URL” dialog box appears. This dialog box allows to modify application.  
+      Enter the subdomain of your choice and select domain. “Deployed URL” will be entered automatically.  
       작성이 완료 되었으면 “Finish” 버튼을 클릭한다.  
     ![](./images/openpaas-eclipse/image81.png)
 
 4. 현재 상태에서는 “매핑된 URL” 수정 사항이 플랫폼 서버에 반영되지 않았으므로 “매핑된 URL” 설정 대화창에서 “Finish” 버튼을 눌러야 최종 완료가 된다. 만약 “Cancel” 버튼을 클릭하면 지금까지 진행한 모든 작업들이 취소된다.  
     ![](./images/openpaas-eclipse/image83.png)
 
-##### 매핑된 URL 제거
+##### Remove Mapped URL
 
-1. [***“매핑된 URL 목록 조회”***](#매핑된-url-목록-조회) 과정을 진행한다.
+1. Do [***“Check Mapped URL List”***](#매핑된-url-목록-조회) process.
 
 2. 매핑할 URL을 삭제하기 위해 목록에서 수정을 원하는 매핑된 URL을 선택한다. 그리고 오른쪽에 “삭제” 버튼을 클릭한다.  
      그리고 “Finish” 버튼을 눌러야 최종 완료가 된다. 만약 “Cancel” 버튼을 클릭하면 지금까지 진행한 모든 작업들이 취소된다.    

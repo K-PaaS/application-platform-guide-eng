@@ -369,27 +369,23 @@ List of deployed applications can be found from the application list found at th
     ![](./images/openpaas-eclipse/image68.png)
 
 2.  “Cloud Route List” dialog box appears. This dialog box allows to check or remove cloud route list.  
-    제거를 원하는 라우트를 클릭 한 뒤, “제거”를 클릭하고 “Finish” 버튼을
-    클릭하면 라우트가 삭제된다.  
-    “Cancel” 버튼을 클릭하면 삭제될 라우트들이 복구된다.  
+    Click the route to remove and click “Remove” then click “Finish” to complete deleting the route.  
+    Click “Cancel” and the routes to be deleted will be restored.  
     ![](./images/openpaas-eclipse/image70.png)
 
-### 5.4 애플리케이션 인스턴스 관리
+### 5.4 Application Instance Management
 
-애플리케이션 라우트 관리를 원하는 개방형 플랫폼 서버를 더블 클릭하여
-서버 편집기를 실행한다.  
-편집기에서 애플리케이션 목록을 찾아 인스턴스 관리를 원하는
-애플리케이션을 리스트에서 찾아 클릭한다.  
+Double-click Open platform server to manage application routes and run the server editor.  
+Find the application list from the editor and locate and click the application from the list to manage the instance.  
 ![](./images/openpaas-eclipse/image72.png)
 
-편집기의 오른쪽 화면에 애플리케이션 인스턴스에 대한 다양한 정보들이
-표시된다.  
-표시되는 정보는 아래와 같다.
-* 일반 : 이름, 시작 상태, 매핑된 URL, 인스턴스 수, 매니페스트
-* 일반(애플리케이션 재시작 필요) : 메모리 제한, 환경 변수
-* 애플리케이션 동작 : 재시작, 정지, 갱신 및 재시작, 배포, 디버그
-* 애플리케이션 서비스팩 목록 : 이름 ,벤더, 플랜, 버전
-* 인스턴스 목록 : 호스트, 포트, CPU, 메모리, 디스크, 가동 시간
+Various information about the application instance is displayed on the right screen of the editor.  
+Informations shown are as follows:
+* General : Name, Start Status, Mapping URL, Number of Instance, Manifest
+* General(Apllication restart required) : Memory Limit , Environment Variable
+* Application Behavior : Restart, Stop, Update and Restart, Deployment, Debug
+* Application Servicepack List : Name , vendor, plan, version
+* Instance List : Host, Port, CPU, Memory, Disk, run hour
 
 ##### 매핑된 URL 목록 조회
 

@@ -466,45 +466,46 @@ Memory limit modification is completed.
 2. Click “Add” button at the right to add the environment variable.  
     ![](./images/openpaas-eclipse/image88.png)
 
-3. “변수 이름과 값을 입력해 주십시오.” 대화창이 표시된다.  
-      이 대화창은 환경 변수 추가 할 수 있는 대화창이다.  
-      원하는 이름과 값을 작성 후, “OK” 버튼을 클릭한다.    
+3. “Enter name and value of the variable.” dialog box appears.  
+      This dialog box allows to add environment variables.  
+      Enter the name and value you want and click “OK” button.    
     ![](./images/openpaas-eclipse/image91.png)
 
-4. 현재 상태에서는 환경 변수가 플랫폼 서버에 반영되지 않았으므로, 환경 변수 대화창에서 “Finish” 버튼을 클릭하면 반영이 완료된다. “Cancel” 버튼을 클릭하면 변경 사항이 적용되지 않는다.  
+4. The environment variable is not reflected to the platform server yet. click “Finish” from the environment variable dialog box to complete the process. Click “Cancel” to cancel the process.  
     ![](./images/openpaas-eclipse/image93.png)
 
-##### 환경 변수 수정
+##### Modify Environment Variable
 
-1. [***“환경 변수 목록 조회”***](#환경-변수-목록-조회) 과정을 진행한다.
+1. Do [***“Check Environment Variable List”***](#환경-변수-목록-조회) process.
 
-2. 환경 변수를 추가하기 위해 환경 변수 목록에서 수정을 원하는 환경 변수를 클릭 후 오른쪽 “수정” 버튼을 클릭한다.  
+2. To add the environment variable, modify the environment variable by clicking “Modify” button from the environment variable list.  
      ![](./images/openpaas-eclipse/image94.png)
 
-3. 변수 이름과 값을 입력해 주십시오. 대화창이 표시된다. 이 대화창은 환경 변수 수정 할 수 있는 대화창이다.  
-      원하는 이름과 값을 수정 후, “OK” 버튼을 클릭한다.  
-      “Cancel” 버튼을 클릭하면 변수의 이름과 값이 입력되지 않는다.    
+3. “Enter name and value of the variable.” dialog box appears. This dialog box allows to modify environment variables.  
+      Enter the name and value you want and click “OK” button.  
+      Click “Cancel” button to cancel inputting the variable name and value.    
      ![](./images/openpaas-eclipse/image91.png)
 
-4. 현재 상태에서는 환경 변수 수정 사항이 플랫폼 서버에 반영되지 않았으므로, 환경 변수 대화창에서 “Finish” 버튼을 클릭하면 반영이 완료된다. “Cancel” 버튼을 클릭하면 변경 사항이 적용되지 않는다.  
+4. The modified environment variable is not reflected to the platform server yet. click “Finish” from the environment variable dialog box to complete the process. Click “Cancel” to cancel the process.  
      ![](./images/openpaas-eclipse/image97.png)
 
-##### 환경 변수 삭제
+##### Delete Environment Variable
 
-1. [***“환경 변수 목록 조회”***](#환경-변수-목록-조회) 과정을 진행한다
+1. Do [***“Check Environment Variable List”***](#환경-변수-목록-조회) process
 
-2. 환경 변수를 추가하기 위해 환경 변수 목록에서 삭제를 원하는 환경 변수를 클릭한다.  
-      오른쪽에 “삭제” 버튼을 클릭한다.  
-       현재 상태에서는 환경 변수 삭제 작업이 플랫폼 서버에 반영되지 않았으므로, 환경 변수 대화창에서 “Finish” 버튼을 클릭하면 반영이 완료된다. “Cancel” 버튼을 클릭하면 변경 사항이 적용되지 않는다.  
+2. To delete the environment variable, click the environment variable to delete from the list.  
+      Click “Delete” button located at the right.   
+
+3. The modified environment variable is not reflected to the platform server yet. click “Finish” from the environment variable dialog box to complete the process. Click “Cancel” to cancel the process..  
      ![](./images/openpaas-eclipse/image96.png)
 
-##### 애플리케이션 재시작
+##### Restart Application
 
-[***애플리케이션 인스턴스 관리***](#54-애플리케이션-인스턴스-관리) 화면에서 애플리케이션 동작 섹션을 찾는다.  
-      “재시작” 버튼을 클릭하면 재시작 작업을 수행한다.    
+Look for application behavior section from the [***Manage Application Instance***](#54-애플리케이션-인스턴스-관리).  
+      Click “Restart” button to restart.    
 ![](./images/openpaas-eclipse/image98.png)
 
-##### 애플리케이션 정지
+##### Stop Application
 
 [***애플리케이션 인스턴스 관리***](#54-애플리케이션-인스턴스-관리) 화면에서 애플리케이션 동작 섹션을 찾는다.  
       “정지” 버튼을 클릭하면 정지 작업을 수행한다.    

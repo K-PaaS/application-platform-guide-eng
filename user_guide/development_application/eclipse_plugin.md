@@ -501,56 +501,48 @@ Memory limit modification is completed.
 
 ##### Restart Application
 
-Look for application behavior section from the [***Manage Application Instance***](#54-애플리케이션-인스턴스-관리).  
+Look for application behavior section from [***Manage Application Instance***](#54-애플리케이션-인스턴스-관리).  
       Click “Restart” button to restart.    
 ![](./images/openpaas-eclipse/image98.png)
 
 ##### Stop Application
 
-[***애플리케이션 인스턴스 관리***](#54-애플리케이션-인스턴스-관리) 화면에서 애플리케이션 동작 섹션을 찾는다.  
-      “정지” 버튼을 클릭하면 정지 작업을 수행한다.    
+Look for application behavior section from [***Manage Application Instance***](#54-애플리케이션-인스턴스-관리).  
+      Click “Stop” to stop the process.    
 ![](./images/openpaas-eclipse/image99.png)
 
-##### 애플리케이션 갱신 및 재시작
+##### Application Update and Restart
 
-[***애플리케이션 인스턴스 관리***](#54-애플리케이션-인스턴스-관리) 화면에서 애플리케이션 동작 섹션을 찾는다.  
-      “갱신 및 재시작” 버튼을 클릭하면 갱신 및 재시작 작업을 수행한다.  
+Look for application behavior section from [***Manage Application Instance***](#54-애플리케이션-인스턴스-관리).  
+      Click “Update and restart” button to update and restart.  
 ![](./images/openpaas-eclipse/image100.png)
 
-##### 애플리케이션 배포
+##### Application Deployment
 
-[***애플리케이션 인스턴스 관리***](#54-애플리케이션-인스턴스-관리)에서 애플리케이션 동작 섹션을 찾는다.  
-      “배포” 버튼을 클릭하면 배포작업을 수행한다.    
+Look for application behavior section from  [***Manage Application Instance***](#54-애플리케이션-인스턴스-관리).  
+      Click “Deploy” button to deploy.    
 ![](./images/openpaas-eclipse/image101.png)
 
-### 5.5 애플리케이션 삭제
+### 5.5 Delete Application
 
-1. 애플리케이션 삭제를 원하는 개방형 플랫폼 서버를 더블 클릭하여 서버
-    편집기를 실행한다.  
-    편집기에서 애플리케이션 목록을 찾아 삭제를 원하는 애플리케이션을
-    리스트에서 찾아 선택하고, 마우스 오른쪽 버튼을 클릭한 뒤, “제거”
-    버튼을 클릭한다.  
+1. Double-click the open platform server to delete application and execute server editor.  
+    Look for the application to delete from the application list of the editor. Right click the selected application and click “Remove” button.  
      ![](./images/openpaas-eclipse/image103.png)
 
-2. 만약 서비스팩 인스턴스와 바인딩이 되어 있다면 “서비스팩 삭제”
-    대화창이 표시된다. 서비스팩 인스턴스와 바인딩 되어 있지 않다면 다음
-    단계로 넘어간다.  
-    이 대화창은 바인딩 되어 있는 서비스팩 인스턴스를 삭제 하는
-    화면이다.  
-    삭제하고자 하는 애플리케이션과 바인딩 되어 있는 서비스팩 인스턴스가
-    더 이상 사용 되지 않는다면 체크하여 서비스팩 인스턴스를 삭제하고,
-    서비스팩 인스턴스가 다른 애플리케이션에 바인딩 되어 있다면 서비스팩
-    인스턴스를 삭제하면 안되므로 체크를 하지 않는다.  
-    그리고 “Finish” 버튼을 클릭한다.  
-    만약 “Cancel” 버튼을 클릭하면 서비스팩 인스턴스는 삭제되지 않고
-    애플리케이션만 삭제된다.  
+2. If it is binded with the Servicepack instance, click “Delete Servicepack” dialog box appears. 
+    If not, proceed to the next step.  
+    This dialog box allows to delete the binded servicepack instance.  
+    If the application to delete is binded with the servicepack instance that is no longer used, check the service pack instance to delete.
+    If not, do not check the servicepack instance.  
+    Click “Finish” button to complete.  
+    If “Cancel” button is clicked, only application gets deleted and not servicepack instance.  
      ![](./images/openpaas-eclipse/image105.png)
 
-3. 애플리케이션 삭제 확인을 위한 대화상자에서 “OK” 버튼 또는 ”Cancel”
-    버튼을 클릭하여 애플리케이션 삭제를 완료하거나 취소한다.    
+3. When the dialog box to verify the application deletion appears, select from “OK” or ”Cancel”
+    button to delete or cancel the process.    
      ![](./images/openpaas-eclipse/image106.png)
 
-### 5.6 서비스팩 인스턴스 추가
+### 5.6 Add Servicepack Instance
 
 1. 서버 편집기의 “애플리케이션과 서비스팩” 탭을 클릭한다.  
     서비스팩 섹션 타이틀 오른쪽의 “서비스팩 추가” 아이콘을 클릭한다.  

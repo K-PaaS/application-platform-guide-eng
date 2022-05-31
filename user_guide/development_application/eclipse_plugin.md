@@ -35,7 +35,7 @@
      6.2. [Save Manifest](#62-매니페스트-저장)  
 7. [Plugin Setting(REST API Log Tracking Settings)](#7-플러그인-설정rest-api-로그-추적-설정)  
 8. [Example Project Description](#8-예제-프로젝트-설명)  
-     8.1. [Add dependencies](#81-의존성-추가)  
+     8.1. [Add Dependencies](#81-의존성-추가)  
      8.2. [Add Cloud Namespace0](#82-cloud-네임스페이스-추가)  
      8.3. [Modify dataSource Setting](#83-datasource-설정-변경)  
      8.4. [Set dataSource Reset](#84-datasource-초기화-설정)  
@@ -46,7 +46,7 @@
 
 # Executive Summary
 
-The purpose of this document is to provide the developers with the necessary environment and the instruction guide when they develop Open PaaS based applications as they download Open PaaS into e-Government Framework development environment. The users of the guide are assumed to have basic knowledge about JAVA and JAVA web application development.
+The purpose of this document is to provide the developers with the necessary environment and the instruction guide when they develop Open PaaS-based applications as they download Open PaaS into the e-Government Framework development environment. The users of the guide are assumed to have basic knowledge about JAVA and JAVA web application development.
 
 The guide is prepared according to the 2 steps below.
 * Open PaaS Development Environment Installation
@@ -59,20 +59,20 @@ The guide is prepared according to the 2 steps below.
 This document provides a guide on the following: install Open PaaS development environment on e-Government Standard Framework Development Environment and Eclipse IDE, manage and deploy Java Web Application to Open PaaS environment through Open PaaS Development Environment, and manage Servicepack.
 
 ### 1.2 Range
-The guide provided from this document is written based from e-Government Standard Framework 3.2.0 and Kepler Version of Eclipse (Kepler, 4.3.x).
+The guide provided in this document is written based on e-Government Standard Framework 3.2.0 and Kepler Version of Eclipse (Kepler, 4.3.x).
 
 ### 1.3 References
-This document refered to Cloud Foundry Eclipse Pulgin Document from Cloud Foundry.  
-The Cloud Froundry Eclipse Plugin Document:
+This document refers to Cloud Foundry Eclipse Plugin Document from Cloud Foundry.  
+The Cloud Foundry Eclipse Plugin Document:
 http://www.eclipse.org/cft/documentation/projectPageLink/CFTProjectPagedocumentation.html
 
 # 2. Preparations Before Installing the Development Environment
 
 ### 2.1 Preparation Before Installing
 
-This document provides the installation guide using the 3.1.1 version of e-Government Standard Framework development environment.
-The language used in e-Government Standard Framework development environment is JAVA, which means Java Development Kit (JDK) or Java Runtime Environment (JRE) should be installed for the execution.
-Install JDK before installing e-Government Framework development enviroment because Open PaaS Development Environment works as a plugin form. (7 or higher version of Java is recommended.)
+This document provides the installation guide using the 3.1.1 version of the e-Government Standard Framework development environment.
+The language used in the e-Government Standard Framework development environment is JAVA, which means Java Development Kit (JDK) or Java Runtime Environment (JRE) should be installed for the execution.
+Install JDK before installing the e-Government Framework development environment because Open PaaS Development Environment works as a plugin form. (7 or higher version of Java is recommended.)
 If you don't use the e-Government Standard Framework Development Environment, it is alright to install Eclipse instead as it is similar to Eclipse IDE Kepler.
 
 The versions used in the guide.
@@ -83,10 +83,10 @@ The versions used in the guide.
 
 ### 2.2 Install JAVA Development kit
 
-1. Access to the link below and when “JavaSE Download” page appears, click the “JDK Download” link shown at the center and it goes to lisence agreement page.
+1. Access the link below and when the “JavaSE Download” page appears, click the “JDK Download” link shown at the center and it goes to the license agreement page.
 [***http://www.oracle.com/technetwork/java/javase/downloads/index.html***](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
-2. Agree to the lisence and download the JDK according to the development environment.
-3. Run the installation file and follow the procedures shown at the screen.    
+2. Agree to the license and download the JDK according to the development environment.
+3. Run the installation file and follow the procedures shown on the screen.    
      ![java install](./images/openpaas-eclipse/image2.jpeg)
 
 4.  Set environment variables for system properties to execute Java commands in command prompt.   
@@ -101,78 +101,78 @@ The versions used in the guide.
 
 ### 2.3 Install e-Government Standard Framework
 
-For installing e-Government Standard Framework, Refer to e-Goverments Standard Framework's [Guide on installing development environment for developers](http://www.egovframe.go.kr/wiki/doku.php?id=egovframework:dev2:clntinstall).  
+For installing e-Government Standard Framework, Refer to e-Governments Standard Framework's [Guide on installing development environment for developers](http://www.egovframe.go.kr/wiki/doku.php?id=egovframework:dev2:clntinstall).  
 > **3.1.1 Version was used**
 
 ### 2.4 Install Kepler Version of Eclipse Integrated Development Environment
 
 The installation procedure of the Kepler version of the Eclipse Integrated Development Environment is as follows.
 
-1. Access to [Eclipse IDE Download Page](http://www.eclipse.org/downloads/) from the Eclipse's mainpage.  
+1. Access to [Eclipse IDE Download Page](http://www.eclipse.org/downloads/) from Eclipse's main page.  
      ![](./images/openpaas-eclipse/image7.png)
 
-2. To download Eclipse IDE Kepler Version, click “MORE DOWNLOADS” at the sidebar on the  right side from the download page. Click “Eclipse Kepler(4.3)”.  
+2. To download Eclipse IDE Kepler Version, click “MORE DOWNLOADS” on the sidebar on the right side of the download page. Click “Eclipse Kepler(4.3)”.  
      ![](./images/openpaas-eclipse/image8.png)
 
 3. When the download screen appears, Download from the right side of “Eclipse IDE for Java EE Developers” by clicking the appropriate link.  
      ![](./images/openpaas-eclipse/image11.png)
 
-4. Unzip the downloaded file and run “eclipse.exe” file to access Eclipes without any other installation.
+4. Unzip the downloaded file and run the “eclipse.exe” file to access Eclipse without any other installation.
 
 # 3. Install Open PaaS Development Environment
 
-In this chapter, the procedure of installing Open PaaS development environment to the e-Government Standard Framework and Eclipse IDE will be described. If you're using the e-Government Standard Framework Development Environment which includes Open PaaS development environment, there is no need for extra installation. For Eclipse, use “openpaas_dev_env.zip” file to install Open PaaS development environment which is provided as a plugin.
+In this chapter, the procedure of installing the Open PaaS development environment to the e-Government Standard Framework and Eclipse IDE will be described. If you're using the e-Government Standard Framework Development Environment which includes an Open PaaS development environment, there is no need for extra installation. For Eclipse, use the “openpaas_dev_env.zip” file to install the Open PaaS development environment which is provided as a plugin.
 
 ### 3.1 Install Open PaaS Development Environment at e-Government Standard Framework
 
 The procedures for installing an Open PaaS development environment in an e-government standard framework development environment are as follows:
 
-1. Execute e-Government Standard Framework's development environment and click “Install New Software…” from the “Help” menu.  
+1. Execute the e-Government Standard Framework's development environment and click “Install New Software…” from the “Help” menu.  
      ![](./images/openpaas-eclipse/image13.png)
 
 2. A “Available Software” dialog window will be displayed to proceed to installation.  
-    To set the path for Open PaaS development environment, click “Add…” button.  
-    Click “Cancel” to stop the process and close screen.  
+    To set the path for the Open PaaS development environment, click the “Add…” button.  
+    Click “Cancel” to stop the process and close the screen.  
      ![](./images/openpaas-eclipse/image15.png)
 
 3. Enter the Open PaaS development environment in the “Name” field of the “Add Repository” dialog window
-    Click “Archive” button on the right to find the “openpaas\_dev\_env.jar” file downloaded and click “OK” button from the “Add Repository” dialog box “OK”.
+    Click the “Archive” button on the right to find the “openpaas\_dev\_env.jar” file downloaded and click the “OK” button from the “Add Repository” dialog box “OK”.
     Click “Cancel” to cancel the process.    
      ![](./images/openpaas-eclipse/image17.png)
 
-4.  As “Core / Open PaaS” catelogy appears on the dialog box,  
-    Select from checkbox on the left side of the category and click “Next” to proceed to the next step.  
-    Click “Cancel” button to cancel the process and exit the screen.  
+4.  As “Core / Open PaaS” category appears on the dialog box,  
+    Select from the checkbox on the left side of the category and click “Next” to proceed to the next step.  
+    Click the “Cancel” button to cancel the process and exit the screen.  
      ![](./images/openpaas-eclipse/image18.png)
 
 5. Information about Open PaaS Development Environment can be checked at “Install Details”. Click “Next” to proceed.  
-    Click “Cancel” button to cancel the process and exit the screen.  
+    Click the “Cancel” button to cancel the process and exit the screen.  
      ![](./images/openpaas-eclipse/image19.png)
 
-6.  License of Open PaaS Development Environment can be checked at the next page.
-    Click “I accept the terms of the license agreement” after checking the lisence and click “Finish”.  
-    Click “Cancel” button to cancel the process and exit the screen.  
+6.  License of the Open PaaS Development Environment can be checked on the next page.
+    Click “I accept the terms of the license agreement” after checking the license and click “Finish”.  
+    Click the “Cancel” button to cancel the process and exit the screen.  
      ![](./images/openpaas-eclipse/image20.png)
 
-7. Installation happens with “Installing Software” dialog box.
-   When “Security Warning” Caution screen appears, click “OK” to resume installation.  
-   Cancel installation by clicking “Cancel” button.  
+7. Installation happens with the “Installing Software” dialog box.
+   When the “Security Warning” Caution screen appears, click “OK” to resume installation.  
+   Cancel installation by clicking the “Cancel” button.  
      ![](./images/openpaas-eclipse/image21.png)
 
-8. When the installation is completed, “Software Updates” dialog box appears.
+8. When the installation is completed, the “Software Updates” dialog box appears.
  To let the Open PaaS development environment be applied properly, Restart is necessary.
  Click “Yes” to let the e-Government Standard Framework restart.  
- If not, click “No” button and the e-Government Standard Framework does not restarts and Open PaaS Development Environment cannot be used.  
+ If not, click the “No” button and the e-Government Standard Framework does not restart and Open PaaS Development Environment cannot be used.  
      ![](./images/openpaas-eclipse/image25.png)
 
 9. If restarted, the installation has been completed.
 
 ### 3.2 Install Open PaaS Development Environment at Eclipse Integrated Development Environment
 
-For procedures of installing Open PaaS Development Environment at Eclipse IDE, refer to “3.1 Install Open PaaS Development Environment at e-Government Standard Framework”.
+For procedures for installing the Open PaaS Development Environment at Eclipse IDE, refer to “3.1 Install Open PaaS Development Environment at e-Government Standard Framework”.
 
 ### 3.3 Usage of e-Government Standard Framework Development Environment with Open PaaS Development Environment included
-No other installation is required since Open PaaS Development Environment is installed at e-Government Standard Framework Development Environment. It is possible to start with 4.Open Platform Server Connection Management.
+No other installation is required since Open PaaS Development Environment is installed at the e-Government Standard Framework Development Environment. It is possible to start with 4. Open Platform Server Connection Management.
 
 # 4. Open Platform Server Connection Management
 
@@ -187,22 +187,22 @@ This chapter describes how to connect an open platform server.
     Select “Open PaaS” – “Open Cloud Platform” from the list. 
     Input ”Server name”. (If there is no server name entered, the default name “Open PaaS” will be given.)  
     Click “Next” to proceed to the next page.  
-    Click “Cancel” button to cancel the process and exit the screen.  
+    Click the “Cancel” button to cancel the process and exit the screen.  
      ![](./images/openpaas-eclipse/image30.png)
 
-3. “Open PaaS Account” dialog box appears. This dialog box log in to Open PaaS to access to the organization and space Open PaaS.  
+3. “Open PaaS Account” dialog box appears. This dialog box logs in to Open PaaS to access the organization and space Open PaaS.  
     Enter email and password and click the Confirm Account button to check the validity of the account.  
-    When the account is successfully verified, "Next" button is activated.  
+    When the account is successfully verified, the "Next" button is activated.  
     Click “Next” to proceed to the next page.  
-    Click “Cancel” button to cancel the process and exit the screen.  
+    Click the “Cancel” button to cancel the process and exit the screen.  
     ![](./images/openpaas-eclipse/image32.png)
 
      > *The URL address shown in the "URL" column above is an arbitrary address. Must follow the procedure below to register the platform server information where the actual Open PaaS is deployed.  
      > Refer to [***4.2 Register Platform Server Information***](#42-플랫폼-서버-정보-등록).
      
 
-4. “Organization and Space” list dialog box appears. This dialog box shows all the organization and space the corresponding account has. It can select organization and space to manage.  
-    Select the organization and space to manage and click “Next” and proceed to the next page. (create organization or space if there is are none. Space and Organization cannot be created in Eclipse Development Environment as of the moment CLI has to be installed to create. Refer to [***OpenPaas CLi Guide.md***](OpenPaas CLi 가이드.md)installation and use guide of CLI.)  
+4. “Organization and Space” list dialog box appears. This dialog box shows all the organization and space the corresponding account has. It can select organizations and space to manage.  
+    Select the organization and space to manage and click “Next” and proceed to the next page. (create organization or space if there are none. Space and Organization cannot be created in Eclipse Development Environment as of the moment CLI has to be installed to create. Refer to [***OpenPaas CLi Guide.md***](OpenPaas CLi 가이드.md)installation and use guide of CLI.)  
     Click “Cancel” button to cancel the process and exit the screen.  
     ![](./images/openpaas-eclipse/image35.png)
 
@@ -544,130 +544,108 @@ Look for application behavior section from  [***Manage Application Instance***](
 
 ### 5.6 Add Servicepack Instance
 
-1. 서버 편집기의 “애플리케이션과 서비스팩” 탭을 클릭한다.  
-    서비스팩 섹션 타이틀 오른쪽의 “서비스팩 추가” 아이콘을 클릭한다.  
+1. Click “Application and Servicepack” tab from the server editor.  
+   Click “Add Servicepack” icon from the right side of Service Pack Section Title.  
      ![](./images/openpaas-eclipse/image109.png)
 
-2. “서비스팩 설정” 대화창이 나타난다. 이 대화창에서 서비스팩을 조회 하고, 서비스팩 인스턴스를 추가 할 수
-    있다.  
-    이용 가능한 서비스팩 목록에서 인스턴스를 생성할 서비스팩을
-    선택한다.  
-    원하는 서비스팩을 선택하고, 더블 클릭을 하거나 아래에 “추가&gt;&gt;”
-    버튼을 클릭한다.  
-    그럼 오른쪽에 생성할 서비스팩이 추가된 것을 확인 할 수 있다.  
-    그리고 생성할 서비스팩의 인스턴스 이름과 플랜을 설정해준다.  
-    플랜은 똑같은 서비스팩을 지원범위나 리소스를 레벨에 따라 다르게
-    제공하기 위한 방법을 말한다.  
-    이와 같은 과정을 반복하여 여러 개의 서비스팩 인스턴스를 추가 할 수
-    있다.  
-    그리고 모든 과정이 완료 되면 “Finish” 버튼을 클릭하여 서비스팩
-    인스턴스 추가를 완료한다.  
-    “Cancel” 버튼을 클릭하면 서비스팩 인스턴스 추가가 취소된다.  
+2. “Servicepack Setting” dialogbox appears. This dialog allows to add servicepack instance and look up servicepack.  
+    Select a servicepack to create instance from the available servicepack list.  
+    Select and double-click the servicepack you want or click “Add&gt;&gt;” button below.  
+    You can check the added service pack to be create at the right side.  
+    Set the name and plan of the service instance to create.  
+    Plan refers to a way to provide the same servicepack with different levels of support or resources.  
+    Multiple servicepack instances can be added by repeating this process.  
+    Click “Finish” button to complete adding the servicepack instance process.  
+    Click “Cancel” button to cancel adding the servicepack instance.  
      ![](./images/openpaas-eclipse/image110.png)  
      ![](./images/openpaas-eclipse/image113.png)
 
-### 5.7 서비스팩 인스턴스 바인딩
+### 5.7 Servicepack Instance Binding
 
-1. 서버 편집기의 애플리케이션과 서비스팩 탭을 클릭한다.  
-    서비스팩 목록에서 바인딩을 원하는 서비스팩 인스턴스를 선택한 뒤,
-    마우스 오른쪽 버튼을 클릭하고, “서비스팩 바인딩 관리…” 메뉴를
-    누른다.  
-    만약 원하는 서비스팩 인스턴스가 없는 경우 서비스팩 인스턴스 추가
-    과정과 동일하게 진행하여 원하는 서비스팩을 추가한다.    
+1. Click “Application and Servicepack” tab from the service editor.  
+   Select a servicepack instance to bind from the servicepack list. Click “Manage Servicepack Binding…” menu by right clicking.  
+   If there is no servicepack instance you want to add, do the same procedure with adding servicepack instance and add the servicepack you want.    
      ![](./images/openpaas-eclipse/image115.png)
 
-2. “서비스팩 바인딩 관리” 대화창이 표시된다.  
-    이 대화창에서 서비스팩 인스턴스와 바인딩 또는 바인딩 해제할
-    애플리케이션을 선택할 수 있다.  
-    리스트에서 바인딩 할 애플리케이션을 체크 한 후, “Finish” 버튼을
-    클릭하면 바인딩이 완료 된다.  
+2. “Servicepack Binding Management” dialog box appears.  
+    The application to bind or unbind with the servicepack can be selected in this dialogbox.  
+    Check the application to bind from the list and click “Finish” button to complete binding.  
      ![](./images/openpaas-eclipse/image116.png)
 
-### 5.8 서비스팩 인스턴스 바인딩 해제
+### 5.8 Unbind Servicepack Instance
 
-1. 서버 편집기의 애플리케이션과 서비스팩 탭을 클릭한다.  
-    애플리케이션 서비스팩 목록에서 바인딩을 해제할 서비스팩 인스턴스를
-    선택한 뒤, 마우스 우클릭, “서비스팩 바인딩 관리…” 버튼을 누른다.    
+1. Click “Application and Servicepack” tab from the service editor.  
+    Select a servicepack instance to unbind from the servicepack list. Click “Manage Servicepack Binding…” menu by right clicking.    
      ![](./images/openpaas-eclipse/image115.png)
 
-2. “서비스팩 바인딩 관리” 대화창이 표시된다. 이 대화창은 서비스팩 인스턴스에 바인딩 또는 바인딩 해제할 애플리케이션을 선택하는 대화창이다.  
-리스트에서 바인딩을 해제할 애플리케이션을 체크해제 한 후, “Finish” 버튼을 클릭하면 바인딩 해제가 완료 된다.  
+2. ““Servicepack Binding Management” dialog box appears. The application to bind or unbind with the servicepack can be selected in this dialogbox.  
+    Check the application to bind from the list and click “Finish” button to complete binding.  
      ![](./images/openpaas-eclipse/image116.png)
 
-### 5.9 서비스팩 인스턴스 삭제
+### 5.9 Delete Servicepack Instance
 
-1. 서버 편집기의 애플리케이션과 서비스팩 탭을 클릭한다.  
-    서비스팩 목록에서 삭제할 서비스팩 인스턴스를 선택한 뒤, 마우스
-    우클릭후, “삭제” 메뉴를 클릭한다.  
+1.  Click “Application and Servicepack” tab from the service editor.  
+    Select a servicepack instance to delete from the servicepack list. Click “Delete” menu.  
      ![](./images/openpaas-eclipse/image114.png)
 
-2. “서비스팩 삭제” 대화창이 표시된다..  
-    “OK” 버튼을 클릭하면 서비스팩 인스턴스 삭제가 완료된다.  
-    “Cancel” 버튼을 클릭하면 서비스팩 인스턴스 삭제가 취소된다.  
+2. “Delete Servicepack” dialog box appears대화창이 표시된다..  
+    Click “OK” button to complete deleting servicepack instance.  
+    Click “Cancel” to cancel deleting the servicepack instance.  
      ![](./images/openpaas-eclipse/image117.png)
 
-# 6. 매니페스트를 통한 설정
+# 6. Setting through Manifest
 
-### 6.1 매니페스트 추가
+### 6.1 Add Manifest
 
-1. 프로젝트의 루트에 매니페스트 파일(manifest.yml)을 추가한다.    
+1. Add Manifest file (manifest.yml) to the route of the project.    
      ![](./images/openpaas-eclipse/image119.png)
-     \* manifest.yml 파일 예시 :    
+     \* manifest.yml file example:    
      ![](./images/openpaas-eclipse/image121.png)
   
-2. 애플리케이션을 배포한다.  
-    배포방법은 [***“애플리케이션 배포”***](#51-애플리케이션-배포) 과정을 참고한다.  
+2. Deploy application.  
+    Refer to [***“Application Deployment”***](#51-애플리케이션-배포) for the deployment procedures.  
 
-3. 애플리케이션 배포 위자드 실행시 설정값들이 매니페스트의 값과 동일한
-    것을 확인할 수 있다.  
+3. When executing the application deployment wizard, the manifest values can be found the same as the set values.  
      ![](./images/openpaas-eclipse/image122.png)
 
-4. 매니페스트 파일(manifest.yml)에 설정한 내용이 반영된 것을 확인할 수 있다.  
+4. The reflected settings of the Manifest File(manifest.yml) can be checked.  
      ![](./images/openpaas-eclipse/image121.png)  
      ![](./images/openpaas-eclipse/image131.png)
 
-### 6.2 매니페스트 저장
+### 6.2 Save Manifest
 
-배포한 애플리케이션의 배포 설정을 매니페스트 파일(manifest.yml)로 저장할
-수 있다.
+The deployment settings of the deployed application can be saves as manifest file(manifest.yml).
 
-1. 애플리케이션과 서비스팩 탭에서 애플리케이션의 상세 화면 조회를 한다.  
+1. Check the detais of the application from the Application And Servicepack Tab.  
      ![](./images/openpaas-eclipse/image125.png)
 
-2. 일반 섹션에서 매니페스트 항목의 우측 “저장” 버튼을 클릭한다    
+2. Click “Save” button from the right side of manifest in General section    
      ![](./images/openpaas-eclipse/image126.png)
 
-3. 프로젝트에 매니페스트 파일(manifest.yml)이 생성 되었음을 확인한다.  
-    이미 매니페스트 파일(manifest.yml)이 있다면 내용이 변경되었는지 확인한다.  
+3. Check the created Manifest file(manifest.yml) at the project.  
+    If the Manifest file(manifest.yml) already exists, check if it was modified.  
      ![](./images/openpaas-eclipse/image119.png)
 
-# 7. 플러그인 설정(REST API 로그 추적 설정)
+# 7. Plugin Setting(REST API Log Tracking Settings)
 
-1. 플러그인의 설정을 위해 이클립스의 메뉴에서 “Window” – “Preferences”
-    를 클릭한다.  
+1. Click “Window” – “Preferences” from the Eclipse menu to set plugin.  
      ![](./images/openpaas-eclipse/image129.png)
 
-2. “Preferences” 대화창에서 이클립스의 환경 설정을 할 수 있다  
-    “Preferences” 대화창의 왼쪽 목록에서 개방형 플랫폼를 찾아서
-    클릭하고  
-    아래의 “HTTP 로그 추적” 항목을 체크하면 “HTTP 로그 추적” 여부를 설정
-    할 수 있다.  
-    콘솔창에 “HTTP 로그”를 찍고 싶다면 “HTTP 로그 추적”을 체크하고,
-    그렇지 않다면 체크하지 않는다.  
-     “OK” 버튼을 클릭하여 설정을 완료한다.  
+2. Eclipse environment settings can be done at the “Preferences” dialog box.  
+    Click Open Platform from the right side of “Preferences” dialog box and check “HTTP Log Track” below to know the wheter “HTTP Log Tracking” is set or not.  
+    If you want to 찍다 "HTTP Log" in the console window, check "HTTP Log Track" do not check if not wanted.  
+    Click “OK” button to complete Setting.  
      ![](./images/openpaas-eclipse/image130.png)
 
 
-# 8. 예제 프로젝트 설명
+# 8. Example Project Description
 
-해당 예제는 표준프레임워크 3.1 통합예제를 기준으로 작성하였다.  
-서비스와 어플리케이션이 바인딩된 상태에서 서비스에 어떻게 접근하는지
-예제를 통해 설명한다.
+This example was made based on standard example of Standard Framwork 3.1.  
+The example illustrates how to access a service while the service and application are bound.
 
-### 8.1 의존성 추가
+### 8.1 Add Depenencies
 
-클라우드 플랫폼에서 서비스에 쉽게 접속할 수 있도록 해주는 Spring Cloud
-Connectors를 사용하기 위해 해당 의존성을 추가한다.
+Add dependency to use Spring Cloud Connectors, to access services on the cloud platform easily.
 ```xml
 <!-- Spring Cloud Connector Start -->
 <dependency>
@@ -683,10 +661,9 @@ Connectors를 사용하기 위해 해당 의존성을 추가한다.
 <!-- Spring Cloud Connector End -->
 ```
 
-### 8.2 cloud 네임스페이스 추가
+### 8.2 Add Cloud Namespace
 
-src/main/resources/egovframework/spring/context-datasource.xml 파일을
-열어 cloud 네임스페이스를 추가한다.
+Open src/main/resources/egovframework/spring/context-datasource.xml file and add Cloud Namespace.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -695,9 +672,9 @@ src/main/resources/egovframework/spring/context-datasource.xml 파일을
           http://www.springframework.org/schema/cloud http://www.springframework.org/schema/cloud/spring-cloud.xsd">
 ```
   
-### 8.3 dataSource 설정 변경
+### 8.3 Modify dataSource Settings
 
-기존의 dataSource 설정을 지우고 새로운 설정을 입력한다.
+Delete the previous dataSource settings and input new setting.
 
 ```xml
 <cloud:data-source id="dataSource" service-name="serviceInstanceName">
@@ -706,18 +683,17 @@ src/main/resources/egovframework/spring/context-datasource.xml 파일을
 </cloud:data-source>
 ```
 
-### 8.4 dataSource 초기화 설정
+### 8.4 Set dataSource Reset
 
-애플리케이션 구동시 미리 작성한 SQL 스크립트를 실행하여 DB를 자동으로
-초기화 하도록 설정한다.
+Run a pre-written SQL script when running the application to automatically initialize the DB.
 
-1. **스크립트 파일 이동**  
-   스크립트 파일에 접근하기 위해 script 폴더를 src/main/resources/egovframework로 이동시킨다.
+1. **Move Script File**  
+   Move script folder to src/main/resources/egovframework to acess the script file.
 
-2. **스크립트 파일 수정**  
-script\_mysql.sql 파일을 수정한다.  
-기존 sql은 실행이 되지 않으므로 일부 수정한다. db생성 구문을 없애고 Drop Table 구문에 IF EXISTS를 추가한다.
-```sql
+2. **Modify Script File**  
+Modify script\_mysql.sql file.  
+Make some modifications since the previous SQL cannot be executed. Remove the DB creation syntax and add IF EXISTS to the Drop Table syntax.
+```SQL
 --CREATE DATABASE EASYCOMPANY;
 
 DROP TABLE IF EXISTS `IDS`;
@@ -733,8 +709,8 @@ DROP TABLE IF EXISTS `RTETNMBER`;
 DROP TABLE IF EXISTS `RTETCCODE`;
 ```
 
-3. **jdbc 네임스페이스 추가**  
-src/main/resources/egovframework/spring/context-datasource.xml 파일을 열어 jdbc 네임스페이스를 추가한다.
+3. **Add jdbc Namespace**  
+Open src/main/resources/egovframework/spring/context-datasource.xml file and add jdbc Namespace.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -746,7 +722,7 @@ src/main/resources/egovframework/spring/context-datasource.xml 파일을 열어 
           http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd">
 ```
 
-4. **데이터베이스 초기화 스크립트 등록**
+4. **Register Database Reset Script**
 ```xml
 <jdbc:initialize-database data-source="dataSource">
 <jdbc:script location="classpath:egovframework/script/script_mysql.sql" />
@@ -755,17 +731,13 @@ src/main/resources/egovframework/spring/context-datasource.xml 파일을 열어 
 ```
  
 
-### 8.5 배포시 주의사항
+### 8.5 Precautions for deployment
 
-애플리케이션을 배포한다. 배포 방법은 [***애플리케이션 배포***](#51-애플리케이션-배포)를
-참고한다.
+Deploy application. Refer to [***Application Deployment***](#51-애플리케이션-배포) for the deployment procedures.
 
-1.  예제 프로젝트는 메모리를 많이 차지하기 때문에 배포시 메모리 설정은
-    1024mb 이상으로 설정한다.
-2.  본 예제는 MySql 기반으로 작성하였다. MySql 서비스 인스턴스를
-    생성하여 바인딩을 한다.
-3.  cloud:data-source 의 service-name 설정과 바인딩시킬 서비스 인스턴스
-    이름을 일치시켜야 한다.
+1.  Set memory as 1024mb and above since the example project takes a lot of memory.
+2.  This example was made based on MySql. Create a MySql service instance and bind.
+3.  The name of the service instance to bind and service-name setting of the cloud:data-source SHOULD be the same.
 
 
 ### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Eclipse Tools for ClF 사용

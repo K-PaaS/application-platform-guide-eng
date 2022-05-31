@@ -140,7 +140,7 @@ Data management for sample applications uses either MySQL, CubridDB, or MongoDB,
 ><div>>npm install express-generator
 ![2-3-1-0]
 
-- Create Express Application. '-e' option uses view enjine as ejs and default view enjin is jade.
+- Create Express Application. '-e' option uses view engine as ejs and default view engine is jade.
 
 ><div>>.\node_modules\.bin\express -e
 ![2-3-1-1]
@@ -197,7 +197,7 @@ Data management for sample applications uses either MySQL, CubridDB, or MongoDB,
   </tr>
   <tr>
     <td>app.js</td>
-    <td>Settin about Express. Routing information for http requests is also defined here.</td>
+    <td>Setting about Express. Routing information for http requests is also defined here.</td>
   </tr>
   <tr>
     <td>bin/www</td>
@@ -209,26 +209,26 @@ Data management for sample applications uses either MySQL, CubridDB, or MongoDB,
   </tr>
   <tr>
     <td>public/</td>
-    <td>외부에서 접근가능한 디렉토리이다. css, js등 웹서비스에 필요한 정적파일들이 있다.<br>
-    외부에서 접근가능한 디렉토리에 대한 설정은 app.js파일에서 설정한다.</td>
+    <td>An externally accessible directory. There are static files needed for web services such as css and js.<br>
+    Settings for externally accessible directories are set in the app.js file..</td>
   </tr>
   <tr>
     <td>views/</td>
-    <td>ejs파일들이 위치하는 곳이다.<br>
-    ejs파일은 html을 좀더 쉽게 작성할 수 있게 도와주는 template enjin 이며 express의 view enjin을 ejs로 설정했을시 사용하는 파일이다.<br>
-    render() 메소드를 이용하여 ejs파일을 html로 변환하여 보여준다.</td>
+    <td>Where ejs files are located.<br>
+    The ejs file is a template engine that helps you write HTML more easily and is used when you set the view engine of express to ejs.<br>
+    Use the render() method to convert the ejs file to HTML and show.</td>
   </tr>
   <tr>
     <td>test/</td>
-    <td>mocha test를 작성한 디렉토리이다.</td>
+    <td>a directory that wrote mocha test.</td>
   </tr>
   <tr>
     <td>(node_modules)</td>
-    <td>위의 그림에서는 보이지 않지만 npm install로 모듈설치시 이 디렉토리아래에 설치가 된다. 여기에 설치되어있는 npm모듈들을 애플리케이션에서 require로 불러와서 사용할 수 있다.</td>
+    <td>Although it is not visible in the picture above, it is installed under this directory when the module is installed with npm install. The npm modules installed here can be retrieved from the application to require and be used.</td>
   </tr>
   <tr>
     <td>Makefile</td>
-    <td>linux에서 좀더 쉽게 mocha 테스트를 실행하기위한 파일이다.</td>
+    <td>a file to run mocha test easily in linux.</td>
   </tr>
   <tr>
     <td>manifest.yml</td>

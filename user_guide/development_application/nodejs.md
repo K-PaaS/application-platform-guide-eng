@@ -232,30 +232,30 @@ Data management for sample applications uses either MySQL, CubridDB, or MongoDB,
   </tr>
   <tr>
     <td>manifest.yml</td>
-    <td>개방형 플랫폼에 배포시 애플리케이션에 대한 설정이다. 애플리케이션의 이름, 배보될 경로, 인스턴스 수 등을 정의할 수 있다.</td>
+    <td>An application setting when deploying at the Open Platform. Application Name, Path to be deployed, and number of instance can be defined.</td>
   </tr>
   <tr>
     <td>.cfignore</td>
-    <td>개방형 플랫폼에 배포시 포함되지않을 디렉토리, 혹은 파일을 기술한다.</td>
+    <td>Describes directories or files that will not be included in distribution on an open platform.</td>
   </tr>
   <tr>
     <td>.gitignore</td>
-    <td>git에 배포시 포함되지않을 디렉토리, 혹은 파일을 기술한다.</td>
+    <td>Describes directories or files that will not be included in Git deployment.</td>
   </tr>
   <tr>
     <td>README.md</td>
-    <td>Node.js 샘플 애플리케이션에 대한 간략한 설명이 기술되어 있다.</td>
+    <td>A brief description of the Node.js sample application.</td>
   </tr>
 </table>
 
 
-### <div id='10'> 3.3. 애플리케이션 환경설정
+### <div id='10'> 3.3. Application Environment Setting
 
-이 샘플은 Node.js version 0.12.4, npm version 2.10.1.을 기준으로 각 모듈의 버전을 명시적으로 선택하여 설치하였다.
-package.json 수정(설정)시 설치된 Node.js의 버전에 맞는 모듈을 설치하는 것을 권장한다.
+This sample was installed by explicitly selecting the version of each module based on Node.js version 0.12.4 and nm version 2.10.1.
+When modifying package.json, it is recommended to install the module that matches the version of Node.js installed.
 
 1)  ./package.json
-- 애플리케이션에서 필요한 모듈을 정의한다.
+- Define modules needed in application.
 
 ```json
 {
@@ -296,19 +296,19 @@ package.json 수정(설정)시 설치된 Node.js의 버전에 맞는 모듈을 �
 <table>
   <tr>
     <td>name</td>
-    <td>애플리케이션 이름</td>
+    <td>Application Name</td>
   </tr>
   <tr>
     <td>version</td>
-    <td>애플리케이션 버젼</td>
+    <td>Application Version</td>
   </tr>
   <tr>
     <td>private</td>
-    <td>npm에 게시할것인지 여부를 설정한다. (true: 게시하지않음)</td>
+    <td>Set whether or not to post on the npm. (true: do not post)</td>
   </tr>
   <tr>
     <td>scripts.start</td>
-    <td>npm start 명령어로 실행될 명령어(애플리케이션 구동 명령어)</td>
+    <td>Commands to run with the npm start command(Command to run Application)</td>
   </tr>
 </table>
 
@@ -317,7 +317,7 @@ package.json 수정(설정)시 설치된 Node.js의 버전에 맞는 모듈을 �
 <table>
   <tr>
     <td>body-parser</td>
-    <td rowspan=7>Express프레임워크에서 기본적으로 사용하는 모듈들.</td>
+    <td rowspan=7> Modules used in Express Framework.</td>
   </tr>
   <tr>
     <td>cookie-parser</td>
@@ -339,23 +339,23 @@ package.json 수정(설정)시 설치된 Node.js의 버전에 맞는 모듈을 �
   </tr>
   <tr>
     <td>generic-pool</td>
-    <td>connection pool생성 및 관리 모듈</td>
+    <td>Module to create and manage connection pool</td>
   </tr>
   <tr>
     <td>mysql</td>
-    <td>mysql 모듈</td>
+    <td>mysql Module</td>
   </tr>
   <tr>
     <td>node-cubrid</td>
-    <td>cubrid 모듈</td>
+    <td>cubrid Module</td>
   </tr>
   <tr>
     <td>mongodb</td>
-    <td>mongodb 모듈</td>
+    <td>mongodb Module</td>
   </tr>
   <tr>
     <td>redis</td>
-    <td>redis 모듈</td>
+    <td>redis Module</td>
   </tr>
   <tr>
     <td>uuid</td>

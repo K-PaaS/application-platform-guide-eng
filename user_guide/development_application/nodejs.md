@@ -1,48 +1,48 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Node.js 개발
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Node.js Development
 
 ## Table of Contents
-1. [문서 개요](#1)
-     * [1.1. 목적](#2)
-     * [1.2. 범위](#3)
-     * [1.3. 참고 자료](#4)
-2. [개발환경 구성](#5)
-     * [2.1. Node.js 및 npm 설치](#6)
-3. [개발](#7)
-     * [3.1. Node.js Express애플리케이션 생성](#8)
-     * [3.2. Node.js 샘플 애플리케이션](#9)
-     * [3.3. 애플리케이션 환경설정](#10)
-     * [3.4. VCAP_SERVICES 환경설정 정보](#11)
-     * [3.5. Mysql 연동](#12)
-     * [3.6. Cubrid 연동](#13)
-     * [3.7. MongoDB 연동](#14)
-     * [3.8. Redis 연동](#15)
-     * [3.9. RabbitMQ연동](#16)
-     * [3.10. GlusterFS 연동](#17)
-4. [배포](#18)
-     * [4.1. 개방형 플랫폼 로그인](#19)
-     * [4.2. 서비스 생성](#20)
-     * [4.3. 애플리케이션 배포](#21)
-     * [4.4. 애플리케이션, 서비스 연결](#22)
-     * [4.5. 애플리케이션 실행](#23)
-5. [테스트](#24)
+1. [Document Outline](#1)
+     * [1.1. Purpose](#2)
+     * [1.2. Range](#3)
+     * [1.3. References](#4)
+2. [Configuration of Development Environment](#5)
+     * [2.1. Installation of Node.js and npm](#6)
+3. [Development](#7)
+     * [3.1. Create Node.js Express Application](#8)
+     * [3.2. Node.js Sample Application](#9)
+     * [3.3. Application Environment Setting](#10)
+     * [3.4. VCAP_SERVICES Environment Setting Information](#11)
+     * [3.5. Connect Mysql](#12)
+     * [3.6. Connect Cubrid](#13)
+     * [3.7. Connect MongoDB](#14)
+     * [3.8. Connect Redis](#15)
+     * [3.9. Connect RabbitMQ](#16)
+     * [3.10. Connect GlusterFS](#17)
+4. [Deployment](#18)
+     * [4.1. Open Platform Login](#19)
+     * [4.2. Create Service](#20)
+     * [4.3. Application Deployment](#21)
+     * [4.4. Connect Application and Service](#22)
+     * [4.5. Execute Acpplication](#23)
+5. [Test](#24)
 
 
 
 
-# <div id='1'> 1. 문서 개요
+# <div id='1'> 1. Document Outline
 
 
-### <div id='2'> 1.1. 목적
+### <div id='2'> 1.1. Purpose
 
-본 문서(node.js 애플리케이션 개발 가이드)는 개방형 플랫폼 프로젝트의 서비스팩(Mysql, Cubrid, MongoDB, RabbitMQ, Radis, GlusterFS)을 Node.js 애플리케이션과 연동하여서비스를 사용하고 애플리케이션을 배포하는 방법에 대해 제시하는 문서이다.
-
-
-### <div id='3'> 1.2. 범위
-
-본 문서의 범위는 개방형 플랫폼 프로젝트의 Node.js 애플리케이션 개발과 서비스팩 연동에 대한 내용으로 한정되어 있다.
+This document, node.js Application Development Guide, is a use guide on how to deploy the application and use the service by connecting Node.js application with the servicepack (Mysql, Cubrid, MongoDB, RabbitMQ, Radis, GlusterFS) of Open Platform Project.
 
 
-### <div id='4'> 1.3. 참고자료
+### <div id='3'> 1.2. Range
+
+This document covers on the Node.js Application Development and servicepack connection of Open Platform Project.
+
+
+### <div id='4'> 1.3. References
 **<https://docs.cloudfoundry.org/devguide/>**  
 **<https://docs.cloudfoundry.org/buildpacks/node/node-tips.html>**  
 **<https://nodejs.org/>**  
@@ -56,7 +56,7 @@
 **<https://mochajs.org/>**  
 
 
-# <div id='5'> 2. 개발환경 구성
+# <div id='5'> 2. Configuration of Development Environment
 
 Open PaaS에 등록된 다양한 서비스팩을 Node.js언어로 작성된 애플리케이션과 바인딩하고해당 애플리케이션에 바인딩된 환경정보(VCAP_SERVICES)에서 각 서비스별 접속정보를 획득하여 애플리케이션에 적용하여 이용 할 수 있도록 Windows 환경에서 Node.js 애플리케이션을 작성 할 수 있도록한다.
 

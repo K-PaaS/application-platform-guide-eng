@@ -58,9 +58,9 @@ This document covers on the Node.js Application Development and servicepack conn
 
 # <div id='5'> 2. Configuration of Development Environment
 
-Open PaaS에 등록된 다양한 서비스팩을 Node.js언어로 작성된 애플리케이션과 바인딩하고해당 애플리케이션에 바인딩된 환경정보(VCAP_SERVICES)에서 각 서비스별 접속정보를 획득하여 애플리케이션에 적용하여 이용 할 수 있도록 Windows 환경에서 Node.js 애플리케이션을 작성 할 수 있도록한다.
+Bind the variouse servicepacks registered in Open PaaS with the application made in Node.js language. The Node.js application can be created in a Windows environment so that access information for each service can be obtained from environmental information (VCAP_SERVICES) bound to the application and applied to the application.
 
-Node.js 애플리케이션 개발을 위해 다음과 같은 환경으로 개발환경을 구성 한다.
+Configure the development environment to develop Node.js Application as shown below.
 
 - BuildPack: v1.3.4
 - OS : Windows 7 64bit
@@ -68,144 +68,144 @@ Node.js 애플리케이션 개발을 위해 다음과 같은 환경으로 개발
 - npm : v2.10.1
 
 
-### <div id='6'> 2.1. Node.js 및 npm 설치
+### <div id='6'> 2.1. Installation of Node.js and npm
 
-##### 1. Node.js 다운로드
+##### 1. Node.js Download
 
-- 아래의 주소로 접속한 후 node-v0.12.4-x64.msi를 다운받는다.
+- Access to the address below and download node-v0.12.4-x64.msi.
 
 >https://nodejs.org/dist/v0.12.4/x64/node-v0.12.4-x64.msi
 >![2-2-1-0]
 
-##### 2. Node.js 설치
+##### 2. Node.js Installation
 
-- 다운받은 폴더에서 node-v0.12.4-x64.msi를 더블클릭하여 설치를 시작한다.
+- Double click node-v0.12.4-x64.msi from the downloaded folder  and start installation.
 
 ![2-2-1-1]
 
-- "실행"버튼을 클릭하여 계속 진행한다.
+- Click "Run" button to continue.
 
 ![2-2-1-2]
 
-- "Next"버튼을 클릭하여 계속 진행한다.
+- Click "Next" button to continue.
 
 ![2-2-1-3]
 
-- "I accept the terms in the License Agreement"를 체크하여 라이센스에 동의한 후 "Next"버튼을 클릭하여 계속 진행한다.
+- Agree to the license by checking the "I accept the terms in the License Agreement" and click "Next" to continue.
 
 ![2-2-1-4]
 
-- 설치경로를 입력 혹은 선택한 후 "Next"버튼을 클릭하여 계속 진행한다.
-여기서는 C:\Program Files\nodejs\ 를 설치경로로 설정하였다.
+- Enter or select the installation path and click "Next" button to continue the process.
+For this example, the installation path was set to C:\Program Files\nodejs\.
 
 ![2-2-1-5]
 
-- 설치할 항목을 선택한 후 "Next"버튼을 클릭하여 계속 진행한다.
-여기서는 선택하여 Node.js, npm, doc을 설치하고 환경변수 PATH까지 추가하였다.
+- Select the item to install and click "Next" to continue.
+For this example, Node.js, npm, doc was selected and installed. The environment variable PATH was added as well.
 
 ![2-2-1-6]
 
-- "Install"버튼을 클릭하여 설치한다.
+- Click "Install" button and install.
 
 ![2-2-1-7]
 
-- "Finish"버튼을 클릭하여 설치를 완료한다.
+- Click "Finish" button to complete installation.
 
 ![2-2-1-8]
 
-- '윈도우키+R' 또는 '시작->실행'아이콘을 클릭하여 실행창을 띄운 후 'cmd'를 입력하고 "확인"버튼을 눌러 커맨드창을 연다.
+- 'Window Key+R' or 'Start->Run' icon to open run window and enter 'cmd', click "OK" button to open the command window.
 
 ![2-2-1-9]
 
-- 커맨드창에 아래의 명령어를 입력하여 node.js와 npm의 버젼과 제대로 설치되었는지 여부를 확인한다.
+- Enter the command below at the cmd tab to verify if the node.js and npm version was installed properly.
 
 ><div>>node -v
 ><div>>npm -v
 ![2-2-1-10]
 
-개발도구
-Node.js는 javascript기반의 언어로 Notepad++, Sublim Text, EditPlus등 문서편집기를 개발도구로 사용할 수 있다. 또한 Eclipse의 플러그인 Nodeclipse를 설치하여 사용할 수도있다.
+Development Tool
+Node.js is a  javascript based language which can use document editor such as Notepad++, Sublim Text, and EditPlus as the development tool. Also Plugin Nodeclipse of Eclipse can used.
 
 
-# <div id='7'> 3. 개발
+# <div id='7'> 3. Development
 
-샘플 애플리케이션에의 데이터 관리는 MySQL, CubridDB, MongoDB 중에 하나를 이용하기 때문에 API 요청시 요청 본문에 DBType 값을 가지고 결정한다.
+Data management for sample applications uses either MySQL, CubridDB, or MongoDB, so it is determined by the DBType value in the body of the request upon API request.
 
 
-### <div id='8'> 3.1. Node.js Express애플리케이션 생성
-##### 1. 'express-generator'를 이용하여 Express 애플리케이션을 생성
+### <div id='8'> 3.1. Create Node.js Express Application
+##### 1. Use 'express-generator' to create Express Application
 
-- 커맨드 창에서 개발을 진행할 경로로 이동후 아래의 명령어를 입력하여 'express-generator' npm을 설치한다.
+- In the command window, go to the path for development and enter the command below to install 'expression-generator' npm.
 
 ><div>>npm install express-generator
 ![2-3-1-0]
 
-- Express 애플리케이션을 생성한다. '-e'옵션은 view enjine을 ejs를 사용한다는 것이고 default view enjin은 jade이다.
+- Create Express Application. '-e' option uses view enjine as ejs and default view enjin is jade.
 
 ><div>>.\node_modules\.bin\express -e
 ![2-3-1-1]
 
-##### 2. npm 설치
+##### 2. npm Installation
 
-- Express 애플리케이션에 기본적으로 포함되어있는 npm을 설치한다. 설치할 npm에 대한 정의는 package.json에 정의되어있다.
+- Install npm which is included by default in the Express Application. The definition of npm to install is defined at package.json.
 
 ><div>>npm install
 ![2-3-1-2]
 
-##### 3. Node.js Express 어플리캐이션 실행
+##### 3. Run Node.js Express Application
 
-- 아래의 두 명령어중 하나를 이용해 애플리케이션 실행한다.
+- Run the application by using any of the command below.
 
 ><div>>npm start
 ><div>>node bin/www
 ![2-3-1-3]
 
-- 브라우저로 아래의 주소로 접속하여 애플리케이션이 제대로 동작하는지 확인한다.
+- Access to the link address below with browser and verify if the application works properly.
 
 ><div>http://localhost:3000/
 ![2-3-1-4]
 
 
-### <div id='9'> 3.2. Node.js 샘플 애플리케이션
+### <div id='9'> 3.2. Node.js Sample Application
 
-##### 1. Node.js 샘플 애플리케이션 다운로드
+##### 1. Download Node.js Sample Application
 
-- 완성된 샘플 애플리케이션은 아래 링크의 /OpenPaaSSample/node-sample-app 에서 받을 수 있다.
+- The completed sample application can be downloaded from the /OpenPaaSSample/node-sample-app of the link below.
 
 > https://nextcloud.paas-ta.org/index.php/s/x8Tg37WDFiL5ZDi/download
 
-##### 2. Node.js 샘플 애플리케이션 경로로 이동
+##### 2. Go to the Node.js Sample Application Path
 
-- 다운받은 경로아래에 Node.js 샘플 애플리케이션 경로로 이동한다.
+- Go to Node.js sample application path below downloaded path.
 
 ><div>>cd node-sample-app
 ![2-3-2-0]
 
-##### 3. Node.js 샘플 애플리케이션 디렉토리구조
+##### 3. Node.js Sample Application Directory Structure
 
 ![2-3-2-1]
 
 <table>
   <tr>
-    <td>파일/폴더</td>
-    <td>목적</td>
+    <td>File/Folder</td>
+    <td>Purpose</td>
   </tr>
   <tr>
     <td>package.json</td>
-    <td>node.js 어플리케이션에 필요한 npm의 의존성 정보를 기술하는데 사용 한다.<br>
-    npm install 명령을 실행시 install 뒤에 아무런 정보를 입력하지 않으면 이 파일의 정보를 이용하여 npm을 설치한다.</td>
+    <td>Used to describe dependency information of npm required for node.js application.<br>
+    If you do not enter any information after installing the npm install command, use the information in this file to install npm.</td>
   </tr>
   <tr>
     <td>app.js</td>
-    <td>Express에 대한 설정을 한다. http요청에 대한 라우팅 정보 또한 이곳에서 정의한다.</td>
+    <td>Settin about Express. Routing information for http requests is also defined here.</td>
   </tr>
   <tr>
     <td>bin/www</td>
-    <td>실질적으로 node.js 샘플 애플리케이션의 시작점이며, http서버를 설정한다. 서버가 구동될 때 사용할 Port를 여기서 설정할 수 있다.</td>
+    <td>It is essentially the starting point of node.js sample application, sets up an http server. The Port used when running the server can be set here.</td>
   </tr>
   <tr>
     <td>routes/</td>
-    <td>app.js에서 라우팅 후 실제 수행할 내용이 작성되어있다. 서비스 연결에 대한 내용도 이곳에 있다.</td>
+    <td>The actual contents to be performed after routing in app.js are written. The contents of the service connection are also here.</td>
   </tr>
   <tr>
     <td>public/</td>

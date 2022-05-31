@@ -359,31 +359,31 @@ When modifying package.json, it is recommended to install the module that matche
   </tr>
   <tr>
     <td>uuid</td>
-    <td>고유식별자를 생성해주는 모듈</td>
+    <td>Modules that creates URN</td>
   </tr>
   <tr>
     <td>amqp</td>
-    <td>rabbitMQ 사용 모듈</td>
+    <td>rabbitMQ Enabled Module</td>
   </tr>
   <tr>
     <td>pkgcloud</td>
-    <td>swift, glusterfs 사용 모듈</td>
+    <td>swift, glusterfs Enabled Module</td>
   </tr>
   <tr>
     <td>formidable</td>
-    <td>form data를 파싱해주는 모듈</td>
+    <td>Module that parses form data</td>
   </tr>
   <tr>
     <td>mocha</td>
-    <td>node.js test 모듈</td>
+    <td>node.js test Module</td>
   </tr>
   <tr>
     <td>should</td>
-    <td>mocha test에 사용되는 모듈</td>
+    <td>Module used in mocha test</td>
   </tr>
   <tr>
     <td>supertes</td>
-    <td>rest test에 사용되는 모듈</td>
+    <td>Module used in rest test</td>
   </tr>
 </table>
 
@@ -392,18 +392,18 @@ When modifying package.json, it is recommended to install the module that matche
 <table>
   <tr>
     <td>node</td>
-    <td>애플리케이션에서 사용할 node.js 모듈 버젼.<br>
-    개방형 플랫폼에 배포하여 사용시 Node Buildpack에서 지원하는 Node.js 버젼에 따라 사용할 수 있는 버젼에 제약이 있다.<br>
+    <td>node.js module version to use in application.<br>
+    When deployed on an open platform and used, there are restrictions on the version available depending on the Node.js version supported by Node Buildpack.<br>
     - https://github.com/cloudfoundry/nodejs-buildpack/blob/master/CHANGELOG</td>
   </tr>
   <tr>
     <td>npm</td>
-    <td>애플리케이션에서 사용할 npm 버젼<br>
+    <td>npm verion to use in application<br>
     Node.js와 마찬가지로 Node Buildpack에서 지원하는 버젼에 따라 사용할 수 있는 버젼에 제약이 있다.</td>
   </tr>
 </table>
 
-2) 모듈 설치
+2) Module Installation
 - pakage.json에 정의된 모듈을 설치한다. 모듈이름을 지정하지 않으면 package.json의 depencencies의 모든 모듈을 설치한다.
 ```
 >npm install

@@ -34,12 +34,12 @@
 
 ### <div id='2'> 1.1. Purpose
 
-This document, node.js Application Development Guide, is a use guide on how to deploy the application and use the service by connecting Node.js application with the servicepack (Mysql, Cubrid, MongoDB, RabbitMQ, Radis, GlusterFS) of Open Platform Project.
+This document, node.js Application Development Guide, is a use guide on how to deploy the application and use the service by connecting Node.js application with the servicepack (Mysql, Cubrid, MongoDB, RabbitMQ, Redis, GlusterFS) of the Open Platform Project.
 
 
 ### <div id='3'> 1.2. Range
 
-This document covers on the Node.js Application Development and servicepack connection of Open Platform Project.
+This document covers the Node.js Application Development and servicepack connection of the Open Platform Project.
 
 
 ### <div id='4'> 1.3. References
@@ -58,7 +58,7 @@ This document covers on the Node.js Application Development and servicepack conn
 
 # <div id='5'> 2. Configuration of Development Environment
 
-Bind the variouse servicepacks registered in Open PaaS with the application made in Node.js language. The Node.js application can be created in a Windows environment so that access information for each service can be obtained from environmental information (VCAP_SERVICES) bound to the application and applied to the application.
+Bind the various servicepacks registered in Open PaaS with the application made in Node.js language. The Node.js application can be created in a Windows environment so that access information for each service can be obtained from environmental information (VCAP_SERVICES) bound to the application and applied to the application.
 
 Configure the development environment to develop Node.js Application as shown below.
 
@@ -72,14 +72,14 @@ Configure the development environment to develop Node.js Application as shown be
 
 ##### 1. Node.js Download
 
-- Access to the address below and download node-v0.12.4-x64.msi.
+- Access the address below and download node-v0.12.4-x64.msi.
 
 >https://nodejs.org/dist/v0.12.4/x64/node-v0.12.4-x64.msi
 >![2-2-1-0]
 
 ##### 2. Node.js Installation
 
-- Double click node-v0.12.4-x64.msi from the downloaded folder  and start installation.
+- Double click node-v0.12.4-x64.msi from the downloaded folder and start the installation.
 
 ![2-2-1-1]
 
@@ -101,7 +101,7 @@ For this example, the installation path was set to C:\Program Files\nodejs\.
 ![2-2-1-5]
 
 - Select the item to install and click "Next" to continue.
-For this example, Node.js, npm, doc was selected and installed. The environment variable PATH was added as well.
+For this example, Node.js, npm, and doc were selected and installed. The environment variable PATH was added as well.
 
 ![2-2-1-6]
 
@@ -109,11 +109,11 @@ For this example, Node.js, npm, doc was selected and installed. The environment 
 
 ![2-2-1-7]
 
-- Click "Finish" button to complete installation.
+- Click "Finish" button to complete the installation.
 
 ![2-2-1-8]
 
-- 'Window Key+R' or 'Start->Run' icon to open run window and enter 'cmd', click "OK" button to open the command window.
+- 'Window Key+R' or 'Start->Run' icon to open the run window and enter 'cmd', click "OK" button to open the command window.
 
 ![2-2-1-9]
 
@@ -124,7 +124,7 @@ For this example, Node.js, npm, doc was selected and installed. The environment 
 ![2-2-1-10]
 
 Development Tool
-Node.js is a  javascript based language which can use document editor such as Notepad++, Sublim Text, and EditPlus as the development tool. Also Plugin Nodeclipse of Eclipse can used.
+Node.js is a javascript-based language that can use document editors such as Notepad++, Sublim Text, and EditPlus as the development tool. Also, Plugin Nodeclipse of Eclipse can be used.
 
 
 # <div id='7'> 3. Development
@@ -154,13 +154,13 @@ Data management for sample applications uses either MySQL, CubridDB, or MongoDB,
 
 ##### 3. Run Node.js Express Application
 
-- Run the application by using any of the command below.
+- Run the application by using any of the commands below.
 
 ><div>>npm start
 ><div>>node bin/www
 ![2-3-1-3]
 
-- Access to the link address below with browser and verify if the application works properly.
+- Access the link address below with browser and verify if the application works properly.
 
 ><div>http://localhost:3000/
 ![2-3-1-4]
@@ -176,7 +176,7 @@ Data management for sample applications uses either MySQL, CubridDB, or MongoDB,
 
 ##### 2. Go to the Node.js Sample Application Path
 
-- Go to Node.js sample application path below downloaded path.
+- Go to the Node.js sample application path below the downloaded path.
 
 ><div>>cd node-sample-app
 ![2-3-2-0]
@@ -255,7 +255,7 @@ This sample was installed by explicitly selecting the version of each module bas
 When modifying package.json, it is recommended to install the module that matches the version of Node.js installed.
 
 1)  ./package.json
-- Define modules needed in application.
+- Define modules needed in an application.
 
 ```json
 {
@@ -404,13 +404,13 @@ When modifying package.json, it is recommended to install the module that matche
 </table>
 
 2) Module Installation
-- Install the module defined in package.json. If you did not specify the module name, install all modules in package.json's depencencies.
+- Install the module defined in package.json. If you did not specify the module name, install all modules in package.json's dependencies.
 ```
 >npm install
 ```
 
 3) ./bin/www
-- Set the PORT used by the HTTP server to use the PORT provided by the open platform. An open platform uses this value to detect if an application is working properly. Applications do not function properly with PORT other than this value.
+- Set the PORT used by the HTTP server to use the PORT provided by the open platform. An open platform uses this value to detect if an application is working properly. Applications do not function properly with a PORT other than this value.
 
 ```
 #!/usr/bin/env node
@@ -426,7 +426,7 @@ var http = require('http');
 /**
  * Get port from environment and store in Express.
  * Get the PORT environment variable and put it in the variable.
- * 'process.env.PORT'is a environment variable used in Cloud.
+ * 'process.env.PORT' is an environment variable used in Cloud.
  */
 
 var port = normalizePort(process.env.PORT || '3000');
@@ -527,7 +527,7 @@ app.delete('/orgs/:org_id/mysql', orgs_mysql.destroy);
 
 
 ### <div id='11'> 3.4. VCAP_SERVICES Environment Information
-To obtain access information for each service to which an application distributed on an open platform is bound, information can be obtained by reading VCAP_SERVICES environment information registered for each application.
+To obtain access information for each service to which an application distributed on an open platform is bound, information can be obtained by reading the VCAP_SERVICES environment information registered for each application.
 
 1)  Application environment information of Open Platform
 - environment information is registered to each application in JSON form when the service is bound.
@@ -572,7 +572,7 @@ process.env.VCAP_SERVICES
 ```javascript
 /**
  * Connect generic-pool
- * Implement mysql Pool module
+ * Implement MySQL Pool module
  */
 
 var generic_pool  = require("generic-pool");
@@ -973,7 +973,7 @@ Create the application to use at the service through Open Platform. It may be ge
 
 Deploy the application at the Open Platform. The deployed application can be used through binding with the created service.
 
-- When cf push is commanded, the deployment is proceeded by refering to the manifest.yml of the current directory.
+- When cf push is commanded, the deployment is proceeded by referring to the manifest.yml of the current directory.
 
 ##### 1. Create manifest.yml
 
@@ -988,9 +988,9 @@ applications:
 ```
 
 ##### 2. Create Mysql and Cubrid Table
-- A table must be created at the DB to function as managing organization of the Sample App.
+- A table must be created at the DB to function as the managing organization of the Sample App.
 - For more information on how to add tables to Mysql and Cubrid, refer to 'Client Tool Connection' in the OpenPaaS Mysql, Cubrid Service Pack Installation Guide.
-- Execute the table creation sql below using the Client tool. (Both Mysql and Cubrid can be created with the same sql.)
+- Execute the table creation SQL below using the Client tool. (Both Mysql and Cubrid can be created with the same SQL.)
 
 ```
 DROP TABLE IF EXISTS ORG_TBL;
@@ -1040,7 +1040,7 @@ ON DELETE CASCADE;
 
 ### <div id='22'> 4.4. Connect Application and Service
 
-Bind: A process where application and service gets connected. This process generates access information to access the service.
+Bind: A process where application and service get connected. This process generates access information to access the service.
 
 - Connect Application and Service
 
@@ -1069,7 +1069,7 @@ The application is executed with the access information environment variable gen
 
 # <div id='24'> 5. Test
 
-The sample application is configured as REST service. Mocha module was used for the REST Test. All the modules of package.json including mocha module should be installed to proceed with the test. (npm install)
+The sample application is configured as a REST service. Mocha module was used for the REST Test. All the modules of package.json including the mocha module should be installed to proceed with the test. (npm install)
 
 ##### 1. Makefile
 - It is written to solve the inconvenience of accessing and executing the bin file every time. Available on Linux operating systems.
@@ -1083,13 +1083,13 @@ test:
 
 ##### 2. Execute Test
 
-- Execute the test under test directory.
+- Execute the test under the test directory.
 
 2.1.  Window
 
 ><div>> .\node_modules\.bin\mocha -u tdd test
 
-2.2.  linux
+2.2.  Linux
 
 ><div>$ make test
 ![2-5-0-0]

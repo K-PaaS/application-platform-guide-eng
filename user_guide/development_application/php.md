@@ -133,32 +133,31 @@ BOSH creates and manages VMs that create stemcells on AWS. To create a stemcell,
  
 ### <div id='2.2.4'> 2.2.4. Composer Installation
 
-  Composer는 개발시 필요한 라이브러리를 관리하는 툴입니다. 홈페이지는 다음과 같습니다. https://getcomposer.org/
+  Composer is a tool that manages library needed in development. The mainpage is as follows. https://getcomposer.org/
   
-  1.	Composer를 다운로드 받아 설치하고 Path에 설정하는 방법이 있지만 여기서는 Manual로 설치를 하겠습니다. Composer.phar 파일을 개방형 플랫폼에서 그대로 사용하고 있어 Manual 설치로 composer.phar파일을 개발 위치에 설치하였습니다. (소스를 Git에서 받았으면 따로 설치할 필요는 없습니다.)
+  1.	There is a way to download and install Composer and set it to Path. But we will be using Maunal. The composer.phar file is still used on the Open Platform, so composer.phar file was installed in the development location with manual installation. (If the source was downloaded from Git, there is no need for installation anymore.)
   
-  2.	매뉴얼 설치는 간단합니다. 아래와 같이 소스의 루트 디렉토리에서 입력을 하면됩니다. 물론 PHP 명령이 실행이 될 수 있게 2.2.3의 환경변수 설정이 되어 있어야만 합니다.
-            php r "readfile('https://getcomposer.org/installer');" | php
-  	
-  3.	필요한 Package를 composer.json에 구성하고 install하면 PHP에서 사용할 수 있는 Package가 vendor 디렉토리 아래에 설치가 됩니다. 
+  2.	Manual Installation is simple. Just enter the source at the route directory like the example below. Settings from 2.2.3 Environment Variable should be done to run PHP command.            php r "readfile('https://getcomposer.org/installer');" | php
+	      
+  3.	Configure the necessary Package in composer.json. When installed, the packages that can be used at PHP will be installed below vendor directory. 
   
-  * 주의사항 *
-  개방형 플랫폼에서 사용하기 위해서는 XAMP와는 환경이 틀리기 때문에 PHP 빌드팩의 Release된 Extension을 확인하고 Dependency를 확인해야 합니다. XAMP 환경에서는 동작을 하지만 개방형 플랫폼에서는 동작을 안할 수 있으니 주의해야 합니다.
-  PHP 빌드팩Extensti :https://github.com/cloudfoundry/php-buildpack/releases
+  * Cautions *
+  The released extension of PHP buildpack must be checked first to be used at the Open Platform because it has differenct environment with XAMP. Be aware that it can run in the XAMP environment but not in Open Platfrom.
+  PHP Buildpack Extenstion :https://github.com/cloudfoundry/php-buildpack/releases
 
 
  
-### <div id='2.2.5'> 2.2.5.  Mongo 드라이버 설치
+### <div id='2.2.5'> 2.2.5.  Mongo Driver Installation
 
-  Mongo 드라이브 설치는 개방형 플랫폼에서 지원하는 Mongo 드라이버를 설치하기 위함입니다. 관련문서는 http://docs.php.net/manual/en/mongo.installation.php#mongo.installation.windows 에 있습니다. 라이브러리 파일을 다운받고 config 파일에 정보를 추가하면 됩니다.
+  Mongo drive installation is to install the the Mongo driver provided by the Open Platform. Releated documents are at http://docs.php.net/manual/en/mongo.installation.php#mongo.installation.windows. Install the library file and add informations in config file.
   
-  1.	먼저 문서에 PECL 홈페이지(http://pecl.php.net/package/mongo )에서 DLL를 다운로드 받아야 합니다. 본 가이드는 1.6.12 버전을 을 선택하였습니다. 
+  1.	DLL must be downloaded first from the PECL mainpage(http://pecl.php.net/package/mongo). This guide selected 1.6.12 version. 
    
-  위의 링크중 DLL 부분을 눌러서 선택하고 "5.5 Thread Safe (TS) x86"를 다운로드 받습니다. 압축을 해제하면 php_mongo.dll이 있는데 이 파일만 있으면 됩니다.
+  Click DLL from the link above and download "5.5 Thread Safe (TS) x86". When the file is unziped, only php_mongo.dll file is required.
   
   ![./images/php/php_develope_guide5.png](./images/php/php_develope_guide7.png)
   
-  2.	php_mongo.dll 파일을 XAMP 설치된 디렉토리에서php 아래에 ext에 복사를 합니다.
+  2.	Copy the php_mongo.dll file under the ext of PHP at the installed XAMP directory.
   
   3.	XAMP 설치 디렉토리의php디렉토리에 php.ini를 선택하고 아래와 같이 추가를 해줍니다.
     extension=php_mongo.dll

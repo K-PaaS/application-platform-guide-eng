@@ -1,44 +1,44 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > PHP 개발
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > PHP Development
 
 ## Table of Contents
-1. [개요](#1)
-     * 1.1. [문서 개요](#1.1)
-         * 1.1.1. [목적](#1.1.1)
-         * 1.1.2. [범위](#1.1.2)
-         * 1.1.3. [제약사항](#1.1.3)
-         * 1.1.4. [참고자료](#1.1.4)
-2. [PHP 애플리케이션개발가이드](#2)
-     * 2.1. [개요](#2.1)
-     * 2.2. [개발환경 구성](#2.2)
-         * 2.2.1. [PHP 샘플 소스 받기](#2.2.1)
-         * 2.2.2. [XAMP설치](#2.2.2)
-         * 2.2.3. [PHP 실행 환경설정](#2.2.3)
-         * 2.2.4. [Composer 설치](#2.2.4)
-         * 2.2.5. [Mongo 드라이버 설치](#2.2.5)
-     * 2.3. [개발](#2.3)
-         * 2.3.1. [사용 Package 설명](#2.3.1)
-         * 2.3.2. [디렉토리설명](#2.3.2)
-         * 2.3.3. [애플리케이션 환경설정](#2.3.3)
-         * 2.3.4. [VCAP_SERVICES 환경설정 정보](#2.3.4)
-         * 2.3.5. [Mysql 연동](#2.3.5)
-         * 2.3.6. [CUBRID 연동](#2.3.6)
-         * 2.3.7. [MongoDB 연동](#2.3.7)
-         * 2.3.8. [Redis 연동](#2.3.8)
-         * 2.3.9. [RabbitMQ 연동](#2.3.9)
-         * 2.3.10. [GlusterFS 연동](#2.3.10)
-     * 2.4. [배포](#2.4)
-     * 2.5. [테스트](#2.5)
+1. [Outline](#1)
+     * 1.1. [Document Outline](#1.1)
+         * 1.1.1. [Purpose](#1.1.1)
+         * 1.1.2. [Range](#1.1.2)
+         * 1.1.3. [Restrictions](#1.1.3)
+         * 1.1.4. [References](#1.1.4)
+2. [PHP Application Development guide](#2)
+     * 2.1. [Outline](#2.1)
+     * 2.2. [Development Environment Configuration](#2.2)
+         * 2.2.1. [Download PHP Sample Source](#2.2.1)
+         * 2.2.2. [XAMP Installation](#2.2.2)
+         * 2.2.3. [PHP Execution Environment Setting](#2.2.3)
+         * 2.2.4. [Composer Installation](#2.2.4)
+         * 2.2.5. [Mongo Driver Installation](#2.2.5)
+     * 2.3. [Development](#2.3)
+         * 2.3.1. [Use Package Description](#2.3.1)
+         * 2.3.2. [Directory Description](#2.3.2)
+         * 2.3.3. [Application Configuration](#2.3.3)
+         * 2.3.4. [VCAP_SERVICES Configuration Information](#2.3.4)
+         * 2.3.5. [Connect Mysql](#2.3.5)
+         * 2.3.6. [Connect CUBRID](#2.3.6)
+         * 2.3.7. [Connect MongoDB](#2.3.7)
+         * 2.3.8. [Connect Redis](#2.3.8)
+         * 2.3.9. [Connect RabbitMQ](#2.3.9)
+         * 2.3.10. [Connect GlusterFS](#2.3.10)
+     * 2.4. [Deployment](#2.4)
+     * 2.5. [Test](#2.5)
 
   
-# <div id='1'> 1.  개요
+# <div id='1'> 1.  Outline
   
-## <div id='1.1'> 1.1.  문서 개요
+## <div id='1.1'> 1.1.  Document Outline
  
-### <div id='1.1.1'> 1.1.1.  목적 
+### <div id='1.1.1'> 1.1.1.  Purpose 
 
-본 문서(PHP 애플리케이션 개발 가이드)는 개발형 플랫폼 프로젝트의 서비스를PHP 애플리케이션과 연동하는 방법을 제공하는데 있습니다.
+This document (PHP Application Developement Guide) provides a way to integrate services from development platform projects with PHP applications.
   
-### <div id='1.1.2'> 1.1.2.  범위
+### <div id='1.1.2'> 1.1.2.  Range
 
 연동을 하는 서비스는 MySQL, MongoDB, Redis, GlusterFS 입니다. 데이터 저장에는 MySQL, MongoDB를 사용하고 사용자의 Session은 Redis에 샘플 어플리케이션에서 사용하는 이미지 파일 관리(Upload)를 위해서는 GlusterFS를 사용합니다.
 

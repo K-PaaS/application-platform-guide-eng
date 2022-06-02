@@ -606,17 +606,17 @@ var pooling   = generic_pool.Pool({
     // create Connection
     var conn = mysql.createConnection(config);
     conn.connect(function(err){
-      if( err) console.log("mysql 연결오류");
+      if( err) console.log("error in connecting mysql");
       else {
-      //  console.log("mysql 연결성공");
+      //  console.log("mysql connected succesfully");
       } cb(err, conn);
       // Throw the connection object into the pooling via the callback function
     });
   },
   destroy:function(myConn){
     myConn.end(function(err){
-      if( err)  console.log("mysql 연결해제 오류");
-  //    else    console.log("mysql 연결해제 성공");
+      if( err)  console.log("error in unconnecting mysql");
+  //    else    console.log("mysql unconnected successfully");
     });
   },
   min:3,
@@ -679,18 +679,18 @@ var pooling   = generic_pool.Pool({
     var conn = cubrid.createCUBRIDConnection(hostname, port, username, password, database);
     // create Connection
     conn.connect(function(err){
-      if( err) console.log("cubrid 연결오류");
+      if( err) console.log("error in connecting cubrid");
       else{
-//        console.log("cubrid 연결성공");
+//        console.log("cubrid connected successfully");
         cb(err, conn);
       }
-      // 콜백함수를 통해 풀링에 커넥션 객체를 던짐
+      // Throw the connection object into the pooling via the callback function.
     });
   },
   destroy:function(myConn){
     myConn.end(function(err){
-      if( err)  console.log("cubrid 연결해제오류");
-//      else    console.log("cubrid 연결해제성공");
+      if( err)  console.log("error in unconnecting cubrid");
+//      else    console.log("cubrid unconnected successfully");
     });
   },
   min:3,
@@ -709,14 +709,14 @@ process.on("exit", function(){
 module.exports = pooling;
 ```
 
-### <div id='14'> 3.7. MongoDB 연동
+### <div id='14'> 3.7. Connect MongoDB
 1)  ./route/db/mongo/db_pooling.js
-- 개방형 플랫폼의 애플리케이션 환경정보에 접근하여 mongodb Connection Pool을 생성
+- Create a mongodb Connection Pool by accessing application environment information on an open platform
 
 ```javascript
 /**
- * generic-pool 연동
- * mongo 풀 모듈 구현
+ * connect generic-pool
+ * Implement mongo pool module
  */
 
 var generic_pool = require("generic-pool");
@@ -724,7 +724,7 @@ var mongoClient  = require("mongodb").MongoClient;
 
 var url = '';
 if (process.env.VCAP_SERVICES) {
-  // cloud env. 설정. 데이터 구조는 2.3.4 VCAP_SERVICES 환경정보 참고
+  // cloud env. Setting. Refer to 2.3.4 VCAP_SERVICES environment information for data structure
   var cloud_env = JSON.parse(process.env.VCAP_SERVICES);
   var mongo_env = cloud_env["Mongo-DB"][0]["credentials"];
 
@@ -740,7 +740,7 @@ var pooling = generic_pool.Pool({
         create:function(cb){
     // create Connection
     mongoClient.connect(url, function(err, db){
-      if (err) console.log("mongo 연결오류");
+      if (err) console.log("error in connecting mongo");
       else {
         cb(err, db);
       }
@@ -748,8 +748,8 @@ var pooling = generic_pool.Pool({
         },
         destroy:function(myDb){
                 myDb.close(function(err){
-                        if( err)        console.log("mysql 연결해제오류");
-        //              else            console.log("mysql 연결해제성공");
+                        if( err)        console.log("error in unconnecting mysql");
+        //              else            console.log("mysql unconnected successfully");
                 });
         },
         min:3,
@@ -764,16 +764,16 @@ module.exports = pooling;
 ```
 
 
-### <div id='15'> 3.8. Redis 연동
+### <div id='15'> 3.8. Connect Redis
 1)  ./route/redis/redis.js
-- 개방형 플랫폼의 애플리케이션 환경정보에 접근하여 redis Connection을 생성
+- Create a redis Connection by accessing application environment information on an open platform
 
 ```javascript
 var redis = require("redis");
 
 var options = {};
 if (process.env.VCAP_SERVICES) {
-  // cloud env. 설정. 데이터 구조는 2.3.4 VCAP_SERVICES 환경정보 참고
+  // cloud env. Setting. Refer to 2.3.4 VCAP_SERVICES environment information for data structure
   var services = JSON.parse(process.env.VCAP_SERVICES);
   var redisConfig = services["redis-sb"];
 
@@ -811,16 +811,16 @@ exports.close = function(){
 ```
 
 
-### <div id='16'> 3.9. RabbitMQ연동
+### <div id='16'> 3.9. Connect RabbitMQ
 1)  ./route/rabbitMQ/rabbitMQ.js
-- 개방형 플랫폼의 애플리케이션 환경정보에 접근하여 rabbirMQ Connection을 생성
+- Create rabbirMQ Connection by accessing application environment information on an open platform
 
 ```javascript
 var amqp = require('amqp');
 
 var url = '';
 if (process.env.VCAP_SERVICES) {
-  // cloud env. 설정. 데이터 구조는 2.3.4 VCAP_SERVICES 환경정보 참고
+  // cloud env. Setting. Refer to 2.3.4 VCAP_SERVICES environment information for data structure
         var services = JSON.parse(process.env.VCAP_SERVICES);
         var rabbitMQConfig = services["p-rabbitmq"];
 
@@ -851,9 +851,9 @@ exports.close = function(){
 */
 ```
 
-### <div id='17'> 3.10. GlusterFS 연동
+### <div id='17'> 3.10. Connect GlusterFS
 1)  ./route/glusterfs/glusterfs.js
-- 개방형 플랫폼의 애플리케이션 환경정보에 접근하여 glusterfs Connection을 생성
+- Create glusterfs Connection by accessing application environment information on an open platform
 
 ```javascript
 var pkgcloud = require('pkgcloud');
@@ -863,7 +863,7 @@ var url = require('url');
 var credentials = {};
 var container_name = 'node_container';
 if (process.env.VCAP_SERVICES) {
-  // cloud env. 설정. 데이터 구조는 2.3.4 VCAP_SERVICES 환경정보 참고
+  // cloud env. Setting. Refer to 2.3.4 VCAP_SERVICES environment information for data structure
   var services = JSON.parse(process.env.VCAP_SERVICES);
   var glusterfsConfig = services["glusterfs"];
 
@@ -911,10 +911,10 @@ client.getContainer(container_name, function(err, container){
                                 if (create_err) console.log(err);
         else
         {
-          // if container created successfully, setting a readable member(X-Contaner-Read: .r:*)
-          // 컨테이너가 성공적으로 생성되었다면 컨테이너를 누구나 읽을 수 있게 설정한다.(X-Contaner-Read: .r:*)
+          // if container created successfully, set a readable member(X-Contaner-Read: .r:*)
+          // if the container was created successfully, set the container to be readable by anyone.(X-Contaner-Read: .r:*)
           // There is a bug in the code(pkgcloud). so i used api call.
-          // pkgcloud 모듈에서 metadata를 넣을 경우 prefix가 붙는 로직때문에 제대로 위의 값이 입력이 안되므로 api를 통해서 설정.
+          // if metadata is placed to pkgcloud module, set through API because the value above cannot be entered properly when the logic is attached with prefix.
           var serviceUrl = url.parse(create_container.client._serviceUrl);
           var option = {
             host: serviceUrl.hostname,
@@ -941,23 +941,23 @@ module.exports = client;
 ```
 
 
-# <div id='18'> 4. 배포
+# <div id='18'> 4. Deployment
 
-개방형 플랫폼에 애플리케이션을 배포하면 배포한 애플리케이션과 개방형 플랫폼이 제공하는 서비스를 연결하여 사용할 수 있다. 개방형 플랫폼상에서 실행을 해야만 개방형 플랫폼의 애플리케이션 환경변수에 접근하여 서비스에 접속할 수 있다.
+Deploying an application on an open platform allows you to connect and use the deployed application with the services provided by the open platform. Only when it is executed on an open platform can it access the application environment variables of the open platform and access the service.
 
 
-### <div id='19'> 4.1.  개방형 플랫폼 로그인
+### <div id='19'> 4.1.  Open Platform Login
 
-아래의 과정을 수행하기 위해서 개방형 플랫폼에 로그인
+Log in to Open Platform to perform the task below
 
->$ cf api --skip-ssl-validation https://api.cf.open-paas.com # 개방형 플랫폼 TARGET 지정<br>
->$ cf login -u testUser -o sample_test -s sample_space # 로그인 요청<br>
+>$ cf api --skip-ssl-validation https://api.cf.open-paas.com # Set TARGET to Open Platform<br>
+>$ cf login -u testUser -o sample_test -s sample_space # Login Request<br>
 ![2-4-1-0]
 
 
-### <div id='20'> 4.2.  서비스 생성
-애플리케이션에서 사용할 서비스를 개방형 플랫폼을 통하여 생성한다. 별도의 서비스 설치과정 없이 생성할 수 있으며, 애플리케이션과 바인딩과정을 통해 접속정보를 얻을 수있다.
-- 서비스 생성 (cf marketplace 명령을 통해 서비스 목록과 각 서비스의 플랜을 조회할 수 있다.
+### <div id='20'> 4.2.  Create Service
+Create the application to use at the service through Open Platform. It may be generated without a separate service installation process, and access information may be obtained through an application and binding process.
+- Service list and plan of each service can be checked through create service command (cf marketplace).
 
 ><div># cf create-service SERVICE PLAN SERVICE_INSTANCE [-c PARAMETERS_AS_JSON] [-t TAGS]
 ><div>$ cf create-service p-mysql 100mb node-mysql
@@ -969,28 +969,28 @@ module.exports = client;
 ![2-4-2-0]
 
 
-### <div id='21'> 4.3. 애플리케이션 배포
+### <div id='21'> 4.3. Application Deployment
 
-애플리케이션을 개방형 플랫폼에 배포한다. 배포된 애플리케이션은 생성된 서비스와 바인드하여 서비스를 사용할 수 있다.
+Deploy the application at the Open Platform. The deployed application can be used through binding with the created service.
 
-- cf push 명령시 현재 디렉토리의 manifest.yml을 참조하여 배포가 진행된다.
+- When cf push is commanded, the deployment is proceeded by refering to the manifest.yml of the current directory.
 
-##### 1. manifest.yml 생성
+##### 1. Create manifest.yml
 
 ```yaml
 ---
 applications:
-- name: node-sample-app # 애플리케이션 이름
-  memory: 512M # 애플리케이션 메모리 사이즈
-  instances: 1 # 애플리케이션 인스턴스 개수
-  command: npm start # 애플리케이션 실행 명령어
-  path: ./ # 배포될 애플리케이션의 위치
+- name: node-sample-app # Application name
+  memory: 512M # Application's memory size
+  instances: 1 # Application's number of instance
+  command: npm start # Command to execute application
+  path: ./ # path of the application to be located
 ```
 
-##### 2. Mysql, Cubrid 테이블 생성
-- Sample App의 조직관리 기능을 위해 DB에 테이블을 생성해 주어야 한다.
-- Mysql과 Cubrid에 테이블을 추가하는 방법은 OpenPaaS Mysql, Cubrid 서비스팩 설치 가이드의 'Client 툴 접속'을 참고한다.
-- Client 툴을 이용하여 아래의 테이블 생성 sql를 각각 실행한다. (Mysql과 Cubrid 양쪽다 동일한 sql로 생성가능하다.)
+##### 2. Create Mysql and Cubrid Table
+- A table must be created at the DB to function as managing organization of the Sample App.
+- For more information on how to add tables to Mysql and Cubrid, refer to 'Client Tool Connection' in the OpenPaaS Mysql, Cubrid Service Pack Installation Guide.
+- Execute the table creation sql below using the Client tool. (Both Mysql and Cubrid can be created with the same sql.)
 
 ```
 DROP TABLE IF EXISTS ORG_TBL;
@@ -1030,9 +1030,9 @@ REFERENCES GROUP_TBL(id)
 ON DELETE CASCADE;
 ```
 
-##### 3. 애플리케이션 배포
+##### 3. Application Deployment
 
-- cf push 명령으로 배포한다. 별도의 값을 넣지않으면 manifest.yml의 설정을 사용한다. 아직 서비스를 연결하지 않았기 때문에 --no-start 옵션으로 배포후 실행은 하지않는다.
+- Deploy with cf push command. If the value was not set, it uses the setting of manifest.yml. 아직 서비스를 연결하지 않았기 때문에 --no-start 옵션으로 배포후 실행은 하지않는다.
 
 ><div>$ cf push --no-start
 ![2-4-3-0]

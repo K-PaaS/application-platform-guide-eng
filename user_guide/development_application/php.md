@@ -40,39 +40,39 @@ This document (PHP Application Developement Guide) provides a way to integrate s
   
 ### <div id='1.1.2'> 1.1.2.  Range
 
-연동을 하는 서비스는 MySQL, MongoDB, Redis, GlusterFS 입니다. 데이터 저장에는 MySQL, MongoDB를 사용하고 사용자의 Session은 Redis에 샘플 어플리케이션에서 사용하는 이미지 파일 관리(Upload)를 위해서는 GlusterFS를 사용합니다.
+The service to connect are MySQL, MongoDB, Redis, and GlusterFS. Use MySQL and MongoDB for saving datas. Session is to provide Redis with a sample application. Use ClusterFS for image file management (Upload) that you use.
 
-### <div id='1.1.3'>  1.1.3.  제약사항
+### <div id='1.1.3'>  1.1.3.  Restrictions
 
-현재 PHP 빌드팩(CloudFoundry의 공식 빌드팩 v4.3.1)의 지원하는 드라이버가 본 사업의 서비스와 정확하게 맞지 않아 일부 서비스(RabbitMQ, CUBRID)는 연동하지 못했습니다. 또한 MongoDB와 연결은 DB인증 절차가 적용이 되지 않아 DB Admin 계정으로 접속하는 방법을 설명하였습니다.
-실제 사용시에는 PHP 빌드팩을커스터마이징하여 프로젝트 환경에 맞추어서 개발을 진행하셔야 합니다.
+Some services (RabbitMQ, CUBRID) were unable to be connected because the current PHP buildpack v4.3.1 of Cloud Foundry supporting drivers did not exactly match the services of this business. An explaination on how to access the connection with MongoDB with DB Admin account because DB authentication procedure is not applied.
+In actual use, you need to customize the PHP build pack and proceed with development according to the project environment.
 
 
-### <div id='1.1.4'> 1.1.4.  참고자료
+### <div id='1.1.4'> 1.1.4.  Reference
 
--	PHP 빌드팩 :https://github.com/cloudfoundry/php-buildpack
--	XAMP 사이트 :https://www.apachefriends.org/index.html
+-	PHP Buildpack :https://github.com/cloudfoundry/php-buildpack
+-	XAMP Site :https://www.apachefriends.org/index.html
 
   
-# <div id='2'> 2.  PHP 애플리케이션개발가이드
+# <div id='2'> 2.  PHP Application Development guide
  
-## <div id='2.1'> 2.1.  개요
+## <div id='2.1'> 2.1.  Outline
 
-개발환경은 개방형 플랫폼의 네트워크의 구성에 따라 로컬에 구성을 하거나 직접 개방형 플랫폼에 Deploy하여 관리할 수 있습니다. 여기서는 Windows 환경에 간단하게 개발환경을 구성하고 개방형 플랫폼에 배포(Deploy)하는 방법을 설명하겠습니다.
+The development environment can be configured locally or managed by deploying it directly on an open platform, depending on the network configuration of the open platform. This section describes how to easily configure a development environment in a Windows environment and deploy it on an open platform.
  
-## <div id='2.2'> 2.2.  개발환경 구성
+## <div id='2.2'> 2.2.  Development Environment Configuration
 
-PHP 개발환경을 구성하려면 Web Server와 PHP 엔진, Extension 설치등을해야하는데 이를 간편하게 구성 놓은 툴이 있습니다. 본 가이드에서는 XAMP를 이용하여 설치를 하고 구성하도록 하겠습니다.
+To configure a PHP development environment, you need to install a Web server, PHP engine, and an extension, and there is a tool that configures it easily. In this guide, we will install and configure using XAMP..
 
-본 문서 작성을 위해 구성한 시스템은 아래와 같습니다.
+The systems configured for this documentation are as follows:
 -	OS : Windows 8.1 64bit
 -	XAMP PHP 5.5.30
--	Mongo 라이브러리 :
+-	Mongo library :
 -	Composer : 
 
 PHP로 REST/full 서버를 구현하였고 화면(HTML)은 Apache의 Web 서버에서 제공을 합니다. HTML과 PHP는 별도로 돌아가는 구조입니다.
  
-### <div id='2.2.1'>  2.2.1.  PHP 샘플 소스 받기
+### <div id='2.2.1'>  2.2.1.  Download PHP Sample Source
 
 샘플의 위치는 변경될수있느나 개방형 플랙폼 홈페이지에서 찾아볼 수 있습니다. 해당 GIT 위치를 확인하시고 아래와 같은 명령문으로 소스를 다운로드 받습니다. 해당 명령을 위해서는 GIT Client가 설치되어 있어야 합니다.
 

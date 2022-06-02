@@ -159,29 +159,29 @@ BOSH creates and manages VMs that create stemcells on AWS. To create a stemcell,
   
   2.	Copy the php_mongo.dll file under the ext of PHP at the installed XAMP directory.
   
-  3.	XAMP 설치 디렉토리의php디렉토리에 php.ini를 선택하고 아래와 같이 추가를 해줍니다.
+  3.	Select php.ini from the PHP directory of XAMP Install directory and add as shown below.
     extension=php_mongo.dll
   
-  4.	php.ini 파일의 셋팅이 끝났으면 Apache서버를 재기동합니다. 만약에 오류가 있으면 XAMP 패널에 빨간색으로 오류가 표시되니 정상적으로 Apache서버가 올라오는지 확인합니다.
+  4.	Restart the Apache server when the php.ini file has been set up. If there is an error, the XAMP panel displays the error in red, verify the Apache server comes up normally.
   
-  5.	모듈이 정상적으로 설치되었는지 확인하려면 소스코드의 루트에 있는 info.php를 실행합니다. 브라우져에서http://localhost/info.php 를 선택하고 내용에 mongo 부분의 설정 정보가 보이면 정상적으로 설치가 된 것입니다.
+  5.	To verify if the module is installed successfully, run info.php at the root of the source code. Select http://localhost/info.php from the browser and if the setting information can be found at the mongo part of the content, it is installed normally.
   
 
  
-## <div id='2.3'> 2.3.  개발
+## <div id='2.3'> 2.3.  Development
 
-개발에 필요한 Package의 구성과 소스디렉토리 구성을 설명합니다. 그리고 각각의 서비스와 연동을 하는 부분의 설명합니다
+Describes the package configuration and source directory configuration required for development and explains the part that links with each service.
  
-### <div id='2.3.1'> 2.3.1.  사용 Package 설명
+### <div id='2.3.1'> 2.3.1.  Use Package Description
 
-Composer를 사용하여 Dependency를 관리합니다. Composer.json 파일의 Package구성을 설명하면 아래의 표와 같습니다. 설정정보는 composer.json에 저장되어 있습니다.
+Use Composer to manage Dependency. The package configuration of the Composer.json file is described in the table below. Setup information is stored in composer.json..
 
 
-|패키지명 |버전 |설명 |
+|Package Name |Version |Description |
 |--------------------------|------|--------------------------------------------|
-|slim/slim                 |2.*     |PHP의 REST/full Framewok를 위해 사용합니다. |
+|slim/slim                 |2.*     |Used for REST/full Framewok of PHP. |
 |videlalvaro/php-amqplib   |2.5.*   |RabbitMQ 서비스와 연결을 위해 사용합니다. (SSL 접속이 지원되지 않아 현재는 사용하지 못하고 있음)| 
-|predis/predis             |1.0.*   |Redis 서비스와 연동을 위해 사용합니다. |
+|predis/predis             |1.0.*   |Used to connect with Redis Service. |
 |rackspace/php-opencloud   |1.15.*  |Openstack 연결 SDK로 GlusterFS에 파일을 Upload할 때 사용합니다. |
 |guzzlehttp/guzzle         |6.*     |Http client로 GlusterFS의 Container 권한 변경시 사용합니다. |
 |phpunit/phpunit           |4.3.*   |PHP의 단위테스트를 위한 프로그램입니다. Vendor\bin\phpunit를 실행하면 test 디렉토리의 Test Case를 실행하고 결과를 화면에 표시합니다. |
@@ -194,7 +194,7 @@ Composer를 사용하여 Dependency를 관리합니다. Composer.json 파일의 
 
 
  
-### <div id='2.3.2'> 2.3.2.  디렉토리설명
+### <div id='2.3.2'> 2.3.2.  Directory Description
 
 개발 편의를 위해 API 서비스를 따로 디렉토리로구성하였으며 resource 디렉토리는 HTML에서 필요한 정적인 파일(js, css, image)이 있습니다.
 

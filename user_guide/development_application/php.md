@@ -12,7 +12,7 @@
      * 2.2. [Development Environment Configuration](#2.2)
          * 2.2.1. [Download PHP Sample Source](#2.2.1)
          * 2.2.2. [XAMP Installation](#2.2.2)
-         * 2.2.3. [PHP Execution Environment Setting](#2.2.3)
+         * 2.2.3. [PHP Executing Environment Setting](#2.2.3)
          * 2.2.4. [Composer Installation](#2.2.4)
          * 2.2.5. [Mongo Driver Installation](#2.2.5)
      * 2.3. [Development](#2.3)
@@ -70,50 +70,50 @@ The systems configured for this documentation are as follows:
 -	Mongo library :
 -	Composer : 
 
-PHP로 REST/full 서버를 구현하였고 화면(HTML)은 Apache의 Web 서버에서 제공을 합니다. HTML과 PHP는 별도로 돌아가는 구조입니다.
+PHP implements a REST/full server, and the screen (HTML) is provided by Apache's web server. HTML and PHP work separately.
  
 ### <div id='2.2.1'>  2.2.1.  Download PHP Sample Source
 
-샘플의 위치는 변경될수있느나 개방형 플랙폼 홈페이지에서 찾아볼 수 있습니다. 해당 GIT 위치를 확인하시고 아래와 같은 명령문으로 소스를 다운로드 받습니다. 해당 명령을 위해서는 GIT Client가 설치되어 있어야 합니다.
+The location of the sample can be changed, but can be found on the Open Placform homepage. Please check the appropriate GIT location and download the source with the command below. The GIT Client must be installed to use the command.
 
         $ git clone 
 
  
-### <div id='2.2.2'> 2.2.2.  XAMP설치
+### <div id='2.2.2'> 2.2.2.  XAMP Installation
 
-BOSH는 스템셀을 생성하는 VM을 AWS에 생성하고 관리한다. 스템셀을 생성하기 위해서는 AWS에 계정을 생성하고 스템셀을 생성하기 위한 환경을 구성해야 한다.
-  1.	URL (https://www.apachefriends.org/index.html) 에 접속하면 바로 다운로드 화면이 나옵니다. 여기서 "Click here for other version"을 선택합니다. 
+BOSH creates and manages VMs that create stemcells on AWS. To create a stemcell, an account must be created on AWS and an environment must be configured to create a stemcell.
+  1.	Download page appears directly when accesing to this URL (https://www.apachefriends.org/index.html). Select "Click here for other version". 
     
   ![./images/php/php_develope_guide2.png](./images/php/php_develope_guide2.png)<br>
-  XAMP 공식 홈페이지 첫화면
+  First page of XAMP Official Mainpage
     
-  다운로드는 Windows버전 PHP 5.5.30 (32bit)을 다운로드 받습니다.
+  Windows version of PHP 5.5.30 (32bit) was downloaded.
     
-  2.	다운로드 받은 파일을 실행하고 모두 Next를 하면됩니다. 하지만 아래와 같이 디렉토리를 물어보는데 이때 이 위치를 변경하거나 정확하게 기억하고 있어야 합니다. 설치 완료후php 실행 디렉토리를 환경변수(Path)에 넣어 줘야 하기 때문입니다.
+  2.	Run all the downloaded files and click Next for all. However, when directories are asked as below, you must change the location or remember the location. After the installation is complete, environment variable (Path) should be placed at the PHP execution directory.
     
   ![./images/php/php_develope_guide3.png](./images/php/php_develope_guide3.png)<br>
-    XAMP 설치 디렉토리
+    XAMP installation directory
     
-  3.	설치가 정상적으로 이루어지고 있으면 아래와 같이 진행이 될겁니다. 처음 실행할 때 Antivirus 프로그램으로 느려질수 있다는 문구 등이 나올수도 있는데 "확인"을 누르시면 됩니다.
+  3.	If the installation processed properly, it will look like the picture below. A message saying 'the program might get slow becuase of Antivirus program' at the first use, just click "OK".
     
   ![./images/php/php_develope_guide4.png](./images/php/php_develope_guide4.png)<br>
-    XAMP 설치 진행중
+    XAMP Installation in progress
     
-  4.	설치가 완료되면 Control Panel을 띄우겠다는 메시지가 나옵니다. 선택이 Default로 되어 있어 완료를 선택하면 아래와 같은 Control Panel이 실행됩니다.
+  4.	When the installation is complete, a message stating Control Panel is Ready. The settings are set as Default so just start and it will be executed as the Control Panel shown below.
     
   ![./images/php/php_develope_guide5.png](./images/php/php_develope_guide5.png)<br>
-    XAMP 관리 패널 창
+    XAMP Managing Pannel Screen
     
-  사용방법은 간단합니다. 원하는 서비스(여기서는 Apache 만 사용할 예정)의 Start를 선택하면 해당 서비스가 실행이 됩니다. 단. 해당서비스가 사용하는 포트(Apache의 경우 80)는 사용하고 있지 않아야 합니다.
+  Select the desired service and click "Start" to execute the selected service(Only Apache was will be used in the example). However, the port used by the service(80 for Apache) should not be in use.
     
-  5.	Apache의 Config를 선택하고 Apache (httpd.conf)를 선택하여 DocumentRootdhk Directory의 위치를 개발소스가 설치된 곳으로 바꾸면 브라우져에서http://localhost 로 호출시 개발하는 위치로 바로 연결됩니다. 개발소스의 위치는 2.2.1에서 설치한 위치를 지정해 넣습니다.
+  5.	Select Apache (httpd.conf) from the Config of Apache and change the loacation of DocumentRootdhk Directory to where the development source is to directly connect to the location you develop when calling from the browser to http://localhost. The location of the development source is the same as the location set in 2.2.1.
         
         
-      DocumentRoot C:\개발소스위치
-      <DirectoryC:\개발소스위치>
+      DocumentRoot C:\ development source path
+      <DirectoryC:\development source path>
       
  
-### <div id='2.2.3'> 2.2.3. PHP 실행 환경설정
+### <div id='2.2.3'> 2.2.3. PHP Executing Environment Setting
 
   1.	XAMP로 설치된 PHP를 어디서나 실행가능하게 환경설정(Path)에 넣어줍니다. 제어판 -> 시스템 -> 고급 시스템 설정을 선택하면 아래와 같이 시스템 속성을 변경하는 창이 나타납니다. 
 

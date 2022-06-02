@@ -62,10 +62,10 @@ The development environment can be configured locally or managed by deploying it
  
 ## <div id='2.2'> 2.2.  Development Environment Configuration
 
-To configure a PHP development environment, you need to install a Web server, PHP engine, and an extension, and there is a tool that configures it easily. In this guide, we will install and configure using XAMP..
+To configure a PHP development environment, you need to install a Web server, PHP engine, and an extension, and there is a tool that configures it easily. In this guide, we will install and configure using XAMP.
 
 The systems configured for this documentation are as follows:
--	OS : Windows 8.1 64bit
+-	OS: Windows 8.1 64bit
 -	XAMP PHP 5.5.30
 -	Mongo library :
 -	Composer : 
@@ -74,7 +74,7 @@ PHP implements a REST/full server, and the screen (HTML) is provided by Apache's
  
 ### <div id='2.2.1'>  2.2.1.  Download PHP Sample Source
 
-The location of the sample can be changed, but can be found on the Open Placform homepage. Please check the appropriate GIT location and download the source with the command below. The GIT Client must be installed to use the command.
+The location of the sample can be changed but can be found on the Open Platform homepage. Please check the appropriate GIT location and download the source with the command below. The GIT Client must be installed to use the command.
 
         $ git clone 
 
@@ -82,19 +82,19 @@ The location of the sample can be changed, but can be found on the Open Placform
 ### <div id='2.2.2'> 2.2.2.  XAMP Installation
 
 BOSH creates and manages VMs that create stemcells on AWS. To create a stemcell, an account must be created on AWS and an environment must be configured to create a stemcell.
-  1.	Download page appears directly when accesing to this URL (https://www.apachefriends.org/index.html). Select "Click here for other version". 
+  1.	Download page appears directly when accessing this URL (https://www.apachefriends.org/index.html). Select "Click here for other versions". 
     
   ![./images/php/php_develope_guide2.png](./images/php/php_develope_guide2.png)<br>
   First page of XAMP Official Mainpage
     
   Windows version of PHP 5.5.30 (32bit) was downloaded.
     
-  2.	Run all the downloaded files and click Next for all. However, when directories are asked as below, you must change the location or remember the location. After the installation is complete, environment variable (Path) should be placed at the PHP execution directory.
+  2.	Run all the downloaded files and click Next for all. However, when directories are asked as below, you must change the location or remember the location. After the installation is complete, the environment variable (Path) should be placed in the PHP execution directory.
     
   ![./images/php/php_develope_guide3.png](./images/php/php_develope_guide3.png)<br>
     XAMP installation directory
     
-  3.	If the installation processed properly, it will look like the picture below. A message saying 'the program might get slow becuase of Antivirus program' at the first use, just click "OK".
+  3.	If the installation is processed properly, it will look like the picture below. A message saying 'the program might get slow because of Antivirus program' just click "OK" at the first use.
     
   ![./images/php/php_develope_guide4.png](./images/php/php_develope_guide4.png)<br>
     XAMP Installation in progress
@@ -104,9 +104,9 @@ BOSH creates and manages VMs that create stemcells on AWS. To create a stemcell,
   ![./images/php/php_develope_guide5.png](./images/php/php_develope_guide5.png)<br>
     XAMP Managing Pannel Screen
     
-  Select the desired service and click "Start" to execute the selected service(Only Apache was will be used in the example). However, the port used by the service(80 for Apache) should not be in use.
+  Select the desired service and click "Start" to execute the selected service(Only Apache will be used in the example). However, the port used by the service(80 for Apache) should not be in use.
     
-  5.	Select Apache (httpd.conf) from the Config of Apache and change the loacation of DocumentRootdhk Directory to where the development source is to directly connect to the location you develop when calling from the browser to http://localhost. The location of the development source is the same as the location set in 2.2.1.
+  5.	Select Apache (httpd. conf) from the Config of Apache and change the location of DocumentRootdhk Directory to where the development source is to directly connect to the location you develop when calling from the browser to http://localhost. The location of the development source is the same as the location set in 2.2.1.
         
         
       DocumentRoot C:\ development source path
@@ -115,23 +115,23 @@ BOSH creates and manages VMs that create stemcells on AWS. To create a stemcell,
  
 ### <div id='2.2.3'> 2.2.3. PHP Executing Environment Setting
 
-  1.	XAMP로 설치된 PHP를 어디서나 실행가능하게 환경설정(Path)에 넣어줍니다. 제어판 -> 시스템 -> 고급 시스템 설정을 선택하면 아래와 같이 시스템 속성을 변경하는 창이 나타납니다. 
+  1.	Puts PHP that was installed with XAMP into Configuration (Path) so that it can be run anywhere. Select Control Panel -> System -> Advanced System Setting to change system properties window as shown below. 
 
   ![./images/php/php_develope_guide5.png](./images/php/php_develope_guide6.png)<br>
-  시스템 속성 창
+  System Properties Window
   
-  2.	여기서 "환경변수"를 선택하고 Path를 편집을 합니다. 변수값의 마지막에 XAMP 설치 디렉토리 아래의 php디렉토리를 추가합니다. 
+  2.	Select "Environment Variable" and edit Path. At the end of the variable value, add the PHP directory under the XAMP installation directory. 
 
   ![./images/php/php_develope_guide5.png](./images/php/php_develope_guide7.png)<br>
-    Path 환경변수 설정
+    Path Environment Variable Setting
 
-  3.	정상적으로 구성이 되었는지 확인하려면 "명령 프롬프트"를 실행하고 php-version 을 선택하여 아래와 같이 나오면 정상적으로 환경설정이 완료된 것입니다.
+  3.	To check if it was configured normally, execute "cmd" and slect php-version. If it appears like below, the configuration was done successfully.
  
   ![./images/php/php_develope_guide5.png](./images/php/php_develope_guide8.png)<br>
-    명령 프롬프트에서 PHP 버전 확인
+    Check PHP Version from cmd
 
  
-### <div id='2.2.4'> 2.2.4. Composer 설치
+### <div id='2.2.4'> 2.2.4. Composer Installation
 
   Composer는 개발시 필요한 라이브러리를 관리하는 툴입니다. 홈페이지는 다음과 같습니다. https://getcomposer.org/
   
@@ -144,7 +144,7 @@ BOSH creates and manages VMs that create stemcells on AWS. To create a stemcell,
   
   * 주의사항 *
   개방형 플랫폼에서 사용하기 위해서는 XAMP와는 환경이 틀리기 때문에 PHP 빌드팩의 Release된 Extension을 확인하고 Dependency를 확인해야 합니다. XAMP 환경에서는 동작을 하지만 개방형 플랫폼에서는 동작을 안할 수 있으니 주의해야 합니다.
-  PHP 빌드팩Extenstion정보 :https://github.com/cloudfoundry/php-buildpack/releases
+  PHP 빌드팩Extensti :https://github.com/cloudfoundry/php-buildpack/releases
 
 
  

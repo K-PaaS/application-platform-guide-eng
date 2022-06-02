@@ -1032,17 +1032,17 @@ ON DELETE CASCADE;
 
 ##### 3. Application Deployment
 
-- Deploy with cf push command. If the value was not set, it uses the setting of manifest.yml. 아직 서비스를 연결하지 않았기 때문에 --no-start 옵션으로 배포후 실행은 하지않는다.
+- Deploy with cf push command. If the value was not set, it uses the setting of manifest.yml. Since the service is not connected yet, deploy with --no-start option and do not execute yet.
 
 ><div>$ cf push --no-start
 ![2-4-3-0]
 
 
-### <div id='22'> 4.4. 애플리케이션, 서비스 연결
+### <div id='22'> 4.4. Connect Application and Service
 
-애플리케이션과 서비스를 연결하는 과정을 '바인드(bind)라고 하며, 이 과정을 통해 서비스에 접근할 수 있는 접속정보를 생성한다.
+Bind: A process where application and service gets connected. This process generates access information to access the service.
 
-- 애플리케이션과 서비스 연결
+- Connect Application and Service
 
 ><div>cf bind-service APP_NAME SERVICE_INSTANCE [-c PARAMETERS_AS_JSON]
 ><div>$ cf bind-service node-sample-app node-mysql
@@ -1053,26 +1053,26 @@ ON DELETE CASCADE;
 ><div>$ cf bind-service node-sample-app node-rabbitmq
 ![2-4-4-0]
 
-연결확인
+Check Connection
 
 ><div>$ cf services
 ![2-4-4-1]
 
 
-### <div id='23'> 4.5. 애플리케이션 실행
+### <div id='23'> 4.5. Execute Application
 
-서비스 바인드 과정을 통해 생성된 접속정보 환경변수를 가지고 어플리케이션이 실행된다.
+The application is executed with the access information environment variable generated through the service binding process.
 
 ><div>$ cf start node-sample-app
 ![2-4-5-0]
 
 
-# <div id='24'> 5. 테스트
+# <div id='24'> 5. Test
 
-샘플 어플리케이션은 REST 서비스로 구현되어있으며 REST 테스트를 위해서 mocha 모듈을 사용하였다. 테스트를 진행하기 위해서는 mocha 모듈을 포함한 package.json 안의 모듈들이 설치 되어 있어야한다. (npm install)
+The sample application is configured as REST service. Mocha module was used for the REST Test. All the modules of package.json including mocha module should be installed to proceed with the test. (npm install)
 
 ##### 1. Makefile
-- 매번 bin파일에 접근하여 실행하는 불편함을 해결하기 위해 작성. 리눅스 운영체제에서 사용할 수 있다.
+- It is written to solve the inconvenience of accessing and executing the bin file every time. Available on Linux operating systems.
 
 ```
 test:
@@ -1081,15 +1081,15 @@ test:
 .PHONY: test
 ```
 
-##### 2. 테스트 실행
+##### 2. Execute Test
 
-- test디렉토리 아래에 있는 테스트를 실행한다.
+- Execute the test under test directory.
 
-2.1.  윈도우
+2.1.  Window
 
 ><div>> .\node_modules\.bin\mocha -u tdd test
 
-2.2.  리눅스
+2.2.  linux
 
 ><div>$ make test
 ![2-5-0-0]
@@ -1120,4 +1120,4 @@ test:
 [2-4-5-0]:./images/nodejs/2-4-5-0.png
 [2-5-0-0]:./images/nodejs/2-5-0-0.png
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Node.js 개발
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Node.js Development

@@ -610,13 +610,13 @@ var pooling   = generic_pool.Pool({
       else {
       //  console.log("mysql 연결성공");
       } cb(err, conn);
-      // 콜백함수를 통해 풀링에 커넥션 객체를 던짐
+      // Throw the connection object into the pooling via the callback function
     });
   },
   destroy:function(myConn){
     myConn.end(function(err){
-      if( err)  console.log("mysql 연결해제오류");
-  //    else    console.log("mysql 연결해제성공");
+      if( err)  console.log("mysql 연결해제 오류");
+  //    else    console.log("mysql 연결해제 성공");
     });
   },
   min:3,
@@ -636,14 +636,14 @@ module.exports = pooling;
 ```
 
 
-### <div id='13'> 3.6. Cubrid 연동
+### <div id='13'> 3.6. Connect Cubrid
 1)  ./route/db/cubrid/db_pooling.js
-- 개방형 플랫폼의 애플리케이션 환경정보에 접근하여 cubrid Connection Pool을 생성
+- Create a cubic connection pool by accessing application environment information on an Open Platform
 
 ```javascript
 /**
- * generic-pool 연동
- * cubrid 풀 모듈 구현
+ * Connect generic-pool
+ * Implement cubrid pool module
  */
 
 var generic_pool  = require("generic-pool");
@@ -655,7 +655,7 @@ var   database
   , username
   , password;
 if (process.env.VCAP_SERVICES) {
-  // cloud env 설정. 데이터 구조는 2.3.4 VCAP_SERVICES 환경정보 참고
+  // cloud env Setting. Refer to 2.3.4 VCAP_SERVICES environment information for data structure
   var cloud_env   = JSON.parse(process.env.VCAP_SERVICES);
   var cubrid_env    = cloud_env["CubridDB"][0]["credentials"];
 

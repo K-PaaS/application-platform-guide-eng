@@ -10,8 +10,8 @@
 3. [Development](#7)
      * [3.1. Create Node.js Express Application](#8)
      * [3.2. Node.js Sample Application](#9)
-     * [3.3. Application Environment Setting](#10)
-     * [3.4. VCAP_SERVICES Environment Setting Information](#11)
+     * [3.3. Application Configuration](#10)
+     * [3.4. VCAP_SERVICES Environment Information](#11)
      * [3.5. Connect Mysql](#12)
      * [3.6. Connect Cubrid](#13)
      * [3.7. Connect MongoDB](#14)
@@ -249,7 +249,7 @@ Data management for sample applications uses either MySQL, CubridDB, or MongoDB,
 </table>
 
 
-### <div id='10'> 3.3. Application Environment Setting
+### <div id='10'> 3.3. Application Configuration
 
 This sample was installed by explicitly selecting the version of each module based on Node.js version 0.12.4 and nm version 2.10.1.
 When modifying package.json, it is recommended to install the module that matches the version of Node.js installed.
@@ -399,18 +399,18 @@ When modifying package.json, it is recommended to install the module that matche
   <tr>
     <td>npm</td>
     <td>npm verion to use in application<br>
-    Node.js와 마찬가지로 Node Buildpack에서 지원하는 버젼에 따라 사용할 수 있는 버젼에 제약이 있다.</td>
+    Like Node.js, there are restrictions on versions available depending on the version supported by Node Buildpack.</td>
   </tr>
 </table>
 
 2) Module Installation
-- pakage.json에 정의된 모듈을 설치한다. 모듈이름을 지정하지 않으면 package.json의 depencencies의 모든 모듈을 설치한다.
+- Install the module defined in package.json. If you did not specify the module name, install all modules in package.json's depencencies.
 ```
 >npm install
 ```
 
 3) ./bin/www
-- HTTP서버가 사용할 PORT를 개방형 플랫폼이 제공하는 PORT를 사용하게 설정한다. 개방형 플랫폼은 이 값을 이용하여 애플리케이션이 제대로 동작하고 있는지 감지하는데 사용한다. 이 값 외의 다른 PORT를 사용하면 애플리케이션이 제대로 동작하지 않는다.
+- Set the PORT used by the HTTP server to use the PORT provided by the open platform. An open platform uses this value to detect if an application is working properly. Applications do not function properly with PORT other than this value.
 
 ```
 #!/usr/bin/env node
@@ -425,8 +425,8 @@ var http = require('http');
 
 /**
  * Get port from environment and store in Express.
- * port 환경변수를 얻어와서 변수에 담는다.
- * 'process.env.PORT'는 Cloud에서 사용하는 환경변수.
+ * Get the PORT environment variable and put it in the variable.
+ * 'process.env.PORT'is a environment variable used in Cloud.
  */
 
 var port = normalizePort(process.env.PORT || '3000');
@@ -434,7 +434,7 @@ app.set('port', port);
 
 /**
  * Create HTTP server.
- * HTTP 서버 생성.
+ * Create HTTP Server.
  */
 
 var server = http.createServer(app).listen(app.get('port'), function(){
@@ -443,17 +443,17 @@ var server = http.createServer(app).listen(app.get('port'), function(){
 
 /**
  * Listen on provided port, on all network interfaces.
- * 서버가 사용할 port를 설정한다.
+ * Sets the PORT the server will use.
  */
 
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
-...(생략)
+...(Skip)
 ```
 
 4) ./app.js
-- Request URL 매핑 설정
+- Request URL Mapping setup
 
 ```javascript
 var express = require('express');
@@ -468,7 +468,7 @@ var users = require('./routes/users');
 
 var app = express();
 
-// URL 매핑 후 수행할 js 파일들
+// js files to perform after URL mapping
 var org_chart_mysql = require('./routes/rest/org_chart/mysql')
   , org_chart_mongo = require('./routes/rest/org_chart/mongo')
   , org_chart_cubrid = require('./routes/rest/org_chart/cubrid')
@@ -483,7 +483,7 @@ var org_chart_mysql = require('./routes/rest/org_chart/mysql')
   , page = require('./routes/page/page_processing');
 
 // view engine setup
-// 뷰 엔진 설정
+// Sets View engine
 app.set('views', path.join(__dirname, 'views/'));
 app.set('view engine', 'ejs');
 
@@ -493,11 +493,11 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-// 정적파일 위치 설정
+// Set static file location
 app.use(express.static(path.join(__dirname, 'public')));
 
 /*
-* URL 매핑 설정
+* URL Mapping setup
 */
 app.use(   '/', routes);
 app.use(   '/users', users);
@@ -522,15 +522,15 @@ app.post(  '/orgs/mysql', orgs_mysql.create);
 app.get(   '/orgs/:org_id/mysql', orgs_mysql.show);
 app.put(   '/orgs/:org_id/mysql', orgs_mysql.update);
 app.delete('/orgs/:org_id/mysql', orgs_mysql.destroy);
-…..(생략)
+…..(Skip)
 ```
 
 
-### <div id='11'> 3.4. VCAP_SERVICES 환경설정 정보
-개방형 플랫폼에 배포되는 애플리케이션이 바인딩된서비스별 접속 정보를 얻기 위해서는 애플리케이션별로 등록되어있는 VCAP_SERVICES 환경설정 정보를 읽어들여정보를 획득 할 수 있다.
+### <div id='11'> 3.4. VCAP_SERVICES Environment Information
+To obtain access information for each service to which an application distributed on an open platform is bound, information can be obtained by reading VCAP_SERVICES environment information registered for each application.
 
-1)  개방형 플랫폼의 애플리케이션 환경정보
-- 서비스를 바인딩하면 JSON 형태로 환경설정 정보가 애플리케이션 별로 등록된다.
+1)  Application environment information of Open Platform
+- environment information is registered to each application in JSON form when the service is bound.
 
 ```json
 {
@@ -556,23 +556,23 @@ app.delete('/orgs/:org_id/mysql', orgs_mysql.destroy);
     ]
    }
   ],
-…..(이하 생략)…..
+…..(Skip)…..
 ```
 
-2)  Node.js에서 개방형 플랫폼의 애플리케이션 환경정보에 접근하는 방법
-- 시스템환경변수의 VCAP_SERVICES값을 읽어서 접근 할 수 있다.
+2)  How to access application environment information on open platforms in Node.js.
+- The VCAP_SERVICES value of the system environment variable may be read and accessed.
 ```
 process.env.VCAP_SERVICES
 ```
 
 
-### <div id='12'> 3.5. Mysql 연동
+### <div id='12'> 3.5. Connect Mysql
 1)  ./route/db/mysql/db_pooling.js
-- 개방형 플랫폼의 애플리케이션 환경정보에 접근하여 mysql Connection Pool을 생성
+- Create mysql Connection Pool by accessing application environment information on open platforms
 ```javascript
 /**
- * generic-pool 연동
- * mysql 풀 모듈 구현
+ * Connect generic-pool
+ * Implement mysql Pool module
  */
 
 var generic_pool  = require("generic-pool");
@@ -580,7 +580,7 @@ var mysql   = require("mysql");
 
 config = {};
 if (process.env.VCAP_SERVICES) {
-  // cloud env 설정. 데이터 구조는 2.3.4 VCAP_SERVICES 환경정보 참고
+  // cloud env Setting. Refer to 2.3.4 VCAP_SERVICES environment information for data structure
   var cloud_env   = JSON.parse(process.env.VCAP_SERVICES);
   var mysql_env   = cloud_env["Mysql-DB"][0]["credentials"];
 

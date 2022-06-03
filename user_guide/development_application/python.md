@@ -46,47 +46,47 @@
 		-	[3.2.4.	Create django Application](#3-2-4)  
 
 
-# <div id='1'></div> 1. 개요
-## <div id='1-1'></div> 1.1. 문서 개요  
+# <div id='1'></div> 1. Outline
+## <div id='1-1'></div> 1.1. Document Outline  
 
-##### <div id='1-1-1'></div> 1.1.1 목적  
-본 문서(python 애플리케이션 개발 가이드)는 Open PaaS프로젝트의 서비스팩(Mysql, Cubrid, MongoDB, RabbitMQ, Radis, GlusterFS)을 python 애플리케이션과 연동하여서비스를 사용하고 애플리케이션을 배포하는 방법에 대해 제시하는 문서이다.
+##### <div id='1-1-1'></div> 1.1.1 Purpose  
+This document (python Application Development Guide)presents the service packs of Open PaaS projects (Mysql, Cubrid, MongoDB, RabbitMQ, Redis, and GlusterFS) in connect with python applications to use services and deploy applications.
 
-##### <div id='1-1-2'></div> 1.1.2 범위  
-본 문서의 범위는 Open PaaS 프로젝트의 python 애플리케이션 개발과 서비스팩 연동에 대한 내용으로 한정한다.
+##### <div id='1-1-2'></div> 1.1.2 Range  
+The range of this document is limited to the python application development and service pack linkage of Open PaaS projects.
 
-##### <div id='1-1-3'></div>  1.1.3 참고 자료  
+##### <div id='1-1-3'></div>  1.1.3 References  
 [**http://docs.run.pivotal.io/buildpacks/python/index.html**](http://docs.run.pivotal.io/buildpacks/python/index.html) <br>
 [**http://www.cubrid.com/manual/93/api/python.html**](http://www.cubrid.com/manual/93/api/python.html) <br>
 [**https://docs.djangoproject.com/en/1.9/intro/tutorial01**](https://docs.djangoproject.com/en/1.9/intro/tutorial01) <br>
 [**http://pythontips.com/**](http://pythontips.com/) <br>
 
-# <div id='2'></div> 2.python 애플리케이션개발가이드  
+# <div id='2'></div> 2.python Application Development Guide  
 
-## <div id='2-1'></div> 2.1.	개요
-Open PaaS에 등록된 다양한 서비스팩을 python 언어로 작성된 애플리케이션과 바인딩하고 해당 애플리케이션에 바인딩 된 환경정보(VCAP_SERVICES)에서 각 서비스별 접속정보를 획득하여 애플리케이션에 적용하여 이용 할 수 있도록 Windows 환경에서 python 애플리케이션을 작성할 수 있도록 한다. 
+## <div id='2-1'></div> 2.1.	Outline
+Various service packs registered in Open PaaS are bound to applications written in Python language, and access information for each service is obtained from environmental information (VCAP_SERVICES) bound to the application to be applied to the application so that python applications can be created in a Windows environment.  
 
-## <div id='2-2'></div>  2.2.	개발환경 구성  
-python 샘플 애플리케이션 개발이 이루어진 환경은 다음과 같다..
+## <div id='2-2'></div>  2.2.	Development Environment Configuration  
+The environment in which python sample application development was made is as follows.
 
 * OS : Windows 8 64bit
 * python : 2.7.10
 * Framwork : Django 1.8.6   
 
-##### <div id='2-2-1'></div>  2.2.1 python 설치
+##### <div id='2-2-1'></div>  2.2.1 python Installation
 
-* python 2.7.10 다운로드 
+* python 2.7.10 Download 
 
 [**https://www.python.org/downloads/release/python-2710/**](https://www.python.org/downloads/release/python-2710/)
 	
 ![python-2]
 
-* 다운로드
+* Download
 
 Windows x86-64 MSI installer
  ※ 사용자 각각의 환경에 따라 설치 파일은 달라질 수 있다.
 
-* python 설치 
+* python Installation 
 
  다운로드 받은 python-2.7.10.msi 더블 클릭하여 설치를 실행한다.
  ※ python 설치 시, 환경변수를 자동으로 추가 할 수 있도록 옵션을 선택할 수 있다.

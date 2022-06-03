@@ -36,22 +36,22 @@
  
 ### <div id='1.1.1'> 1.1.1.  Purpose 
 
-This document (PHP Application Developement Guide) provides a way to integrate services from development platform projects with PHP applications.
+This document (PHP Application Development Guide) provides a way to integrate services from development platform projects with PHP applications.
   
 ### <div id='1.1.2'> 1.1.2.  Range
 
-The service to connect are MySQL, MongoDB, Redis, and GlusterFS. Use MySQL and MongoDB for saving datas. Session is to provide Redis with a sample application. Use ClusterFS for image file management (Upload) that you use.
+The service to connect are MySQL, MongoDB, Redis, and GlusterFS. Use MySQL and MongoDB for saving data. The session is to provide Redis with a sample application. Use ClusterFS for image file management (Upload) that you use.
 
 ### <div id='1.1.3'>  1.1.3.  Restrictions
 
-Some services (RabbitMQ, CUBRID) were unable to be connected because the current PHP buildpack v4.3.1 of Cloud Foundry supporting drivers did not exactly match the services of this business. An explaination on how to access the connection with MongoDB with DB Admin account because DB authentication procedure is not applied.
+Some services (RabbitMQ, CUBRID) were unable to be connected because the current PHP buildpack v4.3.1 of Cloud Foundry supporting drivers did not exactly match the services of this business. An explanation on how to access the connection with MongoDB with the DB Admin account because the DB authentication procedure is not applied.
 In actual use, you need to customize the PHP build pack and proceed with development according to the project environment.
 
 
 ### <div id='1.1.4'> 1.1.4.  Reference
 
--	PHP Buildpack :https://github.com/cloudfoundry/php-buildpack
--	XAMP Site :https://www.apachefriends.org/index.html
+-	PHP Buildpack:https://github.com/cloudfoundry/php-buildpack
+-	XAMP Site:https://www.apachefriends.org/index.html
 
   
 # <div id='2'> 2.  PHP Application Development guide
@@ -85,7 +85,7 @@ BOSH creates and manages VMs that create stemcells on AWS. To create a stemcell,
   1.	Download page appears directly when accessing this URL (https://www.apachefriends.org/index.html). Select "Click here for other versions". 
     
   ![./images/php/php_develope_guide2.png](./images/php/php_develope_guide2.png)<br>
-  First page of XAMP Official Mainpage
+  The first page of the XAMP Official Mainpage
     
   Windows version of PHP 5.5.30 (32bit) was downloaded.
     
@@ -115,7 +115,7 @@ BOSH creates and manages VMs that create stemcells on AWS. To create a stemcell,
  
 ### <div id='2.2.3'> 2.2.3. PHP Executing Environment Setting
 
-  1.	Puts PHP that was installed with XAMP into Environment Setting (Path) so that it can be run anywhere. Select Control Panel -> System -> Advanced System Setting to change system properties window as shown below. 
+  1.	Put PHP that was installed with XAMP into Environment Setting (Path) so that it can be run anywhere. Select Control Panel -> System -> Advanced System Setting to change the system properties window as shown below. 
 
   ![./images/php/php_develope_guide5.png](./images/php/php_develope_guide6.png)<br>
   System Properties Window
@@ -125,7 +125,7 @@ BOSH creates and manages VMs that create stemcells on AWS. To create a stemcell,
   ![./images/php/php_develope_guide5.png](./images/php/php_develope_guide7.png)<br>
     Path Environment Variable Setting
 
-  3.	To check if it was configured normally, execute "cmd" and slect php-version. If it appears like below, the configuration was done successfully.
+  3.	To check if it was configured normally, execute "cmd" and select php-version. If it appears like below, the configuration was done successfully.
  
   ![./images/php/php_develope_guide5.png](./images/php/php_develope_guide8.png)<br>
     Check PHP Version from cmd
@@ -133,33 +133,33 @@ BOSH creates and manages VMs that create stemcells on AWS. To create a stemcell,
  
 ### <div id='2.2.4'> 2.2.4. Composer Installation
 
-  Composer is a tool that manages library needed in development. The mainpage is as follows. https://getcomposer.org/
+  A composer is a tool that manages the library needed in development. The main page is as follows. https://getcomposer.org/
   
-  1.	There is a way to download and install Composer and set it to Path. But we will be using Maunal. The composer.phar file is still used on the Open Platform, so composer.phar file was installed in the development location with manual installation. (If the source was downloaded from Git, there is no need for installation anymore.)
+  1.	There is a way to download and install Composer and set it to Path. But we will be using Manual. The composer.phar file is still used on the Open Platform, so the composer.phar file was installed in the development location with manual installation. (If the source was downloaded from Git, there is no need for installation anymore.)
   
-  2.	Manual Installation is simple. Just enter the source at the route directory like the example below. Settings from 2.2.3 Environment Variable should be done to run PHP command.            php r "readfile('https://getcomposer.org/installer');" | php
+  2.	Manual Installation is simple. Just enter the source at the route directory like the example below. Settings from 2.2.3 Environment Variable should be done to run the PHP command.            php r "readfile('https://getcomposer.org/installer');" | php
 	      
-  3.	Configure the necessary Package in composer.json. When installed, the packages that can be used at PHP will be installed below vendor directory. 
+  3.	Configure the necessary Package in composer.json. When installed, the packages that can be used in PHP will be installed below the vendor directory. 
   
   * Cautions *
-  The released extension of PHP buildpack must be checked first to be used at the Open Platform because it has differenct environment with XAMP. Be aware that it can run in the XAMP environment but not in Open Platfrom.
+  The released extension of PHP buildpack must be checked first to be used at the Open Platform because it has a different environment from XAMP. Be aware that it can run in the XAMP environment but not in the Open Platform.
   PHP Buildpack Extenstion :https://github.com/cloudfoundry/php-buildpack/releases
 
 
  
 ### <div id='2.2.5'> 2.2.5.  Mongo Driver Installation
 
-  Mongo drive installation is to install the the Mongo driver provided by the Open Platform. Releated documents are at http://docs.php.net/manual/en/mongo.installation.php#mongo.installation.windows. Install the library file and add informations in config file.
+  Mongo drive installation is to install the Mongo driver provided by the Open Platform. Related documents are at http://docs.php.net/manual/en/mongo.installation.php#mongo.installation.windows. Install the library file and add information to the config file.
   
-  1.	DLL must be downloaded first from the PECL mainpage(http://pecl.php.net/package/mongo). This guide selected 1.6.12 version. 
+  1.	DLL must be downloaded first from the PECL main page(http://pecl.php.net/package/mongo). This guide selected the 1.6.12 version. 
    
-  Click DLL from the link above and download "5.5 Thread Safe (TS) x86". When the file is unziped, only php_mongo.dll file is required.
+  Click DLL from the link above and download "5.5 Thread Safe (TS) x86". When the file is unzipped, only the php_mongo.dll file is required.
   
   ![./images/php/php_develope_guide5.png](./images/php/php_develope_guide7.png)
   
   2.	Copy the php_mongo.dll file under the ext of PHP at the installed XAMP directory.
   
-  3.	Select php.ini from the PHP directory of XAMP Install directory and add as shown below.
+  3.	Select php.ini from the PHP directory of the XAMP Install directory and add it as shown below.
     extension=php_mongo.dll
   
   4.	Restart the Apache server when the php.ini file has been set up. If there is an error, the XAMP panel displays the error in red, verify the Apache server comes up normally.
@@ -170,44 +170,44 @@ BOSH creates and manages VMs that create stemcells on AWS. To create a stemcell,
  
 ## <div id='2.3'> 2.3.  Development
 
-Describes the package configuration and source directory configuration required for development and explains the part that links with each service.
+Describes the package configuration and source directory configuration required for development and explain the part that links with each service.
  
 ### <div id='2.3.1'> 2.3.1.  Use Package Description
 
-Use Composer to manage Dependency. The package configuration of the Composer.json file is described in the table below. Setup information is stored in composer.json..
+Use Composer to manage Dependency. The package configuration of the Composer.json file is described in the table below. Setup information is stored in composer.json.
 
 
 |Package Name |Version |Description |
 |--------------------------|------|--------------------------------------------|
-|slim/slim                 |2.*     |Used for REST/full Framewok of PHP. |
+|slim/slim                 |2.*     |Used for REST/full Framework of PHP. |
 |videlalvaro/php-amqplib   |2.5.*   |Used for connecting with RabbitMQ Service. (Cannot be used due to the reason that SSL connection is not available at the moment)| 
 |predis/predis             |1.0.*   |Used to connect with Redis Service. |
 |rackspace/php-opencloud   |1.15.*  |Used to upload files to ClusterFS with Openstack connection SDK.. |
 |guzzlehttp/guzzle         |6.*     |Used to change container authority from GlusterFS to  Http client. |
-|phpunit/phpunit           |4.3.*   |This is a program for PHP unit test. When you run Vendor\bin\phpunit, it runs the test case in the test directory and displays the results on the screen.. |
+|phpunit/phpunit           |4.3.*   |This is a program for the PHP unit test. When you run Vendor\bin\phpunit, it runs the test case in the test directory and displays the results on the screen.. |
 
 
-  When you want to install libarary using Composer, run install as shown below. This command is automatically executed when deployed on an open platform, such as a PHP build pack. 
+  When you want to install the library using Composer, run install as shown below. This command is automatically executed when deployed on an open platform, such as a PHP build pack. 
     phpcomposer.phar install
   
-  If the composer.json file is changed in the local development environment, you can change the configuration of the package using update instead of install..
+  If the composer.json file is changed in the local development environment, you can change the configuration of the package using update instead of installing.
 
 
  
 ### <div id='2.3.2'> 2.3.2.  Directory Description
 
-For convenience of development, the API service is configured as a separate directory, and the resource directory has static files (js, css, image) required by HTML.
+For the convenience of development, the API service is configured as a separate directory, and the resource directory has static files (js, css, image) required by HTML.
 
 |File/Folder  |Purpose  |
 |-----------|------------------------------------------|
 |.bp-config|	Where the extensions used in PHP buildpacks are defined.|
-|api|	Where the source related to REST API are in. It is divided by each service.|
+|api|	Where the source related to REST API is in. It is divided by each service.|
 |resources|	There are static files (js, css, image, etc.) used by HTML.|
-|Test|	Where the test case for PHP unit test are.|
+|Test|	Where the test case for the PHP unit test is.|
 |vendor|	Where Package installed with Composer is.|
 |.cfiignore|	Define files/directories that make deployment exceptions when deployed on open platforms.|
-|.htaccess|	This is where the pattern for url is defined for REST/full implementation.|
-|composer.json, composer.phar, composer.lock|	A file that manages Dependency of the Package with Composer file.|
+|.htaccess|	This is where the pattern for URL is defined for REST/full implementation.|
+|composer.json, composer.phar, composer.lock|	A file that manages the Dependency of the Package with the Composer file.|
 |Info.php|	Web page (including phpinfo) to check modules installed in PHP.|
 |login.html|	Login page for example execution.|
 |main.html|	This is the main page to show the organization chart of the example.|
@@ -246,7 +246,7 @@ To add, create the options.json file in the .bp-config directory and add it as f
   
 ### <div id='2.3.4'> 2.3.4.  VCAP_SERVICES Environment Setting Information 
 
-Service creation/binding is performed on an open platform to use the service. Must obtain VCAP_SERVICES configuration information to use the associated services. This information contains all the information needed to access the service, including the Host address/port, username, and password to connect to. 
+Service creation/binding is performed on an open platform to use the service. Must obtain VCAP_SERVICES configuration information to use the associated services. This information contains all the information needed to access the service, including the Host address/port, username, and password to connect. 
 
 1.	Check the information of the connected service
 Use CF cli to check the information connected with the service. Instead of putting this information directly into the source, bring VCAP information from the source and set it up initially.
@@ -279,7 +279,7 @@ Use CF cli to check the information connected with the service. Instead of putti
 
 2.	Bring environment setting information from PHP
 The way to bring VCAP environment settings information from PHP is simple. You can use the routine to get the env information of the system. The example below is to get the connection information for mysql service. 
-(Location :api/mysql_view.php)
+(Location:api/mysql_view.php)
 
         if (array_key_exists("VCAP_SERVICES", $_ENV)) {
         // Check if the VCAP Services is in $_ENV (System environment setting) information.
@@ -302,8 +302,8 @@ Environment setting information varies from service to service. Use the cfenv co
  
 ### <div id='2.3.5'> 2.3.5.  Connect Mysql
 
-Use the mysqli added in Extenstion. It is set as default in XAMP, so there is no need for installation. 
-(위치 :api/mysql_view.php)
+Use the mysqli added in Extension. It is set as default in XAMP, so there is no need for installation. 
+(위치:api/mysql_view.php)
 
 
 1.	Access to Mysql
@@ -356,8 +356,8 @@ Current CF's default build pack does not support CUBRID, so it was not implement
  
 ### <div id='2.3.7'> 2.3.7.  Connect MongoDB
 
-Use the mongo library added in Extenstion. However, there is a problem with user authentication with the current mongo library. the library's bug should be fixed. In this guide, we inevitably accessed MongoDB's Root account and implemented the example.
-(위치 :api/mongodb_view.php)
+Use the mongo library added in Extension. However, there is a problem with user authentication with the current mongo library. the library's bug should be fixed. In this guide, we inevitably accessed MongoDB's Root account and implemented the example.
+(위치:api/mongodb_view.php)
 
 1.	Access to Mongodbl. Use the uri information brought from environment settings.
 2.	
@@ -393,7 +393,7 @@ The Redis integration uses additional packages installed through Composer.
 
         Predis\Autoloader::register();
 
-2.	Access to Redis. Use Host, Port, Password received from the environment settings to access to Redis.
+2.	Access to Redis. Use Host, Port, and Password received from the environment settings to access Redis.
 
         $redis = new Predis\Client(
         array(
@@ -412,13 +412,13 @@ The Redis integration uses additional packages installed through Composer.
  
 ### <div id='2.3.9'> 2.3.9.  Connect RabbitMQ
 
-There is a problem with SSL connection when connecting amqp from PHP build pack in CF. Therefore, the service integration is not implemented. There are only php files that specify how to connect. (Loacation :api/rebbitmq_view.php)
+There is a problem with the SSL connection when connecting amqp from the PHP build pack in CF. Therefore, the service integration is not implemented. There are only php files that specify how to connect. (Location:api/rebbitmq_view.php)
 
  
 ### <div id='2.3.10'> 2.3.10.  Connect GlusterFS
 
 
-We use a package called php-opencloud and install it through the composer. However, there is no SDK that creates the Container Public, so the API is called directly (in REST format) and permissions are set to Public. 
+We use a package called php-opencloud and install it through the composer. However, no SDK creates the Container Public, so the API is called directly (in REST format) and permissions are set to Public. 
 
 1.	Connect with GlusterFS (File Upload)
 On an open platform, Object Storage is used with ClusterFS, and it is configured to use Openstack's Swift to use Object Storage through the API.
@@ -436,7 +436,7 @@ Announce to use Opencloud.
         ));
         $client->authenticate();
 
-3.	Set the Container to upload the file. If there is no selected Container(directory), Create new Container. Set the created Container as Public(Read Authority) to make everyone be able to read without authenticating.
+3.	Set the Container to upload the file. If there is no selected Container(directory), Create a new Container. Set the created Container as Public(Read Authority) to make everyone be able to read without authenticating.
         
         $service = $client->objectStoreService($this->catalogName, 'RegionOne', 'publicURL');
         
@@ -459,13 +459,13 @@ Announce to use Opencloud.
         // Response Code crossed to 204. Success!
         }
 
-4.	Upload the file to selected Container. Since the container is set to Public, it is readable anywhere with the URL of the image. 
+4.	Upload the file to the selected Container. Since the container is set to Public, it is readable anywhere with the URL of the image. 
         
         $fileName = time().'_'.$fileName;
         // Save File
         $result = $container->uploadObject($fileName, fopen($file, 'r+'), array('name'=> $fileName, 'Content-Type' => 'image/jpeg'));
 
-5.	Make the saved result in to URL form. Can access to the image directly with the URL.
+5.	Make the saved result into URL form. Can access the image directly with the URL.
         
         $result = array('thumb_img_path' => $container->getService()->getEndpoint()->getPublicUrl().'/'.$this->containerName.'/'.$fileName);
 
@@ -477,10 +477,10 @@ Announce to use Opencloud.
 
 ## <div id='2.4'>  2.4.  Deployment 
 
-This is for installing sample applications on development platforms. Describes the proactive operations for using CF PUSH command and the operations for creating and connecting services.
+This is for installing sample applications on development platforms. Describes the proactive operations for using the CF PUSH command and the operations for creating and connecting services.
 
 1)	Create ./manifest.yml
--	When cf push command is used, the manifest.yml of the current directory will be refered when processing deployment.
+-	When the cf push command is used, the manifest.yml of the current directory will be referred to when processing deployment.
 	
         ---
         applications:
@@ -541,7 +541,7 @@ This is for installing sample applications on development platforms. Describes t
         #cf start [app name]
 
 
-4)	Start application and Service binding at Oprn Platform application
+4)	Start application and Service binding at the Open Platform application
         $ cf push --no-start
         # Uploads application without running it.
         
@@ -555,7 +555,7 @@ This is for installing sample applications on development platforms. Describes t
         sample-redis-instanceredis-sbshared-vmpython-sample-....	…
         sample-glusterfs-instanceglusterfsglusterfs-1000Mb   glusterfs-samp....	…
         
-        $ cf bind-service php-sample-app sample-mysql-instance# Bind Applicaiton Service
+        $ cf bind-service php-sample-app sample-mysql-instance# Bind Application Service
         
         $ cf start php-sample-app# Start Application
 
@@ -563,7 +563,7 @@ This is for installing sample applications on development platforms. Describes t
 5)	Create Mysql and Cubrid Table
 -	A table should be created in the DB for the organization management function of the Sample App.
 -	Refer to 'Client Tool Connection' in the OpenPaaS Mysql, Cubrid Service Pack Installation Guide on how to add tables to Mysql and Cubrid.
--	Use Client tool to create the table below and run sql for each. (Both Mysql and Cubrid can be created with the same sql.)
+-	Use the Client tool to create the table below and run sql for each. (Both Mysql and Cubrid can be created with the same sql.)
         DROP TABLE IF EXISTS ORG_TBL;
         DROP TABLE IF EXISTS GROUP_TBL;
         
@@ -605,7 +605,7 @@ This is for installing sample applications on development platforms. Describes t
 ## <div id='2.5'>  2.5.  Test
 
 
-Use phpunit to do PHP unit test. The test case is in the test directory, and the unit test runs as below.
+Use phpunit to do the PHP unit test. The test case is in the test directory, and the unit test runs as below.
 
         Vendor\bin\phpunit
 

@@ -561,9 +561,9 @@ This is for installing sample applications on development platforms. Describes t
 
 
 5)	Create Mysql and Cubrid Table
--	Sample App의 조직관리 기능을 위해 DB에 테이블을 생성해 주어야 한다.
--	Mysql과 Cubrid에 테이블을 추가하는 방법은 OpenPaaS Mysql, Cubrid 서비스팩 설치 가이드의 'Client 툴 접속'을 참고한다.
--	Client 툴을 이용하여 아래의 테이블 생성 sql를 각각 실행한다. (Mysql과 Cubrid 양쪽다 동일한 sql로 생성가능하다.)
+-	A table should be created in the DB for the organization management function of the Sample App.
+-	Refer to 'Client Tool Connection' in the OpenPaaS Mysql, Cubrid Service Pack Installation Guide on how to add tables to Mysql and Cubrid.
+-	Use Client tool to create the table below and run sql for each. (Both Mysql and Cubrid can be created with the same sql.)
         DROP TABLE IF EXISTS ORG_TBL;
         DROP TABLE IF EXISTS GROUP_TBL;
         
@@ -602,13 +602,13 @@ This is for installing sample applications on development platforms. Describes t
 
 
 
-## <div id='2.5'>  2.5.  테스트
+## <div id='2.5'>  2.5.  Test
 
 
-PHP 단위테스트는 phpunit를 이용해서 합니다. 테스트 케이스는 test 디렉토리에 있으며 단위 테스트 실행은 아래와 같이 실행합니다.
+Use phpunit to do PHP unit test. The test case is in the test directory, and the unit test runs as below.
 
         Vendor\bin\phpunit
 
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > PHP 개발
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > PHP Development

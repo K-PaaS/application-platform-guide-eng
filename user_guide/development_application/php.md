@@ -387,13 +387,13 @@ Use the mongo library added in Extenstion. However, there is a problem with user
  
 ### <div id='2.3.8'> 2.3.8.  Connect Redis
 
-Redis 연동은 추가로 Composer를 통해 설치가된 패키지를 사용합니다. 
+The Redis integration uses additional packages installed through Composer. 
 
-1.	Redis 사용을 위해서 Predis의 Class에서 register를 선언합니다.
+1.	To use Redis, Predis' Class announce register.
 
         Predis\Autoloader::register();
 
-2.	Redis에  접속을 합니다. 환경설정에서 받은 Host, Port, Passworf를 이용하여 Redis에 접속을 합니다.
+2.	Access to Redis. Use Host, Port, Password received from the environment settings to access to Redis.
 
         $redis = new Predis\Client(
         array(
@@ -403,31 +403,31 @@ Redis 연동은 추가로 Composer를 통해 설치가된 패키지를 사용합
              "password" => $this->password
         ));
 
-3.	Session key와 사용자 ID(username)을 Redis에 저장합니다.
+3.	Save Session key and User ID(username) in Redis.
 
         $redis->set($key, $username);
 
 
 
  
-### <div id='2.3.9'> 2.3.9.  RabbitMQ연동
+### <div id='2.3.9'> 2.3.9.  Connect RabbitMQ
 
-CF의 PHP 빌드팩에서amqp접속시 SSL 접속에 문제가 있습니다. 그래서 해당 서비스 연동은 구현이 안되어 있습니다. 접속방법만 명시한 php 파일만 있습니다. (위치 :api/rebbitmq_view.php)
+There is a problem with SSL connection when connecting amqp from PHP build pack in CF. Therefore, the service integration is not implemented. There are only php files that specify how to connect. (Loacation :api/rebbitmq_view.php)
 
  
-### <div id='2.3.10'> 2.3.10.  GlusterFS 연동
+### <div id='2.3.10'> 2.3.10.  Connect GlusterFS
 
 
-php-opencloud라는 패키지를 사용하며 composer를 통해서 설치가 되게 되어 있습니다. 단 Container를 Public하게 생성하는 SDK가 없어서 API를 직접 호출(REST형식)하여 권한을 Public으로 설정하고 있습니다. 
+We use a package called php-opencloud and install it through the composer. However, there is no SDK that creates the Container Public, so the API is called directly (in REST format) and permissions are set to Public. 
 
-1.	GlusterFS와 연동하기 (파일 Upload)
-개방형 플랫폼에서는 Object Storage를 GlusterFS를 사용하는데 Object Storage를 API를 통해 사용하기 위해 Openstack의 Swift를 이용하여 서비스를 할 수 있게 구성되어 있습니다.
-php-opencloud는 swif를 만든 rackspace 회사에서 제공하는 SDK입니다. 
-Opencloud를 사용하기 위해 선언을 합니다.
+1.	Connect with GlusterFS (File Upload)
+On an open platform, Object Storage is used with ClusterFS, and it is configured to use Openstack's Swift to use Object Storage through the API.
+php-opencloud is an SDK provided by the rackspace company that created the swift.  
+Announce to use Opencloud.
 
         use OpenCloud\Rackspace;
         
-2.	Openstack(Object Storage)에 접속을 하고 잘 접속이 되었는지 체크합니다.
+2.	Check if the access to Openstack(Object Storage) is well.
 
         $client = new OpenCloud\OpenStack($this->host, array(
                "username" => $this->username,
@@ -436,68 +436,68 @@ Opencloud를 사용하기 위해 선언을 합니다.
         ));
         $client->authenticate();
 
-3.	파일을 올리기 위한 Container를 설정합니다. 만약에 해당 Container(directory)가 없으면 Container를 새로 생성을 합니다. 그리고 생성된 Container는 Public(읽기권한)으로 설정하여 인증없이 모든 사람이 읽을 수 있게 합니다.
+3.	Set the Container to upload the file. If there is no selected Container(directory), Create new Container. Set the created Container as Public(Read Authority) to make everyone be able to read without authenticating.
         
         $service = $client->objectStoreService($this->catalogName, 'RegionOne', 'publicURL');
         
         $container;
-        // Container를 가져오기
+        // Bring Container
         try {            
         $container = $service->getContainer($this->containerName
         } catch (Exception $e) {
-        // 생성하기
+        // Create
         $container = $service->createContainer($this->containerName);
         
-        // 만들어진 Container를 Public 모드로 변경하기
-        // PHP-OpenCloud SDK에서 해당 부분을 지원하지 않아서 직접 API를 호출하여 설정함
+        // Modify the created Container to Public mode
+        // The PHP-OpenCloud SDK does not support this part. Set up by calling the API directly
         $baseUrl = $container->getService()->getEndpoint()->getPublicUrl().'/'.$this->containerName;
         $httpClient = new GuzzleHttp\Client();
         $res = $httpClient->request('POST', $baseUrl, 
                 ['headers' => ['X-Auth-Token' => $container->getService()->getClient()->getToken(), 'X-Container-Read' => '.r:*']]
               );        
         
-        // Response Code가 204로 넘어옴. 성공
+        // Response Code crossed to 204. Success!
         }
 
-4.	파일을 해당 컨테이너에 Upload합니다. Container를 Public으로 설정하였기 때문에 이미지의 URL만 있으면 어디서든 읽어올 수 있습니다. 
+4.	Upload the file to selected Container. Since the container is set to Public, it is readable anywhere with the URL of the image. 
         
         $fileName = time().'_'.$fileName;
-        // 파일 저장
+        // Save File
         $result = $container->uploadObject($fileName, fopen($file, 'r+'), array('name'=> $fileName, 'Content-Type' => 'image/jpeg'));
 
-5.	저장된 결과를 URL 형태로 만듭니다. 이 URL로 직접 접속하여 해당 이미지에 접근이 가능합니다.
+5.	Make the saved result in to URL form. Can access to the image directly with the URL.
         
         $result = array('thumb_img_path' => $container->getService()->getEndpoint()->getPublicUrl().'/'.$this->containerName.'/'.$fileName);
 
-6.	결과값을  Json으로컨버전하여 HTML에서 처리할 수 있도록 합니다.
+6.	Convert the result value to Json and let HTML do the processing.
         
         echo json_encode($result);
 
 
 
-## <div id='2.4'>  2.4.  배포 
+## <div id='2.4'>  2.4.  Deployment 
 
-개발형 플랫폼에 샘플 애플리케이션을 설치하기 위한 부분입니다. CF PUSH 명령문을 사용하기 위한 사전작업과 서비스를 생성하고 연결하는 작업을 설명하고 있습니다.
+This is for installing sample applications on development platforms. Describes the proactive operations for using CF PUSH command and the operations for creating and connecting services.
 
-1)	./manifest.yml 생성
--	cf push 명령시 현재 디렉토리의manifest.yml을 참조하여 배포가 진행된다.
+1)	Create ./manifest.yml
+-	When cf push command is used, the manifest.yml of the current directory will be refered when processing deployment.
 	
         ---
         applications:
-        - name:php-sample-app# 애플리케이션 이름
-          memory: 128M# 애플리케이션 메모리 사이즈
-          instances: 1# 애플리케이션 인스턴스 개수
+        - name:php-sample-app# Application Name
+          memory: 128M# Application Memory Size
+          instances: 1# Application's Number of Instances
         path: .
-        buildpack: https://github.com/cloudfoundry/php-buildpack.git# 사용할 빌드팩을 선언
+        buildpack: https://github.com/cloudfoundry/php-buildpack.git# Announce the buildpack to use
 
-※애플리케이션 스테이징시할달 받은 포트가 환경변수로 등록되어있다. 이 포트는 애플리케이션의 상태 체크에도 사용되므로 위와 같이 포트를 지정할 것을 권장한다.
+※When staging an application, the assigned port is registered as an environment variable. This port is also used to check the status of the application, so it is recommended to designate the port as above.
 
-2)	개방형 플랫폼 로그인
+2)	Open Platform Login
 
-        $ cfapi https://api.cf.open-paas.com# 개방형 플랫폼 TARGET 지정
+        $ cfapi https://api.cf.open-paas.com# Set TARGET to Open Platform
         #cfapi [target url]
         
-        $ cf login -u testUser -o sample_test -s sample_space# 로그인 요청
+        $ cf login -u testUser -o sample_test -s sample_space# Request Login
          #cf login -u [user name] -o [org name] -s [space name]
         API endpoint: https://api.cf.open-paas.com
         
@@ -515,37 +515,37 @@ Opencloud를 사용하기 위해 선언을 합니다.
         Space:          sample_space
 
 
-3)	개방형 플랫폼 서비스 생성
+3)	Create Open Platform Service
 
-        $ cf marketplace# 마켓플레이스 목록 요청
+        $ cf marketplace# Request marketplace list
 
         service         plans                   description
         p-mysql	100mb, 1gb		MySQL databases on demand   
         p-rabbitmqstandard		RabbitMQ is a robust …..
         redis-sb	shared-vm, dedicated-vm	Redis service to provide a ……
 
-        $ cf create-service p-mysql 100mb sample-mysql-instance# 서비스 생성
+        $ cf create-service p-mysql 100mb sample-mysql-instance# Create Service
         #cf create-service [service] [plan] [service name]
         
-        $ cf services# 서비스 목록 조회
+        $ cf services# Lookup Service list
         
         nameservice      plan              bound apps		last…
         sample-mysql-instance       p-mysql100mb            node-sample, p....	…
         sample-rabbitmq-instance    p-rabbitmq   standard           python-sample-....	…
         sample-redis-instanceredis-sbshared-vmpython-sample-....	…
         
-        $ cf bind-servicephp-sample-app sample-mysql-instance# 애플리케이션 서비스 바인딩
+        $ cf bind-servicephp-sample-app sample-mysql-instance# Bind Application Service
          #cf bind-service [app name] [service name]
         
-        $ cf start php-sample-app# 애플리케이션 시작
+        $ cf start php-sample-app# Start Application
         #cf start [app name]
 
 
-4)	개방형 플랫폼 애플리케이션에 서비스 바인딩 및 애플리케이션 시작
+4)	Start application and Service binding at Oprn Platform application
         $ cf push --no-start
-        # 애플리케이션 업로드만 실행하고 시작하지는 않는다.
+        # Uploads application without running it.
         
-        $ cf services# 서비스 목록 조회
+        $ cf services# Check Service List
         
         nameservice      plan              bound apps		last…
         sample-mysql-instance       p-mysql100mb            node-sample, p....	…
@@ -555,12 +555,12 @@ Opencloud를 사용하기 위해 선언을 합니다.
         sample-redis-instanceredis-sbshared-vmpython-sample-....	…
         sample-glusterfs-instanceglusterfsglusterfs-1000Mb   glusterfs-samp....	…
         
-        $ cf bind-service php-sample-app sample-mysql-instance# 애플리케이션 서비스 바인딩
+        $ cf bind-service php-sample-app sample-mysql-instance# Bind Applicaiton Service
         
-        $ cf start php-sample-app# 애플리케이션 시작
+        $ cf start php-sample-app# Start Application
 
 
-5)	Mysql, Cubrid 테이블 생성
+5)	Create Mysql and Cubrid Table
 -	Sample App의 조직관리 기능을 위해 DB에 테이블을 생성해 주어야 한다.
 -	Mysql과 Cubrid에 테이블을 추가하는 방법은 OpenPaaS Mysql, Cubrid 서비스팩 설치 가이드의 'Client 툴 접속'을 참고한다.
 -	Client 툴을 이용하여 아래의 테이블 생성 sql를 각각 실행한다. (Mysql과 Cubrid 양쪽다 동일한 sql로 생성가능하다.)

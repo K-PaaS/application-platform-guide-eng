@@ -18,8 +18,8 @@
      * 2.3. [Development](#2.3)
          * 2.3.1. [Use Package Description](#2.3.1)
          * 2.3.2. [Directory Description](#2.3.2)
-         * 2.3.3. [Application Configuration](#2.3.3)
-         * 2.3.4. [VCAP_SERVICES Configuration Information](#2.3.4)
+         * 2.3.3. [Application Environment Setting](#2.3.3)
+         * 2.3.4. [VCAP_SERVICES Environment Setting Information](#2.3.4)
          * 2.3.5. [Connect Mysql](#2.3.5)
          * 2.3.6. [Connect CUBRID](#2.3.6)
          * 2.3.7. [Connect MongoDB](#2.3.7)
@@ -115,7 +115,7 @@ BOSH creates and manages VMs that create stemcells on AWS. To create a stemcell,
  
 ### <div id='2.2.3'> 2.2.3. PHP Executing Environment Setting
 
-  1.	Puts PHP that was installed with XAMP into Configuration (Path) so that it can be run anywhere. Select Control Panel -> System -> Advanced System Setting to change system properties window as shown below. 
+  1.	Puts PHP that was installed with XAMP into Environment Setting (Path) so that it can be run anywhere. Select Control Panel -> System -> Advanced System Setting to change system properties window as shown below. 
 
   ![./images/php/php_develope_guide5.png](./images/php/php_develope_guide6.png)<br>
   System Properties Window
@@ -210,18 +210,18 @@ For convenience of development, the API service is configured as a separate dire
 |composer.json, composer.phar, composer.lock|	A file that manages Dependency of the Package with Composer file.|
 |Info.php|	Web page (including phpinfo) to check modules installed in PHP.|
 |login.html|	Login page for example execution.|
-|main.html|	예제의 조직도를 보여주기 위한 main페이지입니다.|
-|manage..html|	예제의 데이터를 관리하기 위한 manage 페이지입니다. login이후에 보여지는 화면입니다.|
-|manifest.yml|	개방형 플랫폼에 배포(push)할 때 사용하는 설정 파일입니다.|
-|phpunit.xml|	PHP 단위테스트를 정의한 설정입니다.|
+|main.html|	This is the main page to show the organization chart of the example.|
+|manage..html|	The manage page for managing the data in the example. This is the screen that will be shown after login.|
+|manifest.yml|	This is a setup file that you use when you push onto an open platform.|
+|phpunit.xml|	Settings that define PHP unit tests.|
 
  
-### <div id='2.3.3'> 2.3.3.  애플리케이션 환경설정
+### <div id='2.3.3'> 2.3.3.  Application Environment Setting
 
-REST/full 서비스를 위한 환경설정과 PHP 빌드팩에서 사용할 Extension을 적용해야 합니다. 
+Environment Setting for REST/full service and Extension to be used at PHP buildpack must be applied. 
 
-1.	REST/full 서비스를 위해 .htaccess 구성
-REST/full API 형식인 /api/변수 를 처리하기 위한 설정입니다. 루트디렉토리에 .htaccess를 추가하고 아래와 같이 넣어줍니다.
+1.	Configure .htaccess for REST/full Service
+Settings for handling REST/full API format /api/variables. Add .htaccess to the route directory and insert the following.
 
         <IfModulemod_rewrite.c>
         RewriteEngine On
@@ -231,20 +231,20 @@ REST/full API 형식인 /api/변수 를 처리하기 위한 설정입니다. 루
         </IfModule>
 	
 	
-2.	PHP 빌드팩에 Extension 추가
-XAMP에서 mongo 드라이브를 추가하였듯이 개방형 플랫폼에도 사용항 Extension 라이브러리를 추가해야합니다. 사용가능한 라이브러리는 여기()에서 확인이 가능합니다.
-추가를 위해서는 .bp-config디렉토리에options.json 파일을 만들고 아래와 같이 추가해주면 됩니다.
+2.	Add Extenstion to PHP buildpack
+Just like how you added a mongo drive in XAMP, you should also add a term extension library to an open platform. Available libraries can be found here.
+To add, create the options.json file in the .bp-config directory and add it as follows.
 
         {
             "PHP_EXTENSIONS": ["mysqli", "mongo", "amqp"]
         }
     
- 	mysqli :mysql과 연결을 위한 extension
- 	mongo : mongo 연결을 위한 extension
- 	amqp :rabbitmq와 연결을 위한 extension (현재 SSL연동이 안되서 사용을 못하고 있음)
+ 	mysqli :an extension for connecting with mysql
+ 	mongo : an extension for connecting with mongo
+ 	amqp :an extension for connecting with rabbitmq (Currently not available due to no connection with SSL)
 
   
-### <div id='2.3.4'> 2.3.4.  VCAP_SERVICES 환경설정 정보 
+### <div id='2.3.4'> 2.3.4.  VCAP_SERVICES Environment Setting Information 
 
 개방형 플랫폼에서는 서비스를 사용하기 위해 서비스 생성/바인딩을 합니다. 그리고 연결된 서비스를 사용하기 위해 VCAP_SERVICES 환경설정 정보를 가져와야 합니다. 이 정보는 연결할 Host 주소/포트, 사용자명, 비밀번호 등 서비스 접속에 필요한 모든 정보를 포함하고 있습니다. 
 

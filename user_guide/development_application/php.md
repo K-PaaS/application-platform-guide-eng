@@ -180,36 +180,36 @@ Use Composer to manage Dependency. The package configuration of the Composer.jso
 |Package Name |Version |Description |
 |--------------------------|------|--------------------------------------------|
 |slim/slim                 |2.*     |Used for REST/full Framewok of PHP. |
-|videlalvaro/php-amqplib   |2.5.*   |RabbitMQ 서비스와 연결을 위해 사용합니다. (SSL 접속이 지원되지 않아 현재는 사용하지 못하고 있음)| 
+|videlalvaro/php-amqplib   |2.5.*   |Used for connecting with RabbitMQ Service. (Cannot be used due to the reason that SSL connection is not available at the moment)| 
 |predis/predis             |1.0.*   |Used to connect with Redis Service. |
-|rackspace/php-opencloud   |1.15.*  |Openstack 연결 SDK로 GlusterFS에 파일을 Upload할 때 사용합니다. |
-|guzzlehttp/guzzle         |6.*     |Http client로 GlusterFS의 Container 권한 변경시 사용합니다. |
-|phpunit/phpunit           |4.3.*   |PHP의 단위테스트를 위한 프로그램입니다. Vendor\bin\phpunit를 실행하면 test 디렉토리의 Test Case를 실행하고 결과를 화면에 표시합니다. |
+|rackspace/php-opencloud   |1.15.*  |Used to upload files to ClusterFS with Openstack connection SDK.. |
+|guzzlehttp/guzzle         |6.*     |Used to change container authority from GlusterFS to  Http client. |
+|phpunit/phpunit           |4.3.*   |This is a program for PHP unit test. When you run Vendor\bin\phpunit, it runs the test case in the test directory and displays the results on the screen.. |
 
 
-  Composer를 이용하여 라이브러리를 설치하려면 아래와 같이 install을 실행하면 됩니다. 이 명령은 개방형 플랫폼에 PHP 빌드팩과 같이 배포될 때 자동으로 수행이 됩니다. 
+  When you want to install libarary using Composer, run install as shown below. This command is automatically executed when deployed on an open platform, such as a PHP build pack. 
     phpcomposer.phar install
   
-  만약에 로컬 개발환경에서 composer.json파일이 변경되면 install 대신 update를 이용하여 패키지의 구성을 변경하면 됩니다.
+  If the composer.json file is changed in the local development environment, you can change the configuration of the package using update instead of install..
 
 
  
 ### <div id='2.3.2'> 2.3.2.  Directory Description
 
-개발 편의를 위해 API 서비스를 따로 디렉토리로구성하였으며 resource 디렉토리는 HTML에서 필요한 정적인 파일(js, css, image)이 있습니다.
+For convenience of development, the API service is configured as a separate directory, and the resource directory has static files (js, css, image) required by HTML.
 
-|파일/폴더  |목적  |
+|File/Folder  |Purpose  |
 |-----------|------------------------------------------|
-|.bp-config|	PHP 빌드팩에서 사용하는 extension을 정의하는 곳입니다.|
-|api|	REST API에 대한 소스가 있습니다. 각 서비스별로 구분되어 있습니다.|
-|resources|	HTML에서 사용하는 정적인 파일(js, css, image 등)이 있습니다.|
-|Test|	PHP 단위테스트를 위한 테스트 케이스가 있습니다.|
-|vendor|	Composer로 설치되는 패키지가 있습니다.|
-|.cfiignore|	개방형 플랫폼에 배포시 배포 예외를 시키는 파일/디렉토리를 정의합니다.|
-|.htaccess|	REST/full 구현을 위해 url에 대한 패턴을 정의한 곳입니다.|
-|composer.json, composer.phar, composer.lock|	Composer파일로 패키지의 Dependency를 관리하는 파일입니다.|
-|Info.php|	PHP에 설치된 모듈을 확인하기 위한 phpinfo()를 포함한 웹페이지입니다.|
-|login.html|	예제 실행을 위한 login 페이지입니다.|
+|.bp-config|	Where the extensions used in PHP buildpacks are defined.|
+|api|	Where the source related to REST API are in. It is divided by each service.|
+|resources|	There are static files (js, css, image, etc.) used by HTML.|
+|Test|	Where the test case for PHP unit test are.|
+|vendor|	Where Package installed with Composer is.|
+|.cfiignore|	Define files/directories that make deployment exceptions when deployed on open platforms.|
+|.htaccess|	This is where the pattern for url is defined for REST/full implementation.|
+|composer.json, composer.phar, composer.lock|	A file that manages Dependency of the Package with Composer file.|
+|Info.php|	Web page (including phpinfo) to check modules installed in PHP.|
+|login.html|	Login page for example execution.|
 |main.html|	예제의 조직도를 보여주기 위한 main페이지입니다.|
 |manage..html|	예제의 데이터를 관리하기 위한 manage 페이지입니다. login이후에 보여지는 화면입니다.|
 |manifest.yml|	개방형 플랫폼에 배포(push)할 때 사용하는 설정 파일입니다.|

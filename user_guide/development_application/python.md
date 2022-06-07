@@ -84,99 +84,99 @@ The environment in which python sample application development was made is as fo
 * Download
 
 Windows x86-64 MSI installer
- ※ 사용자 각각의 환경에 따라 설치 파일은 달라질 수 있다.
+ ※ The installation file may vary depending on the environment of each user.
 
 * python Installation 
 
- 다운로드 받은 python-2.7.10.msi 더블 클릭하여 설치를 실행한다.
- ※ python 설치 시, 환경변수를 자동으로 추가 할 수 있도록 옵션을 선택할 수 있다.
+ Double-click downloaded python-2.7.10.msi to run the installation.
+ ※ When installing python, you can select an option to automatically add environment variables.
 
-* 환경변수 설정
- python 설치 시, 환경변수 추가 옵션을 선택하지 않았다면 시스템 변수 Path에 다음과 같이 직접 추가한다. 
+* Environment Variable Setting
+ If the option to add environment variables is not selected when installing Python, it is added directly to the system variable Path as follows. 
 ;C:\Python27;C:\Python27\Scripts
 
-* python 설치 확인
- 명령 프롬프트에서 python 실행
- 명령 프롬프트에서 'python' 을 입력하여 python의 실행을 확인한다.
+* python installation check
+ run python at command prompt
+ At the command prompt, type 'python' to confirm the execution of python.
 `Python`
 
 ![python-3]  
 
-* python 실행 종료 
- python이 정상적으로 실행되었음을 확인하였으므로 'ctrl'+'c'를 입력하여 python을 종료한다. 
+* End Python Run 
+ Since it is confirmed that Python has been executed normally, enter 'ctrl'+'c' to terminate Python. 
 
 ![python-4]  
 
-* pip 설치 확인  
- 명령 프롬프트에서 pip 입력
- pip가 정상적으로 설치 되었을 경우, 명령어를 입력하면 pip 명령어에 대한 설명을 확인 할 수 있다. 
+* pip installation check  
+ Enter pip at command prompt
+ If the pip is installed normally, you can check the description of the pip command by entering the command. 
 
 `pip`
 
 ![python-5]  
 
-※ ip는 python 관련 패키지 설치를 지원하는 도구이다. 일반적으로 python을 설치하면 함께 설치되지만 경우에 따라 pip 설치가 되지 않을 수 있다. 이 때는 python 설치에 기본으로 제공되는 또 다른 설치도구인 easy_install을 사용하여 pip를 설치한다.
+※ pip is a tool that supports the installation of python-related packages. In general, installing python will also install pip. But in some cases, pip installation may not be possible. In this case, install pip using easy_install, another installation tool that is provided as a basic installation for python installation.
 
-※ easy_install 이용한 pip 설치
- 명령 프롬프트에서 python 설치 경로의 Scripts 디렉토리로 이동한다. 
+※ pip installation using easy_install
+ At the command prompt, navigate to the Scripts directory in the python installation path. 
  
 ` cd C:\Python27\Scripts`
 
- pip 설치 명령어를 입력한다.
+ Enter pip installation command.
 
 ` easy_install pip` 
 
- ##### <div id='2-2-2'><div> 2-2-2. python 가상환경 구성
+ ##### <div id='2-2-2'><div> 2-2-2. python Virtual Environment Configuration
 
- 독립된 python 개발환경을 구성하기 위하여 python 가상환경 생성도구인 virtualenv를 설치하여 이용한다. 가상환경에서 패키지 설치를 진행한다. 가상환경 구성은 사용자의 필요에 따라 생략될 수 있다.
+ To construct an independent Python development environment, install and use virtualenv which is a Python virtual environment creation tool. Perform package installation in a virtual environment. The virtual environment configuration may be omitted according to the user's needs.
 
-* 가상환경 도구 설치
- virtualenv 설치
+* Installation of Virtual Environment Tool
+ virtualenv installation
 
 ` pip install virtualenv`
 
-* 가상환경을 생성할 디렉토리로 이동하여 가상환경 생성 
+* Go to the directory where you want to create the virtual environment and create virtual environment 
 
 `cd c:\`
 
 `virtualenv my_virtual_env`
 
 
-※ 다양한 버전의 python이 설치되어 있다면, 가상환경 생성시에 python의 경로를 '-p' 옵션으로 지정하여, 가상환경 구성에 사용할 python을 선택할 수 있다. 다음은 예시이다.
+※ If different versions of python are installed, you can select the python to be used for configuring the virtual environment by specifying the path of the python with the '-p' option when creating the virtual environment. Below are the examples.
 
 `virtualenv -p C:\Python34\python.exe my_virtual_env_34`
 
 `virtualenv -p C:\Python27\python.exe my_virtual_env_27`
 
-* 가상환경 실행
+* Run Virtual Environment
 
- 명령 프롬프트에서 다음의 명령어를 이용하여 가상환경을 실행한다.
+ Use the command below at the command prompt to run virtual environment.
  
 `my_virtual_env\Scripts\activate`
 
- 가상환경이 정상적으로 실행되면 명령 프롬프트의 다음 화면과 같이 명령어 입력 줄에 가상환경 명칭이 붙는다.
+ If the virtual environment runs normally, the command line is named after the command prompt as shown on below.
 
 ![python-6]
   
- ※ 가상환경을 실행을 종료시키기 위해서는 deactivate 명령어를 이용한다. 가상환경이 종료되면 명령어 입력 줄의 가상환경 명칭이 제거된다
+ ※ To terminate the execution of the virtual environment, a deactivate command is used. When the virtual environment ends, the virtual environment name in the command input line is removed
 
 `deactivate`
 
 ![python-7]
 
-##### <div id='2-2-3'></div> 2.2.3. Django 설치
- 샘플 어플리케이션은 Django framework를 적용하여 개발되었기 때문에, 어플리케이션 생성을 위해 Django를 설치 한다. 설치하는 django의 버전은 1.8.6 버전이다. pip를 사용하여 django를 설치한다.
+##### <div id='2-2-3'></div> 2.2.3. Django Installation
+ Since the sample application was developed by applying the Django framework, Django is installed for application creation. The version of django to install is 1.8.6 . use pip to install django.
 
 `pip install Django==1.8.6`
 
 ![python-8]
 
- ※ 가상환경에 장고를 설치하고자 하는 사용자는 가상환경을 실행시킨 상태에서 명령어를 입력한다.
+ ※ A user who wants to install a warehouse in a virtual environment inputs a command while executing the virtual environment.
 
-## <div id='2-2'></div> 2.3. 개발
+## <div id='2-2'></div> 2.3. Development
 샘플 애플리케이션의 데이터 관리는 MySQL, CubridDB, MongoDB 중 하나를 이용하기 때문에 API 요청시 요청 본문의 DBType 값을 가지고 결정한다.
 
-※샘플 애플리케이션 다운로드
+※Sample Application Download
 완성된 샘플 애플리케이션은 하단 링크의 /OpenPaas-Sample/python-sample-app 에서 다운로드 할 수 있다.
 <br>
 Sample-App: [https://nextcloud.paas-ta.org/index.php/s/x8Tg37WDFiL5ZDi/download](https://nextcloud.paas-ta.org/index.php/s/x8Tg37WDFiL5ZDi/download)

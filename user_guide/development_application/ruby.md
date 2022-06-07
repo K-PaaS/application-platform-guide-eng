@@ -25,19 +25,19 @@
           * [2.4.1.	Open Platform Application Deployment](#22)
      * [2.5.	Test](#23)
 
-# <div id='1'></div> 1.	개요
+# <div id='1'></div> 1.	Outline
 
-### <div id='2'></div> 1.1.	문서 개요
+### <div id='2'></div> 1.1.	Document Outline
 
-##### <div id='3'></div> 1.1.1.	목적
+##### <div id='3'></div> 1.1.1.	Purpose
 
-본 문서(Ruby 애플리케이션 개발 가이드)는 개방형 플랫폼 프로젝트의 서비스팩(Mysql, Cubrid, MongoDB, RabbitMQ, Radis, GlusterFS)을 Ruby 애플리케이션과 연동하여 사용하고 Ruby 애플리케이션을 배포하는 방법에 대해 제시하는 문서이다.
+This document (Ruby Application Development Guide)presents how to use service packs (Mysql, Cubrid, MongoDB, RabbitMQ, Radis, and ClusterFS) in conjunction with Ruby applications and deploy Ruby applications.
 
-##### <div id='4'></div> 1.1.2.	범위
+##### <div id='4'></div> 1.1.2.	Range
 
-본 문서의 범위는 Open PaaS 프로젝트의 Ruby 애플리케이션 개발과 서비스팩 연동, 애플리케이션 배포에 대한 내용으로 한정되어 있다.
+The range of this document is limited to Ruby application development, service pack linkage, and application distribution of Open PaaS projects.
 
-##### <div id='5'></div>  1.1.3.	참고 자료
+##### <div id='5'></div>  1.1.3.	References
 **<http://rubyinstaller.org/>**  
 **<https://docs.pivotal.io/pivotalcf/buildpacks/ruby/index.html/>**  
 **<http://rubykr.github.io/rails_guides/getting_started.html/>**  
@@ -49,168 +49,168 @@
 **<https://github.com/fog/fog/>**  
 
 
-# <div id='6'></div> 2.	Ruby 애플리케이션 개발가이드
+# <div id='6'></div> 2.	Ruby Application Development Guide
 
 
-### <div id='7'></div> 2.1.	개요
+### <div id='7'></div> 2.1.	Outline
 
-개방형 플랫폼에 등록된 다양한 서비스팩을 Ruby언어로 작성된 애플리케이션과 바인딩하고 해당 애플리케이션에 바인딩된 서비스 환경정보(VCAP_SERVICES)를 이용하여 애플리케이션관 연동하고 각 서비스를 사용 할 수 있도록 Windows기반 환경에서 개방형 플랫폼에 배포할 Ruby 애플리케이션을 작성하는 방법을 설명한다.
+It describes how to bind various service packs registered on an open platform to an application written in Ruby language, link applications using VCAP_SERVICES bound to the application, and create a Ruby application to distribute to an open platform in a Windows-based environment.
 
-### <div id='8'></div> 2.2.	개발환경 구성
+### <div id='8'></div> 2.2.	Development Environment Configuration
 
-Ruby 애플리케이션 개발을 위해 다음과 같은 환경으로 개발환경을 구성 한다.
+The following environment was constructed for Ruby Application Development.
 
 -	OS : Windows 7 64bit
 -	Ruby : 1.9.3-p551
 -	Framwork : Ruby On Rails 4.1.8
 -	IDE : RubyMine 7.1.1   
 
-※	CubridDB의 Ruby 드라이버 최신 지원 버전이 Ruby 1.9.3 까지 지원하여 해당 버전을 선택하였다. 각 서비스별 지원 되는 드라이버(또는 Gem)에 맞는 Ruby 버전을 사용하길 권장한다.   
-※	Ruby IDE는 개별 선택하여 사용한다. 
+※	The latest Ruby driver version of CubidDB supported up to Ruby 1.9.3 and was selected. It is recommended that you use the Ruby version that fits the supported driver (or Gem) for each service.   
+※	Ruby IDE is used individually. 
 
 
-##### <div id='9'></div> 2.2.1.	Ruby & Ruby On Rails설치
+##### <div id='9'></div> 2.2.1.	Ruby & Ruby On Rails Installation
 
-1)	Ruby & DevKit 다운로드   
+1)	Ruby & DevKit Download   
 **<http://rubyinstaller.org/downloads/>**   
 ![ruby01]
-- 다운로드  
+- Download  
 RubyInstallers : Ruby 1.9.3-p551  
 DEVELOPMENT KIT : DevKit-tdm-32-4.5.2-20111229-1559-sfx  
 
-2)	Ruby 설치
-- Ruby 1.9.3-p551.exe 더블클릭하여 설치를 실행한다.   
+2)	Ruby Installation
+- Double-click Ruby 1.9.3-p551.exe and execute installation.   
 ![ruby02]    
-- “OK” 버튼 클릭  
+- Click “OK” button  
 
 ![ruby03]  
-- “I accet the License” 선택 후 “Next” 버튼 클릭   
+- Click “I accept the License” and “Next” button after   
 
 ![ruby04]  
-- “Add Ruby executables to your PATH” 선택 후 “Install” 버튼 클릭   
+- Select “Add Ruby executables to your PATH” and click “Install” button   
 	
 ![ruby05]  
-- “Finish” 버튼을 클릭하여 Ruby 설치를 종료한다.   
+- Click “Finish” button and complete Ruby installation.   
 
 
-3)	DEVELOPMENT KIT 설치
-- DevKit-tdm-32-4.5.2-20111229-1559-sfx.exe을 더블클릭하여 설치를 실행한다.   
+3)	DEVELOPMENT KIT Installation
+- Double-click DevKit-tdm-32-4.5.2-20111229-1559-sfx.exe and execute installation.   
 ![ruby06]  
 ![ruby07]  
-- 설치할 폴더를 지정하고 “Extract”버튼을 클릭한다.
-- Windows의 CMD 창을 실행하여 DevKit 설치 폴더로 이동한다.  
+- Specify the folder to install and click the "Extract" button..
+- Run the CMD window in Windows to the DevKit installation folder.  
 
 >ruby dk.rb init
--	“ruby dk.rb init” 명령을 실행하여 “config.yml” 파일을 생성한다.
+-	Execute “ruby dk.rb init” command and create “config.yml” file.
 ![ruby08] 
 
 >ruby dk.rb install
--	“ruby dk.rb install” 명령을 실행하여 DevKit을 설치한다.
+-	Execute “ruby dk.rb install” command and install DevKit.
 ![ruby09] 
--	“ruby –v” 명령을 실행하여 루비 버전을 확인한다.
+-	Check the ruby version by using “ruby –v” command.
 ![ruby10] 
 
-4)	Ruby On Rails 설치
--	“gem update rdoc” 명령을 실행하여 rdoc gem을 업데이트한다.(미 실행시 rails install시 에러가 발생 할 수 있다.)
+4)	Ruby On Rails Installation
+-	Run the command "gem update doc" to update the rdoc gem. (If not executed, errors may occur during rails installation.)
 ![ruby11] 
--	“gem install rails –v 4.1.8” 명령을 실행하여 rails을 설치한다.
+-	Execute “gem install rails –v 4.1.8” command and install rails.
 ![ruby12] 
--	“rails –v” 명령을 사용하여 rails의 버전을 확인한다.
+-	Check the rails version by using “rails –v” command.
 ![ruby13] 
 
 
-### <div id='10'></div> 2.3.	개발
+### <div id='10'></div> 2.3.	Development
 
-Ruby 샘플 애플리케이션을 개발하기 위한 애플리케이션의 생성과 환경설정, VCAP_SERVICES 정보의 획득 및 각 서비스의 연동 방법에 대하여 설명한다.
+It describes the creation and environment setting of applications to develop Ruby sample applications, the acquisition of VCAP_SERVICES information, and the interworking method of each service.
 
 
-- 샘플 애플리케이션 다운로드
+- Download Sample Application
 
- 완성된 샘플 애플리케이션은 아래 링크의 /OpenPaaSSample/ruby-sample-app 에서 받을 수 있다.
+ The completed sample application can be downloade in the /OpenPaaSSample/ruby-sample-app link below.
 
 > https://nextcloud.paas-ta.org/index.php/s/x8Tg37WDFiL5ZDi/download
 
-##### <div id='11'></div> 2.3.1.	애플리케이션 생성
+##### <div id='11'></div> 2.3.1.	Create Application
 
-1)	Rails 애플리케이션 생성(bundle install 제외)
+1)	Create Rails Application (bundle install excluded)
 >rails new [application name] –B –skip-bundle
 ![ruby14] 
 ![ruby15] 
 
-2)	자동 생성 폴더 및 파일 정의
+2)	Define autogenerated folders and files
 
 <table>
 <tr align=center>
-    <td> 파일/폴더 </td>
-    <td> 목적 </td>
+    <td> File/Folder </td>
+    <td> Purpose </td>
 </tr>
 <tr>
     <td> Gemfile </td>
-    <td> 이 파일은 여러분의 레일즈 어플리케이션에게 필요한 젬의 의존성 정보를 기술하는데 사용됩니다. </td>
+    <td> This file is used to describe the Jem dependency information that your rail application needs. </td>
 </tr>
 <tr>
     <td> README </td>
-    <td> 이 파일은 어플리케이션을 위한 짧막한 설명입니다. 설치, 사용 방법 기술에 쓰입니다. </td>
+    <td> This file is a short description for the application. A guide for installation and usage. </td>
 </tr>
 <tr>
     <td> Rakefile </td>
-    <td> 이 파일은 터미널에서 실행할 수 있는 배치잡들을 포함합니다. </td>
+    <td> This file contains batch jobs that can be executed on the terminal. </td>
 </tr>
 <tr>
     <td> app/ </td>
-    <td> 어플리케이션을 위한 컨트롤러, 모델, 뷰를 포함합니다. 이 가이드에서는 이 폴더에 집중할 것 입니다. </td>
+    <td> Includes controllers, models, and views for applications. This guide will focus on this folder. </td>
 </tr>
 <tr>
     <td> config/ </td>
-    <td> 어플리케이션의 실행 시간의 규칙, 라우팅, 데이터베이스 등 설정을 저장합니다. </td>
+    <td> Save settings such as rules, routing, database, etc. of the application's execution time. </td>
 </tr>
 <tr>
     <td> config.ru </td>
-    <td> 랙(Rack) 기반의 서버들이 시작할때 필요한 설정 입니다. </td>
+    <td> This setting is required when rack-based servers start up. </td>
 </tr>
 <tr>
     <td> db/ </td>
-    <td> 현재 데이터베이스의 스키마를 볼 수 있습니다.(데이터베이스 마이그레이션으로 잘 알려져 있습니다.) 여러분은 마이그레이션에 대해서 간단하게 배우게 됩니다. </td>
+    <td> The schema of the current database is shown(known for database migration) You'll learn a little bit about migration. </td>
 </tr>
 <tr>
     <td> doc/ </td>
-    <td> 어플리케이션에 대한 자세한 설명 문서입니다. </td>
+    <td> Detailed description of the application. </td>
 </tr>
 <tr>
     <td> lib/ </td>
-    <td> 어플리케이션을 위한 확장 모듈입니다. (이 문서에서 다루지 않습니다.) </td>
+    <td> Extension module for applications (not covered in this document). </td>
 </tr>
 <tr>
     <td> public/ </td>
-    <td> 외부에서 볼수 있는 유일한 폴더 입니다.이미지, 자바스크립트, 스타일시트나 그외 정적인 파일들은 이곳에 두세요. </td>
+    <td> This is the only folder that can be viewed externally.Keep images, JavaScript, style sheets, and other static files here. </td>
 </tr>
 <tr>
     <td> script/ </td>
-    <td> 레일즈 스크립트를 포함합니다. 여러분의 어플리케이션을 실행시키거나, 배포, 실행 관련한 스크립트를 두세요. </td>
+    <td> Contains rails scripts. Put the relevant scripts here when you run or deploy the application. </td>
 </tr>
 <tr>
     <td> test/ </td>
-    <td> 유닛 테스트, 픽스쳐, 그와 다른 테스트 도구들 입니다. 이 부분은 레일즈 어플리케이션 테스트하기 가 담당합니다. </td>
+    <td> Unit test, fixture, and other test tools. Rail application test is in charge of this part. </td>
 </tr>
 <tr>
     <td> tmp/ </td>
-    <td> 임시 파일 </td>
+    <td> Temporary File </td>
 </tr>
 <tr>
     <td> vendor/ </td>
-    <td> 서드 파티 코드들을 위한 공간입니다. 일반적인 레일즈 어플리케이션은 루비 젬과 레일즈 소스-프로젝트 내에 설치시-와 미리 패키징된 추가 플러그인들이 위치합니다. </td>
+    <td> Space for third-party codes. General rail applications have Ruby Gem and Rail Source-Installation-On-Project and pre-packaged additional plug-ins. </td>
 </tr>
 </table>
 
-##### <div id='12'></div> 2.3.2.	애플리케이션 환경설정
+##### <div id='12'></div> 2.3.2.	Application Environment Setting
 
-해당 예제는 Ruby 1.9.3을 기준으로 각 드라이버의 버전을 명시적으로 선택하여 설치하였습니다.  
-./Gemfile 수정(설정)시 설치된 Ruby의 버전에 맞는 젬을 설치하도록 권장합니다.
+The example is based on Ruby 1.9.3 and installed with an explicit selection of each driver's version.  
+When modifying(Setting) ./Gemfile, it is recommend to install the appropriate Gem for the version of Ruby installed.
 
 <table>
 <tr align=center>
-    <td> 파일/폴더 </td>
-    <td> 목적 </td>
+    <td> File/Folder </td>
+    <td> Purpose </td>
 </tr>
 <tr>
     <td> ./Gemfile </td>

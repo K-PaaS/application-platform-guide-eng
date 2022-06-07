@@ -174,98 +174,98 @@ Windows x86-64 MSI installer
  ※ A user who wants to install a warehouse in a virtual environment inputs a command while executing the virtual environment.
 
 ## <div id='2-2'></div> 2.3. Development
-샘플 애플리케이션의 데이터 관리는 MySQL, CubridDB, MongoDB 중 하나를 이용하기 때문에 API 요청시 요청 본문의 DBType 값을 가지고 결정한다.
+Because data management for sample applications uses either MySQL, CubridDB, or MongoDB, it is determined by the DBType value of the body of the request upon API request.
 
 ※Sample Application Download
-완성된 샘플 애플리케이션은 하단 링크의 /OpenPaas-Sample/python-sample-app 에서 다운로드 할 수 있다.
+The completed sample application can be downloaded from the /OpenPaas-Sample/python-sample-app link below.
 <br>
 Sample-App: [https://nextcloud.paas-ta.org/index.php/s/x8Tg37WDFiL5ZDi/download](https://nextcloud.paas-ta.org/index.php/s/x8Tg37WDFiL5ZDi/download)
 
 
-##### <div id='2-3-1'></div> 2.3.1. django 애플리케이션 생성
+##### <div id='2-3-1'></div> 2.3.1. Create django Application
 
-* django 프로젝트 생성 
+* Create django Project 
 
- django 프로젝트를 생성할 디렉토리로 이동하여 하단의 명령어를 입력하여 샘플 애플리케이션 프로젝트를 생성한다.
-※ 가상환경을 구성하여 가상환경에 Django를 설치한 사용자는 모든 명령어를 가상환경을 실행한 상태에서 입력한다. 가상환경 구성 및 실행은 본 문서의 [2.2.2. python 가상환경 구성](#2-2-2) 을 참고한다.
+ Go to the directory where you want to create the django project and enter the command below to create the sample application project.
+※ Users who configure a virtual environment and install Django in the virtual environment enter all commands while executing the virtual environment. Refer to [2.2.2.python Virtual Environment Configuration] (#2-2-2) in this document for configuration and execution of the virtual environment.
 
 `django-admin startproject my_sampleproject`
 
-※ django 프로젝트 생성시 프로젝트명에 '-'(hyphen)을 포함할 수 없기 때문에 '_'(underscore)를 사용했다.
+※ When creating the django project, '_'(undercore) was used because the project name cannot include '-'(hyphen).
 
-다음과 같은 구조로 파일이 생성된다. 
+The file is created in the following structure. 
  
 ![python-9] 
 
 <table>
 	<tr>
 		<td>manage.py</td>
-		<td>사이트 관리를 지원하는 파일. 서버 기동, 앱 생성 등의 기능을 지원한다. </td>
+		<td>Files that support site management. It supports functions such as server startup and app creation. </td>
 	</tr>
 	<tr>
 		<td>setting.py</td>
-		<td>사이트에 대한 설정을 관리. 본 문서의 python 샘플 앱에서는 모든 서비스에 대한 연동 설정을 포함한다.</td>
+		<td>Manage settings for the site. The Python sample app in this document includes interworking settings for all services.</td>
 	</tr>
 	<tr>
 		<td>urls.py</td>
-		<td>URL패턴 목록을 정의하는 모듈.</td>
+		<td>Modules defining URL pattern lists.</td>
 	</tr>
 	<tr>
-		<td>wsgi.py</td> <td>WSGI application 어플리케이션을 정의하는 모듈.</td>
+		<td>wsgi.py</td> <td>Modules defining WSGI applications.</td>
 	</tr>
 	<tr>
 		<td>__init__.py</td>
-		<td>해당 패키지가 임포트될 때 수행되는 스크립트를 정의. __init__.py 파일을 삭제할 경우, 해당 디렉토리에 있는 서브모듈을 찾을 수 없게 되어 임포트에 실패한다.</td>
+		<td>Defines the script that runs when the package is imported.. If the __init__.py file is deleted, the submodule in the directory cannot be found and the import fails.</td>
 	</tr>
 	<tr>
 </table>
 
-* django 애플리케이션 생성 
+* Create django Application 
 
- django 프로젝트를 생성했다면, 생성한 프로젝트 디렉토리로 이동하여 애플리케이션을 생성한다. 애플리케이션 생성 명령어는 다음과 같다.
+ If you created the django project, go to the project directory you created and create the application. The application generation command is as follows.
 
-프로젝트 디렉토리로 이동
+Go to Project Directory
 
 `cd my_sampleproject`
 
-애플리케이션 생성
+Create Application
 
 `python manage.py startapp my_sampleapp`
 
-※ django 애플리케이션 생성시 애플리케이션명에 '-'(hyphen)을 포함할 수 없기 때문에 '_'(underscore)를 사용했다.
+※ When creating django application, '_' (undercore) was used because the application name cannot contain '-' (hyphen).
 
-프로젝트의 파일 구조를 보면 붉은색 박스 부분이 추가 된 것을 확인할 수 있다
+By looking at the structure of the project's file, you can see that a red boxed portion has been added
 
 ![python-10] 
 
 <table>
 	<tr>
 		<td>admin.py</td>
-		<td>장고에서 제공하는 데이터베이스 관리자 대시보드를 사용하기 위해 필요한 모듈이다. 본 샘플앱에서는 장고의 데이터베이스 관리 기능을 사용하지 않기 때문에 삭제해도 무방하다.</td>
+		<td>A necessary module to use the database manager dashboard provided by django. The Sample app does not use the database management function so it may be deleted.</td>
 	</tr>
 	<tr>
 		<td>model.py</td>
-		<td>장고에서 객체관계매핑(ORM)을 위해 데이터를 정의하는 모듈. 본 샘플앱에서는 사용하지 않기 때문에 삭제해도 무방하다.</td>
+		<td>A module that defines data for object relationship mapping (ORM) in django. The sample app does not use this so it may be deleted.</td>
 	</tr>
 	<tr>
 		<td>tests.py</td>
-		<td>장고 test 모듈. 본 샘플앱에서는 사용하지 않기 때문에 삭제해도 무방하다.</td>
+		<td>Test Module of django. The sample app does not use this so it may be deleted.</td>
 	</tr>
 	<tr>
 		<td>views.py</td>
-		<td>MVC 패턴의 controller 역할을 수행하는 모듈. 장고에서는 view가 controller로 기능한다.</td>
+		<td>Module that acts as controller of MVC pattern. In django, view functions as controller.</td>
 	</tr>
 	<tr>
 		<td>__init__.py</td>
-		<td>해당 패키지가 임포트될 때 수행되는 스크립트를 정의. __init__.py 파일을 삭제할 경우, 해당 디렉토리에 있는 서브모듈을 찾을 수 없게 되어 임포트에 실패한다.	</td>
+		<td>Defines the script that runs when the package is imported.. If the __init__.py file is deleted, the submodule in the directory cannot be found and the import fails.	</td>
 	</tr>
 </table>
 
-##### <div id='2-3-2'></div> 2.3.2. 애플리케이션 환경설정
+##### <div id='2-3-2'></div> 2.3.2. 	Application Environment Setting
 
- django 애플리케이션에서 환경설정은 settings 모듈에 정의하도록 되어 있다. settings 모듈은 [2.3.1.1. django 프로젝트 생성](#2-3-3-1)에서 프로젝트 생성을 통해 자동 생성된 my_sampleproject 디렉토리의 settings.py 파일을 의미한다. 샘플어플리케이션에서 사용하는 패키지를 django 애플리케이션에서 사용하기 위해서는 이 settings 모듈에 설정을 추가하거나 수정하여야 한다. 하단에 settings 모듈에서 추가 또는 수정하여야 하는 부분을 설명과 함께 기술한다.
+ In the django application, the configuration is to be defined in the settings module. The settings module refers to the settings.py file in the my_sampleproject directory automatically generated by project creation in [2.3.1.1. Create django Project] (#2-3-3-1). To use the package used by the sample application in the django application, you must add or modify settings in this settings module. It is described and explained below of the parts to add or modify the settings module.
 
-※  +으로 표시된 부분이 추가되는 코드, -로 표시된 부분이 삭제되는 코드이다.
+※  The code to which the part marked + is to be added, and the part marked - is to be deleted.
 
 `..\my_sampleproject\my_sampleproject\settings.py`
 
@@ -281,10 +281,10 @@ INSTALLED_APPS = (
     +'my_sampleapp',
 )
 
- ※	django rest framework 패키지를 사용할 수 있도록 INSTALLED APPS에 추가한다.
- ※	[2.3.1.2. django 애플리케이션 생성](#2-3-1-2)에서 생성한 애플리케이션을 INSTALLED APPS에 추가한다.
+ ※	Add django rest framework package at INSTALLED APPS to use.
+ ※	Add the application created from [2.3.1.2. Create django Application](#2-3-1-2) at the INSTALLED APPS.
 
--TEMPLATES = [ 생략 ... ]  #다음과 같이 수정
+-TEMPLATES = [ Skip ... ]  #modify as follows
 +TEMPLATES = [
 +    {
 +        'BACKEND': 'django.template.backends.django.DjangoTemplates',

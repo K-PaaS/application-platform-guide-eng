@@ -241,37 +241,37 @@ When modifying(Setting) ./Gemfile, it is recommend to install the appropriate Ge
 # Modify https => http
 source 'http://rubygems.org' 
 
-# Ruby 버전 명시
+# Specify Ruby Version
 ruby '1.9.3' 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
-...(중략)...
+...(Skip)...
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
-# Cloud Foundry 유틸
+# Cloud Foundry Utils
 gem 'cf-app-utils'
 
-# MySQL 드라이버
+# MySQL Driver
 gem 'mysql2', '~> 0.3.20'
 
-# Cubrid 드라이버
+# Cubrid Driver
 gem 'cubrid'
 
-# MongoDB 드라이버
+# MongoDB Driver
 gem 'mongo'#, '~> 2.1'
 
-# RabbitMP 드라이버
+# RabbitMP Driver
 gem 'amq-protocol', '1.9.2'
 gem 'bunny', '1.7.0'
 
-# Openstack for swift(glusterfs)' 드라이버
+# Openstack for swift(glusterfs)' Driver
 gem 'net-ssh', '2.9.2'
 gem 'fog-google', '0.1.0'
 gem 'fog', '1.34.0'
 
-# Redis 드라이버
+# Redis Driver
 gem 'redis'
 
 group :development, :test do
@@ -280,16 +280,16 @@ end
 ```
 
 ※	Windows 환경에서 Cubrid 드라이버는 Cubrid의 라이브러리를 사용하므로 해당 Ruby 버전에 맞는 Cubrid를 설치하여 라이브러리를 참조 할 수 있도록 하여야한다.   
-※	해당 샘플은 Ruby 1.9.3(64bit 미지원) 이므로 CUBRID-Windows-x86(32bit)버전을 설치하였다.   
+※	Since the sample is Ruby 1.9.3 (not 64 bit), CUBRID-Windows-x86 (32 bit) version is installed.   
 
-2)	젬 설치
--	Gemfile에 정의된 젬을 설치한다.  
+2)	Gem Installation
+-	Install the Gem defined in the Gemfile..  
 ```
 bundle install
 ```
 
-3)	./config/application.rb 수정 
--	애플리케이션의 환경설정
+3)	Modify ./config/application.rb 
+-	Environment Setting of the Application
 
 ```
 require File.expand_path('../boot', __FILE__)

@@ -295,28 +295,28 @@ INSTALLED_APPS = (
 +        'DIRS': [os.path.join(BASE_DIR, 'static/jinja2'), ],
 +    },
 +]
-#	기존의 TEMPLATES를 연두색 음영으로 표시된 부분으로 수정한다.
-#	..\my_sampleproject\static\template 디렉토리에 위치한 템플릿은 django의 기본 템플릿 엔진으로 읽고, ..\my_sampleproject\static\jinja2 디렉토리에 위치한 템플릿은 jinja2 엔진으로 읽기 위해서 위와 같이 수정한다. jinja2 엔진은 템플릿 main.html과 manage.html에 쓰인 일부 신택스를 django의 기본 템플릿 엔진이 정상적으로 읽어낼 수 없기 때문에 사용한다.
+#	Modify the existing TEMPLATES to the part marked with light green shading.
+#	Modify as shown above to read the template located at the ..\my_sampleproject\static\template directory with django's default template engine and template located at ..\my_sampleproject\static\jinja2 directory with jinja2 engine. The jinja2 engine uses some syntaxes written in the template main.html and manage.html because django's default template engine cannot read them correctly.
 
-- TIME_ZONE = 'UTC'  #다음과 같이 수정
+- TIME_ZONE = 'UTC'  #Modify as shown
 + TIME_ZONE = ' Asia/Seoul'
-#	애플리케이션의 시간 설정을 'Asia/Seoul'로 변경한다
+#	Change the application's time setting to 'Asia/Seoul'
 
 +STATIC_BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 +STATICFILES_DIRS = (
 +    os.path.join(STATIC_BASE_DIR, '../static/resources'),
 +)
 +STATIC_ROOT = 'staticfiles' 
-#	STATIC_BASE_DIR는 애플리케이션의 경로를 의미한다. 본 문서의 안내대로 진행했다면 애플리케이션의 경로는 '..\my_sampleproject\my_sampleapp'가 된다. 개방형  클라우드 플랫폼에 애플리케이션을 배포할 때, STATIC_BASE_DIR의 상위 디렉토리의 static/resources 경로에 위치한 파일들이 STATIC_ROOT로 정의된 'staticfiles' 디렉토리에 모이게 된다.
+#	STATIC_BASE_DIR refers to the path of the application. If you followed the instructions in this document, the path of the application becomes '..\my_sampleproject\my_sampleapp'. When deploying applications on an open cloud platform, files located in the static/resources path, the parent directory of STATIC_BASE_DIR, are collected in the 'static files' directory defined as STATIC_ROOT.
 
--STATIC_URL = '/static/'  #다음과 같이 수정
+-STATIC_URL = '/static/'  #Modify as shown
 +STATIC_URL = '/resources/'
-#	샘플의 템플릿에서 사용하는 리소스에 접근할 수 있는 URL
+#	URL to access the resources used by the template of the sample
 
-※ settings 모듈에 DATABASES 설정과 cache 설정 등, 각각의 서비스와 연동할 수 있는 VCAP_SERVICES 정보를 획득하는 코드가 추가되어야 하지만 하단의 [2.3.4.] ~ [2.3.9]에서 자세히 소개하므로 이 장에서는 다루지 않는다.
+※ The settings module should include code to obtain VCAP_SERVICES information that can be linked to each service, such as DATABASES settings and cache settings, but is not covered in this chapter, as detailes are in [2.3.4.] ~ [2.3.9] below.
 ```
 
-WhiteNoise를 사용할 수 있도록 wsgi 모듈을 수정한다. 
+Modify wsgi module to enable WhiteNoise. 
 
 `..\my_sampleproject\my_sampleproject\wsgi.py`
 
@@ -326,12 +326,12 @@ WhiteNoise를 사용할 수 있도록 wsgi 모듈을 수정한다.
 +application = DjangoWhiteNoise(get_wsgi_application())
 ```
 
-##### <div id='2-3-3'></div> 2.3.3. VCAP_SERVICES 환경설정 정보 
+##### <div id='2-3-3'></div> 2.3.3. VCAP_SERVICES Environment Setting Information 
 
-개방형 플랫폼에 배포되는 애플리케이션이 바인딩 된 각각의 서비스의 접속 정보를 얻기 위해서는 각각의 애플리케이션에 등록되어있는 VCAP_SERVICES 환경설정 정보를 읽어 들여 정보를 획득 해야 한다.
+In order to obtain access information for each service to which an application distributed on an open platform is bound, the VCAP_SERVICES configuration information registered in each application must be read to obtain information..
 
-* 개방형 플랫폼의 애플리케이션 환경정보
-  서비스를 바인딩하면 JSON 형태로 환경설정 정보가 애플리케이션 별로 등록된다.
+* Open Platform's Application Environment Information
+  When the service is bound, configuration information is registered by application in the form of JSON.
 
 ```json
 {
@@ -366,12 +366,12 @@ WhiteNoise를 사용할 수 있도록 wsgi 모듈을 수정한다.
      "name": "e37e541c-75de-4f01-8196-63e2d902e768",
      "password": "c5649c42-ca5e-42be-926a-c3231aa81dc1",
      "uri": "mongodb://b5d67268-897
-(이하 생략)
+(Skip)
 ```
 
-##### <div id='2-3-4'></div> 2.3.4. Mysql 연동
+##### <div id='2-3-4'></div> 2.3.4. Connect Mysql
  
- 각 서비스에 대한 VCAP_SERVICES 환경설정 정보는 settings 모듈에서 획득할 수 있다. settings 모듈은 [2.3.1.1. django 프로젝트 생성]에서 프로젝트 생성시 자동으로 생성된다. MySQL의 경우는 MySQL-python 드라이버가 django 연동을 지원하기 때문에 settings 모듈의 DATABASES 정보가 정의된 부분을 찾아 다음과 같이 수정함으로써 연동이 가능하다.
+ VCAP_SERVICES environment setting information for each service may be obtained from the settings module. The settings module is automatically created when the project is created in [2.3.1.1. Create django Project].In the case of MySQL, the MySQL-python driver supports django integration, so it can be linked by finding the part where the DATABASES information in the settings module is defined and modifying it as follows.
 
 `..\my_sampleproject\my_sampleproject\settings.py` 
 
@@ -395,13 +395,13 @@ if 'VCAP_SERVICES' in os.environ:
             }, 
         }
 ```
- ※ DATABASES에 'default' 데이터베이스로 MySQL을 정의하였다. django에서는 데이터베이스 명칭에서 'default'는 반드시 존재해야 하기 때문에 'mysql'이 아닌 'default'를 사용하였다. 다른 데이터베이스를 추가하고자 한다면 추가되는 데이터베이스에 대해서는 임의의 명칭을 사용할 수 있다.
+ ※ DataBASES defined MySQL as the 'default' database. In django, 'default' was used instead of 'mysql' because 'default' must exist in the database name. When adding another database, you may use any name for the next database.
  
  <br>
  
- ※ 'Mysql-DB' 라고 기입된 부분은 개방형 클라우드 플랫폼에서 서비스되는 서비스의 이름이다. 실제 서비스 되는 이름과 정확히 일치해야 한다. 개방형 클라우드 플랫폼에서 'cf marketplace' 명령어를 입력하여 서비스명을 확인할 수 있다.
+ ※ The part written as 'Mysql-DB' is the name of the service served on an open cloud platform and it must match the actual service name exactly. The service name can be checked by entering the 'cf marketplace' command on an open cloud platform.
 
-mysql_views.py 모듈에서 connections를 임포트하여 다음과 같은 형태로 cursor를 생성한다.
+Import connections from the mysql_views.py module to create cursors in the following form.
 
 `..\my_sampleproject\my_sampleapp\mysql_views.py`
 
@@ -416,9 +416,9 @@ def make_connection():
     return cursor
 ```
 
-##### <div id='2-3-5'></div> 2.3.5. Cubrid 연동
+##### <div id='2-3-5'></div> 2.3.5. Connect Cubrid
 
- 각 서비스에 대한 VCAP_SERVICES 환경설정 정보는 settings 모듈에서 획득할 수 있다. settings 모듈은 [2.3.1.1. django 프로젝트 생성](#2-3-1-1) 에서 프로젝트 생성시 자동으로 생성된다. CUBRID-Python 드라이버는 django 연동을 지원하지 않기 때문에 settings 모듈에서 VCAP_SERVICES 환경설정 정보의 credentials 정보를 cubrid_views 모듈에서 읽어와 connection을 생성한다.
+ VCAP_SERVICES configuration information for each service may be obtained from the settings module. settings Modules are automatically created when a project is created in [2.3.1.1. Create django Project] (#2-3-1-1). Because the CUBRID-Python driver does not support django integration, the settings module reads the credentials information of the VCAP_SERVICES configuration information from the credits_views module to create a connection.
 
 `..\my_sampleproject\my_sampleproject\settings.py`
 
@@ -432,7 +432,7 @@ if 'VCAP_SERVICES' in os.environ:
         CUBRID_CRED = cubrid_srv['credentials']
 ``` 
 
- ※django의 settings.py 모듈에 정의된 값을 다른 모듈에서 불러오기 위해서는 settings.py 모듈에서 영문 대문자로 정의되어 있어야만 한다.
+ ※In order to retrieve the values defined in django's settings.py module from other modules, they must be defined in English capital letters in the settings.py module.
  <br>
  ※ 'CubridDB'라고 기입된 부분은 개방형 클라우드 플랫폼에서 서비스되는 서비스의 이름이다. 실제 서비스 되는 이름과 정확히 일치해야 한다. 개방형 클라우드 플랫폼에서 'cf marketplace' 명령어를 입력하여 서비스명을 확인할 수 있다.
 

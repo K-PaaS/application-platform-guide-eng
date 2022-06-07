@@ -214,31 +214,31 @@ When modifying(Setting) ./Gemfile, it is recommend to install the appropriate Ge
 </tr>
 <tr>
     <td> ./Gemfile </td>
-    <td> 이 파일은 여러분의 레일즈 어플리케이션에게 필요한 젬의 의존성 정보를 기술 </td>
+    <td> This file describes the dependency information that your rail application needs </td>
 </tr>
 <tr>
     <td> ./config/application.rb </td>
-    <td> 애플리케이션의 환경설정 </td>
+    <td> Environment Setting of the application </td>
 </tr>
 <tr>
     <td> ./config/routes.rb </td>
-    <td> Request URL과 컨트롤러의 매핑 설정 </td>
+    <td> Set up the mapping of the Request URL to the controller </td>
 </tr>
 <tr>
     <td> ./config/environments/development.rb  </td>
-    <td> 개발환경 설정(Localhost 서버 실행시 기본 환경설정) </td>
+    <td> Development Environment Setting (Default Environment Setting when running Localhost server) </td>
 </tr>
 <tr>
     <td> ./config/environments/production.rb  </td>
-    <td> 상용환경 설정(개방형 플랫폼 배포시 사용되는 기본 환경설정) </td>
+    <td> Common use Environment Setting(default environment setting used when deploying open platforms) </td>
 </tr>
 </table>
 
-1)	./Gemfile 수정
--	각 서비스에서 사용할 드라이버 및 필요한 젬을 정의한다.
+1)	./Gemfile Modification
+-	Define the drivers and the required gems to be used in each service.
 
 ```
-# https => http 변경
+# Modify https => http
 source 'http://rubygems.org' 
 
 # Ruby 버전 명시

@@ -470,7 +470,7 @@ vcap_services = JSON.parse(ENV['VCAP_SERVICES'])
 </tr>
 <tr>
     <td> ./app/controllers/orgs_chart_mysql_controller.rb </td>
-    <td> Controller class used by paging Service Connection class </td>
+    <td> Controller class used by call Service Connection class </td>
 </tr>
 </table>
 
@@ -496,16 +496,16 @@ end
 end
 ```
 
-2)	./app/controllers/orgs_chart_mysql_controller.rb service connection class paging
+2)	./app/controllers/orgs_chart_mysql_controller.rb service connection class call
 
 ```
-# encoding: UTF-8      # Encoding appointed(Korean Language Supported)
+# encoding: UTF-8      # Encoding set(Korean Language Supported)
 require 'mysql_service'   # Add mysql_service class (Additional part of each service class)
 class OrgChartMysqlController < ApplicationController
-  before_action :db_connection    # Paging processing method(DB Access)
+  before_action :db_connection    # Call processing method(DB Access)
   before_action :set_param, only: [:index] 
   before_action :set_org, only: [:index] 
-  after_action :db_close  # Paging postprocessing method (DB Closed)
+  after_action :db_close  # Call postprocessing method (DB Closed)
 
   # Org group list lookup method
   def index
@@ -516,13 +516,13 @@ class OrgChartMysqlController < ApplicationController
     end
   end
 
-# Connecting to the service before the method is paged
+# Connect to the service before the method is called
   def db_connection
-    @client = Connector::MysqlService.new.connector #Access information was obtained by paging the service interworking class, and this was declared as a class variable.
+    @client = Connector::MysqlService.new.connector #Access information was obtained by calling the service interworking class, and this was declared as a class variable.
     @query = Connector::MysqlQuery.new
   end
 
-# Service closed after method paging is done
+# Service closed after method calling is done
   def db_close
     @client.close
   end
@@ -553,16 +553,16 @@ end
 </tr>
 <tr>
     <td> ./lib/cubrid_service.rb </td>
-    <td> Vcap 클래스를 상속하여 Connection을 생성하는 클래스 </td>
+    <td> A class that inherits a Vcap class to create a Connection </td>
 </tr>
 <tr>
     <td> ./app/controllers/orgs_chart_cubrid_controller.rb </td>
-    <td> 서비스 Connection 클래스 호출하여 사용하는 컨트롤러 클래스 </td>
+    <td> Controller class used by Call Service Connection class </td>
 </tr>
 </table>
 
 1)	./lib/cubrid_service.rb
--	Vcap 클래스를 상속하여 Cubrid Connection을 생성하는 클래스
+-	Class that inherits a Vcap class to create a Cubid Connection
 
 ```
 require 'vcap'
@@ -573,7 +573,7 @@ module Connector
       super()
     end
     def connector
-      credentials = serviceInfo('CubridDB') # “CubridDB” 서비스 credentials 조회
+      credentials = serviceInfo('CubridDB') # “CubridDB” service credentials check
       Cubrid.connect(credentials['name'],
                             credentials['hostname'],
                             33000,
@@ -584,18 +584,18 @@ end
 end
 ```
 
-2)	./app/controllers/orgs_chart_cubrid_controller.rb 서비스 Connection 클래서 호출
+2)	./app/controllers/orgs_chart_cubrid_controller.rb service connection class call
 
 ```
-# encoding: UTF-8      # Encoding 지정(한글지원)
-require 'cubrid_service'    # cubrid_service 클래스 추가 (각 서비스별 클래스 추가부분)
+# encoding: UTF-8      # Encoding set(Korean language supported)
+require 'cubrid_service'    # Add cubrid_service class (Additional part of each service class)
 class OrgChartMysqlController < ApplicationController
-  before_action :db_connection    # 전처리 메소드 호출(DB 접속)
+  before_action :db_connection    # Call processing method(DB Access)
   before_action :set_param, only: [:index] 
   before_action :set_org, only: [:index] 
-  after_action :db_close  # 후처리 메소드 호출 (DB 닫음)
+  after_action :db_close  # Call postprocessing method (DB Closed)
 
-  # Org 그룹 목록 조회 메서드
+  # Org group list lookup method
   def index
     if @org == nil
       render json: {error: 'request value wrong'}, status: 400
@@ -613,23 +613,23 @@ class OrgChartMysqlController < ApplicationController
       render json: {org: @org, groups: groups}
     end  end
 
-# 메소드가 호출되기전 서비스 접속
+# Connect to the service before the method is called
   def db_connection
-    @client = Connector::CubridService.new.connector #서비스 연동 클래스를 호출하여 접속정보를 획득하고 이를 클래스 변수로 선언하였다.
+    @client = Connector::CubridService.new.connector #Access information was obtained by calling the service interworking class, and this was declared as a class variable.
     @query = Connector::MysqlQuery.new
   end
 
-# 메소드 호출이 끝난후 서비스 닫음
+# Service closed after method calling is done
   def db_close
     @client.close
   end
 
-  # Param 처리 메소드
+  # Param process method
 def set_param
     @param = {:org_id => params[:org_id]}
   end
 
-  # Org 정보 조회 메서드
+  # Org information lookup method
   def set_org
     begin
       @org = @client.query(@query.org_show(@param[:org_id])).first
@@ -640,27 +640,27 @@ def set_param
 end
 
 ```
-※해당 클래스는 샘플 예제이며 서비스의 접속정보의 획득 및 활용 방법은 애플리케이션의 구조및 특성에 맞게 사용 할 수 있다.
+※The class is a sample example, and the method of obtaining and utilizing access information for the service can be used according to the structure and characteristics of the application.
 
-##### <div id='16'></div> 2.3.6.	MongoDB 연동
+##### <div id='16'></div> 2.3.6.	Connect MongoDB
 
 <table>
 <tr align=center>
-    <td> 파일/폴더 </td>
-    <td> 목적 </td>
+    <td> File/Folder </td>
+    <td> Purpose </td>
 </tr>
 <tr>
     <td> ./lib/mongo_service.rb </td>
-    <td> Vcap 클래스를 상속하여 Connection을 생성하는 클래스 </td>
+    <td> A class that inherits a Vcap class to create a Connection </td>
 </tr>
 <tr>
     <td> ./app/controllers/orgs_chart_mongo_controller.rb </td>
-    <td> 서비스 Connection 클래스 호출하여 사용하는 컨트롤러 클래스 </td>
+    <td> Controller class used by Call Service Connection class </td>
 </tr>
 </table>
 
 1)	./lib/mongo_service.rb
--	Vcap 클래스를 상속하여 MongoDB Connection을 생성하는 클래스
+-	Class to create MongoDB Connection by inheriting Vcap class
 
 ```
 require 'vcap'
@@ -671,7 +671,7 @@ module Connector
       super()
     end
     def connector
-      credentials = serviceInfo('Mongo-DB') # “Mongo-DB” 서비스 credentials 조회
+      credentials = serviceInfo('Mongo-DB') # “Mongo-DB” service credentials check
       Mongo::Client.new(credentials['hosts'],
                         :database => credentials['name'],
                         :user =>  credentials['username'],
@@ -683,16 +683,16 @@ module Connector
 end
 ```
 
-2)	./app/controllers/orgs_chart_mongo_controller.rb 서비스 Connection 클래서 호출
+2)	./app/controllers/orgs_chart_mongo_controller.rb service connection class call
 ```
-# encoding: UTF-8      # Encoding 지정(한글지원)
-require ‘mongo_service’    # mongo_service 클래스 추가 (각 서비스별 클래스 추가부분)
+# encoding: UTF-8      # Encoding set(Korean Language Supported)
+require ‘mongo_service’    # Add mongo_service class (Additional part of each service class)
 class OrgChartMysqlController < ApplicationController
-  before_action :db_connection    # 전처리 메소드 호출(DB 접속)
+  before_action :db_connection    # Call processing method(DB Access)
   before_action :set_param, only: [:index] 
   before_action :set_org, only: [:index] 
 
-  # Org 그룹 목록 조회 메서드
+  # Org group list lookup method
   def index
     if @org == nil
       render json: {error: 'request value wrong'}, status: 400
@@ -719,17 +719,17 @@ class OrgChartMysqlController < ApplicationController
     end
   end
 
-# 메소드가 호출되기전 서비스 접속
+# Connect to the service before the method is called
   def db_connection
-    @client = Connector:: MongoService.new.connector #서비스 연동 클래스를 호출하여 접속정보를 획득하고 이를 클래스 변수로 선언하였다.
+    @client = Connector:: MongoService.new.connector #Access information was obtained by paging the service interworking class, and this was declared as a class variable.
   end
 
-# Param 처리 메소드
+# Param processing method
 def set_param
     @param = {:orgId => params[:org_id]}
   end
 
-  # Org 정보 조회 메서드
+  # Org information lookup method
   def set_org
     begin
       #@org = @client[:Orgs].find(:_id => BSON::ObjectId(@param[:orgId])).first
@@ -743,15 +743,15 @@ def set_param
   end
 end
 ```
-※해당 클래스는 샘플 예제이며 서비스의 접속정보의 획득 및 활용 방법은 애플리케이션의 구조및 특성에 맞게 사용 할 수 있다.
+※The class is a sample example, and the method of obtaining and utilizing access information for the service can be used according to the structure and characteristics of the application.
 
 
-##### <div id='17'></div> 2.3.7.	Redis 연동
+##### <div id='17'></div> 2.3.7.	Connect Redis
 
 <table>
 <tr align=center>
-    <td> 파일/폴더 </td>
-    <td> 목적 </td>
+    <td> File/Folder </td>
+    <td> Purpose </td>
 </tr>
 <tr>
     <td> ./lib/redis_service.rb </td>

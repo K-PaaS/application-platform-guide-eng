@@ -852,7 +852,7 @@ module Connector
     end
     def connector
 
-      credentials = serviceInfo('p-rabbitmq') # “p-rabbitmql” 서비스 credentials 조회
+      credentials = serviceInfo('p-rabbitmq') # “p-rabbitmql” service credentials check
       protocols = credentials['protocols']
       amqp_credentials = protocols['amqp+ssl'] || protocols['amqp']
       Bunny.new(
@@ -867,14 +867,14 @@ module Connector
   end
 end
 ```
-※Bunny 2.2.x 이후 드라이버 버전에서는 TLS/SSL CA의 경로를 지정하지 않으면 기본으로 설정된 경로를 사용한다. Ex) Ubuntu/Debian : /etc/ssl/certs/ca-certificates.crt
+※In Bunny 2.2.x and later driver versions, if you do not specify a path for TLS/SSLCA, the default path is used. Ex) Ubuntu/Debian : /etc/ssl/certs/ca-certificates.crt
 
-2)	./app/controllers/status_controller.rb 서비스 Connection 클래서 호출
+2)	./app/controllers/status_controller.rb service connection class call
 ```
-# encoding: UTF-8      # Encoding 지정(한글지원)
-require ‘rabbitmq_service’    # rabbitmq_service 클래스 추가 (각 서비스별 클래스 추가부분)
+# encoding: UTF-8      # Encoding set(Korean Language Supported)
+require ‘rabbitmq_service’    # Add rabbitmq_service class (Additional part of each service class)
 class StatusController < ApplicationController
-  before_action :rabbit_ connection # RabbitMQ 서버 접속
+  before_action :rabbit_ connection # RabbitMQ server access
   def status
 
     if ENV['RAILS_ENV'].to_s != "development" && !ENV['RAILS_ENV'].to_s != "test"
@@ -904,32 +904,32 @@ class StatusController < ApplicationController
   end
 
   def rabbit_connection
-    @conn = Connector::RabbitmqService.new.connector   #서비스 연동 클래스를 호출하여 접속정보를 획득하고 이를 클래스 변수로 선언하였다.
+    @conn = Connector::RabbitmqService.new.connector   #Access information was obtained by paging the service interworking class, and this was declared as a class variable.
 
   end
 end
 ```
-※해당 클래스는 샘플 예제이며 서비스의 접속정보의 획득 및 활용 방법은 애플리케이션의 구조및 특성에 맞게 사용 할 수 있다.
+※The class is a sample example, and the method of obtaining and utilizing access information for the service can be used according to the structure and characteristics of the application.
 
-##### <div id='19'></div> 2.3.9.	GlusterFS 연동
+##### <div id='19'></div> 2.3.9.	Connect GlusterFS
 
 <table>
 <tr align=center>
-    <td> 파일/폴더 </td>
-    <td> 목적 </td>
+    <td> File/Folder </td>
+    <td> Purpose </td>
 </tr>
 <tr>
     <td> ./lib/glusterfs_service.rb </td>
-    <td> Vcap 클래스를 상속하여 Connection을 생성하는 클래스 </td>
+    <td> A class that inherits a Vcap class to create a Connection </td>
 </tr>
 <tr>
     <td> ./app/controllers/upload_controller.rb </td>
-    <td> 서비스 Connection 클래스 호출하여 사용하는 컨트롤러 클래스 </td>
+    <td> Controller class used by Call Service Connection class </td>
 </tr>
 </table>
 
 1)	./lib/glusterfs_service.rb
--	Vcap 클래스를 상속하여 GlusterFS Connection을 생성하는 클래스
+-	Class to create GlusterFS Connection by inheriting Vcap class Vcap
 
 ```
 require 'vcap'
@@ -940,7 +940,7 @@ module Connector
       super()
     end
     def connector
-      credentials = serviceInfo('glusterfs') # “glusterfs” 서비스 credentials 조회
+      credentials = serviceInfo('glusterfs') # “glusterfs” service credentials check
       Fog::Storage.new({
                            :provider            => 'OpenStack',
                            :openstack_username  => credentials['username'],
@@ -951,15 +951,15 @@ module Connector
   end
 end
 ```
-2)	./app/controllers/upload_controller.rb 서비스 Connection 클래서 호출
+2)	./app/controllers/upload_controller.rb service connection class call
 ```
-# encoding: UTF-8      # Encoding 지정(한글지원)
-require ‘glusterfs_service’    # glusterfs_service 클래스 추가 (각 서비스별 클래스 추가부분)
+# encoding: UTF-8      # Encoding set(Korean Language Supported)
+require ‘glusterfs_service’    # Add glusterfs_service class (Additional part of each service class)
 class UploadController < ApplicationController
-  before_filter :authenticate   # 메서드를 호출하기전 인증여부를 확인합니다.
-  before_action :gs_connection  # 파일 업로드를 위한 Swift 인증정보를 획득합니다.
+  before_filter :authenticate   # Check authentication before calling the method.
+  before_action :gs_connection  # Acquire Swift credentials for file upload.
 
-  # 파일을 업로드 합니다.
+  # Uploads file.
   def upload
     @img = params[:file]
 
@@ -980,52 +980,52 @@ class UploadController < ApplicationController
   end
 
   def gs_connection
-    @service = Connector::Glusterfs.new.connector   #서비스 연동 클래스를 호출하여 접속정보를 획득하고 이를 클래스 변수로 선언하였다.
+    @service = Connector::Glusterfs.new.connector   #Access information was obtained by paging the service interworking class, and this was declared as a class variable.
 
   end
 end
 ```
-※해당 클래스는 샘플 예제이며 서비스의 접속정보의 획득 및 활용 방법은 애플리케이션의 구조및 특성에 맞게 사용 할 수 있다.
+※The class is a sample example, and the method of obtaining and utilizing access information for the service can be used according to the structure and characteristics of the application..
 
 
-### <div id='21'></div> 2.4.	배포
+### <div id='21'></div> 2.4.	Deployment
 
-개발 완료된 애플리케이션을 개방형 플랫폼에 배포하는 방법을 설명한다.
+Explains how to deploy developed applications on open platforms다.
 
-##### <div id='22'></div> 2.4.1.	개방형 플랫폼 애플리케이션 배포
+##### <div id='22'></div> 2.4.1.	Open Platform Application Deployment
 
 <table>
 <tr align=center>
-    <td> 파일/폴더 </td>
-    <td> 목적 </td>
+    <td> File/Folder </td>
+    <td> Purpose </td>
 </tr>
 <tr>
     <td> ./manifest.yml </td>
-    <td> 개방형 플랫폼 배포 환경 설정 파일 </td>
+    <td> Open platform deployment environment setting file </td>
 </tr>
 </table>
 
-1)	./manifest.yml 생성
--	cf push 명령시 현재 디렉토리의 manifest.yml을 참조하여 배포가 진행된다.
+1)	Create ./manifest.yml
+-	In the cf push command, the deployment proceeds by referring to the manifest.yml in the current directory.
 
 ```
 ---
 applications:
-- name: ruby-sample-app # 애플리케이션 이름
-  memory: 512M        # 애플리케이션 메모리 사이즈
-  instances: 1           # 애플리케이션 인스턴스 개수
-  path: .                # 애플리케이션 위치
-  command: bundle exec rails server -p $PORT # 애플리케이션 배포 후 실행 명령어
+- name: ruby-sample-app # Application Name
+  memory: 512M        # Application Memory Size
+  instances: 1           # Applications Number of Instances
+  path: .                # Applications location
+  command: bundle exec rails server -p $PORT # Deployment command after deployment
 ```
-※애플리케이션 스테이징시 할달 받은 포트가 환경변수로 등록되어있다. 이 $PORT는 애플리케이션의 상태 체크에도 사용되므로 위와 같이 포트를 지정할 것을 권장한다.
+※The port that was allocated during application staging is registered as an environment variable. This $PORT is also used to check the status of the application. It is recommended to specify the port.
 
-2)	개방형 플랫폼 로그인
+2)	Open Platform Login
 ```
-$ cf api https://api.cf.open-paas.com   # 개방형 플랫폼 TARGET 지정
- #cf api [개방형 플랫폼 API 주소] : 개방형 플랫폼 API 주소를 지정한다.
+$ cf api https://api.cf.open-paas.com   # Set Open Platform TARGET
+ #cf api [API Address of the Open Platform] : Sets the API address of the Open Platform.
 
-$ cf login -u testUser -o sample_test -s sample_space   # 로그인 요청
- #cf login –u [사용자 이름] –o [조직명] –s [스페이스명] : 조직, 스페이스가 없을경우 생성필요
+$ cf login -u testUser -o sample_test -s sample_space   # Request Login
+ #cf login –u [User Name] –o [Organization Name] –s [Space Name] : If there is no Organization and Space, creation is required
 
 API endpoint: https://api.cf.open-paas.com
 
@@ -1045,19 +1045,19 @@ Space:          sample_space
 $
 ```
 
-3)	개방형 플랫폼 서비스 생성
+3)	Create Open Platform Service
 ```
-$ cf marketplace     # 마켓플레이스 목록 요청
+$ cf marketplace     # Request Marketplace List
 
 service         plans                    description
 p-mysql	       100mb, 1gb		MySQL databases on demand   
 p-rabbitmq     standard		        RabbitMQ is a robust …..   
 redis-sb	       shared-vm, dedicated-vm	Redis service to provide a ……
 
-$ cf create-service p-mysql 100mb sample-mysql-instance    # 서비스 생성
- #cf create-service [서비스명] [플랜명] [생성할 서비스명]
+$ cf create-service p-mysql 100mb sample-mysql-instance    # Create Service
+ #cf create-service [Service Name] [Plan Name] [Service Name to Create]
 
-$ cf services    # 서비스 목록 조회
+$ cf services    # Check Service List
 
 name                       service       plan              bound apps		last…
 sample-mysql-instance       p-mysql      100mb            node-sample, p....	…
@@ -1065,15 +1065,15 @@ sample-rabbitmq-instance    p-rabbitmq   standard           python-sample-....	�
 sample-redis-instance        redis-sb      shared-vm         python-sample-....	…
 ```
 
-4)	개방형 플랫폼 애플리케이션에 서비스 바인딩 및 애플리케이션 시작
+4)	Binding services to open platform applications and start applications
 
 ```
 $ cf push -b https://github.com/cloudfoundry/ruby-buildpack.git#v1.3.1 --no-start 
-# 애플리케이션 업로드만 실행하고 시작하지는 않는다.
-# 최근 Ruby 빌드팩(1.3.1이후)은 Ruby 1.9.3을 기본적으로 지원하지 않는다. Ruby 1.9.3을 지원하는 빌드팩을 지정하여 배포한다. 각 애플리케이션은 Ruby 버전에 맞는 빌드팩을 지정하여 사용하여야 하거나 개방형 플랫폼에서 제공하는 기본 빌드팩을 사용할경우 –b 옵션을 제외 하여도 무방하다.
-# cf push –b [사용자 빌드팩 URL] –no-start
+# Execute application upload and dont start.
+# Current Ruby buildpacks (1.3.1 and later) do not support Ruby 1.9.3 by default. Designate and deploy buildpacks that support Ruby 1.9.3. Each application should specify and use a buildpack that fits the Ruby version. You can exclude the –b option if you use a basic build pack provided by an open platform. .
+# cf push –b [User Buildpack URL] –no-start
 
-$ cf services   # 서비스 목록 조회
+$ cf services   # Check Service List
 
 name                       service       plan              bound apps		last…
 sample-mysql-instance       p-mysql      100mb            node-sample, p....	…
@@ -1083,13 +1083,13 @@ sample-rabbitmq-instance    p-rabbitmq   standard           python-sample-....	�
 sample-redis-instance        redis-sb      shared-vm         python-sample-....	…
 sample-glusterfs-instance    glusterfs      glusterfs-1000Mb   glusterfs-samp....	…
 
-$ cf bind-service ruby-sample-app sample-mysql-instance   # 애플리케이션 서비스 바인딩
-# cf bind-service [애플리케이션 명] [서비스 명]
+$ cf bind-service ruby-sample-app sample-mysql-instance   # Application Service Binding
+# cf bind-service [Application Name] [Service Name]
 
-$ cf start ruby-sample-app    # 애플리케이션 시작
-# cf start [애플리케이션 명]
+$ cf start ruby-sample-app    # Start Application
+# cf start [Application Name]
 ```
-※최신 빌드팩은 Ruby 1.9.3을 지원하지 않기 때문에 ruby-buildpack 1.3.1 버전을 사용하여 배포를 진행합니다. 개방형 플랫폼에서 지원하는 기본 빌드팩을 사용할경우 –b 옵션을 제외   
+※Because the latest build packs do not support Ruby 1.9.3, deploy using Ruby-buildpack 1.3.1 version. Exclude the –b option if you are using a base build pack supported by an open platform 
 
 ※애플리케이션 배포절차를 윈도우 머신에서 수행하는 경우(cf cli를 윈도우 머신에 설치하여 사용하는 경우), 애플리케이션 시작('cf start')이 제대로 되지 않을 수 있습니다. 이 때는 bin 폴더내의 3개의 파일 bundle, rake, rails를 유닉스용으로 변환하여 'cf push' 부터 다시 진행합니다. 파일 변환 절차는 다음을 따릅니다.
 
@@ -1113,15 +1113,15 @@ http://sourceforge.net/projects/dos2unix/files/latest/download
 
 
 
-### <div id='23'></div> 2.5.	테스트
+### <div id='23'></div> 2.5.	Test
 
-Rspec을 이용한 Ruby 애플리케이션 테스트
+Ruby Application Test using Rspec
 
 1)	폴더 및 파일 정의
 <table>
 <tr align=center>
-    <td> 파일/폴더 </td>
-    <td> 목적 </td>
+    <td> File/Folder </td>
+    <td> Purpose </td>
 </tr>
 <tr>
     <td> Spec </td>
@@ -1133,7 +1133,7 @@ Rspec을 이용한 Ruby 애플리케이션 테스트
 </tr>
 </table>
 
-2)	테스트 실행
+2)	Execute Test
 >bundle exec rspec   
       ※정상적인 테스트 진행을 위해서는 해당 서비스와 접속이 가능하여야 한다.(프록시, 터널링 등..)
       
@@ -1157,4 +1157,4 @@ Rspec을 이용한 Ruby 애플리케이션 테스트
 [ruby16]:./images/ruby/ruby_16.png
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Ruby 개발
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Ruby Developmet

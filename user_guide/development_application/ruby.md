@@ -279,7 +279,7 @@ group :development, :test do
 end
 ```
 
-※	Windows 환경에서 Cubrid 드라이버는 Cubrid의 라이브러리를 사용하므로 해당 Ruby 버전에 맞는 Cubrid를 설치하여 라이브러리를 참조 할 수 있도록 하여야한다.   
+※	The Cubid driver uses the library of Cubid in a windows environment. Refer to the library to download the appropriate Cubid for the version of Ruby.   
 ※	Since the sample is Ruby 1.9.3 (not 64 bit), CUBRID-Windows-x86 (32 bit) version is installed.   
 
 2)	Gem Installation
@@ -314,94 +314,94 @@ module RubySampleApp
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    # Rails 애플리케이션 구동시 라이브러리 Loading path 추가
+    # Adding a library loading path when running the Rails application
     config.autoload_paths += %W(#{config.root}/lib)
 
-    # 예외처리(routes.rb참조 하도록 설정)
+    # Exception handling (set to refer to routes.rb)
     config.exceptions_app = self.routes
 
   end
 end
 ```
 
-4)	./config/routes.rb 수정
--	Request URL과 컨트롤러의 매핑 설정
+4)	Modify ./config/routes.rb
+-	Set Mapping for Requesting URL abd Controller
 ```
 Rails.application.routes.draw do
 
-  # 인덱스(root) 페이지 설정
+  # Index(root) page settings
 root 'static#login'
 
-# 정적페이지설정(.html)
+# Static page settings(.html)
   get '/login' => 'static#login'
   get '/main/:org_id' => 'static#main'
   get '/manage' => 'static#manage'
-...(중략)...
-  # 기능별 API Path 설정
-#[HTTP메서드] ‘[Uri]’   =>   ‘[Controller#메서드]’
+...(Skip)...
+  # API Path Settings by Function
+#[HTTPMethod] ‘[Uri]’   =>   ‘[Controller#Method]’
   get	'org-chart/:org_id/mysql' 	  	=> 'org_chart_mysql#index'
   get	'org-chart/:org_id/cubrid' 	  	=> 'org_chart_cubrid#index'
 get	'org-chart/:org_id/mongo' 	=> 'org_chart_mongo#index'
-...(생략)
+...(Skip)
 ```
 
 5)	./config/environments/development.rb 
--	개발환경 설정( Localhost 서버 실행시 기본 환경설정)
+-	Development Environment Setting( Default environment setting when running Localhost server)
 
 ```
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-...(중략)...
+...(Skip)...
 
 # Show full error reports and disable caching.
-# 예외 발생처리 기능 설정(Json형으로 반환 받기위함)
+# Set exception handling function (to receive return as type Json)
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = false
 
-...(중략)...
+...(Skip)...
 
 # public static html page view
-# ./public 폴더 접근 허용 여부 설정(js, css, image 정적 리소스)
+# Set whether to allow access to ./public folders (js, css, image static resources)
   config.serve_static_assets = true
 
   # Disable request forgery protection in test environment
 # authenticity_token ignore
-# Post, Put 메서드 호출시 인증 절차 설정
+# Set authentication procedure when calling Post, Put method
   config.action_controller.allow_forgery_protection    = false
 end
 ```
 6)	./config/environments/production.rb 
--	상용환경 설정(개방형 플랫폼 배포시 사용되는 기본 환경설정)
+-	Use environment settings  (default environment setting used when deploying open platforms)
 
 ```
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-...(중략)...
+...(Skip)...
 
   # Disable request forgery protection in test environment
   # authenticity_token ignore
-# Post, Put 메서드 호출시 인증 절차 설정
+# Set authentication procedure when calling Post, Put method
 config.action_controller.allow_forgery_protection    = false
 ```
 
-##### <div id='13'></div> 2.3.3.	VCAP_SERVICES 환경설정 정보
+##### <div id='13'></div> 2.3.3.	VCAP_SERVICES Environment Setting Information
 
-개방형 플랫폼에 배포되는 애플리케이션이 바인딩된 서비스별 접속 정보를 얻기 위해서는 애플리케이션별로 등록되어있는 VCAP_SERVICES 환경설정 정보를 읽어들여 정보를 획득 할 수 있다.
+To obtain access information for each service to which an application distributed on an open platform is bound, information may be obtained by reading VCAP_SERVICES configuration information registered for each application..
 
 <table>
 <tr align=center>
-    <td> 파일/폴더 </td>
-    <td> 목적 </td>
+    <td> File/Folder </td>
+    <td> Purpose </td>
 </tr>
 <tr>
     <td> ./lib/vcap.rb </td>
-    <td> 개방형 플랫폼의 애플리케이션별 VCAP_SERVICES 환경정보에서 서비스별 접속정보를 읽어오는 클래스 </td>
+    <td>  A class that reads connection information per service from VCAP_SERVICES environment information of the application from open platform  </td>
 </tr>
 </table>
 
-1)	개방형 플랫폼의 애플리케이션 환경정보
--	서비스를 바인딩하면 JSON 형태로 환경설정 정보가 애플리케이션 별로 등록된다.
+1)	Applications environment information of the Open Platform
+-	When the service is bound, environment setting information is registered for each application in the form of JSON..
 
 ```
 {
@@ -425,57 +425,57 @@ config.action_controller.allow_forgery_protection    = false
     ]
    }
   ],
-...(이하 생략)...
+...(Skip)...
 ```
 
-2)	./lib/vcap.rb 파일 생성
--	개방형 플랫폼의 애플리케이션별 VCAP_SERVICES 환경정보에서 서비스별 접속정보를 읽어오는 클래스
+2)	Create ./lib/vcap.rb file
+-	A class that reads connection information per service from VCAP_SERVICES environment information of the application from open platform
 ```
-# cf-app-utils 라이브러리 사용
+# Use cf-app-utils library
 require 'cf-app-utils' 
 
 module VcapService
   class Vcap
 
-# 클래스 초기화 메서드
+# Class Reset Method
     def initialize 
     end
 
-    def serviceInfo(service) #VCAP_SERVICES 정보 조회 메서드
-      #VCAP_SERVICES에 등록된 서비스의 label 정보를 기준으로 조회하여 정보를 반환
+    def serviceInfo(service) #VCAP_SERVICES information retrieving method
+      #Return information by retrieving the label information of the service registered in VCAP_SERVICES
       CF::App::Credentials.find_by_service_label(service) 
     end
   end
 end
 ```
 
--	cf-app-utils 를 사용하지 않을경우 
+-	When not using the cf-app-utils 
 ```
-# cf-app-utils을 사용하지 않고 직접 환경 변수에 접근하여 Json형태로 정보를 읽어올수 있다.
+# Information can be read in the form of Json by accessing environmental variables directly without using cf-app-utils.
 
 vcap_services = JSON.parse(ENV['VCAP_SERVICES'])
 ```
 
 
-##### <div id='14'></div>  2.3.4.	Mysql 연동
+##### <div id='14'></div>  2.3.4.	Connect Mysql
 
 <table>
 <tr align=center>
-    <td> 파일/폴더 </td>
-    <td> 목적 </td>
+    <td> File/Folder </td>
+    <td> Purpose </td>
 </tr>
 <tr>
     <td> ./lib/mysql_service.rb </td>
-    <td> Vcap 클래스를 상속하여 Connection을 생성하는 클래스 </td>
+    <td> A class that inherits a Vcap class to create a Connection </td>
 </tr>
 <tr>
     <td> ./app/controllers/orgs_chart_mysql_controller.rb </td>
-    <td> 서비스 Connection 클래스 호출하여 사용하는 컨트롤러 클래스 </td>
+    <td> Controller class used by paging Service Connection class </td>
 </tr>
 </table>
 
 1)	./lib/mysql_service.rb
--	Vcap 클래스를 상속하여 Mysql Connection을 생성하는 클래스
+-	A class that inherits a Vcap class to create a Mysql Connection
 
 ```
 require 'vcap'
@@ -486,7 +486,7 @@ module Connector
       super()
     end
     def connector
-      credentials = serviceInfo('p-mysql') # “p-mysql” 서비스 credentials 조회
+      credentials = serviceInfo('p-mysql') # “p-mysql” service credentials check
       Mysql2::Client.new(:host =>  credentials['hostname'],
                          :username => credentials['username'],
                          :password => credentials['password'],
@@ -496,18 +496,18 @@ end
 end
 ```
 
-2)	./app/controllers/orgs_chart_mysql_controller.rb 서비스 Connection 클래서 호출
+2)	./app/controllers/orgs_chart_mysql_controller.rb service connection class paging
 
 ```
-# encoding: UTF-8      # Encoding 지정(한글지원)
-require 'mysql_service'   # mysql_service 클래스 추가 (각 서비스별 클래스 추가부분)
+# encoding: UTF-8      # Encoding appointed(Korean Language Supported)
+require 'mysql_service'   # Add mysql_service class (Additional part of each service class)
 class OrgChartMysqlController < ApplicationController
-  before_action :db_connection    # 전처리 메소드 호출(DB 접속)
+  before_action :db_connection    # Paging processing method(DB Access)
   before_action :set_param, only: [:index] 
   before_action :set_org, only: [:index] 
-  after_action :db_close  # 후처리 메소드 호출 (DB 닫음)
+  after_action :db_close  # Paging postprocessing method (DB Closed)
 
-  # Org 그룹 목록 조회 메서드
+  # Org group list lookup method
   def index
     if @org == nil
       render json: {error: 'request value wrong'}, status: 400
@@ -516,23 +516,23 @@ class OrgChartMysqlController < ApplicationController
     end
   end
 
-# 메소드가 호출되기전 서비스 접속
+# Connecting to the service before the method is paged
   def db_connection
-    @client = Connector::MysqlService.new.connector #서비스 연동 클래스를 호출하여 접속정보를 획득하고 이를 클래스 변수로 선언하였다.
+    @client = Connector::MysqlService.new.connector #Access information was obtained by paging the service interworking class, and this was declared as a class variable.
     @query = Connector::MysqlQuery.new
   end
 
-# 메소드 호출이 끝난후 서비스 닫음
+# Service closed after method paging is done
   def db_close
     @client.close
   end
 
-  # Param 처리 메소드
+  # Param Processing Method
 def set_param
     @param = {:org_id => params[:org_id]}
   end
 
-  # Org 정보 조회 메서드
+  # Org information lookup method
   def set_org
     begin
       @org = @client.query(@query.org_show(@param[:org_id])).first
@@ -542,14 +542,14 @@ def set_param
   end
 end
 ```
-※해당 클래스는 샘플 예제이며 서비스의 접속정보의 획득 및 활용 방법은 애플리케이션의 구조및 특성에 맞게 사용 할 수 있다.
+※The class is a sample example, and the method of obtaining and utilizing access information for the service can be used according to the structure and characteristics of the application.
 
-##### <div id='15'></div> 2.3.5.	Cubrid 연동
+##### <div id='15'></div> 2.3.5.	Connect Cubrid
 
 <table>
 <tr align=center>
-    <td> 파일/폴더 </td>
-    <td> 목적 </td>
+    <td> File/Folder </td>
+    <td> Purpose </td>
 </tr>
 <tr>
     <td> ./lib/cubrid_service.rb </td>

@@ -755,16 +755,16 @@ end
 </tr>
 <tr>
     <td> ./lib/redis_service.rb </td>
-    <td> Vcap 클래스를 상속하여 Connection을 생성하는 클래스 </td>
+    <td> A class that inherits a Vcap class to create a Connection </td>
 </tr>
 <tr>
     <td> ./app/controllers/login_controller.rb </td>
-    <td> 서비스 Connection 클래스 호출하여 사용하는 컨트롤러 클래스 </td>
+    <td> Controller class used by Call Service Connection class </td>
 </tr>
 </table>
 
 1)	./lib/rddis_service.rb
--	Vcap 클래스를 상속하여 Redis Connection을 생성하는 클래스
+-	Class to create Redis Connection by inheriting Vcap class Vcap
 
 ```
 require 'vcap'
@@ -775,7 +775,7 @@ module Connector
       super()
     end
     def connector
-      credentials = serviceInfo('redis-sb') # “redis-sb” 서비스 credentials 조회
+      credentials = serviceInfo('redis-sb') # “redis-sb” service credentials check
       Redis.new(:host => credentials['host'],
                 :port => credentials['port'],
                 :password => credentials['password'])
@@ -784,13 +784,13 @@ module Connector
 end
 ```
 
-2)	./app/controllers/login_controller.rb 서비스 Connection 클래서 호출
+2)	./app/controllers/login_controller.rb service Connection class call
 ```
-# encoding: UTF-8      # Encoding 지정(한글지원)
-require ‘redis_service’    # redis_service 클래스 추가 (각 서비스별 클래스 추가부분)
+# encoding: UTF-8      # Encoding set(Korean Language Supported)
+require ‘redis_service’    # Add redis_service class (Additional part of each service class)
 class LoginController < ApplicationController
-  #선처리 메소드
-  before_action :redis_connection # Redis 서버 접속
+  #preprocessing method
+  before_action :redis_connection # Redis server access
 
   def login
     id = params[:id]
@@ -816,31 +816,31 @@ class LoginController < ApplicationController
   end
 
   def redis_connection
-    @redis = Connector::RedisService.new.connector  #서비스 연동 클래스를 호출하여 접속정보를 획득하고 이를 클래스 변수로 선언하였다.
+    @redis = Connector::RedisService.new.connector  #Access information was obtained by paging the service interworking class, and this was declared as a class variable.
   end
 end
 ```
-※해당 클래스는 샘플 예제이며 서비스의 접속정보의 획득 및 활용 방법은 애플리케이션의 구조및 특성에 맞게 사용 할 수 있다.
+※The class is a sample example, and the method of obtaining and utilizing access information for the service can be used according to the structure and characteristics of the application.
 
-##### <div id='18'></div> 2.3.8.	RabbitMQ연동
+##### <div id='18'></div> 2.3.8.	Connect RabbitMQ
 
 <table>
 <tr align=center>
-    <td> 파일/폴더 </td>
-    <td> 목적 </td>
+    <td> File/Folder </td>
+    <td> Purpose </td>
 </tr>
 <tr>
     <td> ./lib/rabbitmq_service.rb </td>
-    <td> Vcap 클래스를 상속하여 Connection을 생성하는 클래스 </td>
+    <td> A class that inherits a Vcap class to create a Connection </td>
 </tr>
 <tr>
     <td> ./app/controllers/status_controller.rb </td>
-    <td> 서비스 Connection 클래스 호출하여 사용하는 컨트롤러 클래스 </td>
+    <td> Controller class used by Call Service Connection class </td>
 </tr>
 </table>
 
 1)	./lib/rabbitmq_service.rb
--	Vcap 클래스를 상속하여 RabbitMQ Connection을 생성하는 클래스
+-	Class to create RabbitMQ Connection by inheriting Vcap class Vcap
 
 ```
 require 'vcap'

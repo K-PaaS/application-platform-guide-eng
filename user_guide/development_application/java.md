@@ -18,8 +18,8 @@ The range of this document is limited to the Java application development and se
 ### 2. JAVA Application Development Guide
 
 #### 2.1. Outline
-Open PaaS에 등록된 다양한 서비스팩을 Java언어로 작성된 애플리케이션과 바인딩하고해당 애플리케이션에 바인딩된 환경정보(VCAP_SERVICES)에서 각 서비스별 접속정보를 획득하여 애플리케이션에 적용하여 이용 할 수 있도록 Windows 환경에서 Java 애플리케이션을 작성 할 수 있도록 한다.
- Java Sample Application은 REST 기반의 서비스를 UI를 제공한다. 사용하는 서비스로는 Mysql, Cubrid, Mongodb, Redis, RabbitMq, GlusterFS를 제공하며, Local 및 OpenPaas 환경에서 사용가능하다. 단, GlusterFs는 Local환경에서 Connection정보를 제공하지 않는다.
+Various service packs registered in Open PaaS are bound to applications written in Java language, and access information for each service is acquired from environmental information (VCAP_SERVICES) bound to the application, and Java applications can be created in a Windows environment.
+ The Java Sample Application provides a UI for REST-based services. Services used include Mysql, Cubrid, Mongodb, Redis, RabbitMq, and ClusterFS, which are available in local and OpenPaas environments. However, ClusterFs do not provide connection information in the Local environment.
 
 #### 2.2. Development Environment Configuration
 The development environment is constructed in the following environment for Java application development.
@@ -61,55 +61,55 @@ The development environment is constructed in the following environment for Java
 <img src="./images/java/image5.png" width="400" height="150" />
 
   -   Click the Advanced System Settings > Advanced Tapes > Environment Variables button
-  -   시스템 변수 영역 > path 클릭 > jdk설치된 디렉토리의 bin을 path로 추가한다.
+  -   System Variable Section > Click path > Add the bin of installed jdk directory to path.
 <img src="./images/java/image6.png" width="400" height="150" />
 
 4.  Install eclipse
 
-  - eclipse공식 사이트에서 Eclipse IDE for Java EE Developers 를 다운로드 받는다.
+  - Download Eclipse IDE for Java EE Developers from the Eclipse official site.
 
 | <span id="__DdeLink__2953_294360055" class="anchor"></span>http://www.eclipse.org/downloads/ |
 |-----------------------------------------------------------------------------------|
 
-  - eclipse-jee-mars-1-win32-x86_64.zip을 선택하여 압축해제한다.
+  - Select eclipse-jee-mars-1-win32-x86_64.zip and unzzip.
 
 <img src="./images/java/image7.png" width="400" height="150" />
 
-  - eclipse.exe 를 클릭한다.  
+  - Click eclipse.exe.  
 <img src="./images/java/image9.png" width="400" height="150" />
 
-  - eclipse 초기화면이 나타난다.  
+  - The eclipse initial screen appears.  
 <img src="./images/java/image10.png" width="400" height="150" />
 
-  - 좌측 Project Explore.에서 import를 클릭한다.  
+  - Click Project Explore. at the left side and click import.  
 <img src="./images/java/image11.png" width="400" height="150" />
 
-  - Existing Maven Project를 클릭한다.  
+  - Click Existing Maven Project.  
 <img src="./images/java/image12.png" width="400" height="150" />
 
-  - Browse  버튼을 클릭하여 java-sample 프로제트가있는 폴더를 선택한다. Finish 버튼을 클릭한다.
+  - Click Browse button and select the file with java-sample project. Click Finish button.
 <img src="./images/java/image13.png" width="400" height="150" />
 
-  - java sample Application이 추가 된것을 확인한다.  
+  - Verify the added java sample Application.  
 <img src="./images/java/image14.png" width="400" height="150" />
 
 
-#### 2.3. 개발
-  - OpenPaas Java Sample Application은 다음과 같은 구조를 지닌다. Spring-Boot library를 사용하여
-별도의 Tomcat설정 없이 구동이 가능합니다. 샘플 애플리케이션에의 데이터 관리는 MySQL, CubridDB, MongoDB 중에 하나를 이용하기 때문에 API 요청시 요청 본문에 DBType 값을 가지고 결정합니다.
+#### 2.3. Development
+  - OpenPaas Java Sample Application has the following structure. Using the Spring-Boot Library
+It can be operated without a separate Tomcat setting. Data management for sample applications uses either MySQL, CubridDB, or MongoDB, so when making an API request, it is determined with the DBType value in the request body.
 
 <img src="./images/java/image15.png" width="500" height="500" />
 
 
 
-  - **OpenPaas Java Sample Application Package 구조**
+  - **OpenPaas Java Sample Application Package Structure**
 
-|**패키지/파일**   |**설명**                 |
+|**Package/File**   |**Description**                 |
 |----------|-------------------------|
-|Java/sample/biz                  |서비스 영역으로 비지니스 영역입니다.  |
-|Java/sample/Config/data          |Mysql, mongodb, redis, glusterFs,cubrid,RabbitMq 등 Persistence영역 접속 설정을 하는 Package입니다.  Local 환경/Cloud 환경을 인식하여 접속한다. Local환경에서는 GlusterFs 설정을 지원하지 않습니다.(Cloud Only)|
-|Java/sample /Config/web          |MVC, Interceptor, MultiPart관련 WEB 설정 정보를 Sample Application에 설정합니다.              |
-|Java/sample /controller          |UI에서 요청한 정보를 수신하는 컨트롤러 영역 입니다.            |
+|Java/sample/biz                  |It is a service section which is a business section.  |
+|Java/sample/Config/data          |This is a package that establishes persistence area connection settings such as Mysql, mongodb, redis, clusterFs, cubid, and RabbitMq. Recognize and access the Local/Cloud environment. ClusterFs settings are not supported in the Local environment (Cloud Only)|
+|Java/sample /Config/web          |Set the WEB settings information related to MVC, Interceptor, and MultiPart in Sample Application.              |
+|Java/sample /controller          |The controller domain that receives the requested information from the UI.            |
 |Java/sample/dao                  |Persistence 영역의 데이터를 입력/수정/삭제/조회하는 영역입니다.               |
 |Java/sample /model               |VO 영역입니다.     |
 |Java/sample /Application.java    |Spring Boot을 활용하여 Sample Application을 Start합니다.   |

@@ -1,47 +1,47 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Java 개발
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Java Development
 
-### 1. 개요
+### 1. Outline
 
-#### 1.1. 문서 개요
+#### 1.1. Document Outline
 
-##### 1.1.1. 목적
-본 문서(Java 애플리케이션 개발 가이드)는 Open PaaS프로젝트의 서비스팩(Mysql, Cubrid, MongoDB, RabbitMQ, Radis, GlusterFS)을 Java애플리케이션과 연동하여서비스를 사용하고 애플리케이션을 배포하는 방법에 대해 제시하는 문서이다.
+##### 1.1.1. Purpose
+This Document (Java Application Development Guide) presents the service pack of Open PaaS projects (Mysql, Cubrid, MongoDB, RabbitMQ, Radis, and GlusterFS) to work with Java applications and to deploy applications.
 
-##### 1.1.2. 범위
-본 문서의 범위는 Open PaaS 프로젝트의 Java 애플리케이션 개발과 서비스팩 연동에 대한 내용으로 한정되어 있다.
+##### 1.1.2. Range
+The range of this document is limited to the Java application development and service pack linkage of Open PaaS projects..
 
-##### 1.1.3. 참고 자료
+##### 1.1.3. References
 -   [http://java.sun.com](http://java.sun.com)
 -   [http://spring.io](http://spring.io)
 
 
-### 2. JAVA 애플리케이션 개발가이드
+### 2. JAVA Application Development Guide
 
-#### 2.1. 개요
+#### 2.1. Outline
 Open PaaS에 등록된 다양한 서비스팩을 Java언어로 작성된 애플리케이션과 바인딩하고해당 애플리케이션에 바인딩된 환경정보(VCAP_SERVICES)에서 각 서비스별 접속정보를 획득하여 애플리케이션에 적용하여 이용 할 수 있도록 Windows 환경에서 Java 애플리케이션을 작성 할 수 있도록 한다.
  Java Sample Application은 REST 기반의 서비스를 UI를 제공한다. 사용하는 서비스로는 Mysql, Cubrid, Mongodb, Redis, RabbitMq, GlusterFS를 제공하며, Local 및 OpenPaas 환경에서 사용가능하다. 단, GlusterFs는 Local환경에서 Connection정보를 제공하지 않는다.
 
-#### 2.2. 개발환경 구성
-Java 애플리케이션 개발을 위해 다음과 같은 환경으로 개발환경을 구성 한다.
+#### 2.2. Development Environment Configuration
+The development environment is constructed in the following environment for Java application development.
 -   OS : Windows 7 64bit
 -   Java : 1.8
 -   Framwork : Spring-Boot
 -   IDE : Eclipse
--   의존성: Maven
+-   Dependency: Maven
 
-##### 2.2.1. JDK설치
-1.  JDK 다운로드(1.8)
+##### 2.2.1. JDK Installation
+1.  Download JDK(1.8)
 
 | <span id="__DdeLink__2953_294360055" class="anchor"></span>http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html |
 |-----------------------------------------------------------------------------------|
 
-1.   다운로드 JDK1.8
+1.   Download JDK1.8
 
 <img src="./images/java/image1.png" width="612" height="151" />
 
-2. JDK 설치
+2. Install JDK
 
-  -  jdk-8u65-windows-x64.exe 더블클릭하여 설치를 실행한다.
+  -  jdk-8u65-windows-x64.exe Double-click to execute installation.
 
 <img src="./images/java/image2.png" width="612" height="300" />
 

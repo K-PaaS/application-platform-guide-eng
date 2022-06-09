@@ -1091,23 +1091,23 @@ $ cf start ruby-sample-app    # Start Application
 ```
 ※Because the latest build packs do not support Ruby 1.9.3, deploy using Ruby-buildpack 1.3.1 version. Exclude the –b option if you are using a base build pack supported by an open platform 
 
-※애플리케이션 배포절차를 윈도우 머신에서 수행하는 경우(cf cli를 윈도우 머신에 설치하여 사용하는 경우), 애플리케이션 시작('cf start')이 제대로 되지 않을 수 있습니다. 이 때는 bin 폴더내의 3개의 파일 bundle, rake, rails를 유닉스용으로 변환하여 'cf push' 부터 다시 진행합니다. 파일 변환 절차는 다음을 따릅니다.
+※If the application deployment procedure is performed on a Windows machine (if cf cli is installed and used on a Windows machine), the application may not start ('cf start') correctly. In this case, convert the three files bundle, rake, and rails in the bin folder to Unix and proceed from 'cf push'. The file conversion procedure follows:
 
 
-1.	윈도우 커맨드 창을 열어 애플리케이션 폴더로 이동합니다.
-2.	(방법1.) 다음의 url에서 dos2unix를 다운로드 하고 압축을 해제하여 dos2unix.exe파일을 샘플 어플리케이션의 bin 폴더로 이동합니다.    
+1.	Open a windows command window and navigate to the Applications folder.
+2.	(Method 1.) Download and extract dos2unix from the following url to move the dos2unix.exe file to the bin folder of the sample application.    
 http://sourceforge.net/projects/dos2unix/files/latest/download
 
-	(방법2.) 샘플 어플리케이션을 'git clone'한 사용자는 다음의 명령어를 이용하여 애플리케이션 폴더 내의 dos2unix 파일의 파일명을 변경합니다. 'rename' 명령어를 사용할 수 없다면, 'ren' 명령어를 대신 사용하거나 직접 파일명을 'dos2unix.exe'로 변경하여도 무방합니다.
+	(Method 2.) The user who 'git clone' the sample application changes the file name of the dos2unix file in the application folder using the following command. If the 'rename' command is not available, you may use the 'ren' command instead or change the file name to 'dos2unix.exe' by yourself.
 >rename dos2unix dos2unix.exe   
 
-3.	다음 명령어를 이용하여 bin 폴더 내의 3개의 파일을 유닉스 파일로 변환합니다.
+3.	Convert the three files in the bin folder to UNIX files using the following command.
 >dos2unix bin/bundle bin/rake bin/rails   
->※	윈도우즈 Power Shell에서는 해당 명령어가 실행되지 않습니다. 명령 프롬프트를 이용하면 명령어를 실행시킬 수 있습니다.
-변환이 정상적으로 완료되면 다음과 같은 화면을 확인할 수 있습니다.
+>※	This command does not run on Windows Power Shell. Command prompts allow you to execute commands.
+Once the conversion has completed successfully, you can see the following screen:
 >![ruby16] 
 
-4.	[4) 개방형 플랫폼 애플리케이션에 서비스 바인딩 및 애플리케이션 시작] 절차를 다시 수행합니다.
+4.	Perform the procedure [4) Start Application and Bind Service on Open Platform Application] again.
 
 
 
@@ -1117,7 +1117,7 @@ http://sourceforge.net/projects/dos2unix/files/latest/download
 
 Ruby Application Test using Rspec
 
-1)	폴더 및 파일 정의
+1)	Define folders and files
 <table>
 <tr align=center>
     <td> File/Folder </td>
@@ -1125,17 +1125,17 @@ Ruby Application Test using Rspec
 </tr>
 <tr>
     <td> Spec </td>
-    <td> rspec 테스트 케이스 루비 파일이 존재 폴더 </td>
+    <td> rspec test case ruby file existing folder </td>
 </tr>
 <tr>
     <td> *_spec </td>
-    <td> rspec 테스트 케이스 루비 파일 </td>
+    <td> rspec test case ruby file </td>
 </tr>
 </table>
 
 2)	Execute Test
 >bundle exec rspec   
-      ※정상적인 테스트 진행을 위해서는 해당 서비스와 접속이 가능하여야 한다.(프록시, 터널링 등..)
+      ※In order to proceed with the test normally, access to the service must be possible.(proxy, tunneling, etc.)
       
 
 

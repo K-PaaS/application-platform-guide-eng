@@ -45,26 +45,26 @@ The development environment is constructed in the following environment for Java
 
 <img src="./images/java/image2.png" width="612" height="300" />
 
-  -  next 버튼 클릭하여 진행한다.
+  -  Proceed by clicking the next button.
 
 <img src="./images/java/image3.png" width="400" height="250" />
 
-  -  설치가 진행된다.
+  -  Installation is executed.
 
 <img src="./images/java/image4.png" width="400" height="300" />
-  -   Close 버튼 클릭하여 설치를 종료한다.
+  -   Click Close button to quit installation.
 
-3. JDK  환경설정
+3. JDK  Environment Setting
 
-  -   내컴퓨터에서 우측 버튼을 클릭하여 속성을 클릭한다.
+  -   Right-click on My Computer and click Properties.
 
 <img src="./images/java/image5.png" width="400" height="150" />
 
-  -   고급 시스템설정>고급 텝 > 환경변수 버튼 클릭
+  -   Click the Advanced System Settings > Advanced Tapes > Environment Variables button
   -   시스템 변수 영역 > path 클릭 > jdk설치된 디렉토리의 bin을 path로 추가한다.
 <img src="./images/java/image6.png" width="400" height="150" />
 
-4.  eclipse 설치
+4.  Install eclipse
 
   - eclipse공식 사이트에서 Eclipse IDE for Java EE Developers 를 다운로드 받는다.
 

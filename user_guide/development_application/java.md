@@ -106,32 +106,32 @@ It can be operated without a separate Tomcat setting. Data management for sample
 
 |**Package/File**   |**Description**                 |
 |----------|-------------------------|
-|Java/sample/biz                  |It is a service section which is a business section.  |
+|Java/sample/biz                  |It is a service domain which is a business domain.  |
 |Java/sample/Config/data          |This is a package that establishes persistence area connection settings such as Mysql, mongodb, redis, clusterFs, cubid, and RabbitMq. Recognize and access the Local/Cloud environment. ClusterFs settings are not supported in the Local environment (Cloud Only)|
 |Java/sample /Config/web          |Set the WEB settings information related to MVC, Interceptor, and MultiPart in Sample Application.              |
 |Java/sample /controller          |The controller domain that receives the requested information from the UI.            |
-|Java/sample/dao                  |Persistence 영역의 데이터를 입력/수정/삭제/조회하는 영역입니다.               |
-|Java/sample /model               |VO 영역입니다.     |
-|Java/sample /Application.java    |Spring Boot을 활용하여 Sample Application을 Start합니다.   |
-|Resource/tables                  |Sample Application이 사용할 DB Table DDL 및 기초데이터 DDL이 포함되어 있습니다.       |
-|Resource/ application-cloud.properties  |Sample Application이 Cloud 환경에서 사용할 Property입니다. |
-|Resource/ application.properties        |Sample Application이 Local환경에서 사용할 Property입니다.  |
-|Resource/logback.xml                    |Logback을 활용한 logging 설정 입니다.   |
-|Manifest.yml                            |클라우드 환경에서 Application이 최초 구성될때 사용하는 파일로, Sample Application의 환경정보, 서비스 정보(mysql, rabbitmq등의 서비스), application명, 인스턴스 갯수, 인스턴스 메모리 설정등이 포함되어 있습니다.     |
-|pom.xml                                 |Sample Application의 Maven의존성을 정의 합니다.     |
-|webapp                                 |UI관련 리소스 위치     |
+|Java/sample/dao                  |The domain where data in the Persistence section is entered/modified/deleted/checked.               |
+|Java/sample /model               |VO domain.     |
+|Java/sample /Application.java    |Starts the Sample Application using the Spring Boot.   |
+|Resource/tables                  |Contains DB Table DDL and basic data DDL for use by Sample Application.       |
+|Resource/ application-cloud.properties  |The property that the Sample Application will use in the Cloud environment. |
+|Resource/ application.properties        |The property that the Sample Application will use in the Local environment.  |
+|Resource/logback.xml                    |logging setting that uses Logback.   |
+|Manifest.yml                            |Files used when an application is first configured in a cloud environment, including environmental information, service information (such as mysql, rabbitmq), application name, number of instances, and instance memory settings.     |
+|pom.xml                                 |Defines the Maven dependency of Sample Application.     |
+|webapp                                 |UI related resources are located     |
 
 
-##### 2.3.1. 애플리케이션 환경 설정
-  - 본 문서는 Cloud환경에서 Java Application이 구동 될 수 있는 방법을 제시합니다. Mysql, Cubrid, Redis등의 설치관련 정보는 제공하지 않습니다.
+##### 2.3.1. Application Environment Setting
+  - This document shows how Java Applications can run in a Cloud environment. Does not provide installation information such as Mysql, Cubrid, Redis, etc.
 
 1)   manifest.yml
   - Cloud  
 <img src="./images/java/image1-1.png" width="350" height="300" />
 
-2) resource/application-cloud.properties (application.properties는 Local환경용)
-  - Cloud환경에서 적용될 프로퍼티로 Application이 사용할 서비스 명이 설정되어 있습니다.
-cubrid 와 GlusterFs는 Spring-cloud-connector에서 정보를 제공하지 않아 Application의 VCAP SERVICE 환경정보를 활용하여 서비스 Connection을 합니다.
+2) resource/application-cloud.properties (application.properties is for Local environment)
+  - The service name that the application will use is set as the properties that will be applied in the Cloud environment.
+Because cubrid  and GlusterFs does not provide information on Spring-cloud-connector, use  VCAP SERVICE environment information of the Application to do service connection.
 
 ```
 db.mysql.servicename: mysql-service-instance
@@ -141,28 +141,28 @@ rabbitmq.service.name: rabbitmq-service-instance
 ```
 
 3) sample/config/data/CloudConfigData.java
-  - 애플리케이션의 환경설정  
+  - Environment Setting of the Application  
 
   ```
-  @Profile("cloud") ==> Cloud환경 인식하는 Annotation(manifest.yml의 Env정보와 매팽)
+  @Profile("cloud") ==> Annotation that recognizes the Cloud environment (Environment information and mapping of manifest.yml)
 @Configuration    ==> Spring Config
 @ServiceScan      ==> Cloud Config Service Scan Annotation
 public class CloudDataConfig extends AbstractCloudConfig {
 
 	@Value("${db.mysql.servicename}")
-	private String mysqlServiceName; ==> application-cloud.properties의 mysql
-                                                서비스 인스턴스명 읽어온다.
+	private String mysqlServiceName; ==> application-cloud.properties of mysql
+                                                Read service instance name.
 	private String cubridJdbcUrl;
 
 	@Value("${mongodb.service.name}")  
-	private String mongoServiceName; ==> application-cloud.properties의 mongodb
-                                                서비스 인스턴스명 읽어온다.
+	private String mongoServiceName; ==> application-cloud.properties of mongodb
+                                                Read service instance name.
 	@Value("${redis.service.name}")
-	private String redisServiceName; ==> application-cloud.properties의 redis
-                                                 서비스 인스턴스명 읽어온다
+	private String redisServiceName; ==> application-cloud.properties of redis
+                                                 Read service instance name.
 	@Value("${rabbitmq.service.name}")
-	private String rabbitServiceName; ==> application-cloud.properties의 redis
-                                                 서비스 인스턴스명 읽어온다
+	private String rabbitServiceName; ==> application-cloud.properties of redis
+                                                 Read service instance name.
 
 
 	@Bean(name = "dsMysql")
@@ -177,7 +177,7 @@ public class CloudDataConfig extends AbstractCloudConfig {
 
 	}
 
-	@Bean(name = "jdbcMysql")  ==> MySql 서비스 Connection설정
+	@Bean(name = "jdbcMysql")  ==> MySql service connection setting
 	@Autowired
 	public JdbcTemplate mysqlJdbcTemplate(@Qualifier("dsMysql") DataSource dsSlave) {
 		return new JdbcTemplate(dsSlave);
@@ -200,7 +200,7 @@ public class CloudDataConfig extends AbstractCloudConfig {
 		}
 	}
 
-	@Bean(name = "jdbcCubrid")  ==> Cubrid 서비스 Connection설정
+	@Bean(name = "jdbcCubrid")  ==> Cubrid service connection setting
 	@Autowired
 	public JdbcTemplate cubridJdbcTemplate(@Qualifier("dsCubrid") DataSource dsSlave) {
 		return new JdbcTemplate(dsSlave);
@@ -213,14 +213,14 @@ public class CloudDataConfig extends AbstractCloudConfig {
 	MongoDbFactory mongoDbFactory;
 
 
-	@Bean(name = "mongoTemplate")   ==> MongoDB 서비스 Connection설정
+	@Bean(name = "mongoTemplate")   ==> MongoDB service connection setting
 	public MongoTemplate mongoTemplate() throws UnknownHostException {
 
 		CloudFactory cloudFactory = new CloudFactory();
 		Cloud cloud = cloudFactory.getCloud();
 		MongoServiceInfo serviceInfo = (MongoServiceInfo) cloud.getServiceInfo(mongoServiceName);
 
-		// MongoDB 인증 처리
+		// MongoDB authentication process
 		mongoDbFactory.getDb().authenticate(serviceInfo.getUserName(), serviceInfo.getPassword().toCharArray());
 
 		MongoTemplate mongoTemplate = new MongoTemplate(mongoDbFactory);
@@ -228,7 +228,7 @@ public class CloudDataConfig extends AbstractCloudConfig {
 		return mongoTemplate;
 	}
 
-	@Bean  ==> Redis 서비스 Connection설정
+	@Bean  ==> Redis service connection setting
 	public JedisPool redisTemplate() {
 
 		CloudFactory cloudFactory = new CloudFactory();
@@ -257,7 +257,7 @@ public class CloudDataConfig extends AbstractCloudConfig {
 		connectionFactory.setVirtualHost(serviceInfo.getVirtualHost());
 
 		try {
-			// SslProtocol 사용 설정
+			// SslProtocol use setting
 			connectionFactory.useSslProtocol("TLS");
 
 		} catch (KeyManagementException e) {
@@ -271,7 +271,7 @@ public class CloudDataConfig extends AbstractCloudConfig {
 		return cachingConnectionFactory;
 	}
 
-	@Bean  ==> RabbitMQ 서비스 Connection설정
+	@Bean  ==> RabbitMQ service connection setting
 	public RabbitTemplate amqpTemplate(
 			@Qualifier("rabbitmqConnectionFactory") CachingConnectionFactory connectionFactory) {
 
@@ -293,7 +293,7 @@ public class CloudDataConfig extends AbstractCloudConfig {
 	@Autowired
 	Gson gson;
 
-	@Bean  ==> GlusterFs 서비스 Connection설정
+	@Bean  ==> GlusterFs service connection setting
 	public AccountConfig accountConfig(){
 
 		String vcap_services = System.getenv("VCAP_SERVICES");
@@ -320,7 +320,7 @@ public class CloudDataConfig extends AbstractCloudConfig {
   ```
 
 4) pom.xml
-   - Sample Application에서 사용하는 Maven Dependency
+   - Maven Dependency being used at the Sample Application 
 
 
    ```
@@ -350,7 +350,7 @@ public class CloudDataConfig extends AbstractCloudConfig {
      			<artifactId>spring-boot-configuration-processor</artifactId>
      			<optional>true</optional>
      		</dependency>
-     ==>Spring Boot 의존성
+     ==>Spring Boot dependency
 
 
     <!-- Spring Cloud Connector Start -->
@@ -370,7 +370,7 @@ public class CloudDataConfig extends AbstractCloudConfig {
  		</dependency>
  		<!-- Spring Cloud Connector End -->
 
-         ==> Spring Cloud Connector 의존성
+         ==> Spring Cloud Connector dependency
 
 
  		<!-- MongoDB Dependency Start -->
@@ -438,7 +438,7 @@ public class CloudDataConfig extends AbstractCloudConfig {
 
  		<!-- RabbitMQ End -->
 
- 		<!-- Java client for OpenStack Storage Swift(GlusterFS) 설정 -->
+ 		<!-- Java client for OpenStack Storage Swift(GlusterFS) setting -->
  		<!-- GlusterFS Start -->
  		<dependency>
  			<groupId>org.javaswift</groupId>
@@ -447,21 +447,21 @@ public class CloudDataConfig extends AbstractCloudConfig {
  		</dependency>
  		<!-- GlusterFS End -->
    ```
-#### 2.3. 개발
+#### 2.3. Development
 
-  - Java Sample Application은 Spring Boot으로 구성되어 있어 별도의 Tomcat 설정이 필요하지 않습니다.
-java package Root에 있는 Application.java 우측 버튼을 클릭 --> Run As --> Java Application실행하면 Sample Application이 실행됩니다.
+  - The Java Sample Application is configured with Spring Boot and does not require a separate Tomcat setting.
+Right-click the Application.java button in the java package Root --> Run As --> Run Java Application to run the Sample Application.
 
 <img src="./images/java/image17.png" width="350" height="400" />
 
 
-#### 2.4. 배포
-  - cf cli 명령어를 이용하여 Java 샘플 어플리케이션을 배포한다
-  - java-sample application이 maven install을 실행하여 war가 존재하여야 한다.
-  - cf cli가 설치되어 있고, cf login이 이미 되어 있다는 가정하에 진행한다.
+#### 2.4. Deployment
+  - Deploy Java sample applications using the cf cli command
+  - The java-sample application runs maven installation and war must exist.
+  - Proceed under the assumption that cf cli is installed and cf login is already done.
  ```
- ### Java 샘플 어플리케이션 배포
- $ cd “Java 샘플 어플리케이션” 디렉토리
+ ### Java Sample Application Deployment
+ $ cd “Java Sample Application” Directory
 
  $cd  /home/csupshin/git/OpenPaaSSample/java-sample-app
  $ cf push
@@ -549,9 +549,9 @@ buildpack: java_buildpack
 #0   running   2016-02-15 03:49:33 PM   88.2%   341M of 512M   185.2M of 1G
  ```
 
-#### 2.5. Sample App 배포 확인
+#### 2.5. Sample App Deployment Check
 
-1) cf cli 명령어를 이용하여 Java 샘플 어플리케이션의 배포 상태 및 URL을 확인한다.
+1) Use the cf cli command to check the deployment status and URL of the Java sample application.
 
 ```
 $ cf apps
@@ -562,15 +562,15 @@ name                     requested state   instances   memory   disk   urls
 java-sample              started           1/1         512M     1G     java-sample.52.71.31.153.xip.io   
 ```
 
-#### 2.6. Sample App 로그인
-1) 브라우저에서 java-sample.52.71.31.153.xip.io 에 접속하면 로그인 화면이 나타납니다.
-admin/admin 입력후 로그인 합니다.
+#### 2.6. Sample App Login
+1) When java-sample.52.71.31.153.xip.io is accessed at the browser, the login screen appears.
+Enter admin/admin to log in.
 
 <img src="./images/java/image18.png" width="350" height="300" />
 
-2) 로그인이 완료되면 다음 조직 화면이 나타납니다. 화면 하단에 집 아이콘을 클릭하면 해당 조직의 상세 조직 화면이 나타납니다. 조직명을 클릭하면 조직의 에하 조직 목록을 조회 할 수 있습니다.
+2) When the login is complete, the following organizational screen appears. Click the Home icon at the bottom of the screen to display the detailed organization screen of the organization. Click the organization name to view the list of the organization's under the organization.
 
 <img src="./images/java/image19.png" width="350" height="150" />
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Java 개발
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Java Development

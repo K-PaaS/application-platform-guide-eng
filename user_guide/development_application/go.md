@@ -494,9 +494,9 @@ func initRedis(addr string) *redis.Client {
 
 ##### 2.3.5. Connect GlusterFS
 
-1).  파일 Upload
+1).  File Upload
 
--   클라이언트에서 보낸 요청에서 파일을 읽어들여 GlusterFS Server로 전송
+-   Read the file requested from the client and send it to the ClusterFS Server
 
 ~~~
 func (h *GlusterFSService) Upload(w http.ResponseWriter, r *http.Request) {
@@ -529,9 +529,9 @@ func (h *GlusterFSService) Upload(w http.ResponseWriter, r *http.Request) {
 }
 ~~~
 
-2).  GlusterFS Server 연결 및 파일전송
+2).  Connect GlusterFS Server and send file
 
--   GlusterFS Server로 연결을 맺고 파일을 전송
+-   Connect to GlusterFS Server and send files
 
 ~~~
 func ObjectPut(buf []byte, fileName string) (string, error) {
@@ -576,9 +576,9 @@ func ObjectPut(buf []byte, fileName string) (string, error) {
 }
 ~~~
 
-3).  GlusterFS 연결정보
+3).  GlusterFS Connection information
 
--   VCAP\_SERVICES에서 정보 추출
+-   Extract information from VCAP\_SERVICES
 
 ~~~
 func readOSEnvironment_gf() (string, string, string, string) {
@@ -603,20 +603,20 @@ func readOSEnvironment_gf() (string, string, string, string) {
 }
 ~~~
 
-#### 2.4. 배포
+#### 2.4. Deployment
 
--   cf cli 명령어를 이용하여 Go 샘플 어플리케이션을 배포한다.
+-   Deploy Go Sample Application using the cf cli command.
 
--   cf cli가 설치되어 있고, cf login이 이미 되어 있다는 가정하에 진행한다.
+-   Proceed under the assumption that cf cli is installed and cf login is already done.
 
 ~~~
-### Go 샘플 어플리케이션 배포
-$ cd “Go 샘플 어플리케이션” 디렉토리
-$ source .envrc                 # GO_PATH를 지정하기 위해 
+### Go Sample Application Deployment
+$ cd “Go Sample Application” directory
+$ source .envrc                 # To set GO_PATH 
 
 $ cd src/org/openpaas/sample
 
-$ cf push –f manifest.yml        # Go 샘플 어플리케이션 배포
+$ cf push –f manifest.yml        # Deploy Go Sample Application
 Using manifest file manifest.yml
 Creating app go-sample in org org / space space as admin...
 OK
@@ -669,32 +669,32 @@ buildpack: https://github.com/cloudfoundry/go-buildpack.git
 #0   running   2015-12-14 01:41:20 PM   0.0%   2.1M of 256M   0 of 1G      
 ~~~
 
-Go 샘플 애플리케이션에의 데이터 관리는 MySQL, MongoDB 중에 하나를 이용하기 때문에 배포시 환경변수 정보(dbtype)에 데이터베이스 이름(mysql or mongodb)를 설정하여 배포한다..
+Since the data management of Go Sample Application is done by either MySQL or MongoDB. Set database name(mysql or mongodb) at the environment setting information(dbtype) when deploying.
 
-#### 2.5. 테스트
+#### 2.5. Test
 
-curl 명령어를 통해 command 창에서 직접 테스트 할 수 있다.
+Test can be done directly at the command window using curl command.
 
 ~~~
-### 모든 조직정보 조회
+### Check all Organizations information
 curl -v http://”depolyed_sample_app_name”/orgs
 
-### 특정 조직정보 조회
+### Check specified Organization's information
 curl -v http:// ”depolyed_sample_app_name”/orgs/{org_id}
 
-### 조직 생성
+### Create Organization
 curl -X POST -v 
 –d '{"id":”org_id”,"label":"org_lable_info","desc":"org_description_info","url":"org_uri_info"}' 
 http:// ”depolyed_sample_app_name”/orgs
 
-### 조직 수정
+### Modify Organization
 curl -X PUT -v
 -d '{"label":" org_lable_info ","desc":"org_description_info","url":"org_url_info"}'
 http:// ”depolyed_sample_app_name”/orgs/{org_id}
 
-### 조직 삭제
+### Delete Organization
 curl -X DELETE -v http:// ”depolyed_sample_app_name”/orgs/{org_id}
 ~~~
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Go 개발
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Go Development

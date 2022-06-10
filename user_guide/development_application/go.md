@@ -30,7 +30,7 @@ Configure the development environment of the Go Application as shown below.
 There are Commnuity and Ultimate version for Intellij IDEA. Community Version is for Free and Ultimate version is a 30-day trial version.
 
 ##### 2.2.1. Go SDK Installation
-1.  Go SDK Download
+1.  Download Go SDK
 
 | <span id="__DdeLink__2953_294360055" class="anchor"></span>https://golang.org/dl/ |
 |-----------------------------------------------------------------------------------|
@@ -55,24 +55,24 @@ Go SDK : go1.5.2.windows-amd64.msi
 
 <img src="./images/go/image5.png" width="330" height="258" />
 
--   “Next” 버튼을 클릭
+-   Click “Next” button 
 
 <img src="./images/go/image6.png" width="324" height="254" />
 
--   Go SDK가 설치될 디렉토리 선택 후 “Next” 버튼 클릭
+-    Click “Next” button after selecting the directory of the Go SDK to be installed
 
 <img src="./images/go/image7.png" width="330" height="258" />
 
--   “Install” 버튼 클릭
+-   Click “Install” button
 
 <img src="./images/go/image8.png" width="317" height="247" />
 
 <img src="./images/go/image9.png" width="323" height="252" />
 
--   “Finish” 버튼 클릭
+-   Click “Finish”
 
-##### 2.2.2. IntelliJ IDEA설치
-1.  IDEA 다운로드
+##### 2.2.2. IntelliJ IDEA Installation
+1.  Download IDEA
 
 | http://www.jetbrains.com/idea/ |
 |--------------------------------|
@@ -83,41 +83,41 @@ Go SDK : go1.5.2.windows-amd64.msi
 
 <img src="./images/go/image12.png" width="559" height="138" />
 
--   다운로드 : ideaIC-15.0.2.exe
+-   Download : ideaIC-15.0.2.exe
 
-1.  IntelliJ IDEA 설치
+1.  Install IntelliJ IDEA
 
--   ideaIC-15.0.2.exe 더블클릭하여 설치를 실행한다.
+-   Double-click ideaIC-15.0.2.exe and execute installation.
 
 <img src="./images/go/image13.png" width="290" height="225" />
 
--   “Next” 버튼 클릭
+-   Click “Next” button
 
 <img src="./images/go/image14.png" width="315" height="245" />
 
--   설치위치 지정 후 “Next” 버튼 클릭
+-   Set the path to install and click “Next” button
 
 <img src="./images/go/image15.png" width="315" height="245" />
 
--   “Next” 버튼 클릭
+-   Click “Next” button
 
 <img src="./images/go/image16.png" width="315" height="245" />
 
--   “Install” 버튼 클릭
+-   Click “Install” button
 
 <img src="./images/go/image17.png" width="308" height="240" />
 
 <img src="./images/go/image18.png" width="309" height="240" />
 
--   “Run IntelliJ IDEA Community Edition” 체크 선택
+-   Select “Run IntelliJ IDEA Community Edition” check
 
--   “Finish” 버튼 클릭
+-   Click “Finish” button
 
-#### 2.3. 개발
+#### 2.3. Development
 
-샘플 애플리케이션에의 데이터 관리는 MySQL, MongoDB 중에 하나를 이용하기 때문에 API 요청시 요청 본문에 DBType 값을 가지고 결정한다.
+Data management for sample applications uses either MySQL or MongoDB, so when requesting API, it is determined with the DBType value in the request body.
 
-##### 2.3.1. 샘플 애플리케이션 연동
+##### 2.3.1. Connect Sample Application
 
 1.  Go 샘플 프로젝트 연결
 

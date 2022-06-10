@@ -6,7 +6,7 @@
      * [Range](#12--범위)
      * [References](#13--참고자료)
 2. [Environmental Preparation](#2--환경-준비)
-     * [Preparations for Installation](#21--설치전-준비사항)
+     * [Preparations Before Installation](#21--설치전-준비사항)
      * [Configure AWS Environment](#22--aws-환경-구성)
      * [RUBY Installation](#23--ruby-설치)
      * [BOSH Installation](#24--bosh-설치)
@@ -18,53 +18,52 @@
      * [Create RHEL OS Image](#32--rhel-os-이미지-생성)
      * [Archive Location for the Default OS Created Image](#33--생성한-기본-os-이미지의-보관장소)
 4. [Create BOSH Stemcell](#4--BOSH-스템셀-생성)
-     * [Create 원격지의 OS 이미지를 사용한 스템셀 생성](#41--원격지의-os-이미지를-사용한-스템셀-생성)
-     * [로컬의 OS 이미지를 사용한 스템셀 생성](#42--로컬의-os-이미지를-사용한-스템셀-생성)
-     * [생성한 스템셀의 보관장소](#43--생성한-스템셀의-보관장소)
-5. [BOSH Light 스템셀 생성](#5--bosh-light-스템셀-생성)
-     * [Bosh Light 스템셀 생성](#51--bosh-light-스템셀-생성)
-6. [스템셀 커스터마이징](#6--스템셀-커스터마이징)
-     * [스템셀 생성 소스 수정](#61--스템셀-생성-소스-수정)
+     * [Create Stemcell Using the OS Image in Remote Server](#41--원격지의-os-이미지를-사용한-스템셀-생성)
+     * [Create Stemcell Using the OS Image in Local Server](#42--로컬의-os-이미지를-사용한-스템셀-생성)
+     * [Storage of the Created Stemcell](#43--생성한-스템셀의-보관장소)
+5. [Create BOSH Light Stemcell](#5--bosh-light-스템셀-생성)
+     * [Create Bosh Light Stemcell](#51--bosh-light-스템셀-생성)
+6. [Customizing Stemcell](#6--스템셀-커스터마이징)
+     * [Modify Stemcell Creating Source](#61--스템셀-생성-소스-수정)
 
 
-# 1.  문서 개요
+# 1.  Document Outline
 
-## 1.1.  목적 
+## 1.1.  Purpose 
 
-사용자 정의의 스템셀을 생성하는 것이 목표이다.
+The purpose is to create user-defined stemcell.
 
-## 1.2.  범위
+## 1.2.  Range
 
-가이드 범위는 BOSH 스템셀을 생성하기 위한 환경 구축과 BOSH 스템셀 및
-BOSH Light 스템셀을 생성하는 내용을 기술하였다.
+The guide range describes the establishment of an environment for generating a BOSH stemcell and the contents for generating a BOSH stemcell and a BOSH light stemcell.
 
-## 1.3.  참고자료
+## 1.3.  References
 
-본 문서는 Cloud Foundry의 BOSH Document를 참고로 작성하였다.
+This document was writen by referring to Cloud Foundry's BOSH Document.
 
-Bosh 스템셀 생성:
+Create Bosh Stemcell:
 [https://github.com/cloudfoundry/bosh-linux-stemcell-builder/blob/master/README.md](https://github.com/cloudfoundry/bosh-linux-stemcell-builder/blob/master/README.md)
 
 
-# 2.  환경 준비
+# 2.  Environmental Preparation
 
-## 2.1.  설치전 준비사항
+## 2.1.  Preparations Before Installation
 
-본 설치 가이드는 Linux(Ubuntu 14.04 64bit) 환경에서 실행하는 것을 기준으로 설명하였다. 스템셀을 생성하기 위해서 Ruby 및 Bosh를 설치 한다. 또한 Ruby 및 Bosh를 설치하기 위한 추가 패키지 및 실행 환경을 구성 한다.
+This installation guide is described based on running in a Linux (Ubuntu 14.04 64bit) environment. Ruby and Bosh are installed to generate stemcells. It also configures additional packages and execution environments for installing Ruby and Bosh.
 
--   AWS 환경
+-   AWS Environment
 -   rvm
 -   Ruby (2.1.6 또는 1.9.3-p545)
 -   Bundler
 -   Bosh
 -   Vagrant
--   스템셀을 생성하기 위해서는 인터넷과 연결이 가능해야 한다.
+-   There should be a internet connection to create a stemcell.
 
-## 2.2.  AWS 환경 구성
+## 2.2.  Configure AWS Environment
 
 BOSH는 스템셀을 생성하는 VM을 AWS에 생성하고 관리한다. 스템셀을 생성하기 위해서는 AWS에 계정을 생성하고 스템셀을 생성하기 위한 환경을 구성해야 한다.
 
--   AWS 계정
+-   AWS Account
 
 	AWS 웹사이트: [https://aws.amazon.com/ko/](https://aws.amazon.com/ko/)
 

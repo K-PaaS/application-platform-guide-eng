@@ -20,14 +20,14 @@ The range of this document is limited to the Go application development and serv
 ### 2. Go Application Development Guide
 
 #### 2.1. Outline
-It binds various service packs registered with Open PaaS to applications written in Go language. Access information for each service is obtained from the bound environmental information (VCAP\_SERVICES) of the application and applied to the application for use and allows to create Go applications in a Windows environment.
+It binds various service packs registered with Open PaaS to applications written in the Go language. Access information for each service is obtained from the bound environmental information (VCAP\_SERVICES) of the application and applied to the application for use and allows to create of Go applications in a Windows environment.
 
 #### 2.2. Development Environment Configuration
 Configure the development environment of the Go Application as shown below.
 -   OS : Windows 7 64bit
 -   Go : 1.5.2
 -   IDE : Intellij IDEA  
-There are Commnuity and Ultimate version for Intellij IDEA. Community Version is for Free and Ultimate version is a 30-day trial version.
+There are Community and Ultimate version for Intellij IDEA. Community Version is for Free and the Ultimate version is a 30-day trial version.
 
 ##### 2.2.1. Go SDK Installation
 1.  Download Go SDK
@@ -39,31 +39,31 @@ There are Commnuity and Ultimate version for Intellij IDEA. Community Version is
 
 -   Download
 
-Go SDK : go1.5.2.windows-amd64.msi
+Go SDK: go1.5.2.windows-amd64.msi
 
 1.  Install Go SDK
 
--   Double-click go1.5.2.windows-amd64.msi to execute installation.
+-   Double-click go1.5.2.windows-amd64.msi to execute the installation.
 
 <img src="./images/go/image3.png" width="297" height="170" />
 
--   Click “Execute” button
+-   Click the “Execute” button
 
 <img src="./images/go/image4.png" width="351" height="275" />
 
--   Click “Next” button
+-   Click the “Next” button
 
 <img src="./images/go/image5.png" width="330" height="258" />
 
--   Click “Next” button 
+-   Click the “Next” button 
 
 <img src="./images/go/image6.png" width="324" height="254" />
 
--    Click “Next” button after selecting the directory of the Go SDK to be installed
+-    Click the “Next” button after selecting the directory of the Go SDK to be installed
 
 <img src="./images/go/image7.png" width="330" height="258" />
 
--   Click “Install” button
+-   Click the “Install” button
 
 <img src="./images/go/image8.png" width="317" height="247" />
 
@@ -83,27 +83,27 @@ Go SDK : go1.5.2.windows-amd64.msi
 
 <img src="./images/go/image12.png" width="559" height="138" />
 
--   Download : ideaIC-15.0.2.exe
+-   Download: ideaIC-15.0.2.exe
 
 1.  Install IntelliJ IDEA
 
--   Double-click ideaIC-15.0.2.exe and execute installation.
+-   Double-click ideaIC-15.0.2.exe and execute the installation.
 
 <img src="./images/go/image13.png" width="290" height="225" />
 
--   Click “Next” button
+-   Click the “Next” button
 
 <img src="./images/go/image14.png" width="315" height="245" />
 
--   Set the path to install and click “Next” button
+-   Set the path to install and click the “Next” button
 
 <img src="./images/go/image15.png" width="315" height="245" />
 
--   Click “Next” button
+-   Click the “Next” button
 
 <img src="./images/go/image16.png" width="315" height="245" />
 
--   Click “Install” button
+-   Click the “Install” button
 
 <img src="./images/go/image17.png" width="308" height="240" />
 
@@ -111,7 +111,7 @@ Go SDK : go1.5.2.windows-amd64.msi
 
 -   Select “Run IntelliJ IDEA Community Edition” check
 
--   Click “Finish” button
+-   Click the “Finish” button
 
 #### 2.3. Development
 
@@ -129,19 +129,19 @@ Data management for sample applications uses either MySQL or MongoDB, so when re
 
 -   Set path for the downloaded Go Sample Application
 
--   Click “Ok” button
+-   Click the “Ok” button
 
 <img src="./images/go/image21.png" width="275" height="269" /> <img src="./images/go/image22.png" width="284" height="278" />
 
--   Click “Next” button - Click “Next” button
+-   Click the “Next” button - Click “Next” the button
 
 <img src="./images/go/image23.png" width="353" height="345" />
 
--   Click “Next” button
+-   Click the “Next” button
 
 <img src="./images/go/image24.png" width="339" height="331" />
 
--   Click “Finish” button
+-   Click the “Finish” button
 
 ##### 2.3.2. Sample Application Environment Setting
 
@@ -165,7 +165,7 @@ Data management for sample applications uses either MySQL or MongoDB, so when re
 
 <img src="./images/go/image29.png" width="366" height="135" />
 
--   Click “Restart” button
+-   Click the “Restart” button
 
 <img src="./images/go/image30.png" width="459" height="308" />
 
@@ -181,7 +181,7 @@ Data management for sample applications uses either MySQL or MongoDB, so when re
 
 <img src="./images/go/image33.png" width="321" height="368" />
 
--   Select “Go SDK” from the installed directory and click “OK” button
+-   Select “Go SDK” from the installed directory and click the “OK” button
 
 <img src="./images/go/image34.png" width="442" height="368" />
 
@@ -189,17 +189,17 @@ Data management for sample applications uses either MySQL or MongoDB, so when re
 
 <img src="./images/go/image35.png" width="573" height="312" />
 
--   Select “main.go” file from the go-sample-app project
+-   Select the “main. go” file from the go-sample-app project
 
 -   Select “Configure Go Libraries” from the right top
 
 <img src="./images/go/image36.png" width="266" height="445" /> <img src="./images/go/image37.png" width="264" height="443" />
 
--   For Global libraries domain, select Go SDK Directory
+-   For the Global libraries domain, select Go SDK Directory
 
--   For Project libraries domain, select the directory where Go Sample Application is located
+-   For the Project libraries domain, select the directory where the Go Sample Application is located
 
--   Click “OK” button
+-   Click the “OK” button
 
 <img src="./images/go/image38.png" width="571" height="310" />
 
@@ -669,11 +669,11 @@ buildpack: https://github.com/cloudfoundry/go-buildpack.git
 #0   running   2015-12-14 01:41:20 PM   0.0%   2.1M of 256M   0 of 1G      
 ~~~
 
-Since the data management of Go Sample Application is done by either MySQL or MongoDB. Set database name(mysql or mongodb) at the environment setting information(dbtype) when deploying.
+Since the data management of the Go Sample Application is done by either MySQL or MongoDB. Set database name(mysql or mongodb) at the environment setting information(dbtype) when deploying.
 
 #### 2.5. Test
 
-Test can be done directly at the command window using curl command.
+The test can be done directly at the command window using the curl command.
 
 ~~~
 ### Check all Organizations information

@@ -119,99 +119,99 @@ Data management for sample applications uses either MySQL or MongoDB, so when re
 
 ##### 2.3.1. Connect Sample Application
 
-1.  Go 샘플 프로젝트 연결
+1.  Connect Go Sample Project
 
 <img src="./images/go/image19.png" width="315" height="219" />
 
--   “Import Project” 선택
+-   Select “Import Project”
 
 <img src="./images/go/image20.png" width="315" height="418" />
 
--   다운로드 받은 Go 샘플 어플리케이션의 위치를 지정
+-   Set path for the downloaded Go Sample Application
 
--   “Ok” 버튼을 클릭
+-   Click “Ok” button
 
 <img src="./images/go/image21.png" width="275" height="269" /> <img src="./images/go/image22.png" width="284" height="278" />
 
--   “Next” 버튼 클릭 - “Next” 버튼 클릭
+-   Click “Next” button - Click “Next” button
 
 <img src="./images/go/image23.png" width="353" height="345" />
 
--   “Next” 버튼 클릭
+-   Click “Next” button
 
 <img src="./images/go/image24.png" width="339" height="331" />
 
--   “Finish” 버튼 클릭
+-   Click “Finish” button
 
-##### 2.3.2. 샘플 애플리케이션 환경설정
+##### 2.3.2. Sample Application Configuration Setting
 
--   IntelliJ IDEA 환경에 Go Plugin 설치 및 Go 샘플 어플리케이션의 환결설정
+-   Install Go Plugin and Go Sample Application's configuration setting in IntelliJ IDEA Environment 
 
 <img src="./images/go/image25.png" width="535" height="359" />
 
--   File &gt; Settings 선택
+-   Select File &gt; Settings 
 
 <img src="./images/go/image26.png" width="541" height="366" />
 
--   Plugins &gt; Browse repositories 선택
+-   Select Plugins &gt; Browse repositories
 
 <img src="./images/go/image27.png" width="549" height="459" />
 
--   “Go” 를 검색 후, 조회된 결과에서 Go 를 선택 후 Install 버튼을 클릭
+-   Search for “Go” and click Go from the retrieved list. Click Install button
 
 <img src="./images/go/image28.png" width="556" height="466" />
 
--   “Restart IntelliJ IDEA” 선택
+-   Select “Restart IntelliJ IDEA”
 
 <img src="./images/go/image29.png" width="366" height="135" />
 
--   “Restart” 버튼 클릭
+-   Click “Restart” button
 
 <img src="./images/go/image30.png" width="459" height="308" />
 
--   File &gt; Project Structure... 선택
+-   Select File &gt; Project Structure...
 
 <img src="./images/go/image31.png" width="462" height="384" />
 
--   Project SDK 영역의 “New” 버튼 클릭
+-   Select “New” from the Project SDK domain
 
 <img src="./images/go/image32.png" width="451" height="375" />
 
--   “Go SDK” 선택
+-   Select “Go SDK”
 
 <img src="./images/go/image33.png" width="321" height="368" />
 
--   “Go SDK” 설치된 디렉토리 선택 후 “OK” 버튼 클릭
+-   Select “Go SDK” from the installed directory and click “OK” button
 
 <img src="./images/go/image34.png" width="442" height="368" />
 
--   “OK” 선택
+-   Select “OK”
 
 <img src="./images/go/image35.png" width="573" height="312" />
 
--   go-sample-app 프로젝트에서 “main.go” 파일을 선택
+-   Select “main.go” file from the go-sample-app project
 
--   오른쪽 상단에 “Configure Go Libraries” 선택
+-   Select “Configure Go Libraries” from the right top
 
 <img src="./images/go/image36.png" width="266" height="445" /> <img src="./images/go/image37.png" width="264" height="443" />
 
--   Global libraries 영역에는 Go SDK 디렉토리 선택
+-   For Global libraries domain, select Go SDK Directory
 
--   Project libraries 영역에는 Go 샘플 어플리케이션이 위치한 디렉토리 선택
+-   For Project libraries domain, select the directory where Go Sample Application is located
 
--   “OK” 버튼 클릭
+-   Click “OK” button
 
 <img src="./images/go/image38.png" width="571" height="310" />
 
--   오른쪽 상단의 “Change module type to Go and reload project” 선택
+-   Select “Change module type to Go and reload project” at the top right
 
 <img src="./images/go/image39.png" width="347" height="126" />
 
--   “Reload project” 선택
+-   Select “Reload project”
 
 <img src="./images/go/image40.png" width="560" height="305" />
 
-##### 2.3.3. VCAP\_SERVICES 환경설정 정보를 통한 연동 
+##### 2.3.3. Connection through VCAP\_SERVICES Configuration Information 
 
 개방형 플랫폼에 배포되는 애플리케이션이 바인딩된 서비스별 접속 정보를 얻기 위해서는 애플리케이션별로 등록되어있는 VCAP\_SERVICES 환경설정 정보를 읽어들여 정보를 획득 할 수 있다.
 

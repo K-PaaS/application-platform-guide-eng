@@ -264,28 +264,28 @@ The procedure for BOSH installation is as follows.
 
 ## 2.5.  Vagrant Installation
 
-Vagrant는 가상 환경을 구축해 주는 오픈 소스이다. 스템셀을 생성 할 VM을 관리하기 위해 vagrant를 사용한다.
+Vagrant is an open source that builds a virtual environment. Use vagrant to manage VMs for creating stemcells.
 
 
-1.  Vagrant 설치
+1.  Install Vagrant
 
 		$ sudo apt-get install vagrant
 
-2.  Vagrant 플러그인 설치
+2.  Install Vagrant Plugin
 
 		$ vagrant plugin install vagrant-berkshelf
 		$ vagrant plugin install vagrant-omnibus
 		$ vagrant plugin install vagrant-aws --plugin-version 0.5.0
 
 
-## 2.6.  스템셀 생성을 위한 VM 설치
+## 2.6.  VM Installation for Stemcell Creation
 
-스템셀 생성을 위한 가상 환경을 구성한다.
+Configure the virtual environment for creating stemcell.
 
 
-1.  AWS 환경 변수 설정
+1.  Set AWS Environment Variables
   
-		#아래의 환경변수를 설정을 실행한다.
+		#Set the environment variables as below.
 		$ export BOSH_AWS_ACCESS_KEY_ID=<YOUR-AWS-ACCESS-KEY>
 		$ export BOSH_AWS_SECRET_ACCESS_KEY=<YOUR-AWS-SECRET-KEY>
 		$ export BOSH_AWS_SECURITY_GROUP=<YOUR-AWS-SECURITY-GROUP-ID>

@@ -1,57 +1,57 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Go 개발
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Go Development
 
-### 1. 개요
+### 1. Outline
 
-#### 1.1. 문서 개요
+#### 1.1. Document Outline
 
-##### 1.1.1. 목적
-본 문서(Go 애플리케이션 개발 가이드)는 Open PaaS 프로젝트의 서비스팩(Mysql, MongoDB, RabbitMQ, Radis, GlusterFS)을 Go 애플리케이션과 연동하여 서비스를 사용하고 애플리케이션을 배포하는 방법에 대해 제시하는 문서이다.
+##### 1.1.1. Purpose
+This document (Go Application Development Guide) is a document that presents the service packs (Mysql, MongoDB, RabbitMQ, Radis, and ClusterFS) of Open PaaS projects in connection with Go applications to use services and deploy applications.
 
-##### 1.1.2. 범위
-본 문서의 범위는 Open PaaS 프로젝트의 Go 애플리케이션 개발과 서비스팩 연동에 대한 내용으로 한정되어 있다.
+##### 1.1.2. Range
+The range of this document is limited to the Go application development and service pack linkage of Open PaaS projects.
 
-##### 1.1.3. 참고 자료
+##### 1.1.3. References
 -   [***https://code.google.com/p/golang-korea/wiki/EffectiveGo***](https://code.google.com/p/golang-korea/wiki/EffectiveGo)
 -   [***https://github.com/brianmario/mysql2***](https://github.com/brianmario/mysql2)
 -   [***https://github.com/redis/redis-rb***](https://github.com/redis/redis-rb)
 -   [***https://github.com/fog/fog***](https://github.com/fog/fog)
 -   [***https://www.jetbrains.com/idea/***](https://www.jetbrains.com/idea/)
 
-### 2. Go 애플리케이션 개발가이드
+### 2. Go Application Development Guide
 
-#### 2.1. 개요
-Open PaaS에 등록된 다양한 서비스팩을 Go언어로 작성된 애플리케이션과 바인딩하고 해당 애플리케이션에 바인딩된 환경정보(VCAP\_SERVICES)에서 각 서비스별 접속정보를 획득하여 애플리케이션에 적용하여 이용 할 수 있도록 Windows 환경에서 Go 애플리케이션을 작성 할 수 있도록한다.
+#### 2.1. Outline
+It binds various service packs registered with Open PaaS to applications written in Go language. Access information for each service is obtained from the bound environmental information (VCAP\_SERVICES) of the application and applied to the application for use and allows to create Go applications in a Windows environment.
 
-#### 2.2. 개발환경 구성
-Go 애플리케이션 개발을 위해 다음과 같은 환경으로 개발환경을 구성 한다.
+#### 2.2. Development Environment Configuration
+Configure the development environment of the Go Application as shown below.
 -   OS : Windows 7 64bit
 -   Go : 1.5.2
 -   IDE : Intellij IDEA  
-Intellij IDEA 는 Commnuity와 Ultimate 버전이 있는데, Community 버전은 Free이고, Ultimate 버전은 은 30-day trial버전이다.
+There are Commnuity and Ultimate version for Intellij IDEA. Community Version is for Free and Ultimate version is a 30-day trial version.
 
-##### 2.2.1. Go SDK설치
-1.  Go SDK 다운로드
+##### 2.2.1. Go SDK Installation
+1.  Go SDK Download
 
 | <span id="__DdeLink__2953_294360055" class="anchor"></span>https://golang.org/dl/ |
 |-----------------------------------------------------------------------------------|
 
 <img src="./images/go/image2.png" width="612" height="151" />
 
--   다운로드
+-   Download
 
 Go SDK : go1.5.2.windows-amd64.msi
 
-1.  Go SDK 설치
+1.  Install Go SDK
 
--   go1.5.2.windows-amd64.msi 더블클릭하여 설치를 실행한다.
+-   Double-click go1.5.2.windows-amd64.msi to execute installation.
 
 <img src="./images/go/image3.png" width="297" height="170" />
 
--   “실행” 버튼 클릭
+-   Click “Execute” button
 
 <img src="./images/go/image4.png" width="351" height="275" />
 
--   “Next” 버튼을 클릭
+-   Click “Next” button
 
 <img src="./images/go/image5.png" width="330" height="258" />
 

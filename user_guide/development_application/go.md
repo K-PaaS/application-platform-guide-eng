@@ -143,9 +143,9 @@ Data management for sample applications uses either MySQL or MongoDB, so when re
 
 -   Click “Finish” button
 
-##### 2.3.2. Sample Application Configuration Setting
+##### 2.3.2. Sample Application Environment Setting
 
--   Install Go Plugin and Go Sample Application's configuration setting in IntelliJ IDEA Environment 
+-   Install Go Plugin and Go Sample Application's environment setting in IntelliJ IDEA Environment 
 
 <img src="./images/go/image25.png" width="535" height="359" />
 
@@ -211,13 +211,13 @@ Data management for sample applications uses either MySQL or MongoDB, so when re
 
 <img src="./images/go/image40.png" width="560" height="305" />
 
-##### 2.3.3. Connection through VCAP\_SERVICES Configuration Information 
+##### 2.3.3. Connection through VCAP\_SERVICES Enviroment Setting Information 
 
-개방형 플랫폼에 배포되는 애플리케이션이 바인딩된 서비스별 접속 정보를 얻기 위해서는 애플리케이션별로 등록되어있는 VCAP\_SERVICES 환경설정 정보를 읽어들여 정보를 획득 할 수 있다.
+To obtain access information for each service to which an application distributed on an open platform is bound, information may be obtained by reading VCAP\_SERVICES environment Setting information registered for each application.
 
-1).  개방형 플랫폼의 애플리케이션 환경정보
+1).  Application Environment Information of the Open Platform
 
--   서비스를 바인딩하면 JSON 형태로 환경설정 정보가 애플리케이션 별로 등록된다.
+-   When the service is bound, environment information is registered by application in the form of JSON.
 
 ~~~
 {
@@ -231,7 +231,7 @@ Data management for sample applications uses either MySQL or MongoDB, so when re
       "10.244.9.50"
      ],
 
-…..(중간 생략)…..
+…..(Skip)…..
      "ssl": true,
      "uri": "amqps://f8b12fcd-df98-4745-a6b2-61f01d20fe24:5lpn72rufsivfgnf3ft4l1p797@10.244.9.50/a1aec425-d1ec-40b7-865f-4eaba371b9a2",
      "uris": [
@@ -254,24 +254,24 @@ Data management for sample applications uses either MySQL or MongoDB, so when re
     ]
    }
   ]
-…..(이하 생략)…..
+…..(Skip)…..
 ~~~
 
--   VCAP\_SERVICES 정보 구조
+-   VCAP\_SERVICES Information Structure
 
-2).  VCAP\_SERVICES 정보 추출 방법
+2).  How to extract VCAP\_SERVICES information
 
--   VCAP\_SERVICE 정보 중 “uri” 정보를 추출하여 리턴한다.
+-   Extract and return the “uri” information from VCAP\_SERVICE information.
 
--   부모 엘리먼트 (VCAP\_SERVICE)
-    -   첫번째 엘리먼트 (p-rabbitmq) 서비스 이름 정보
-    -   두번째 엘리먼트 (credentials) 정보
-    -   세번째 엘리먼트 (uri) 정보
+-   Parent Element (VCAP\_SERVICE)
+    -   First Element (p-rabbitmq) Service Name Information
+    -   Second Element (credentials) Information
+    -   Third Element (uri) Information
 
 ~~~
 func sample_function_name() string {
 
-   args := os.Getenv("VCAP_SERVICES")     //VCAP_SERVICES 엘리먼트 정보 (부모 엘리먼트)
+   args := os.Getenv("VCAP_SERVICES")     //VCAP_SERVICES Element Information (Parent Element)
    var amqp_uri string
    if args != "" {
       var vcap_env map[string]interface{}
@@ -280,24 +280,24 @@ func sample_function_name() string {
       }
 
       //Service instance (not name) - for example : p-mysql - type check !!! []interface{}
-      if vcap_env["p-rabbitmq"] != nil {    //첫번째 엘리먼트(서비스 이름) 정보
+      if vcap_env["p-rabbitmq"] != nil {    //First Element(Service Name) Information
          sub_env := vcap_env["p-rabbitmq"].([]interface{})
          credentials := (sub_env[0].(map[string]interface{}))["credentials"].(map[string]interface{})
-//두번째 엘리먼트 “credentials” 정보
-         amqp_uri = credentials["uri"].(string)    //세번째 엘리먼트 “uri”정보
+//Second Element “credentials” Information
+         amqp_uri = credentials["uri"].(string)    //Third Element “uri” Information
       }
    }
    return amqp_uri
 }
 ~~~
 
--   VCAP\_SERVICES 구조 참조
+-   Refer to VCAP\_SERVICES Structure
 
-##### 2.3.4. config.ini 파일을 통한 Database, Redis, RabbitMQ 연동
+##### 2.3.4. Connecting Database, Redis, RabbitMQ  through config.ini file
 
 1).  config.ini
 
--   mysql 연결정보 설정
+-   mysql connection information settings
 
 ~~~
 #Go Sample Web Server port
@@ -322,7 +322,7 @@ rabbitmq.pass=”rabbitmq\_password”
 rabbitmq.addr=”rabbitmq\_server\_ip”: ”rabbitmq\_server\_port”
 ~~~
 
-2).  연동 샘플
+2).  Connect Sample
 
 ~~~
 import (
@@ -347,14 +347,14 @@ import (
 type Config map[string]string
 
 func main() {
-   // Datasource - MySql, Cubrid, MongoDB 타입별 처리
+   // Processing by Datasource - MySql, Cubrid, MongoDB Type
    var dbconfig *datasource.DBConfig
    var mgodbconfig *datasource.MgoDBConfig
    var handlers http.Handler
 
    fmt.Println("##### Go Sample Application start!!!")
    //============================================
-   // dbtype 정보는 시스템 프로퍼티에서 가져온다.
+   // bring the dbtype information from the properties.
    dbtype := os.Getenv("dbtype")
    //============================================
 
@@ -365,7 +365,7 @@ func main() {
    //============================================
 
    //============================================
-   // 기본적인 프로퍼티 설정 정보 읽어오기
+   // Read basic property settings information
    config, err := ReadConfig(`config.ini`)
    if err != nil {
       fmt.Println(err)
@@ -391,7 +391,7 @@ func main() {
    }
 
    // DB Initialize -
-   // DB 타입별로 Connection 처리
+   // Process Connection by DB Type
    if dbtype == "mysql" {
       maxConnection, err := strconv.Atoi(config["mysql.maxconn"])
       if err != nil {

@@ -8,7 +8,7 @@
 This Document (Java Application Development Guide) presents the service pack of Open PaaS projects (Mysql, Cubrid, MongoDB, RabbitMQ, Radis, and GlusterFS) to work with Java applications and to deploy applications.
 
 ##### 1.1.2. Range
-The range of this document is limited to the Java application development and service pack linkage of Open PaaS projects..
+The range of this document is limited to the Java application development and service pack linkage of Open PaaS projects.
 
 ##### 1.1.3. References
 -   [http://java.sun.com](http://java.sun.com)
@@ -23,10 +23,10 @@ Various service packs registered in Open PaaS are bound to applications written 
 
 #### 2.2. Development Environment Configuration
 The development environment is constructed in the following environment for Java application development.
--   OS : Windows 7 64bit
--   Java : 1.8
--   Framwork : Spring-Boot
--   IDE : Eclipse
+-   OS: Windows 7 64bit
+-   Java: 1.8
+-   Framework: Spring-Boot
+-   IDE: Eclipse
 -   Dependency: Maven
 
 ##### 2.2.1. JDK Installation
@@ -71,7 +71,7 @@ The development environment is constructed in the following environment for Java
 | <span id="__DdeLink__2953_294360055" class="anchor"></span>http://www.eclipse.org/downloads/ |
 |-----------------------------------------------------------------------------------|
 
-  - Select eclipse-jee-mars-1-win32-x86_64.zip and unzzip.
+  - Select eclipse-jee-mars-1-win32-x86_64.zip and unzip.
 
 <img src="./images/java/image7.png" width="400" height="150" />
 
@@ -131,7 +131,7 @@ It can be operated without a separate Tomcat setting. Data management for sample
 
 2) resource/application-cloud.properties (application.properties is for Local environment)
   - The service name that the application will use is set as the properties that will be applied in the Cloud environment.
-Because cubrid  and GlusterFs does not provide information on Spring-cloud-connector, use  VCAP SERVICE environment information of the Application to do service connection.
+Because cubrid and GlusterFs do not provide information on Spring-cloud-connector, use  VCAP SERVICE environment information of the Application to do service connection.
 
 ```
 db.mysql.servicename: mysql-service-instance
@@ -320,7 +320,7 @@ public class CloudDataConfig extends AbstractCloudConfig {
   ```
 
 4) pom.xml
-   - Maven Dependency being used at the Sample Application 
+   - Maven Dependency being used in the Sample Application 
 
 
    ```
@@ -525,7 +525,7 @@ Uploading complete
 0 of 1 instances running, 1 starting
 0 of 1 instances running, 1 starting
 0 of 1 instances running, 1 starting
-1 of 1 instances running
+1 of 1 instance running
 
 App started
 
@@ -563,7 +563,7 @@ java-sample              started           1/1         512M     1G     java-samp
 ```
 
 #### 2.6. Sample App Login
-1) When java-sample.52.71.31.153.xip.io is accessed at the browser, the login screen appears.
+1) The login screen appears when java-sample.52.71.31.153.xip.io is accessed in the browser.
 Enter admin/admin to log in.
 
 <img src="./images/java/image18.png" width="350" height="300" />

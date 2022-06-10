@@ -53,7 +53,7 @@ This installation guide is described based on running in a Linux (Ubuntu 14.04 6
 
 -   AWS Environment
 -   rvm
--   Ruby (2.1.6 또는 1.9.3-p545)
+-   Ruby (2.1.6 or 1.9.3-p545)
 -   Bundler
 -   Bosh
 -   Vagrant
@@ -61,208 +61,208 @@ This installation guide is described based on running in a Linux (Ubuntu 14.04 6
 
 ## 2.2.  Configure AWS Environment
 
-BOSH는 스템셀을 생성하는 VM을 AWS에 생성하고 관리한다. 스템셀을 생성하기 위해서는 AWS에 계정을 생성하고 스템셀을 생성하기 위한 환경을 구성해야 한다.
+BOSH creates and manages VMs that create stemcells on AWS. In order to create a stemcell, an account must be created on AWS and an environment must be configured.
 
 -   AWS Account
 
-	AWS 웹사이트: [https://aws.amazon.com/ko/](https://aws.amazon.com/ko/)
+	AWS Website: [https://aws.amazon.com/ko/](https://aws.amazon.com/ko/)
 
 
--   Access Key 설정
+-   Access Key Setting
 
-	1.  AWS에 로그인: [https://console.aws.amazon.com/console/home](https://console.aws.amazon.com/console/home)
+	1.  Login to AWS: [https://console.aws.amazon.com/console/home](https://console.aws.amazon.com/console/home)
 
 
 		![account-dashboard](./images/stemcell/account-dashboard.png "account-dashboard")
 
 
-	2.  화면 우측 상단의 계정을 선택하여 Security Credentials를 선택
+	2.  Select the account from the top right of the screen and select Security Credentials
 
 		![security-credentials-menu](./images/stemcell/security-credentials-menu.png "security-credentials-menu")
 
 
-	3.  'AWS IAM' 확인 팝업이 나타나면 'Continue to Security Credentials' 버튼을 선택하여 Security Credentials 화면으로 이동
+	3.  When 'AWS IAM' confirm pop up appears, select 'Continue to Security Credentials' button and procceed to Security Credentials screen
 
 
-	4.  Access Keys를 선택하여 Create New Access Key 버튼을 눌러 Access Key를 생성한다.
+	4.  Select Access Keys and click Create New Access Key to create the Access Key.
     
 		![security-credentials-dashboard](./images/stemcell/security-credentials-dashboard.png "security-credentials-dashboard")
 
 
-	5.  생성한 키 정보를 확인한다.
+	5.  Check the information of the created key.
 
 		![access-keys-modal](./images/stemcell/access-keys-modal.png "access-keys-modal")
 
-		화면의 Access Key ID를 ***BOSH\_AWS\_ACCESS\_KEY\_ID***에 설정한다.
+		Set the Access Key ID on the screen at the ***BOSH\_AWS\_ACCESS\_KEY\_ID***.
 
-		화면의 Secret Access Key를 ***BOSH\_AWS\_SECRET\_ACCESS\_KEY***에 설정한다.
-
-
-	6.  다이얼로그 화면을 닫는다.
+		Set the  Secret Access Key on the screen at the ***BOSH\_AWS\_SECRET\_ACCESS\_KEY***.
 
 
+	6.  Close the dialog screen.
 
--   Virtual Private Cloud (VPC) 구성
 
 
-	1.  화면 우측 상단의 지역메뉴를 선택한다. (현재 N. Virginia 지역에서만 light stemcell을 사용할 수 있다.)
+-   Configure Virtual Private Cloud (VPC)
+
+
+	1.  Select the regional menu in the upper right corner of the screen. (The light stemcell is currently available only in the N. Virginia region.)
 
 		![account-dashboard-region-menu.png](./images/stemcell/account-dashboard-region-menu.png "account-dashboard-region-menu")
 
-	2.  AWS 콘솔 화면에서 VPC 메뉴를 선택한다.
+	2.  Select the VPC menu from the AWS console screen.
 
 		![account-dashboard-vpc](./images/stemcell/account-dashboard-vpc.png "account-dashboard-vpc")
 
-	3.  VPC 마법사를 선택한다.
+	3.  Select VPC Wizard.
 
 		![vpc-dashboard-start](./images/stemcell/vpc-dashboard-start.png "vpc-dashboard-start")
 
-	4.  “VPC with a Single Public Subnet” 선택
+	4.  Select “VPC with a Single Public Subnet”
 
 		![vpc-dashboard-wizard](./images/stemcell/vpc-dashboard-wizard.png "vpc-dashboard-wizard")
 
-	5.  네트워크 정보를 입력하고 VPC 생성 버튼을 눌러 VPC를 생성한다.
+	5.  Enter the network information and click Create VPC button to create VPC.
 		
 		![create-vpc](./images/stemcell/create-vpc.png "create-vpc")
 
-	6.  아래와 같이 생성한 VPC의 목록이 출력된다.
+	6.  The list of created VPC as shown below outputs.
 
 		![list-subnets](./images/stemcell/list-subnets.png "list-subnets")
 
-		Subnet ID를 ***BOSH\_AWS\_SUBNET\_ID***에 설정한다.
+		Set Subnet ID at ***BOSH\_AWS\_SUBNET\_ID***.
 
 
--   Key Pair 생성
+-   Create Key Pair
 
-	1.  AWS 콘솔 화면에서 ‘EC2’ 메뉴를 선택하여 EC2 대시보드 화면으로 이동한다.
+	1.  On the AWS console screen, select the 'EC2' menu to go to the EC2 dashboard screen.
 
-	2.  ‘Key Pairs’와 ‘Create Key Pair’ 버튼을 차례로 선택한다.
+	2.  Select ‘Key Pairs’ and ‘Create Key Pair’ button in order.
 
 		![list-key-pairs](./images/stemcell/list-key-pairs.png "list-key-pairs")
 
-	3.  Key Pair 생성 다이얼로그 화면에서 Key Pair명을 입력하여 Key Pair를 생성하고 다운로드 한다.
+	3.  Enter Key Pair name from the Create Key Pair Dialog Screen. Create and download Key Pair.
 
 		![create-key-pair](./images/stemcell/create-key-pair.png "create-key-pair")
 
-	4.  다운로드한 Key(예: bosh.pem)를 키 보관 디렉토리에 옮기고 권한을 변경한다.
+	4.  Relocate the downloaded Key(Ex: bosh.pem) to the key storing directory and change authority.
 
   
-			# Key pair name이 ‘bosh’인 키를 ‘~/Downloads’ 디렉토리에 다운로드 한 경우
+			# When Key pair name downloaded ‘bosh’ key at ‘~/Downloads’ directory
 			$ mv ~/Downloads/bosh.pem ~/.ssh/
 			$ chmod 400 ~/.ssh/bosh.pem
   
 
-		키 경로 및 키 이름을 ***BOSH\_VAGRANT\_KEY\_PATH***에 설정한다.
+		Set the Key path and name at the ***BOSH\_VAGRANT\_KEY\_PATH***.
 
--   시큐리티 그룹 생성
+-   Create Security group
 
-	1.  EC2 대시보드 화면에서 ‘Security Groups’과 ‘Create Security Group’ 버튼을 차례대로 누른다.
+	1.  EC2 Click  ‘Security Groups’ and ‘Create Security Group’ button in order from the EC2 dashboard screen.
 
 		![list-security-groups](./images/stemcell/list-security-groups.png "list-security-groups")
 
-	2.  시큐리티 그룹 생성 팝업화면에서 다음과 같이 값을 입력하여 시큐리티 그룹을 생성한다.
+	2.  From the Create Security Group pop up screen, enter the value as shown below and create security group.
 
 		![create-security-group](./images/stemcell/create-security-group.png "create-security-group")
 
 			
-		|항목                  |설정값                             |설명|
+		|Provision                  | Set Value                             |Description|
 		|---------------------|----------------------------------|----------------------------
-		|Security group name   |임의 (예: bosh_stemcell)           |시큐리티 그룹명|
-		|Description           |임의 (예: BOSH builds Stemcells)   |시큐리티 그룹에 대한 설명|
-		|VPC                   |VPC 구성에서 생성한 VPC             |시큐리티 그룹을 적용할 VPC|
+		|Security group name   |Any (Ex: bosh_stemcell)           |Security group name|
+		|Description           |Any (Ex: BOSH builds Stemcells)   |Description about the security group|
+		|VPC                   |VPC created from the VPC             |VPC to apply the security group|
 
 
-	3.  생성한 시큐리티 그룹에 보안정책을 설정하기 위해 ‘Inbound’ 탭의 ‘Edit’을 선택한다.
+	3.  Select 'Edit' on the 'Inbound' tab to set the security policy for the created security group.
 
 		![open-edit-security-group-modal](./images/stemcell/open-edit-security-group-modal.png "open-edit-security-group-modal")
 
-	4.  아래표와 같이 보안정책을 추가한다.
+	4.  Add a security policy as shown in the table below.
 
 		|Type   |Protocol   |Port Range   |Source|
 		|------|----------|------------|--------|
 		|SSH    |TCP        |22           |My IP|
 
 
-		생성한 시큐리티 Group ID를 ***BOSH\_AWS\_SECURITY\_GROUP***에 설정한다.
+		Set the created Security Group ID at ***BOSH\_AWS\_SECURITY\_GROUP***.
 
 
-## 2.3.  RUBY 설치
+## 2.3.  RUBY Installation
 
-Ruby 설치 절차는 다음과 같다.
+The procedure of installing Ruby is as follows.
 
 
-1.  의존 패키지 설치
+1.  Installing dependency packages
 
-  -   Ubuntu의 경우
+  -   For Ubuntu
 
 			$ sudo apt-get update
 			$ sudo apt-get install -y build-essential zlibc zlib1g-dev ruby ruby-dev openssl libxslt-dev libxml2-dev libssl-dev libreadline6 libreadline6-dev libyaml-dev libsqlite3-dev sqlite3 libxslt1-dev libpq-dev libmysqlclient-dev
     
 
-  -   CentOS의 경우
+  -   For CentOS
    
     		$ sudo yum install gcc ruby ruby-devel mysql-devel postgresql-devel postgresql-libs sqlite-devel libxslt-devel libxml2-devel yajl-ruby
     
 
-  -   OSX의 경우
+  -   For OSX
     
     		$ xcode-select --install
 		    xcode-select: note: install requested for command line developer tools
   
 
-2.  Ruby 설치 관리자 및 Ruby 설치
+2.  Ruby Installation Admin and Ruby Installation
 
 		$ curl -L https://get.rvm.io | bash -s stable
 		$ source ~/.rvm/scripts/rvm
 
-		#Ruby 2.1.6 설치
+		#Install Ruby 2.1.6
 		$ rvm install 2.1.6
 
-		#기본 Ruby 버전 설정
+		#Set Default Version of Ruby
 		$ rvm use 2.1.6 --default
 
 
-3.  설치 확인
+3.  Vefify Installation
 
 		$ ruby -v
 
-## 2.4.  BOSH 설치
+## 2.4.  BOSH Installation
 
-BOSH 설치 절차는 다음과 같다.
+The procedure for BOSH installation is as follows.
 
 
-1.  설치할 환경 생성
+1.  Create environment to install
 
-		#git 설치
+		#Install git
 		$ sudo apt-get install git
 
-		#실행 디렉토리 생성
+		#Create execution directory
 		$ mkdir -p ~/workspace
 		$ cd ~/workspace
 
 
-2.  Bosh 설치 및 설정
+2.  Bosh Installation and Setting
   
-		#Bosh 설치
+		#Install Bosh
 		$ git clone https://github.com/cloudfoundry/bosh.git
   		
-		#Bosh 서브모듈 설치
+		#Install Bosh sub-module
 		$ cd bosh
 		$ git submodule update --init --recursive
 
-		#Bosh 의존 패키지 설치
+		#Install Bosh depending package
 		$ bundle install
 
-		#bosh_cli 설치
+		#Install bosh_cli
 		$ gem install bosh_cli
   
 
-3.  Bosh 설치 확인
+3.  Verify Bosh Installation
 
-		$ bundle exec bosh 또는 bosh
+		$ bundle exec bosh or bosh
 
 
-## 2.5.  Vagrant 설치
+## 2.5.  Vagrant Installation
 
 Vagrant는 가상 환경을 구축해 주는 오픈 소스이다. 스템셀을 생성 할 VM을 관리하기 위해 vagrant를 사용한다.
 

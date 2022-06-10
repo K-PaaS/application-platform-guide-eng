@@ -408,7 +408,7 @@ func main() {
          os.Exit(-1)
       }
 
-      // Route Path 정보와 처리 서비스 연결
+      // Connect Route Path information with processing services
       handlers = handler.NewHandler(dbconfig.DBMAP, redis_client, mq.Ch)
 
    } else if dbtype == "mongodb" {
@@ -421,7 +421,7 @@ func main() {
          os.Exit(-1)
       }
 
-      // Route Path 정보와 처리 서비스 연결
+      // Connect Route Path information with processing services
       handlers = handler.NewMgoHandler(mgodbconfig.SESSION, redis_client, mq.Ch)
 
    } else {
@@ -492,7 +492,7 @@ func initRedis(addr string) *redis.Client {
 
 ~~~
 
-##### 2.3.5. GlusterFS 연동
+##### 2.3.5. Connect GlusterFS
 
 1).  파일 Upload
 

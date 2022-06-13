@@ -292,9 +292,9 @@ Configure the virtual environment for creating stemcell.
 		$ export BOSH_AWS_SUBNET_ID=<YOUR-AWS-SUBNET-ID>
   
 
-2.  VM 생성
+2.  Create VM
 
-	***기본으로 설정된 VM 크기는 m3.xlarge 타입으로 AWS 과금 대상이다.***
+	***Default VM size is m3.xlarge type and is subject to AWS billing.***
 
 		$ cd ~/workspace/bosh/bosh-stemcell
 		$ vagrant up remote --provider=aws
@@ -306,7 +306,7 @@ Configure the virtual environment for creating stemcell.
 		$ export BOSH_KEY_PATH=<접속 키의 경로 및 파일명>
 		$ export BOSH_VAGRANT_KEY_PATH=<접속 키의 경로 및 파일명>
 
-		#접속 실행
+		#Execute Access
 		$ cd ~/workspace/bosh/bosh-stemcell
 		$ vagrant ssh remote
 

@@ -372,60 +372,60 @@ Describe the procedure for creating an Ubuntu OS image.
 Describes the procedure for creating a RHEL OS image.
 
 
-1.  Download RHEL 7.0 iso를 다운로드 받아서 스템셀 생성 VM에 업로드 한다.
+1.  Download RHEL 7.0 iso and upload it to the stemcell creation VM.
 
   	[https://access.redhat.com/downloads/content/69/ver=/rhel---7/7.0/x86\_64/product-downloads](https://access.redhat.com/downloads/content/69/ver=/rhel---7/7.0/x86_64/product-downloads)
   
-	※ 다운로드하기 위해서는 RedHat 계정이 있어야 한다.
+	※ To dowload, one should have RedHat account.
 
 
-2.  실행 환경 구성
+2.  Configuring the Execution Environment
 
-		#스템셀 생성 VM에 접속
+		#Access to stemcell creation VM
 		$ cd ~/workspace/bosh/bosh-stemcell
 		$ vagrant ssh remote
 
-		#RHEL 이미지 마운트
+		#RHEL image mount
 		$ sudo mkdir -p /mnt/rhel
 		$ sudo mount rhel-server-7.0-x86_64-dvd.iso /mnt/rhel
 
-		#redhat 계정 정보 설정
-		$ export RHN_USERNAME=<RHEL 계정>
-		$ export RHN_PASSWORD=<RHEL 비밀번호>
+		#redhat account information setting
+		$ export RHN_USERNAME=<RHEL Account>
+		$ export RHN_PASSWORD=<RHEL Password>
 
-3.  Build\_os\_image 실행
+3.  Execute Build\_os\_image
 
-		#스템셀 생성 VM에서 build_os_image 실행
+		#Execute build_os_image from the stemcell creation VM
 		$ cd /bosh
 		$ bundle exec rake stemcell:build_os_image[rhel,7,/tmp/rhel_7_base_image.tgz]
 
-	※ 기본 RHEL OS 이미지는 BOSH에서 제공하지 않는다.
+	※ The default RHELOS image is not provided by BOSH.
 
-	***※ 기본 RHEL OS 이미지 생성 시 오류가 발생할 경우, RHEL에서 기본 RHEL OS 이미지를 제공받아 스템셀을 생성한다.***
+	***※ If an error occurs when creating a basic RHEL OS image, RHEL provides a basic RHEL OS image and generates a stemcell.***
 
 
-## 3.3.  생성한 기본 OS 이미지의 보관장소 
+## 3.3.  Archive Location for the Default OS Created Image 
 
-1.  생성한 기본 OS 이미지 확인
+1.  Check created default OS image
 
 		$ cd ~/workspace/bosh/bosh-stemcell
 		$ vagrant ssh remote
 		$ ll /tmp
 
 
-2.  생성한 기본 OS 다운로드
+2.  Download created default OS
  
 		$ cd ~/workspace/bosh/bosh-stemcell
-		$ vagrant scp remote:/tmp/<생성한 기본 OS 이미지명> <다운받을 로컬 경로>
+		$ vagrant scp remote:/tmp/<Name of the created default OS image> <Loacl path to download>
 
 
-# 4.  BOSH 스템셀 생성 
+# 4.  Create BOSH Stemcell 
 
-## 4.1.  원격지의 OS 이미지를 사용한 스템셀 생성 
+## 4.1.  Create Stemcell Using the OS Image in Remote Server 
 
-원격지의 OS 이미지를 사용해서 스템셀을 생성하는 절차를 기술한다.
+Describe the procedure for generating stemcells using remote server's OS images.
 
-1.  Build 실행
+1.  Execute Build
 
 		$ cd ~/workspace/bosh/bosh-stemcell
 		$ vagrant ssh -c '
@@ -434,27 +434,27 @@ Describes the procedure for creating a RHEL OS image.
 		' remote
 
 
-2.  입력 옵션 정보
+2.  Input Options Information
 
-	|옵션명                      |필수    |설명                       |예시|
+	|Option Name                      |Necessity    |Description                       |Example|
 	|--------------------------|------|-----------------------------------------------|------|
-	|CANDIDATE_BUILD_NUMBER     |O      |현재 스템셀 버전            |3147|
-	|Infrastructure             |O      |인프라 타입                 |Vsphere|
-	|Hypervisor                 |O      |하이퍼 바이저 타입          |Esxi|
-	|Operating system name      |O      |OS 타입                    |Centos|
-	|Operating system version   |O      |OS 버전                    |7|
-	|Agent type                 |X      |에이전트 타입               |Go|
-	|OS image s3 bucket name    |O      |Bosh용 OS 이미지 버킷명     |Bosh-os-image|
-	|OS image key               |O      |OS 이미지명                |Bosh-centos-7-os-image.tgz|
+	|CANDIDATE_BUILD_NUMBER     |O      |Current stemcell version            |3147|
+	|Infrastructure             |O      |Infrastructure type                 |Vsphere|
+	|Hypervisor                 |O      |Hypervisor type          |Esxi|
+	|Operating system name      |O      |OS type                    |Centos|
+	|Operating system version   |O      |OS version                    |7|
+	|Agent type                 |X      |Agent type               |Go|
+	|OS image s3 bucket name    |O      |OS Image Bucket Name for Bosch     |Bosh-os-image|
+	|OS image key               |O      |OS image name                |Bosh-centos-7-os-image.tgz|
 
 
-	※ 다른 OS image에 대해서는 다음을 참조한다. 
+	※ For other OS images, refer to below. 
 [http://s3.amazonaws.com/bosh-os-images/](http://s3.amazonaws.com/bosh-os-images/)
 
-	※ Agent type타입이 필수 항목은 아니지만 현재 go 타입 이외의 에이전트는 지원하지 않으므로 go를 입력한다.
+	※ Agent type is not a necessary item, but since it does not support agents other than go type as of the moment, so enter go.
 
 
-3.  설정 가능한 옵션 구성
+3.  Configuring Setable Options
 
 	|Infrastructure             |Hypervisor                |OS|
 	|--------------------------|-------------------------|----------------------------|
@@ -466,28 +466,28 @@ Describes the procedure for creating a RHEL OS image.
 	|vsphere					|Esxi						 |ubuntu|
 	|vsphere					|Esxi						 |centos|
 
-	※ 위와 다른 옵션을 지정하고 싶은 경우 Bosh source에서 필요한 부분을 수정하거나 개발 한다.
+	※ If you want to specify an option different from the above, modify or develop the necessary parts in Bosh source.
 
 
-## 4.2.  로컬의 OS 이미지를 사용한 스템셀 생성 
+## 4.2.  Create Stemcell Using the OS Image in Local Server 
 
-로컬의 OS 이미지를 사용해서 스템셀을 생성하는 절차를 기술한다.
+Describes the procedure for generating a stemcell using a local OS image.
 
 
-1.  기본 OS 이미지를 생성 또는 다운로드 받는다.
+1.  Create or download the default OS image.
 
-	|OS 명            |URL|
+	|OS Name            |URL|
 	|----------------|----------------------------------------------------------------------------|
 	|ubuntu           |[https://s3.amazonaws.com/bosh-os-images/bosh-ubuntu-trusty-os-image.tgz](https://s3.amazonaws.com/bosh-os-images/bosh-ubuntu-trusty-os-image.tgz)|
 	|centos           |[https://s3.amazonaws.com/bosh-os-images/bosh-centos-7-os-image.tgz](https://s3.amazonaws.com/bosh-os-images/bosh-centos-7-os-image.tgz)|
-	|사용자 생성 OS     |[3. 기본 OS 이미지 생성 참조](#3--기본-os-이미지-생성)|
+	|Custom OS     |[3. Create default OS Image](#3--기본-os-이미지-생성)|
 
 
 
-2.  기본 OS 이미지를 다운 받은 경우, 스템셀 생성 VM에 업로드 한다.
+2.  If you downloaded default OS image, upload it to stemcell-generated VM.
 
 
-3.  build\_with\_local\_os\_image 실행
+3.  Execute build\_with\_local\_os\_image
   
 		$ cd ~/workspace/bosh/bosh-stemcell
 		$ vagrant ssh -c '
@@ -495,25 +495,25 @@ Describes the procedure for creating a RHEL OS image.
 		bundle exec rake STEMCELL_BUILD_NUMBER=<stemcell version> stemcell:build_with_local_os_image[aws,xen,ubuntu,trusty,go,/tmp/ubuntu_base_image.tgz]
 		' remote
 
-	※ STEMCELL\_BUILD\_NUMBER을 생략할 경우, 생성되는 스템셀의 버전은 0000으로 고정된다.
+	※ When skipping STEMCELL\_BUILD\_NUMBER, the version of the stemcell produced is fixed to 0000.
 
 
-4.  입력 옵션 정보
+4.  Input Options Information
 
-	|옵션명                      |필수    |설명                                   |예시|
+	|Option Name                      |Necessity    |Description                                   |Example|
 	|--------------------------|------|--------------------------------------|------------------------------|
-	|Infrastructure             |O      |인프라 타입                             |Aws|
-	|Hypervisor                 |O      |하이퍼 바이저 타입                       |Xen|
-	|Operating system name      |O      |OS 타입                                |Ubuntu|
-	|Operating system version   |O      |OS 버전                                |Trusty|
-	|Agent type                 |X      |에이전트 타입                           |Go|
-	|Local os image path        |O      |스템셀 생성 VM에 있는 OS 이미지 경로      |/tmp/ubuntu_base_image.tgz|
+	|Infrastructure             |O      |Infrastructure type                             |Aws|
+	|Hypervisor                 |O      |Hypervisor type                       |Xen|
+	|Operating system name      |O      |OS type                                |Ubuntu|
+	|Operating system version   |O      |OS version                                |Trusty|
+	|Agent type                 |X      |Agent type                           |Go|
+	|Local os image path        |O      |OS image path on the stemcell generating VM      |/tmp/ubuntu_base_image.tgz|
 
 
-	※ Agent type타입이 필수 항목은 아니지만 현재 go 타입 이외의 에이전트는 지원하지 않으므로 go를 입력한다
+	※ Agent type is not a necessary item, but since it does not support agents other than go type as of the moment, so enter go.
 
 
-5.  설정 가능한 옵션 구성
+5.  Configuring Setable Options
 
 	|Infrastructure             |Hypervisor                |OS|
 	|--------------------------|-------------------------|----------------------------|
@@ -526,34 +526,34 @@ Describes the procedure for creating a RHEL OS image.
 	|vsphere					|Esxi						 |centos|
 
 
-## 4.3.  생성한 스템셀의 보관장소 
+## 4.3.  Storage of the Created Stemcell 
 
-1.  생성한 스템셀 확인
+1.  Check created stemcell
 
 		$ cd ~/workspace/bosh/bosh-stemcell
 		$ vagrant ssh remote
 		$ ll /bosh/tmp
 
 
-2.  생성한 스템셀 다운로드
+2.  Download created stemcell
 
 		$ cd ~/workspace/bosh/bosh-stemcell
-		$ vagrant scp remote:/bosh/tmp/<생성한 스템셀명> <다운받을 로컬 경로>
+		$ vagrant scp remote:/bosh/tmp/<Name of the created stemcell> <Local path to download>
 
 
-# 5.  BOSH Light 스템셀 생성 
+# 5.  Create BOSH Light Stemcell 
 
-## 5.1.  Bosh Light 스템셀 생성
+## 5.1.  Create Bosh Light Stemcell
 
-Bosh light 스템셀은 AWS (N. Virgina region 한정)에서만 사용가능한 경량 스템셀이다. 스템셀을 AWS에 AMI로 등록하고 등록한 이미지 아이디, 스템셀 정보 등을 기록한 파일을 생성하여 tgz로 압축한다.
+The Bosh light stemcell is a lightweight stemcell that can only be used in AWS (N. Virginia region only). A stemcell is registered as AMI in AWS, and a file recording the registered image ID and stemcell information is generated and compressed into tgz.
 
-1.  다운로드 받았거나 생성한 스템셀을 스템셀 생성 VM에 업로드한다.
+1.  Upload downloaded or created stemcells to the stemcell creation VM.
 
 		$ cd ~/workspace/bosh/bosh-stemcell	
-		$ scp <업로드 대상 스템셀> remote:/tmp/bosh-stemcell.tgz
+		$ scp <Stemcell to upload> remote:/tmp/bosh-stemcell.tgz
 
 
-2.  build\_light 실행
+2.  Execute build\_light
 
 		$ cd ~/workspace/bosh/bosh-stemcell
 		$ vagrant ssh -c '
@@ -564,35 +564,36 @@ Bosh light 스템셀은 AWS (N. Virgina region 한정)에서만 사용가능한 
 		' remote
 
 
-3.  입력 옵션 정보
+3.  Input option information
 
-	|옵션명                |필수   |설명                   |예시|
+	|Option Name                |Necessity   |Description                   |Example|
 	|---------------------|------|----------------------|------------------------|
-	|Local stemcell path   |O      |로컬의 stemcell 경로   |/tmp/bosh-stemcell.tgz|
-	|Virtualization type   |X      |가상화 타입            |Hvm|
+	|Local stemcell path   |O      |Stemcell path of the Local   |/tmp/bosh-stemcell.tgz|
+	|Virtualization type   |X      |Virtualization type            |Hvm|
 
-	※ 필수 항목이 아닌 곳에 대해서는 ‘’을 입력한다.
+	※ Enter ‘’for non-necessary areas.
 
 
-# 6.  스템셀 커스터마이징 
+# 6.  Customizing Stemcell 
 
-## 6.1.  스템셀 생성 소스 수정 
+## 6.1.  Modify Stemcell Creating Source 
 
-사용자의 요구사항에 맞는 스템셀을 생성하기 위해서는 스템셀 생성 소스를 수정 해야 할 경우가 있다. 스템셀 생성을 구성하는 대부분의 파일은 아래의 디렉토리에 있다.
+In order to generate a stemcell that meets the user's requirements, it may be necessary to modify the stemcell generation source. Most of the files that make up the stemcell generation are in the directory below.
 
-	bosh/stemcell_builder/stages/<스템셀 생성 stage>/<폴더 또는 파일>
+	bosh/stemcell_builder/stages/<stemcell creating stage>/<folder or file>
 
-1.  수정한 내용을 스템셀 생성 VM에 적용한다.
+1.  Apply the modified contents to the stemcell creation VM.
 
 		$ cd ~/workspace/bosh/bosh-stemcell
 		$ vagrant provision remote
 
 
-2.  스템셀을 생성한다. (필요한 경우 기본 OS 이미지부터 생성한다.)
+2.  Create Stemcell. (Create default OS image first if necessary.)
 
 
-3.  스템셀 생성 중 오류가 발생한 경우, 해당 오류를 조치한 후 오류가 발생한 stage부터 진행 할 수 있다. 이 경우, resume\_from=<스템셀 생성 stage\>를 생성 명령어에 추가한다. ※ 단, resume 옵션으로
-    스템셀을 생성할 경우, 이전에 정상적으로 진행된 스테이지에서 오류가 발생하는 경우도 있다. 이런 경우, resume\_from옵션을 사용하지 않는다.
+3.  If an error occurs while generating a stem cell, the error can be taken and then proceed from the stage where the error occurred. In this case, add resume\_from=<create stemcell stage\> to the generation command.
+ ※ But, in resume option
+    When generating a stemcell, an error may occur in a stage that performed normally before. In this case, do not use the resume\_from option.
 
 		$ cd ~/workspace/bosh/bosh-stemcell
 		$ vagrant ssh -c '
@@ -601,4 +602,4 @@ Bosh light 스템셀은 AWS (N. Virgina region 한정)에서만 사용가능한 
 		' remote
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Stemcell 개발
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Stemcell Development

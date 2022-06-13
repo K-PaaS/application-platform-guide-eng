@@ -31,7 +31,7 @@
 
 ## 1.1.  Purpose 
 
-The purpose is to create user-defined stemcell.
+The purpose is to create a user-defined stemcell.
 
 ## 1.2.  Range
 
@@ -39,7 +39,7 @@ The guide range describes the establishment of an environment for generating a B
 
 ## 1.3.  References
 
-This document was writen by referring to Cloud Foundry's BOSH Document.
+This document was written by referring to Cloud Foundry's BOSH Document.
 
 Create Bosh Stemcell:
 [https://github.com/cloudfoundry/bosh-linux-stemcell-builder/blob/master/README.md](https://github.com/cloudfoundry/bosh-linux-stemcell-builder/blob/master/README.md)
@@ -57,11 +57,11 @@ This installation guide is described based on running in a Linux (Ubuntu 14.04 6
 -   Bundler
 -   Bosh
 -   Vagrant
--   There should be a internet connection to create a stemcell.
+-   There should be an internet connection to create a stemcell.
 
 ## 2.2.  Configure AWS Environment
 
-BOSH creates and manages VMs that create stemcells on AWS. In order to create a stemcell, an account must be created on AWS and an environment must be configured.
+BOSH creates and manages VMs that create stemcells on AWS. To create a stemcell, an account must be created on AWS and an environment must be configured.
 
 -   AWS Account
 
@@ -70,7 +70,7 @@ BOSH creates and manages VMs that create stemcells on AWS. In order to create a 
 
 -   Access Key Setting
 
-	1.  Login to AWS: [https://console.aws.amazon.com/console/home](https://console.aws.amazon.com/console/home)
+	1. log in to AWS: [https://console.aws.amazon.com/console/home](https://console.aws.amazon.com/console/home)
 
 
 		![account-dashboard](./images/stemcell/account-dashboard.png "account-dashboard")
@@ -81,7 +81,7 @@ BOSH creates and manages VMs that create stemcells on AWS. In order to create a 
 		![security-credentials-menu](./images/stemcell/security-credentials-menu.png "security-credentials-menu")
 
 
-	3.  When 'AWS IAM' confirm pop up appears, select 'Continue to Security Credentials' button and procceed to Security Credentials screen
+	3.  When the 'AWS IAM' confirm pop-up appears, select the 'Continue to Security Credentials' button and proceed to the Security Credentials screen
 
 
 	4.  Select Access Keys and click Create New Access Key to create the Access Key.
@@ -136,11 +136,11 @@ BOSH creates and manages VMs that create stemcells on AWS. In order to create a 
 
 	1.  On the AWS console screen, select the 'EC2' menu to go to the EC2 dashboard screen.
 
-	2.  Select ‘Key Pairs’ and ‘Create Key Pair’ button in order.
+	2.  Select the ‘Key Pairs’ and ‘Create Key Pair’ buttons in order.
 
 		![list-key-pairs](./images/stemcell/list-key-pairs.png "list-key-pairs")
 
-	3.  Enter Key Pair name from the Create Key Pair Dialog Screen. Create and download Key Pair.
+	3.  Enter the Key Pair name from the Create Key Pair Dialog Screen. Create and download Key Pair.
 
 		![create-key-pair](./images/stemcell/create-key-pair.png "create-key-pair")
 
@@ -152,15 +152,15 @@ BOSH creates and manages VMs that create stemcells on AWS. In order to create a 
 			$ chmod 400 ~/.ssh/bosh.pem
   
 
-		Set the Key path and name at the ***BOSH\_VAGRANT\_KEY\_PATH***.
+		Set the Keypath and name at the ***BOSH\_VAGRANT\_KEY\_PATH***.
 
--   Create Security group
+-   Create a Security group
 
-	1.  EC2 Click  ‘Security Groups’ and ‘Create Security Group’ button in order from the EC2 dashboard screen.
+	1.  EC2 Click the ‘Security Groups’ and ‘Create Security Group’ buttons in order from the EC2 dashboard screen.
 
 		![list-security-groups](./images/stemcell/list-security-groups.png "list-security-groups")
 
-	2.  From the Create Security Group pop up screen, enter the value as shown below and create security group.
+	2.  From the Create Security Group pop-up screen, enter the value as shown below and create a security group.
 
 		![create-security-group](./images/stemcell/create-security-group.png "create-security-group")
 
@@ -188,7 +188,7 @@ BOSH creates and manages VMs that create stemcells on AWS. In order to create a 
 
 ## 2.3.  RUBY Installation
 
-The procedure of installing Ruby is as follows.
+The procedure for installing Ruby is as follows.
 
 
 1.  Installing dependency packages
@@ -222,7 +222,7 @@ The procedure of installing Ruby is as follows.
 		$ rvm use 2.1.6 --default
 
 
-3.  Vefify Installation
+3.  Verify Installation
 
 		$ ruby -v
 
@@ -231,7 +231,7 @@ The procedure of installing Ruby is as follows.
 The procedure for BOSH installation is as follows.
 
 
-1.  Create environment to install
+1.  Create an environment to install
 
 		#Install git
 		$ sudo apt-get install git
@@ -264,7 +264,7 @@ The procedure for BOSH installation is as follows.
 
 ## 2.5.  Vagrant Installation
 
-Vagrant is an open source that builds a virtual environment. Use vagrant to manage VMs for creating stemcells.
+Vagrant is an open-source that builds a virtual environment. Use vagrant to manage VMs for creating stemcells.
 
 
 1.  Install Vagrant
@@ -302,7 +302,7 @@ Configure the virtual environment for creating stemcell.
 
 3.  Verifying Remote Access
 
-		#Enable access key information settings
+		#Enable access to key information settings
 		$ export BOSH_KEY_PATH=<Path and file name of the access key>
 		$ export BOSH_VAGRANT_KEY_PATH=<Path and file name of the access key>
 
@@ -313,7 +313,7 @@ Configure the virtual environment for creating stemcell.
 
 4.  Send and receive remote files
 
-		#Enable access key information settings
+		#Enable access to key information settings
 		$ export BOSH_KEY_PATH=<Path and filename of the access key>
 		$ export BOSH_VAGRANT_KEY_PATH=<Path and filename of the access key>
 
@@ -337,7 +337,7 @@ Configure the virtual environment for creating stemcell.
 
 # 3.  Create default OS Image 
 
-If a stemcell configured with a user-defined OS suitable for the user environment is required, create a basic OS image first. The basic OS image consists of the minimum OS function required by the stemcell and the Bosh agent and Bosh monitor.
+If a stemcell configured with a user-defined OS suitable for the user environment is required, create a basic OS image first. The basic OS image consists of the minimum OS function required by the stemcell and the Bosh agent and the Bosh monitor.
 
 
 ## 3.1.  Create Ubuntu OS Image
@@ -369,14 +369,14 @@ Describe the procedure for creating an Ubuntu OS image.
 
 ## 3.2.  Create RHEL OS image 
 
-Describes the procedure for creating a RHEL OS image.
+Describes the procedure for creating an RHEL OS image.
 
 
 1.  Download RHEL 7.0 iso and upload it to the stemcell creation VM.
 
   	[https://access.redhat.com/downloads/content/69/ver=/rhel---7/7.0/x86\_64/product-downloads](https://access.redhat.com/downloads/content/69/ver=/rhel---7/7.0/x86_64/product-downloads)
   
-	※ To dowload, one should have RedHat account.
+	※ To download, one should have RedHat account.
 
 
 2.  Configuring the Execution Environment
@@ -423,7 +423,7 @@ Describes the procedure for creating a RHEL OS image.
 
 ## 4.1.  Create Stemcell Using the OS Image in Remote Server 
 
-Describe the procedure for generating stemcells using remote server's OS images.
+Describe the procedure for generating stemcells using remote server OS images.
 
 1.  Execute Build
 
@@ -466,7 +466,7 @@ Describe the procedure for generating stemcells using remote server's OS images.
 	|vsphere					|Esxi						 |ubuntu|
 	|vsphere					|Esxi						 |centos|
 
-	※ If you want to specify an option different from the above, modify or develop the necessary parts in Bosh source.
+	※ If you want to specify an option different from the above, modify or develop the necessary parts in the Bosh source.
 
 
 ## 4.2.  Create Stemcell Using the OS Image in Local Server 
@@ -484,7 +484,7 @@ Describes the procedure for generating a stemcell using a local OS image.
 
 
 
-2.  If you downloaded default OS image, upload it to stemcell-generated VM.
+2.  If you downloaded default OS image, upload it to a stemcell-generated VM.
 
 
 3.  Execute build\_with\_local\_os\_image
@@ -578,7 +578,7 @@ The Bosh light stemcell is a lightweight stemcell that can only be used in AWS (
 
 ## 6.1.  Modify Stemcell Creating Source 
 
-In order to generate a stemcell that meets the user's requirements, it may be necessary to modify the stemcell generation source. Most of the files that make up the stemcell generation are in the directory below.
+To generate a stemcell that meets the user's requirements, it may be necessary to modify the stemcell generation source. Most of the files that make up the stemcell generation are in the directory below.
 
 	bosh/stemcell_builder/stages/<stemcell creating stage>/<folder or file>
 
@@ -592,8 +592,8 @@ In order to generate a stemcell that meets the user's requirements, it may be ne
 
 
 3.  If an error occurs while generating a stem cell, the error can be taken and then proceed from the stage where the error occurred. In this case, add resume\_from=<create stemcell stage\> to the generation command.
- ※ But, in resume option
-    When generating a stemcell, an error may occur in a stage that performed normally before. In this case, do not use the resume\_from option.
+ ※ But, in the resume option
+    When generating a stemcell, an error may occur in a stage that was performed normally before. In this case, do not use the resume\_from option.
 
 		$ cd ~/workspace/bosh/bosh-stemcell
 		$ vagrant ssh -c '

@@ -93,23 +93,23 @@ Describe Service Provider and Cloud Foundry integration
 [picture reference]: http://www.slideshare.net/platformcf/cloud-foundry-marketplacepowered-by-appdirect
 
 #### <a name="11"/>2.5. Development Guide
-The method of implementing the service is up to the provider and developer. Open cloud platforms require service providers to implement 6 Service Broker APIs. In this 2.4 Pivotal Marketplace Model can be used to consult with the service provider provided by AppDirect and provide it using AppDirect's intermediary function. 또한 Broker 는 별도의 애플리케이션으로 구현하든지 기존 서비스에 필요한 HTTP endpoint를 추가함으로써 구현 될 수 있다.
+The method of implementing the service is up to the provider and developer. Open cloud platforms require service providers to implement 6 Service Broker APIs. In this 2.4 Pivotal Marketplace Model can be used to consult with the service provider provided by AppDirect and provide it using AppDirect's intermediary function. Broker can be implemented as a separate application or by adding HTTP endpoints required for existing services.
 
-본 개발 가이드는 Service Broker 에서 service back-end를 제어하는 방식을 가이드 한다.AppDirect를 사용하는 경우에는 http://go.appdirect.com/request-more-information를 참고하여 개발한다.
+This development guide guides how service back-end is controlled by the service broker.If you use AppDirect, refer to http://go.appdirect.com/request-more-information.
 
-Service Broker는 6개의 기본 API 기능이 필요하다. (상세 설명은 각 API 가이드 참고)
+Service Broker requires 6 basic API functions. (refer to API guide of each for detailed descriptions)
 >![openpaas-servicepack-05]
 
-Service Broker API의 두 가지 주요 버전은 현재 개방형 클라우드 플랫폼 v1 및 v2를 지원한다. v1은 사용 되지 않으며 개방형 클라우드 플랫폼의 다음 버전에서 제거 될 수 있으니 Service Broker는 v2로 구현하는 것을 권장한다.
-- 버전 정보 (가이드 문서는 2.5 버전을 기준으로 작성함)
+Two major versions of the Service Broker API currently support open cloud platforms v1 and v2. Since v1 is not used and can be removed in the next version of the open cloud platform, Service Broker recommends implementing it as v2.
+- Version Information (This guide is written based on version 2.5)
 >![openpaas-servicepack-06]
 
-- 인증
+- Certification
 
-Cloud Controller 는 모든 요청에 HTTP 기본 인증(인증 헤더)을 사용하여 Broker와 인증하여 사용자 이름과 암호를 포함하지 않는 모든 Broker 등록을 거부한다. Broker는 사용자 이름과 암호를 확인하고 자격 증명이 유효하지 않은 경우 401 Unauthorized 메시지를 반환 한다. Cloud Controller에서 추가 보안이 요구되는 경우 SSL을 사용하여 브로커에 접속 지원을 한다.
+The Cloud Controller authenticates with the broker using HTTP default authentication (authentication header) for all requests and rejects all broker registrations that do not include user names and passwords. The broker checks the username and password and returns a 401 Unauthorized message if the credentials are invalid. If additional security is required on the Cloud Controller, SSL is used to support access to the broker.
 
-##### <a name="12"/>2.5.1. Catalog API 가이드
-서비스 Catalog는 서비스 및 서비스 Plan의 정보를 조회한다. Cloud Controller는 처음에 모든 Broker에서 endpoint를 취득해서 Cloud Controller 데이터베이스에 저장되어 있는 user-facing service catalog를 조회한다. 또한 Cloud Controller는 Broker가 업데이트 될 때 마다 catalog를 업데이트한다.Catalog API를 구현하면 CF CLI를 통해서 Service Broker를 등록 할 수 있다.
+##### <a name="12"/>2.5.1. Catalog API Guide
+The service catalog retrieves information about the service and the service plan. The Cloud Controller initially retrieves endpoints from all brokers and checks the user-facing service catalog stored in the Cloud Controller database. The Cloud Controller also updates the catalog whenever the broker is updated.When the Catalog API is implemented, a service broker can be registered through the CF CLI.
 
 1. Request
 
@@ -129,7 +129,7 @@ Cloud Controller 는 모든 요청에 HTTP 기본 인증(인증 헤더)을 사�
 
 >![openpaas-servicepack-07]
 
-2.2. Body (* 필드는 필수)
+2.2. Body (* means required)
 >![openpaas-servicepack-09]
 
 2.3. Service Metadata
@@ -194,9 +194,9 @@ Cloud Controller 는 모든 요청에 HTTP 기본 인증(인증 헤더)을 사�
 	  ]
 	}
 
-3.	Catalog Rest API 구현
+3.	Implementing Catalog Rest API
 	
-3.1.	JAVA 방식
+3.1.	JAVA Method
 	
 	-- CatalogRestController.java (Spring 프레임워크 사용)
 	

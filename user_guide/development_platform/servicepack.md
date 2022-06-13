@@ -93,7 +93,7 @@ Describe Service Provider and Cloud Foundry integration
 [picture reference]: http://www.slideshare.net/platformcf/cloud-foundry-marketplacepowered-by-appdirect
 
 #### <a name="11"/>2.5. Development Guide
-서비스의 구현 방법은 서비스 제공자(Provider) 와 개발자(developer)의 몫이다. 개방형 클라우드 플랫폼은 서비스 제공자가 6가지의 Service Broker API를 구현해야 한다. 이때 2.4 Pivotal Marketplace Model를 이용해서 AppDirect 에서 제공중인 서비스 제공자와 협의 하여 AppDirect 의 중개 기능을 이용해서 제공할수도 있다. 또한 Broker 는 별도의 애플리케이션으로 구현하든지 기존 서비스에 필요한 HTTP endpoint를 추가함으로써 구현 될 수 있다.
+The method of implementing the service is up to the provider and developer. Open cloud platforms require service providers to implement 6 Service Broker APIs. In this 2.4 Pivotal Marketplace Model can be used to consult with the service provider provided by AppDirect and provide it using AppDirect's intermediary function. 또한 Broker 는 별도의 애플리케이션으로 구현하든지 기존 서비스에 필요한 HTTP endpoint를 추가함으로써 구현 될 수 있다.
 
 본 개발 가이드는 Service Broker 에서 service back-end를 제어하는 방식을 가이드 한다.AppDirect를 사용하는 경우에는 http://go.appdirect.com/request-more-information를 참고하여 개발한다.
 

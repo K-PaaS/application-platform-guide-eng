@@ -300,54 +300,54 @@ Configure the virtual environment for creating stemcell.
 		$ vagrant up remote --provider=aws
 
 
-3.  원격 접속 확인
+3.  Verifying Remote Access
 
-		#접속 키 정보 설정 실행
-		$ export BOSH_KEY_PATH=<접속 키의 경로 및 파일명>
-		$ export BOSH_VAGRANT_KEY_PATH=<접속 키의 경로 및 파일명>
+		#Enable access key information settings
+		$ export BOSH_KEY_PATH=<Path and file name of the access key>
+		$ export BOSH_VAGRANT_KEY_PATH=<Path and file name of the access key>
 
 		#Execute Access
 		$ cd ~/workspace/bosh/bosh-stemcell
 		$ vagrant ssh remote
 
 
-4.  원격 파일 송수신
+4.  Send and receive remote files
 
-		#접속 키 정보 설정 실행
-		$ export BOSH_KEY_PATH=<접속 키의 경로 및 파일명>
-		$ export BOSH_VAGRANT_KEY_PATH=<접속 키의 경로 및 파일명>
+		#Enable access key information settings
+		$ export BOSH_KEY_PATH=<Path and filename of the access key>
+		$ export BOSH_VAGRANT_KEY_PATH=<Path and filename of the access key>
 
-		#파일 송수신 실행
+		#Execute file transmission and reception
 		$ cd ~/workspace/bosh/bosh-stemcell
 
-		#파일을 송신할 경우
-		$ vagrant scp <로컬 파일> remote:<원격 파일 저장 경로>
+		#When sending a file
+		$ vagrant scp <local file> remote:<Remote file storage path>
 
-		#파일을 수신할 경우
-		$ vagrant scp remote:<원격 파일 저장 경로> <로컬 파일>
+		#When receiving a file
+		$ vagrant scp remote:<Remote file storage path> <local file>
  
 
-## 2.7.  BOSH Source 등을 수정하여 스템셀을 생성할 경우
+## 2.7.  When creating a stem cell by modifying a BOSH Source, etc
 
-1.  Source Code 수정 또는 업데이트한 gem 파일을 스템셀 생성 VM에 반영하는 경우
+1.  When Reflecting the modified or updated gem file of the Source Code to the stemcell-generated VM
 
 		$ cd ~/workspace/bosh/bosh-stemcell
 		$ vagrant provision remote
 
 
-# 3.  기본 OS 이미지 생성 
+# 3.  Create default OS Image 
 
-사용자 환경에 맞는 사용자 정의의 OS로 구성한 스템셀이 필요한 경우, 기본 OS 이미지부터 생성한다. 기본 OS 이미지는 스템셀이 요구하는 최소한의 OS 기능과 Bosh agent 및 bosh 모니터로 구성 되어 있다.
-
-
-## 3.1.  Ubuntu OS 이미지 생성
-
-Ubuntu OS 이미지를 생성하는 절차를 기술한다.
+If a stemcell configured with a user-defined OS suitable for the user environment is required, create a basic OS image first. The basic OS image consists of the minimum OS function required by the stemcell and the Bosh agent and Bosh monitor.
 
 
-1.  Build\_os\_image 실행
+## 3.1.  Create Ubuntu OS Image
 
-		#기본 OS 이미지 생성
+Describe the procedure for creating an Ubuntu OS image.
+
+
+1.  Execute Build\_os\_image
+
+		#Create default OS image
 		$ cd ~/workspace/bosh/bosh-stemcell
 		$ vagrant ssh -c '
 		cd /bosh
@@ -355,24 +355,24 @@ Ubuntu OS 이미지를 생성하는 절차를 기술한다.
 		' remote
 
 
-2.  입력 옵션 정보
+2.  Input option information
 
-	|옵션명                      |필수   |설명                                          |예시|
+	|Option Name                      |Necessity   |Description                                          |Example|
 	|--------------------------|------|--------------------------------------------|------------------------------|
-	|Operating system name      |O      |OS 타입                                      |ubuntu|
-	|Operating system version   |O      |OS 버전                                      |trusty|
-	|OS image path              |O      |기본 OS 이미지가 생성되는 디렉토리 및 이름       |/tmp/ubuntu_base_image.tgz|
+	|Operating system name      |O      |OS Type                                      |ubuntu|
+	|Operating system version   |O      |OS Version                                      |trusty|
+	|OS image path              |O      |Directory and name in which the default OS image is created       |/tmp/ubuntu_base_image.tgz|
 
 
-	※ 필수 항목이 아닌 곳에 대해서는 ‘’을 입력한다.
+	※ Enter ‘’for non-necessary areas.
 
 
-## 3.2.  RHEL OS 이미지 생성 
+## 3.2.  Create RHEL OS image 
 
-RHEL OS 이미지를 생성하는 절차를 기술한다.
+Describes the procedure for creating a RHEL OS image.
 
 
-1.  RHEL 7.0 iso를 다운로드 받아서 스템셀 생성 VM에 업로드 한다.
+1.  Download RHEL 7.0 iso를 다운로드 받아서 스템셀 생성 VM에 업로드 한다.
 
   	[https://access.redhat.com/downloads/content/69/ver=/rhel---7/7.0/x86\_64/product-downloads](https://access.redhat.com/downloads/content/69/ver=/rhel---7/7.0/x86_64/product-downloads)
   

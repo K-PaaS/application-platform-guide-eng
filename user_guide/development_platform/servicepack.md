@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Servicepack 개발
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Servicepack Development
 
 
 ## Table of Contents
@@ -44,17 +44,17 @@
 4. [Deployment Guide](#40)	
 5. [Deploy Guide](#41)	
 
-### <a name="1"/>1. 개요
-#### <a name="2"/>1.1. 문서 개요
-##### <a name="3"/>1.1.1. 목적
+### <a name="1"/>1. Outline
+#### <a name="2"/>1.1. Document Outline
+##### <a name="3"/>1.1.1. Purpose
 
-본 문서(서비스팩 가이드)는 전자정부표준프레임워크 기반의 Open PaaS 프로젝트의 서비스팩개발 및 운영시 품질목표를 달성하기 위하여 적용되어야 할 각종 표준 및 척도를 정의할 수 있도록 가이드로 제시하는 문서이다.
-이 개발 표준 가이드를 근거로 하여 개발시스템의 품질을 높이고, 서비스팩 개발자들이 상호간의 소스코드에 대한 가독성 및 이해도를 높이며, 해당 표준에 따라 개발함으로써 프로젝트 품질의 일관성을 유지하여 프로젝트 완료 이후의 원활한 시스템 유지보수를 지원할 수 있도록 하는데 그 목적이 있다.
+This document (servicepack guide) is presented as a guide to define various standards and measures to be applied to achieve quality goals in the development and operation of service packs for Open PaaS projects based on the e-government standard framework.
+The purpose of this development standard guide is to improve the quality of the development system, to enhance readability and understanding of source code among service pack developers, and to support smooth system maintenance after completion of the project.
 
-##### <a name="4"/>1.1.2. 범위
-본 문서의 범위는 전자정부표준프레임워크 기반의 Open PaaS 프로젝트의 서비스팩개발에 대한 내용으로 한정되어 있다.
+##### <a name="4"/>1.1.2. Range
+The range of this document is limited to the development of service packs for Open PaaS projects based on the e-government standard framework.
 
-##### <a name="5"/>1.1.3. 참고 자료
+##### <a name="5"/>1.1.3. References
 http://docs.cloudfoundry.org/services/  
 http://bosh.io/docs/create-release.html  
 https://github.com/cloudfoundry/bosh-sample-release  
@@ -64,35 +64,35 @@ https://github.com/cloudfoundry-community/cf-mysql-java-broker
 http://rubykr.github.io/rails_guides/getting_started.html  
 http://www.appdirect.com  
  
-### <a name="6"/>2. Service Broker API 개발 가이드
-#### <a name="7"/>2.1. 개요
-개방형 클라우드 플랫폼 Service API는 Cloud Controller와 Service Broker  사이의 규약을 정의한다. Broker는 HTTP (or HTTPS) endpoints URI 형식으로 구현된다. 하나 이상의 Service가 하나의 Broker 에 의해 제공 될 수 있고, 로드 밸런싱이 가능하게 수평 확장성 있게 제공 될 수 있다.
+### <a name="6"/>2. Service Broker API Development Guide
+#### <a name="7"/>2.1. Outline
+The open cloud platform Service API defines the protocol between the Cloud Controller and the Service Broker. Broker is implemented in HTTP (or HTTPS) endpoints URI format. One or more services may be provided by one broker, and may be provided horizontally and extensively to enable load balancing.
 
 #### <a name="8"/>2.2. Service Architecture
 >![openpaas-servicepack-01]  
-[그림출처]: http://docs.cloudfoundry.org/services/overview.html
+[picture reference]: http://docs.cloudfoundry.org/services/overview.html
 
-Services 는 Service Broker API 라고 불리우는 cloud controller 클라이언트 API를 구현하여 개방형 클라우드 플랫폼에서 사용된다. Services API는 독립적인 cloud controller API의 버전이다.
-이는 플랫폼에서 외부 application을 이용 가능하게 한다. (database, message queue, rest endpoint , etc)
+Services is used in open cloud platforms by implementing a cloud controller client API called the Service Broker API. The Services API is a version of the independent cloud controller API.
+This makes external applications available on the platform. (database, message queue, rest endpoint , etc)
 
 #### <a name="9"/>2.3. Service Broker API Architecture
 >![openpaas-servicepack-02]  
-[그림출처]: http://docs.cloudfoundry.org/services/api.html
+[picture reference]: http://docs.cloudfoundry.org/services/api.html
 
-개방형 클라우드 플랫폼 Service API는 Cloud Controller 와 Service Broker 사이의 규약 (catalog, provision, deprovision, update provision plan, bind, unbind)이고 Service Broker 는 RESTful API 로 구현하고 Cloud Controller 에 등록한다.
+The Open Cloud Platform Service API is a protocol between Cloud Controller and Service Broker (catalog, provision, deprovision, update provision plan, bind, unbound), and the Service Broker implements it as a RESTful API and registers it with the Cloud Controller.
 
 #### <a name="10"/>2.4. Pivotal(Cloud Foundry) Marketplace Model
 >![openpaas-servicepack-03]  
-[그림출처]: http://www.slideshare.net/platformcf/cloud-foundry-marketplacepowered-by-appdirect
+[picture reference]: http://www.slideshare.net/platformcf/cloud-foundry-marketplacepowered-by-appdirect
 
-AppDirect: 클라우드 서비스 marketplace 및 관리 솔루션의 선두 업체이고 많은 글로벌 회사의 marketplace를 구축하였다. (삼성, Cloud Foundry, ETC)
-AppDirect는 Cloud Foundry 서비스 중개(brokerage) 기능과 부가 서비스를 제공한다. 
+AppDirect: a leading company in cloud service marketplace and management solution.Establised marketplace of many global companies. (Samsung, Cloud Foundry, ETC)
+AppDirect offers Cloud Foundry service brokerages and additional services. 
 
-Service Provider 및 Cloud Foundry 통합에 관련 설명
+Describe Service Provider and Cloud Foundry integration
 >![openpaas-servicepack-04]  
-[그림출처]: http://www.slideshare.net/platformcf/cloud-foundry-marketplacepowered-by-appdirect
+[picture reference]: http://www.slideshare.net/platformcf/cloud-foundry-marketplacepowered-by-appdirect
 
-#### <a name="11"/>2.5. 개발 가이드
+#### <a name="11"/>2.5. Development Guide
 서비스의 구현 방법은 서비스 제공자(Provider) 와 개발자(developer)의 몫이다. 개방형 클라우드 플랫폼은 서비스 제공자가 6가지의 Service Broker API를 구현해야 한다. 이때 2.4 Pivotal Marketplace Model를 이용해서 AppDirect 에서 제공중인 서비스 제공자와 협의 하여 AppDirect 의 중개 기능을 이용해서 제공할수도 있다. 또한 Broker 는 별도의 애플리케이션으로 구현하든지 기존 서비스에 필요한 HTTP endpoint를 추가함으로써 구현 될 수 있다.
 
 본 개발 가이드는 Service Broker 에서 service back-end를 제어하는 방식을 가이드 한다.AppDirect를 사용하는 경우에는 http://go.appdirect.com/request-more-information를 참고하여 개발한다.

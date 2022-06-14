@@ -443,34 +443,34 @@ Single Sign-On (SSO) allows open cloud platform users to access dashboards of th
 
 4.1. RDBMS
 
-1. In the case of Mysql
+1. In case of Mysql
 
-	- 생성할 데이터 베이스가 존재 하는지 체크 
+	- Check if the database to create exists 
 	SHOW DATABASES LIKE '${instance.database}'
 	
-	- 새로운 데이터 베이스 생성
+	- Create new database
 	CREATE DATABASE IF NOT EXISTS ${instance.database}
 	
-	- 생성 후 Dashboard 정보를 JSON Object 형식으로 Cloud Controller 에 전송.
+	- Send the Dashboard information as JSON Object format to Cloud Controller after creation.
 
-2. In the case of Cubrid DB 
+2. In case of Cubrid DB 
 
-	- 데이터 베이스 생성할 디렉토리 생성 및 이동
+	- Create and move the directory to create database
 	$ mkdir <databasename>
 	$ cd <databasename>
 	
-	- 데이터 베이스 생성
+	- Create database
 	$ cubrid created--db-volume-size=100M --log-volume-size=100M <databasename> en_US
 	
-	- 데이터 베이스 실행
+	- Execute database
 	$ cubrid service start
 	$ cubrid server start <databasename>
 
-4.2. 대용량 저장소
-1. GlusterFS 경우
-◎ GlusterFS 로 파일을 업로드 하기 위해서는 먼저 GlusterFS 와 OpenStack swift 로 service back-end로 구성하여 Object Storage 방식으로 파일을 업로드 다운로드를 할수 있게 제공한다. (아마존 S3 방식과 유사)
+4.2. Mass Storage
+1. In case of GlusterFS
+◎ to upload files to ClusterFS, configure a service back-end with GlusterFS and OpenStack swift first to upload and download files using Object Storage. (similar to Amazon S3 method)
 
-	- 새로운 Swift Account 를 생성
+	- Create new Swift Account
 	
 	Method  : PUT 
 	
@@ -482,15 +482,15 @@ Single Sign-On (SSO) allows open cloud platform users to access dashboards of th
 
 
 4.3.	NoSQL DB
-1. mongoDB 경우
+1. In case of mongoDB
 
-	- 새로운 데이터 베이스를 생성
+	- Create new database
 	>use <databasename>
 	switched to db <databasename>
 
-##### <a name="14"/>2.5.3. Update Instance API 가이드
-Update Instance API는 기존의 서비스 인스턴스의 plan를 수정 한다. 즉 서비스 인스턴스의 plan을 업그레이드나 다운그레이드 한다.
-이 기능을 사용하려면 브로커는 카탈로그 endpoint 에서 “plan_updateable: true”설정 해주어야 한다. 이 옵션 필드가 포함되어 있지 않은 경우에는 service plan 변경 요청에 대해 의미 있는 오류를 반환하고 브로커는 API 호출을 하지 않는다. 이 필드가 포함된 경우 개방형 클라우드 플랫폼의 모든 plan 변경 요청에 브로커로 API 호출을 수행하며 브로커에서는 plan 지원 여부를 확인한다.
+##### <a name="14"/>2.5.3. Update Instance API Guide
+Update Instance API modifies the plan of previously existing service instance. Which means it upgrades or downgrades the plan of service instance.
+To use this function, the broker should be set as “plan_updateable: true” from the catalog endpoint. If this option field is not included, it returns an error in the contents of the service plan modify request, and the broker does not call the API. 이 필드가 포함된 경우 개방형 클라우드 플랫폼의 모든 plan 변경 요청에 브로커로 API 호출을 수행하며 브로커에서는 plan 지원 여부를 확인한다.
 
 1.	Request
 1.1.	Route

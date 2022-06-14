@@ -1114,24 +1114,24 @@ Manage migration information files from this version. (Option)
 >![openpaas-servicepack-43]
  
 #### <a name="31"/>3.4.Development Guide
-service를 Bosh release를 통해 배포 해야 하기 때문에 Bosh release 개발 방식에 따라
-작성되어야한다.Bosh release 는 packages 와 jobs 관련 스크립트로 구성되어 있다.
-Bosh 는 software를 release 할 때 두가지 방식을 제공한다.
-Boshupload release CLI명령어 및 프로세스는 다음과 같다.
+must be written according to the Bosh release development method because the service must be distributed through Bosh release.  
+The Bosh release consists of scripts related to packages and jobs.
+Bosh offers two ways to release software.
+Bosh upload release CLI command and process are as follows.
 
 bosh upload release CLI 
 boshupload release [<release_file>] [--rebase] [--skip-if-exists]
-release_file: 로컬 파일 또는 원격 URI 정보
-    --rebase:최신 버전으로 Director에 설정
-    --skip-if-exists:릴리즈 가 존재 하면 업로드 하지 않음
+release_file: local files or remote URIs information
+    --rebase:Set to Director with the latest version
+    --skip-if-exists:Do not upload if release exists
 
 1.	Yaml 파일을 이용한 설치 프로세스 [<release_file> 파라미터가 yml 파일일 경우]: releases 디랙토리안에 cf-<service_name>-<version>.yml 파일을 읽어서 sha1 값으로 .final_builds 폴더의 해당 packages 또는 jobs 폴더안의 index.yml 의 blobstore_id 로 config/final.yml 의 blobstore 에 접근하여 설치하는 방식이다.
 2.	tarball(설치할 release 파일을 모두 포함한 압축 파일: tgz 형식) 을 이용한 설치 프로세스 [<release_file> 파라미터가 tgz 파일일 경우]: blobstore 를 이용하지 않고 설치할 모든 packages 와 jobs 파일 및 release(release.MF), job메타 파일이 tgz 압축 파일 안에 있어서 blobstore에서 다운 받지 않고 설치하는 방식이다. (releases 디랙토리 안에 .tgz 파일로 압축)
 
-##### <a name="32"/>3.4.1. packages 가이드
+##### <a name="32"/>3.4.1. Packages Guide
 Service software 설치 관련하여 packaging, pre_packaging 와 spec 파일로 구성 되어 있다.
 
-###### <a name="33"/>3.4.1.1. packaging
+###### <a name="33"/>3.4.1.1. Packaging
 packaging 파일은 software 를 설치 하는 script 를 제공한다.
 
 ◎ packaging 파일 설명

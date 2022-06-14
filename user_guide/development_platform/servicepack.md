@@ -604,7 +604,7 @@ When a broker receives a deployment request from an open cloud platform, it dele
 
 2.2.	Body 
 All response bodies should be in JSON Object ({}) format.
-If successful, receive a value of “{}”.
+Receive "{}" value on success.
 
 3.	Deprovision Rest API Implementation
 3.1.	JAVA Method
@@ -893,7 +893,7 @@ Note: In the Cubrid DB, the minimum unit of authorization given is a table. The 
 4.2.	Mass Storage
 1. In case of GlusterFS
 
-	- 새로운 Swift User 를 생성
+	- Create new Swift User
 	
 	Method  : PUT 
 	
@@ -905,9 +905,9 @@ Note: In the Cubrid DB, the minimum unit of authorization given is a table. The 
 		  X-Auth-User-Admin: [true OR false]
 
 4.3.	NoSQL DB
-1. mongoDB 경우
+1. In case of mongoDB
 
-	- 데이터 베이스에 접속할 사용자를 생성하고 접근 role(read, Write)을 부여한다.
+	- Create a user to connect to the database and grant access roles (read, write).
 	>use <databasename>
 	switched to db <databasename>
 	>db.getSiblingDB("<databasename>").runCommand(
@@ -919,9 +919,9 @@ Note: In the Cubrid DB, the minimum unit of authorization given is a table. The 
 	   }
 	 )
 
-##### <a name="17"/>2.5.6. Unbind API 가이드
-참고: 바인딩 서비스를 제공하지 않는 브로커는 Unbind API를 구현할 필요가 없다.
-브로커가 개방형 클라우드 플랫폼으로부터 unbind 요청을 받으면 바인드(bind)에서 만든 모든 자원(resource)을 삭제한다. 삭제 되면 service에 접근 할수 없다.
+##### <a name="17"/>2.5.6. Unbind API Guide
+Refer: Brokers that do not provide binding services do not need to implement the Unbind API.
+When a broker receives an unbind request from an open cloud platform, it deletes all resources created by the bind. If deleted, service is inaccessible.
 
 1.	Request
 1.1.	Route
@@ -939,12 +939,12 @@ Note: In the Cubrid DB, the minimum unit of authorization given is a table. The 
 >![openpaas-servicepack-32]
 
 2.2.	Body 
-모든 응답 bodies 는 JSON Object ({}) 형식으로 한다.
-성공시 “{}” 값을 전송받는다.
+All response bodies should be in JSON Object ({}) format.
+Receive "{}" value on success.
 
-3.	Unbind Rest API 구현
-3.1.	JAVA 방식
-	-- ServiceBindingRestController.java (Spring 프레임워크 사용)
+3.	Unbind Rest API Implementation
+3.1.	JAVA Method
+	-- ServiceBindingRestController.java (Use Spring Framework)
 	
 	@Controller
 	@RequestMapping("/v2/service_instances/{instanceId}/service_bindings/{bindingId}")
@@ -955,19 +955,19 @@ Note: In the Cubrid DB, the minimum unit of authorization given is a table. The 
 	@ResponseBody
 	Map destroy(@PathVariable String instanceId, @PathVariable String bindingId) {
 	    ServiceBinding binding = bindingService.findById(bindingId, instanceId); 
-	    bindingService.destroy(binding);  // 서비스 unbind 기능 구현 (개발 명세 내용 구현)
+	    bindingService.destroy(binding);  // Implement service unbind function (Implementation of Development Specifications)
 	    return [:];
 	  }
 	}
 
-3.2.	Ruby 방식(Ruby on Rails)
-	-- config/routes.rb : posts 를 위한 라우팅 정보를 담은 수정된 라우팅 파일
+3.2.	Ruby Method(Ruby on Rails)
+	-- config/routes.rb : Modified routing file with routing information for posts
 	
 	CfMysqlBroker::Application.routes.draw do
 	  resource :preview, only: [:show]
 	
 	namespace :v2 do
-	resource :catalog, only: [:show] // 접속 라우팅 설정 (V2/catalog)
+	resource :catalog, only: [:show] // Access Routing Settings (V2/catalog)
 	    patch 'service_instances/:id' => 'service_instances#set_plan'
 	    resources :service_instances, only: [:update, :destroy] do
 	resources :service_bindings, only: [:update, :destroy]
@@ -976,53 +976,53 @@ Note: In the Cubrid DB, the minimum unit of authorization given is a table. The 
 	
 	end
 	
-	-- RestController 구현 (app/controllers/v2/service_bindings_controller.rb)
+	-- RestController Implementation (app/controllers/v2/service_bindings_controller.rb)
 	
 	class V2::ServiceBindingsController< V2::BaseController
 	
 	  def destroy
-	// 서비스 unbind 기능 구현 (개발 명세 내용 구현)
+	// Implement service unbind function (Implementation of Development Specifications)
 	  end
 	
 	end
 
-3.3.	Node.js 방식
-	◎ sample (app.js): Catalog API 참고
+3.3.	Node.js Method
+	◎ sample (app.js): Refer to Catalog API
 	
 	var router = express.Router();
 	
 	router.route('/v2/service_instances/:instanceId/service_bindings/:bindingId’)
 	
 	.delete(function(req, res, next) {
-	// 서비스 unbind 기능 구현 (개발 명세 내용 구현)
+	// Implement service unbind function (Implementation of Development Specifications)
 	
 	})
 
-4.	서비스 별 Unbind API 개발 명세
--	Unbind 할 bind 인스턴스가 존재 하는지 체크 한다.
--	Application 에 bind 된 정보를 삭제하고 결과를 Application 에 전달한다.
+4.	Unbind API development specification by service
+-	Check if an instance of bind to be unbound exists.
+-	Delete the information bound to the application and deliver the result to the application.
 
 4.1.	RDBMS
-1. Mysql 경우
+1. In case of Mysql
 	
-	- unbind 할 사용자가 존재 하는지 체크
+	- Check if there is a user to unbind
 	SHOW GRANTS FOR #{username)}
 	
-	- 생성된 사용자를 삭제한다.
+	- Delete the created user.
 	DROP USER #{username}
 	
-	- 서버에 권한 테이블을 재배치한다.
+	- Relocate authentication table on server.
 	FLUSH PRIVILEGES
 
-2. Cubrid DB 경우 
+2. In case of Cubrid DB 
 
-	- bind 시 생성한 사용자를 삭제한다.
+	- Delete the user created when binding.
 	DROP USER #{username};
 
-4.2.	대용량 저장소
-1. GlusterFS 경우
+4.2.	Mass Storage
+1. In case of GlusterFS
 
-	- Swift User 를 삭제
+	- Delete Swift User
 	
 	Method  : DELETE
 	
@@ -1033,9 +1033,9 @@ Note: In the Cubrid DB, the minimum unit of authorization given is a table. The 
 		  X-Auth-User-Admin: [true OR false]
 
 4.3.	NoSQL DB
-1. mongoDB 경우
+1. In case of mongoDB
 	
-	- bind 시 생성한 사용자를 삭제한다.
+	- Delete the user created when binding.
 	>use <databasename>
 	switched to db <databasename>
 	>db.runCommand( { dropUser: "<username>"
@@ -1043,77 +1043,77 @@ Note: In the Cubrid DB, the minimum unit of authorization given is a table. The 
 
  
 
-### <a name="18"/>3. Service release 개발 가이드
+### <a name="18"/>3. Service release Development Guide
 
-#### <a name="19"/>3.1.	개요
-BOSH release 는 jobs(packages 구동 스크립트, monit 스크립트 등), packages, 소스 코드 및 관련 자료의 메타 데이터로 구성되어 있다.BOSH를 통해서 소프트웨어(service back-end, broker 및 etc)를 설치한다. 패키징에 필요한 바이너리 파일 (일명 "blobs")은 release 저장소 내부에 보관하는 필요성을 없애고 release 내 Blob 저장소에 저장되어 외부에서 참조 할 수있다.또한 BOSH release를 활용하기 위해 release yml 를 작성 한다.
+#### <a name="19"/>3.1.	Outline
+The BOSH release consists of jobs (packages-driven scripts, monit scripts, etc.), packages, source code, and metadata from related sources. Install software through BOSH (service back-end, broker and etc.). The binary file (also known as "blobs") required for packaging, eliminates the need of necessity to store files inside the release storage. It is stored in the Blob repository in the release and can be referenced externally. Write a release yml to utilize the BOSH release.
 
-참고: service back-end (서비스 provider 가 제공하는 소프트웨어: 2.2 Service Architecture 참고) 가 외부 서비스로 이미 제공하는 provider 인 경우에는 BOSH release 로 service back-end 를 설치할 필요는 없고 해당 브로커만 개발하여 외부 서비스와 연결할수 있다. 이런 경우에는 Borker만 Bosh release 로 설치 한다. 하지만 외부에서 제공하는 서비스가 CF 가 설치 되는 IaaS 에 포함(단절된 네트워크에서 cloud 운영인 경우)되는 경우에는 해당 service back-end 를 BOSH release로 배포한다. 또한 외부 서비스를 사용하고 Broker가 개방형 클라우드 플랫폼의 Application으로 (cf push) 제공 하려는 경우에는 BOSH release 는 생략 하고 2. Service Borker Guide 를 진행하면된다.
+Refer: If the service back-end (refer to the software: 2.2 Service Architecture provided by the service provider) is a provider that already provides as an external service, it is not necessary to install the service back-end with the BOSH release, and only the broker can develop and connect to the external service. In this case, install with Bosh release for Borker only. However, if an externally provided service is included in the IaaS where the CF is installed (if it is a cloud operation in a disconnected network), the service back-end is distributed as a BOSH release. In addition, if you use external services and want to provide (cf push) as an application for an open cloud platform, you can skip the BOSH release and proceed with the 2. Service Borker Guide.
 
 #### <a name="20"/>3.2.	Bosh Architecture
  
 >![openpaas-servicepack-33]  
-> [그림출처]: http://www.cloudsofchange.com/2012/05/fork-in-road-to-cloud.html
+> [picture reference]: http://www.cloudsofchange.com/2012/05/fork-in-road-to-cloud.html
 
--	개방형 클라우드 플랫폼 아키텍쳐와 흡사함 (Message Bus, Health Monitor, Blobstore 등)
--	Director 는 Cloud Controller 와 유사한 기능
--	IaaS 종류에 따라 CPIs 구현 내용이 달라짐. (CPI : Cloud Provider Interface)
--	Worker 들은 Director에 의해 결정된 task 들을 실행시키는 역할을 함
+-	Similar to open cloud platform architecture (Message Bus, Health Monitor, Blobstore, etc.)
+-	Director is similar to Cloud Controller
+-	CPIs implementation varies depending on the type of IaaS. (CPI : Cloud Provider Interface)
+-	Workers are responsible for executing tasks determined by the Director
 
 >![openpaas-servicepack-34]  
-> [그림출처]: https://www.ibm.com/developerworks/community/blogs/fe313521-2e95-46f2-817d-44a4f27eba32/entry/porting_cloud_foundry_on_power8_ubuntu_le?lang=en
+> [picture reference]: https://www.ibm.com/developerworks/community/blogs/fe313521-2e95-46f2-817d-44a4f27eba32/entry/porting_cloud_foundry_on_power8_ubuntu_le?lang=en
 
-#### <a name="21"/>3.3.	Release Directory 구조
-디랙토리 구조는 Bosh release 로 구성 할수 있게 되어 있다. Bosh는 릴리스 엔지니어링, 배포 및 대규모 분산 서비스의 라이프 사이클 관리를위한 오픈 소스 도구이다.
+#### <a name="21"/>3.3.	Release Directory Configuration
+The directory structure can be configured with Bosh release. Bosh is an open source tool for release engineering, deployment, and lifecycle management of large-scale distributed services.
 
 ##### <a name="22"/>3.3.1. packages
-packages에는 Boshrelease 설치를 위한 바이너리에 대한 종속성을 준비하는데 필요한 정보를 제공한다. (packaging, pre_packaging, spec 파일)
+Packages provide the information necessary to prepare a binary dependency for Bosch release installation. (packaging, pre_packaging, spec file)
 
 >![openpaas-servicepack-35]
  
 ##### <a name="23"/>3.3.2. jobs
-설치되는 package 들의 jobs(processes) 의 구동 및 정지 script 들과 모니터링(monit) script 로 구성한다.
+It consists of the operations and shutdown scripts of the installed packages and the monitoring script.
 
 >![openpaas-servicepack-36]
 
 ##### <a name="24"/>3.3.3. src
-service release 에서 사용하는 컨포넌트 소스 코드 또는 pre-compiled software 파일로 구성한다.
+Configures a component source code or pre-compiled software file used in service release.
  
 >![openpaas-servicepack-37]
  
 ##### <a name="25"/>3.3.4. shared
-ruby 및 lib 와 같은 공통 컴포넌트 소스를 관리한다. (옵션)
+Manage common component sources such as ruby and lib. (Option)
  
 >![openpaas-servicepack-38]
  
 ##### <a name="26"/>3.3.5. releases
--	버전별 서비스 release yml 파일들을 관리한다.(yaml 설치 방식)
--	버전별 서비스 release tgz 압축 파일들을 관리한다. (tarball 설치 방식)
--	Yaml 및 tarball 설치 방식은 아래 개발 가이드 참고한다.
+-	Manage version-specified service release yml files.(yaml installation method)
+-	Manage version-specified service release tgz zipped files. (tarball installation method)
+-	Refer to the development guide below for the installation method of Yaml and tarball..
  
 >![openpaas-servicepack-39]
 
 ##### <a name="27"/>3.3.6. config
-최종 release를 저장하기 위한 Bosh blobstore에 URL 및 액세스 자격 증명을 위한 설정 파일로 구성한다.
+Configure the URL and the settings file for access credentials in the Bosh blobstore for storing the final release.
  
 >![openpaas-servicepack-40]
 
 ##### <a name="28"/>3.3.7. final_builds
-최종 jobs 및 packages 에 대한 public blobstore 정보를 제공한다.
+Provides public blobstore information for final jobs and packages.
 
 >![openpaas-servicepack-41]
  
 ##### <a name="29"/>3.3.8. deployments
-IaaS 별 service 배포 manifest 파일 들을 관리한다.
+manages service deployment manifest files by IaaS.
  
 >![openpaas-servicepack-42]
 
 ##### <a name="30"/>3.3.9. content_migrations
-이번버전으로 부터의 마이그레이션 정보 파일 들을 관리한다. (옵션)
+Manage migration information files from this version. (Option)
  
 >![openpaas-servicepack-43]
  
-#### <a name="31"/>3.4.개발 가이드
+#### <a name="31"/>3.4.Development Guide
 service를 Bosh release를 통해 배포 해야 하기 때문에 Bosh release 개발 방식에 따라
 작성되어야한다.Bosh release 는 packages 와 jobs 관련 스크립트로 구성되어 있다.
 Bosh 는 software를 release 할 때 두가지 방식을 제공한다.

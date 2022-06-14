@@ -675,23 +675,23 @@ If successful, receive a value of “{}”.
 4.1.	RDBMS
 1. In case of Mysql
 
-- 데이터 베이스 삭제
+- Delete database
 	DROP DATABASE IF EXISTS #{connection.quote_table_name(database_name)}
 
-2. Cubrid DB 경우 
+2. In case of Cubrid DB 
 
-- 서비스 종료 후 데이터베이스 제거
+- removing database after service shutdown
 	$ cubrid service stop
 	$ cubrid deletedb <databasename>
 
-- 제거한 데이터베이스 디렉터리 제거
-	$ rm –rf <database 설치 path>/<databasename>
+- remove directory of the removed database
+	$ rm –rf <install database path>/<databasename>
 
 
-4.2.	대용량 저장소
-1. GlusterFS 경우
+4.2.	Mass storage
+1. In case of GlusterFS
 
-	- Swift Account 를 삭제
+	- Delete Swift Account
 	
 	Method  : DELETE 
 	
@@ -701,9 +701,9 @@ If successful, receive a value of “{}”.
 		  X-Auth-Admin-Key: swauthkey
 
 4.3.	NoSQL DB
-1. mongoDB 경우
+1. In case of mongoDB
 
-	- 데이터 베이스 삭제
+	- Delete database
 	>use <databasename>
 	switched to db <databasename>
 	>db.dropDatabase()
@@ -711,13 +711,13 @@ If successful, receive a value of “{}”.
 	>
 
 
-##### <a name="16"/>2.5.5. Bind API 가이드
-Provision만으로 서비스를 사용할 수 있을 경우에는 bind 기능 구현은 필요 없고 결과 성공 메시지만 개방형 클라우드 플랫폼에 전송하면 된다. 브로커가 개방형 클라우드 플랫폼으로부터 바인딩 요청을 수신 할 때 프로비저닝 된 자원을 활용하는데 필요한 정보를 반환한다. 해당 정보는 credentials(자격증명)안에 제공된다. Applicatoin에 고유한 credentials(자격증명)을 발급하여다른  Application에는 영향을 주어서는 안된다.
+##### <a name="16"/>2.5.5. Bind API Guide
+If the service is available only with Provision, there is no need to implement the bind function, and only the resulting success message needs to be sent to the open cloud platform. When a broker receives a binding request from an open cloud platform, it returns the information necessary to utilize the provisioned resources. The information is provided in the credentials. It should not affect other applications by issuing unique credentials to Applicatoin.
 
 1.	Request
 1.1.	Route
 	PUT /v2/service_instances/:instance_id/service_bindings/:binding_id
-참고: binding_id는 서비스 바인딩을 하기 위해 Cloud Controller에 의해 제공된다. binding_id는 향후 바인딩 해제 요청에 사용된다.
+Note: The binding_id is provided by the Cloud Controller to perform service binding. The binding_id is used for unbinding requests that will be shown later.
 
 1.2.	cURL
 	$ curl http://username:password@broker-url/v2/service_instances/
@@ -733,18 +733,18 @@ Provision만으로 서비스를 사용할 수 있을 경우에는 bind 기능 �
 2.	Response
 2.1.	Status Code
 >![openpaas-servicepack-28]
-다른 상태코드(Status Code) 응답은 실패를 의미한다.
+A different status code response means failure.
 
 2.2.	Body 
 >![openpaas-servicepack-29]
 
 2.3.	Binding Credentials 
-서비스 바인딩 경우 바인드 API 호출에 응답하여 사용자가 Application에서 사용 할 수있는 인증 정보를 반환한다. 개방형 클라우드 플랫폼 환경 변수 VCAP_SERVICES에 이러한 자격 증명을 제공한다. 가능하면 credentials(자격증명) 필드 목록에서 사용하기를 권장한다. 필요에 따라 추가 필드를 제공 할 수 있지만 제공되는 필드로 사용자의 요구 사항을 충족하는 경우 해당 필드를 사용한다.
+In the case of service binding, authentication information that the user can use in the application is returned in response to the bind API call. Provide these credentials to the open cloud platform environment variable VCAP_SERVICES. It is recommended to be used in the Credentials field list. Use if the fields provided meet the user's requirements. Additional fields can be provided as needed.
 
-중요: 연결 문자열(connection string)을 지원하는 서비스를 제공하는 경우 적어도 uri 키를 제공해야한다.위에서 언급 한 바와 같이 또한 별도의 자격 증명 필드를 제공 할 수있다. Buildpacks 및 Application 라이브러리는 uri 키를 사용한다.
+Important: If you provide a service that supports the connection string, at least the uri key must provided. As mentioned above, a separate credential field may also be provided. Buildpacks and Application libraries uses the uri key.
 >![openpaas-servicepack-30]
 
-◎ Example VCAP_SERVICES 결과
+◎ Example VCAP_SERVICES result
 
 	VCAP_SERVICES=
 	{
@@ -797,19 +797,19 @@ Provision만으로 서비스를 사용할 수 있을 경우에는 bind 기능 �
 	}
 
 2.4.	Application Log Streaming 
-개방형 클라우드 플랫폼은 서비스 인스턴스에 바인딩 된 Application에 대한 로그를 스트리밍 한다. 서비스 인스턴스에 바인딩 된 모든 Application에 대한 로그는 해당 인스턴스로 스트리밍된다.
+The open cloud platform streams logs for applications bound to service instances. Logs for all applications bound to a service instance are streamed to that instance.
 
-동작하는 방법은 아래와 같다.
-1.	브로커는 바인드에 대한 응답으로 syslog_drain_url에 대한 값을 반환한다.
-2.	Application이 재구동 할 때 VCAP_SERVICES 안의 syslog_drain_url 의 key와 value 를 갱신한다.
-3.	DEAs는 지속적으로 Loggregator에서 Application 로그를 스트리밍한다.
-4.	VCAP_SERVICES 안에 syslog_drain_url이 존재하면 DEA는 그 로그에 그 필드를 태그한다.
-5.	Loggregator는 값으로 지정된 위치에 이 key를 태그하여 로그 스트리밍한다.
+The operation method is as follows.
+1.	The broker returns a value for syslog_drain_url in response to the bind.
+2.	Update the key and value of syslog_drain_url in VCAP_SERVICES when the application reboots.
+3.	DEAs continuously stream application logs from the Loggregator.
+4.	If syslog_drain_url exists in VCAP_SERVICES, the DEA tags the field in the log.
+5.	The Loggregator log streams by tagging the key on the designated location with the value.
 
 
-3.	Bind Rest API 구현
-3.1.	JAVA 방식
-	-- ServiceBindingRestController.java (Spring 프레임워크 사용)
+3.	Bind Rest API Implementation
+3.1.	JAVA Method
+	-- ServiceBindingRestController.java (Use Spring Framework)
 	
 	@Controller
 	@RequestMapping("/v2/service_instances/{instanceId}/service_bindings/{bindingId}")
@@ -820,20 +820,20 @@ Provision만으로 서비스를 사용할 수 있을 경우에는 bind 기능 �
 	  @ResponseBody
 	  ServiceBinding update(@PathVariable String instanceId, @PathVariable String bindingId) {
 	    ServiceBinding binding = bindingService.findById(bindingId, instanceId);
-	    bindingService.save(binding);     // 서비스 바인드 기능 구현 (개발 명세 내용 구현)
+	    bindingService.save(binding);     // Implement service bind function (Implementation of Development Specifications)
 	    return binding;
 	  }
 	
 	}
 
-3.2.	Ruby 방식(Ruby on Rails)
-	-- config/routes.rb : posts 를 위한 라우팅 정보를 담은 수정된 라우팅 파일
+3.2.	Ruby Method(Ruby on Rails)
+	-- config/routes.rb : Modified routing file with routing information for posts
 	
 	CfMysqlBroker::Application.routes.draw do
 	  resource :preview, only: [:show]
 	
 	namespace :v2 do
-	resource :catalog, only: [:show] // 접속 라우팅 설정 (V2/catalog)
+	resource :catalog, only: [:show] // Access routing settings (V2/catalog)
 	    patch 'service_instances/:id' => 'service_instances#set_plan'
 	    resources :service_instances, only: [:update, :destroy] do
 	resources :service_bindings, only: [:update, :destroy]
@@ -842,56 +842,56 @@ Provision만으로 서비스를 사용할 수 있을 경우에는 bind 기능 �
 	
 	end
 
-	-- RestController 구현 (app/controllers/v2/service_bindings_controller.rb)
+	-- RestController Implementation (app/controllers/v2/service_bindings_controller.rb)
 	
 	class V2::ServiceBindingsController< V2::BaseController
 	
 	  def update
-	// 서비스 bind 기능 구현 (개발 명세 내용 구현)
+	// Implement service bind function (Implementation of Development Specifications)
 	  end
 	
 	end
 
-3.3.	Node.js 방식
-	◎ sample (app.js) : Catalog API 참고
+3.3.	Node.js Method
+	◎ sample (app.js) : Refer to Catalog API
 
 	var router = express.Router();
 	
 	router.route('/v2/service_instances/:instanceId/service_bindings/:bindingId’)
 	
 	.put(function(req, res, next) {
-	// 서비스 bind 기능 구현 (개발 명세 내용 구현)
+	// Implementating service bind function (Implementation of Development Specifications)
 	
 	})
 
 
-4.	서비스 별 Bind API 개발 명세
--	Bind 할 서비스 인스턴스가 존재 하는지 체크 한다.
--	Application 에 bind 할 정보를 생성하여 Application 에 전달한다.
--	이때 bind 정보는 랜덤하게 생성하고 base64 인코딩해서 보낸다.
+4.	Bind API development specification by service
+-	Check if there is a service instance to bind.
+-	Create information to bind to the application and deliver it to the application.
+-	At this time, bind information is randomly generated and base64 encoded and sent.
 
 4.1.	RDBMS
-1. Mysql 경우
+1. In case of Mysql
 
-	- 데이터 베이스에 접속할 사용자를 생성한다.
+	- Create a user to connect to the database.
 	CREATE USER #{username} IDENTIFIED BY #{password}
 	
-	- provision 시 생성한 데이터 베이스에 생성한 사용자가 사용 가능하게 권한을 주고 plan에 해당하는 connection 수를 제공한다.
+	- The database created during provision is authorized to be used by the user and the number of connections corresponding to the plan is provided.
 	
 	GRANT ALL PRIVILEGES ON #{databasename}.* TO #{username}@'%'WITH MAX_USER_CONNECTIONS #{max_user_connections}
 	
-	- 서버에 권한 테이블을 재배치한다.
+	- Relocate permission table on server.
 	FLUSH PRIVILEGES
 
-2. Cubrid DB 경우 
+2. In case of Cubrid DB 
 
-	- 데이터 베이스에 접속할 사용자를 생성한다.
+	- Create a user to connect to the database.
 	CREATE USER #{username};
 
-참고: Cubrid DB에서 권한 부여의 최소 단위는 테이블이다. 자신이 만든 테이블은 모든 접근을 허용한다.
+Note: In the Cubrid DB, the minimum unit of authorization given is a table. The give access to the table made.
 
-4.2.	대용량 저장소
-1. GlusterFS 경우
+4.2.	Mass Storage
+1. In case of GlusterFS
 
 	- 새로운 Swift User 를 생성
 	

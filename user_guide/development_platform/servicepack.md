@@ -198,10 +198,10 @@ The service catalog retrieves information about the service and the service plan
 	
 3.1.	JAVA Method
 	
-	-- CatalogRestController.java (Spring 프레임워크 사용)
+	-- CatalogRestController.java (Use Spring Framework)
 	
 	@Controller
-	@RequestMapping("/v2/catalog")         // Spring 어노테이션을 사용
+	@RequestMapping("/v2/catalog")         // Use Spring Annotation
 	class CatalogRestController {
 	  def settings;
 	
@@ -210,7 +210,7 @@ The service catalog retrieves information about the service and the service plan
 	  synchronized Map getCatalog() {
 	    if (!settings) {
 	      Yaml yaml = new Yaml(); 
-	      // settings.yml 파일 안에 서비스 정보와 plan 정보가 들어 있음
+	      // The service information and Plan information are inside the settings.yml file
 	      settings = yaml.load(this.class.getClassLoader().getResourceAsStream("settings.yml"));
 	    }
 	
@@ -219,7 +219,7 @@ The service catalog retrieves information about the service and the service plan
 	
 	}
 	
-	-- settings.yml 파일
+	-- settings.yml file
 	
 	services:
 	- name: p-mysql
@@ -247,19 +247,19 @@ The service catalog retrieves information about the service and the service plan
 	      - content: 5 MB storage
 	      - content: 40 concurrent connections
 
-3.2.	Ruby 방식(Ruby on Rails)
+3.2.	Ruby Method(Ruby on Rails)
 
-	-- 어플리케이션을 만들 때 레일즈(rails)을 이용 해서 새로운 어플리케이션을 위한 기본 생성 구조를 만든다. 아래 표 참고
+	-- When creating an application, rails are used to create a basic creation structure for a new application. See table below
 	$ rails new<broker_name>
 	>![openpaas-servicepack-13]
 	
-		-- config/routes.rb : posts 를 위한 라우팅 정보를 담은 수정된 라우팅 파일
+		-- config/routes.rb : Modified routing file with routing information for posts
 		
 		CfMysqlBroker::Application.routes.draw do
 		  resource :preview, only: [:show]
 		
 		namespace :v2 do
-		resource :catalog, only: [:show] // 접속 라우팅 설정 (V2/catalog)
+		resource :catalog, only: [:show] // Access Routing Settings (V2/catalog)
 		    patch 'service_instances/:id' => 'service_instances#set_plan'
 		    resources :service_instances, only: [:update, :destroy] do
 		      resources :service_bindings, only: [:update, :destroy]
@@ -268,7 +268,7 @@ The service catalog retrieves information about the service and the service plan
 		
 		end
 		
-		-- RestController 구현 (app/controllers/v2/catalogs_controller.rb)
+		-- RestController Implementing (app/controllers/v2/catalogs_controller.rb)
 		
 		class V2::CatalogsController < V2::BaseController
 		  def show
@@ -284,9 +284,9 @@ The service catalog retrieves information about the service and the service plan
 		  end
 		end
 	
-3.3.	Node.js 방식
+3.3.	Node.js Method
 
-		-- express 라는 Node.js 에서 가장 많이 사용하는 웹 프레임워크 모듈을 이용해서 Rest API 를 만든다.
+		-- Makes Rest API by using express,which is the most used web framework module in Node.js.
 		
 		# sample (app.js)
 		
@@ -296,20 +296,20 @@ The service catalog retrieves information about the service and the service plan
 		  , server = http.createServer(app);
 		
 		app.get('/v2/catalog ', function (req, res) {
-		// catalog 기능 구현
+		// Implement catalog functions
 		});
 		
-		server.listen(8000, function() {   // 포트 설정
+		server.listen(8000, function() {   // Set port
 		  console.log('Express server listening on port ' + server.address().port);
 		});
 
-4. 서비스 별 Catalog API 개발 명세
-Catalog API 경우에는 서비스의 종류와 관계없이 Service 및 Plan 정보를 저장되어 있는 settings.yml 파일이나 기타 메타 파일 또는 소스 안에 정보를 저장한 후 제공한다. 만일 AppDirect 를 이용하는 경우는 Catalog 정보를 조회해오는 AppDirect API를 호출하여 그 결과를 제공한다. 샘플 settings.yml 파일은 3. Catalog Rest API 구현 참고.
+4. Catalog API development specification by service
+In the case of the Catalog API, regardless of the type of service, the information is stored in the settings.yml file or other meta-file or source where the service and plan information are stored. If AppDirect is used, the AppDirect API that inquires catalog information is called to provide the result. For sample settings.yml file, refer to 3. Catalog Rest API Configuration.
 
 
-◎ Pivotal 서비스 Plan 예시
-- clearDB plan 예  
-[그림출처] :http://run.pivotal.io/
+◎ Example of Pivotal Service Plan
+- Example of clearDB plan  
+[picture reference] :http://run.pivotal.io/
 
 >![openpaas-servicepack-14]
 
@@ -319,16 +319,16 @@ Catalog API 경우에는 서비스의 종류와 관계없이 Service 및 Plan �
 
 >![openpaas-servicepack-17]
 
-◎ Pivotal 서비스 Dashboard 예시
-- clearDB Dashboard 예  
-[그림출처] :https://www.cleardb.com/
+◎ Example of Pivotal Service Dashboard
+- Example of clearDB Dashboard  
+[picture reference] :https://www.cleardb.com/
 >![openpaas-servicepack-18]
 
 >![openpaas-servicepack-19]
  
-##### <a name="13"/>2.5.2. Provision API 가이드
-Broker가 Cloud Controller로 부터 provision 요구를 수신하면 개발자를 위한 새로운 서비스 인스턴스를 생성한다. provision 시 서비스들의 종류에 따라 provision 결과는 다르다.
-Mysql DataBase 인 경우에는 새로운 DATABASE 스키마를 생성한다. 또한 non-data 서비스 인 경우의 provision은 기존 시스템에 계정을 얻는 의미 일 수도 있다. 자세한 내용은 아래에 각 서비스별 provision을 참고한다.
+##### <a name="13"/>2.5.2. Provision API Guide
+When the broker sends a provision request from the Cloud Controller, it creates a new service instance for the developer. Provision results vary depending on the type of services in provision.
+For Mysql Database, create a new DATABASE schema. In addition, provision in the case of a non-data service may mean obtaining an account on an existing system. For detailed information, refer to the provision of each services.
 
 1. Request
 
@@ -336,7 +336,7 @@ Mysql DataBase 인 경우에는 새로운 DATABASE 스키마를 생성한다. �
 
 	PUT /v2/service_instances/:instance_id
 
-참고: 서비스 인스턴스의 instance_id는 Cloud Controller에 의해 제공된다. 이 ID는 인스턴스 삭제, 바인드 및 바인드 해지에 사용된다.
+Note: The instance_id of the service instance is provided by the Cloud Controller. This ID is used for instance deletion, binding, and unbinding.
 
 1.2. cURL
 	$ curl http://username:password@broker-url/v2/service_instances/:instance_id -d '{
@@ -354,13 +354,13 @@ Mysql DataBase 인 경우에는 새로운 DATABASE 스키마를 생성한다. �
 >![openpaas-servicepack-21]
 
 2.2.	Body 
-모든 응답 bodies 는 JSON Object ({}) 형식으로 한다.
+All response bodies are in the format JSON Object ({}).
 >![openpaas-servicepack-22]
 
 2.3.	Dashboard Single Sign-On.
-Single Sign-On (SSO)는 개방형 클라우드 플랫폼 사용자들이 개방형 클라우드 플랫폼 자격 증명을 사용하여 third-party 서비스의 대시 보드에 접근한다. 서비스 대시 보드는 서비스가 제공하는 기능의 일부 또는 전부를 사용할 수 있는 웹 인터페이스이다. SSO는 반복되는 로그인과 여러 서비스의 계정을 통합 관리한다. OAuth2 프로토콜 인증을 처리하기 때문에 사용자의 자격 증명은 직접 서비스로 전송하지 않는다. SSO 기능을 사용하려면 Cloud Controller UAA client 에 서비스 브로커의 생성 및 삭제 할 수 있는 권한이 있어야 한다. 이 클라이언트는 개방형 클라우드 플랫폼 설치시 구성한다. (설치 문서 참고)
+Single Sign-On (SSO) allows open cloud platform users to access dashboards of third-party services using open cloud platform credentials. A service dashboard is a web interface which some or all of the functions provided by the service may be used. SSO integrates and manages recurring logins and accounts for multiple services. Because it handles OAuth2 protocol authentication, user credentials are not sent directly to the service. To use SSO functions, the Cloud Controller UAA client must have permission to create and delete service brokers. Configure clients when installing an open cloud platform. (Refer to installation document)
 
-◎ CF 설치시 Dashboard SSO 설정 예)
+◎ Dashboard SSO Setting Example during CF Installation)
 	
 	properties:
 	    uaa:
@@ -371,10 +371,10 @@ Single Sign-On (SSO)는 개방형 클라우드 플랫폼 사용자들이 개방�
 	          authorities: clients.read,clients.write,clients.admin
 	          authorized-grant-types: client_credentials
 
-3. Provision Rest API 구현
-3.1. JAVA 방식
+3. Provision Rest API Implementation
+3.1. JAVA Method
 
-	-- ServiceInstanceRestController.java (Spring 프레임워크 사용)
+	-- ServiceInstanceRestController.java (Use Spring Framework)
 	
 	@Controller
 	@RequestMapping("/v2/service_instances/{id}")
@@ -385,24 +385,24 @@ Single Sign-On (SSO)는 개방형 클라우드 플랫폼 사용자들이 개방�
 	  @RequestMapping(method = RequestMethod.PUT)
 	  @ResponseBody
 	  Map update(@PathVariable String id) {
-	ServiceInstance instance = service.findById(id);   // Spring 프레임워크 사용으로 서비스 구현
+	ServiceInstance instance = service.findById(id);   // Implement service by using Spring Framework
 	    if (!service.isExists(instance)) {
-	service.create(instance);        // 서비스 인스턴스를 생성하는 부분 (개발 명세 내용 구현)
+	service.create(instance);        // The part of creating a service instance (implementation of development specification)
 	    }
 	    return [:];
 	
 	  }
 	}
 
-3.2. Ruby 방식(Ruby on Rails)
+3.2. Ruby Method(Ruby on Rails)
 
-	-- config/routes.rb : 라우팅 정보를 담은 파일
+	-- config/routes.rb : file that contains routing information
 	
 	CfMysqlBroker::Application.routes.draw do
 	  resource :preview, only: [:show]
 	
 	namespace :v2 do
-	resource :catalog, only: [:show] // 접속 라우팅 설정 (V2/catalog)
+	resource :catalog, only: [:show] // access routing settings (V2/catalog)
 	patch 'service_instances/:id' => 'service_instances#set_plan'
 	    resources :service_instances, only: [:update, :destroy] do
 	      resources :service_bindings, only: [:update, :destroy]
@@ -411,39 +411,39 @@ Single Sign-On (SSO)는 개방형 클라우드 플랫폼 사용자들이 개방�
 	
 	end
 	
-	-- RestController 구현 (app/controllers/v2/service_instances_controller.rb)
+	-- RestController Implementation (app/controllers/v2/service_instances_controller.rb)
 	
 	class V2::ServiceInstancesController < V2::BaseController
 	
 	  # This is actually the create
 	  def update
-	// 서비스 instance 생성 기능 구현 (개발 명세 내용 구현)
+	// Implementation of service instance creating function (Implementation of development details)
 	  end
 	
 	end
 
-3.3. Node.js 방식
+3.3. Node.js Method
 
-	◎ sample (app.js) : Catalog API 참고
+	◎ sample (app.js) : Refer Catalog API
 	
 	var router = express.Router();
 	
 	router.route('/v2/service_instances/:id’)
 	
 	.put(function(req, res, next) {
-	// 서비스 instance 생성 기능 구현 (개발 명세 내용 구현)
+	// Implementing service instance creation function (Implementation of development specifications)
 	
 	})
 
-4. 서비스 별 Provision API 개발 명세
-- 인스턴스 생성시 unique 한 이름으로 만든다.
-- 생성 요청한 인스턴스 ID 가 이미 존재 하는지 체크한다.
-- 선택 한 plan 정보로 인스턴스가 생성 가능한지 체크 하고 가능할 경우 해당 인스턴스를 만든다.
-- 인스턴스 생성이 완료 되면 위에서 기술된 JSON Object 형식으로 Cloud Controller 에 전송한다.
+4. Provision API development specifications by service
+- Use a unique name when creating a instance.
+- Verify if the requested instance ID to create exists already.
+- Check if the selected plan information can be used when creating the instance. If possible, create the instance.
+- When the instance creation is completed, send it to the Cloud Controller as JSON Object format as shown above.
 
 4.1. RDBMS
 
-1. Mysql 경우
+1. In the case of Mysql
 
 	- 생성할 데이터 베이스가 존재 하는지 체크 
 	SHOW DATABASES LIKE '${instance.database}'
@@ -453,7 +453,7 @@ Single Sign-On (SSO)는 개방형 클라우드 플랫폼 사용자들이 개방�
 	
 	- 생성 후 Dashboard 정보를 JSON Object 형식으로 Cloud Controller 에 전송.
 
-2. Cubrid DB 경우 
+2. In the case of Cubrid DB 
 
 	- 데이터 베이스 생성할 디렉토리 생성 및 이동
 	$ mkdir <databasename>

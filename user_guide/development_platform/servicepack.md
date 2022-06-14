@@ -490,13 +490,13 @@ Single Sign-On (SSO) allows open cloud platform users to access dashboards of th
 
 ##### <a name="14"/>2.5.3. Update Instance API Guide
 Update Instance API modifies the plan of previously existing service instance. Which means it upgrades or downgrades the plan of service instance.
-To use this function, the broker should be set as “plan_updateable: true” from the catalog endpoint. If this option field is not included, it returns an error in the contents of the service plan modify request, and the broker does not call the API. 이 필드가 포함된 경우 개방형 클라우드 플랫폼의 모든 plan 변경 요청에 브로커로 API 호출을 수행하며 브로커에서는 plan 지원 여부를 확인한다.
+To use this function, the broker should be set as “plan_updateable: true” from the catalog endpoint. If this option field is not included, it returns an error in the contents of the service plan modify request, and the broker does not call the API. If this field is included, an API call is made to the broker for all plan modification requests in the open cloud platform. The broker checks for plan support avaiability.
 
 1.	Request
 1.1.	Route
 	PATCH /v2/service_instances/:instance_id
 
-참고: instance_id는 이전에 provision 서비스 인스턴스의 GUID
+Note: instance_id is the GUID of the previous provision service instance
 
 1.2.	cURL
 	$ curl http://username:password@broker-url/v2/service_instances/:instance_id -d '{
@@ -512,11 +512,11 @@ STATUS CODE	DESCRIPTION
 >![openpaas-servicepack-24]
 
 2.2.	Body 
-모든 응답 bodies 는 JSON Object ({}) 형식으로 한다.
+All response bodies should be in JSON Object ({}) format.
 
-3.	Update Service instance Rest API 구현
-3.1.	JAVA 방식
-	-- ServiceInstanceRestController.java (Spring 프레임워크 사용)
+3.	Implementing Update Service Instance Rest API 
+3.1.	JAVA Method
+	-- ServiceInstanceRestController.java (Use Spring Framework)
 	
 	@Controller
 	@RequestMapping("/v2/service_instances/{id}")
@@ -527,23 +527,23 @@ STATUS CODE	DESCRIPTION
 	  @RequestMapping(method = RequestMethod.PATCH)
 	  @ResponseBody
 	  Map updateInstance(@PathVariable String id) {
-	    ServiceInstance instance = service.findById(id);   // Spring 프레임워크 사용으로 서비스 구현
+	    ServiceInstance instance = service.findById(id);   // Implement service by using spring framework
 	    if (!service.isExists(instance)) {
-	      service.update(instance);        // 서비스 인스턴스를 정보 수정하는 부분 (개발 명세 내용 구현)
+	      service.update(instance);        // a part where service instance can be modified (Implementation of Development Specifications)
 	    }
 	    return [:];
 	
 	  }
 	}
 
-3.2.	Ruby 방식(Ruby on Rails)
-	-- config/routes.rb : posts 를 위한 라우팅 정보를 담은 수정된 라우팅 파일
+3.2.	Ruby Method(Ruby on Rails)
+	-- config/routes.rb : a modified routing file consisting of modified routing information for posts
 	
 	CfMysqlBroker::Application.routes.draw do
 	  resource :preview, only: [:show]
 	
 	namespace :v2 do
-	resource :catalog, only: [:show] // 접속 라우팅 설정 (V2/catalog)
+	resource :catalog, only: [:show] // Access Routing Settings (V2/catalog)
 	patch 'service_instances/:id' => 'service_instances#set_plan'
 	resources :service_instances, only: [:update, :destroy] do
 	      resources :service_bindings, only: [:update, :destroy]
@@ -552,40 +552,40 @@ STATUS CODE	DESCRIPTION
 	
 	end
 
-	-- RestController 구현 (app/controllers/v2/service_instances_controller.rb)
+	-- RestController Implementation (app/controllers/v2/service_instances_controller.rb)
 	
 	class V2::ServiceInstancesController < V2::BaseController
 	
 	def set_plan
-	// 서비스 인스턴스 plan 정보 업데이트
+	// Update service instance plan information
 	  end
 	
 	end
 
-3.3.	Node.js 방식
-	◎ sample (app.js) : Catalog API 참고
+3.3.	Node.js Method
+	◎ sample (app.js) : Refer to Catalog API
 	
 	var router = express.Router();
 	
 	router.route('/v2/service_instances/:id’)
 	
 	.patch(function(req, res, next) {
-	  // 서비스 instance 수정 기능 구현 (개발 명세 내용 구현)
+	  // Implements service instance modifying functions (Implementation of Development Specifications)
 	
 	})
 
-4.	서비스 별 Update Service instance API 개발 명세
-4.1.	공통
-	1.	현재 제공 중인 plan 정보와 변경 요청 받은 plan 정보가 다른지 체크한다.
+4.	Update Service Instance API development specification by service
+4.1.	In common
+	1.	Check whether the plan information currently provided and the plan information requested for change are different.
 	
-	2.	다운 그레이드 할 경우 이미 사용하는 용량이 다운 그레이드 할 용량보다 클 경우 에러를 발생시킨다.
+	2.	When downgrading, an error occurs when the capacity being used is larger than the capacity to downgrade.
 	
-	3.	업 그레이드 할 경우 plan 정보를 업데이트 한다. (예: DBMS 서비스 경우 connection 수, storage 용량)
+	3.	When upgraging, update the plan information. (Example: in case of DBMS service, the number of connection and storage capacity)
 	
-	4.	변경된 내용을 Cloud Controller 전달 한다.
+	4.	Communicate the changed contents to the Cloud Controller.
 
-##### <a name="15"/>2.5.4. Deprovision API 가이드
-브로커가 개방형 클라우드 플랫폼으로부터 deprovision 요청을 수신 할 때 provision 생성시 제공했던 모든 리소스를 삭제한다.
+##### <a name="15"/>2.5.4. Deprovision API Guide
+When a broker receives a deployment request from an open cloud platform, it deletes all the resources that it provided when creating the provision.
 
 1.	Request
 1.1.	Route
@@ -603,12 +603,12 @@ STATUS CODE	DESCRIPTION
 >![openpaas-servicepack-26]
 
 2.2.	Body 
-모든 응답 bodies 는 JSON Object ({}) 형식으로 한다.
-성공시 “{}” 값을 전송받는다.
+All response bodies should be in JSON Object ({}) format.
+If successful, receive a value of “{}”.
 
-3.	Deprovision Rest API 구현
-3.1.	JAVA 방식
-	-- ServiceInstanceRestController.java (Spring 프레임워크 사용)
+3.	Deprovision Rest API Implementation
+3.1.	JAVA Method
+	-- ServiceInstanceRestController.java (Use Spring Framework)
 	
 	@Controller
 	@RequestMapping("/v2/service_instances/{id}")
@@ -621,20 +621,20 @@ STATUS CODE	DESCRIPTION
 	  Map destroy(@PathVariable String id) {
 	    ServiceInstance instance = service.findById(id);
 	    if (service.isExists(instance)) {
-	      service.delete(instance); // 서비스 instance 삭제 기능 구현 (개발 명세 내용 구현)
+	      service.delete(instance); // Implement service instance delete function (Implementation of Development Specifications)
 	    }
 	    return [:]
 	  }
 	}
 
-3.2.	Ruby 방식(Ruby on Rails)
-	-- config/routes.rb : posts 를 위한 라우팅 정보를 담은 수정된 라우팅 파일
+3.2.	Ruby Method(Ruby on Rails)
+	-- config/routes.rb : a modified routing file consisting of modified routing information for posts
 	
 	CfMysqlBroker::Application.routes.draw do
 	  resource :preview, only: [:show]
 	
 	namespace :v2 do
-	resource :catalog, only: [:show] // 접속 라우팅 설정 (V2/catalog)
+	resource :catalog, only: [:show] // Access Routing Settings (V2/catalog)
 	patch 'service_instances/:id' => 'service_instances#set_plan'
 	    resources :service_instances, only: [:update, :destroy] do
 	      resources :service_bindings, only: [:update, :destroy]
@@ -643,37 +643,37 @@ STATUS CODE	DESCRIPTION
 	
 	end
 	
-	-- RestController 구현 (app/controllers/v2/service_instances_controller.rb)
+	-- RestController Implementation (app/controllers/v2/service_instances_controller.rb)
 	
 	class V2::ServiceInstancesController < V2::BaseController
 	
 	  def destroy
-	// 서비스 instance 삭제 기능 구현 (개발 명세 내용 구현)
+	// Implementing service instance delete function(Implementation of Development Specifications)
 	  end
 	
 	end
 
-3.3.	Node.js 방식
-	◎ sample (app.js) : Catalog API 참고
+3.3.	Node.js Method
+	◎ sample (app.js) : Refer to Catalog API
 	
 	var router = express.Router();
 	
 	router.route('/v2/service_instances/:id’)
 	
 	.delete(function(req, res, next) {
-	// 서비스 instance 삭제 기능 구현 (개발 명세 내용 구현)
+	// Implementing service instance delete function(Implementation of Development Specifications)
 	
 	})
 
 
-4.	서비스 별 Deprovision API 개발 명세
--	삭제 요청하는 서비스 인스턴스가 존재 하는지 체크한다.
--	인스턴스가 존재 하면 삭제할 인스턴스에 Application 이 bind 되어 있는지 체크 한다.
--	만일 bind 되어 있는 Application 이 존재 할 경우 Error 를 Cloud Controller 에 전송한다.
--	bind 되어 있는 Application 이 존재 하지 않을 경우 해당 서비스 인스턴스를 삭제한다.
+4.	Deployment API development specification by service
+-	Check to see if there is a service instance requesting deletion.
+-	When there is a instance requesting for deletion, check if it is bound with an Application.
+-	If the instance requesting deletion is bound with an Application, communicate the error to the Cloud Controller.
+-	If there is no Application bound with the instance requesting for deletion, proceed with the deletion.
 
 4.1.	RDBMS
-1. Mysql 경우
+1. In case of Mysql
 
 - 데이터 베이스 삭제
 	DROP DATABASE IF EXISTS #{connection.quote_table_name(database_name)}

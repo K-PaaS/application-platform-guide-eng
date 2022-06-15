@@ -1125,29 +1125,30 @@ release_file: local files or remote URIs information
     --rebase:Set to Director with the latest version
     --skip-if-exists:Do not upload if release exists
 
-1.	Yaml 파일을 이용한 설치 프로세스 [<release_file> 파라미터가 yml 파일일 경우]: releases 디랙토리안에 cf-<service_name>-<version>.yml 파일을 읽어서 sha1 값으로 .final_builds 폴더의 해당 packages 또는 jobs 폴더안의 index.yml 의 blobstore_id 로 config/final.yml 의 blobstore 에 접근하여 설치하는 방식이다.
-2.	tarball(설치할 release 파일을 모두 포함한 압축 파일: tgz 형식) 을 이용한 설치 프로세스 [<release_file> 파라미터가 tgz 파일일 경우]: blobstore 를 이용하지 않고 설치할 모든 packages 와 jobs 파일 및 release(release.MF), job메타 파일이 tgz 압축 파일 안에 있어서 blobstore에서 다운 받지 않고 설치하는 방식이다. (releases 디랙토리 안에 .tgz 파일로 압축)
+1.	Installation process using the Yaml file [When <release_file> parameter is yml file]: Read the cf-<service_name>-<version>.yml file inside the release dirctory and set value as sha1. It is a method of accessing and installing the blobstore of config/final.yml with the blobstore_id of index.yml in the corresponding packages or jobs folder in the final_builds folder.
+	
+2.	Installation process using tarball(Zipped files containing all release files to install: tgz format) [When <release_file> parameter is tgz file]: All packages and jobs files to be installed, and the release (release.MF), and job meta files are in the tgz zip file, so it is installed without downloading from the blobstore. (Zip as .tgz file inside the releases directory)
 
 ##### <a name="32"/>3.4.1. Packages Guide
-Service software 설치 관련하여 packaging, pre_packaging 와 spec 파일로 구성 되어 있다.
+Consists of packing, pre_packaging, and spec files related to the installation of service software.
 
 ###### <a name="33"/>3.4.1.1. Packaging
-packaging 파일은 software 를 설치 하는 script 를 제공한다.
+The packaging file provides a script for installing the software.
 
-◎ packaging 파일 설명
-1	“bosh generate package PACKAGE_NAME” 명령어로 packaging script file 를 자동생성한다.
-1.1	예) $ bosh generate package test (service release 폴더에서 실행)
-1.2	packages 폴더 안에 test package 폴더가 생성되고 해당 폴더에 packaging, pre_packaging, spec 파일 생성
-1.3	bosh generate package 명령어로 하지 않고 수동으로 디랙토리 생성하여 파일을 만들어도 됨
-2	컴파일시에 Bosh는 패키지 사양에 참조 된 소스 파일을 받아 배포 된 작업이 필요한 실행 가능한 바이너리 및 스크립트로 구성된다.
-3	packaging scripts 작성시아래와 같은 내용을 포함한다.
-3.1	Ruby 어플리케이션 경우 BOSH는 Ruby gems를 설치하고 소스파일을 복사해야 한다. (RubyGems은 루비 프로그램과 라이브러리를 배포하는 표준 형식을 제공하는 루비 프로그래밍 언어의 패키지 관리자)
-3.2	Ruby 자체에 대해서는 BOSH는 binary 로 소스를 컴파일 해야 한다.
-3.3	Python 어플리케이션 경우 BOSH는 Python eggs를 설치하고 소스파일을 복사해야 한다.
-4	packaging script를 작성할 때 이러한 원칙을 준수한다.
-4.1	“set -e –x” 으로 스크립트를 시작한다. 이는 에러가 발생하는 경우 즉시 종료 스크립트시킴으로써 컴파일시에 디버깅을 돕는다.
-4.2	복사, 설치 또는 컴파일이 (BOSH_INSTALL_TARGET 환경 변수로 표현) 설치 대상 디렉토리에 코드가 생성 되는지 확인한다.“make” commands에 대한 use configure 또는 이에 상응하는 작업을 수행한다.
-4.3	BOSH 패키지 사양 파일의 dependencies배포 된 바이너리를 사용할 수 있는지 확인해야 한다.
+◎ packaging file instruction
+1	Create packaging script file automatically with the “bosh generate package PACKAGE_NAME” command.
+1.1	Example) $ bosh generate package test (Execute in service release)
+1.2	A test package folder is created in the packages folder, and a package, pre_packaging, and spec files are created inside the folder
+1.3	You can create a file manually by creating a directory instead of using the bosh generate package command
+2	At compilation, Bosh receives the source file referenced in the package specification and consists of executable binaries and scripts that require deployment operations.
+3	Include the following contents when writing packing scripts.
+3.1	For Ruby applications, BOSH must install Ruby gems and copy the source files. (RubyGems is the package manager of the Ruby Programming Language, which provides a standard format for distributing ruby programs and libraries.). 
+3.2	For Ruby itself, BOSH must compile the source into binary.
+3.3	For Python applications, BOSH must install Python eggs and copy the source file.
+4	Observe these principles when writing a packaging script.
+4.1	Start the script with "set -e –x". This helps debugging during compilation by immediately scripting termination if an error occurs.
+4.2	Verify if the code for copy, install, or compile (represented by the BOSH_INSTALL_TARGET environment variable) can be generated in the directory to be installed. Use configure or equivalent operation for "make" commands.
+4.3	Ensure that the binaries distributed in the dependencies of the BOSH package specification file are available.
 
 	◎ Example libyaml packaging script
 	set -e -x

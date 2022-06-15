@@ -1254,14 +1254,14 @@ Example) dependency graph
 	  - ruby_1.9.3/bundler-1.2.1.gem
 
 ##### <a name="36"/>3.4.2. jobs guide
-모든 job은 시작 및 중지하는 방법이 제공되어야 한다. 따라서 제어 스크립트를 작성하고 MONIT 파일을 작성하여해당 실행 되는 jobs(processes)를 모니터링 한다.
+All jobs should be provided with a method of starting and stopping. Therefore, control scripts are written and MONIT files are written to monitor the jobs (processes) that are executed.
 
 ###### <a name="37"/>3.4.2.1. templates
-설치된 package를 구동 및 정지 및 관련 설정 파일을 구성하는 템플릿 파일.
+The template file that drives and stops the installed package and configures the associated settings file.
 
-◎ control script 설명 : *.erb 화일
-1	시작 명령과 중지 명령이 포함되어 있다.
-2	관련 job에 대한 templates 디렉토리에 ERb template 형식으로 구성한다. (shell script로 구성)
+◎ control script explanation : *.erb file
+1	It includes a start and a stop command.
+2	관련 job에 대한 templates 디렉토리에 ERb template 형식으로 구성한다. (Configuring with shell script)
 3	각 job 에 대해 “/var/vcap/sys/log/JOB_NAME” 안에 로그 작업을 구성하는 제어 스크립트를 만든다.
 
 	◎ Example mariadb_ctl.erb

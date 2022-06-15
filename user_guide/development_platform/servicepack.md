@@ -1148,7 +1148,7 @@ The packaging file provides a script for installing the software.
 4	Observe these principles when writing a packaging script.    
 4.1	Start the script with "set -e –x". This helps debugging during compilation by immediately scripting termination if an error occurs.    
 4.2	Verify if the code for copy, install, or compile (represented by the BOSH_INSTALL_TARGET environment variable) can be generated in the directory to be installed. Use configure or equivalent operation for "make" commands.    
-4.3	Ensure that the binaries distributed in the dependencies of the BOSH package specification file are available.    
+4.3	Ensure that the binaries deployed as dependencies of the BOSH package specification file are available.    
 
 	◎ Example libyaml packaging script
 	set -e -x

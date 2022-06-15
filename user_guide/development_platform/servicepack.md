@@ -1530,19 +1530,19 @@ BOSH Deploymentmanifest is a YAML file that defines the components element and p
 Deployment manifest uses Bosh deploy CLI to install software(servicepack). When installing, it defines name, version, VMs capacity, Jobs params, and Release (Software packages, Config templates, Scripts) as well as which Stemcell (OS, BOSH agent) to use. (refer to the picture in 3.2 Bosh Architecture의 Modules components)
 
 The contents of the BOSH Deployment Manifest are as follows.
-	Deployment Identification: 배포 이름과 배포를 관리하는 BOSH Director의 UUID 정보
-	Releases Block: deployment 안의 각 release 의 이름 및 버전 정보
-	Networks Block: 네트워크 구성 정보
-	Resource Pools Block: BOSH 로 생성하고 관리하는 가상 머신의 속성
-	Disk Pools Block: BOSH 로 생성하고 관리하는 디스크의 속성
-	Compilation Block: 컴파일 시 필요한 가상 머신의 속성
-	Update Block: BOSH 가 배포 중에 작업 인스턴스를 업데이트 하는 방법을 정의
-	Jobs Block: 작업(jobs)에 대한 구성 및 자원 정보
-	Properties Block: 글로벌 속성과 일반화된 구성 정보를 설명
+	Deployment Identification: Information of the deployment name and the UUID of the BOSH Director that manages the deployment
+	Releases Block: Name and version information for each release within the deployment
+	Networks Block: Information of the network configuration
+	Resource Pools Block: Properties of virtual machines that you create and manage with BOSH
+	Disk Pools Block: Properties for disks created and managed by BOSH
+	Compilation Block: Virtual Machine Properties Required When Compiling
+	Update Block: Defines how BOSH updates job instances during deployment
+	Jobs Block: Configuration and resource information for jobs
+	Properties Block: Describes global properties and generalized configuration information
 
 1.	Deployment Identification
-name [String, required]: 배포의 이름. 단일 BOSH Director는 다수의 배포를 관리하고 그들의 이름으로 구별 한다.
-director_uuid [String, required]:BOSH CLI가 배포에 대한 모든 작업을 허용하기위한 현재 대상 BOSH Director의 UUID와 일치해야한다. ‘bosh status’ CLI 을 통해서 현재 BOSH Director 에 target 되어 있는 UUID를 확인할수 있다.
+name [String, required]: Name of deployment. A single BOSH Director manages multiple deployments and distinguishes them by their names.
+director_uuid [String, required]:The BOSH CLI must match the UUID of the current target BOSH Director to allow all operations on the deployment. Through the 'bosh status' CLI, you can check the UUID currently targeted by the BOSH Director.
 >![openpaas-servicepack-45]
 
 bosh status CLI
@@ -1552,20 +1552,20 @@ bosh status CLI
 	director_uuid: 8b701af8-d658-48ee-893e-9d299622e332
 
 2.	Releases Block
-releases [Array, required]:deployment 안의 각 release 의 이름 및 버전 정보
-name [String, required]: release 에서 사용하는 이름
-version [String, required]: release 에서 사용하는 버전. ‘latest’ 를 넣을 경우 최신 버전 사용
+releases [Array, required]:Name and version information for each release within the deployment
+name [String, required]: Name used in release
+version [String, required]: The version used by the release. Use the latest version if 'latest' is used
 
 	◎  xample
 	releases:
 	- {name: redis, version: 12}
 
 3.	Networks Block
-networks [Array, required]: 네트워크 블록에 나열된 각 서브 블록이 참조 할 수있는 작업이 네트워크 구성을 지정한다. 네트워크는 manual, dynamic, vip 세 개의 종류가 있다.
+networks [Array, required]: Specify the network configuration of tasks that each sub-block listed in the network block can refer to. There are three types of networks: manual, dynamic, and VIP.
 
 ◎  AWS Example
-Dynamic network 또는 manual network 서브넷에서 사용하는 ‘cloud_properties’ 스키마
-subnet [String, required]: AWS에서 생성한 subnet ID
+'cloud_properties' schema used by Dynamic network or manual network subnets
+subnet [String, required]: subnet ID created in AWS
 
 	◎  Example of manual network:
 	
@@ -1592,9 +1592,9 @@ subnet [String, required]: AWS에서 생성한 subnet ID
 		networks:
 		- name: default
 		 OpenStack Example
-	Dynamic network 또는 manual network 서브넷에서 사용하는 ‘cloud_properties’ 스키마
+	'cloud_properties' schema used by Dynamic network or manual network subnets
 	net_id [String, required]: OpenStack에서 생성한 subnet ID. 예) net-b98ab66e-6fae-4c6a-81af-566e630d21d1
-	security_groups [Array, optional]: security groups 이 네크워크 구성에 적용.
+	security_groups [Array, optional]: security groups applied to network configuration.
 	
 	
 	◎ Example of manual network:
@@ -1626,7 +1626,7 @@ subnet [String, required]: AWS에서 생성한 subnet ID
 		  cloud_properties: {}
 
 ◎ vSphere Example
-manual network 서브넷에서 사용하는 ‘cloud_properties’ 스키마
+Schema 'cloud_properties' used by the manual network subnet
 name [String, required]: vSphere 에서 사용하는 network 이름
 
 	Example of manual network:
@@ -1641,11 +1641,11 @@ name [String, required]: vSphere 에서 사용하는 network 이름
 		    cloud_properties:
 		      name: VM Network
 
-참고 :vSphere CPI does not support dynamic or vip networks.
+Refer :vSphere CPI does not support dynamic or vip networks.
 
 ◎ vCloud Example
-manual network 서브넷에서 사용하는 ‘cloud_properties’ 스키마
-name [String, required]: vApp 에서 생성된network 이름
+Schema 'cloud_properties' used by the manual network subnet
+name [String, required]: Name of the network created by the vApp
 
 	Example of manual network:
 	
@@ -1659,7 +1659,7 @@ name [String, required]: vApp 에서 생성된network 이름
 	    cloud_properties:
 	      name: VPC_BOSH
 
-참고 :vCloud CPI does not support dynamic or vip networks.
+Refer :vCloud CPI does not support dynamic or vip networks.
 
 4. Resource Pools Block
 resource_pools [Array, required]:배포시 사용하는 resource pools를 명시하며 여러 개의 resource pools 을 사용할 경우 name 은 unique 해야함

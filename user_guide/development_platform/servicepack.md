@@ -66,14 +66,14 @@ http://www.appdirect.com
  
 ### <a name="6"/>2. Service Broker API Development Guide
 #### <a name="7"/>2.1. Outline
-The open cloud platform Service API defines the protocol between the Cloud Controller and the Service Broker. Broker is implemented in HTTP (or HTTPS) endpoints URI format. One or more services may be provided by one broker, and may be provided horizontally and extensively to enable load balancing.
+The open cloud platform Service API defines the protocol between the Cloud Controller and the Service Broker. Broker is implemented in HTTP (or HTTPS) endpoints URI format. One or more services may be provided by one broker and may be provided horizontally and extensively to enable load balancing.
 
 #### <a name="8"/>2.2. Service Architecture
 >![openpaas-servicepack-01]  
 [picture reference]: http://docs.cloudfoundry.org/services/overview.html
 
-Services is used in open cloud platforms by implementing a cloud controller client API called the Service Broker API. The Services API is a version of the independent cloud controller API.
-This makes external applications available on the platform. (database, message queue, rest endpoint , etc)
+Services are used in open cloud platforms by implementing a cloud controller client API called the Service Broker API. The Services API is a version of the independent cloud controller API.
+This makes external applications available on the platform. (database, message queue, rest endpoint, etc)
 
 #### <a name="9"/>2.3. Service Broker API Architecture
 >![openpaas-servicepack-02]  
@@ -85,7 +85,7 @@ The Open Cloud Platform Service API is a protocol between Cloud Controller and S
 >![openpaas-servicepack-03]  
 [picture reference]: http://www.slideshare.net/platformcf/cloud-foundry-marketplacepowered-by-appdirect
 
-AppDirect: a leading company in cloud service marketplace and management solution.Establised marketplace of many global companies. (Samsung, Cloud Foundry, ETC)
+AppDirect: a leading company in cloud service marketplace and management solution.The established marketplace of many global companies. (Samsung, Cloud Foundry, ETC)
 AppDirect offers Cloud Foundry service brokerages and additional services. 
 
 Describe Service Provider and Cloud Foundry integration
@@ -93,11 +93,11 @@ Describe Service Provider and Cloud Foundry integration
 [picture reference]: http://www.slideshare.net/platformcf/cloud-foundry-marketplacepowered-by-appdirect
 
 #### <a name="11"/>2.5. Development Guide
-The method of implementing the service is up to the provider and developer. Open cloud platforms require service providers to implement 6 Service Broker APIs. In this 2.4 Pivotal Marketplace Model can be used to consult with the service provider provided by AppDirect and provide it using AppDirect's intermediary function. Broker can be implemented as a separate application or by adding HTTP endpoints required for existing services.
+The method of implementing the service is up to the provider and developer. Open cloud platforms require service providers to implement 6 Service Broker APIs. This 2.4 Pivotal Marketplace Model can be used to consult with the service provider provided by AppDirect and provide it using AppDirect's intermediary function. The broker can be implemented as a separate application or by adding HTTP endpoints required for existing services.
 
-This development guide guides how service back-end is controlled by the service broker.If you use AppDirect, refer to http://go.appdirect.com/request-more-information.
+This development guide guides how the service back-end is controlled by the service broker. If you use AppDirect, refer to http://go.appdirect.com/request-more-information.
 
-Service Broker requires 6 basic API functions. (refer to API guide of each for detailed descriptions)
+Service Broker requires 6 basic API functions. (refer to the API guide of each for detailed descriptions)
 >![openpaas-servicepack-05]
 
 Two major versions of the Service Broker API currently support open cloud platforms v1 and v2. Since v1 is not used and can be removed in the next version of the open cloud platform, Service Broker recommends implementing it as v2.
@@ -109,7 +109,7 @@ Two major versions of the Service Broker API currently support open cloud platfo
 The Cloud Controller authenticates with the broker using HTTP default authentication (authentication header) for all requests and rejects all broker registrations that do not include user names and passwords. The broker checks the username and password and returns a 401 Unauthorized message if the credentials are invalid. If additional security is required on the Cloud Controller, SSL is used to support access to the broker.
 
 ##### <a name="12"/>2.5.1. Catalog API Guide
-The service catalog retrieves information about the service and the service plan. The Cloud Controller initially retrieves endpoints from all brokers and checks the user-facing service catalog stored in the Cloud Controller database. The Cloud Controller also updates the catalog whenever the broker is updated.When the Catalog API is implemented, a service broker can be registered through the CF CLI.
+The service catalog retrieves information about the service and the service plan. The Cloud Controller initially retrieves endpoints from all brokers and checks the user-facing service catalog stored in the Cloud Controller database. The Cloud Controller also updates the catalog whenever the broker is updated. When the Catalog API is implemented, a service broker can be registered through the CF CLI.
 
 1. Request
 
@@ -253,7 +253,7 @@ The service catalog retrieves information about the service and the service plan
 	$ rails new<broker_name>
 	>![openpaas-servicepack-13]
 	
-		-- config/routes.rb : Modified routing file with routing information for posts
+		-- config/routes.rb: Modified routing file with routing information for posts
 		
 		CfMysqlBroker::Application.routes.draw do
 		  resource :preview, only: [:show]
@@ -286,7 +286,7 @@ The service catalog retrieves information about the service and the service plan
 	
 3.3.	Node.js Method
 
-		-- Makes Rest API by using express,which is the most used web framework module in Node.js.
+		-- Makes Rest API by using express, which is the most used web framework module in Node.js.
 		
 		# sample (app.js)
 		
@@ -303,13 +303,13 @@ The service catalog retrieves information about the service and the service plan
 		  console.log('Express server listening on port ' + server.address().port);
 		});
 
-4. Catalog API development specification by service
-In the case of the Catalog API, regardless of the type of service, the information is stored in the settings.yml file or other meta-file or source where the service and plan information are stored. If AppDirect is used, the AppDirect API that inquires catalog information is called to provide the result. For sample settings.yml file, refer to 3. Catalog Rest API Configuration.
+4. Catalog API development specifications by service
+In the case of the Catalog API, regardless of the type of service, the information is stored in the settings.yml file or other meta-file or source where the service and plan information is stored. If AppDirect is used, the AppDirect API that inquires catalog information is called to provide the result. For sample settings.yml file, refer to 3. Catalog Rest API Configuration.
 
 
 ◎ Example of Pivotal Service Plan
 - Example of clearDB plan  
-[picture reference] :http://run.pivotal.io/
+[picture reference]:http://run.pivotal.io/
 
 >![openpaas-servicepack-14]
 
@@ -321,14 +321,14 @@ In the case of the Catalog API, regardless of the type of service, the informati
 
 ◎ Example of Pivotal Service Dashboard
 - Example of clearDB Dashboard  
-[picture reference] :https://www.cleardb.com/
+[picture reference] https://www.cleardb.com/
 >![openpaas-servicepack-18]
 
 >![openpaas-servicepack-19]
  
 ##### <a name="13"/>2.5.2. Provision API Guide
 When the broker sends a provision request from the Cloud Controller, it creates a new service instance for the developer. Provision results vary depending on the type of services in provision.
-For Mysql Database, create a new DATABASE schema. In addition, provision in the case of a non-data service may mean obtaining an account on an existing system. For detailed information, refer to the provision of each services.
+For Mysql Database, create a new DATABASE schema. In addition, the provision in the case of a non-data service may mean obtaining an account on an existing system. For detailed information, refer to the provision of each service.
 
 1. Request
 
@@ -358,7 +358,7 @@ All response bodies are in the format JSON Object ({}).
 >![openpaas-servicepack-22]
 
 2.3.	Dashboard Single Sign-On.
-Single Sign-On (SSO) allows open cloud platform users to access dashboards of third-party services using open cloud platform credentials. A service dashboard is a web interface which some or all of the functions provided by the service may be used. SSO integrates and manages recurring logins and accounts for multiple services. Because it handles OAuth2 protocol authentication, user credentials are not sent directly to the service. To use SSO functions, the Cloud Controller UAA client must have permission to create and delete service brokers. Configure clients when installing an open cloud platform. (Refer to installation document)
+Single Sign-On (SSO) allows open cloud platform users to access dashboards of third-party services using open cloud platform credentials. A service dashboard is a web interface in which some or all of the functions provided by the service may be used. SSO integrates and manages recurring logins and accounts for multiple services. Because it handles OAuth2 protocol authentication, user credentials are not sent directly to the service. To use SSO functions, the Cloud Controller UAA client must have permission to create and delete service brokers. Configure clients when installing an open cloud platform. (Refer to installation document)
 
 ◎ Dashboard SSO Setting Example during CF Installation)
 	
@@ -396,7 +396,7 @@ Single Sign-On (SSO) allows open cloud platform users to access dashboards of th
 
 3.2. Ruby Method(Ruby on Rails)
 
-	-- config/routes.rb : file that contains routing information
+	-- config/routes.rb: file that contains routing information
 	
 	CfMysqlBroker::Application.routes.draw do
 	  resource :preview, only: [:show]
@@ -436,24 +436,24 @@ Single Sign-On (SSO) allows open cloud platform users to access dashboards of th
 	})
 
 4. Provision API development specifications by service
-- Use a unique name when creating a instance.
+- Use a unique name when creating an instance.
 - Verify if the requested instance ID to create exists already.
 - Check if the selected plan information can be used when creating the instance. If possible, create the instance.
-- When the instance creation is completed, send it to the Cloud Controller as JSON Object format as shown above.
+- When the instance creation is completed, send it to the Cloud Controller in JSON Object format as shown above.
 
 4.1. RDBMS
 
-1. In case of Mysql
+1. In the case of Mysql
 
 	- Check if the database to create exists 
 	SHOW DATABASES LIKE '${instance.database}'
 	
-	- Create new database
+	- Create a new database
 	CREATE DATABASE IF NOT EXISTS ${instance.database}
 	
-	- Send the Dashboard information as JSON Object format to Cloud Controller after creation.
+	- Send the Dashboard information in JSON Object format to Cloud Controller after creation.
 
-2. In case of Cubrid DB 
+2. In the case of Cubrid DB 
 
 	- Create and move the directory to create database
 	$ mkdir <databasename>
@@ -467,12 +467,12 @@ Single Sign-On (SSO) allows open cloud platform users to access dashboards of th
 	$ cubrid server start <databasename>
 
 4.2. Mass Storage
-1. In case of GlusterFS
-◎ to upload files to ClusterFS, configure a service back-end with GlusterFS and OpenStack swift first to upload and download files using Object Storage. (similar to Amazon S3 method)
+1. In the case of GlusterFS
+◎ to upload files to ClusterFS, configure a service back-end with GlusterFS and OpenStack swift first to upload and download files using Object Storage. (similar to the Amazon S3 method)
 
-	- Create new Swift Account
+	- Create a new Swift Account
 	
-	Method  : PUT 
+	Method: PUT 
 	
 	Req URL : http(s)://[IP Address OR HostName]/auth/v2/[AccountID]
 	
@@ -489,8 +489,8 @@ Single Sign-On (SSO) allows open cloud platform users to access dashboards of th
 	switched to db <databasename>
 
 ##### <a name="14"/>2.5.3. Update Instance API Guide
-Update Instance API modifies the plan of previously existing service instance. Which means it upgrades or downgrades the plan of service instance.
-To use this function, the broker should be set as “plan_updateable: true” from the catalog endpoint. If this option field is not included, it returns an error in the contents of the service plan modify request, and the broker does not call the API. If this field is included, an API call is made to the broker for all plan modification requests in the open cloud platform. The broker checks for plan support avaiability.
+Update Instance API modifies the plan of the previously existing service instances. Which means it upgrades or downgrades the plan of the service instance.
+To use this function, the broker should be set as “plan_updateable: true” from the catalog endpoint. If this option field is not included, it returns an error in the contents of the service plan modification he requests, and the broker does not call the API. If this field is included, an API call is made to the broker for all plan modification requests in the open cloud platform. The broker checks for plan support availability.
 
 1.	Request
 1.1.	Route
@@ -537,7 +537,7 @@ All response bodies should be in JSON Object ({}) format.
 	}
 
 3.2.	Ruby Method(Ruby on Rails)
-	-- config/routes.rb : a modified routing file consisting of modified routing information for posts
+	-- config/routes.rb: a modified routing file consisting of modified routing information for posts
 	
 	CfMysqlBroker::Application.routes.draw do
 	  resource :preview, only: [:show]
@@ -580,7 +580,7 @@ All response bodies should be in JSON Object ({}) format.
 	
 	2.	When downgrading, an error occurs when the capacity being used is larger than the capacity to downgrade.
 	
-	3.	When upgraging, update the plan information. (Example: in case of DBMS service, the number of connection and storage capacity)
+	3.	When upgrading, update the plan information. (Example: in case of DBMS service, the number of connections and storage capacity)
 	
 	4.	Communicate the changed contents to the Cloud Controller.
 
@@ -628,7 +628,7 @@ Receive "{}" value on success.
 	}
 
 3.2.	Ruby Method(Ruby on Rails)
-	-- config/routes.rb : a modified routing file consisting of modified routing information for posts
+	-- config/routes.rb: a modified routing file consisting of modified routing information for posts
 	
 	CfMysqlBroker::Application.routes.draw do
 	  resource :preview, only: [:show]
@@ -668,32 +668,32 @@ Receive "{}" value on success.
 
 4.	Deployment API development specification by service
 -	Check to see if there is a service instance requesting deletion.
--	When there is a instance requesting for deletion, check if it is bound with an Application.
+-	When there is an instance requesting deletion, check if it is bound with an Application.
 -	If the instance requesting deletion is bound with an Application, communicate the error to the Cloud Controller.
 -	If there is no Application bound with the instance requesting for deletion, proceed with the deletion.
 
 4.1.	RDBMS
-1. In case of Mysql
+1. In the case of Mysql
 
 - Delete database
 	DROP DATABASE IF EXISTS #{connection.quote_table_name(database_name)}
 
-2. In case of Cubrid DB 
+2. In the case of Cubrid DB 
 
 - removing database after service shutdown
 	$ cubrid service stop
 	$ cubrid deletedb <databasename>
 
-- remove directory of the removed database
+- remove the directory of the removed database
 	$ rm –rf <install database path>/<databasename>
 
 
 4.2.	Mass storage
-1. In case of GlusterFS
+1. the  In case of GlusterFS
 
 	- Delete Swift Account
 	
-	Method  : DELETE 
+	Method: DELETE 
 	
 	Req URL : http(s)://[IP Address OR HostName]/auth/v2/[AccountID]
 	
@@ -712,7 +712,7 @@ Receive "{}" value on success.
 
 
 ##### <a name="16"/>2.5.5. Bind API Guide
-If the service is available only with Provision, there is no need to implement the bind function, and only the resulting success message needs to be sent to the open cloud platform. When a broker receives a binding request from an open cloud platform, it returns the information necessary to utilize the provisioned resources. The information is provided in the credentials. It should not affect other applications by issuing unique credentials to Applicatoin.
+If the service is available only with Provision, there is no need to implement the bind function, and only the resulting success message needs to be sent to the open cloud platform. When a broker receives a binding request from an open cloud platform, it returns the information necessary to utilize the provisioned resources. The information is provided in the credentials. It should not affect other applications by issuing unique credentials to the Application.
 
 1.	Request
 1.1.	Route
@@ -741,7 +741,7 @@ A different status code response means failure.
 2.3.	Binding Credentials 
 In the case of service binding, authentication information that the user can use in the application is returned in response to the bind API call. Provide these credentials to the open cloud platform environment variable VCAP_SERVICES. It is recommended to be used in the Credentials field list. Use if the fields provided meet the user's requirements. Additional fields can be provided as needed.
 
-Important: If you provide a service that supports the connection string, at least the uri key must provided. As mentioned above, a separate credential field may also be provided. Buildpacks and Application libraries uses the uri key.
+Important: If you provide a service that supports the connection string, at least the uri key must be provided. As mentioned above, a separate credential field may also be provided. Buildpacks and Application libraries use the uri key.
 >![openpaas-servicepack-30]
 
 ◎ Example VCAP_SERVICES result
@@ -804,7 +804,7 @@ The operation method is as follows.
 2.	Update the key and value of syslog_drain_url in VCAP_SERVICES when the application reboots.
 3.	DEAs continuously stream application logs from the Loggregator.
 4.	If syslog_drain_url exists in VCAP_SERVICES, the DEA tags the field in the log.
-5.	The Loggregator log streams by tagging the key on the designated location with the value.
+5.	The Loggregator logs streams by tagging the key on the designated location with the value.
 
 
 3.	Bind Rest API Implementation
@@ -827,7 +827,7 @@ The operation method is as follows.
 	}
 
 3.2.	Ruby Method(Ruby on Rails)
-	-- config/routes.rb : Modified routing file with routing information for posts
+	-- config/routes.rb: Modified routing file with routing information for posts
 	
 	CfMysqlBroker::Application.routes.draw do
 	  resource :preview, only: [:show]
@@ -871,7 +871,7 @@ The operation method is as follows.
 -	At this time, bind information is randomly generated and base64 encoded and sent.
 
 4.1.	RDBMS
-1. In case of Mysql
+1. In the case of Mysql
 
 	- Create a user to connect to the database.
 	CREATE USER #{username} IDENTIFIED BY #{password}
@@ -880,22 +880,22 @@ The operation method is as follows.
 	
 	GRANT ALL PRIVILEGES ON #{databasename}.* TO #{username}@'%'WITH MAX_USER_CONNECTIONS #{max_user_connections}
 	
-	- Relocate permission table on server.
+	- Relocate the permission table on the server.
 	FLUSH PRIVILEGES
 
-2. In case of Cubrid DB 
+2. In the case of Cubrid DB 
 
 	- Create a user to connect to the database.
 	CREATE USER #{username};
 
-Note: In the Cubrid DB, the minimum unit of authorization given is a table. The give access to the table made.
+Note: In the Cubrid DB, the minimum unit of the authorization given is a table. Give access to the table made.
 
 4.2.	Mass Storage
-1. In case of GlusterFS
+1. In the case of GlusterFS
 
-	- Create new Swift User
+	- Create a new Swift User
 	
-	Method  : PUT 
+	Method: PUT 
 	
 	Req URL : http(s)://[IP Address OR HostName]:[PORT]/auth/v2/[AccountID]/[UserId]
 	
@@ -921,7 +921,7 @@ Note: In the Cubrid DB, the minimum unit of authorization given is a table. The 
 
 ##### <a name="17"/>2.5.6. Unbind API Guide
 Refer: Brokers that do not provide binding services do not need to implement the Unbind API.
-When a broker receives an unbind request from an open cloud platform, it deletes all resources created by the bind. If deleted, service is inaccessible.
+When a broker receives an unbind request from an open cloud platform, it deletes all resources created by the bind. If deleted, the service is inaccessible.
 
 1.	Request
 1.1.	Route
@@ -961,7 +961,7 @@ Receive "{}" value on success.
 	}
 
 3.2.	Ruby Method(Ruby on Rails)
-	-- config/routes.rb : Modified routing file with routing information for posts
+	-- config/routes.rb: Modified routing file with routing information for posts
 	
 	CfMysqlBroker::Application.routes.draw do
 	  resource :preview, only: [:show]
@@ -1003,7 +1003,7 @@ Receive "{}" value on success.
 -	Delete the information bound to the application and deliver the result to the application.
 
 4.1.	RDBMS
-1. In case of Mysql
+1. In the case of Mysql
 	
 	- Check if there is a user to unbind
 	SHOW GRANTS FOR #{username)}
@@ -1011,20 +1011,20 @@ Receive "{}" value on success.
 	- Delete the created user.
 	DROP USER #{username}
 	
-	- Relocate authentication table on server.
+	- Relocate the authentication table on the server.
 	FLUSH PRIVILEGES
 
-2. In case of Cubrid DB 
+2. In the case of Cubrid DB 
 
-	- Delete the user created when binding.
+	- Delete the user-created when binding.
 	DROP USER #{username};
 
 4.2.	Mass Storage
-1. In case of GlusterFS
+1. In the case of GlusterFS
 
 	- Delete Swift User
 	
-	Method  : DELETE
+	Method: DELETE
 	
 	Req URL : http(s)://[IP Address OR HostName]/auth/v2/[AccountID]/[UserId]
 	
@@ -1046,9 +1046,9 @@ Receive "{}" value on success.
 ### <a name="18"/>3. Service release Development Guide
 
 #### <a name="19"/>3.1.	Outline
-The BOSH release consists of jobs (packages-driven scripts, monit scripts, etc.), packages, source code, and metadata from related sources. Install software through BOSH (service back-end, broker and etc.). The binary file (also known as "blobs") required for packaging, eliminates the need of necessity to store files inside the release storage. It is stored in the Blob repository in the release and can be referenced externally. Write a release yml to utilize the BOSH release.
+The BOSH release consists of jobs (packages-driven scripts, monit scripts, etc.), packages, source code, and metadata from related sources. Install software through BOSH (service back-end, bro, etc.). The binary file (also known as "blobs") required for packaging, eliminates the need of necessity to store files inside the release storage. It is stored in the Blob repository in the release and can be referenced externally. Write a release yml to utilize the BOSH release.
 
-Refer: If the service back-end (refer to the software: 2.2 Service Architecture provided by the service provider) is a provider that already provides as an external service, it is not necessary to install the service back-end with the BOSH release, and only the broker can develop and connect to the external service. In this case, install with Bosh release for Borker only. However, if an externally provided service is included in the IaaS where the CF is installed (if it is a cloud operation in a disconnected network), the service back-end is distributed as a BOSH release. In addition, if you use external services and want to provide (cf push) as an application for an open cloud platform, you can skip the BOSH release and proceed with the 2. Service Borker Guide.
+Refer: If the service back-end (refer to the software: 2.2 Service Architecture provided by the service provider) is a provider that already provides an external service, it is not necessary to install the service back-end with the BOSH release, and only the broker can develop and connect to the external service. In this case, install with Bosh release for Broker only. However, if an externally provided service is included in the IaaS where the CF is installed (if it is a cloud operation in a disconnected network), the service back-end is distributed as a BOSH release. In addition, if you use external services and want to provide (cf push) as an application for an open cloud platform, you can skip the BOSH release and proceed with the 2. Service Broker Guide.
 
 #### <a name="20"/>3.2.	Bosh Architecture
  
@@ -1057,14 +1057,14 @@ Refer: If the service back-end (refer to the software: 2.2 Service Architecture 
 
 -	Similar to open cloud platform architecture (Message Bus, Health Monitor, Blobstore, etc.)
 -	Director is similar to Cloud Controller
--	CPIs implementation varies depending on the type of IaaS. (CPI : Cloud Provider Interface)
+-	CPIs implementation varies depending on the type of IaaS. (CPI: Cloud Provider Interface)
 -	Workers are responsible for executing tasks determined by the Director
 
 >![openpaas-servicepack-34]  
 > [picture reference]: https://www.ibm.com/developerworks/community/blogs/fe313521-2e95-46f2-817d-44a4f27eba32/entry/porting_cloud_foundry_on_power8_ubuntu_le?lang=en
 
 #### <a name="21"/>3.3.	Release Directory Configuration
-The directory structure can be configured with Bosh release. Bosh is an open source tool for release engineering, deployment, and lifecycle management of large-scale distributed services.
+The directory structure can be configured with the Bosh release. Bosh is an open-source tool for release engineering, deployment, and lifecycle management of large-scale distributed services.
 
 ##### <a name="22"/>3.3.1. packages
 Packages provide the information necessary to prepare a binary dependency for Bosch release installation. (packaging, pre_packaging, spec file)
@@ -1077,7 +1077,7 @@ It consists of the operations and shutdown scripts of the installed packages and
 >![openpaas-servicepack-36]
 
 ##### <a name="24"/>3.3.3. src
-Configures a component source code or pre-compiled software file used in service release.
+Configures a component source code or pre-compiled software file used in a service release.
  
 >![openpaas-servicepack-37]
  
@@ -1087,9 +1087,9 @@ Manage common component sources such as ruby and lib. (Option)
 >![openpaas-servicepack-38]
  
 ##### <a name="26"/>3.3.5. releases
--	Manage version-specified service release yml files.(yaml installation method)
+-	Manage version-specified service release yml files. (yaml installation method)
 -	Manage version-specified service release tgz zipped files. (tarball installation method)
--	Refer to the development guide below for the installation method of Yaml and tarball..
+-	Refer to the development guide below for the installation method of Yaml and tarball.
  
 >![openpaas-servicepack-39]
 
@@ -1114,7 +1114,7 @@ Manage migration information files from this version. (Option)
 >![openpaas-servicepack-43]
  
 #### <a name="31"/>3.4.Development Guide
-must be written according to the Bosh release development method because the service must be distributed through Bosh release.  
+must be written according to the Bosh release development method because the service must be distributed through the Bosh release.  
 The Bosh release consists of scripts related to packages and jobs.
 Bosh offers two ways to release software.
 Bosh upload release CLI command and process are as follows.
@@ -1125,7 +1125,7 @@ release_file: local files or remote URIs information
     --rebase:Set to Director with the latest version
     --skip-if-exists:Do not upload if release exists
 
-1.	Installation process using the Yaml file [When <release_file> parameter is yml file]: Read the cf-<service_name>-<version>.yml file inside the release dirctory and set value as sha1. It is a method of accessing and installing the blobstore of config/final.yml with the blobstore_id of index.yml in the corresponding packages or jobs folder in the final_builds folder.
+1.	Installation process using the Yaml file [When <release_file> parameter is yml file]: Read the cf-<service_name>-<version>.yml file inside the release directory and set value as sha1. It is a method of accessing and installing the blobstore of config/final.yml with the blobstore_id of index.yml in the corresponding packages or jobs folder in the final_builds folder.
 	
 2.	Installation process using tarball(Zipped files containing all release files to install: tgz format) [When <release_file> parameter is tgz file]: All packages and jobs files to be installed, and the release (release.MF), and job meta files are in the tgz zip file, so it is installed without downloading from the blobstore. (Zip as .tgz file inside the releases directory)
 
@@ -1146,7 +1146,7 @@ The packaging file provides a script for installing the software.
 3.2	For Ruby itself, BOSH must compile the source into binary.   
 3.3	For Python applications, BOSH must install Python eggs and copy the source file.    
 4	Observe these principles when writing a packaging script.    
-4.1	Start the script with "set -e –x". This helps debugging during compilation by immediately scripting termination if an error occurs.    
+4.1	Start the script with "set -e –x". This helps to debug during compilation by immediately scripting termination if an error occurs.    
 4.2	Verify if the code for copy, install, or compile (represented by the BOSH_INSTALL_TARGET environment variable) can be generated in the directory to be installed. Use configure or equivalent operation for "make" commands.    
 4.3	Ensure that the binaries deployed as dependencies of the BOSH package specification file are available.    
 
@@ -1196,11 +1196,11 @@ The packaging file provides a script for installing the software.
 
 ###### <a name="34"/>3.4.1.2. pre_packaging
 The pre_packaging file provides a script for pre-packaging software. (Option)
-Use of the pre_packaging file is not recommended, and is not discussed in this tutorial. 
+Use of the pre_packaging file is not recommended and is not discussed in this tutorial. 
 It is specified in the https://bosh.io/docs/create-release.html#dev-release-release document
 
 	◎ mysql-service-broker pre_packaging Sample
-	abort script on any command that exits with a non zero value
+	abort script on any command that exits with a non-zero value
 	set -e
 	
 	(
@@ -1209,14 +1209,14 @@ It is specified in the https://bosh.io/docs/create-release.html#dev-release-rele
 	  # cache gems
 	  bundle package --all
 	
-	  RAILS_ENV=assets bundle exec rake assets:precompile
+	  RAILS_ENV=assets bundle exec rake assets: precompile
 	
 	  # remove unneeded files
 	  rm -rf spec
 	)
 
 ###### <a name="35"/>3.4.1.3. spec
-The meter information of the package to be installed are provided such as name, dependencies, and installation file information.
+The meter information of the package to be installed is provided such as name, dependencies, and installation file information.
 
 ◎ spec file explanation
 1	name: package name  
@@ -1235,9 +1235,9 @@ Example) dependency graph
 4.2.2	A test package folder is created in the packages folder, and a package, pre_packaging, and spec files are created inside the folder    
 4.2.3	You can create a file manually by creating a directory instead of using the bosh generate package command    
 4.3	Copy all the files the package needs to the src directory. Typically, a file is a source code. If it contains pre-compiled software (e.g. ruby-1.9.3-p484.tar.gz), copy the compressed file containing the pre-compiled binary.  
-4.4	Create spec file
+4.4	Create a spec file
 4.4.1	Add the package name and file name
-4.4.2	From the spec file, add the name of compile-time dependency. If there is no compile-time dependency in the package, use [] to indicate the empty array  
+4.4.2	From the spec file, add the name of the compile-time dependency. If there is no compile-time dependency in the package, use [] to indicate the empty array  
 4.4.3	First, find the files in the src directory, and if there is none, find them in the blobs of the blobstore.  
 4.4.4	If the file is configured as a source, the globbing pattern(<package_name>/**/*) is typically used.
 
@@ -1257,7 +1257,7 @@ Example) dependency graph
 All jobs should be provided with a method of starting and stopping. Therefore, control scripts are written and MONIT files are written to monitor the jobs (processes) that are executed.
 
 ###### <a name="37"/>3.4.2.1. templates
-The template file that drives and stops the installed package and configures the associated settings file.
+The template file drives and stops the installed package and configures the associated settings file.
 
 ◎ control script explanation : *.erb file
 1	It includes a start and a stop command.
@@ -1414,7 +1414,7 @@ The template file that drives and stops the installed package and configures the
 	esac
 
 ###### <a name="38"/>3.4.2.2. monit
-In the deployed release, the BOSH Agent runs on the job VM. The BOSH in turn communicates with the agent by executing commands from the control script. The Agent uses an open source process monitoring software called Monit.
+In the deployed release, the BOSH Agent runs on the job VM. The BOSH in turn communicates with the agent by executing commands from the control script. The Agent uses an open-source process monitoring software called Monit.
 
 ◎ monit file explanation
 1	Specify the Job Process ID (PID) file.
@@ -1442,7 +1442,7 @@ In the deployed release, the BOSH Agent runs on the job VM. The BOSH in turn com
 	  group vcap
 
 ###### <a name="38"/>3.4.2.3. spec
-The meter information of the package to be installed are provided such as name, dependencies, and installation file information.
+The meter information of the package to be installed is provided such as name, dependencies, and installation file information.
 
 ◎ spec file explanation 
 1	name: job name  
@@ -1451,10 +1451,10 @@ The meter information of the package to be installed are provided such as name, 
 2.2	Each value is the path of the file to the job VM  
 2.3	File path is based on “/var/vcap/jobs/<job_name>” directory  
 2.4	Example) bin/mariadb_ctl ->/var/vcap/jobs/<job_name>/bin/ mariadb_ctl  
-3	packages: list of package being installed
+3	packages: list of the package being installed
 4	properties: the variables used in the template file
 
-	◎ Example mysql job spec file
+	◎ Example MySQL job spec file
 	---
 	name: mysql
 	
@@ -1527,12 +1527,12 @@ The meter information of the package to be installed are provided such as name, 
 	
 ### <a name="40"/>4. Deployment Guide
 BOSH Deploymentmanifest is a YAML file that defines the components element and properties of the deployment.
-Deployment manifest uses Bosh deploy CLI to install software(servicepack). When installing, it defines name, version, VMs capacity, Jobs params, and Release (Software packages, Config templates, Scripts) as well as which Stemcell (OS, BOSH agent) to use. (refer to the picture in 3.2 Bosh Architecture의 Modules components)
+Deployment manifest uses Bosh deploy CLI to install the software(servicepack). When installing, it defines the name, version, VMs capacity, Jobs params, and Release (Software packages, Config templates, Scripts) as well as which Stemcell (OS, BOSH agent) to use. (refer to the picture in 3.2 Bosh Architecture의 Modules components)
 
 The contents of the BOSH Deployment Manifest are as follows.
 	Deployment Identification: Information of the deployment name and the UUID of the BOSH Director that manages the deployment
 	Releases Block: Name and version information for each release within the deployment
-	Networks Block: Information of the network configuration
+	Networks Block: Information on the network configuration
 	Resource Pools Block: Properties of virtual machines that you create and manage with BOSH
 	Disk Pools Block: Properties for disks created and managed by BOSH
 	Compilation Block: Virtual Machine Properties Required When Compiling
@@ -1542,7 +1542,7 @@ The contents of the BOSH Deployment Manifest are as follows.
 
 1.	Deployment Identification
 name [String, required]: Name of deployment. A single BOSH Director manages multiple deployments and distinguishes them by their names.
-director_uuid [String, required]:The BOSH CLI must match the UUID of the current target BOSH Director to allow all operations on the deployment. Through the 'bosh status' CLI, you can check the UUID currently targeted by the BOSH Director.
+director_uuid [String, required]: The BOSH CLI must match the UUID of the current target BOSH Director to allow all operations on the deployment. Through the 'bosh status' CLI, you can check the UUID currently targeted by the BOSH Director.
 >![openpaas-servicepack-45]
 
 bosh status CLI
@@ -1552,11 +1552,11 @@ bosh status CLI
 	director_uuid: 8b701af8-d658-48ee-893e-9d299622e332
 
 2.	Releases Block
-releases [Array, required]:Name and version information for each release within the deployment
+releases [Array, required]: Name and version information for each release within the deployment
 name [String, required]: Name used in release
 version [String, required]: The version used by the release. Use the latest version if 'latest' is used
 
-	◎  xample
+	◎  example
 	releases:
 	- {name: redis, version: 12}
 
@@ -1641,7 +1641,7 @@ name [String, required]: network name used in vSphere
 		    cloud_properties:
 		      name: VM Network
 
-Refer :vSphere CPI does not support dynamic or vip networks.
+Refer:vSphere CPI does not support dynamic or vip networks.
 
 ◎ vCloud Example
 Schema 'cloud_properties' used by the manual network subnet
@@ -1659,18 +1659,18 @@ name [String, required]: Name of the network created by the vApp
 	    cloud_properties:
 	      name: VPC_BOSH
 
-Refer :vCloud CPI does not support dynamic or vip networks.
+Refer:vCloud CPI does not support dynamic or vip networks.
 
 4. Resource Pools Block
-resource_pools [Array, required]:Specify the resource pools to be used during deployment and name must be unique if multiple resource pools are used  
+resource_pools [Array, required]: Specify the resource pools to be used during deployment and the name must be unique if multiple resource pools are used  
 Resource pools: Collection of virtual machines created from the same stemcell  
-name [String, required]:Unique resource pool name  
+name [String, required]: Unique resource pool name  
 network [String, required]: Network name declared by Networks block  
-size [Integer, optional]: The number of virtual machines in the resource pool, and if you omit the value, it becomes the total number of jobs instances. Error occurs when the value inputed is lesser than the jobs instance    
+size [Integer, optional]: The number of virtual machines in the resource pool, and if you omit the value, it becomes the total number of job instances. An error occurs when the value input is lesser than the jobs instance    
 stemcell [Hash, required]: stemcell information created in the resource pool virtual machine
 - name [String, required]: stemcell name
 - version [String, required]: stemcell version
-cloud_properties [Hash, required]: Describes a specific properties of IaaS required to create a compilation VM (instance_type, availability_zone)
+cloud_properties [Hash, required]: Describes a specific property of IaaS required to create a compilation VM (instance_type, availability_zone)
 env [Hash, optional]: When calling create_stemcell from the cloud provider interface (CPI), it is a virtual machine environment variable and the env data is available on the BOSH Agents set on the virtual machine. Default is {}
 
 ◎ AWS Example
@@ -1678,7 +1678,7 @@ instance_type [String, required]: Instance type example) m1.small
 availability_zone [String, required]: availability zone to create an instance example) us-east-1a   
 key_name [String, optional]: key pair name. the default key pair name is global CPI within the default_key_name settings example) bosh  
 spot_bid_price [Float, optional]:Bid price in dollars example) 0.03  
-ephemeral_disk [Hash, optional]:EBS backed ephemeral disk of custom size for when instance storage is not large enough or not available for selected instance type
+ephemeral_disk [Hash, optional]: EBS backed ephemeral disk of custom size for when instance storage is not large enough or not available for selected instance type
 - size [Integer, required]: megabytes disk size
 - type [String, optional]: disk type(standard, gp2). Default standard
   - standard stands for EBS magnetic drives
@@ -1696,9 +1696,9 @@ ephemeral_disk [Hash, optional]:EBS backed ephemeral disk of custom size for whe
 
 ◎ OpenStack Example
 instance_type [String, required]: instance type example) m1.small
-availability_zone [String, required]: availability zone to create and instance example) us-east-1a
+availability_zone [String, required]: availability zone to create an instance example) us-east-1a
 key_name [String, optional]: key pair name. the default key pair name is global CPI within the default_key_name settings example) bosh
-scheduler_hints [Hash, optional]:Data passed to the OpenStack Filter scheduler to influence its decision where new VMs can be placed example) { group: af09abf2-2283... }
+scheduler_hints [Hash, optional]: Data passed to the OpenStack Filter scheduler to influence its decision where new VMs can be placed example) { group: af09abf2-2283... }
 
 
 	resource_pools:
@@ -1713,15 +1713,15 @@ scheduler_hints [Hash, optional]:Data passed to the OpenStack Filter scheduler t
 
 ◎ vSphere Example
 cpu [Integer, required]: Number of CPUs  
-ram [Integer, required]:RAM in megabytes  
-disk [Integer, required]:Ephemeral disk size in megabytes.  
-datacenters [Array, optional]:Use an array of datacenters regardless of VM location; it must have one and match the datacenter configured in the global CPI option.  
+ram [Integer, required]: RAM in megabytes  
+disk [Integer, required]: Ephemeral disk size in megabytes.  
+datacenters [Array, optional]: Use an array of datacenters regardless of VM location; it must have one and match the datacenter configured in the global CPI option.  
 -	name [String, required]: Datacenter name  
 -	clusters [Array, required]: Array of clusters available regardless of VM location  
 -	<cluster name> [String, required]: Cluster name  
 -	drs_rulers [Array, optional]: The array of DRS rules is applied to restrict VM placement. Only one exists    
 -	name [String, required]: DRS rule name that Director will create    
--	type [String, required]: DRS rule type. Currently only separate_vms is being provided  
+-	type [String, required]: DRS rule type. Currently, only separate_vms is being provided  
 
 	resource_pools:
 	- name: default
@@ -1736,8 +1736,8 @@ datacenters [Array, optional]:Use an array of datacenters regardless of VM locat
 
 ◎ vCloud Example
 cpu [Integer, required]: Number of CPUs  
-ram [Integer, required]:RAM in megabytes  
-disk [Integer, required]:Ephemeral disk size in megabytes  
+ram [Integer, required]: RAM in megabytes  
+disk [Integer, required]: Ephemeral disk size in megabytes  
 
 	resource_pools:
 	- name: default
@@ -1753,8 +1753,8 @@ disk [Integer, required]:Ephemeral disk size in megabytes
 5. Disk Pools Block
 disk_pools [Array, required]: Specifies the disk pools used during deployment, and if multiple disk pools are used, the name must be a unique identifier  
 disk pools: Logical collection of disks. Created with the same settings    
-name [String, required]:unique disk pool name  
-disk_size [Integer, required]:Specify the disk size and display as an integer value  
+name [String, required]: unique disk pool name  
+disk_size [Integer, required]: Specify the disk size and display it as an integer value  
 cloud_properties [Hash, required]: Specific properties of IaaS required to create disks (type, iops)  
 
 ◎ AWS Example
@@ -1812,7 +1812,7 @@ cloud_properties [Hash, required]: Specific properties of IaaS required to creat
 
 7. Update Block  
 update [Hash, required]: Defines update properties, which control how BOSH updates the job instance during deployment  
-canaries [Integer, required]: number of canary instance  
+canaries [Integer, required]: number of canary instances  
 canary: Update instance to canary instance first and stop deployment in case of error  
 canary_watch_time [Integer or Range, required]: stand by time for the canary instance to perform  
 update_watch_time [Integer or Range, required]: stand by time for a non-canary instance to perform  
@@ -1832,13 +1832,13 @@ templates [Array, required]: job template information of release
 	- name [String, required]: job template name  
 	- release [String, required]: The release name where the job template exists  
 instances [Integer, required]: Number of job instances; each instance is a VM running this particular job  
-resource_pool [String, required]:Resource pool name defined in Resource Pools block    
+resource_pool [String, required]: Resource pool name defined in Resource Pools block    
 networks [Array, required]: defines network  
-	- name [String, required]:Network name defined in Networks block  
+	- name [String, required]: Network name defined in Networks block  
 	- static_ips [Array, optional]: defines IP addresses to use  
 	- default [Array, optional]: Specify network components (DNS, Gateway)
-persistent_disk [Integer, optional]:Defining a Persistent Disk Size  
-update [Hash, optional]: Set up specific updates for job   
+persistent_disk [Integer, optional]: Defining a Persistent Disk Size  
+update [Hash, optional]: Set up specific updates for the job   
 properties [Hash, optional]: Specify job properties  
 
 ◎ Example
@@ -1863,7 +1863,7 @@ properties [Hash, optional]: Specify job properties
 9. Properties Block
 Describe global properties and general configuration information  
 Global properties are available without restriction  
-  - Passwords, Account names, Shared secrets, Host names, IP addresses, Port numbers, max_connections , etc.
+  - Passwords, Account names, Shared secrets, Hostnames, IP addresses, port numbers, max_connections, etc.
 
 ◎ Example
 	properties:
@@ -1871,8 +1871,8 @@ Global properties are available without restriction
 	    max_connections: 10
 
 ### <a name="41"/>5. Deploy Guide
-To deploy software through the BOSH deployment CLI, the system cell and release to be used in deployment manifestyml must be uploaded first, and the deployment manifestyml file must be written. 
-Check if the stemcell and release is uploaded properly. The BOSH CLI to check is ‘bosh stemcells’ and ‘bosh releases’.
+To deploy software through the BOSH deployment CLI, the system cell and release to be used in the deployment manifestyml must be uploaded first, and the deployment manifestyml file must be written. 
+Check if the stemcell and release are uploaded properly. The BOSH CLI to check is ‘bosh stemcells’ and ‘bosh releases’.
 Provides the bosh deploy CLI command which deploys Software(servicepack software). 
 
 Proceed to deployment with the procedures below.

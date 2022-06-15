@@ -29,24 +29,19 @@
     * [5.2. Provide GitHub URL](#52) 
 
 
-# <a name="1"/>1. 문서 개요
+# <a name="1"/>1. Document Outline
 
-### <a name="11"/>1.1. 목적
+### <a name="11"/>1.1. Purpose
 
-본 문서(개발가이드\_빌드팩)는 개방형 클라우드 플랫폼 프로젝트의 빌드팩
-개발 표준을 가이드하는 문서로써, 빌드팩 아키텍처부터 테스트까지의 내용을
-포함하고 있다.
+This document (Development Guide\_Buildpack) guides the build pack development standards for open cloud platform projects and includes the contents from build pack architecture to testing.
 
-본 가이드 문서를 통해 빌드팩에 대한 이해도를 높여, 빌드팩 개발의
-효율성과 유지보수성을 향상시키고자 한다. 또한 제시된 표준에 따라 개발된
-빌드팩은 개방형 클라우드 플랫폼에서의 기능성(Functionality)과
-통합성(Integrability)를 보장한다.
+This guide provides a better understanding of the build pack and provides a better understanding of the build pack development.
+It aims to improve efficiency and maintenance. In addition, the build packs developed according to the presented standards ensure functionality and integrity in open cloud platforms.
 
-### <a name="12"/>1.2. 범위
-본 문서의 범위는 개방형 클라우드 플랫폼 프로젝트와 관련된 빌드팩 개발에
-대한 내용으로 한정하며, 기타 오픈소스 도입의 경우 예외를 둔다.
+### <a name="12"/>1.2. Range
+The range of this document is limited to the development of buildpacks related to open cloud platform projects, and exceptions are made for other open source introduction.
 
-### <a name="13"/>1.3. 참고자료
+### <a name="13"/>1.3. References
 -   [***https://github.com/cloudfoundry/java-buildpack/blob/master/docs/extending.md***](https://github.com/cloudfoundry/java-buildpack/blob/master/docs/extending.md)
 
 -   [***http://blog.cloudfoundry.org/2013/09/06/introducing-the-cloud-foundry-java-buildpack/***](http://blog.cloudfoundry.org/2013/09/06/introducing-the-cloud-foundry-java-buildpack/)
@@ -59,7 +54,7 @@
 
 -   [***https://github.com/cloudfoundry-incubator/buildpack-packager***](https://github.com/cloudfoundry-incubator/buildpack-packager)
 
-# <a name="2"/>2. 빌드팩 개요
+# <a name="2"/>2. Buildpack Outline
 어플리케이션은 다양한 언어, 프레임워크를 사용하여 개발된다. 빌드팩은
 이처럼 다양한 환경에서 개발된 어플리케이션이 개방형 클라우드 플랫폼에서
 구동될 수 있게 지원하는 역할을 한다. 빌드팩은 어플리케이션 배포 시,

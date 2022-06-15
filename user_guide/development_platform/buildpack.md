@@ -55,13 +55,12 @@ The range of this document is limited to the development of buildpacks related t
 -   [***https://github.com/cloudfoundry-incubator/buildpack-packager***](https://github.com/cloudfoundry-incubator/buildpack-packager)
 
 # <a name="2"/>2. Buildpack Outline
-어플리케이션은 다양한 언어, 프레임워크를 사용하여 개발된다. 빌드팩은
-이처럼 다양한 환경에서 개발된 어플리케이션이 개방형 클라우드 플랫폼에서
-구동될 수 있게 지원하는 역할을 한다. 빌드팩은 어플리케이션 배포 시,
-자동으로 검출되거나 직접 지정하여 사용할 수 있다. 본 장에서는 사용되는
-용어들을 정의하고, 빌드팩 아키텍처를 설명한다.
+Applications are developed using various languages and frameworks. 
+Buildpacks play a role in supporting applications developed in these various environments to run on an open cloud platform.   
+The buildpack may be automatically detected or directly designated when deploying an application.  
+This chapter defines the terms used and describes the build pack architecture.
 
-### <a name="21"/>2.1. 어플리케이션 배포 프로세스
+### <a name="21"/>2.1. Application Deployment Process
 
 ![그림 2-1 개방형 클라우드 플랫폼에서의 어플리케이션 배포 프로세스][buildpack_develope_guide_01]
 

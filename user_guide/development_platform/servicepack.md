@@ -1218,7 +1218,7 @@ It is specified in the https://bosh.io/docs/create-release.html#dev-release-rele
 ###### <a name="35"/>3.4.1.3. spec
 The meter information of the package to be installed are provided such as name, dependencies, and installation file information.
 
-◎ spec sile explanation
+◎ spec file explanation
 1	name: package name  
 2	dependencies: (option) Define a list of other packages that depend on the package  
 3	files: defines a list of files in a package, or a list of files by explicit or pattern matching   
@@ -1261,8 +1261,8 @@ The template file that drives and stops the installed package and configures the
 
 ◎ control script explanation : *.erb file
 1	It includes a start and a stop command.
-2	관련 job에 대한 templates 디렉토리에 ERb template 형식으로 구성한다. (Configuring with shell script)
-3	각 job 에 대해 “/var/vcap/sys/log/JOB_NAME” 안에 로그 작업을 구성하는 제어 스크립트를 만든다.
+2	Configure in ERb template format in the templates directory for related jobs. (Configuring with shell script)
+3	For each job, create a control script that configures log operations in “/var/vcap/sys/log/JOB_NAME”.
 
 	◎ Example mariadb_ctl.erb
 	!/bin/bash -e
@@ -1414,11 +1414,11 @@ The template file that drives and stops the installed package and configures the
 	esac
 
 ###### <a name="38"/>3.4.2.2. monit
-배포 된 release 에서 BOSH Agent가 job VM에서 실행된다. BOSH는 차례로 제어 스크립트의 명령을 실행하여 에이전트와 통신한다. Agent는 Monit 라는 오픈 소스 process 모니터링 software 를 사용한다.
+In the deployed release, the BOSH Agent runs on the job VM. The BOSH in turn communicates with the agent by executing commands from the control script. The Agent uses an open source process monitoring software called Monit.
 
-◎ monit 파일 설명
-1	작업 프로세스 ID (PID) 파일을 지정한다.
-2	job이 vcap 그룹에 속하도록 지정
+◎ monit file explanation
+1	Specify the Job Process ID (PID) file.
+2	Specify to let the job belog to vcap group
 
 	◎ Example mariadb monit file
 	check process mariadb_ctrl-executable
@@ -1442,17 +1442,17 @@ The template file that drives and stops the installed package and configures the
 	  group vcap
 
 ###### <a name="38"/>3.4.2.3. spec
-설치할 job 의 메타 정보인 이름, templates 및 설정 properties 정보가 제공된다.
+The meter information of the package to be installed are provided such as name, dependencies, and installation file information.
 
-◎ spec 파일 설명
-1	name: job이름을 정의 
-2	templates: key/value 형식으로 존재
-2.1	각 key는 template 이름
-2.2	각 value는 job VM에 해당 파일의 경로
-2.3	파일 경로는 “/var/vcap/jobs/<job_name>” 디렉토리를 기준으로 함
-2.4	예) bin/mariadb_ctl ->/var/vcap/jobs/<job_name>/bin/ mariadb_ctl
-3	packages: 설치되는 package의 목록
-4	properties: template 파일에서 사용되는 변수들을 정의
+◎ spec file explanation 
+1	name: job name  
+2	templates: Exists in key/value format   
+2.1	Each key is the template name  
+2.2	Each value is the path of the file to the job VM  
+2.3	File path is based on “/var/vcap/jobs/<job_name>” directory  
+2.4	Example) bin/mariadb_ctl ->/var/vcap/jobs/<job_name>/bin/ mariadb_ctl  
+3	packages: list of package being installed
+4	properties: the variables used in the template file
 
 	◎ Example mysql job spec file
 	---
@@ -1526,10 +1526,10 @@ The template file that drives and stops the installed package and configures the
 	
 	
 ### <a name="40"/>4. Deployment Guide
-BOSH Deploymentmanifest 는 components 요소 및 배포의 속성을 정의한YAML  파일이다.
-Deployment manifest 에는 sotfware를 설치 하기 위해서 어떤 Stemcell (OS, BOSH agent) 을 사용할것이며 Release (Software packages, Config templates, Scripts) 이름과 버전, VMs 용량, Jobs params 등을 정의하여 Bosh deploy CLI 을 이용하여 software(여기서는 서비스팩)를 설치 한다. (3.2 Bosh Architecture의 Modules components 그림 참고)
+BOSH Deploymentmanifest is a YAML file that defines the components element and properties of the deployment.
+Deployment manifest uses Bosh deploy CLI to install software(servicepack). When installing, it defines name, version, VMs capacity, Jobs params, and Release (Software packages, Config templates, Scripts) as well as which Stemcell (OS, BOSH agent) to use. (refer to the picture in 3.2 Bosh Architecture의 Modules components)
 
-BOSH Deplyment manifest 의 내용은 아래와 같다.
+The contents of the BOSH Deployment Manifest are as follows.
 	Deployment Identification: 배포 이름과 배포를 관리하는 BOSH Director의 UUID 정보
 	Releases Block: deployment 안의 각 release 의 이름 및 버전 정보
 	Networks Block: 네트워크 구성 정보

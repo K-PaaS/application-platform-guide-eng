@@ -1136,19 +1136,19 @@ Consists of packing, pre_packaging, and spec files related to the installation o
 The packaging file provides a script for installing the software.
 
 ◎ packaging file instruction
-1	Create packaging script file automatically with the “bosh generate package PACKAGE_NAME” command.
-1.1	Example) $ bosh generate package test (Execute in service release)
-1.2	A test package folder is created in the packages folder, and a package, pre_packaging, and spec files are created inside the folder
-1.3	You can create a file manually by creating a directory instead of using the bosh generate package command
-2	At compilation, Bosh receives the source file referenced in the package specification and consists of executable binaries and scripts that require deployment operations.
-3	Include the following contents when writing packing scripts.
-3.1	For Ruby applications, BOSH must install Ruby gems and copy the source files. (RubyGems is the package manager of the Ruby Programming Language, which provides a standard format for distributing ruby programs and libraries.). 
-3.2	For Ruby itself, BOSH must compile the source into binary.
-3.3	For Python applications, BOSH must install Python eggs and copy the source file.
-4	Observe these principles when writing a packaging script.
-4.1	Start the script with "set -e –x". This helps debugging during compilation by immediately scripting termination if an error occurs.
-4.2	Verify if the code for copy, install, or compile (represented by the BOSH_INSTALL_TARGET environment variable) can be generated in the directory to be installed. Use configure or equivalent operation for "make" commands.
-4.3	Ensure that the binaries distributed in the dependencies of the BOSH package specification file are available.
+1	Create packaging script file automatically with the “bosh generate package PACKAGE_NAME” command.  
+1.1	Example) $ bosh generate package test (Execute in service release)  
+1.2	A test package folder is created in the packages folder, and a package, pre_packaging, and spec files are created inside the folder   
+1.3	You can create a file manually by creating a directory instead of using the bosh generate package command   
+2	At compilation, Bosh receives the source file referenced in the package specification and consists of executable binaries and scripts that require deployment operations.   
+3	Include the following contents when writing packing scripts.   
+3.1	For Ruby applications, BOSH must install Ruby gems and copy the source files. (RubyGems is the package manager of the Ruby Programming Language, which provides a standard format for distributing ruby programs and libraries.).    
+3.2	For Ruby itself, BOSH must compile the source into binary.   
+3.3	For Python applications, BOSH must install Python eggs and copy the source file.    
+4	Observe these principles when writing a packaging script.    
+4.1	Start the script with "set -e –x". This helps debugging during compilation by immediately scripting termination if an error occurs.    
+4.2	Verify if the code for copy, install, or compile (represented by the BOSH_INSTALL_TARGET environment variable) can be generated in the directory to be installed. Use configure or equivalent operation for "make" commands.    
+4.3	Ensure that the binaries distributed in the dependencies of the BOSH package specification file are available.    
 
 	◎ Example libyaml packaging script
 	set -e -x

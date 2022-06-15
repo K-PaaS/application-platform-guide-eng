@@ -1195,8 +1195,9 @@ The packaging file provides a script for installing the software.
 	  --without development test
 
 ###### <a name="34"/>3.4.1.2. pre_packaging
-pre_packaging 파일은 software 를 미리 packaging 하는 script 를 제공한다. (옵션)
-bosh document 에서는 pre_packaging 파일의 사용은 권장되지 않으며 이 튜토리얼에서 논의되지 않는다.(Use of the pre_packaging file is not recommended, and is not discussed in this tutorial.) https://bosh.io/docs/create-release.html#dev-release-release 문서에 명시되어 있음
+The pre_packaging file provides a script for pre-packaging software. (Option)
+Use of the pre_packaging file is not recommended, and is not discussed in this tutorial. 
+It is specified in the https://bosh.io/docs/create-release.html#dev-release-release document
 
 	◎ mysql-service-broker pre_packaging Sample
 	abort script on any command that exits with a non zero value
@@ -1215,29 +1216,30 @@ bosh document 에서는 pre_packaging 파일의 사용은 권장되지 않으며
 	)
 
 ###### <a name="35"/>3.4.1.3. spec
-설치할 package 의 메터 정보인 이름, dependencies 및 설치 파일 정보가 제공된다.
+The meter information of the package to be installed are provided such as name, dependencies, and installation file information.
 
-◎ spec 파일 설명
-1	name: package 이름을 정의 
-2	dependencies: (옵션) 패키지에 의존하는 다른 패키지의 목록을 정의
-3	files: 패키지에 포함 된 파일의 목록을 정의하거나 명시적 또는 패턴 매칭을 통해 파일 목록을 정의 할 수 있음
-4	패키지 spec 파일을 편집 절차
-4.1	모든 컴파일 시간 종속성을 확인한다. 패키지가 다른 패키지에 의존하는 경우 컴파일시 의존성이 발생한다. (4.2 spec 파일 생성후 dependeny 가 있을 경우에 dependencies 내용을 추가)
-예) dependency 그래프
+◎ spec sile explanation
+1	name: package name  
+2	dependencies: (option) Define a list of other packages that depend on the package  
+3	files: defines a list of files in a package, or a list of files by explicit or pattern matching   
+4	Procedure for editing package spec files  
+4.1	Check all the compilation time dependencies. If the package is depending on the other package, a dependency occurs when compiling. 
+	(4.2 After creating the spec file, add the contents of the dependencies if there is a dependency)
+Example) dependency graph
  
 >![openpaas-servicepack-44]  
-[그림출처]: https://bosh.io/docs/create-release.html
+[picture reference]: https://bosh.io/docs/create-release.html
 
-4.2	“bosh generate package PACKAGE_NAME” 명령어로 spec script file 를 자동생성한다.
-4.2.1	예) $ bosh generate package test (service release 폴더에서 실행)
-4.2.2	packages 폴더 안에 test package 폴더가 생성되고 해당 폴더에 packaging, pre_packaging, spec 파일 생성
-4.2.3	bosh generate package 명령어로 하지 않고 수동으로 디랙토리 생성하여 파일을 만들어도 됨
-4.3	package 가 필요로 하는 모든 파일들을 src 디렉토리에 복사한다. 일반적으로 파일은 소스 코드이다. 만일 pre-compiled software(예: ruby-1.9.3-p484.tar.gz)를 포함하는 경우, pre-compiled binary가 포함 된 압축 파일을 복사한다.
-4.4	spec 파일 작성
-4.4.1	해당 패키지이름(name) 과파일의 이름(files)을 추가
-4.4.2	spec 파일에 어떤 compile-time dependencie의 이름을 추가. 패키지에는 compile-time dependencie가 없는 경우 빈 배열을 나타 내기 위해 []를 사용
-4.4.3	files 부분은 먼저 src 디랙토리에서 해당 파일을 찾고 없을 경우 blobstore 의 blobs 에서 찾는다.
-4.4.4	files 해당 파일이 소스로 구성되어 있을 경우에는 일반적으로 globbing pattern(<package_name>/**/*) 을 사용한다.
+4.2	Create spec script file automatically by using the “bosh generate package PACKAGE_NAME” command.  
+4.2.1	Example) $ bosh generate package test (Execute in service release folder)  
+4.2.2	A test package folder is created in the packages folder, and a package, pre_packaging, and spec files are created inside the folder    
+4.2.3	You can create a file manually by creating a directory instead of using the bosh generate package command    
+4.3	Copy all the files the package needs to the src directory. Typically, a file is a source code. If it contains pre-compiled software (e.g. ruby-1.9.3-p484.tar.gz), copy the compressed file containing the pre-compiled binary.  
+4.4	Create spec file
+4.4.1	Add the package name and file name
+4.4.2	From the spec file, add the name of compile-time dependency. If there is no compile-time dependency in the package, use [] to indicate the empty array  
+4.4.3	First, find the files in the src directory, and if there is none, find them in the blobs of the blobstore.  
+4.4.4	If the file is configured as a source, the globbing pattern(<package_name>/**/*) is typically used.
 
 	◎ Example Ruby package spec file
 	---
@@ -1251,7 +1253,7 @@ bosh document 에서는 pre_packaging 파일의 사용은 권장되지 않으며
 	  - ruby_1.9.3/rubygems-1.8.24.tgz
 	  - ruby_1.9.3/bundler-1.2.1.gem
 
-##### <a name="36"/>3.4.2. jobs 가이드
+##### <a name="36"/>3.4.2. jobs guide
 모든 job은 시작 및 중지하는 방법이 제공되어야 한다. 따라서 제어 스크립트를 작성하고 MONIT 파일을 작성하여해당 실행 되는 jobs(processes)를 모니터링 한다.
 
 ###### <a name="37"/>3.4.2.1. templates

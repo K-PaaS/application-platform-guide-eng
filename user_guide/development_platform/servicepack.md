@@ -1593,7 +1593,7 @@ subnet [String, required]: subnet ID created in AWS
 		- name: default
 		 OpenStack Example
 	'cloud_properties' schema used by Dynamic network or manual network subnets
-	net_id [String, required]: OpenStack에서 생성한 subnet ID. 예) net-b98ab66e-6fae-4c6a-81af-566e630d21d1
+	net_id [String, required]:  subnet ID created in OpenStack example) net-b98ab66e-6fae-4c6a-81af-566e630d21d1
 	security_groups [Array, optional]: security groups applied to network configuration.
 	
 	
@@ -1627,7 +1627,7 @@ subnet [String, required]: subnet ID created in AWS
 
 ◎ vSphere Example
 Schema 'cloud_properties' used by the manual network subnet
-name [String, required]: vSphere 에서 사용하는 network 이름
+name [String, required]: network name used in vSphere
 
 	Example of manual network:
 	
@@ -1662,25 +1662,25 @@ name [String, required]: Name of the network created by the vApp
 Refer :vCloud CPI does not support dynamic or vip networks.
 
 4. Resource Pools Block
-resource_pools [Array, required]:배포시 사용하는 resource pools를 명시하며 여러 개의 resource pools 을 사용할 경우 name 은 unique 해야함
-Resource pools: 같은 stemcell 부터 생성한 가상머신 모음
-name [String, required]:고유한 resource pool 이름
-network [String, required]: Networks block에서 선언한 network 이름
-size [Integer, optional]: resource pool 안의 가상머신 개수이고 이 값을 생략하면 jobs 인스턴스의 총 개수가 된다. 이 값을 넣을 경우 jobs 인스턴스 보다 작으면 에러가 남
-stemcell [Hash, required]: resource pool 가상머신에서 생성한 stemcell 정보
-- name [String, required]: stemcell 이름
-- version [String, required]: stemcell 버전
-cloud_properties [Hash, required]: 컴파일 VM을 만드는 데 필요한 IaaS의 특정 속성을 설명 (instance_type, availability_zone)
-env [Hash, optional]: CPI (cloud provider interface) 에서 create_stemcell 호출할때 가상머신 환경 변수이고 env 데이터는 가상머신에 세팅 되어 있는 BOSH Agents 에서 사용할수 있다. 디폴트는 {}
+resource_pools [Array, required]:Specify the resource pools to be used during deployment and name must be unique if multiple resource pools are used  
+Resource pools: Collection of virtual machines created from the same stemcell  
+name [String, required]:Unique resource pool name  
+network [String, required]: Network name declared by Networks block  
+size [Integer, optional]: The number of virtual machines in the resource pool, and if you omit the value, it becomes the total number of jobs instances. Error occurs when the value inputed is lesser than the jobs instance    
+stemcell [Hash, required]: stemcell information created in the resource pool virtual machine
+- name [String, required]: stemcell name
+- version [String, required]: stemcell version
+cloud_properties [Hash, required]: Describes a specific properties of IaaS required to create a compilation VM (instance_type, availability_zone)
+env [Hash, optional]: When calling create_stemcell from the cloud provider interface (CPI), it is a virtual machine environment variable and the env data is available on the BOSH Agents set on the virtual machine. Default is {}
 
 ◎ AWS Example
-instance_type [String, required]: 인스턴스 종류. 예) m1.small
-availability_zone [String, required]:인스턴스를 생성하기 위한 availability zone 예) us-east-1a
-key_name [String, optional]: key pair 이름. 디폴트 key pair 이름은 global CPI 설정안의 default_key_name 예) bosh
-spot_bid_price [Float, optional]:Bid price in dollars 예) 0.03
+instance_type [String, required]: Instance type example) m1.small   
+availability_zone [String, required]: availability zone to create an instance example) us-east-1a   
+key_name [String, optional]: key pair name. the default key pair name is global CPI within the default_key_name settings example) bosh  
+spot_bid_price [Float, optional]:Bid price in dollars example) 0.03  
 ephemeral_disk [Hash, optional]:EBS backed ephemeral disk of custom size for when instance storage is not large enough or not available for selected instance type
-- size [Integer, required]: megabytes 디스크 사이즈
-- type [String, optional]: 디스크 타입(standard, gp2). 디폴트 standard
+- size [Integer, required]: megabytes disk size
+- type [String, optional]: disk type(standard, gp2). Default standard
   - standard stands for EBS magnetic drives
   - gp2 stands for EBS general purpose drives (SSD)
 
@@ -1695,10 +1695,10 @@ ephemeral_disk [Hash, optional]:EBS backed ephemeral disk of custom size for whe
 	    availability_zone: us-east-1a
 
 ◎ OpenStack Example
-instance_type [String, required]: 인스턴스 종류 예) m1.small
-availability_zone [String, required]:인스턴스를 생성하기 위한 availability zone 예) us-east-1a
-key_name [String, optional]: key pair 이름. 디폴트 key pair 이름은 global CPI 설정안의 default_key_name 예) bosh
-scheduler_hints [Hash, optional]:Data passed to the OpenStack Filter scheduler to influence its decision where new VMs can be placed 예) { group: af09abf2-2283... }
+instance_type [String, required]: instance type example) m1.small
+availability_zone [String, required]: availability zone to create and instance example) us-east-1a
+key_name [String, optional]: key pair name. the default key pair name is global CPI within the default_key_name settings example) bosh
+scheduler_hints [Hash, optional]:Data passed to the OpenStack Filter scheduler to influence its decision where new VMs can be placed example) { group: af09abf2-2283... }
 
 
 	resource_pools:
@@ -1712,16 +1712,16 @@ scheduler_hints [Hash, optional]:Data passed to the OpenStack Filter scheduler t
 	    availability_zone: us-east-1a
 
 ◎ vSphere Example
-cpu [Integer, required]: CPUs 수
-ram [Integer, required]:RAM in megabytes
-disk [Integer, required]:Ephemeral disk size in megabytes.
-datacenters [Array, optional]:datacenters의 배열을 VM 위치에 상관 없이 사용. 하나를 가지고 있어야하며 글로벌 CPI 옵션에 구성된 데이터 센터와 일치해야한다.
--	name [String, required]: Datacenter 이름
--	clusters [Array, required]: clusters의 배열을 VM 위치에 상관 없이 사용 가능
--	<cluster name> [String, required]: Cluster 이름
--	drs_rulers [Array, optional]: DRS 규칙의 배열은 VM 배치를 제한하기 위해 적용.하나만 존재
--	name [String, required]: Director 가 만들 DRS 규칙 이름
--	type [String, required]: DRS rule종류. 현재는separate_vms 만 제공
+cpu [Integer, required]: Number of CPUs  
+ram [Integer, required]:RAM in megabytes  
+disk [Integer, required]:Ephemeral disk size in megabytes.  
+datacenters [Array, optional]:Use an array of datacenters regardless of VM location; it must have one and match the datacenter configured in the global CPI option.  
+-	name [String, required]: Datacenter name  
+-	clusters [Array, required]: Array of clusters available regardless of VM location  
+-	<cluster name> [String, required]: Cluster name  
+-	drs_rulers [Array, optional]: The array of DRS rules is applied to restrict VM placement. Only one exists    
+-	name [String, required]: DRS rule name that Director will create    
+-	type [String, required]: DRS rule type. Currently only separate_vms is being provided  
 
 	resource_pools:
 	- name: default
@@ -1735,9 +1735,9 @@ datacenters [Array, optional]:datacenters의 배열을 VM 위치에 상관 없�
 	    disk: 10_240
 
 ◎ vCloud Example
-cpu [Integer, required]: CPUs 수
-ram [Integer, required]:RAM in megabytes
-disk [Integer, required]:Ephemeral disk size in megabytes
+cpu [Integer, required]: Number of CPUs  
+ram [Integer, required]:RAM in megabytes  
+disk [Integer, required]:Ephemeral disk size in megabytes  
 
 	resource_pools:
 	- name: default
@@ -1751,17 +1751,17 @@ disk [Integer, required]:Ephemeral disk size in megabytes
 	    disk: 10_240
 
 5. Disk Pools Block
-disk_pools [Array, required]: 배포시 사용하는 disk pools를 명시하며 여러 개의 disk pools 을 사용할 경우 name 은 고유 식별자이어야 함
-disk pools: disk의 논리적 모음. 같은 설정으로 생성됨
-name [String, required]:고유한 disk pool 이름
-disk_size [Integer, required]:disk 사이즈 명시하며 integer 값으로 표시
-cloud_properties [Hash, required]: disk 를 만드는 데 필요한 IaaS의 특정 속성 (type, iops)
+disk_pools [Array, required]: Specifies the disk pools used during deployment, and if multiple disk pools are used, the name must be a unique identifier  
+disk pools: Logical collection of disks. Created with the same settings    
+name [String, required]:unique disk pool name  
+disk_size [Integer, required]:Specify the disk size and display as an integer value  
+cloud_properties [Hash, required]: Specific properties of IaaS required to create disks (type, iops)  
 
 ◎ AWS Example
-	type [String, optional]: disk 종류(standard, gp2). 디폴트는 standard
-	- standard stands for EBS magnetic drives
-	- gp2 stands for EBS general purpose drives (SSD)
-	encrypted [Boolean, optional]: 이 영구 디스크에 대한 EBS 볼륨 암호화를 켠다. root 및 임시 디스크는 암호화 되지 않는다. 디폴트는 false.
+	type [String, optional]: disk type(standard, gp2). default is standard  
+	- standard stands for EBS magnetic drives  
+	- gp2 stands for EBS general purpose drives (SSD)  
+	encrypted [Boolean, optional]: Turns on EBS volume encryption for this persistent disk. Root and temporary disks are not encrypted. The default is false.  
 	
 	disk_pools:
 	- name: default
@@ -1770,7 +1770,7 @@ cloud_properties [Hash, required]: disk 를 만드는 데 필요한 IaaS의 특�
 	    type: m1.small
 
 ◎ OpenStack Example
-	type [String, optional]: OpenStack 설정 볼륨 종류 예) SSD
+	type [String, optional]: OpenStack Settings Volume Type example) SSD
 	
 	disk_pools:
 	- name: default
@@ -1779,7 +1779,7 @@ cloud_properties [Hash, required]: disk 를 만드는 데 필요한 IaaS의 특�
 	    type: SSD
 
 ◎ vSphere Example
-	현재는 disk를 위한 cloud properties 는 제공하지 않음
+	Currently, cloud properties for disks are not provided
 	
 	disk_pools:
 	- name: default
@@ -1787,7 +1787,7 @@ cloud_properties [Hash, required]: disk 를 만드는 데 필요한 IaaS의 특�
 	  cloud_properties: {}
 
 ◎ vCloud Example
-	현재는 disk를 위한 cloud properties 는 제공하지 않음
+	Currently, cloud properties for disks are not provided
 	
 	disk_pools:
 	- name: default
@@ -1795,11 +1795,11 @@ cloud_properties [Hash, required]: disk 를 만드는 데 필요한 IaaS의 특�
 	  cloud_properties: {}
 
 6. Compilation Block
-compilation [Hash, required]: 컴파일시 필요한 가상머신의 속성
-workers [Integer, required]: 컴파일 하는 가상머신의 최대수
-network [String, required]: Networks block에서 선언한 network 이름
-reuse_compilation_vms [Boolean, optional]: false 경우에는 BOSH는 각각의 새로운 패키지 컴파일을위한 새로운 컴파일 VM을 생성하고 편집이 완료되면 VM을 삭제한다. true 경우는 재사용한다. 디폴트는 false
-cloud_properties [Hash, required]: 컴파일 VM을 만드는 데 필요한 IaaS의 특정 속성 (instance_type, availability_zone)
+compilation [Hash, required]: Virtual Machine Properties Required When Compiling  
+workers [Integer, required]: Maximum number of virtual machines to compile  
+network [String, required]: Network name declared by Networks block   
+reuse_compilation_vms [Boolean, optional]: In the case of false, BOSH creates a new compilation VM for each new package compilation and deletes the VM when modifying is completed. In the case of true, reuse it. The default is false  
+cloud_properties [Hash, required]: Specific properties of IaaS required to create a compilation VM (instance_type, availability_zone)   
 
 ◎ Example
 	compilation:
@@ -1810,13 +1810,13 @@ cloud_properties [Hash, required]: 컴파일 VM을 만드는 데 필요한 IaaS�
 	  instance_type: c1.medium
 	  availability_zone: us-east-1c
 
-7. Update Block
-update [Hash, required]: 업데이트 속성을 정의하며 이러한 속성은 BOSH가 배포 중에 작업 인스턴스를 업데이트하는 방법을 제어
-canaries [Integer, required]: canary 인스턴스 수
-canary: canary 인스턴스에 먼서 인스턴스를 업데이트를 수행하고 에러가 날 경우 배포가 중지 됨
-canary_watch_time [Integer or Range, required]: canary 인스턴스가 수행하기 위한 대기 시간
-update_watch_time [Integer or Range, required]: non-canary 인스턴스가 수행하기 위한 대기 시간
-max_in_flight [Integer, required]: non-canary 인스턴스가 병렬로 update 하는 최대 개수
+7. Update Block  
+update [Hash, required]: Defines update properties, which control how BOSH updates the job instance during deployment  
+canaries [Integer, required]: number of canary instance  
+canary: Update instance to canary instance first and stop deployment in case of error  
+canary_watch_time [Integer or Range, required]: stand by time for the canary instance to perform  
+update_watch_time [Integer or Range, required]: stand by time for a non-canary instance to perform  
+max_in_flight [Integer, required]: Maximum number of non-canary instances updating in parallel  
 
 ◎ Example
 	update:
@@ -1826,20 +1826,20 @@ max_in_flight [Integer, required]: non-canary 인스턴스가 병렬로 update �
 	  update_watch_time: 1000-30000
 
 8. Jobs Block
-jobs [Array, required]: BOSH release jobs 과 cloud 인스턴스 사이의 맵핑을 명시하며 Jobs는 BOSH release 에 명시 되어 있고 Jobs block 은 BOSH가 IaaS에 의해 가상 머신을 어떤 방법으로 생성하고 구동하는지를 정의
-name [String, required]: unique 이름
-templates [Array, required]: release 의 job template 정보
-	- name [String, required]: job template 이름
-	- release [String, required]: job template 이 존재하는 release 이름
-instances [Integer, required]: job 인스턴스 개수. 각 인스턴스는이 특정 job을 실행하는 VM
-resource_pool [String, required]:Resource Pools block에 정의한 resource pool 이름
-networks [Array, required]: 네트워크 정의
-	- name [String, required]:Networks block에 정의한 network 이름
-	- static_ips [Array, optional]: 사용할 IP addresses 정의
-	- default [Array, optional]: 네트워크 구성요소 명시(DNS, Gateway)
-persistent_disk [Integer, optional]:영구적 디스크 사이즈 정의
-update [Hash, optional]: 이 job에 대한 특정 업데이트 설정
-properties [Hash, optional]: job 속성을 지정
+jobs [Array, required]: Specifies the mapping between BOSH release jobs and cloud instances, and Jobs is specified in BOSH release, and Jobs block defines how BOSH creates and drives virtual machines by IaaS  
+name [String, required]: unique name   
+templates [Array, required]: job template information of release    
+	- name [String, required]: job template name  
+	- release [String, required]: The release name where the job template exists  
+instances [Integer, required]: Number of job instances; each instance is a VM running this particular job  
+resource_pool [String, required]:Resource pool name defined in Resource Pools block    
+networks [Array, required]: defines network  
+	- name [String, required]:Network name defined in Networks block  
+	- static_ips [Array, optional]: defines IP addresses to use  
+	- default [Array, optional]: Specify network components (DNS, Gateway)
+persistent_disk [Integer, optional]:Defining a Persistent Disk Size  
+update [Hash, optional]: Set up specific updates for job   
+properties [Hash, optional]: Specify job properties  
 
 ◎ Example
 	- name: redis-master
@@ -1861,8 +1861,8 @@ properties [Hash, optional]: job 속성을 지정
 	  - name: default
 
 9. Properties Block
-글로벌 속성과 일반 구성 정보를 설명
-글로벌 속성은 제한 없이 사용가능
+Describe global properties and general configuration information  
+Global properties are available without restriction  
   - Passwords, Account names, Shared secrets, Host names, IP addresses, Port numbers, max_connections , etc.
 
 ◎ Example
@@ -1871,22 +1871,19 @@ properties [Hash, optional]: job 속성을 지정
 	    max_connections: 10
 
 ### <a name="41"/>5. Deploy Guide
-BOSH deploy CLI 로 Software를 배포 하기 위해서 선행조건으로 deployment manifest yml 에서
-사용할 stemcell 과release가 먼저 upload 되어 있어야 하고 deployment manifest yml 파일이 작성 
-되어 있어야 한다. 
-stemcell 과 release 가 upload 되어 있는지 확인한다. 확인하는 BOSH CLI 는 각각 ‘bosh stemcells’, 
-‘bosh releases’ 이다.
-Software(서비스팩 software)를 배포하는 bosh deploy CLI 명령어를 제공한다. 
+To deploy software through the BOSH deployment CLI, the system cell and release to be used in deployment manifestyml must be uploaded first, and the deployment manifestyml file must be written. 
+Check if the stemcell and release is uploaded properly. The BOSH CLI to check is ‘bosh stemcells’ and ‘bosh releases’.
+Provides the bosh deploy CLI command which deploys Software(servicepack software). 
 
-아래의 단계로 배포를 진행한다.
+Proceed to deployment with the procedures below.
 
-1. Deploy 할 deployment manifest 파일을 BOSH 에 지정한다.(bosh deployment CLI)
+1. Save the deployment manifest file to deploy at the BOSH.(bosh deployment CLI)
 >![openpaas-servicepack-46]
  
-2. Software 를 배포한다. (bosh deploy CLI)
+2. Deploy Software. (bosh deploy CLI)
 >![openpaas-servicepack-47]
  
-3. 배포된 Software 를 확인한다. (bosh vms)
+3. Check the deployed software. (bosh vms)
 >![openpaas-servicepack-48]
 
  [openpaas-servicepack-01]:./images/openpaas-servicepack/openpaas-servicepack-01.PNG
@@ -1939,4 +1936,4 @@ Software(서비스팩 software)를 배포하는 bosh deploy CLI 명령어를 제
  [openpaas-servicepack-48]:./images/openpaas-servicepack/openpaas-servicepack-48.png
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Servicepack 개발
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Servicepack Development

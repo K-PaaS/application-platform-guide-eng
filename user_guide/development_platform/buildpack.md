@@ -520,7 +520,7 @@ To support the package, there are two ways to implement packaging and versioning
   end
   ````
 
-1)  Buildpack packager use example 예
+1)  Buildpack packager use example
 
 > Buildpack packager is a buildpack package tool provided by Cloud Foundry.
 > Buildpack-packager is to cache the dependencies of the build pack, not the dependencies of the application.
@@ -620,41 +620,39 @@ To support the package, there are two ways to implement packaging and versioning
 
 # <a name="4"/>4. Buildpack Expansion Guide 
 
-빌드팩 또는 어플리케이션 개발자는 기존의 빌드팩을 수정하여 자신에게 필요한 빌드팩을 만들 수 있다.
-GitHub에는 다양한 어플리케이션 실행환경을 지원하기 위한 다수의 빌드팩 소스가 존재한다.
-본 장에서는 GitHub에 존재하는 빌드팩 중에 몇 가지 예를 들어, 각 빌드팩의 설계, 소스 구조를 설명하고 이를 확장하는 방법을 가이드한다.
+A buildpack or application developer can modify an existing buildpack to create the needed buildpack.
+GitHub has a number of buildpack sources to support various application execution environments.
+This chapter describes the design and source structure of each buildpack by giving examples, among the buildpacks that exist on GitHub, and guides to expand.
 
 ### <a name="41"/>4.1. JAVA Buildpack Expansion 
 
-JAVA 빌드팩은 JVM기반의 어플리케이션 실행환경을 구성하는 데 목적이 있다.
-JAVA 빌드팩은 Containers, Frameworks, JREs 3가지 타입의 표준 컴포넌트들로 설계되어 있다.
-\[표 4-1\]은 JAVA 빌드팩의 표준 컴포넌트 유형과 설명을 나타낸다.
+The JAVA buildpack aims to configure a JVM-based application execution environment.
+The JAVA build pack is designed with three types of standard components: Containers, Frameworks, and JREs.
+\[Table 4-1\] represents the standard component type and description of the JAVA build pack.
 
         Table 4‑1. JAVA Buildpack Standard Components
 
 | Component Type | Description |
 |-------------|-----------------------------------------------------------------------------------------|
-|Container | -   컨테이너는 어플리케이션이 어떻게 실행될지에 대한 방법을 나타내는 컴포넌트이다. 이 유형의 컴포넌트는 어떤 컨테이너를 다운로드 및 사용할지를          결정하고, 플랫폼에서 런타임 시 실행시킬 커맨드를 만드는 데 책임이 있다.<br>-   하나의 컨테이너 컴포넌트만 어플리케이션을 실행할 수 있다. 하나 이상의 컨테이너가 사용된다면 스테이징단계에서 오류가 발생한다.<br> -   컨테이너 유형은 가장 단순하게는Java main() 함수로부터 어플리케이션 서버, 서블릿 컨테이너 등을 포함한다.|
-|Framework | -   프레임워크는 추가적인 동작 또는 어플리케이션이 실행될 때 사용되는 변경사항들을 나타내는 컴포넌트이다. 이 유형의 컴포넌트는 어떤 프레임워크가 필요한지 결정하고, 어플리케이션을 변환하고, 그리고 런타임 시 사용되어야 하는 추가적인 다른 옵션을 제공하는 데 책임이 있다.<br> -   어플리케이션 실행 시 여러 개의 프레임워크 컴포넌트가 사용될 수 있다.<br> -   프레임워크 유형은 서비스 바인드와 자동으로 DataSource를 재설정하기 위해, JDBC jars를 다운로드하는 기능을 포함한다.|
-|Jre | -   Jre는 어플리케이션이 실행될 때 사용되는 JAVA환경을 나타낸다. 이 유형의 컴포넌트는 어떤 jre를 사용하고, 다운로드하고 언팩킹할지 그리고 런타임 시 사용해야 하는 상세화된 jre 옵션들을 해결할 책임이 있다.<br> -  어플리케이션을 실행시키기 위해 하나의 Jre만 사용될 수 있다. 하나 이상의 Jre가 사용된다면 스테이징단계에서 오류가 발생한다.| 
+|Container | -   A container is a component that indicates how the application will be executed. Components of this type are responsible for determining which containers to download and use, and for creating commands to run at runtime on the platform.<br>-   Only one container component may execute the application. If more than one container is used, an error occurs in the staging stage.<br> -   Container types most simply includes application servers, servlet containers, etc., from Java main() functions.|
+|Framework | -   A framework is a component that represents changes used when an additional operation or application is executed. Components of this type are responsible for determining which frameworks are needed, transforming applications, and providing additional other options that should be used at runtime.<br> -   Multiple framework components may be used when executing an application.<br> -   The framework type includes the ability to download JDBC jars, in order to automatically reset the service bind and DataSource.|
+|Jre | -   Jre represents the JAVA environment used when the application is executed. Components of this type are responsible for resolving which jre to use, download and unpack, and the detailed jre options to use at runtime.<br> - Only one Jre may be used to execute the application. If more than one Jre is used, an error occurs in the staging stage.| 
 
-JAVA 빌드팩 개발자는 해당 표준 컴포넌트 유형에 따라 기존에 구현된
-컴포넌트들을 참조하여, 새로운 컴포넌트를 추가할 수 있다. 각각의 유형에
-속하는 컴포넌트 들은 하나의 루비파일 클래스로 구현되어 있다.
+JAVA build pack developers can add new components by referring to previously implemented components according to their standard component type. 
+Components that belongs to ruby file class are implemented as one by type.
 
-### <a name="411"/>4.1.1. 소스구조 
+### <a name="411"/>4.1.1. Source Structure 
 
-JAVA 빌드팩의 모든 기능들은 RUBY로 구현되어 있으며, 새로운 컴포넌트를
-추가하거나 설정사항들을 수정하기 위해서는 JAVA 빌드팩의 소스구조를
-참고해야 한다. \[표 4-2\]는 JAVA 빌드팩의 소스구조와 설명을 나타낸다.
+Components belonging to each type are implemented as one ruby file class. 
+\[Table 4-2\]shows the source structure and description of the JAVA buildpack.
 
-        표 4‑2. JAVA 빌드팩 소스구조
+        Table 4‑2. JAVA Buildpack Source Structure
 
-| 상위 디렉터리 | 하위 디렉터리/ 주요파일 | 설명 |
+| Parent Directory | Subdirectory / Key files | Description |
 |-------------|-----------------------------|-----------|
-|/bin    |detect.rb<br>compile.rb<br>release.rb| 필수기능 스크립트(진입점)를 위한 디렉터리이다.|
-|/congig |components.yml<br>repository.yml<br>tomcat.yml<br>...| 다운로드 할 종속성들의 URL(저장소 위치 및 버전)설정파일들을 위한 디렉터리이다.|
-|/docs   |design.md<br>extending.md<br>...| 소스에 대한 가이드 문서를 위한 디렉터리이다.|
+|/bin    |detect.rb<br>compile.rb<br>release.rb| Directory for required function scripts.|
+|/congig |components.yml<br>repository.yml<br>tomcat.yml<br>...| Directory for URL (storage location and version) settings files of dependencies to be downloaded.|
+|/docs   |design.md<br>extending.md<br>...| The directory for the guide document of the source.|
 |/lib    |java\_buildpack.rb<br>/java\_buildpack<br>/component<br>/container<br>framework<br>jre<br>...| 각 컴포넌트에 대한 detect, compile, release 동작의 실제 구현 소스들을 위한 디렉터리이다.|
 |/rakelib |package.rb<br>... | Rake로 실행시킬, 패키지 모듈을 위한 디렉터리이다. 패키지 기능을 위해 사용된다. |
 |resources |/tomcat/conf<br>context.xml<br>logging.properties<br>server.xml<br>... | 변경 또는 추가할 필요가 있는 리소스들을 위한 디렉터리이다.|

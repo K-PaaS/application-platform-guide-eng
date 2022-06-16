@@ -612,30 +612,27 @@ To support the package, there are two ways to implement packaging and versioning
 
 ### <a name="322"/>3.2.2. Repository 
 
-> 저장소는 빌드팩 컴파일 시 다운로드 하는 다양한 종속성들이 존재하는 공간이다.
-> 저장소는 개방형 클라우드 플랫폼이 설치된 환경에 따라, 외부 또는 내부 네트워크 위치에 구성할 수 있다.
-> 빌드팩은 저장소의 위치를 설정 및 변경할 수 있는 방법을 제공하며, 이러한 저장소 설정관련 부분은 빌드팩 소스마다 다르다.
-> 해당 설정방법에 대해서는 4.빌드팩 확장 가이드에서 상세히 다룬다.
-> 단, Build-packager를 사용하는 빌드팩(e.g.ruby)의 경우, 앞서 패키지에서 설명한 manifest.yml 파일의 dependencies:uri 항목에 다운로드 할 저장소 위치 및 라이브러리 정보를 작성한다.
+> Storage is a space where various dependencies exists that are downloaded when compiling a buildpack.
+> The storage may be configured at an external or internal network location depending on the environment in which the open cloud platform is installed.
+> Buildpack provides a way to set and modify the location of a repository, and these storage settings are specific to each build pack source.
+> The corresponding setup method will be covered in detail in the 4. Build Pack Expansion Guide..
+> However, in the case of build packs (e.g.ruby) using Build-packager, write the storage location and library information to be downloaded in the dependencies:uri item of the manifest.yml file described in the package.
 
-# <a name="4"/>4. 빌드팩 확장 가이드 
+# <a name="4"/>4. Buildpack Expansion Guide 
 
-빌드팩 또는 어플리케이션 개발자는 기존의 빌드팩을 수정하여 자신에게
-필요한 빌드팩을 만들 수 있다. GitHub에는 다양한 어플리케이션 실행환경을
-지원하기 위한 다수의 빌드팩 소스가 존재한다. 본 장에서는 GitHub에
-존재하는 빌드팩 중에 몇 가지 예를 들어, 각 빌드팩의 설계, 소스 구조를
-설명하고 이를 확장하는 방법을 가이드한다.
+빌드팩 또는 어플리케이션 개발자는 기존의 빌드팩을 수정하여 자신에게 필요한 빌드팩을 만들 수 있다.
+GitHub에는 다양한 어플리케이션 실행환경을 지원하기 위한 다수의 빌드팩 소스가 존재한다.
+본 장에서는 GitHub에 존재하는 빌드팩 중에 몇 가지 예를 들어, 각 빌드팩의 설계, 소스 구조를 설명하고 이를 확장하는 방법을 가이드한다.
 
-### <a name="41"/>4.1. JAVA 빌드팩 확장 
+### <a name="41"/>4.1. JAVA Buildpack Expansion 
 
 JAVA 빌드팩은 JVM기반의 어플리케이션 실행환경을 구성하는 데 목적이 있다.
-JAVA 빌드팩은 Containers, Frameworks, JREs 3가지 타입의 표준
-컴포넌트들로 설계되어 있다. \[표 4-1\]은 JAVA 빌드팩의 표준 컴포넌트
-유형과 설명을 나타낸다.
+JAVA 빌드팩은 Containers, Frameworks, JREs 3가지 타입의 표준 컴포넌트들로 설계되어 있다.
+\[표 4-1\]은 JAVA 빌드팩의 표준 컴포넌트 유형과 설명을 나타낸다.
 
-        표 4‑1. JAVA 빌드팩 표준 컴포넌트
+        Table 4‑1. JAVA Buildpack Standard Components
 
-| 컴포넌트 유형 | 설명 |
+| Component Type | Description |
 |-------------|-----------------------------------------------------------------------------------------|
 |Container | -   컨테이너는 어플리케이션이 어떻게 실행될지에 대한 방법을 나타내는 컴포넌트이다. 이 유형의 컴포넌트는 어떤 컨테이너를 다운로드 및 사용할지를          결정하고, 플랫폼에서 런타임 시 실행시킬 커맨드를 만드는 데 책임이 있다.<br>-   하나의 컨테이너 컴포넌트만 어플리케이션을 실행할 수 있다. 하나 이상의 컨테이너가 사용된다면 스테이징단계에서 오류가 발생한다.<br> -   컨테이너 유형은 가장 단순하게는Java main() 함수로부터 어플리케이션 서버, 서블릿 컨테이너 등을 포함한다.|
 |Framework | -   프레임워크는 추가적인 동작 또는 어플리케이션이 실행될 때 사용되는 변경사항들을 나타내는 컴포넌트이다. 이 유형의 컴포넌트는 어떤 프레임워크가 필요한지 결정하고, 어플리케이션을 변환하고, 그리고 런타임 시 사용되어야 하는 추가적인 다른 옵션을 제공하는 데 책임이 있다.<br> -   어플리케이션 실행 시 여러 개의 프레임워크 컴포넌트가 사용될 수 있다.<br> -   프레임워크 유형은 서비스 바인드와 자동으로 DataSource를 재설정하기 위해, JDBC jars를 다운로드하는 기능을 포함한다.|

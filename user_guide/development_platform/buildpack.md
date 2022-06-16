@@ -74,7 +74,7 @@ Each step performs the following:
 
 -   **Upload:** Uploads application source file or packaging files at the platform.
 
--   **Stage:** Executes buildpack and configures an application run time environment at the platform.
+-   **Stage:** Executes buildpack and configures an application runtime environment at the platform.
 
 -   **Start:** The stage runs the completed application.
 
@@ -106,9 +106,10 @@ Prior to the architectural description, several terms used in this document are 
 ````
 
 -   **Droplet:** In an open cloud platform, as an archive file, droplets refer to the result of the stage step. 
-    드롭릿은 개방형 클라우드 플랫폼에서 정의한 파일시스템으로 이루어져 있다.
-    드롭릿은 배포된 어플리케이션 코드뿐만 아니라 스테이지 단계를 거치며 구성된 런타임환경(라이브러리,설정파일, 환경변수, 실행정보 등)의 요소들을 포함하고 있다.
-    다음은 자바 런타임환경이 구성된 드롭릿 파일시스템의 예를 보여준다.
+    Droplet consists of a file system defined by an open cloud platform.
+    Droplets contain elements of the runtime environment (library, configuration file, environment variable, execution information, etc.) that are configured 
+    throughout the stage, as well as deployed application code.
+    The following shows an example of a droplet file system in which a Java runtime environment is configured.
 
   ````
   .
@@ -117,9 +118,9 @@ Prior to the architectural description, several terms used in this document are 
 
     | |-- .java-buildpack
 
-    | | |-- open_jdk_jre \        #설치된 런타임
+    | | |-- open_jdk_jre \        #Installed Runtime
 
-    | | |-- tomcat \                #설치된 웹 컨테이너
+    | | |-- tomcat \                #Installed Web Container
 
     | |-- .java-buildpack.log
 
@@ -136,108 +137,90 @@ Prior to the architectural description, several terms used in this document are 
   |-- tmp
   ````
 
--   **컨테이너(container)**[^3]: 개방형 클라우드 플랫폼은 배포되는
-    어플리케이션들에 각각의 독립된 실행 공간을 제공하며, 이를
-    컨테이너라고 한다. 드롭릿은 스타트 단계에서 컨테이너에 배포된다.
+-   **Container**[^3]: An open cloud platform provides each independent execution space for the applications being deployed, which is called a container.
+    The droplets are distributed to the container in the start step.
 
-### <a name="23"/>2.3. 빌드팩 아키텍처
+### <a name="23"/>2.3. Buildpack Architecture
 
 ![그림2-2 빌드팩 런타임 아키텍처][buildpack_develope_guide_02]
 
-**그림2-2 빌드팩 런타임 아키텍처**
+**Picture 2-2 Buildpack Runtime Architecture**
 
-빌드팩은 어플리케이션 배포 프로세스의 스테이지 단계에서
-실행된다. \[그림 2-2\]는 빌드팩의 아키텍처를 나타낸다.
+The buildpack is executed during the staging of the application deployment process. 
+\[picture 2-2\] shows the buildpack architecture.
 
-빌드팩의 런타임 아키텍처를 상세하게 설명하면 아래와 같다.
+The detailed description of buildpack's runtime architecture is as follows.
 
-1)  개방형 클라우드 플랫폼에 어플리케이션이 배포된다.
+1)  The application gets deployed at the Open Cloud Platform.
 
-2)  빌드팩은 드롭릿을 빌드하기 위해, 개방형 클라우드 플랫폼으로부터
-    3가지 동작을 차례로 요청받는다. 요청받은 검출(detect),
-    컴파일(compile), 릴리즈(release)의 각 동작은 다음과 같은
-    내용을 수행한다.
+2)  The build pack is requested three actions in turn from the open cloud platform to build the droplets. 
+    Each operation of the requested detection, compilation, and release performs the following:  
 
-    -   **검출(detect):** 어플리케이션 소스를 검사하여, 빌드팩의 적용 가능여부를 확인한다.
+    -   **Detect:** Check the application source and check the applicability of the build pack.
 
-    -   **컴파일(compile):** 어플리케이션 구동에 필요한 환경들을 다운로드 하고 설치한다. 특정 디렉터리 위치에 필요한 환경을
-        설치 및 구성하며, 어플리케이션 코드와 구성된 환경을 조립하여 드롭릿을 만들어낸다. 필요한 환경들은 어플리케이션의 개발언어에
-        따라 다르지만, 다음과 같은 요소들을 예로 들 수 있다. (몇 가지 대표하는 이름)
+    -   **Compile:** Download and install the environments necessary to run the application. 
+        It installs and configures the environment required for a specific directory location, and assembles application code and configured environment to create droplets. 
+        The necessary environments vary depending on the development language of the application, but the following factors are exemplified. (Some representative names) 
 
-        -   런타임: JVM, 인터프리터(Ruby, PHP 등)
+        -   Runtime: JVM, Interpreter(Ruby, PHP etc.)
 
-        -   웹 컨테이너: tomcat, jboss 등
+        -   Web Container: tomcat, jboss etc.
 
-        -   라이브러리: 추가적으로 필요한 라이브러리(Java jar, ruby gems[^4],NPM[^5] packages)
+        -   Library: Additional libraries needed(Java jar, ruby gems[^4],NPM[^5] packages)
 
-    -   릴리즈(release): 구성된 런타임환경 실행을 위한 커맨드를 생성하여, 생성된 정보를 개방형 클라우드 플랫폼에 전달한다.
+    -   Release: Generates a command for executing the configured runtime environment and delivers the generated information to the open cloud platform.
 
-3)  만들어진 드롭릿은 컨테이너에 배포된다.
+3)  The generated droplet gets deployed at the container.
 
-스테이지는 결국 빌드팩이 어플리케이션을 실행시키기 위해 “드롭릿”을 “빌드”하는 과정이라고 할 수 있다.
+Stage is eventually the process by which a build pack "builds" a "droplet" to run an application.
 
-### <a name="24"/>2.4. 빌드팩 유형
+### <a name="24"/>2.4. Buildpack Type
 
-빌드팩은 크게 시스템(system)과 사용자정의(customize) 빌드팩 2가지로
-구분할 수 있다. 각 빌드팩의 정의는 다음과 같다.
+Build packs can be largely divided into two types: system and custom build packs. The definition of each build pack is as follows.
 
--   **시스템(system) 빌드팩:** 개방형 클라우드 플랫폼에 설치된
-    빌드팩으로써, 클라우드 플랫폼에서 조회 및 사용 할 수 있다. 단,
-    시스템 빌드팩을 등록/수정하기 위해서는 클라우드 플랫폼에 대한 관리자
-    권한이 있어야 한다.
+-   **System Buildpack:** It is a buildpack installed on an open cloud platform which can be retrieved and used on a cloud platform. 
+    However, in order to register/modify system buildpacks, authentication to the cloud platform is required.
 
--   **사용자정의(customize) 빌드팩:** 개방형 클라우드 플랫폼 외부에
-    존재하는 빌드팩을 의미한다. 보통 GitURL로 제공하여, 어플리케이션
-    배포 시 로드된다. 사용자정의 빌드팩은 새로 개발하는 것과 기존의 것을
-    확장하는 2가지 방법으로 만들어 질 수 있다. 기존의 것을 확장하는 것은
-    GitHub에 존재하는 빌드팩의 오픈소스를 수정하여 만드는
-    것을 말한다.
+-   **Customize Buildpack:** Refers to the buildpack that exists externally on an open cloud platform.
+    It is usually provided as GitURL and loaded when the application is deployed.
+    Custom buildpack can be created in two ways: develop a new buildpack or expand the existing buildpack.
+    Expanding the existing buildpack refers to modifying the open source of the build pack on GitHub.
 
-본 문서에서는 사용자정의 빌드팩 개발을 위한 표준과 방법을 가이드 한다.
-새로운 빌드팩을 개발하기 위해서는 3장에서 제공하는 빌드팩 개발 표준을
-참고 및 준수하여야 한다. 또한 4장에서는 기존의 빌드팩을 확장하는 방법을
-가이드한다.
+This document guides the standards and methods for developing custom buildpack.
+In order to develop a new build pack, reference and compliance with the build pack development standards provided in Chapter 3.
+Chapter 4 guides on how to expand existing buildpack.
 
-# <a name="3"/>3. 빌드팩 개발 가이드 
-빌드팩은 어플리케이션 구동에 필요한 환경(런타임, 컨테이너, 프레임워크
-등)을 조립하고 드롭릿을 구성하는 스크립트의 모음이다. 본 장에서는 새로운
-빌드팩 개발 시 반드시 포함되어야 할 필수 기능에 대해 우선 설명한다. 이후
-특정 상황에서의 필요에 의해 추가적으로 구현 또는 사용 할 수 있는 부가
-기능들에 대해 설명한다.
+# <a name="3"/>3. Buildpack Development Guide 
+A build pack is a collection of scripts that assemble the environment (runtime, container, framework, etc.) necessary to run the application and make up the droplets. 
+This chapter first describes the essential functions that must be included in the development of new build packs. 
+Hereinafter, additional functions that may be implemented or used according to needs in a specific situation will be described.
 
-### <a name="31"/>3.1. 필수 기능 
+### <a name="31"/>3.1. Necessary Functions 
 
-2장의 아키텍처에서 설명한 바와 같이, 빌드팩은 개방형 클라우드 플랫폼의
-요청에 의해 동작한다. 따라서 빌드팩 개발자는 개방형 클라우드 플랫폼과의
-연동을 위해, 검출(Detect), 컴파일(Compile), 릴리즈(Release) 3개의
-스크립트를 필수로 구현해야 한다. 이러한 인터페이스(API)는 쉘스크립트로
-작성하며, 실 동작부분의 개발언어에 대한 제약사항은 없다. 본 절에서는
-가장 단순한 작성 예를 통해 각각의 API에 구현해야 될 동작을 설명한다.
+As described in the architecture of Chapter 2, the build pack operates at the request of an open cloud platform.
+Therefore, buildpack developers must implement three scripts: Detect, Compile, and Release to work with open cloud platforms. 
+These interfaces (API) are written in shell scripts, and there are no restrictions on the development language of the production part. 
+This section describes the operations to be implemented in each API through the simplest example of writing.
 
-### <a name="311"/>3.1.1. 검출 (Detect)  
+### <a name="311"/>3.1.1. Detect  
 
-검출은 배포되는 어플리케이션의 런타임 환경 구성 방법을 빌드팩이 아는지
-여부를 확인하는 기능을 한다. 검출 스크립트에는 빌드팩의 적용
-가능성(스테이지 할 수 있는지)을 검사하는 내용을 작성한다. 빌드팩의 적용
-가능성은 일반적으로 특정 파일의 존재여부로 판단한다.
+Detection functions to check whether the build pack knows how to configure the runtime environment of the deployed application. 
+In the detection script, write the contents to check the applicability of the build pack (if it can be staged). 
+The applicability of the build pack is generally determined by the existence of a specific file.
 
-1)  동작 설명
+1)  Process Description
 
 > \$ bin/detect &lt;BUILD\_DIR&gt;
 >
-> 검출 스크립트를 호출할 때 전달되는 인자 값은, 빌드
-> 디렉터리(BUILD\_DIR)이다. 빌드 디렉터리는 어플리케이션 파일들이 위치한
-> 디렉터리로써, 스크립트는 파일들을 검사하여 빌드팩 적용 여부를
-> 결정한다. 배포하는 어플리케이션이 빌드팩에서 지원하는 유형이라면, ‘0’
-> 종료 값을 리턴한다. 스크립트가 ‘0’을 리턴하면, 검출된 환경의 이름을
-> 사용자에게 출력한다.
+> The factor value passed when calling the detection script is the build directory BUILD\_DIR. 
+> The build directory is the directory where the application files are located, and the script checks the files to determine whether to apply the buildpack.
+> If the application to be deployed is a type supported by the build pack, the end value of '0' is returned.
+> When the script returns '0', it outputs the name of the detected environment to the user.
 
-1)  작성 예
+1)  Write Example 
 
-> 검출 스크립트에는 적용 여부를 판단할 수 있는 “기준”이 제시되어야 한다.
-> 아래는 루비 어플리케이션을 검출하는 예를 보여준다. 예제 스크립트는
-> “**Gemfile**”을 존재여부를 기준으로하여, Ruby 환경을 검출하고
-> 사용자에게 이를 출력한다.
+> The detection script should be presented with "criteria" to determine whether it is applicable.
+> The following shows an example of detecting a ruby application. The example script detects the Ruby environment based on the presence or absence of "**Gemfile**" and outputs it to the user.
 
   ````
   \#!/usr/bin/env ruby
@@ -259,30 +242,25 @@ Prior to the architectural description, several terms used in this document are 
   end
   ````
 
-### <a name="312"/>3.1.2. 컴파일 (Compile)
+### <a name="312"/>3.1.2. Compile
+  
+Compiling is practically a key feature of the build pack that builds droplets.   
+In the compilation script, the contents of downloading and installing the necessary binaries for running the application and placing them in the drop file system are written.  
+Examples of binaries required to run an application include runtime (JRE, Ruby, PHP, Node, etc.), web containers (Tomcat, JBoss, Webrick, etc.).
 
-컴파일은 실질적으로 드롭릿을 빌드하는 빌드팩의 핵심기능이다. 컴파일
-스크립트에는 어플리케이션 구동 시 필요한 바이너리들을 다운로드 및
-설치하고, 이를 드롭릿 파일시스템에 배치시키는 내용을 작성한다.
-어플리케이션 구동에 필요한 바이너리들의 예로는 런타임(JRE, Ruby, PHP,
-Node 등), 웹컨테이너(Tomcat, JBoss, Webrick 등)가 있다.
-
-1)  동작 설명
+1)  Process Description  
 
 > \$ bin/compile &lt;BUILD\_DIR&gt; &lt;CACHE\_DIR&gt;
 >
-> 컴파일 스크립트를 호출할 때 전달되는 인자 값 2개는, 빌드
-> 디렉터리(BUILD\_DIR)와 캐시 디렉터리(CACHE\_DIR)이다. 캐시 디렉터리는
-> 빌드팩 컴파일 프로세스 동안 다운로드 하는 종속성들을 임시로 저장하는데
-> 사용 할 수 있다. 스크립트 실행 중 사용자에게 컴파일 과정을 출력한다.
+> The two factor values passed when calling a compilation script are the build directory (BUILD\_DIR) and the cache directory (CACHE\_DIR). 
+> The cash directory can be used to temporarily as store dependencies that are downloaded during the buildpack compilation process.
+> The compilation process is output to the user during the execution of the script.
 
-1)  작성 예
+1)  Write Example
 
-> 컴파일 스크립트는 빌드팩과 어플리케이션이 구동 시 필요로 하는 환경에
-> 따라 다양하게 작성될 수 있다. 아래는 컴파일 스크립트의 간단한 작성
-> 예를 보여준다. 해당 스크립트는 Ruby 어플리케이션을 구동시키기 위한
-> 환경을 구성하므로, BUILD\_PATH에 Ruby 인터프리터를 우선 설치하고,
-> 환경설정이나 필요한 바이너리들을 설치하는 등의 내용을 작성한다.
+> 컴파일 스크립트는 빌드팩과 어플리케이션이 구동 시 필요로 하는 환경에 따라 다양하게 작성될 수 있다.
+> 아래는 컴파일 스크립트의 간단한 작성 예를 보여준다.
+> 해당 스크립트는 Ruby 어플리케이션을 구동시키기 위한 환경을 구성하므로, BUILD\_PATH에 Ruby 인터프리터를 우선 설치하고, 환경설정이나 필요한 바이너리들을 설치하는 등의 내용을 작성한다.
 
   ````
   \#!/usr/bin/env ruby

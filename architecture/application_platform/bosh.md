@@ -31,7 +31,7 @@ The stored registry information is used in the Bootstrapping Stage of the VM.
 
 - Cloud Provider Interface (CPI) : An API used by Director to interact with IaaS to create and manage Stemcells, VMs, and disks.
 
-- HHealth Monitor: Monitors the health of VMs using health and lifecycle events received from the Agent.
+- Health Monitor: Monitors the health of VMs using health and lifecycle events received from the Agent.
 When Health Monitor detects a problem with a VM, it can send an alert through the notification plug-in or trigger a Resurrector.
 
   - Resurrector : Health Monitor automatically re-creates the identified VM if it is missing or unresponsive when the Resistor is enabled.

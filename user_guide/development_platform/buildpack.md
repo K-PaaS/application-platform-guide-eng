@@ -253,14 +253,14 @@ Examples of binaries required to run an application include runtime (JRE, Ruby, 
 > \$ bin/compile &lt;BUILD\_DIR&gt; &lt;CACHE\_DIR&gt;
 >
 > The two factor values passed when calling a compilation script are the build directory (BUILD\_DIR) and the cache directory (CACHE\_DIR). 
-> The cash directory can be used to temporarily as store dependencies that are downloaded during the buildpack compilation process.
+> The cache directory can be used to temporarily as store dependencies that are downloaded during the buildpack compilation process.
 > The compilation process is output to the user during the execution of the script.
 
 1)  Write Example
 
-> 컴파일 스크립트는 빌드팩과 어플리케이션이 구동 시 필요로 하는 환경에 따라 다양하게 작성될 수 있다.
-> 아래는 컴파일 스크립트의 간단한 작성 예를 보여준다.
-> 해당 스크립트는 Ruby 어플리케이션을 구동시키기 위한 환경을 구성하므로, BUILD\_PATH에 Ruby 인터프리터를 우선 설치하고, 환경설정이나 필요한 바이너리들을 설치하는 등의 내용을 작성한다.
+> Compilation scripts may be written in various ways according to the environment required for running the buildpack and the application.
+> Below is an example of a simple compilation script.
+> Since the script constitutes an environment for running Ruby applications, it first installs Ruby interpreter in BUILD\_PATH, and writes the contents such as setting the configuration or installing the necessary binaries.
 
   ````
   \#!/usr/bin/env ruby
@@ -281,13 +281,13 @@ Examples of binaries required to run an application include runtime (JRE, Ruby, 
 
         install\_ruby
 
-        \#...중략
+        \#...ellipsis
 
         setup\_language\_pack\_environment
 
         install\_binaries
 
-        \#...중략
+        \#...ellipsis
 
     end
 
@@ -307,19 +307,17 @@ Examples of binaries required to run an application include runtime (JRE, Ruby, 
   
   ````
 
-### <a name="313"/>3.1.3. 릴리즈 (Release) 
+### <a name="313"/>3.1.3. Release 
 
-릴리즈는 어플리케이션 실행방법에 대한 정보를 플랫폼에 응답해주는 기능을
-한다. 릴리즈 스크립트에는 플랫폼에 응답할 정보를 생성하는 내용을
-작성한다.
+The release functions to respond to the platform with information on how to run the application.
+create information to respond to the platform in the release script.
 
-1)  동작 설명
+1)  Process Description
 
 > \$ bin/release &lt;BUILD\_DIR&gt;
 >
-> 릴리즈 스크립트를 호출할 때 전달되는 인자 값은, 빌드
-> 디렉터리(BUILD\_DIR)이다. 실행방법 정보는 반드시 아래와 같은 포맷의
-> YAML로 제공해야 한다.
+> When invoking a release script, the factor value passed is the build directory (BUILD\_DIR).
+> Execution method information must be provided in YAML format as shown below.
 
   ````
   config\_vars:
@@ -330,18 +328,14 @@ Examples of binaries required to run an application include runtime (JRE, Ruby, 
 
     web: commandLine
   ````
+In config\_vars, environment variables to be provided as options are written, and those environment variables refer to variables to be defined in the environment in which the application is executed.
+> The default\_process\_types creates the type of application to be executed and the command line to be used when executing it. 
+> Currently, only web application types are supported.
 
-> config\_vars에는 옵션으로 제공 할 환경변수들을 작성하며, 해당
-> 환경변수들은 어플리케이션이 실행되는 환경에서 정의될 변수들을
-> 의미한다. default\_process\_types는 실행될 어플리케이션의 유형과
-> 실행시킬 때 사용할 명령행을 작성한다. 현재는 웹 어플리케이션 유형만을
-> 지원한다.
+1)  Write Example
 
-1)  작성 예
-
-> 아래는 릴리즈 스크립트에 작성된 응답정보의 예를 보여준다. 해당
-> 응답정보는 Rack[^6] 어플리케이션에서 필요한 환경변수와 실행하는 방법을
-> 포함하고 있으며, 개방형 클라우드 플랫폼에 전달된다.
+> Below is an example of response information written in a release script.
+> The response information includes the required environmental variables and how to execute them in the Rack[^6] application, and is delivered to the open cloud platform.
 
   ````
   config\_vars:
@@ -353,45 +347,33 @@ Examples of binaries required to run an application include runtime (JRE, Ruby, 
     web: bundle exec rackup config.ru -p \$PORT
   ````
 
-### <a name="32"/>3.2. 부가 기능 
+### <a name="32"/>3.2. Additional function 
 
-빌드팩은 컴파일 시, 어플리케이션 구동을 위해 필요한 종속성들(바이너리나
-라이브러리 등)을 설치한다. 기본적으로 빌드팩은 이러한 종속성을
-네트워크를 통해 다운로드하기 때문에, 네트워크가 단절된 환경에서의 사용에
-제약이 있다. 따라서 빌드팩 개발 시, 개방형 클라우드 플랫폼이 설치되는
-환경에 대해서도 고려할 필요가 있다. 본 절에서는 빌드팩의 종속성 관리와
-관련이 있는 패키지와 저장소 기능에 대해 설명한다.
+When compiling, the build pack installs dependencies (such as binaries or libraries) necessary to drive applications.  
+In using a network-disconnected environment has limitation because build packs download these dependencies through the network.
+Therefore, when developing a buildpack, it is necessary to consider an environment in which an open cloud platform is installed. 
+This section describes the package and storage capabilities associated with managing dependencies in buildpacks.
 
-### <a name="321"/>3.2.1. 패키지 (Package) 
+### <a name="321"/>3.2.1. Package 
 
-패키지는 빌드팩을 하나의 압축파일로 만드는 기능 혹은 압축파일 자체를
-의미한다. 빌드팩 패키지의 목적은 다음 2가지이다. 첫째는 시스템
-빌드팩으로 등록 가능한 형태로 만드는 것이고, 둘째는 네트워크가 단절된
-환경에서 빌드팩 컴파일을 지원하는 것이다. 개발자는 이를 위해, 빌드팩에
-다음과 같은 패키지 기능들을 추가로 구현 할 수 있다.
+Package refers to the function of making a buildpack into a single compressed file or the compressed file itself.
+The purpose of the build pack package is as follows: first is to make it registerable as a system build pack, and the second is to support build pack compilation in a network-disconnected environment. 
+The developer may additionally implement the following package functions on the buildpack.
 
--   **패키징(Packaging) 기능:** 온라인 또는 오프라인 타입으로
-    패키징하는 기능이다. 두 패키지 타입의 차이점은 빌드팩 컴파일 시,
-    네트워크 접속 여부에 있다. 온라인 패키징은 기본요소들만 압축파일로
-    만들기 때문에, 컴파일 시 네트워크에 접속하여 종속성들을
-    다운로드 한다. 반면에, 오프라인 패키지는 네트워크 접속 없이
-    실행되도록 설계된 빌드팩 패키지 버전으로써, 패키지 시 지원하는
-    종속성들을 모두 패키지 안에 포함 시킨다.
+-   **Packaging Function:** It is a function to package online or offline.
+    The difference between the two package types is whether or not the network is connected when compiling the build pack.
+    Online packaging only compiles the basic elements, so when compiling, it accesses the network and downloads dependencies. 
+    On the other hand, an offline package is a version of a build pack package designed to run without network connectivity, and includes all the dependencies supported by the package.
 
--   **버저닝(Versioning) 기능:** 빌드팩 패키징 시, 생성 할 패키지 이름에
-    버전 정보를 추가하는 기능이다.
+-   **Versioning Funcion:** When packaging a buildpack, it is a function of adding version information to the package name to be generated.
 
-패키지를 지원하기 위해서는 패키징과 버저닝 기능을 직접 구현하거나, Cloud
-Foundry에서 제공하는 Buildpack packager어플리케이션을 사용하는 방법
-2가지가 있다.
+To support the package, there are two ways to implement packaging and versioning functions directly, or to use the Buildpack packager application provided by Cloud Foundry.
 
-1)  직접 구현하는 예
+1)  Example of direct implementation
 
-> Cloud Foundry의 JAVA-BUILDPACK은 소스에 포함된 Package모듈을 통해
-> 패키지 기능을 지원한다. 패키지는 bundle exec rake[^7] 명령어를 통해
-> 수행된다. 인자 값으로 OFFLINE=true를 사용하면, 오프라인 패키지를
-> 생성할 수 있고, *VERSION=&lt;VERSION&gt;* 인자 값을 사용하면 패키지
-> 이름에 버전 정보를 추가할 수 있다.
+> Cloud Foundry's JAVA-BUILDPACK supports package functions through the Package module included in the source.
+> The package is performed via the bundle exec rake[^7] command.
+> Offline packages can be created by using OFFLINE=true as factor values, and version information can be added to package names by using *VERSION=&lt;VERSION&gt;* factor values.
 >
 ```` 
 \$ bundle install
@@ -403,11 +385,10 @@ Foundry에서 제공하는 Buildpack packager어플리케이션을 사용하는 
 ````
 \$ Creating build/java-buildpack-offline-2.1.zip
 ````
-> bundle exec rake 명령어는 Rakefile[^8]에 정의된 Package모듈을
-> 순서대로 실행하며, 실행 순서는 다음과 같다. 오프라인 패키지를 만드는
-> 경우, 우선 설정파일들에 정의된 의존성들을 모두 다운로드 한다. 이후
-> cache.yml에 있는 remote\_download값을 disables로 만들고, 패키지.zip
-> 파일을 생성한다. 아래는 Rakefile과 Package 모듈의 일부를 보여준다.
+> The bundle exec rake command executes the package modules defined in the Rakefile [^8] in order, and the execution order is as follows. 
+> When creating offline packages, first download all the dependencies defined in the settings files.
+> Then disable the remote\_download value in cache.yml, and package.Create a zip file.
+> Below is a part of the Rakefile and Package module..
 
   ````
   \#Rakefile
@@ -539,28 +520,26 @@ Foundry에서 제공하는 Buildpack packager어플리케이션을 사용하는 
   end
   ````
 
-1)  Buildpack packager 사용 예
+1)  Buildpack packager use example 예
 
-> Buildpack packager는 Cloud Foundry에서 제공하는 빌드팩 패키지
-> 도구이다. buildpack-packager는 어플리케이션의 종속성이 아니라 빌드팩의
-> 종속성을 캐시하는 것이다. 아래는buildpack-packager를 사용하여, RUBY
-> 빌드팩을 패키지 하는 방법이다.
+> Buildpack packager is a buildpack package tool provided by Cloud Foundry.
+> Buildpack-packager is to cache the dependencies of the build pack, not the dependencies of the application.
+> Below is how to package RUBY buildpack use buildpack-packager.
 >
-> \# ruby-buildpack git에서 submodules(compile-extentions)를 fetch 한다.
+> \# Fetch submodules(compile-extentions) from ruby-buildpack git.
 ````
 \$ git submodule update –init
 ````
-> \# 최종 빌드팩 종속성들을 다운로드한다.
+> \# Download the final build pack dependencies.
 ````
 \$ BUNDLE\_GEMFILE=cf.Gemfile bundle
 ````
-> \# buildpack packager를 실행한다.
+> \# Execute buildpack packager.
 ````
 \$ BUNDLE\_GEMFILE=cf.Gemfile bundle exec buildpack-packager \[uncached | cached \]
 ````
-> Buildpack packager는 실행 시 manifest.yml파일을 확인하므로, 해당
-> 파일을 우선 작성해야 한다. 아래는 manifest.yml 파일의 작성 예를
-> 보여준다.
+> The file must be created first because the Buildpack packager checks the manifest.yml file at run time.
+> Below is an example of how to create manifest.yml.
 
   ````
   \#manifest.yml
@@ -618,34 +597,26 @@ Foundry에서 제공하는 Buildpack packager어플리케이션을 사용하는 
     - private.key
   ````
 
--   **language:** 패키지 파일에 사용될 이름을 작성한다.
+-   **language:** Create a name to be used for the package file.
     
 
--   **url\_to\_dependency\_map:** 해당 종속성의 이름과 버전을 추출하고
-    맵핑 시키기 위한 정규 표현식의 목록을 작성한다.
+-   **url\_to\_dependency\_map:** Create a list of regular expressions to extract and map the names and versions of the dependencies.
 
--   **dependencies:** 컴파일 시 다운로드 할 리소스들에 대해 name,
-    version, uri, md5, cf\_stacks[^9] 정보를 명시한다. packager는
-    명시된 리소스들을 dependencies 폴더에 다운로드하고 설치한다.
-    dependencies 폴더는 패키지 파일에 포함된다.
+-   **dependencies:** When compiling, specify the name, version, uri, md5, cf\_stacks[^9] information for the resources to be downloaded.
+    The packager downloads and installs the stated resources into the dependencies folder.
+    Dependencies are included in the package folder.
 
-> packager는 manifest.yml의exclude\_files에 명시된 파일들을 제외한
-> 빌드팩 디렉터리의 모든 것을 패키지 파일에 추가한다. cached 옵션으로
-> 실행한 경우, manifest.yml에 명시된 종속성들을 다운로드하고 패키지
-> 파일에 포함한다. 즉 cached 옵션은 오프라인 패키지와 동일한 역할을
-> 한다.
+> The packager adds everything in the build pack directory to the package file, except the files specified in exclude\_files in manifest.yml.
+> If executed with the cached option, download the dependencies specified in manifest.yml and include them in the package file.
+> The cached option plays the same role as the offline package..
 
-### <a name="322"/>3.2.2. 저장소 (Repository) 
+### <a name="322"/>3.2.2. Repository 
 
-> 저장소는 빌드팩 컴파일 시 다운로드 하는 다양한 종속성들이 존재하는
-> 공간이다. 저장소는 개방형 클라우드 플랫폼이 설치된 환경에 따라, 외부
-> 또는 내부 네트워크 위치에 구성할 수 있다. 빌드팩은 저장소의 위치를
-> 설정 및 변경할 수 있는 방법을 제공하며, 이러한 저장소 설정관련 부분은
-> 빌드팩 소스마다 다르다. 해당 설정방법에 대해서는 4.빌드팩 확장
-> 가이드에서 상세히 다룬다. 단, Build-packager를 사용하는 빌드팩(e.g.
-> ruby)의 경우, 앞서 패키지에서 설명한 manifest.yml 파일의
-> dependencies:uri 항목에 다운로드 할 저장소 위치 및 라이브러리 정보를
-> 작성한다.
+> 저장소는 빌드팩 컴파일 시 다운로드 하는 다양한 종속성들이 존재하는 공간이다.
+> 저장소는 개방형 클라우드 플랫폼이 설치된 환경에 따라, 외부 또는 내부 네트워크 위치에 구성할 수 있다.
+> 빌드팩은 저장소의 위치를 설정 및 변경할 수 있는 방법을 제공하며, 이러한 저장소 설정관련 부분은 빌드팩 소스마다 다르다.
+> 해당 설정방법에 대해서는 4.빌드팩 확장 가이드에서 상세히 다룬다.
+> 단, Build-packager를 사용하는 빌드팩(e.g.ruby)의 경우, 앞서 패키지에서 설명한 manifest.yml 파일의 dependencies:uri 항목에 다운로드 할 저장소 위치 및 라이브러리 정보를 작성한다.
 
 # <a name="4"/>4. 빌드팩 확장 가이드 
 

@@ -64,42 +64,34 @@ This chapter defines the terms used and describes the build pack architecture.
 
 ![그림 2-1 개방형 클라우드 플랫폼에서의 어플리케이션 배포 프로세스][buildpack_develope_guide_01]
 
-**그림 2-1 개방형 클라우드 플랫폼에서의 어플리케이션 배포 프로세스**
+**Picture 2-1 Application Deployment Process in Open Cloud Platform**
 
-개방형 클라우드 플랫폼에 배포되는 어플리케이션은 크게
-업로드(Upload), 스테이지(Stage), 시작(Start) 3단계의 프로세스를 거쳐
-실행된다. \[그림 2-1\]은 어플리케이션 배포 프로세스를 나타낸다.
+Applications deployed on open cloud platforms are executed through three stages: Upload, Stage, and Start.  
+\[picture 2-1\] shows the deployment process of the application.
 
-사용자가 개방형 클라우드 플랫폼에 어플리케이션 배포를 요청하면, 배포
-프로세스가 시작된다. 각 단계는 다음과 같은 동작을 한다.
+The deployment process starts when the user requests for application deployment to the Open Cloud Platform.  
+Each step performs the following:  
 
--   **업로드(Upload):** 어플리케이션 소스파일들 또는 패키징 파일을
-    플랫폼에 업로드한다.
+-   **Upload:** Uploads application source file or packaging files at the platform.
 
--   **스테이지(Stage):** 빌드팩을 실행하여, 플랫폼에 어플리케이션
-    런타임환경을 구성한다.
+-   **Stage:** Executes buildpack and configures an application run time environment at the platform.
 
--   **스타트(Start):** 스테이지가 완료된 어플리케이션을 구동시킨다.
+-   **Start:** The stage runs the completed application.
 
-어플리케이션이 정상적으로 배포 및 구동되면, URL이 배정된다. 사용자는
-웹브라우저에 해당 URL을 입력하여 어플리케이션 동작을 확인 할 수 있다.
+URL gets assigned when the application deploys and runs normally.
+The user can check the application operation by entering URL in the corresponding web browser.
 
-### <a name="22"/>2.2. 용어 정의
+### <a name="22"/>2.2. Glossary
 
-아키텍처 설명에 앞서, 본 문서에서 사용하는 몇가지 용어들을 정리하면
-다음과 같다.
+Prior to the architectural description, several terms used in this document are summarized as follows.
 
--   **어플리케이션(application)**: 개방형 클라우드 플랫폼에서
-    어플리케이션은 배포의 단위이다. 즉, 소스코드 또는 패키징된 형태(예를
-    들면, .war)의 파일과 배포 시 사용할 부가정보(meta)들을 정의한 파일의
-    조합을 의미한다.
+-   **Application**: In an open cloud platform, an application is a unit of deployment. 
+    Which is, source code or packaged form (e.g.War) refers to a combination of a file and a file defining additional information (meta) to be used during deployment.
 
--   **매니페스트(manifest)**[^1]: 개방형 클라우드 플랫폼에서
-    매니페스트는 배포 부가정보(meta)들을 정의 한 파일로써,
-    어플리케이션의 요소이다. YAML[^2] 형식으로 작성하며, 기본적으로
-    사용하는 파일명은 manifest.yml이다. 배포 부가정보로는 어플리케이션
-    이름, 메모리, 인스턴스 개수 등이 포함된다. 다음은 배포할 test-app에
-    대한 manifest.yml의 예를 보여준다.
+-   **Manifest**[^1]: In an open cloud platform, manifest is an element of an application as a file defining deployment's additional information (meta).
+    It is written in YAML[^2] form, as the default file name is manifest.yml. 
+    The deployment's additional information includes an application name, memory, and the number of instances..
+    Below shows an example of manifest.yml for test-app to deploy.
 
  ````
   applications:
@@ -113,13 +105,10 @@ This chapter defines the terms used and describes the build pack architecture.
      path: ./test-app/build/libs/test-app.war
 ````
 
--   **드롭릿(droplet):** 개방형 클라우드 플랫폼에서
-    드롭릿은 아카이브(archive) 파일로써, 스테이지 단계의
-    결과물을 지칭한다. 드롭릿은 개방형 클라우드 플랫폼에서 정의한
-    파일시스템으로 이루어져 있다. 드롭릿은 배포된 어플리케이션 코드뿐만
-    아니라 스테이지 단계를 거치며 구성된 런타임환경(라이브러리,
-    설정파일, 환경변수, 실행정보 등)의 요소들을 포함하고 있다. 다음은
-    자바 런타임환경이 구성된 드롭릿 파일시스템의 예를 보여준다.
+-   **Droplet:** In an open cloud platform, as an archive file, droplets refer to the result of the stage step. 
+    드롭릿은 개방형 클라우드 플랫폼에서 정의한 파일시스템으로 이루어져 있다.
+    드롭릿은 배포된 어플리케이션 코드뿐만 아니라 스테이지 단계를 거치며 구성된 런타임환경(라이브러리,설정파일, 환경변수, 실행정보 등)의 요소들을 포함하고 있다.
+    다음은 자바 런타임환경이 구성된 드롭릿 파일시스템의 예를 보여준다.
 
   ````
   .

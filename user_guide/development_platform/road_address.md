@@ -46,24 +46,24 @@
      
      
      
-# <a name="1"/>1. 개요
+# <a name="1"/>1. Outline
 
-### <a name="2"/>1.1. 문서 개요
+### <a name="2"/>1.1. Document Outline
 
-##### <a name="3"/>1.1.1. 목적
-전자정부 프레임워크에서 사용자의 편의를 위해 제공하는 “공통 컴포넌트”를 서비스형태로 제공하기 위해 일부 컴포넌트를 서비스화해서 API 플랫폼과 연계하는 방법을 제시합니다.
+##### <a name="3"/>1.1.1. Purpose
+To provide "common components" as a service in the e-government framework for user convenience, we present ways to service some components and link them with API platforms.
 
-##### <a name="4"/>1.1.2. 범위
-전자정부 프레임워크의 공통 컴포넌트 중 “도로명 주소 검색”기능을 자체 DB로 구축합니다. 데이터는 도로명 주소 안내시스템([***http://www.juso.go.kr***](http://www.juso.go.kr))에서 제공하는 정보를 이용하며 도로명 주소 서비스 Open API의 스펙을 그대로 활용하여 제작합니다. 이렇게 만들어진 API를 인증, 관리하기 위해 API 플랫폼을 활용합니다. 
+##### <a name="4"/>1.1.2. Range
+Build "Road Name Address Search" function among common components of e-Government framework into its own DB. Data is produced using the information provided by the road name address guide system ([***http://www.juso.go.kr***](http://www.juso.go.kr))and using the specifications of the road name address service Open API. The API platform is used to authenticate and manage the API created. 
 
-##### <a name="5"/>1.1.3. 참고 자료
--   [가이드]주소구축(전체주소)활용 방법.pdf’ – 도로명 주소 안내시스템([***http://www.juso.go.kr***](http://www.juso.go.kr)) 에서 다운
--   [가이드]OpenAPI 연계신청 및 활용 방법.pdf’ – 도로명 주소 안내시스템([***http://www.juso.go.kr***](http://www.juso.go.kr)) 에서 다운
+##### <a name="5"/>1.1.3. References
+-   [Guide] Utilization method of making address(full address).pdf’ – Download from Road Name Address Guide System ([***http://www.juso.go.kr***](http://www.juso.go.kr))
+-   [Guide]Utilization Method of OpenAPI Link Application and .pdf’ – Download from Road Name Address Guide System([***http://www.juso.go.kr***](http://www.juso.go.kr))
 -   WSO2 API Manager Document – Getting Started - Quick Start Guide([***https://docs.wso2.com/display/AM180/Quick+Start+Guide***](https://docs.wso2.com/display/AM180/Quick+Start+Guide))
 
 
 
-# <a name="6"/>2. 시스템 구성
+# <a name="6"/>2. System Configuration
 
 ### <a name="7"/>2.1. 시스템 구성도
 도로명 주소 서비스(API)를 만들고 이 서비스를 API 플랫폼에 등록합니다. 그리고 일반 개발자는 도로명 주소 서비스를 “개방형 클라우드 플랫폼”에서 신청하여 사용합니다.

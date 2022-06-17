@@ -514,9 +514,9 @@ Enter the command as shown below for registering the servicepack.
 ````
 $ cf create-service-broker {servicepack name} {servicepack userID} {servicepack user password} http://{servicepack URL}
 ````
-- Servicepack Name : 서비스 팩 관리를 위해 개방형 클라우드 플랫폼에서 보여지는 명칭입니다. 서비스 Marketplace에서는 각각의 API 서비스 명이 보여지니 여기서 명칭은 서비스팩 리스트의 명칭입니다.
-- Servicepack UserID / PW : 서비스팩에 접근할 수 있는 사용자 ID입니다. 서비스팩도 하나의 API 서버이기 때문에 아무나 접근을 허용할 수 없어 접근이 가능한 ID/비밀번호를 입력합니다.
-- Servicepack URL : 서비스팩이 제공하는 API를 사용할 수 있는 URL을 입력합니다.
+- Servicepack Name : Name seen on open cloud platforms for service pack management. Service Marketplace shows each API service name, where the name is the name of the service pack list.
+- Servicepack UserID / PW : User ID that can have access to the servicepack. Enter ID/PW with authorization since the servicepack is also an API server, only a user with authorization can have access.
+- Servicepack URL : Enter the URL where the API provided by the service pack is available.
 
 Servicepack registration has been completed and registered information can be checked as below.
 ````
@@ -525,9 +525,9 @@ Getting service brokers as admin...Cloud Controller
 OK
 
 Name            URL
-{서비스팩 이름}   http://{서비스팩 URL}
+{Servicepack Name}   http://{Servicepack URL}
 ````
-하지만 현재 상태에서는 Marketplace에서 리스트를 확인할 수 없습니다. 이유는 Access할 수 있는 권한이 설정되지 않아서 입니다. 아래와 같이 서비스의 access 권한을 확인할 수 있습니다.
+The list cannot be checked from the Marketplace with the current status because the Access authority is not given yet. The access authority can be checked as shown below.
 ````
 $ cf service-access
 

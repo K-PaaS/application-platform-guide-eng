@@ -356,7 +356,7 @@ This section describes the package and storage capabilities associated with mana
 
 ### <a name="321"/>3.2.1. Package 
 
-Package refers to the function of making a buildpack into a single compressed file or the compressed file itself.
+Package refers to the function of making a buildpack into a single zipped file or the zipped file itself.
 The purpose of the build pack package is as follows: first is to make it registerable as a system build pack, and second is to support build pack compilation in a network-disconnected environment. 
 The developer may additionally implement the following package functions on the buildpack.
 

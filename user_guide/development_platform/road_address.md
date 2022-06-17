@@ -360,64 +360,64 @@ The location of the source will be located on the Git Hub of the "Open Cloud Pla
   </tr>
   <tr>
     <td>DoroJusoDoesNotExistException</td>
-    <td>수정, 삭제시 존재하지 않는 도로명 정보에 대한 오류를 처리하기 위한 Exception입니다.</td>
+    <td>Exception to handle errors in road name information that do not exist when modified or deleted.</td>
   </tr>
   <tr>
     <td>DoroJusoException</td>
-    <td>도로명 주소 처리중 발생하는 일반 오류를 처리하는 Exception입니다.</td>
+    <td>Exception that handles general errors while processing road name addresses.</td>
   </tr>
   <tr>
     <td>DoroJusoExistsException</td>
-    <td>도로명 주소가 기존에 존재하여 중복되는 오류를 처리하는 Exception입니다.</td>
+    <td>Exception dealing with duplicate errors because the road name address already exists.</td>
   </tr>
   <tr>
     <td colspan=2>org.openpaas.egovframwork.comcomponent.model</td>
   </tr>
   <tr>
     <td>Common</td>
-    <td>도로명 주소 검색 결과 값에 공통부분(오류코드, 개수 등)을 가지는 Model입니다.</td>
+    <td>A model that has common parts (error codes, numbers, etc.) in road name address search results value.</td>
   </tr>
   <tr>
     <td>DoroJuso</td>
-    <td>도로명 주소 검색 결과 전체의 Model입니다. 공통(Common)부분과 Juso 리스트를 포함하고 있습니다.</td>
+    <td>The model of the entire road name address search result. It contains the common part and the Juso list.</td>
   </tr>
   <tr>
     <td>DoroJusoInfo</td>
-    <td>도로명 주소 DB에서 정보를 가져올 때의 Model입니다.</td>
+    <td>The model for importing information from the road name address DB.</td>
   </tr>
   <tr>
     <td>DoroJusoInfoResult</td>
-    <td>도로명 주소 관리의 결과(조회)에서 사용하는 Model입니다.</td>
+    <td>Model used by road name address management results (retrieve).</td>
   </tr> 
   <tr>
     <td>Juso</td>
-    <td>도로명 주소 검색 결과 값중 juso 부분의 Model입니다.</td>
+    <td>The model of the juso part of the road name address search result value.</td>
   </tr>
   <tr>
     <td>ResultMessage</td>
-    <td>도로명 주소 관리의 결과(등록, 수정, 삭제)의 결과 Model입니다.</td>
+    <td>The result model of road name address management (registration, modification, deletion).</td>
   </tr>
   <tr>
-    <td colspan=2>org.openpaas.egovframwork.comcomponent.service</td>
+    <td>colspan=2>org.openpaas.egovframwork.comcomponent.service</td>
   </tr>
   <tr>
     <td>DoroJusoManagerService</td>
-    <td>도로명 주소 관리의 비즈니스 로직을 담당하는 Service입니다.</td>
+    <td>The service responsible for the business logic of road name address management.</td>
   </tr>
   <tr>
     <td>DoroJusoService</td>소
-    <td>도로명 주소 검색의 비즈니스 로직을 담당하는 Service입니다.</td>
+    <td>The service responsible for the business logic of road name address search.</td>
   </tr>
 </table>
 
 
 
-# <a name="20"/>5. 도로명 주소 서비스 등록(API 플랫폼)
+# <a name="20"/>5. Road Name Address Service Registration (API Platform)
 4장에서 만들어지 도로명 주소 서비스는 인증/API 관리(Life cycle)부분이 없습니다. 단순히 요청에 대해 응답하는 구조입니다. 실제 서비스를 위해서는 사용자 인증, Token 발생/관리, API의 Life cycle 관리, 통계 등의 많은 필수 기능들이 필요합니다. 이를 위해 기존의 전자정부 프레임워크의 공통 컴포넌트를 서비스화 할 때 도움을 주고자 API 플랫폼을 선정하여 이를 통해서 서비스가 이루어지도록 하였습니다.
 API 플랫폼에 대한 설치 및 사용 방법의 자세한 매뉴얼은 “분석_API Manager 설치 매뉴얼”를 참조하여 주시기 바랍니다.
 본 문서에서는 API 플랫폼에 도로명 주소 서비스 API를 등록하는 방법과 노하우 정도를 간단하게 기술하였습니다.
 
-### <a name="21"/>5.1. 도로명 주소 검색 API 등록
+### <a name="21"/>5.1. Road Name Address Search API Registration
 실제 사용자가 사용하게 될 서비스 API로 도로명 주소를 검색하는 기능을 등록합니다. 먼저 API 플랫폼의 Publisher 화면으로 접속을 합니다. (URL은 별도로 공지합니다.)
 
 API 플랫폼 Publisher에서 API를 추가(add) 합니다.

@@ -413,35 +413,38 @@ The location of the source will be located on the Git Hub of the "Open Cloud Pla
 
 
 # <a name="20"/>5. Road Name Address Service Registration (API Platform)
-4장에서 만들어지 도로명 주소 서비스는 인증/API 관리(Life cycle)부분이 없습니다. 단순히 요청에 대해 응답하는 구조입니다. 실제 서비스를 위해서는 사용자 인증, Token 발생/관리, API의 Life cycle 관리, 통계 등의 많은 필수 기능들이 필요합니다. 이를 위해 기존의 전자정부 프레임워크의 공통 컴포넌트를 서비스화 할 때 도움을 주고자 API 플랫폼을 선정하여 이를 통해서 서비스가 이루어지도록 하였습니다.
-API 플랫폼에 대한 설치 및 사용 방법의 자세한 매뉴얼은 “분석_API Manager 설치 매뉴얼”를 참조하여 주시기 바랍니다.
-본 문서에서는 API 플랫폼에 도로명 주소 서비스 API를 등록하는 방법과 노하우 정도를 간단하게 기술하였습니다.
+The road name address service created in Chapter 4 does not have a certification/API management (Life cycle) part. It is simply a structure that responds to requests. Many essential functions such as user authentication, Token generation/management, API life cycle management, and statistics are required for the actual service.
+To this end, the API platform was selected to help service the common components of the existing e-government framework.
+For detailed instructions on how to install and use the API platform, refer to "Analyze_API Manager Installation Manual".
+This document briefly describes the method and know-how of registering the Road Name Address Service API on the API platform.
 
 ### <a name="21"/>5.1. Road Name Address Search API Registration
-실제 사용자가 사용하게 될 서비스 API로 도로명 주소를 검색하는 기능을 등록합니다. 먼저 API 플랫폼의 Publisher 화면으로 접속을 합니다. (URL은 별도로 공지합니다.)
+Register the ability to search for road name addresses with the service API that the actual user will use. First, access the Publisher screen of the API platform. (URL will be announced separately.)
 
-API 플랫폼 Publisher에서 API를 추가(add) 합니다.
+Add API in API platform Publisher.
 >![api_platform_dorojuso_08]
 
-그림. API의 기본정보를 입력
+picture. Enter basic API information
 
 
-서비스의 기본정보를 입력합니다. Name은 “개방형 클라우드 플랫폼”의 Market Place에서 보여질 명칭이 될 겁니다. Context는 API 플랫폼에 접속을 위한 최초의 path가 될 겁니다. 기존에 API 플랫폼에 존재하지 않는 명칭을 선택해서 진행을 합니다. 
-Description은 API 플랫폼에서는 필수사항은 아니지만 개방형 클라우드 플랫폼에서는 필수 사항이니 꼭 입력을 해야 합니다.
+Enter basic information for the service. Name will be the name that will be shown in Marketplace on the "open cloud platform." 
+Context will be the first path to access the API platform. Select a name that does not exist on the existing API platform and proceed.
+Description is not mandatory for API platforms, but is mandatory for open cloud platforms.
 
-이제 실제 API를 등록합니다. 도로명 주소 서비스([***http://www.juso.go.kr***](http://www.juso.go.kr))에서 제공하는 스펙과 같이 만들기 위해 API는 addrLinkApi.do로 하였고 Parameter 또한 같은 명칭을 사용하였습니다. 먼저 addrLinkApi.do를 URL Param에 넣고 GET, OPTIONS를 선택하고 Add New Resource를 누릅니다. 그럼 GET, OPTIONS의 두 개의 API가 생성됩니다.
+Register the real API. To make it like the specification provided by the Road Name Address Service ([***http://www.juso.go.kr***](http://www.juso.go.kr))he API was set to addrLinkApi.do and the parameter also used the same name. Input addrLinkApi.do in the URL Param, select GET, OPTIONS, and then click Add New Resource. 
+This creates two APIs: GET and OPTIONS.
 >![api_platform_dorojuso_09]
 
-그림. API 등록
+picture. API Registration
 
 
-Add New Resource버튼을 누르면 각각의 Parameter를 정의할 수 있도록 GET과 OPTIONS가 화면하단에 나타납니다. GET에 Parameter를 입력하기 위해 GET을 클릭하여 화면을 확장시킵니다. currentPage, countPerPage는 Data type을 integer로 넣고 Parameter type은 query를 선택합니다. keyword는 Data type은 String으로 Parameter type은 query로 넣습니다. 모두 Required는 true, 필수로 선택을 합니다.
+When you press the Add New Resource button, GET and OPTIONS appear at the bottom of the screen so that you can define each parameter. Click GET to expand the screen to enter the parameter in GET. For currentPage, countPerPage, enter Data type as integer, and for Parameter type, select query.For keyword, put Data type as String and Parameter type as query. All Required as true, and must be selected.
 >![api_platform_dorojuso_10]
 
-그림. Parameter 넣기
+picture. Insert Parameter
 
 
-OPTIONS을 등록해주는 이유는 https나 기타 Web 통신에서 API가 유효한지 CORS를 체크하기 위해 OPTIONS를 먼저 요청하는 경우가 있어 API 등록 시에는 반드시 OPTIONS를 추가 해줍니다.
+The reason for registering OPTIONS is in preparation for times when OPTIONS are requested to check the CORS to see if the API is valid in https or other web communication, so OPTIONS are required when registering the API.
 
 API에 대한 등록을 완료하면 Implement 단계로 넘어갑니다. Implement단계에서는 서비스의 Endpoint를 등록합니다. Endpoint type은 Http 통신으로 서비스를 할 것이니 “HTTP Endpoint”를 선택을 하고 도로명 주소 서비스 서버의 URL을 Production, Sandbox Endpoint에 넣습니다. 개발 서버/테스트 서버는 Sandbox endpoint에 넣어주고 실제 운영 서비스는 Production endpoint에 넣어줍니다. 
 여기서 입력한 Endpoint가 기본이 되고 뒤에 API, Parameter를 붙여서 실제 요청을 하게 됩니다.

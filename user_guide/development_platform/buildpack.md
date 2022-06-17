@@ -1202,34 +1202,34 @@ Creating build/java-buildpack-2.7.zip
 ````
 ### <a name="52"/>5.2 Provide GitHub URL 
 
-어플리케이션 배포 명령어(push)의 옵션 값(-b)으로 개발한 빌드팩의 공용(Public) 또는 개인(Private) git 저장소의 URL을 입력하여 적용테스트를 할 수 있다.
-Git URL로 빌드팩을 제공하는 경우 어플리케이션이 플랫폼에 배포될 때 저장소로부터 복제되고, Detect 스크립트가 ‘0’ 리턴값을 제공하면 어플리케이션에 적용된다.
+The application test can be performed by entering the URL of the public or private git repository of the buildpack developed with the option value (-b) of the application distribution command (push).
+When a buildpack is provided with a Git URL, it is replicated from the repository when the application is deployed on the platform, and when the Detect script provides a '0' return value, it is applied to the application.
 ````
 \$ cf push -b https://github.com/johndoe/my-buildpack.git
 ````
-사용자이름/패스워드 인증이 필요한 개인 git 저장소를 사용하는 경우, 다음과 같이 요청하면 된다.
+If you use a private git repository that requires user name/password authentication, you can request it as follows.
 ````
 \$ cf push -b
 https://username:password@github.com/johndoe/my-buildpack.git
 ````
-기본적으로 개방형 클라우드 플랫폼은 빌드팩의 git 저장소의 마스터 브랜치를 사용한다.
-다른 브랜치를 사용하기 위해서는 아래와 같이 요청하면 된다.
+Basically, the open cloud platform uses the master branch of the git repository of buildpacks.
+To use another branch, you can request as shown below.
 ````
 \$ cf push -b
 https://username:password@github.com/johndoe/my-buildpack.git\#my-branch-name
 ````
-※Caution: 윈도우에서 작업한 빌드팩을 git 저장소에 처음 업로드 하는 경우, “bin” 디렉터리 안에 존재하는 detect, compile, release 스크립트의 실행(executable)속성이 없어질 수 있다. 
-이 경우, 플랫폼에서 빌드팩을 실행시키지 못하여, 오류가 발생하게 된다.
-따라서 리눅스 환경에서 각각의 스크립트에 실행속성을 부여하고, git 저장소에 이를 적용하는 추가적인 작업이 필요할 수 있다.
+※Caution: If Windows first uploads a build pack to the git repository, the executable properties of detect, compile, and release scripts that exist in the "bin" directory may be lost. 
+In this case, the buildpack cannot be executed on the platform, resulting in an error.
+Therefore, additional work may be needed to assign execution properties to each script and apply them to the git repository of Linux environment.
 
 
 [^1]: Application Manifests,[***http://docs.cloudfoundry.org/devguide/deploy-apps/manifest.html***](http://docs.cloudfoundry.org/devguide/deploy-apps/manifest.html)
 
 [^2]: YAML Ain’t Markup Language, [***http://www.yaml.org***](http://www.yaml.org),[***http://ko.wikipedia.org/wiki/YAML***](http://ko.wikipedia.org/wiki/YAML)
 
-[^3]: 컨테이너는 호스트운영체제의 자원(CPU, Memory, Block I/O, Network etc.)을 공유하여 사용한다.
+[^3]: The container shares and uses resources (CPU, Memory, Block I/O, Network etc.) of the host operating system.
 
-[^4]: 루비의 서드파티 라이브러리들을 gem이라하며, RubyGems라는 패키지 매니저로 관리할 수 있다.
+[^4]: Ruby's third-party libraries are called gem and can be managed by a package manager called RubyGems.
 
 [^5]: NPM is a package manager for javascript.
 

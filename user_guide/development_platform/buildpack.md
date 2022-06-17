@@ -704,12 +704,11 @@ Below is an example of a setup element file.
 
     access\_logging: disabled
 
-  \#...중략
+  \#...ellipsis
   ````
 
-repository.yml에 설정된 기본 저장소에서는 라이브러리 파일들을
-&lt;VERSION&gt;:&lt;URI&gt;형태로 관리하며, 저장소의 루트는 index.yml
-파일을 포함하고 있다. 다음은 index.yml의 예를 나타낸다.
+The default repository set in repository.yml manages library files in the form of &lt;VERSION&gt;:&lt;URI&gt;and the root of the repository contains the index.yml file. 
+Below are examples of index.yml.
 
   ````
   \# index.yml
@@ -731,21 +730,19 @@ repository.yml에 설정된 기본 저장소에서는 라이브러리 파일들�
   *8.0.21: https://download.run.pivotal.io/tomcat/tomcat-8.0.21.tar.gz*
   ````
 
-### <a name="413"/>4.1.3. 컴포넌트 확장(Extends) 
+### <a name="413"/>4.1.3. Component Extension 
 
-JAVA기반의 어플리케이션을 위한 개발 및 실행 환경은 다양하다. 따라서
-이러한 다양한 환경을 지원하기 위해, JAVA 빌드팩 개발자는 기존의 컴포넌트
-외에 새로운 컴포넌트를 추가할 수 있다. 사용자 정의 컴포넌트는 다음과
-같은 순서를 통해 JAVA빌드팩에 추가할 수 있다.
+The development and execution environment for JAVA-based applications is diverse.
+To support these diverse environments, JAVA build pack developers can add new components in addition to existing components. 
+User-defined components may be added to the JAVA build pack in the following order.
 
-1)  JAVA빌드팩은 컴포넌트를 구현하는 데 도움이 되는 3가지 기본
-    클래스들을 제공한다. 개발자는 해당 기본 클래스 중 하나를 확장하여
-    새로운 컴포넌트 클래스를 작성한다.
+1)  The JAVA build pack provides three basic classes to help implement components.
+    The developer expands one of the basic classes to create a new component class.
 
 -   [**JavaBuildpack::Component::BaseComponent**](https://github.com/cloudfoundry/java-buildpack/blob/master/docs/extending-base_component.md)**:**
-    BaseComponent는 JAVA빌드팩의 모든 컴포넌트를 위한 기본 클래스이다.
-    컴포넌트 동작의 부분으로써, 파일 다운로드를 위한
-    메소드들을 제공한다. 아래는 BaseComponent 클래스를 나타낸다.
+    Base Component is a basic class for all components of the JAVA build pack.
+    Methods for downloading files are provided as parts of component operations..
+    Below is the Base Component class.
 
   ````
   \# lib/java\_buildpack/component/base\_component.rb
@@ -766,19 +763,19 @@ JAVA기반의 어플리케이션을 위한 개발 및 실행 환경은 다양하
 
   def detect
 
-    \#구현 필요 
+    \#Implementation Required 
 
   end
 
   def compile
 
-    \#구현 필요
+    \#Implementation Required
 
   end
 
   def release
 
-    \#구현 필요
+    \#Implementation Required
 
   end
 
@@ -824,17 +821,15 @@ JAVA기반의 어플리케이션을 위한 개발 및 실행 환경은 다양하
 
     end
 
-    \#...중략
+    \#...ellipsis
 
   end
   ````
 
 -   [***JavaBuildpack::Component::ModularComponent***](https://github.com/cloudfoundry/java-buildpack/blob/master/docs/extending-modular_component.md):
-    ModularComponent는 모듈화 할 필요가 있을만큼 복잡한 컴포넌트를
-    위한 기본클래스이다. 해당 클래스는 컴포넌트가 여러 개의 하위
-    컴포넌트들로 구성되는 것을 가능하게 하고, 하위 컴포넌트들 모두에
-    걸쳐 컴포넌트 라이프사이클을 조정한다. 아래는
-    ModularComponent클래스를 나타낸다.
+    ModularComponent is a basic class for components that need to be modularized.
+    The class enables a component to consist of multiple subcomponents and adjusts the component lifecycle across all subcomponents.
+    Below shos ModularComponent Class.
 
   ````
   \# lib/java\_buildpack/component/modular\_component.rb
@@ -869,21 +864,21 @@ JAVA기반의 어플리케이션을 위한 개발 및 실행 환경은 다양하
 
         end
 
-  \# 추가하려는 컴포넌트가 컨테이너 유형이라면, 실행하는데 필요한 명령어를 반환
+  \# If the component to add is a container type, return the command required to execute
 
   def command
 
-    \#구현 필요
+    \#Implementataion Required
 
   end
 
   \# The sub\_components that make up this component
 
-  \# @return \[Array&lt;BaseComponent&gt;\] 하위 컴포넌트가 되는 BaseComponent의 모음을 반환
+  \# @return \[Array&lt;BaseComponent&gt;\] Returns a collection of Base Components that are subcomponents
 
   def sub\_components(\_context)
 
-    \#구현 필요 
+    \#Implementation Required 
 
   end
 
@@ -897,11 +892,11 @@ JAVA기반의 어플리케이션을 위한 개발 및 실행 환경은 다양하
 
   end
 
-   \# @return \[Boolean\] 컴포넌트가 어플리케이션을 지원하는지 아닌지를 응답
+   \# @return \[Boolean\] Responding to whether a component supports an application
 
   def supports?
 
-        \#구현 필요 
+        \#Implementation Required 
 
     end
 
@@ -909,11 +904,9 @@ JAVA기반의 어플리케이션을 위한 개발 및 실행 환경은 다양하
   ````
 
 -   [***JavaBuildpack::Component::VersionedDependencyComponent***](https://github.com/cloudfoundry/java-buildpack/blob/master/docs/extending-versioned_dependency_component.md)**:**
-    VersionedDependencyCom-ponent는 의존성 라이브러리들의 다운로드를
-    위해 저장소를 사용하는 컴포넌트들을 위한 기본 클래스이다. 해당
-    클래스는 설정파일에 지정된 저장소로부터 각각의 컴포넌트가 @version과
-    @uri를 찾는 것을 보장한다. 아래는
-    VersionedDependencyComponent클래스를 나타낸다.
+    VersionedDependencyCom-ponent는 의존성 라이브러리들의 다운로드를 위해 저장소를 사용하는 컴포넌트들을 위한 기본 클래스이다.
+    해당 클래스는 설정파일에 지정된 저장소로부터 각각의 컴포넌트가 @version과 @uri를 찾는 것을 보장한다.
+    아래는 VersionedDependencyComponent클래스를 나타낸다.
 
   ````
   \# lib/java\_buildpack/component/versioned\_dependency\_component.rb

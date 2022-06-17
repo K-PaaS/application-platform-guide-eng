@@ -904,9 +904,9 @@ User-defined components may be added to the JAVA build pack in the following ord
   ````
 
 -   [***JavaBuildpack::Component::VersionedDependencyComponent***](https://github.com/cloudfoundry/java-buildpack/blob/master/docs/extending-versioned_dependency_component.md)**:**
-    VersionedDependencyCom-ponent는 의존성 라이브러리들의 다운로드를 위해 저장소를 사용하는 컴포넌트들을 위한 기본 클래스이다.
-    해당 클래스는 설정파일에 지정된 저장소로부터 각각의 컴포넌트가 @version과 @uri를 찾는 것을 보장한다.
-    아래는 VersionedDependencyComponent클래스를 나타낸다.
+    VersionedDependencyCom-component is a basic class for components that use repositories for downloading dependency libraries.
+    The class ensures that each component finds @version and @uri from the repository specified in the configuration file.
+    Below shows VersionedDependencyComponent Class.
 
   ````
   \# lib/java\_buildpack/component/versioned\_dependency\_component.rb
@@ -939,17 +939,17 @@ User-defined components may be added to the JAVA build pack in the following ord
 
     end
 
-    \# @return \[Boolean\] 컴포넌트가 어플리케이션을 지원하는지 아닌지를 응답
+    \# @return \[Boolean\] Responding to whether a component supports an application
 
     def supports?
 
-        \#구현 필요
+        \#Implementation Required
 
     end
 
-    \# JAR 이름을 생성 &lt;component-id&gt;-&lt;version&gt;.jar
+    \# Create JAR Name &lt;component-id&gt;-&lt;version&gt;.jar
 
-    \# @return \[String\] 생성된 JAR이름을 반환
+    \# @return \[String\] Return the created JAR Name
 
     def jar\_name
 
@@ -978,9 +978,8 @@ User-defined components may be added to the JAVA build pack in the following ord
   **end**
   ````
 
-> 기존의 컴포넌트들은 위에서 설명한 기본 클래스들을 확장하여 구현되었다.
-> 또한 기본 컴포넌트 클래스들은 각각 아래와 같은 초기화
-> 메소드(initialize)를 가지며, Context를 파라미터로 받는다.
+> Existing components have been implemented by extending the basic classes described above.
+> In addition, each of the basic component classes has the following initialization methods and receives the context as a parameter.
 
   ````
   def initialize(context)
@@ -996,52 +995,44 @@ User-defined components may be added to the JAVA build pack in the following ord
   End
   ````
 
-> Context는 컴포넌트에 의해 사용되는 유틸리티의 모음으로써, Application,
-> Configuration, Droplet 3가지 항목이 있다. 인스턴스가 생성될 때
-> context인스턴스 변수의 키에 매칭 및 배정된다.
+> Context is a collection of utilities used by component, and it has 3 parts which are Application, Configuration, and Droplet.
+> When an instance is created, it is matched and assigned to the key of the context instance variable.
 
-| Context 유형 | 클래스 및 설명 |
+| Context Type | Class and Description |
 |-------------|-----------------------------|
-|Applicaion    |JavaBuildpack::Component::Application<br>어플리케이션을 위한 추상화 클래스|
-|Configuration |Hash<br>컴포넌트 환경설정 정보 config/&lt;component-name&gt;.yml| 
-|Droplet   |JavaBuildpack::Component::Droplet<br>Droplet을 위한 추상화 클래스|
+|Applicaion    |JavaBuildpack::Component::Application<br>Abstract class for applications|
+|Configuration |Hash<br>Components environment setting information config/&lt;component-name&gt;.yml| 
+|Droplet   |JavaBuildpack::Component::Droplet<br>Abstract class for Droplet|
 
-2)  새로운 클래스 파일을 표준 컴포넌트 타입에 따라 아래와 같은 적합한
-    위치에 추가한다.
+2)  Add the new class file to the appropriate location according to the standard component type as shown below.
 
-| 컴포넌트 유형 | 디렉터리 |
+| Comonent Type | Directory |
 |-------------|---------|
 |Container | lib/java\_buildpack/container|
 |Framework | lib/java\_buildpack/framework|
 |JRE | lib/java\_buildpack/jre|
 
 
-3)  새로운 클래스에 필수 기능 검출(Detect), 컴파일(Compile),
-    릴리즈(Release)를 구현한다.
+3)  Implement essential feature: detection, compilation, and release.
 
-> 새로 추가하는 컴포넌트 클래스는 빌드팩의 필수 기능인 Detect, Compile,
-> Release 메소드를 구현한다. 확장한 기본 클래스에 따라 Detect 기능은
-> support 메소드로 구현한다.
+> The newly added component class implements the necessary features of the build pack: Detect, Compile, and Release methods.
+> Depending on the expanded base class, the Detect function is implemented as a support method.
 
-4)  새로운 클래스의 이름을 config/components.yml 파일에 추가한다.
+4)  Add the name of the new class at the config/components.yml file.
 
-### <a name="414"/>4.1.4. 예제: 컴포넌트 클래스 추가 
+### <a name="414"/>4.1.4. Example:Add Component Class 
 
-Tomcat Container컴포넌트를 추가하는 예를 앞서 순서에 맞춰 설명한다.
+An example of adding a Tomcat Container component is described in order.
 
-1)  JavaBuildpack::Component::ModularComponent 기본 클래스를 확장하여,
-    Tomcat Container컴포넌트를 추가한다.
+1)  JavaBuildpack::Component:: Expand the ModularComponent base class to add Tomcat Container Component.
 
-2)  Container 타입의 컴포넌트들이 위치한 폴더에 tomcat container 클래스
-    tomcat.rb를 위치시킨다. (lib/java buildpack/container/tomcat.rb)
+2)  Place the tomcat container class tomcat.rb in the folder where the container type components are located. (lib/java buildpack/container/tomcat.rb)
 
-3)  필수 기능 검출(Detect), 컴파일(Compile), 릴리즈(Release)를 다음과
-    같이 구현한다.
+3)  The essential function: detection, compilation, and release are implemented as follows.
 
--   **검출(Detect) 구현:** 배포된 어플리케이션에 대해 tomcat container를
-    적용할지 말지를 확인하는 내용을 구현한다. war 파일을 예로들면
-    tomcat.rb의 리턴값이 true여야 tomcat을 적용한다. 아래는 tomcat에
-    구현된 detect 기능의 예를 보여준다.
+-   **Detect Implementation:** Implements where to apply tomcat container to the deployed application or not.  
+    For example, if the return value of tomcat.rb is true, then tomcat is applied.
+    Below is an example of the detect function implemented in tomcat.
 
  ````
   \# lib/java\_buildpack/container/tomcat/tomcat.rb
@@ -1059,12 +1050,10 @@ Tomcat Container컴포넌트를 추가하는 예를 앞서 순서에 맞춰 설�
   End
   ````
 
-> 어플리케이션이 WEB-INF 폴더를 가지고 있고, main class가 아닐때
-> 어플리케이션 실행을 위해 사용할 컨테이너로 tomcat이 적용된다.
+> When the application has a WEB-INF folder and is not the main class, tomcat is applied as the container to run the application.
 
--   **컴파일(Compile) 구현:** 파일시스템을 만드는 동안 해야하는 포괄적인
-    작업을 구현한다. 아래는 tomcat\_instance에 구현된 compile 기능의
-    예를 보여준다.
+-   **Compile Implementation:** Implement comprehensive work that must be done while creating a file system.
+    Below is an example of the compilation function implemented in tomcat\_instance.
 
   ````
   \# lib/java\_buildpack/container/tomcat/tomcat\_instance.rb
@@ -1098,10 +1087,9 @@ Tomcat Container컴포넌트를 추가하는 예를 앞서 순서에 맞춰 설�
   end
   ````
 
-> 위 소스코드는 tomcat과 어플리케이션 파일들의 링크를 준비하는 내용이다.
-> 따라서 어플리케이션 파일들은 tomcat classpath에서 사용할 수 있다. 위
-> 소스코드가 실행될 때 작업 디렉터리(working directory)는 다음과 같이
-> 구성된다.
+> The source code above is about preparing a link between tomcat and application files.
+> Application files are therefore available in tomcat classpath.
+> When the source code aboove is being executed, the working directory is configured as follows.
 
   ````
   \# working directory
@@ -1115,17 +1103,14 @@ Tomcat Container컴포넌트를 추가하는 예를 앞서 순서에 맞춰 설�
   .buildpack/other needed components
   ````
 
-> 작업디렉터리와 함께 tomcat\_instance의 컴파일 메소드를 상세히 설명하면
-> 다음과 같다. 우선 /config/tomcat.yml 을 참고하여 tomcat 바이너리
-> 파일을 다운로드 하고, @droplet.sandbox 디렉터리에 압축을 푼다. 그리고
-> 리소스 폴더(/resources/tomcat/conf)의 파일들을 @droplet.sandbox/conf
-> 로 복사한다. 이후, .app/ 폴더에 @droplet.sandbox/webapps/ROOT의 심볼릭
-> 링크를 만들고, WEB-INF/lib에 추가 라이브러리들의 심볼릭 링크를 만든다.
-> 단, 모든 심볼릭 링크는 상대경로를 사용한다.
+> The compilation method of tomcat\_instance along with the task directory is described in detail as follows.
+> First, download the tomcat binary file using /config/tomcat.yml and extract it to the @droplet.sandbox directory.
+> Copy the files from the resource folder (/resources/tomcat/conf) to @droplet.sandbox/conf.
+> After, create a symbolic link for @droplet.sandbox/webapps/ROOT in the .app/ folder then create a symbolic link for additional libraries in the WEB-INF/lib.
+> However, all symbolic links use relative paths.
 
--   **릴리즈(Release)구현:** tomcat을 시작하는 방법에 대한
-    명령을 설정한다. 아래는 tomcat에 구현된 release 기능의
-    예를 보여준다.
+-   **Release Implementation:** Set the command on how to start tomcat. 
+    Below is an example of the release function implemented in tomcat.
 
   ````
   \# lib/java\_buildpack/container/tomcat/tomcat.rb
@@ -1145,11 +1130,9 @@ Tomcat Container컴포넌트를 추가하는 예를 앞서 순서에 맞춰 설�
   End
   ````
 
-> 위 소스코드에서는 command 메소드를 통해, tomcat의 server.xml에서
-> 참조하는http.port 를 java 시스템변수에 추가하고, tomcat을 시작하는
-> 명령어를 작성한다. ("./bin/catalina.sh run")
+> In the source code above, the command method adds the http.port referenced by tomcat's server.xml to the java system variable and creates a command to start tomcat. ("./bin/catalina.sh run")
 
-1)  클래스의 이름을 config/components.yml 파일에 추가한다.
+1)  Add the name of the class at the config/components.yml file.
 
   ````
   \# config/components.yml
@@ -1166,7 +1149,7 @@ Tomcat Container컴포넌트를 추가하는 예를 앞서 순서에 맞춰 설�
 
     - "JavaBuildpack::Container::SpringBootCLI"
 
-  - "JavaBuildpack::Container::Tomcat" \#추가
+  - "JavaBuildpack::Container::Tomcat" \#Add
 
   jres:
 
@@ -1181,22 +1164,18 @@ Tomcat Container컴포넌트를 추가하는 예를 앞서 순서에 맞춰 설�
     - "JavaBuildpack::Framework::SpringInsight"
   ````
 
-# <a name="5"/>5. 빌드팩 테스트 가이드 
+# <a name="5"/>5. Buildpack Test Guide 
 
-개발한 빌드팩의 적용 테스트는 시스템 빌드팩에 추가 또는 GitHub URL을
-사용하는 2가지방법으로 시도할 수 있다. 본 장에서는 해당 적용 테스트
-방법들을 가이드한다. 테스트를 위해서는 PC에 CF CLI(Command Line
-Interface) 툴을 설치하고, 개발한 빌드팩을 적용할 테스트 어플리케이션을
-준비해야한다.
+The application test of the developed build pack can be attempted in two ways: add it to the system build pack or use the GitHub URL.
+This chapter guides you through the applicable testing methods.
+Installation the CF CLI (Command Line Interface) tool is needed on your PC for testing and prepare a test application to apply the developed buildpack.
 
-### <a name="51"/>5.1. 시스템 빌드팩 추가 
+### <a name="51"/>5.1. Add System Buildpack 
 
-개발한 빌드팩을 시스템 빌드팩에 추가하는 것은 CF CLI 명령어를 통해
-수행하며, 개방형 클라우드 플랫폼에 대한 관리자 권한이 필수적이다. JAVA
-빌드팩을 예로들면, 다음과 같은 순서와 명령어를 통해 시스템 빌드팩에
-추가하고, 어플리케이션 배포 시 추가한 빌드팩을 선택한다.
+Adding the developed build pack to the system build pack is done through CF CLI commands, and authorization to open cloud platforms is essencial.
+For example, add a JAVA buildpack to a system build pack using the following order and command, and select the buildpack added during application deployment.
 ````
-\# 개발한 빌드팩을 패키징한다.
+\# Package the developed buildpack.
 
 
 \$ bundle install
@@ -1208,61 +1187,51 @@ Interface) 툴을 설치하고, 개발한 빌드팩을 적용할 테스트 어�
 
 Creating build/java-buildpack-2.7.zip
 
-\# 시스템 빌드팩을 생성하고, 조회한다.
+\# Create and check the system buildpack.
 
-\# cf create-buildpack &lt;생성할 이름&gt; &lt;패키지 파일&gt;&lt;우선순위&gt;
+\# cf create-buildpack &lt;name to use&gt; &lt;package file&gt;&lt;Priority&gt;
 
 \$ cf create-buildpack java-buildpack-2.7 java-buildpack-2.7.zip 1
 
 
 \$ cf buildpacks
 
-\# 어플리케이션 배포시, 추가한 빌드팩 이름을 지정한다.
+\# Set the name of the buildpack added when deploying application.
 
 \$ cf push –b java-buildpack-2.7
 ````
-### <a name="52"/>5.2 GitHub URL 제공 
+### <a name="52"/>5.2 Provide GitHub URL 
 
-어플리케이션 배포 명령어(push)의 옵션 값(-b)으로 개발한 빌드팩의
-공용(Public) 또는 개인(Private) git 저장소의 URL을 입력하여 적용테스트를
-할 수 있다. Git URL로 빌드팩을 제공하는 경우 어플리케이션이 플랫폼에
-배포될 때 저장소로부터 복제되고, Detect 스크립트가 ‘0’ 리턴값을 제공하면
-어플리케이션에 적용된다.
+어플리케이션 배포 명령어(push)의 옵션 값(-b)으로 개발한 빌드팩의 공용(Public) 또는 개인(Private) git 저장소의 URL을 입력하여 적용테스트를 할 수 있다.
+Git URL로 빌드팩을 제공하는 경우 어플리케이션이 플랫폼에 배포될 때 저장소로부터 복제되고, Detect 스크립트가 ‘0’ 리턴값을 제공하면 어플리케이션에 적용된다.
 ````
 \$ cf push -b https://github.com/johndoe/my-buildpack.git
 ````
-사용자이름/패스워드 인증이 필요한 개인 git 저장소를 사용하는 경우,
-다음과 같이 요청하면 된다.
+사용자이름/패스워드 인증이 필요한 개인 git 저장소를 사용하는 경우, 다음과 같이 요청하면 된다.
 ````
 \$ cf push -b
 https://username:password@github.com/johndoe/my-buildpack.git
 ````
-기본적으로 개방형 클라우드 플랫폼은 빌드팩의 git 저장소의 마스터
-브랜치를 사용한다. 다른 브랜치를 사용하기 위해서는 아래와 같이 요청하면
-된다.
+기본적으로 개방형 클라우드 플랫폼은 빌드팩의 git 저장소의 마스터 브랜치를 사용한다.
+다른 브랜치를 사용하기 위해서는 아래와 같이 요청하면 된다.
 ````
 \$ cf push -b
 https://username:password@github.com/johndoe/my-buildpack.git\#my-branch-name
 ````
-※주의: 윈도우에서 작업한 빌드팩을 git 저장소에 처음 업로드 하는 경우,
-“bin” 디렉터리 안에 존재하는 detect, compile, release 스크립트의
-실행(executable)속성이 없어질 수 있다. 이 경우, 플랫폼에서 빌드팩을
-실행시키지 못하여, 오류가 발생하게 된다. 따라서 리눅스 환경에서 각각의
-스크립트에 실행속성을 부여하고, git 저장소에 이를 적용하는 추가적인
-작업이 필요할 수 있다.
+※Caution: 윈도우에서 작업한 빌드팩을 git 저장소에 처음 업로드 하는 경우, “bin” 디렉터리 안에 존재하는 detect, compile, release 스크립트의 실행(executable)속성이 없어질 수 있다. 
+이 경우, 플랫폼에서 빌드팩을 실행시키지 못하여, 오류가 발생하게 된다.
+따라서 리눅스 환경에서 각각의 스크립트에 실행속성을 부여하고, git 저장소에 이를 적용하는 추가적인 작업이 필요할 수 있다.
 
 
 [^1]: Application Manifests,[***http://docs.cloudfoundry.org/devguide/deploy-apps/manifest.html***](http://docs.cloudfoundry.org/devguide/deploy-apps/manifest.html)
 
 [^2]: YAML Ain’t Markup Language, [***http://www.yaml.org***](http://www.yaml.org),[***http://ko.wikipedia.org/wiki/YAML***](http://ko.wikipedia.org/wiki/YAML)
 
-[^3]: 컨테이너는 호스트운영체제의 자원(CPU, 메모리, 블록I/O, 네트워크
-    등)을 공유하여 사용한다.
+[^3]: 컨테이너는 호스트운영체제의 자원(CPU, Memory, Block I/O, Network etc.)을 공유하여 사용한다.
 
-[^4]: 루비의 서드파티 라이브러리들을 gem이라하며, RubyGems라는 패키지
-    매니저로 관리할 수 있다.
+[^4]: 루비의 서드파티 라이브러리들을 gem이라하며, RubyGems라는 패키지 매니저로 관리할 수 있다.
 
-[^5]: NPM은 javascript를 위한 패키지 매니저이다.
+[^5]: NPM is a package manager for javascript.
 
 [^6]: Rack, ruby web server interface
 
@@ -1272,10 +1241,10 @@ https://username:password@github.com/johndoe/my-buildpack.git\#my-branch-name
 
 [^9]: cf stack, the root file system
 
-[^10]: Rspec, 루비를 위한 BDD(behavior-driven development) 프레임워크[***http://rspec.info/***](http://rspec.info/)
+[^10]: Rspec, a BDD(behavior-driven development) framework for Ruby[***http://rspec.info/***](http://rspec.info/)
 
 [buildpack_develope_guide_01]:./images/openpaas-buildpack-devolpe-guide/buildpack_develope_guide_01.png
 [buildpack_develope_guide_02]:./images/openpaas-buildpack-devolpe-guide/buildpack_develope_guide_02.png
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Buildpack 개발
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Buildpack Development

@@ -653,26 +653,19 @@ Components belonging to each type are implemented as one ruby file class.
 |/bin    |detect.rb<br>compile.rb<br>release.rb| Directory for required function scripts.|
 |/congig |components.yml<br>repository.yml<br>tomcat.yml<br>...| Directory for URL (storage location and version) settings files of dependencies to be downloaded.|
 |/docs   |design.md<br>extending.md<br>...| The directory for the guide document of the source.|
-|/lib    |java\_buildpack.rb<br>/java\_buildpack<br>/component<br>/container<br>framework<br>jre<br>...| 각 컴포넌트에 대한 detect, compile, release 동작의 실제 구현 소스들을 위한 디렉터리이다.|
-|/rakelib |package.rb<br>... | Rake로 실행시킬, 패키지 모듈을 위한 디렉터리이다. 패키지 기능을 위해 사용된다. |
-|resources |/tomcat/conf<br>context.xml<br>logging.properties<br>server.xml<br>... | 변경 또는 추가할 필요가 있는 리소스들을 위한 디렉터리이다.|
-|/spec |... | Rspec[^11]을 사용하여, 테스트 할 소스들을 위한 디렉터리이다.
+|/lib    |java\_buildpack.rb<br>/java\_buildpack<br>/component<br>/container<br>framework<br>jre<br>...| Directory for actual implementation sources of detect, compile, and release operations for each component.|
+|/rakelib |package.rb<br>... | This is a directory for package modules to be run by Rake. Used for package functionality. |
+|resources |/tomcat/conf<br>context.xml<br>logging.properties<br>server.xml<br>... | Directory for resources that need to be modified or added.|
+|/spec |... | It is a directory to test the sources using Rspec[^11].
 
-JAVA빌드팩 개발자는 해당 소스구조의 /config 디렉터리의 설정파일들을
-변경하거나, /lib 디렉터리의 하위디렉터리에 새로운 컴포넌트를 추가하는
-방법으로 기존 빌드팩을 확장할 수 있다.
+JAVA buildpack developers can extend existing buildpacks by changing the configuration files in the /config directory of the source structure or by adding new components to the subdirectories of the /lib directory.
 
-### <a name="412"/>4.1.2. 저장소(Repository) 설정 변경 
+### <a name="412"/>4.1.2. Repository Setting Modification 
 
-JAVA 빌드팩은 기본으로 설정된 저장소(http://download.run.pivotal.io )와
-config파일에 지정된 버전을 통해 필요한 라이브러리를 다운로드 한다.
-하지만 배포하려는 어플리케이션이 특정 라이브러리 버전을 사용해야
-한다던가, 클라우드 플랫폼의 네트워크 환경이 제한적인 경우 고정되어있는
-설정을 변경할 필요가 있다. 따라서 JAVA 빌드팩은 제공하는 라이브러리들의
-버전과 이를 다운로드 할 저장소 위치를 변경할 수 있는 방법을 제공한다.
-이러한 저장소와 관련된 설정 요소들을 변경하기 위해서는, 소스구조의
-config 디렉터리 안에있는 *&lt;컴포넌트이름&gt;.yml* 파일의 내용을
-수정하면 된다. 아래는 설정요소 파일의 예를 보여준다.
+The JAVA build pack downloads the required libraries through the default repository (http://download.run.pivotal.io )and the version specified in the config file.
+If the application you are deploying needs to use a specific library version, or if the network environment of the cloud platform is limited, you need to change the fixed settings. Therefore, the JAVA build pack provides a way to change the version of the libraries provided and the storage location to download them.
+To change the settings associated with these repositories, *&lt;componentname&gt;.yml* in the config directory of the source structure.You can modify the contents of the yml* file.
+Below is an example of a setup element file.
 
   ````
   \# java-buildpack/config/repository.yml

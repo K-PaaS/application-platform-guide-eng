@@ -65,40 +65,40 @@ Build "Road Name Address Search" function among common components of e-Governmen
 
 # <a name="6"/>2. System Configuration
 
-### <a name="7"/>2.1. 시스템 구성도
-도로명 주소 서비스(API)를 만들고 이 서비스를 API 플랫폼에 등록합니다. 그리고 일반 개발자는 도로명 주소 서비스를 “개방형 클라우드 플랫폼”에서 신청하여 사용합니다.
+### <a name="7"/>2.1. System Configuration Diagram
+Create a Road Name Address Service (API) and register it at the API platform. And general developers apply for and use the road name address service on the "open cloud platform".
 >![api_platform_dorojuso_01]
 
-그림. 도로명 주소 검색 서비스 시스템 구성도
+Picture. System Configuration Diagram of Road Name Address Search Service
 
 
-API 플랫폼에서는 도로명 주소 서비스 API에 대한 접근관리와 통계, Life cycle 관리를 합니다. API 플랫폼에 대한 자세한 설명은 별도의 API 플랫폼 가이드를 참고하여 주시기 바랍니다.
+The API platform manages access to the road name address service API, statistics, and life cycle management. For a detailed description of the API platform, please refer to the separate API platform guide.
 
-도로명 주소 서비스(API)는 어떤 REST/full 형태의 서버로 개발을 하였으며 도로명 주소 정보는 MySQL DB에서 관리합니다.
+The Road Name Address Service (API) was developed by some REST/full type of server and the road name address information is managed by MySQL DB.
 
 
 
-# <a name="8"/>3. 도로명주소 서비스
+# <a name="8"/>3. Road Name Address Service
 
-### <a name="9"/>3.1. 도로명 주소 획득
-도로명주소를 자체 DBMS에 구축하기 위해 먼저 도로명 주소를 가져와야 합니다. 이 정보는 “도로명주소안내 시스템” ([***http://www.juso.go.kr***](http://www.juso.go.kr))에서 다운로드를 받으실 수 있습니다. 
+### <a name="9"/>3.1. Obtain Road Name Address
+To build a road name address on its own DBMS, you must first obtain a road name address. This information can be downloaded from the "Road Name Address Information System" ([***http://www.juso.go.kr***](http://www.juso.go.kr)). 
 
-먼저 사이트에 접속을 하면 아래 화면과 같이 메인 화면에서 “주소제공”->”도로명주소 DB제공”을 선택합니다.
+Select "Provide Address" -> "Provide Road Name Address DB" on the main screen when you access the site as shown below.
 >![api_platform_dorojuso_02]
 
-그림. 주소 제공하는 페이지로 이동
+Picture. Proceeds to a page that provides Addresses
 
 
-주소제공 페이지에서는 주소데이터의 활용방법을 기술한 PDF파일과 가장 최근의 주소 데이터 정보를 다운로드 받으실 수 있습니다. “전체주소 구축가이드 다운로드”와 전체주소(최종안)의 가장 최신의 일자 정보를 받습니다. 아래 화면에서 빨간색 부분으로 표시된 두 영역을 클릭하여 정보를 다운로드 받습니다.
+On the Address Delivery page, you can download the PDF file describing how to use the address data and the most recent address data information. Get the latest date information for the "Download full address deployment guide" and full address (final draft). Download the information by clicking on the two areas marked in red on the screen below.
 >![api_platform_dorojuso_03]
 
-그림. 구축가이드와 최종 주소 다운로드
+Picture. Download build guide and final address
 
 
-다운로드 받은 “[가이드]주소구축(전체주소)활용방법.pdf”에서는 데이터의 구조를 파악할 수 있습니다. 문서의 13페이지에 같이 다운로드 받은 주소 파일의 스펙이 정의되어 있습니다. 중간에 보면 “건물관리번호”가 있는데 이 정보가 Primary Key 입니다.
+The downloaded "[Guide]Utilization method of making address(full address).pdf" gives you a sense of the structure of the data. The specifications of the downloaded address file are defined on page 13 of the document. If you look in the center, there is a "building management number" and this information is the primary key.
 >![api_platform_dorojuso_04]
 
-그림. “[가이드]주소구축(전체주소)활용방법.pdf”에서 스펙정보
+Picture. Spec information of “[Guide]Utilization method of making address(full address).pdf”
 
 
 주소 파일은 압축파일로 약 158MB정도가 됩니다. (2015년 6월 기준) 이 파일을 압축을 해제하면 아래와 같이 TXT정보로 된 주소파일을 확인할 수 있습니다. 

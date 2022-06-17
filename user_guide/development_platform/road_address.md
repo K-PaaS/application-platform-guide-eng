@@ -12,7 +12,7 @@
 3. [Road Address Service](#8)
      * [3.1. Obtain Road Name Address](#9)
      * [3.2. Define an address data table](#10)
-     * [3.3. Insert Address Data DB](#11)
+     * [3.3. Insert in Address Data DB](#11)
 4. [Road Name Address Service](#12)
      * [4.1. Road Name Address Service Configuration](#13)
      * [4.2. Road Name Address Service API](#14)
@@ -156,207 +156,207 @@ CREATE INDEX `IDX_DORO` ON `egov_common`.`doro_juso` (`doro` ASC)  COMMENT '';
 
 
 
-### <a name="11"/>3.3. 주소 데이터 DB에 넣기
-해당 주소 정보를 DBMS에 Import 하기 전에 하나 점검을 해야 할 것이 있습니다. 먼저 구축하고자하는 DBMS의 언어설정이 어떻게 되어 있는지를 확인해야 합니다. 현재 이 파일은 한글 표준이 ANSI로 되어 있습니다. 요즘 일반적으로 DB를 구성할 때 UTF8로 구성하기 때문에 정확하게 한글이 Import되게 하려면 파일을 하나씩 읽어 문자 인코딩을 변경하여 Insert하는 프로그램을 개발하거나 상용 툴들을 이용해야 합니다.
+### <a name="11"/>3.3. Insert in Address Data DB
+There is one thing that needs to be checked before importing that address information into the DBMS. First, checking of the language settings of the DBMS to build is needed. Currently, this file has Korean standard ANSI.  when configuring DBs, they are usually configured with UTF8, so in order to import Hangul accurately, you need to develop a program that reads files one by one and changes character encoding to insert them or use commercial tools.
 
-이 문서는 MySQL 서버를 대상으로 데이터를 Import 하는데 기존의 TXT 파일을 UTF8로 변환하고 변환된 파일을 MySQL Import 기능을 이용하여 DBMS에 넣는 방법을 설명하겠습니다. 물론 DBMS의 DB는 UTF8로 설정되어 있습니다.
+This document explains how to import data to MySQL servers, convert existing TXT files to UTF8, and use the MySQL import function to put the converted files into DBMS. DBMS's DB is set to UTF8
 
-파일의 인코딩을 UTF8로 변환하는 방법은 Windows 환경에서 해당 파일을 메모장에서 열고 이 파일을 다시 “다른 이름으로 저장”하기를 할 때 인코딩을 변경하는 방법입니다.
+To convert a file's encoding to UTF8, open it in Notepad and "save it under a different name" in a Windows environment.
 >![api_platform_dorojuso_06]
 
-그림. 메모장에서 다른 이름으로 저장하기
+picture. Save it as from the NotePad
 
 
-이렇게 파일을 준비하고 MySQL Import를 이용하여 데이터를 Import합니다.
+Prepare thw file and use MySQL Import to import the data.
 ````
-mysqlimport -u [사용자ID] -p [데이터베이스명] --fields-terminated-by="|" --lines-terminated-by="\n" [파일명칭]
+mysqlimport -u [User ID] -p [Data Base Name] --fields-terminated-by="|" --lines-terminated-by="\n" [File Name]
 ````
 
-여기서 [파일명칭]은 Table명칭과 같아야 합니다. 그래서 여러 개의 파일을 Import해야 되는 상황에서는 각각을 이름을 변경하고 해당 명령어를 수행해야 합니다.
+The [File Name] should be the same with the Table Name. In cases of importing multiple files, each file names should be renamed and run the corresponding commands.
 
-mysqlimport 명령문을 설명하면
--u [사용자ID] : 해당 데이터베이스에 Insert가 가능한 사용자 ID입니다.
--p : Mysql Import 시 비밀번호를 물어봅니다.
-[데이터베이스명] : 도로명 주소가 저장될 데이터베이스명입니다.
---field-terminated-by=“|” : 각각의 필드/컬럼을 구분하는 문자는 | 로 표시하였습니다.
---lines-terminated-by=”\n” : 한줄의 끝이 “\n”으로 구분합니다. (Windows는 끝이 \r\n 입니다.)
-[파일명칭] : Import하려는 파일의 위치이며 파일 명칭이 Table 명칭입니다.
+mysqlimport command statement explaination:
+-u [User ID] : User ID that can be Inserted into that database.
+-p : Asks for the password when Mysql Import is being done.
+[Data Base Name] : The name of the database where road name address are to be saved.
+--field-terminated-by=“|” : Characters that distinguish each field/column are marked with |.
+--lines-terminated-by=”\n” :Separate the ends of a line with "\n" (Windows uses \r\n for ending.)
+[File Name] : It is the file location to Import the files and the file name is same as Table name.
 
-텍스트 파일을 모두 Import하였으면 도로명 주소 데이터는 준비가 완료되었습니다.
+When all the text files are imported, the preparation for the data of road name adress is completed.
 
 
 
-# <a name="12"/>4. 도로명 주소 서비스
+# <a name="12"/>4. Road Name Address Service
 
-### <a name="13"/>4.1. 도로명 주소 서비스 구조
-전자정부 프레임워크의 공통 컴포넌트중 도로명 주소 서비스(OpenAPI)가 있습니다. 이 컴포넌트를 자체 DB로 구축하고 도로명 주소 서비스(Open API)와 같은 구조로 도로명 주소 검색 서비스를 지원할 수 있도록 개발을 합니다.
+### <a name="13"/>4.1. Road Name Address Service Configuration
+One common component of the e-Government framework is the Road Name Address Service (OpenAPI). This component is built with its own DB and developed to support road name address search services in the same structure as Road Name Address Service (Open API).
 
-Spring Framework를 이용하여 개발을 하였으며 사용한 컴포넌트에 대한 정보는 아래와 같습니다.
+The information on the components developed using the Spring Framework is as follows.
 
 <table>
   <tr>
-    <td>모듈</td>
-    <td>버전</td>
-    <td>설명</td>
+    <td>Module</td>
+    <td>Version</td>
+    <td>Description</td>
   </tr>
   <tr>
     <td>Java</td>
     <td>1.7</td>
-    <td>Java 컴파일러/실행환경</td>
+    <td>Java Compiler/Execution Environment</td>
   </tr>
   <tr>
     <td>Spring Boot</td>
     <td>1.3</td>
-    <td>Java 만으로 Web App을 구동 시킬 수 있는 모듈</td>
+    <td>A module that can run the Web App with Java only</td>
   </tr>
   <tr>
     <td>JSON Path</td>
     <td>2.0.0</td>
-    <td>JSON 데이터로 변환하여 관리</td>
+    <td>Manage by changing it to JSON data</td>
   </tr>
     <tr>
       <td>Spring JDBC</td>
       <td>4.0.0</td>
-      <td>JDBC를 사용하기 위한 Spring Library</td>
+      <td>Spring Library for JDBC use</td>
     </tr>
       <tr>
         <td>MySQL connector</td>
         <td>5.1.27</td>
-        <td>MySQL과 연결을 위한 Driver 라이브러리</td>
+        <td>Driver Library for MySQL connection</td>
      </tr>
 </table>
 
 
 
-### <a name="14"/>4.2. 도로명 주소 서비스 API
+### <a name="14"/>4.2. Road Name Address Service API
 
-#### <a name="15"/>4.2.1. 도로명 주소 검색 서비스
+#### <a name="15"/>4.2.1. Road Name Address Search Service
 <table>
   <tr>
     <td>API</td>
-    <td>방식</td>
-    <td>설명</td>
+    <td>Method</td>
+    <td>Description</td>
   </tr>
   <tr>
     <td>addrLinkApi.do?currentPage={currentPage}&</td>
     <td>GET</td>
-    <td>현재 페이지 번호(currentPage), 페이지당 데이터 개수(countPerPage)와 검색할 단어(keyword)를 Paramater로 받아 검색을 수행합니다.</td>
+    <td>Perform searching by recieving the  CurrentPage, Number of data per page (countPerPage), and word to search (keyword) as Paramater.</td>
   </tr>
 </table>
-※ 상세한 API 정의서는 별첨A.를 참조하여 주세요.
+※  Refer to Annex A. for detailed definition of the API.
 
-#### <a name="16"/>4.2.2. 도로명 주소 관리 서비스
+#### <a name="16"/>4.2.2. Road Name Address Manage Service
 <table>
   <tr>
     <td>API</td>
-    <td>방식</td>
-    <td>설명</td>
+    <td>Method</td>
+    <td>Description</td>
   </tr>
   <tr>
     <td>/dorojuso/manager/{currentPage}/{countPerPage}/{keyword}</td>
     <td>GET</td>
-    <td>현재 페이지 번호(currentPage), 페이지당 데이터 개수(countPerPage)와 검색할 단어(keyword)를 Paramater로 받아 검색을 수행합니다. (PATH 방식)</td>
+    <td>Perform searching by recieving the  CurrentPage, Number of data per page (countPerPage), and word to search (keyword) as Paramater. (PATH Method)</td>
   </tr>
   <tr>
     <td>/dorojuso/manager/{building_code}</td>
     <td>GET</td>
-    <td>건물관리번호(PK)를 Path 변수로 받아 하나의 도로명 주소를 조회합니다.</td>
+    <td>Take the building management number (PK) as a path variable and retrieve an road name address.</td>
   </tr>    
   <tr>
     <td>/dorojuso/manager</td>
     <td>POST</td>
-    <td>Body에 도로명 주소의 정보를 넣어 도로명 주소 등록을 합니다.</td>
+    <td>Input the road name address information in the body and register the road name address.</td>
   </tr>
   <tr>
     <td>/dorojuso/manager/{building_code}</td>
     <td>PUT</td>
-    <td>Body에 도로명 주소의 정보를 넣어 도로명 주소 수정을 합니다.</td>
+    <td>Input the road name address information in the body and modify the road name address.</td>
   </tr>
   <tr>
     <td>/dorojuso/manager/{building_code}</td>
     <td>DELETE</td>
-    <td>도로명 주소 데이터를 삭제합니다.</td>
+    <td>Deletes the Road name address data.</td>
   </tr>
 </table>
-※ 상세한 API 정의서는 별첨A.를 참조하여 주세요.
+※ Refer to Annex A. for detailed definition of the API.
 
-### <a name="17"/>4.3. 소스 설명
+### <a name="17"/>4.3. Source Description
 
 #### <a name="18"/>4.3.1. Class Diagram
-주요 Class에 대한 구성은 아래의 Class Diagram과 같습니다. Model과 Exception, Utility는 제외한 프로세스에서 중요한 Controller, Service, DAO를 표시하였습니다.
+The configuration for the major classes is shown in the Class Diagram below. The important controller, service, and DAO were displayed in the process excluding the model, exception, and utility.
 >![api_platform_dorojuso_07]
 
-그림. 도로명 주소 서비스의 Class Diagram
+picture. Class Diagram of Road Name Address Service
 
-BaseController는 각종 Exception을 정의하고 있습니다. 이를 상속받은 DoroJusoController가 도로명 주소 검색에 대한 Control하게 되면 DoroJusoService에서 비즈니스 로직을 담당합니다.
-DoroJusomanagerController는 DoroJusoConroller와 같이 BaseController를 상속받으며 도로명 주소를 관리하기 위한 등록, 수정, 삭제를 할 수 있는 서비스(API)를 Control하며 DoroJusoManagerService에서 관리를 위한 비즈니스 로직을 담당합니다.
+The Base Controller defines various exceptions. Once the DoroJusoController has control over road name address retrieval, DoroJusoService is responsible for business logic.
+The DoroJusomanagerController, with the DoroJusoConroller, inherits the BaseController, controls the registration, modification, and deletion services (API) to manage road name addresses, and is responsible for the business logic of the DoroJusoManager Service.
 
-#### <a name="19"/>4.3.2. 소스 리스트 및 설명
-해당 소스의 위치는 “개방형 클라우드 플랫폼”의 Git Hub에 위치하며 일반에게 공개할 위치는 따로 홈페이지를 통해서 공유가 될 예정입니다.
-(개발을 위한 Private 위치는 [**https://github.com/PaaS-TA/SERVICE-EGOV-COMMON-JUSO**](https://github.com/PaaS-TA/SERVICE-EGOV-COMMON-JUSO) 입니다)
+#### <a name="19"/>4.3.2. Source List and Description
+The location of the source will be located on the Git Hub of the "Open Cloud Platform" and the location to be open to the public will be shared separately through the website.
+(A private location for the developer is [**https://github.com/PaaS-TA/SERVICE-EGOV-COMMON-JUSO**](https://github.com/PaaS-TA/SERVICE-EGOV-COMMON-JUSO))
 
 <table>
   <tr>
-    <td>Package명/소스명</td>
-    <td>설명</td>
+    <td>Package Name/Source Name</td>
+    <td>Description</td>
   </tr>
   <tr>
     <td colspan=2>org.openpaas.egovframwork.comcomponent.dorojuso</td>
   </tr>
   <tr>
     <td>Application</td>
-    <td>Spring Boot를 시작하는 Main을 포함하는 Class입니다.</td>
+    <td>A class that starts the spring boot, including the main.</td>
   </tr>
   <tr>
     <td>MysqlConfig</td>
-    <td>MySQL의 Datasource를 설정하는 Config Class입니다.</td>
+    <td>Config Class to set the Datasource for MySQL.</td>
   </tr>
   <tr>
     <td>SimpleCORSFilter</td>
-    <td>CORS를 처리하기 위한 Filter Class입니다.</td>
+    <td>Filter class for processing CORS.</td>
   </tr>
   <tr>
     <td colspan=2>org.openpaas.egovframwork.comcomponent.common</td>
   </tr>
   <tr>
     <td>StringUtils</td>
-    <td>String의 처리를 위해 공통으로 사용하는 Utility들의 Class입니다.</td>
+    <td>This is the class of utilities that are commonly used for the processing of strings.</td>
   </tr>
   <tr>
     <td colspan=2>org.openpaas.egovframwork.comcomponent.controller</td>
   </tr>
   <tr>
     <td>BaseContoller</td>
-    <td>Controller들의 상위 Controller로 Error처리, Exception 처리를 정의하였습니다.</td>
+    <td>Error processing and exception processing were defined as the controllers' upper controllers.</td>
   </tr>
   <tr>
     <td>DoroJusoController</td>
-    <td>도로명 주소 검색 서비스를 Control하는 Class입니다.</td>
+    <td>This is the class that controls the road name address search service.</td>
   </tr>
   <tr>
     <td>DoroJusoManagerController</td>
-    <td>도로명 주소 관리 서비스를 Control하는 Class입니다.</td>
+    <td>This is the class that controls the road name address management service.</td>
   </tr>
   <tr>
     <td colspan=2>org.openpaas.egovframwork.comcomponent.dao</td>
   </tr>
   <tr>
     <td>DoroJusoDAO</td>
-    <td>도로명 주소 DB와 접속을 위한 DAO 인터페이스입니다.</td>
+    <td>DAO interface for connection with road name address DB.</td>
   </tr>
   <tr>
     <td colspan=2>org.openpaas.egovframwork.comcomponent.dao.impl</td>
   </tr>
   <tr>
     <td>DoroJusoDAOImpl</td>
-    <td>DAO 인터페이스를 구현한 Class입니다.</td>
+    <td>A class that implemented the DAO interface.</td>
   </tr>
   <tr>
     <td colspan=2>org.openpaas.egovframwork.comcomponent.exception</td>
   </tr>
   <tr>
     <td>DoroJusoBadRequestException</td>
-    <td>잘못된 요청에 대한 오류를 처리하기 위한 Exception입니다.</td>
+    <td>An Exception to handle errors for invalid requests.</td>
   </tr>
   <tr>
     <td>DoroJusoDoesNotExistException</td>

@@ -39,7 +39,7 @@ This guide provides a better understanding of the build pack and provides a bett
 It aims to improve efficiency and maintenance. In addition, the build packs developed according to the presented standards ensure functionality and integrity in open cloud platforms.
 
 ### <a name="12"/>1.2. Range
-The range of this document is limited to the development of buildpacks related to open cloud platform projects, and exceptions are made for other open source introduction.
+The range of this document is limited to the development of buildpacks related to open cloud platform projects, and exceptions are made for other open-source introductions.
 
 ### <a name="13"/>1.3. References
 -   [***https://github.com/cloudfoundry/java-buildpack/blob/master/docs/extending.md***](https://github.com/cloudfoundry/java-buildpack/blob/master/docs/extending.md)
@@ -69,7 +69,7 @@ This chapter defines the terms used and describes the build pack architecture.
 Applications deployed on open cloud platforms are executed through three stages: Upload, Stage, and Start.  
 \[picture 2-1\] shows the deployment process of the application.
 
-The deployment process starts when the user requests for application deployment to the Open Cloud Platform.  
+The deployment process starts when the user requests application deployment to the Open Cloud Platform.  
 Each step performs the following:  
 
 -   **Upload:** Uploads application source file or packaging files at the platform.
@@ -79,7 +79,7 @@ Each step performs the following:
 -   **Start:** The stage runs the completed application.
 
 URL gets assigned when the application deploys and runs normally.
-The user can check the application operation by entering URL in the corresponding web browser.
+The user can check the application operation by entering the URL in the corresponding web browser.
 
 ### <a name="22"/>2.2. Glossary
 
@@ -90,8 +90,8 @@ Prior to the architectural description, several terms used in this document are 
 
 -   **Manifest**[^1]: In an open cloud platform, manifest is an element of an application as a file defining deployment's additional information (meta).
     It is written in YAML[^2] form, as the default file name is manifest.yml. 
-    The deployment's additional information includes an application name, memory, and the number of instances..
-    Below shows an example of manifest.yml for test-app to deploy.
+    The deployment's additional information includes an application name, memory, and the number of instances.
+    Below shows an example of manifest.yml for the test-app to deploy.
 
  ````
   applications:
@@ -107,7 +107,7 @@ Prior to the architectural description, several terms used in this document are 
 
 -   **Droplet:** In an open cloud platform, as an archive file, droplets refer to the result of the stage step. 
     Droplet consists of a file system defined by an open cloud platform.
-    Droplets contain elements of the runtime environment (library, configuration file, environment variable, execution information, etc.) that are configured 
+    Droplets contain elements of the runtime environment (library, configuration file, the environment variable, execution information, etc.) that are configured 
     throughout the stage, as well as deployed application code.
     The following shows an example of a droplet file system in which a Java runtime environment is configured.
 
@@ -162,9 +162,9 @@ The detailed description of buildpack's runtime architecture is as follows.
         It installs and configures the environment required for a specific directory location, and assembles application code and configured environment to create droplets. 
         The necessary environments vary depending on the development language of the application, but the following factors are exemplified. (Some representative names) 
 
-        -   Runtime: JVM, Interpreter(Ruby, PHP etc.)
+        -   Runtime: JVM, Interpreter(Ruby, PHP, etc.)
 
-        -   Web Container: tomcat, jboss etc.
+        -   Web Container: tomcat, jboss, etc.
 
         -   Library: Additional libraries needed(Java jar, ruby gems[^4],NPM[^5] packages)
 
@@ -172,23 +172,23 @@ The detailed description of buildpack's runtime architecture is as follows.
 
 3)  The generated droplet gets deployed at the container.
 
-Stage is eventually the process by which a build pack "builds" a "droplet" to run an application.
+The stage is eventually the process by which a build pack "builds" a "droplet" to run an application.
 
 ### <a name="24"/>2.4. Buildpack Type
 
-Build packs can be largely divided into two types: system and custom build packs. The definition of each build pack is as follows.
+Build packs can be largely divided into two types: system and custom buildpacks. The definition of each build pack is as follows.
 
--   **System Buildpack:** It is a buildpack installed on an open cloud platform which can be retrieved and used on a cloud platform. 
-    However, in order to register/modify system buildpacks, authentication to the cloud platform is required.
+-   **System Buildpack:** It is a buildpack installed on an open cloud platform that can be retrieved and used on a cloud platform. 
+    However, to register/modify system buildpacks, authentication to the cloud platform is required.
 
 -   **Customize Buildpack:** Refers to the buildpack that exists externally on an open cloud platform.
     It is usually provided as GitURL and loaded when the application is deployed.
     Custom buildpack can be created in two ways: develop a new buildpack or expand the existing buildpack.
-    Expanding the existing buildpack refers to modifying the open source of the build pack on GitHub.
+    Expanding the existing buildpack refers to modifying the open-source buildpack on GitHub.
 
-This document guides the standards and methods for developing custom buildpack.
-In order to develop a new build pack, reference and compliance with the build pack development standards provided in Chapter 3.
-Chapter 4 guides on how to expand existing buildpack.
+This document guides the standards and methods for developing a custom buildpack.
+To develop a new build pack, reference, and compliance with the build pack development standards provided in Chapter 3.
+Chapter 4 guides on how to expand the existing buildpack.
 
 # <a name="3"/>3. Buildpack Development Guide 
 A build pack is a collection of scripts that assemble the environment (runtime, container, framework, etc.) necessary to run the application and make up the droplets. 
@@ -246,21 +246,21 @@ The applicability of the build pack is generally determined by the existence of 
   
 Compiling is practically a key feature of the build pack that builds droplets.   
 In the compilation script, the contents of downloading and installing the necessary binaries for running the application and placing them in the drop file system are written.  
-Examples of binaries required to run an application include runtime (JRE, Ruby, PHP, Node, etc.), web containers (Tomcat, JBoss, Webrick, etc.).
+Examples of binaries required to run an application include runtime (JRE, Ruby, PHP, Node, etc.), and web containers (Tomcat, JBoss, Webrick, etc.).
 
 1)  Process Description  
 
 > \$ bin/compile &lt;BUILD\_DIR&gt; &lt;CACHE\_DIR&gt;
 >
-> The two factor values passed when calling a compilation script are the build directory (BUILD\_DIR) and the cache directory (CACHE\_DIR). 
-> The cache directory can be used to temporarily as store dependencies that are downloaded during the buildpack compilation process.
+> The two-factor values passed when calling a compilation script are the build directory (BUILD\_DIR) and the cache directory (CACHE\_DIR). 
+> The cache directory can be used to temporarily store dependencies that are downloaded during the buildpack compilation process.
 > The compilation process is output to the user during the execution of the script.
 
 1)  Write Example
 
 > Compilation scripts may be written in various ways according to the environment required for running the buildpack and the application.
 > Below is an example of a simple compilation script.
-> Since the script constitutes an environment for running Ruby applications, it first installs Ruby interpreter in BUILD\_PATH, and writes the contents such as setting the configuration or installing the necessary binaries.
+> Since the script constitutes an environment for running Ruby applications, it first installs the Ruby interpreter in BUILD\_PATH, and writes the contents such as setting the configuration or installing the necessary binaries.
 
   ````
   \#!/usr/bin/env ruby
@@ -335,7 +335,7 @@ In config\_vars, environment variables to be provided as options are written, an
 1)  Write Example
 
 > Below is an example of response information written in a release script.
-> The response information includes the required environmental variables and how to execute them in the Rack[^6] application, and is delivered to the open cloud platform.
+> The response information includes the required environment variables and how to execute them in the Rack[^6] application and is delivered to the open cloud platform.
 
   ````
   config\_vars:
@@ -350,24 +350,24 @@ In config\_vars, environment variables to be provided as options are written, an
 ### <a name="32"/>3.2. Additional function 
 
 When compiling, the build pack installs dependencies (such as binaries or libraries) necessary to drive applications.  
-In using a network-disconnected environment has limitation because build packs download these dependencies through the network.
+Using a network-disconnected environment has limitations because build packs download these dependencies through the network.
 Therefore, when developing a buildpack, it is necessary to consider an environment in which an open cloud platform is installed. 
 This section describes the package and storage capabilities associated with managing dependencies in buildpacks.
 
 ### <a name="321"/>3.2.1. Package 
 
 Package refers to the function of making a buildpack into a single compressed file or the compressed file itself.
-The purpose of the build pack package is as follows: first is to make it registerable as a system build pack, and the second is to support build pack compilation in a network-disconnected environment. 
+The purpose of the build pack package is as follows: first is to make it registerable as a system build pack, and second is to support build pack compilation in a network-disconnected environment. 
 The developer may additionally implement the following package functions on the buildpack.
 
 -   **Packaging Function:** It is a function to package online or offline.
     The difference between the two package types is whether or not the network is connected when compiling the build pack.
     Online packaging only compiles the basic elements, so when compiling, it accesses the network and downloads dependencies. 
-    On the other hand, an offline package is a version of a build pack package designed to run without network connectivity, and includes all the dependencies supported by the package.
+    On the other hand, an offline package is a version of a build pack package designed to run without network connectivity and includes all the dependencies supported by the package.
 
--   **Versioning Funcion:** When packaging a buildpack, it is a function of adding version information to the package name to be generated.
+-   **Versioning Function:** When packaging a buildpack, it is a function of adding version information to the package name to be generated.
 
-To support the package, there are two ways to implement packaging and versioning functions directly, or to use the Buildpack packager application provided by Cloud Foundry.
+To support the package, there are two ways to implement packaging and versioning functions directly or to use the Buildpack packager application provided by Cloud Foundry.
 
 1)  Example of direct implementation
 
@@ -387,8 +387,8 @@ To support the package, there are two ways to implement packaging and versioning
 ````
 > The bundle exec rake command executes the package modules defined in the Rakefile [^8] in order, and the execution order is as follows. 
 > When creating offline packages, first download all the dependencies defined in the settings files.
-> Then disable the remote\_download value in cache.yml, and package.Create a zip file.
-> Below is a part of the Rakefile and Package module..
+> Then disable the remote\_download value in cache.yml and package. Create a zip file.
+> Below is a part of the Rakefile and Package module.
 
   ````
   \#Rakefile
@@ -524,7 +524,7 @@ To support the package, there are two ways to implement packaging and versioning
 
 > Buildpack packager is a buildpack package tool provided by Cloud Foundry.
 > Buildpack-packager is to cache the dependencies of the build pack, not the dependencies of the application.
-> Below is how to package RUBY buildpack use buildpack-packager.
+> Below is how to package RUBY buildpack uses buildpack-packager.
 >
 > \# Fetch submodules(compile-extentions) from ruby-buildpack git.
 ````
@@ -608,21 +608,21 @@ To support the package, there are two ways to implement packaging and versioning
 
 > The packager adds everything in the build pack directory to the package file, except the files specified in exclude\_files in manifest.yml.
 > If executed with the cached option, download the dependencies specified in manifest.yml and include them in the package file.
-> The cached option plays the same role as the offline package..
+> The cached option plays the same role as the offline package.
 
 ### <a name="322"/>3.2.2. Repository 
 
-> Storage is a space where various dependencies exists that are downloaded when compiling a buildpack.
+> Storage is a space where various dependencies exist that are downloaded when compiling a buildpack.
 > The storage may be configured at an external or internal network location depending on the environment in which the open cloud platform is installed.
 > Buildpack provides a way to set and modify the location of a repository, and these storage settings are specific to each build pack source.
-> The corresponding setup method will be covered in detail in the 4. Build Pack Expansion Guide..
+> The corresponding setup method will be covered in detail in the 4. Build Pack Expansion Guide.
 > However, in the case of build packs (e.g.ruby) using Build-packager, write the storage location and library information to be downloaded in the dependencies:uri item of the manifest.yml file described in the package.
 
 # <a name="4"/>4. Buildpack Expansion Guide 
 
 A buildpack or application developer can modify an existing buildpack to create the needed buildpack.
-GitHub has a number of buildpack sources to support various application execution environments.
-This chapter describes the design and source structure of each buildpack by giving examples, among the buildpacks that exist on GitHub, and guides to expand.
+GitHub has several buildpack sources to support various application execution environments.
+This chapter describes the design and source structure of each buildpack by giving examples, among the buildpacks that exist on GitHub, and guides to expansion.
 
 ### <a name="41"/>4.1. JAVA Buildpack Expansion 
 
@@ -634,12 +634,12 @@ The JAVA build pack is designed with three types of standard components: Contain
 
 | Component Type | Description |
 |-------------|-----------------------------------------------------------------------------------------|
-|Container | -   A container is a component that indicates how the application will be executed. Components of this type are responsible for determining which containers to download and use, and for creating commands to run at runtime on the platform.<br>-   Only one container component may execute the application. If more than one container is used, an error occurs in the staging stage.<br> -   Container types most simply includes application servers, servlet containers, etc., from Java main() functions.|
-|Framework | -   A framework is a component that represents changes used when an additional operation or application is executed. Components of this type are responsible for determining which frameworks are needed, transforming applications, and providing additional other options that should be used at runtime.<br> -   Multiple framework components may be used when executing an application.<br> -   The framework type includes the ability to download JDBC jars, in order to automatically reset the service bind and DataSource.|
+|Container | -   A container is a component that indicates how the application will be executed. Components of this type are responsible for determining which containers to download and use, and for creating commands to run at runtime on the platform.<br>-   Only one container component may execute the application. If more than one container is used, an error occurs in the staging stage.<br> -   Container types most simply include application servers, servlet containers, etc., from Java main() functions.|
+|Framework | -   A framework is a component that represents changes used when an additional operation or application is executed. Components of this type are responsible for determining which frameworks are needed, transforming applications, and providing additional other options that should be used at runtime.<br> -   Multiple framework components may be used when executing an application.<br> -   The framework type includes the ability to download JDBC jars, to automatically reset the service bind and DataSource.|
 |Jre | -   Jre represents the JAVA environment used when the application is executed. Components of this type are responsible for resolving which jre to use, download and unpack, and the detailed jre options to use at runtime.<br> - Only one Jre may be used to execute the application. If more than one Jre is used, an error occurs in the staging stage.| 
 
 JAVA build pack developers can add new components by referring to previously implemented components according to their standard component type. 
-Components that belongs to ruby file class are implemented as one by type.
+Components that belong to the ruby file class are implemented one by type.
 
 ### <a name="411"/>4.1.1. Source Structure 
 
@@ -664,7 +664,7 @@ JAVA buildpack developers can extend existing buildpacks by changing the configu
 
 The JAVA build pack downloads the required libraries through the default repository (http://download.run.pivotal.io )and the version specified in the config file.
 If the application you are deploying needs to use a specific library version, or if the network environment of the cloud platform is limited, you need to change the fixed settings. Therefore, the JAVA build pack provides a way to change the version of the libraries provided and the storage location to download them.
-To change the settings associated with these repositories, *&lt;componentname&gt;.yml* in the config directory of the source structure.You can modify the contents of the yml* file.
+To change the settings associated with these repositories, *&lt;componentname&gt;.yml* in the config directory of the source structure. You can modify the contents of the yml* file.
 Below is an example of a setup element file.
 
   ````
@@ -733,7 +733,7 @@ Below are examples of index.yml.
 ### <a name="413"/>4.1.3. Component Extension 
 
 The development and execution environment for JAVA-based applications is diverse.
-To support these diverse environments, JAVA build pack developers can add new components in addition to existing components. 
+To support these diverse environments, JAVA buildpack developers can add new components in addition to existing components. 
 User-defined components may be added to the JAVA build pack in the following order.
 
 1)  The JAVA build pack provides three basic classes to help implement components.
@@ -741,7 +741,7 @@ User-defined components may be added to the JAVA build pack in the following ord
 
 -   [**JavaBuildpack::Component::BaseComponent**](https://github.com/cloudfoundry/java-buildpack/blob/master/docs/extending-base_component.md)**:**
     Base Component is a basic class for all components of the JAVA build pack.
-    Methods for downloading files are provided as parts of component operations..
+    Methods for downloading files are provided as parts of component operations.
     Below is the Base Component class.
 
   ````
@@ -783,7 +783,7 @@ User-defined components may be added to the JAVA build pack in the following ord
 
     JavaBuildpack::Util::Cache::ApplicationCache.new.get(uri) do |file, downloaded|
 
-        puts downloaded ?
+        puts downloaded?
 
             "(\#{(Time.now - download\_start\_time).duration})" : '(found in cache)'
 
@@ -829,7 +829,7 @@ User-defined components may be added to the JAVA build pack in the following ord
 -   [***JavaBuildpack::Component::ModularComponent***](https://github.com/cloudfoundry/java-buildpack/blob/master/docs/extending-modular_component.md):
     ModularComponent is a basic class for components that need to be modularized.
     The class enables a component to consist of multiple subcomponents and adjusts the component lifecycle across all subcomponents.
-    Below shos ModularComponent Class.
+    Below is shos ModularComponent Class.
 
   ````
   \# lib/java\_buildpack/component/modular\_component.rb
@@ -995,7 +995,7 @@ User-defined components may be added to the JAVA build pack in the following ord
   End
   ````
 
-> Context is a collection of utilities used by component, and it has 3 parts which are Application, Configuration, and Droplet.
+> Context is a collection of utilities used by the component, and it has 3 parts which are Application, Configuration, and Droplet.
 > When an instance is created, it is matched and assigned to the key of the context instance variable.
 
 | Context Type | Class and Description |
@@ -1006,19 +1006,19 @@ User-defined components may be added to the JAVA build pack in the following ord
 
 2)  Add the new class file to the appropriate location according to the standard component type as shown below.
 
-| Comonent Type | Directory |
+| Component Type | Directory |
 |-------------|---------|
 |Container | lib/java\_buildpack/container|
 |Framework | lib/java\_buildpack/framework|
 |JRE | lib/java\_buildpack/jre|
 
 
-3)  Implement essential feature: detection, compilation, and release.
+3)  Implement essential features: detection, compilation, and release.
 
 > The newly added component class implements the necessary features of the build pack: Detect, Compile, and Release methods.
 > Depending on the expanded base class, the Detect function is implemented as a support method.
 
-4)  Add the name of the new class at the config/components.yml file.
+4)  Add the name of the new class to the config/components.yml file.
 
 ### <a name="414"/>4.1.4. Example:Add Component Class 
 
@@ -1026,11 +1026,11 @@ An example of adding a Tomcat Container component is described in order.
 
 1)  JavaBuildpack::Component:: Expand the ModularComponent base class to add Tomcat Container Component.
 
-2)  Place the tomcat container class tomcat.rb in the folder where the container type components are located. (lib/java buildpack/container/tomcat.rb)
+2)  Place the tomcat container class tomcat.rb in the folder where the container-type components are located. (lib/java buildpack/container/tomcat.rb)
 
 3)  The essential function: detection, compilation, and release are implemented as follows.
 
--   **Detect Implementation:** Implements where to apply tomcat container to the deployed application or not.  
+-   **Detect Implementation:** Implements where to apply the tomcat container to the deployed application or not.  
     For example, if the return value of tomcat.rb is true, then tomcat is applied.
     Below is an example of the detect function implemented in tomcat.
 
@@ -1089,7 +1089,7 @@ An example of adding a Tomcat Container component is described in order.
 
 > The source code above is about preparing a link between tomcat and application files.
 > Application files are therefore available in tomcat classpath.
-> When the source code aboove is being executed, the working directory is configured as follows.
+> When the source code above is being executed, the working directory is configured as follows.
 
   ````
   \# working directory
@@ -1132,7 +1132,7 @@ An example of adding a Tomcat Container component is described in order.
 
 > In the source code above, the command method adds the http.port referenced by tomcat's server.xml to the java system variable and creates a command to start tomcat. ("./bin/catalina.sh run")
 
-1)  Add the name of the class at the config/components.yml file.
+1)  Add the name of the class to the config/components.yml file.
 
   ````
   \# config/components.yml
@@ -1168,11 +1168,11 @@ An example of adding a Tomcat Container component is described in order.
 
 The application test of the developed build pack can be attempted in two ways: add it to the system build pack or use the GitHub URL.
 This chapter guides you through the applicable testing methods.
-Installation the CF CLI (Command Line Interface) tool is needed on your PC for testing and prepare a test application to apply the developed buildpack.
+Installation of the CF CLI (Command Line Interface) tool is needed on your PC for testing and preparing a test application to apply the developed buildpack.
 
 ### <a name="51"/>5.1. Add System Buildpack 
 
-Adding the developed build pack to the system build pack is done through CF CLI commands, and authorization to open cloud platforms is essencial.
+Adding the developed build pack to the system build pack is done through CF CLI commands, and authorization to open cloud platforms is essential.
 For example, add a JAVA buildpack to a system build pack using the following order and command, and select the buildpack added during application deployment.
 ````
 \# Package the developed buildpack.
@@ -1196,7 +1196,7 @@ Creating build/java-buildpack-2.7.zip
 
 \$ cf buildpacks
 
-\# Set the name of the buildpack added when deploying application.
+\# Set the name of the buildpack added when deploying the application.
 
 \$ cf push –b java-buildpack-2.7
 ````
@@ -1212,7 +1212,7 @@ If you use a private git repository that requires user name/password authenticat
 \$ cf push -b
 https://username:password@github.com/johndoe/my-buildpack.git
 ````
-Basically, the open cloud platform uses the master branch of the git repository of buildpacks.
+The open cloud platform uses the master branch of the git repository of buildpacks.
 To use another branch, you can request as shown below.
 ````
 \$ cf push -b
@@ -1220,14 +1220,14 @@ https://username:password@github.com/johndoe/my-buildpack.git\#my-branch-name
 ````
 ※Caution: If Windows first uploads a build pack to the git repository, the executable properties of detect, compile, and release scripts that exist in the "bin" directory may be lost. 
 In this case, the buildpack cannot be executed on the platform, resulting in an error.
-Therefore, additional work may be needed to assign execution properties to each script and apply them to the git repository of Linux environment.
+Therefore, additional work may be needed to assign execution properties to each script and apply them to the git repository of the Linux environment.
 
 
 [^1]: Application Manifests,[***http://docs.cloudfoundry.org/devguide/deploy-apps/manifest.html***](http://docs.cloudfoundry.org/devguide/deploy-apps/manifest.html)
 
 [^2]: YAML Ain’t Markup Language, [***http://www.yaml.org***](http://www.yaml.org),[***http://ko.wikipedia.org/wiki/YAML***](http://ko.wikipedia.org/wiki/YAML)
 
-[^3]: The container shares and uses resources (CPU, Memory, Block I/O, Network etc.) of the host operating system.
+[^3]: The container shares and uses resources (CPU, Memory, Block I/O, Network, etc.) of the host operating system.
 
 [^4]: Ruby's third-party libraries are called gem and can be managed by a package manager called RubyGems.
 

@@ -446,75 +446,79 @@ picture. Insert Parameter
 
 The reason for registering OPTIONS is in preparation for times when OPTIONS are requested to check the CORS to see if the API is valid in https or other web communication, so OPTIONS are required when registering the API.
 
-API에 대한 등록을 완료하면 Implement 단계로 넘어갑니다. Implement단계에서는 서비스의 Endpoint를 등록합니다. Endpoint type은 Http 통신으로 서비스를 할 것이니 “HTTP Endpoint”를 선택을 하고 도로명 주소 서비스 서버의 URL을 Production, Sandbox Endpoint에 넣습니다. 개발 서버/테스트 서버는 Sandbox endpoint에 넣어주고 실제 운영 서비스는 Production endpoint에 넣어줍니다. 
-여기서 입력한 Endpoint가 기본이 되고 뒤에 API, Parameter를 붙여서 실제 요청을 하게 됩니다.
+Once you have completed the registration for the API, proceed to the Implementation step. The Implementation step registers the endpoint of the service.
+Endpoint type will be serviced by Http communication, so select "HTTP Endpoint" and insert the URL of the road name address service server into Production, Sandbox Endpoint. The development server/test server is placed in the sandbox endpoint and the actual operational services are placed in the production endpoint.
+The endpoint entered here is the default, and the API and parameter are attached to it to make an actual request.
 >![api_platform_dorojuso_11]
 
-그림. Endpoint 등록
+picture. Endpoint Registration
 
 
-Endpoint 등록이 완료되면 마지막 단계인 API의 접근설정을 합니다. 
-통신방식(http, https)와 접근 제한 설정(Tier Availability)를 설정합니다. 제약사항을 더 추가하기 위해서는 API 플랫폼의 매뉴얼을 참고하여주세요. 여기서는 기본 설정만 하는 것으로 합니다. 
-접근 제한 설정(Tier Availability)는 Unlimited로 설정을 합니다. 개방형 클라우드 플랫폼과의 연결시, 제한 설정을 하지 않고 모니터링만 하기로 되어 있기 때문에 두 시스템을 연결하는 서비스(서비스팩)에 Unlimited만 사용할 수 있게 설정되어 있습니다.
+When Endpoint registration is completed, proceed to the last step which is acess setting.  
+Set the communication method (http, https) and the access limit setting (Tier Availability). Please refer to the API platform manual to add more restrictions.  
+Only basic settings are done in here. Set the Tier Availability to Unlimited.  
+When connecting to an open cloud platform, only Unlimited is enabled for the services (service packs) that connect the two systems because they are supposed to monitor without any restrictions.
 >![api_platform_dorojuso_12]
 
-그림. 접속 환경 설정
+picture. Access Environment Settings
 
 
-이제 API에 대한 정보는 입력을 마쳤으며 이 API를 Publishing 을 하면 API플랫폼 Store에 보여지는 것을 확인하면 됩니다. 
+Now you have entered the information about the API, and when Publishing this API, it can checked at the API platform store. 
 >![api_platform_dorojuso_13]
 
-그림. API플랫폼 
+picture. API Platform 
 
 
-위와 같이 Store에서 만든 서비스가 보이고 API Console에서 API를 호출했을 때 결과 값이 정상으로 오면 등록이 성공적으로 된 것입니다.
+As shown above, if the service created by the Store is visible and the result value is normal when the API is called from the API Console, the registration is successful.
 
-지금까지 도로명 주소 서비스 서버를 만들었고 해당 서비스를 API 플랫폼에서 관리하게 하였습니다. 이제는 개방형 클라우드 플랫폼에 서비스를 등록하여 플랫폼 내에서 서비스를 이용할 수 있게 하면 준비는 완료됩니다.
+So far, we have created a road name address service server and managed the service on the API platform. Now you're ready to register your services on an open cloud platform and make them available within the platform.
 
-### <a name="22"/>5.2. 도로명 주소 관리 API 등록
-도로명 주소 서비스의 데이터를 관리하는 기능으로 조회, 등록, 수정, 삭제를 할 수 있게 합니다. 해당 관리 기능도 검색 서비스와 같이 API로 만들고 접근 관리는 API 플랫폼에서 합니다. 
-API플랫폼에 등록하는 방법은 거의 유사하고 맨 처음 API의 기본 정보를 입력하는 부분만 다르니 이 부분만 설명하겠습니다.
+### <a name="22"/>5.2. Road Name Address Manage API Registration
+The data management function of the road name address service enables retrieving, registering, modifying, and deleting. The corresponding management functions are also made into APIs, such as search services, and access management is done at the API platform. 
+The method of registering on the API platform is similar exept for the part where the basic information of the API is being entered.
+The diffrence will be discussed below.
 
-도로명 주소 API 등록합니다. 등록, 수정, 삭제, 조회에 대해서 다 등록을 해야 합니다. 자세한 사항은 별첨B의 API 정의서로 등록을 하면 됩니다.
+Register road name address API. Registration, Modification, Deletion, and Retrieve must be registered. For more information, you can register it as the API definition in Annex B.
 >![api_platform_dorojuso_14]
 
-그림. 도로명 주소 관리 API 등록
+picture. Registering the road name address manage API
 
 
-도로명 주소 관리는 Parameter를 query 방식이 아닌 path 방식으로 설계하였습니다. API 플랫폼에서는 아래의 화면과 같이 URL Pattern에 dorojuso/manager/{building_code}와 같이 { }로 path 변수 명을 입력하면 자동으로 parameter를 설정해 줍니다.
+The road name address management is designed with a path method rather than a query method. The API platform automatically sets the parameter by entering the path variable name with {} such as dorojuso/manager/{building_code} in the URL pattern as shown in the screen below.
 >![api_platform_dorojuso_15]
 
-그림. Path방식의 Parameter 입력
+picture. Enter Parameter with Path Method
 
 
 >![api_platform_dorojuso_16]
 
-그림. Path에 변수를 넣었을 경우의 화면
+picture. A screen when variables are inserted to Path
 
 
-여기서도 주의할 것은 각 API Pattern별로 OPTIONS을 같이 등록해야 합니다. Rest통신시 OPTIONS로 해당 API의 유효성을 체크해주기도 해서 등록을 해줘야 합니다. 나머지 Endpoint, 접속 환경 설정은 도로명 주소 검색 서비스와 동일하기 입력하시면 됩니다. 입력이 완료되고 Publish까지 완료되면 Store에서 API가 잘 보이는 지와 API Console에서 정상동작을 하는지 확인하시면 됩니다.
+It is important to note that OPTIONS must be registered for each API pattern. You need to register the API by checking the validity of the API with OPTIONS during Rest communication. You can enter the rest of the Endpoint and Access Preferences are the same as the Road Name Address Search Service. Once the entry is complete and the publication is complete, you can check whether the API is visible in the store and whether it is working properly in the API Console.
 
-이렇게 도로명 주소 관리 서비스까지 API 플랫폼에 등록을 완료하였습니다.
+We have completed registration of the road name address management service on the API platform.
 
 
 
-# <a name="23"/>6. 개방형 클라우드 플랫폼 설정
-개방형 클라우드 플랫폼에서 API 플랫폼의 API를 사용하기 위해서는 서비스팩(Service Broker)을 등록해야 합니다. 만약 한번이라도 API 플랫폼의 서비스팩을 등록을 했을 경우에는 서비스팩 Update를 해줘야 합니다.
+# <a name="23"/>6. Open Cloud Platform Settings
+To use the API of the API platform on an open cloud platform, you must register a service broker. 
+If you register the service pack of the API platform for at least once, you need to update the service pack.
 
-개방형 클라우드 플랫폼에서 서비스를 등록하고 관리하는 방법은 따로 매뉴얼에서 설명이 되어 있으니 본 가이드에서는 간략하게 어떤 명령으로 등록하고 권한 설정, Update하는 명령 위주로만 설명하겠습니다.
+The manual describes how to register and manage services in an open cloud platform, so this guide will briefly explain which commands to register, set permissions, and update.
 
-### <a name="24"/>6.1. API 플랫폼 서비스팩 등록
-cf cli 로 서버에 로그인을 합니다. 서비스팩(Service Broker)를 등록할 수 있는 권한을 가진 사용자 이여야합니다.
+### <a name="24"/>6.1. API API Platform Servicepack Registration
+Log in to the server with cf cli. The user should have authority to reigster the Servicepack(Service Broker).
 
-서비스 팩 등록을 위해서는 아래와 같이 명령을 입력합니다.
+Enter the command as shown below for registering the servicepack.
 ````
-$ cf create-service-broker {서비스팩 이름} {서비스팩 사용자ID} {서비스팩 사용자비밀번호} http://{서비스팩 URL}
+$ cf create-service-broker {servicepack name} {servicepack userID} {servicepack user password} http://{servicepack URL}
 ````
-- 서비스팩 이름 : 서비스 팩 관리를 위해 개방형 클라우드 플랫폼에서 보여지는 명칭입니다. 서비스 Marketplace에서는 각각의 API 서비스 명이 보여지니 여기서 명칭은 서비스팩 리스트의 명칭입니다.
-- 서비스팩 사용자ID / 비밀번호 : 서비스팩에 접근할 수 있는 사용자 ID입니다. 서비스팩도 하나의 API 서버이기 때문에 아무나 접근을 허용할 수 없어 접근이 가능한 ID/비밀번호를 입력합니다.
-- 서비스팩 URL : 서비스팩이 제공하는 API를 사용할 수 있는 URL을 입력합니다.
+- Servicepack Name : 서비스 팩 관리를 위해 개방형 클라우드 플랫폼에서 보여지는 명칭입니다. 서비스 Marketplace에서는 각각의 API 서비스 명이 보여지니 여기서 명칭은 서비스팩 리스트의 명칭입니다.
+- Servicepack UserID / PW : 서비스팩에 접근할 수 있는 사용자 ID입니다. 서비스팩도 하나의 API 서버이기 때문에 아무나 접근을 허용할 수 없어 접근이 가능한 ID/비밀번호를 입력합니다.
+- Servicepack URL : 서비스팩이 제공하는 API를 사용할 수 있는 URL을 입력합니다.
 
-서비스팩 등록이 완료되었으며 아래와 같이 등록된 정보를 확인할 수 있습니다.
+Servicepack registration has been completed and registered information can be checked as below.
 ````
 $ cf service-brokers
 Getting service brokers as admin...Cloud Controller
@@ -549,7 +553,7 @@ dorojusodb      Unlimited   all
 
 이제 개방형 클라우드 플랫폼에서 도로명 주소 서비스를 사용할 준비가 되었습니다.
 
-### <a name="25"/>6.2. API 플랫폼 서비스팩 Update
+### <a name="25"/>6.2. API Platform Servicepack Update
 만약 기존에 서비스팩이 등록되었었으면 서비스팩 Update를 해야합니다. API플랫폼에 새로운 API를 만들었거나 없어졌을 경우에는 이 Update를 해줘서 개방형 클라우드 플랫폼과 정보를 맞춰야 합니다.
 
 명령문은 아래와 같습니다.

@@ -101,17 +101,17 @@ The downloaded "[Guide]Utilization method of making address(full address).pdf" g
 Picture. Spec information of “[Guide]Utilization method of making address(full address).pdf”
 
 
-주소 파일은 압축파일로 약 158MB정도가 됩니다. (2015년 6월 기준) 이 파일을 압축을 해제하면 아래와 같이 TXT정보로 된 주소파일을 확인할 수 있습니다. 
+The address file is a zipped file that is about 158 MB. (As of June 2015) If you unzip this file, you can check the address file with TXT information as below.. 
 >![api_platform_dorojuso_05]
 
-그림. 주소 파일 리스트
+picture. Address fule list
 
 
-압축을 해제하면 1.85GB정도됩니다. 이 TXT 파일은 “|” 구분자로 되어 있는 텍스트 파일로 MySQL에 데이터를 Import해야 합니다.
+When you unzip the file, it's about 1.85GB. This TXT file is a text file with the "|" delimiter and must import data into MySQL.
 
-### <a name="10"/>3.2. 주소 데이터 Table 정의하기
-주소 데이터를 저장하기 위해서는 테이블의 구조를 정의해야 합니다. 본문서는 MySQL에 도로명주소 정보를 저장하고 관리하기 때문에 MySQL의 문법에 맞게 정의하였습니다.
-가능한 “[가이드]주소구축(전체주소)활용방법.pdf “에 정의된 한글명칭과 비슷하게 구조를 잡았습니다.
+### <a name="10"/>3.2. Define an address data table
+To store address data, you must define the structure of the table. This document is defined according to the grammar of MySQL because it stores and manages road name address information in MySQL.
+As much as possible, the structure is similar to the Korean name defined in "[Guide]Utilization method of making address(full address).pdf"..
 
 ````
 CREATE TABLE IF NOT EXISTS `egov_common`.`doro_juso` (
@@ -120,12 +120,12 @@ CREATE TABLE IF NOT EXISTS `egov_common`.`doro_juso` (
   `sigungu` VARCHAR(40) NULL COMMENT '',
   `eupmyundong` VARCHAR(40) NULL COMMENT '',
   `ri` VARCHAR(40) NULL COMMENT '',
-  `san` CHAR(1) NULL COMMENT '0:대지, 1:산',
+  `san` CHAR(1) NULL COMMENT '0:land, 1:mountain',
   `bunji` SMALLINT(4) NULL COMMENT '',
   `ho` SMALLINT(4) NULL COMMENT '',
-  `doro_code` CHAR(12) NULL COMMENT '시군구코드(5)+도로명번호(7)',
+  `doro_code` CHAR(12) NULL COMMENT 'zip code(5)+road name number(7)',
   `doro` VARCHAR(80) NULL COMMENT '',
-  `jiha` CHAR(1) NULL COMMENT '0:지상, 1:지하, 2:공중',
+  `jiha` CHAR(1) NULL COMMENT '0:land, 1:ground, 2:air',
   `bon` SMALLINT(5) NULL COMMENT '',
   `bu` SMALLINT(5) NULL COMMENT '',
   `gunmul` VARCHAR(40) NULL COMMENT '',
@@ -137,13 +137,13 @@ CREATE TABLE IF NOT EXISTS `egov_common`.`doro_juso` (
   `zipcode` CHAR(6) NULL COMMENT '',
   `zipno` CHAR(3) NULL COMMENT '',
   `dayaeng` VARCHAR(40) NULL COMMENT '',
-  `idong` CHAR(2) NULL COMMENT '31 : 건물번호 부여, 34, 변경, 63 : 건물번호 폐지\n72 : 건물군내 일부 건물 폐지,\n73 : 건물군내 일부 건물 생성',
+  `idong` CHAR(2) NULL COMMENT '31 : Building Numbering, 34, Modification, 63 : Abolition of Building\n72 : Abolition of some buildings in the building group,\n73 : Create some buildings in the building group',
   `update_date` CHAR(8) NULL COMMENT '',
   `defore_doro` VARCHAR(25) NULL COMMENT '',
   `sigungu_gunmul` VARCHAR(200) NULL COMMENT '',
-  `gongdong` CHAR(1) NULL COMMENT '0:비공동주택, 1:공동주택',
+  `gongdong` CHAR(1) NULL COMMENT '0:Non-appartment, 1:Appartment',
   `gicho_no` CHAR(5) NULL COMMENT '',
-  `juso_sang` CHAR(1) NULL COMMENT '0:미부여, 1:부여',
+  `juso_sang` CHAR(1) NULL COMMENT '0:Not awared, 1:Awarded',
   `bigo1` VARCHAR(15) NULL COMMENT '',
   `bigo2` VARCHAR(15) NULL COMMENT '',
   PRIMARY KEY (`gunmul_no`)  COMMENT '')

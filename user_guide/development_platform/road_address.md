@@ -693,19 +693,19 @@ The location of the source will be located on the Git Hub of the "Open Cloud Pla
 
 <table>
   <tr>
-    <td>Package명/소스명</td>
-    <td>설명</td>
+    <td>Package Name/Source Name</td>
+    <td>Description</td>
   </tr>
   <tr>
     <td colspan=2>org.openpaas.egovframwork.comcomponent.dorojuso.sampleApp</td>
   </tr>
   <tr>
     <td>Application</td>
-    <td>Spring Boot를 시작하는 Main을 포함하는 Class입니다.</td>
+    <td>A ㅊlass that starts Spring Boot containing Main.</td>
   </tr>
   <tr>
     <td>ApplicationInstanceInfoCreator</td>
-    <td>개방형 클라우드 플랫폼에 배포된 앱의 정보를 담는 Class입니다.</td>
+    <td>A class that contains information about apps deployed on an open cloud platform.</td>
   </tr>
   <tr>
     <td>CloudFoundryConnector</td>

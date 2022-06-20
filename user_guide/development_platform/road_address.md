@@ -537,7 +537,7 @@ dorojusodb      Unlimited   none
    dorojusodbMgt   Unlimited   none
 ````
 
-도로명 주소 검색/관리 서비스의 access가 설정이 안된 것을 확인 할 수 있습니다. 이 access를 enable 시켜야 Marketplace에서 확인이 가능하고 서비스 신청(Provision), 연결(Bind)를 할 수 있습니다.
+You can check that the access of the road name address search/management service is not set. Access must be enabled to be checked on the Marketplace, and service application (Provision) and connection (Bind) can be made.
 ````
 $ cf enable-service-access dorojusodb
 $ cf enable-service-access dorojusodbMgt
@@ -549,75 +549,75 @@ broker: apiplatform-sb
 dorojusodb      Unlimited   all
    dorojusodbMgt   Unlimited   all
 ````
-서비스를 Enable해주고 다시 서비스 접근 리스트를 조회하면 access가 all로 되어 있는 것을 확인할 수 있습니다.
+Enable the service and check the service list again and check if the access has been changed to all.
 
-이제 개방형 클라우드 플랫폼에서 도로명 주소 서비스를 사용할 준비가 되었습니다.
+Road name address services are now ready for use on open cloud platforms.
 
 ### <a name="25"/>6.2. API Platform Servicepack Update
-만약 기존에 서비스팩이 등록되었었으면 서비스팩 Update를 해야합니다. API플랫폼에 새로운 API를 만들었거나 없어졌을 경우에는 이 Update를 해줘서 개방형 클라우드 플랫폼과 정보를 맞춰야 합니다.
+If the service pack has been registered before, update the service pack. If a new API is created or lost on the API platform, this update should be made to match the information with the open cloud platform.
 
-명령문은 아래와 같습니다.
+The command is as shown below.
 ````
-$ cf update-service-broker {서비스팩 이름} {서비스팩 사용자ID} {서비스팩 비밀번호} http://{서비스팩 URL}
+$ cf update-service-broker {Servicepack Name} {Servicepack UserID} {Servicepack Password} http://{Servicepack URL}
 ````
-새로 생성된 서비스는 접근 권한을 새로 설정해야 하며 전 절에서 설명한 enable-service-access 를 이용하여 접근 권한을 줍니다.
+The newly created service requires a new set of access authorities. Authorities can be given through the enable-service-access command described above.
 
 
 
-# <a name="26"/>7. 도로명 주소 검색  Sample Web App 설명
-본 Sample Web App은 개방형 클라우드 플랫폼에 배포되며 API 플랫폼의 서비스를 Provision과 Bind를 한 상태에서 사용이 가능합니다.
+# <a name="26"/>7. Road Name Address Search Sample Web App Description
+This Sample Web App is deployed to the Open Cloud Platform. The service of API platform can be used in a provisioned and bound condition.
 
-### <a name="27"/>7.1. Sample Web App 구조
-Sample Web App은 개방형 클라우드 플랫폼에 App으로 배포가 됩니다. 여기서는 간단하게 Spring Boot를 이용하여 개방형 클라우드 플랫폼에서 환경정보(서비스 연결 정보)를 가져오고 Javascript, AngularJS내에서 그 정보를 활용할 수 있게 되어 있습니다.
+### <a name="27"/>7.1. Sample Web App Structure
+The Sample Web App is deployed to the Open Cloud Platform as an App. In here, Spring Boot is used to bring environment settings(service connection information) from the Open Cloud Platform and use those informations inside the Javascript and AngularJS.
 
 <table>
   <tr>
-    <td>모듈</td>
-    <td>버전</td>
-    <td>설명</td>
+    <td>Module</td>
+    <td>Version</td>
+    <td>Description</td>
   </tr>
   <tr>
     <td>Java</td>
     <td>1.7</td>
-    <td>Java 컴파일러/샐행환경</td>
+    <td>Java Comfiler/Execution Evironment</td>
   </tr>
   <tr>
     <td>Spring Boot</td>
     <td>1.3</td>
-    <td>Java 만으로 Web App을 구동 시킬 수 있는 모듈</td>
+    <td>A module that can run the Web App with Java only</td>
   </tr>
   <tr>
     <td>Spring cloud</td>
     <td>1.0</td>
-    <td>개방형 클라우드 플랫폼에서 서비스와 바인딩한 정보를 가져오기 위한 라이브러리</td>
+    <td>Library for retrieving information bound to services from an open cloud platform</td>
   </tr>
     <tr>
       <td>thymeleaf</td>
       <td>1.3</td>
-      <td>HTML에 객체를 전달하기 위해 사용한 모듈</td>
+      <td>Modules used to pass objects to HTML</td>
     </tr>
       <tr>
         <td>httpclient</td>
         <td>4.4.1</td>
-        <td>API 플랫폼과 HTTP 통신을 하기 위함. (token을 가져올때 사용함)</td>
+        <td>To communicate HTTP with the API platform (used to import tokens)</td>
      </tr>
 </table>
  
 <table>
   <tr>
-    <td>모듈</td>
-    <td>버전</td>
-    <td>설명</td>
+    <td>Module</td>
+    <td>Version</td>
+    <td>Descriptin</td>
   </tr>
   <tr>
     <td>AngularJS</td>
     <td>1.2.18</td>
-    <td>HTML에서 MVC를 이용할 수 있게하는 Javascript Framework</td>
+    <td>Javascript Framework to make MVC available in HTML</td>
   </tr>
   <tr>
     <td>JQuery</td>
     <td>1.11</td>
-    <td>Javascript를 잘 사용하기 위한 Library</td>
+    <td>A Library for Good Use of Javascript</td>
   </tr>
   <tr>
     <td>Bootstrap</td>
@@ -627,16 +627,16 @@ Sample Web App은 개방형 클라우드 플랫폼에 App으로 배포가 됩니
   <tr>
     <td>sb-admin</td>
     <td>1</td>
-    <td>Bootstrap 테마로 각종 UI 컴포넌트와 메뉴틀을 제공함.</td>
+    <td>Provides various UI components and menu frames in bootstrap theme.</td>
   </tr>
 </table>
 
-### <a name="28"/>7.2. 개방형 클라우드 플랫폼에서 서비스 신청 및 바인딩 하기
-6장에서 등록한 서비스를 앱에서 사용하기 위해서는 서비스 신청(Provision)과 연결(Binding)을 해야합니다. 연결을 위해서는 App이 한번은 배포가 되어 있어야 합니다.
-개방형 클라우드 플랫폼의 자세한 사용법은 서비스 이용을 참조하여 주시기 바랍니다. 여기서는 간단하게 도로명 주소 서비스 연결하는 부분만 설명하겠습니다.
+### <a name="28"/>7.2. Binding and Provisioning for Service in Open Cloud Platform
+In order to use the registered service described in chapter 6, it should be provisioned or bound. The App should be deployed for at least once to be connected.
+For detailed description of the Open Cloud Platform's usage, refer to the service usage. In here, a brief explaination on connection of the road name address service will be done.
 
-#### <a name="29"/>7.2.1 서비스 신청(Provision)하기
-먼저 개방형 클라우드 플랫폼 Marketplace에서 서비스가 있는지 확인을 합니다.
+#### <a name="29"/>7.2.1 Provisioning of Service
+First, check if there are services on the open cloud platform Marketplace.
 ````
 $ cf marketplace
 

@@ -709,37 +709,37 @@ The location of the source will be located on the Git Hub of the "Open Cloud Pla
   </tr>
   <tr>
     <td>CloudFoundryConnector</td>
-    <td>개방형 클라우드 플랫폼에서 환경설정 정보를 가져오기 위한 Class입니다.</td>
+    <td>A class for retrieving configuration information from an open cloud platform.</td>
   </tr>
   <tr>
     <td>CloudFoundryServiceInfoCreator</td>
-    <td>개방형 클라우드 플랫폼에서 서비스와 연결(Binding)된 정보를 담는 Class입니다.</td>
+    <td>A class that holds information bound to services on an open cloud platform.</td>
   </tr>
   <tr>
     <td>Tags</td>
-    <td>서비스팩에서 설정한 Tag 정보를 담는 Class입니다.</td>
+    <td>A class that contains the tag information set by the service pack.</td>
   </tr>
   <tr>
     <td colspan=2>org.openpaas.egovframwork.comcomponent.sampleApp.controller</td>
   </tr>
   <tr>
     <td>SampleController</td>
-    <td>/ 로 오는 요청을 처리하고 API플랫폼과 token 요청을 처리를 Control하고 있습니다.</td>
+    <td>Deals with the requests in / form. API platform and token request process are being controlled.</td>
   </tr>
   <tr>
     <td colspan=2>org.openpaas.egovframwork.comcomponent.sampleApp.model</td>
   </tr>
   <tr>
     <td>ResultMessage</td>
-    <td>요청에 대한 처리 결과(등록, 수정, 삭제) 정보 Class입니다.</td>
+    <td>A class for processing results (registration, modification, deletion) information.</td>
   </tr>
   <tr>
     <td>TokenRequestVO</td>
-    <td>Token을 요청하기 위한 사용자 정보를 가진 Class입니다.</td>
+    <td>Class with user information for requesting Token.</td>
   </tr>
   <tr>
     <td>TokenVO</td>
-    <td>API 플랫폼에서 획득한 Token을 보내기 위한 Class입니다.
+    <td>A class for sending Token acquired from API platform.
 </td>
   </tr>
   <tr>
@@ -747,86 +747,86 @@ The location of the source will be located on the Git Hub of the "Open Cloud Pla
   </tr>
   <tr>
     <td>SampleService</td>
-    <td>API 플랫폼에서 SSL을 사용하지 않고 Token을 가져오기 위한 비즈니스 로직을 수행합니다.</td>
+    <td>The API platform performs business logic to import Token without SSL.</td>
   </tr>
 </table>
 
-#### <a name="33"/>7.3.2. Web 영역 (중요한 파일만 표시 -  main/resources 안에 있음)
-Web 부분의 소스 설명은 개발한 부분만 정리를 하였으며 main/resoureces 안에 있는 파일들 입니다.
+#### <a name="33"/>7.3.2. 7.3.2. Web Area (Shows only the significant files are - inside the main/resources)
+Only the developed part are organized from the source description of Web. These are the files inside main/resoureces.
 
 <table>
   <tr>
-    <td>디렉토리/파일명</td>
-    <td>설명</td>
+    <td>Directory/File Name</td>
+    <td>Description</td>
   </tr>
   <tr>
     <td colspan=2>Template</td>
   </tr>
   <tr>
     <td>app.html</td>
-    <td>SampleController에서 호출하는 부분은 개방형 클라우드 플랫폼에서 설정된 환경설정(서버 정보, 서비스 연결 정보)를 보냅니다.</td>
+    <td>The part called by the Sample Controller sends configuration settings (server information, service connection information) on the open cloud platform SampleController에서 호출하는 부분은 개방형 클라우드 플랫폼에서 설정된 환경설정(서버 정보, 서비스 연결 정보)를 보냅니다.</td>
   </tr>
   <tr>
     <td colspan=2>public/js</td>
   </tr>
   <tr>
     <td>app.js</td>
-    <td>AngularJS가 시작되는 부분은 Route정보를 가지고 있습니다.</td>
+    <td>The starting point of Angular JS has Route information.</td>
   </tr>
   <tr>
     <td>controller.js</td>
-    <td>기본 콘트롤러를 선언합니다. 자세한 콘트롤러는 개별적으로 선언합니다.</td>
+    <td>Declares the default controller. Detailed controllers will be declared individually.</td>
   </tr>
   <tr>
     <td colspan=2>public/js/controller</td>
   </tr>
   <tr>
     <td>dorojJusoController.js</td>
-    <td>도로명 주소 Open API를 이용한 화면의 Controller입니다. (본 가이드에서는 다루지 않음)</td>
+    <td>The controller on the screen using the road name address Open API (not covered in this guide)</td>
   </tr>
   <tr>
     <td>dorojJusoDBController.js</td>
-    <td>도로명 주소 검색 서비스를 이용한 화면의 Controller입니다.</td>
+    <td>A controller on the screen that uses road name address search service.</td>
   </tr>
   <tr>
     <td>dorojJusoDBMgtController.js</td>
-    <td>도로명 주소 관리 서비스를 이용한 화면의 Controller입니다.</td>
+    <td>A controller on the screen that uses road name address managing service.</td>
   </tr>
   <tr>
     <td colspan=2>public/partials</td>
   </tr>
   <tr>
     <td>doroJusoDBList.html</td>
-    <td>도로명 주소 검색 서비스 리스트 화면 HTML 입니다.</td>
+    <td>An HTML screen of road name address search service list.</td>
   </tr>
   <tr>
     <td>doroJusoDBMgtForm.html</td>
-    <td>도로명 주소 관리 등록/수정시 사용하는 화면 HTML 입니다.</td>
+    <td>An HTML screen used when registering/modifying road name address management.</td>
   </tr>
   <tr>
     <td>doroJusoDBMgtList.html</td>
-    <td>도로명 주소 관리 리스트 화면 HTML 입니다.</td>
+    <td>An HTML screen of Road name address management list.</td>
   </tr>
   <tr>
     <td>doroJusoList.html</td>
-    <td>도로명 주소 Open API 사용 리스트 화면 HTML 입니다.</td>
+    <td>An HTML screen list that uses Road name address Open API.</td>
   </tr>
   <tr>
     <td>main.html</td>
-    <td>처음 표시되는 화면입니다. (내용은 없음)</td>
+    <td>The main screen that appears first. (No Content)</td>
   </tr>
   <tr>
     <td>waitForm.html</td>
-    <td>조회시 사용하는 배경에 로딩 이미지를 표시하기 위한 HTML 입니다.</td>
+    <td>HTML for displaying the loading image on the background used for inquiry.</td>
   </tr>    
 </table>
 
 
 
-# <a name="34"/>8. 별첨 A. 도로명 주소 검색 API 정의서
+# <a name="34"/>8. Annex A. Road Name Address Search API Definitions
 
-## <a name="35"/>8.1. 도로명 주소 검색
-사용자가 도로명 주소로 검색할 때 사용하는 검색 서비스입니다. 스펙은 도로명 주소 API (http://www.juso.go.kr) 의 스펙을 그대로 사용하였습니다.
+## <a name="35"/>8.1. Road Name Address Search
+A service used when user search with road name address. The road name address API (http://www.juso.go.kr) was used for spec.
 
 ### 8.1.1. Route
 ````
@@ -838,20 +838,20 @@ GET/ http://<server & base path>/addrLinkApi.do
 #### 8.1.2.1. Parameters
 <table>
   <tr>
-    <td>이름</td>
-    <td>설명</td>
+    <td>Name</td>
+    <td>Description</td>
   </tr>
   <tr>
     <td>currentPage</td>
-    <td>현재 페이지 수</td>
+    <td>Number of current pages</td>
   </tr>
   <tr> 
     <td>countPerPage</td>
-    <td>페이지당 데이터 개수</td>
+    <td>Number of datas per page</td>
   </tr>
   <tr>
     <td>keyword</td>
-    <td>검색할 단어 keyword</td>
+    <td>keyword of the word to search</td>
   </tr>
 </table>
 
@@ -878,14 +878,14 @@ Accept : application/json
     "currentPage": 10,
     "countPerPage": 10,
     "errorCode": "0",
-    "errorMessage": "정상"
+    "errorMessage": "Normal"
     },
     "juso": [
         {
-        "roadAddr": "경기도 양평군 강남로 912 (강상면)",
-        "roadAddrPart1": "경기도 양평군 강남로 912",
-        "roadAddrPart2": "(강상면)",
-        "jibunAddr": "경기도 양평군 강상면 66-0",
+        "roadAddr": "Kyeonggido Yangpeonggun Gangnamro 912(Gangsangmyeon)",
+        "roadAddrPart1": "Kyeonggido Yangpeonggun Gangnamro 912",
+        "roadAddrPart2": "(Gangsangmyeon)",
+        "jibunAddr": "Kyeonggido Yangpeonggun Gangsangmyeon 66-0",
         "engAddr": "",
         "zipNo": "476-913",
         "admCd": "4183031021",
@@ -893,10 +893,10 @@ Accept : application/json
         "bdMgtSn": "4183031021100660000007779"
     },
     {
-        "roadAddr": "경기도 양평군 강남로 952 (강상면)",
-        "roadAddrPart1": "경기도 양평군 강남로 952",
-        "roadAddrPart2": "(강상면)",
-        "jibunAddr": "경기도 양평군 강상면 71-1",
+        "roadAddr": "Kyeonggido Yangpeonggun Gangnamro 952 (Gangsangmyeon)",
+        "roadAddrPart1": "Kyeonggido Yangpeonggun Gangnamro 952",
+        "roadAddrPart2": "(Gangsangmyeon)",
+        "jibunAddr": "Kyeonggido Yangpeonggun Gangsangmyeon 71-1",
         "engAddr": "",
         "zipNo": "476-913",
         "admCd": "4183031021",
@@ -910,10 +910,10 @@ Accept : application/json
 
 
 
-# <a name="36"/>9. 별첨 B. 도로명 주소 관리 API 정의서
+# <a name="36"/>9. Annex B. Road Name Address Manage API Definitions
 
-## <a name="37"/>9.1. 도로명 주소 검색
-관리자가 도로명 주소로 검색할 때 사용하는 검색 서비스입니다. DB 구조와 동일하게 정보를 보내줍니다.
+## <a name="37"/>9.1. Road Name Address Search
+A search service that administrators use to search by road name address. It sends information in the same way as the DB structure.
 
 ### 9.1.1. Route
 ````
@@ -922,23 +922,23 @@ GET/ http://<server & base path>/dorojuso/manager
 
 ### 9.1.2. Request
 
-#### 9.1.2.1. Parameters (PATH 방식)
+#### 9.1.2.1. Parameters (PATH Method)
 <table>
   <tr>
-    <td>이름</td>
-    <td>설명</td>
+    <td>Name</td>
+    <td>Description</td>
   </tr>
   <tr>
     <td>currentPage</td>
-    <td>현재 페이지 수</td>
+    <td>Number of current pages</td>
   </tr>
   <tr>
     <td>countPerPage</td>
-    <td>페이지당 데이터 개수</td>
+    <td>Number of data per page</td>
   </tr>
   <tr>
     <td>keyword</td>
-    <td>검색할 단어 keyword</td>
+    <td>keyword of the word to search</td>
   </tr>
 </table>
 
@@ -963,15 +963,15 @@ Accept : application/json
     "juso": [
         {
             "code": "4183031021",
-            "sido": "경기도",
-            "sigungu": "양평군",
-            "eupmyundong": "강상면",
-            "ri": "병산리",
+            "sido": "Kyeonggido",
+            "sigungu": "Yangpyeonggun",
+            "eupmyundong": "Gangsangmyeon",
+            "ri": "Byeongsanri",
             "san": "0",
             "bunji": 66,
             "ho": 0,
             "doro_code": "418303217033",
-            "doro": "강남로",
+            "doro": "Gangnamro",
             "jiha": "0",
             "bon": 912,
             "bu": 1,
@@ -980,7 +980,7 @@ Accept : application/json
             "gunmul_no": "4183031021100660000007779",
             "eupmyundong_no": 1,
             "hang_code": "4183031000",
-            "hang": "강상면",
+            "hang": "Gangsangmyeon",
             "zipcode": "476913",
             "zipno": "011",
             "dayaeng": "",
@@ -999,8 +999,8 @@ Accept : application/json
 }
 ````
 
-## <a name="38"/>9.2. 도로명 주소 검색 (한 개)
-관리자가 도로명 주소로 검색할 때 사용하는 검색 서비스입니다. DB 구조와 동일하게 정보를 보내줍니다.
+## <a name="38"/>9.2. Road Name Address Search (One)
+A search service that administrators use to search by road name address. It sends information just like the DB structure.
 
 ### 9.2.1. Route
 ````
@@ -1009,15 +1009,15 @@ GET/ http://<server & base path>/dorojuso/manager
 
 ### 9.2.2. Request
 
-#### 9.2.2.1. Parameters (PATH 방식)
+#### 9.2.2.1. Parameters (PATH Method)
 <table>
   <tr>
-    <td>이름</td>
-    <td>설명</td>
+    <td>Name</td>
+    <td>Description</td>
   </tr>
   <tr>
     <td>building_code</td>
-    <td>건물 관리 번호</td>
+    <td>Building Management Code</td>
   </tr>
 </table>
 
@@ -1040,15 +1040,15 @@ Accept : application/json
 ````
 {
     "code": "4183031021",
-    "sido": "경기도",
-    "sigungu": "양평군",
-    "eupmyundong": "강상면",
-    "ri": "병산리",
+    "sido": "Kyeonggido",
+    "sigungu": "Yangpyeonggun",
+    "eupmyundong": "Gangsangmyeon",
+    "ri": "Byeongsanri",
     "san": "0",
     "bunji": 66,
     "ho": 0,
     "doro_code": "418303217033",
-    "doro": "강남로",
+    "doro": "Gangnamro",
     "jiha": "0",
     "bon": 912,
     "bu": 1,
@@ -1057,7 +1057,7 @@ Accept : application/json
     "gunmul_no": "4183031021100660000007779",
     "eupmyundong_no": 1,
     "hang_code": "4183031000",
-    "hang": "강상면",
+    "hang": "Gangsangmyeon",
     "zipcode": "476913",
     "zipno": "011",
     "dayaeng": "",
@@ -1072,8 +1072,8 @@ Accept : application/json
     "bigo2": ""
 }
 ````
-## <a name="39"/>9.3. 도로명 주소 등록
-관리자가 도로명 주소를 새로 등록할 때 사용합니다. 건물관리 번호가 Key로 중복시 오류가 발생합니다.
+## <a name="39"/>9.3. Register Road Name Address
+Used by the administrator to register a new road name address. If the building management number overlaps with Key, an error occurs.
 
 ### 9.3.1. Route
 ````
@@ -1082,22 +1082,22 @@ POST/ http://<server & base path>/dorojuso/manager
 
 ### 9.3.2. Request
 
-#### 9.3.2.1. Parameters (PATH 방식)
+#### 9.3.2.1. Parameters (PATH Method)
 N/A
 
 #### 9.3.2.2. Body
 ````
 {
     "code": "4183031021",
-    "sido": "경기도",
-    "sigungu": "양평군",
-    "eupmyundong": "강상면",
-    "ri": "병산리",
+    "sido": "Kyeonggido",
+    "sigungu": "Yangpyeonggun",
+    "eupmyundong": "Gangsangmyeon",
+    "ri": "Byeongsanri",
     "san": "0",
     "bunji": 66,
     "ho": 0,
     "doro_code": "418303217033",
-    "doro": "강남로",
+    "doro": "Gangnamro",
     "jiha": "0",
     "bon": 912,
     "bu": 1,
@@ -1106,7 +1106,7 @@ N/A
     "gunmul_no": "4183031021100660000007779",
     "eupmyundong_no": 1,
     "hang_code": "4183031000",
-    "hang": "강상면",
+    "hang": "Gangsangmyeon",
     "zipcode": "476913",
     "zipno": "011",
     "dayaeng": "",
@@ -1141,8 +1141,8 @@ Accept : application/json
 }
 ````
 
-## <a name="40"/>9.4. 도로명 주소 수정
-관리자가 도로명 주소를 새로 등록할 때 사용합니다. 건물관리 번호가 Key로 중복시 오류가 발생합니다.
+## <a name="40"/>9.4. Modify Road Name Address
+Used by the administrator to register a new road name address. If the building management number overlaps with Key, an error occurs.
 
 ### 9.4.1. Route
 ````
@@ -1151,15 +1151,15 @@ PUT/ http://<server & base path>/dorojuso/manager
 
 ### 9.4.2. Request
 
-#### 9.4.2.1. Parameters (PATH 방식)
+#### 9.4.2.1. Parameters (PATH Method)
 <table>
   <tr>
-    <td>이름</td>
-    <td>설명</td>
+    <td>Name</td>
+    <td>Description</td>
   </tr>
   <tr>
     <td>building_code</td>
-    <td>건물 관리 번호</td>
+    <td>Building Managing Number</td>
   </tr>
 </table>
 
@@ -1167,15 +1167,15 @@ PUT/ http://<server & base path>/dorojuso/manager
 ````
 {
     "code": "4183031021",
-    "sido": "경기도",
-    "sigungu": "양평군",
-    "eupmyundong": "강상면",
-    "ri": "병산리",
+    "sido": "Kyeonggido",
+    "sigungu": "Yangpyeonggun",
+    "eupmyundong": "Gangsagmyeon",
+    "ri": "Byeongsanri",
     "san": "0",
     "bunji": 66,
     "ho": 0,
     "doro_code": "418303217033",
-    "doro": "강남로",
+    "doro": "Gangnamro",
     "jiha": "0",
     "bon": 912,
     "bu": 1,
@@ -1184,7 +1184,7 @@ PUT/ http://<server & base path>/dorojuso/manager
     "gunmul_no": "4183031021100660000007779",
     "eupmyundong_no": 1,
     "hang_code": "4183031000",
-    "hang": "강상면",
+    "hang": "Gangsangmyeon",
     "zipcode": "476913",
     "zipno": "011",
     "dayaeng": "",
@@ -1219,8 +1219,8 @@ Accept : application/json
 }
 ````
 
-## <a name="41"/>9.5. 도로명 주소 삭제
-관리자가 도로명 주소를 삭제할 때 사용합니다.
+## <a name="41"/>9.5. Delete Road Name Address
+Used by the administrator to delete a street name address..
 
 ### 9.5.1. Route
 ````
@@ -1229,15 +1229,15 @@ DELETE/ http://<server & base path>/dorojuso/manager
 
 ### 9.5.2. Request
 
-#### 9.5.2.1. Parameters (PATH 방식)
+#### 9.5.2.1. Parameters (PATH Method)
 <table>
   <tr>
-    <td>이름</td>
-    <td>설명</td>
+    <td>Name</td>
+    <td>Description</td>
   </tr>
   <tr>
     <td>building_code</td>
-    <td>건물 관리 번호</td>
+    <td>Building Managing Number</td>
   </tr>
 </table>
 
@@ -1281,4 +1281,4 @@ Accept : application/json
 [api_platform_dorojuso_16]:./images/openpaas-application-apiplatform-dorojuso/api_platform_dorojuso_16.png
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > API Platform 도로주소 개발
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > API Platform Road Address Development

@@ -649,33 +649,33 @@ dorojusodbMgt   Unlimited                                            dorojusodbm
 TIP:  Use 'cf marketplace -s SERVICE' to view descriptions of individual plans of a given service.
 ````
 
-Marketplace에서 원하는 서비스가 있는지 확인하면 서비스 신청(Provision)을 합니다. 
+After checking from the Marketplace if the service you want is availabe, request for provision. 
 ````
-$ cf create-service {서비스명} {서비스플랜} {내서비스명}
+$ cf create-service {Service Name} {Service Plan} {My Service Name}
 ````
-- 서비스명 : dorojusodb, dorojusodbMgt로 Marketplace에서 보여지는 서비스 명칭입니다.
-- 서비스플랜 : 서비스에 대한 정책으로 plans에 있는 정보 중 하나를 선택합니다. API 플랫폼은 Unlimited만 지원하므로 Unlimited를 선택하면 됩니다.
-- 내서비스명 : 내 서비스에서 보여지는 명칭입니다. 이 명칭을 기준으로 환경설정정보를 가져오기 때문에 서버에 설정되어 있는 명칭으로 꼭 등록을 해야 합니다. (dorojusodb, dorojusomgt)
-서비스 생성이 끝났으면 내가 만든 앱과 연결(Binding)을 해야합니다.
+- Service Name : Name that is shown at the Marketplace as dorojusodb, dorojusodbMgt.
+- Service Plan : A policy about the service. Pick one information from the plans. API platform provides only unlimited, so select unlimited.
+- My Service Name : The name of the service that will be shown in my service. The configuration information is imported based on this name, so you must register with the name set on the server. (dorojusodb, dorojusomgt)
+After creating the service, bind with the app made.
 
-#### <a name="30"/>7.2.2. 서비스와 Sample App을 연결(Binding) 하기
-먼저 나의 앱이 배포되어 있는 상태를 확인합니다. 
+#### <a name="30"/>7.2.2.  Binding of Service and Sample App
+Check the deployment status of my app. 
 ````
 $ cf apps
 
 name                                 requested state   instances   memory   disk   urls
 service_egov_common_juso_sampleApp   started           1/1         512M     1G     service-egov-common-juso-sampleapp.cf-dev.open-paas.com
 ````
-초기에 앱을 일단 기본 구성만으로 배포를 해놓고 서비스와 연결(Binding)을 해야만 서비스의 정보(접속 URL, 접속 ID, 비밀번호)를 가져올 수 있습니다. 개방형 클라우드 플랫폼의 앱 개발/배포에 대한 부분에서 자세히 설명되어 있습니다.
+you must deploy the app with only the basic configuration and bind to the service to get the service's information (connection URL, connection ID, password). The development/deployment of apps in an open cloud platform part has discussed in detail.
 
-나의 앱의 이름을 확인한 후에 앱과 서비스를 연결(Binding)합니다.
+After checking the name of the My App, Bind the service and app.
 ````
-$ cf bind-service {내앱 명칭} {내서비스명}
+$ cf bind-service {My App Name} {My Service Name}
 ````
-- 내앱 명칭 : 위의 예제로 보면 service_egov_common_juso_sampleApp이 됩니다. 나의 앱의 고유한 명칭을 이야기합니다.
-- 내서비스명 : 서비스 신청(Provision)시에 부여한 명칭입니다.
+- My App Name : In the example above, service_egov_common_juso_sampleApp. Talks about the unique name of My App.
+- My Service Name : The name given when provisioning for the Service.
 
-연결이 정상적으로 이루어 졌으면 앱을 restage하라고 나옵니다. 현재 앱은 서비스와 연결이 안되어 있는 상태이고 restage를 해야지 연결(Binding)이 잘되었는지 확인이 가능합니다.
+When the connection is successful, it asks the app for a restage. Currently, the app and service is not bound. To check if they are properly bound, restaging is required.
 ````
 $ cf services
 
@@ -685,11 +685,11 @@ dorojusodb      dorojusodb      Unlimited   service_egov_common_juso_sampleApp  
 ````
 위의 내용을 보면 service_egov_common_juso_sampleApp가 dorojusodbmgt와 dorojusodb완 연결되어 있는 것을 확인할 수 있습니다.
 
-### <a name="31"/>7.3. 소스 리스트 및 설명
-해당 소스의 위치는 “개방형 클라우드 플랫폼”의 Git Hub에 위치하며 일반에게 공개할 위치는 따로 홈페이지를 통해서 공유가 될 예정입니다.
-(개발을 위한 Private 위치는 https://github.com/PaaS-TA/SERVICE-EGOV-COMMON-JUSO-SAMPLEAPP 입니다.)
+### <a name="31"/>7.3. Source List and Description
+The location of the source will be located on the Git Hub of the "Open Cloud Platform" and the location to be open to the public will be shared separately through the website.
+(The Private location for developers: https://github.com/PaaS-TA/SERVICE-EGOV-COMMON-JUSO-SAMPLEAPP.)
 
-#### <a name="32"/>7.3.1. Spring 서버 영역
+#### <a name="32"/>7.3.1. Spring Server Area
 
 <table>
   <tr>

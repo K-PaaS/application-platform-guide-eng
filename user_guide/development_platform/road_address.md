@@ -54,7 +54,7 @@
 To provide "common components" as a service in the e-government framework for user convenience, we present ways to service some components and link them with API platforms.
 
 ##### <a name="4"/>1.1.2. Range
-Build "Road Name Address Search" function among common components of e-Government framework into its own DB. Data is produced using the information provided by the road name address guide system ([***http://www.juso.go.kr***](http://www.juso.go.kr))and using the specifications of the road name address service Open API. The API platform is used to authenticate and manage the API created. 
+Build the "Road Name Address Search" function among common components of the e-Government framework into its DB. Data is produced using the information provided by the road name address guide system ([***http://www.juso.go.kr***](http://www.juso.go.kr))and using the specifications of the road name address service Open API. The API platform is used to authenticate and manage the API created. 
 
 ##### <a name="5"/>1.1.3. References
 -   [Guide] Utilization method of making address(full address).pdf’ – Download from Road Name Address Guide System ([***http://www.juso.go.kr***](http://www.juso.go.kr))
@@ -81,7 +81,7 @@ The Road Name Address Service (API) was developed by some REST/full type of serv
 # <a name="8"/>3. Road Name Address Service
 
 ### <a name="9"/>3.1. Obtain Road Name Address
-To build a road name address on its own DBMS, you must first obtain a road name address. This information can be downloaded from the "Road Name Address Information System" ([***http://www.juso.go.kr***](http://www.juso.go.kr)). 
+To build a road name address on its DBMS, you must first obtain a road name address. This information can be downloaded from the "Road Name Address Information System" ([***http://www.juso.go.kr***](http://www.juso.go.kr)). 
 
 Select "Provide Address" -> "Provide Road Name Address DB" on the main screen when you access the site as shown below.
 >![api_platform_dorojuso_02]
@@ -92,7 +92,7 @@ Picture. Proceeds to a page that provides Addresses
 On the Address Delivery page, you can download the PDF file describing how to use the address data and the most recent address data information. Get the latest date information for the "Download full address deployment guide" and full address (final draft). Download the information by clicking on the two areas marked in red on the screen below.
 >![api_platform_dorojuso_03]
 
-Picture. Download build guide and final address
+Picture. Download the build guide and final address
 
 
 The downloaded "[Guide]Utilization method of making address(full address).pdf" gives you a sense of the structure of the data. The specifications of the downloaded address file are defined on page 13 of the document. If you look in the center, there is a "building management number" and this information is the primary key.
@@ -101,7 +101,7 @@ The downloaded "[Guide]Utilization method of making address(full address).pdf" g
 Picture. Spec information of “[Guide]Utilization method of making address(full address).pdf”
 
 
-The address file is a zipped file that is about 158 MB. (As of June 2015) If you unzip this file, you can check the address file with TXT information as below.. 
+The address file is a zipped file that is about 158 MB. (As of June 2015) If you unzip this file, you can check the address file with TXT information as below. 
 >![api_platform_dorojuso_05]
 
 picture. Address fule list
@@ -111,7 +111,7 @@ When you unzip the file, it's about 1.85GB. This TXT file is a text file with th
 
 ### <a name="10"/>3.2. Define an address data table
 To store address data, you must define the structure of the table. This document is defined according to the grammar of MySQL because it stores and manages road name address information in MySQL.
-As much as possible, the structure is similar to the Korean name defined in "[Guide]Utilization method of making address(full address).pdf"..
+As much as possible, the structure is similar to the Korean name defined in "[Guide]Utilization method of making address(full address).pdf".
 
 ````
 CREATE TABLE IF NOT EXISTS `egov_common`.`doro_juso` (
@@ -157,39 +157,39 @@ CREATE INDEX `IDX_DORO` ON `egov_common`.`doro_juso` (`doro` ASC)  COMMENT '';
 
 
 ### <a name="11"/>3.3. Insert in Address Data DB
-There is one thing that needs to be checked before importing that address information into the DBMS. First, checking of the language settings of the DBMS to build is needed. Currently, this file has Korean standard ANSI.  when configuring DBs, they are usually configured with UTF8, so in order to import Hangul accurately, you need to develop a program that reads files one by one and changes character encoding to insert them or use commercial tools.
+There is one thing that needs to be checked before importing that address information into the DBMS. First, check the language settings of the DBMS to build is needed. Currently, this file has Korean standard ANSI.  when configuring DBs, they are usually configured with UTF8, so to import Hangul accurately, you need to develop a program that reads files one by one and changes character encoding to insert them or use commercial tools.
 
 This document explains how to import data to MySQL servers, convert existing TXT files to UTF8, and use the MySQL import function to put the converted files into DBMS. DBMS's DB is set to UTF8
 
 To convert a file's encoding to UTF8, open it in Notepad and "save it under a different name" in a Windows environment.
 >![api_platform_dorojuso_06]
 
-picture. Save it as from the NotePad
+picture. Save it from the NotePad
 
 
-Prepare thw file and use MySQL Import to import the data.
+Prepare the file and use MySQL Import to import the data.
 ````
 mysqlimport -u [User ID] -p [Data Base Name] --fields-terminated-by="|" --lines-terminated-by="\n" [File Name]
 ````
 
-The [File Name] should be the same with the Table Name. In cases of importing multiple files, each file names should be renamed and run the corresponding commands.
+The [File Name] should be the same as the Table Name. In cases of importing multiple files, each file name should be renamed and run the corresponding commands.
 
-mysqlimport command statement explaination:
--u [User ID] : User ID that can be Inserted into that database.
--p : Asks for the password when Mysql Import is being done.
-[Data Base Name] : The name of the database where road name address are to be saved.
---field-terminated-by=“|” : Characters that distinguish each field/column are marked with |.
---lines-terminated-by=”\n” :Separate the ends of a line with "\n" (Windows uses \r\n for ending.)
-[File Name] : It is the file location to Import the files and the file name is same as Table name.
+mysqlimport command statement explanation:
+-u [User ID]: User ID that can be Inserted into that database.
+-p: Asks for the password when Mysql Import is being done.
+[Data Base Name]: The name of the database where road name addresses are to be saved.
+--field-terminated-by=“|”: Characters that distinguish each field/column are marked with |.
+--lines-terminated-by=”\n”: Separate the ends of a line with "\n" (Windows uses \r\n for ending.)
+[File Name]: It is the file location to Import the files and the file name is the same as the Table name.
 
-When all the text files are imported, the preparation for the data of road name adress is completed.
+When all the text files are imported, the preparation for the data of road name address is completed.
 
 
 
 # <a name="12"/>4. Road Name Address Service
 
 ### <a name="13"/>4.1. Road Name Address Service Configuration
-One common component of the e-Government framework is the Road Name Address Service (OpenAPI). This component is built with its own DB and developed to support road name address search services in the same structure as Road Name Address Service (Open API).
+One common component of the e-Government framework is the Road Name Address Service (OpenAPI). This component is built with its DB and developed to support road name address search services in the same structure as Road Name Address Service (Open API).
 
 The information on the components developed using the Spring Framework is as follows.
 
@@ -292,7 +292,7 @@ The Base Controller defines various exceptions. Once the DoroJusoController has 
 The DoroJusomanagerController, with the DoroJusoConroller, inherits the BaseController, controls the registration, modification, and deletion services (API) to manage road name addresses, and is responsible for the business logic of the DoroJusoManager Service.
 
 #### <a name="19"/>4.3.2. Source List and Description
-The location of the source will be located on the Git Hub of the "Open Cloud Platform" and the location to be open to the public will be shared separately through the website.
+The location of source will be located on the Git Hub of the "Open Cloud Platform" and the location to be open to the public will be shared separately through the website.
 (A private location for the developer is [**https://github.com/PaaS-TA/SERVICE-EGOV-COMMON-JUSO**](https://github.com/PaaS-TA/SERVICE-EGOV-COMMON-JUSO))
 
 <table>
@@ -427,18 +427,18 @@ Add API in API platform Publisher.
 picture. Enter basic API information
 
 
-Enter basic information for the service. Name will be the name that will be shown in Marketplace on the "open cloud platform." 
-Context will be the first path to access the API platform. Select a name that does not exist on the existing API platform and proceed.
-Description is not mandatory for API platforms, but is mandatory for open cloud platforms.
+Enter basic information for the service. The name will be the name that will be shown in Marketplace on the "open cloud platform." 
+The context will be the first path to access the API platform. Select a name that does not exist on the existing API platform and proceed.
+The description is not mandatory for API platforms but is mandatory for open cloud platforms.
 
-Register the real API. To make it like the specification provided by the Road Name Address Service ([***http://www.juso.go.kr***](http://www.juso.go.kr))he API was set to addrLinkApi.do and the parameter also used the same name. Input addrLinkApi.do in the URL Param, select GET, OPTIONS, and then click Add New Resource. 
+Register the real API. To make it like the specification provided by the Road Name Address Service ([***http://www.juso.go.kr***](http://www.juso.go.kr)) the API was set to addrLinkApi.do and the parameter also used the same name. Input addrLinkApi.do in the URL Param, select GET, OPTIONS, and then click Add New Resource. 
 This creates two APIs: GET and OPTIONS.
 >![api_platform_dorojuso_09]
 
 picture. API Registration
 
 
-When you press the Add New Resource button, GET and OPTIONS appear at the bottom of the screen so that you can define each parameter. Click GET to expand the screen to enter the parameter in GET. For currentPage, countPerPage, enter Data type as integer, and for Parameter type, select query.For keyword, put Data type as String and Parameter type as query. All Required as true, and must be selected.
+When you press the Add New Resource button, GET and OPTIONS appear at the bottom of the screen so that you can define each parameter. Click GET to expand the screen to enter the parameter in GET. For currentPage, countPerPage, enter Data type as integer, and for Parameter type, select query. For keyword, put Data type as String and Parameter type as a query. All Required as true and must be selected.
 >![api_platform_dorojuso_10]
 
 picture. Insert Parameter
@@ -454,16 +454,16 @@ The endpoint entered here is the default, and the API and parameter are attached
 picture. Endpoint Registration
 
 
-When Endpoint registration is completed, proceed to the last step which is acess setting.  
+When Endpoint registration is completed, proceed to the last step which is access setting.  
 Set the communication method (http, https) and the access limit setting (Tier Availability). Please refer to the API platform manual to add more restrictions.  
-Only basic settings are done in here. Set the Tier Availability to Unlimited.  
+Only basic settings are done here. Set the Tier Availability to Unlimited.  
 When connecting to an open cloud platform, only Unlimited is enabled for the services (service packs) that connect the two systems because they are supposed to monitor without any restrictions.
 >![api_platform_dorojuso_12]
 
 picture. Access Environment Settings
 
 
-Now you have entered the information about the API, and when Publishing this API, it can checked at the API platform store. 
+Now you have entered the information about the API, and when Publishing this API, it can be checked at the API platform store. 
 >![api_platform_dorojuso_13]
 
 picture. API Platform 
@@ -475,8 +475,8 @@ So far, we have created a road name address service server and managed the servi
 
 ### <a name="22"/>5.2. Road Name Address Manage API Registration
 The data management function of the road name address service enables retrieving, registering, modifying, and deleting. The corresponding management functions are also made into APIs, such as search services, and access management is done at the API platform. 
-The method of registering on the API platform is similar exept for the part where the basic information of the API is being entered.
-The diffrence will be discussed below.
+The method of registering on the API platform is similar except for the part where the basic information of the API is being entered.
+The difference will be discussed below.
 
 Register road name address API. Registration, Modification, Deletion, and Retrieve must be registered. For more information, you can register it as the API definition in Annex B.
 >![api_platform_dorojuso_14]
@@ -492,31 +492,31 @@ picture. Enter Parameter with Path Method
 
 >![api_platform_dorojuso_16]
 
-picture. A screen when variables are inserted to Path
+picture. A screen when variables are inserted into the Path
 
 
 It is important to note that OPTIONS must be registered for each API pattern. You need to register the API by checking the validity of the API with OPTIONS during Rest communication. You can enter the rest of the Endpoint and Access Preferences are the same as the Road Name Address Search Service. Once the entry is complete and the publication is complete, you can check whether the API is visible in the store and whether it is working properly in the API Console.
 
-We have completed registration of the road name address management service on the API platform.
+We have completed the registration of the road name address management service on the API platform.
 
 
 
 # <a name="23"/>6. Open Cloud Platform Settings
 To use the API of the API platform on an open cloud platform, you must register a service broker. 
-If you register the service pack of the API platform for at least once, you need to update the service pack.
+If you register the service pack of the API platform at least once, you need to update the service pack.
 
 The manual describes how to register and manage services in an open cloud platform, so this guide will briefly explain which commands to register, set permissions, and update.
 
 ### <a name="24"/>6.1. API API Platform Servicepack Registration
-Log in to the server with cf cli. The user should have authority to reigster the Servicepack(Service Broker).
+Log in to the server with cf cli. The user should have the authority to register the Servicepack(Service Broker).
 
 Enter the command as shown below for registering the servicepack.
 ````
 $ cf create-service-broker {servicepack name} {servicepack userID} {servicepack user password} http://{servicepack URL}
 ````
-- Servicepack Name : Name seen on open cloud platforms for service pack management. Service Marketplace shows each API service name, where the name is the name of the service pack list.
-- Servicepack UserID / PW : User ID that can have access to the servicepack. Enter ID/PW with authorization since the servicepack is also an API server, only a user with authorization can have access.
-- Servicepack URL : Enter the URL where the API provided by the service pack is available.
+- Servicepack Name: Name seen on open cloud platforms for service pack management. Service Marketplace shows each API service name, where the name is the name of the service pack list.
+- Servicepack UserID / PW: User ID that can have access to the servicepack. Enter ID/PW with authorization since the servicepack is also an API server, only a user with authorization can have access.
+- Servicepack URL: Enter the URL where the API provided by the service pack is available.
 
 Servicepack registration has been completed and registered information can be checked as below.
 ````
@@ -565,10 +565,10 @@ The newly created service requires a new set of access authorities. Authorities 
 
 
 # <a name="26"/>7. Road Name Address Search Sample Web App Description
-This Sample Web App is deployed to the Open Cloud Platform. The service of API platform can be used in a provisioned and bound condition.
+This Sample Web App is deployed to the Open Cloud Platform. The service of the API platform can be used in a provisioned and bound condition.
 
 ### <a name="27"/>7.1. Sample Web App Structure
-The Sample Web App is deployed to the Open Cloud Platform as an App. In here, Spring Boot is used to bring environment settings(service connection information) from the Open Cloud Platform and use those informations inside the Javascript and AngularJS.
+The Sample Web App is deployed to the Open Cloud Platform as an App. Here, Spring Boot is used to bring environment settings(service connection information) from the Open Cloud Platform and use those information inside the Javascript and AngularJS.
 
 <table>
   <tr>
@@ -632,8 +632,8 @@ The Sample Web App is deployed to the Open Cloud Platform as an App. In here, Sp
 </table>
 
 ### <a name="28"/>7.2. Binding and Provisioning for Service in Open Cloud Platform
-In order to use the registered service described in chapter 6, it should be provisioned or bound. The App should be deployed for at least once to be connected.
-For detailed description of the Open Cloud Platform's usage, refer to the service usage. In here, a brief explaination on connection of the road name address service will be done.
+To use the registered service described in chapter 6, it should be provisioned or bound. The App should be deployed at least once to be connected.
+For a detailed description of the Open Cloud Platform's usage, refer to the service usage. Here, a brief explanation on the connection of the road name address service will be done.
 
 #### <a name="29"/>7.2.1 Provisioning of Service
 First, check if there are services on the open cloud platform Marketplace.
@@ -649,13 +649,13 @@ dorojusodbMgt   Unlimited                                            dorojusodbm
 TIP:  Use 'cf marketplace -s SERVICE' to view descriptions of individual plans of a given service.
 ````
 
-After checking from the Marketplace if the service you want is availabe, request for provision. 
+After checking from the Marketplace if the service you want is available, request for provision. 
 ````
 $ cf create-service {Service Name} {Service Plan} {My Service Name}
 ````
-- Service Name : Name that is shown at the Marketplace as dorojusodb, dorojusodbMgt.
-- Service Plan : A policy about the service. Pick one information from the plans. API platform provides only unlimited, so select unlimited.
-- My Service Name : The name of the service that will be shown in my service. The configuration information is imported based on this name, so you must register with the name set on the server. (dorojusodb, dorojusomgt)
+- Service Name: Name that is shown at the Marketplace as dorojusodb, dorojusodbMgt.
+- Service Plan: A policy about the service. Pick one information from the plans. API platform provides only unlimited, so select unlimited.
+- My Service Name: The name of the service that will be shown in my service. The configuration information is imported based on this name, so you must register with the name set on the server. (dorojusodb, dorojusomgt)
 After creating the service, bind with the app made.
 
 #### <a name="30"/>7.2.2.  Binding of Service and Sample App
@@ -666,16 +666,16 @@ $ cf apps
 name                                 requested state   instances   memory   disk   urls
 service_egov_common_juso_sampleApp   started           1/1         512M     1G     service-egov-common-juso-sampleapp.cf-dev.open-paas.com
 ````
-you must deploy the app with only the basic configuration and bind to the service to get the service's information (connection URL, connection ID, password). The development/deployment of apps in an open cloud platform part has discussed in detail.
+you must deploy the app with only the basic configuration and bind it to the service to get the service's information (connection URL, connection ID, password). The development/deployment of apps in an open cloud platform part has been discussed in detail.
 
 After checking the name of the My App, Bind the service and app.
 ````
 $ cf bind-service {My App Name} {My Service Name}
 ````
-- My App Name : In the example above, service_egov_common_juso_sampleApp. Talks about the unique name of My App.
-- My Service Name : The name given when provisioning for the Service.
+- My App Name: In the example above, service_egov_common_juso_sampleApp. Talks about the unique name of My App.
+- My Service Name: The name given when provisioning for the Service.
 
-When the connection is successful, it asks the app for a restage. Currently, the app and service is not bound. To check if they are properly bound, restaging is required.
+When the connection is successful, it asks the app for a restage. Currently, the app and service are not bound. To check if they are properly bound, restaging is required.
 ````
 $ cf services
 
@@ -752,7 +752,7 @@ The location of the source will be located on the Git Hub of the "Open Cloud Pla
 </table>
 
 #### <a name="33"/>7.3.2. 7.3.2. Web Area (Shows only the significant files are - inside the main/resources)
-Only the developed part are organized from the source description of Web. These are the files inside main/resoureces.
+Only the developed part are organized from the source description of the Web. These are the files inside main/resources.
 
 <table>
   <tr>
@@ -826,7 +826,7 @@ Only the developed part are organized from the source description of Web. These 
 # <a name="34"/>8. Annex A. Road Name Address Search API Definitions
 
 ## <a name="35"/>8.1. Road Name Address Search
-A service used when user search with road name address. The road name address API (http://www.juso.go.kr) was used for spec.
+A service is used when a user searches with a road name address. The road name address API (http://www.juso.go.kr) was used for spec.
 
 ### 8.1.1. Route
 ````
@@ -1073,7 +1073,7 @@ Accept : application/json
 }
 ````
 ## <a name="39"/>9.3. Register Road Name Address
-Used by the administrator to register a new road name address. If the building management number overlaps with Key, an error occurs.
+Used by the administrator to register a new road name address. If the building management number overlaps with the Key, an error occurs.
 
 ### 9.3.1. Route
 ````
@@ -1142,7 +1142,7 @@ Accept : application/json
 ````
 
 ## <a name="40"/>9.4. Modify Road Name Address
-Used by the administrator to register a new road name address. If the building management number overlaps with Key, an error occurs.
+Used by the administrator to register a new road name address. If the building management number overlaps with the Key, an error occurs.
 
 ### 9.4.1. Route
 ````
@@ -1220,7 +1220,7 @@ Accept : application/json
 ````
 
 ## <a name="41"/>9.5. Delete Road Name Address
-Used by the administrator to delete a street name address..
+Used by the administrator to delete a street name address.
 
 ### 9.5.1. Route
 ````

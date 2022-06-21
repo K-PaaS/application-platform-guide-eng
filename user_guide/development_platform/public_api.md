@@ -1,18 +1,18 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Public API 개발
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Public API Development
 
 
 ## Table of Contents
-1. [문서 개요](#1)
-     * [1.1. 목적](#2)
-     * [1.2. 범위](#3)
-     * [1.3. 참고자료](#4)
-2. [API 서비스 선정](#5)
-     * [2.1. 데이터 포털 회원가입 및 로그인](#6)
-     * [2.2. API 검색](#7)
-3. [API 서비스 브로커 개요](#8)
-     * [3.1. 개요](#9)
-     * [3.2. 서비스 브로커 APIs](#10)
-     * [3.3. API 서비스 브로커 동작 구조](#11)
+1. [Document Outline](#1)
+     * [1.1. Purpose](#2)
+     * [1.2. Range](#3)
+     * [1.3. References](#4)
+2. [Selecting API Service](#5)
+     * [2.1. Data Portal Sign in and Log in](#6)
+     * [2.2. API Search](#7)
+3. [API Service Broker Outline](#8)
+     * [3.1. Outline](#9)
+     * [3.2. Service Broker APIs](#10)
+     * [3.3. How API Service Broker Broker Works](#11)
 4. [API 서비스 브로커 구현](#12)
      * [4.1. API 서비스 브로커 설정 파일](#13)
          * [4.1.1. 공통 설정 값](#14)

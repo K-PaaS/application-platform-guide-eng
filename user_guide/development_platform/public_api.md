@@ -90,77 +90,77 @@ Open cloud platform operators select APIs to provide platform users (developers)
 ※ This document describes guide based on the public data portal (https://www.data.go.kr/). Details may vary depending on each portal or API service.
 
 ### <div id='6'></div> 2.1. Data Portal Sign in and Log in
-※ 대부분의 데이터 포털은 서비스키 발급을 로그인 된 사용자에게만 허용한다. 서비스키 발급은 플랫폼 운영자가 아닌 개발자의 역할이지만 본 문서의 7장(API 서비스 브로커 검증)을 진행하기 위해서는 서비스키를 발급받아야 하기 때문에 회원가입 및 로그인 절차를 안내한다. 
+※ Most data portals allow only logged-in users to issue service keys. Service key issuance is a role of a developer, not platform operator. It guides registration and login process because it is necessary to issue a service key to proceed with Chapter 7 (API service broker verification). 
 
-공공데이터 포털의 API를 사용하기 위해서는 반드시 회원가입이 되어 있어야 한다. 공공데이터포털(https://www.data.go.kr)에 접속하여 상단 [회원가입] 버튼을 눌러 회원가입을 진행한다.
+In order to use the API of the public data portal, you must be signed in. Access the public data portal (https://www.data.go.kr) and click the [Sign In] button at the top to proceed to Sign in.
 
 ![2-1-0-0]
 
-이동한 회원가입 화면에서 일반회원 또는 기관회원을 선택하여 [가입하기] 버튼을 누른다.
+Select a general member or institutional member from the moved membership screen and press the [Join] button.
 
 ![2-1-0-1]
 
-이름과 이메일 주소를 입력하고 [가입확인] 버튼을 누른다.
+Enter name and email then click [Join] button.
 
 ![2-1-0-2]
 
-가입여부를 확인하는 절차를 거치고 입력된 정보로 가입된 회원이 없으면 하단에 다음과 같은 화면이 생긴다.
+When there is no user created with the information input even after checking the registration page, a screen shown below will appear.
 
 ![2-1-0-3]
 ![2-1-0-4]
 
-'공공데이터포털 이용약관'과 '개인정보 수집 및 이용에 대한 안내'가 소개된다. 내용에 동의한다면 각각의 약관에 동의함을 표시하고 [동의] 버튼을 누른다.
+"Public Data Portal Terms of Use" and "Guidance on the Collection and Use of Personal Information" will be introduced. If you agree with the content, indicate that you agree to each of the terms and conditions and press the [Agree] button.
 
 ![2-1-0-5]
 ![2-1-0-6]
 
-가입자 기본정보와 가입자 연락정보를 입력한다. 
-(1) 가입자 연락정보에서 이메일 인증을 시도한다. [이메일 인증]버튼을 누르면 인증메일이 발송되고 (2)인증번호 입력 필드가 생긴다. 입력한 이메일로 도착한 인증메일의 인증번호를 입력하고 [확인]버튼을 눌러 인증을 마친다. (3) [완료] 버튼을 눌러 가입완료 화면으로 이동한다.
+Enter user basic information and user contact information. 
+(1) Verify the email from the user's contact information. Verification email will be sent by clicking the [Verify Email] button and a (2)Enter Verification Code field appears. Enter the verification code sent to the email inputed and click [OK] button to complete the pocess. Click (3) [Finish] button the complete registering and go to the main page.
 
 ![2-1-0-7]
 
-회원 가입이 완료되었다.
+Sign in is completed.
 
 ![2-1-0-8]
 
-공공데이터 포털 메인 화면에서 상단의 [로그인]버튼을 눌러 로그인 한다.
+On the main screen of the public data portal, log in by pressing the [Login] button at the top.
 
 ![2-1-0-9]
 
-아이디와 비밀번호를 입력하고 로그인 한다.
+Enter ID and PW to login.
 
 ### <div id='7'></div>  2.2. API Search
-API 서비스를 검색하기 위해 데이터 포털에 접속한다. 데이터 포털의 Open API 서비스를 확인한다.
+Access the data portal to search for API services. Check the Open API service of the data portal.
 
 ![2-2-0-0]
 
-Open API 카테고리로 이동한다.
+Go to Open API Category.
 
 ![2-2-0-1]
 
-Oepn API 카테고리로 이동하면, ①API 서비스 명으로 검색하거나 ②각종 필터로 분류된 목록을 확인할 수 있다.
+If you go to the Opn API category, you can search by ①API service name or check the list classified by ②various filters.
 
 ![2-2-0-2]
 
-① 전국 단위의 문화행사 관련 정보를 얻기 위해 공연전시정보조회서비스를 검색한다
-② 검색 결과에서 API 서비스의 상세정보를 확인하기 위해 API 서비스 목록에서 해당 API를 클릭한다.
+① To obtain information related to cultural events at the national level, it searches for information on performance exhibition information inquiry service
+② Click the API in the API service list to view the details of the API service in the search results.
 
 ![2-2-0-3]
 
-이동한 화면에서 상세정보버튼을 클릭한다.
+Click the Details button on the moved screen.
 
 ![2-2-0-4]
 
-창이 확장되면서 API 서비스에 대한 정보를 확인할 수 있다. 
-① 해당 API 서비스에 대한 가이드 문서를 다운로드 받을 수 있다.
-② 해당 API 서비스가 제공하는 오퍼레이션 별로 요청주소(Endpoint), 요청/응답 필드, 허용 트래픽 등의 정보를 확인할 수 있다. 여기서 제공하는 정보만으로도 API 서비스 브로커에 API 서비스를 추가하고 사용하는데 문제는 없지만, API 서비스에 따라서 가이드 문서를 확인하거나 연관 링크로 이동해야 하는 경우도 있다. 서비스 브로커에 API 서비스를 추가하기 위해 필요한 정보는 다음과 같다.
+As the window expands, information about API services can be checked. 
+① Guide documents for the API service can be downloaded.
+② Information such as a request address (Endpoint), a request/response field, and allowed traffic can be checked for each operation provided by the API service. Although there is no problem adding and using API services to the API service broker with the information provided here alone, depending on the API service, it may be necessary to check the guide document or go to the associated link. The information required to add API services to the service broker is as follows.
 
-| 포털 URL      | 해당 서비스를 제공/소개하는 포털의 URL |
+| Portal URL      | URL of the portal that provides/introduces the service |
 |-------------|-----------------------------|
-| 서비스 제공자    | 해당 서비스를 실제로 제공하는 기관명이나 URL을 넣는다. |
-| 가이드 문서 URL | 플랫폼 사용자(개발자)가 해당 서비스의 가이드 문서를 확인할 수 있는 URL. 플랫폼 사용자는 이 URL의 가이드 문서에서 오퍼레이션이나 요청 파라미터 등을 확인하여 해당 서비스를 사용할 수 있다. |
-| 요청주소(Endpoint)   | API 서비스를 사용하기 위한 URL. 서비스 브로커에서는 Endpoint라는 용어를 사용한다. |
-| 허용 트래픽    | 서비스 제공자가 허락하는 요청 횟수와 그 단위. 서비스에 따라 일/1,000회, 월/100,000회 등으로 허용 횟수와 단위가 다르다. |
+| Service Provider    | Enter the name of the organization that actually provides the service and the URL. |
+| Guide Document URL | URL where the platform user (developer) can check the guide document of the service. The platform user can use the service by checking the operation or request parameters in the guide document of this URL. |
+| Request address(Endpoint)   | URL for using API services. Service brokers use the term Endpoint. |
+| Allowable Traffic    | 서비스 제공자가 허락하는 요청 횟수와 그 단위. 서비스에 따라 일/1,000회, 월/100,000회 등으로 허용 횟수와 단위가 다르다. |
 
 # <div id='8'></div>   3. API 서비스 브로커 개요
 ### <div id='9'></div>  3.1. 개요

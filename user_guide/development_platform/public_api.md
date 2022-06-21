@@ -53,43 +53,43 @@
          * [7.2.1. Using API Service](#49)
          * [7.2.2. Naver Open API Service](#50)
      * [7.3. Acquire API service key](#51)
-         * [7.3.1. Obtain public data portal API service key](#52)
-         * [7.3.2. 네이버 Open API 서비스 키 획득](#53)
-     * [7.4. 샘플 어플리케이션 배포](#54)
-         * [7.4.1. 개방형 클라우드 플랫폼 로그인](#55)
-         * [7.4.2. 어플리케이션 배포](#56)
-     * [7.5. 서비스 인스턴스 생성](#57)
-         * [7.5.1. 서비스 인스턴스 생성](#58)
-         * [7.5.2. 서비스 인스턴스 생성 확인](#59)
-     * [7.6. 서비스 바인드](#60)
-         * [7.6.1. 서비스 바인드](#61)
-         * [7.6.2. 서비스 바인드  확인](#62)
-     * [7.7. 샘플 어플리케이션 동작 확인](#63)
+         * [7.3.1. Obtain Public Data Portal API Service Key](#52)
+         * [7.3.2. Obtain Naver Open API Service Key](#53)
+     * [7.4. Sample Application Deployment](#54)
+         * [7.4.1. Open Cloud Platform Login](#55)
+         * [7.4.2. Application Deployment](#56)
+     * [7.5. Create Service Instance](#57)
+         * [7.5.1. Create Service Instance](#58)
+         * [7.5.2. Check Created Service Instance](#59)
+     * [7.6. Bind Service](#60)
+         * [7.6.1. Bind Service](#61)
+         * [7.6.2. Check Bound Service](#62)
+     * [7.7. Check Sample Application Behavior](#63)
 
 
-# <div id='1'></div> 1. 문서 개요
+# <div id='1'></div> 1. Document Outline
 
-### <div id='2'></div> 1.1. 목적
-개방형 클라우드 플랫폼(OpenPaas)에 배포되는 어플리케이션은 서비스 브로커를 통해 외부에서 제공하는 서비스들을 사용할 수 있게 된다. 본 문서는 외부 API 서비스들을 개방형 클라우드 플랫폼에서 사용할 수 있도록 서비스 브로커를 구현하고 검증한다. 이를 통해 플랫폼 운영자는 개발자에게 필요한 API 서비스를 개방형 클라우드 플랫폼의 마켓 플레이스에 등록할 수 있고, 이 과정에 대한 이해를 돕는 것이 본 문서의 목적이다.
+### <div id='2'></div> 1.1. Purpose
+Applications deployed on open cloud platforms (OpenPaas) will be able to use externally provided services through service brokers. This document implements and validates service brokers so that external API services can be used on an open cloud platform. Through this, platform operators can register API services necessary for developers in the marketplace of open cloud platforms, and the purpose of this document is help users understand better.
 
-### <div id='3'></div> 1.2. 범위 
-플랫폼 운영자는 개발자들이 사용하게 될 서비스를 개방형 클라우드 플랫폼의 마켓 플레이스에 노출시킨다. 따라서 본 문서는 API 서비스 브로커의 구현과 배포, API 서비스를 추가하는 방법을 기술한다.(2장~6장) 또한, 어플리케이션에서 API 서비스를 사용하는 방법을 안내하는데(7장), 이는 플랫폼 운영자가 아닌 어플리케이션 개발자의 영역이지만, 검증을 위해 필요하므로 함께 기술한다.
-본 문서의 [4장 API 서비스 브로커 구현]을 이해하기 위해서 서비스팩 개발 가이드 문서의 [2장 Service Broker API 개발가이드]를 숙지하여야 하며, 본 문서는 그 중 JAVA 방식 구현에 대해서만 기술하였다.
+### <div id='3'></div> 1.2. Range 
+Platform operators expose the services that developers will use to marketplaces on open cloud platforms. Therefore, this document describes the implementation and deployment of API service brokers, and how to add API services in the application (Chapter 2-6) and guides the application to use API services in the application (Chapter 7), which is the domain of application developers, not platform operators, but necessary for verification.
+In order to understand Chapter 4 API Service Broker Implementation of this document, it is necessary to be familiar with Chapter 2 Service Broker API Development Guide of the Service Pack Development Guide document, and only the JAVA method implementation is described.
 
-### <div id='4'></div> 1.3. 참고자료
-- 서비스팩 개발 가이드
+### <div id='4'></div> 1.3. References
+- Servicepack Development Guide
 - CF document
-- 인천문화예술정보 공공 Open API 센터(**<http://iq.ifac.or.kr/openAPI/look/culture_guide.php>**)
-- 네이버 개발자 센터(**<http://developer.naver.com/wiki/pages/Tutorial_JavaScript>**)
+- Incheon Culture and Arts Information Public Open API Center(**<http://iq.ifac.or.kr/openAPI/look/culture_guide.php>**)
+- Naver Developer's Center(**<http://developer.naver.com/wiki/pages/Tutorial_JavaScript>**)
 
-# <div id='5'></div>  2. API 서비스 선정
-개방형 클라우드 플랫폼 운영자는 플랫폼 사용자(개발자)들에게 제공할 API를 선정하여, 서비스 브로커를 통해 플랫폼에서 제공한다. 서비스 브로커를 통한 API 서비스의 제공은 플랫폼 운영자의 권한이 필요하기 때문에, 개발자들은 필요한 API 서비스를 제공해줄 것을 운영자에게 요청할 수 있다. 서비스 브로커는 서비스를 제공/소개하는 포털에 따라서 구현방식에 차이가 있을 수 있기 때문에 각각의 API 포털 별로 별도로 구현한다. 예를 들면, 공공 데이터 포털(https://www.data.go.kr/) API 서비스는 공공 데이터 포털 API 서비스를 구현하여 제공하고 네이버(http://www.naver.com/) API 서비스는 네이버 API 서비스 브로커를 구현하여 제공한다.
+# <div id='5'></div>  2. Selecting API Service
+Open cloud platform operators select APIs to provide platform users (developers) and provide them on the platform through service brokers. Since the provision of API services through service brokers requires the authority of the platform operator, developers can ask the operator to provide the necessary API services. Service brokers implement separately for each API portal because there may be differences in implementation methods depending on the portal that provides/introduces the service. For example, the public data portal (https://www.data.go.kr/) API service) implements and provides the public data portal API service, and the Naver (http://www.naver.com/) API service implements and provides the Naver API service broker.
 
-※ 공공 API 서비스는 각각의 공공 기관에서 서비스를 제공하고 이러한 API 서비스를 데이터 포털에서 통합하여 소개하는 형태로 일반에 공개된다. 대표적인 데이터 포털로는 공공 데이터 포털(https://www.data.go.kr/), 서울 열린 데이터 광장(http://data.seoul.go.kr/) 등이 있다.
+※ Public API services are provided by each public institution and are open to the public in the form of an integrated introduction of these API services in a data portal. Representative data portals include the public data portal (https://www.data.go.kr/), Seoul Open Data Square (http://data.seoul.go.kr/)).
 
-※ 본 문서는 공공 데이터 포털(https://www.data.go.kr/)을 기준으로 안내를 기술한다. 각각의 포털이나 API 서비스에 따라 세부적인 내용은 차이가 있을 수 있다.
+※ This document describes guide based on the public data portal (https://www.data.go.kr/). Details may vary depending on each portal or API service.
 
-### <div id='6'></div> 2.1. 데이터 포털 회원가입 및 로그인
+### <div id='6'></div> 2.1. Data Portal Sign in and Log in
 ※ 대부분의 데이터 포털은 서비스키 발급을 로그인 된 사용자에게만 허용한다. 서비스키 발급은 플랫폼 운영자가 아닌 개발자의 역할이지만 본 문서의 7장(API 서비스 브로커 검증)을 진행하기 위해서는 서비스키를 발급받아야 하기 때문에 회원가입 및 로그인 절차를 안내한다. 
 
 공공데이터 포털의 API를 사용하기 위해서는 반드시 회원가입이 되어 있어야 한다. 공공데이터포털(https://www.data.go.kr)에 접속하여 상단 [회원가입] 버튼을 눌러 회원가입을 진행한다.
@@ -129,7 +129,7 @@
 
 아이디와 비밀번호를 입력하고 로그인 한다.
 
-### <div id='7'></div>  2.2. API 검색
+### <div id='7'></div>  2.2. API Search
 API 서비스를 검색하기 위해 데이터 포털에 접속한다. 데이터 포털의 Open API 서비스를 확인한다.
 
 ![2-2-0-0]

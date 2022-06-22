@@ -442,10 +442,10 @@ At least one plan must be defined in the configuration file for each service. If
   | {} | All responses of Body of JSON Object is in "{}" form. |
 
 # <div id='35'></div>   5. API Service Broker Deployment
-개방형 클라우드 플랫폼에서 사용하기 위해서 서비스 브로커를 구동한다. 서비스 브로커는 하나의 어플리케이션으로 개방형 클라우드 플랫폼 내에 어플리케이션 형태로 구동하여 사용할 수 있지만, 본 문서는 외부 서버에서 구동하여 개방형 클라우드 플랫폼에서 사용하는 방법을 안내한다. 서비스 브로커가 구동되는 외부 서버는 개방형 클라우드 플랫폼과 통신이 가능한 환경을 구성하여야 한다. 서비스 브로커 구동에 대한 안내는 따로 진행하지 않는다.
+Drives a service broker to use in an Open Cloud Platform. Service brokers can be used by driving in the form of an application within an open cloud platform as a single application, but this document guides you through how to use it in an open cloud platform by running it on an external server. An external server in which a service broker is driven must configure an environment in which communication with an open cloud platform is possible. There is no separate guidance on the operation of the service broker.  
 
 ### <div id='36'></div> 5.1. Log in to Open Cloud Platform
-Create service broker from the 개방형 클라우드 플랫폼에서 서비스 브로커를 생성한다. 서비스 브로커 생성을 위해서는 개방형 클라우드 플랫폼의 관리자 권한이 필요하다. 하단의 명령어를 통해 개방형 클라우드 플랫폼에 관리자 계정으로 로그인 한다.
+Create service broker from the Open Cloud Platform. Administrator authority of open cloud platform is required to create service broker. Log in to the open cloud platform with an administrator account through the command below.
 ```
   $ cf login
 ```
@@ -457,29 +457,29 @@ Example)
   Password> 123456
 ```
 
-### <div id='37'></div> 5.2. 서비스 브로커 생성
-개방형 클라우드 플랫폼에서 서비스 브로커를 생성한다. 아래 명령어와 같은 서비스 브로커 생성 명령어를 입력했을 때, 카탈로그(Catalog)가 진행되면서, 설정 파일의 서비스 정보를 기반으로 서비스를 정의한다.
+### <div id='37'></div> 5.2. Create Service Broker
+Create a service broker from Open Cloud Platform. When the service broker creating command as show below is entered, the catalog will be performed and will define service based on the service information in the configuration file.
 
-##### <div id='38'></div> 5.2.1 서비스 브로커 생성
+##### <div id='38'></div> 5.2.1 Create Service Broker
 ```
-  $ cf create-service-broker [서비스 브로커 명] [인증ID] [인증Password] [서비스 브로커 주소]
+  $ cf create-service-broker [Service Broker Name] [Authentication  ID] [Authentication  Password] [Service Broker Address]
 ```
-※[서비스 브로커 명]은 개방형 클라우드 플랫폼 내에서 서비스 브로커를 지칭하는 명칭으로 사용자가 임의로 결정한다. [인증ID]와 [인증Password]는 서비스 브로커 구현 시, 라이브러리에 정의되어 있는 값이다. 제공되는 샘플에 정의된 인증ID는 'admin', 인증Password는 'cluoudfoundry'이다. [서비스 브로커 주소]는 서비스 브로커가 구동되어 있는 주소를 의미한다.
+※[Service Broker Name] is a name that refers to a service broker within an open cloud platform and is arbitrarily determined by the user. [Authentication ID] and [Authentication Password] are values defined in the library when implementing a service broker. The authentication ID defined in the provided sample is 'admin', and the authentication password is 'cloudfoundry'. [Service Broker Address] means the address where the service broker is driven.
 
 예시)
 ```
   $ cf create-service-broker public-api-sb admin cloudfoundry http://10.30.60.100:8080
 ```
 
-##### <div id='39'></div> 5.2.2 서비스 브로커 생성 확인
-서비스 브로커의 목록을 확인하는 명령어를 이용하여 서비스 브로커가 정상적으로 생성된 것을 확인할 수 있다.
+##### <div id='39'></div> 5.2.2 Check Created Service Broker
+The command to check the list of service brokers. Can be used to verify that the service broker is created normally.
 ```
   $ cf service-brokers
 ```
 
 ![5-2-2-0]
 
-##### <div id='40'></div> 5.2.3 카탈로그(Catalog) 확인
+##### <div id='40'></div> 5.2.3 Check Catalog
 서비스 브로커가 개방형 클라우드 플랫폼에 생성될 때, 서비스 브로커를 통해 서비스되는 API 서비스의 목록을 생성하는 카탈로그를 진행한다. 카탈로그 된 서비스들은 서비스 접근(service access) 목록에 추가되는데, 이 서비스 접근 목록을 확인함으로써, 정상적으로 카탈로그가 이루어졌음을 확인할 수 있다.
 ```
   $ cf service-access
@@ -487,7 +487,7 @@ Example)
 
 ![5-2-3-0]
 
-### <div id='41'></div> 5.3. 서비스 접근 허용
+### <div id='41'></div> 5.3. Allow Service Access
 [5.2.3. 카탈로그(Catalog)확인]의 서비스 접근목록 확인을 보면 카탈로그 된 서비스들은 접근(access)이 none으로 설정되어 있다. 이 설정을 접근 가능하게 바꿔 주어야 마켓 플레이스에 서비스 목록이 노출된다. 아래 명령어를 이용하여 서비스에 대한 접근을 허용한다.
 
 ```
@@ -507,7 +507,7 @@ Example)
 
 ![5-3-0-0]
 
-### <div id='42'></div> 5.4. 마켓 플레이스 확인
+### <div id='42'></div> 5.4. Check Marketplace
 접근을 허용한 서비스들은 마켓 플레이스에 등록됨으로써 개발자들이 사용할 수 있는 상태가 된다. 명령어를 이용해 마켓 플레이스를 확인한다.
 
 ```

@@ -44,7 +44,7 @@
          * [5.2.3. Check Catalog](#40)
      * [5.3. Allow Service Access](#41)
      * [5.4. Check Marketplace](#42)
-6. [Add/ Delete API Service](#43)
+6. [Add/ Remove API Service](#43)
      * [6.1. Public API Service Broker Settings File Definitions](#44)
      * [6.2. Naver API Service Broker Settings File Definitions](#45)
 7. [API Service Broker Verification](#46)
@@ -480,7 +480,7 @@ The command to check the list of service brokers. Can be used to verify that the
 ![5-2-2-0]
 
 ##### <div id='40'></div> 5.2.3 Check Catalog
-서비스 브로커가 개방형 클라우드 플랫폼에 생성될 때, 서비스 브로커를 통해 서비스되는 API 서비스의 목록을 생성하는 카탈로그를 진행한다. 카탈로그 된 서비스들은 서비스 접근(service access) 목록에 추가되는데, 이 서비스 접근 목록을 확인함으로써, 정상적으로 카탈로그가 이루어졌음을 확인할 수 있다.
+When a service broker is created on an open cloud platform, it proceeds with a catalog that generates a list of API services serviced through the service broker. The cataloged services are added to the service access list, and by checking the service access list, it is possible to confirm that the catalog has been successfully performed..
 ```
   $ cf service-access
 ```
@@ -488,19 +488,19 @@ The command to check the list of service brokers. Can be used to verify that the
 ![5-2-3-0]
 
 ### <div id='41'></div> 5.3. Allow Service Access
-[5.2.3. 카탈로그(Catalog)확인]의 서비스 접근목록 확인을 보면 카탈로그 된 서비스들은 접근(access)이 none으로 설정되어 있다. 이 설정을 접근 가능하게 바꿔 주어야 마켓 플레이스에 서비스 목록이 노출된다. 아래 명령어를 이용하여 서비스에 대한 접근을 허용한다.
+The catalog of the service access list in [5.2.3. Check Catalog] is set to none. This setting has to be modified so that the service list will be seen at the marktetplace. Use the command below to allow the access to the service.
 
 ```
-  $ cf enable-service-access [서비스명] -p [플랜명]
+  $ cf enable-service-access [Service Name] -p [Plan Name]
 ```
-※ [서비스명]과 [플랜명]은 서비스 브로커 설정 파일에 정의된 서비스 명과 플랜 명을 의미한다. cf service-access 명령어를 통해, 서비스 접근 허용을 할 수 있는 서비스의 서비스명과 플랜명 목록을 확인할 수 있다.
+※ [Service name] and [plan name] refer to the service name and plan name defined in the service broker configuration file. Through the cf service-access command, you can check the list of service and plan names of services that is allowed to access the service.
 
-예시)
+Example)
 ```
   $ cf enalbe-service-access PublicPerformance -p basic
 ```
 
-위의 명령어를 이용하여 마켓 플레이스에 노출하고자 하는 서비스들의 접근을 허용한 뒤, 하단의 명령어를 이용하여 서비스 접근 목록을 다시 확인하면, 서비스들의 접근(access)설정이 all로 바뀐 것을 확인할 수 있다.
+After allowing access to the services to be exposed to the marketplace using the command above, check the service access list again with the command below to confirm that the access setting of the services has been changed to all.
 ```
   $ cf service-access
 ```
@@ -508,7 +508,7 @@ The command to check the list of service brokers. Can be used to verify that the
 ![5-3-0-0]
 
 ### <div id='42'></div> 5.4. Check Marketplace
-접근을 허용한 서비스들은 마켓 플레이스에 등록됨으로써 개발자들이 사용할 수 있는 상태가 된다. 명령어를 이용해 마켓 플레이스를 확인한다.
+Services that allow access are registered in the marketplace, making them available to developers. Use the command to check the market place.
 
 ```
   $ cf marketplace
@@ -516,22 +516,22 @@ The command to check the list of service brokers. Can be used to verify that the
 
 ![5-4-0-0]
 
-# <div id='43'></div>   6. API 서비스 추가/제거
-샘플 서비스 브로커에서 API 서비스의 추가 또는 제거는 [4.1 서비스 브로커 설정 파일]에 정보를 삽입하거나 삭제함으로써 이루어진다. 샘플 서비스 브로커는 설정 파일의 키(key)값을 통해, 필요한 정보를 읽어 서비스 카탈로그(catalog)와 바인드(bind)에서 사용하도록 설계되어있다. 설정 파일의 파일명은 'application-mvc.properties'이고 샘플 서비스 브로커에서 요구하는 API 서비스에 대한 정보는 다음과 같다.
-※ 샘플 서비스 브로커는 서비스나 플랜을 서비스 번호, 플랜 번호를 순서대로 읽도록 설계되었다.
-서비스 번호, 플랜번호가 1번부터 순서대로 입력되지 않으면, 정상적으로 서비스나 플랜을 읽어 올 수 없다. 서비스나 플랜을 추가 또는 제거 한 이후에 서비스 번호나 플랜 번호가 1번부터 빠짐없이 이어질 수 있도록 주의한다.
+# <div id='43'></div>   6. Add/ Remove API Service
+The add or remove API services from a sample service broker is accomplished by inserting or deleting information in the [4.1 API Service Broker Setting File].The sample service broker is designed to read the necessary information through the key value of the configuration file and use it in the service catalog and bind. The file name of the configuration file is 'application-mvc.properties' and information on API services required by the sample service broker is as follows.
+※ The sample service broker is designed to read the service or plan in order of service number and plan number.
+If the service number and plan number are not entered in order from number 1, the service or plan cannot be read normally. After adding or removing a service or plan, ensure that the service number or plan number continues from No. 1.
 
-| <b>설정 파일 키(key) 값</b>      | <b>설명</b> |
+| <b>Setting files key value</b>      | <b>Description</b> |
 |-------------|-----------------------------|
-| Service[서비스 번호].Name | API 서비스의 이름을 영문으로 표기 |
-| Service[서비스 번호].Description | API 서비스에 대한 설명. 마켓 플레이스에 등록되었을 때, 플랫폼 사용자(개발자)들에게 노출됨 |
-| Service[서비스 번호].Provider | API 서비스를 제공하는 기관명이나 URL |
-| Service[서비스 번호].DocumentUrl | API 서비스의 기술문서나 명세를 확인할 수 있는 URL |
-| Service[서비스 번호].EndPoint | API를 요청하는 URL |
-| Service[서비스 번호].Plan[플랜번호].Name | 해당 서비스의 플랜명. <br>서비스에 따라 복수의 플랜을 가질 수 있기 때문에 플랜번호를 부여하지만, 일반적으로 API 서비스는 단일 플랜을 갖는다. |
-| Service[서비스 번호].Plan[플랜번호]..Description | 해당 서비스의 해당 플랜에 대한 설명 |
-| Service[서비스 번호].Plan[플랜번호].Bullet | 해당 서비스의 해당 플랜의 서비스 제한 형태. 일반적으로 API 서비스는 호출 수에 제한을 두어 서비스를 관리한다. |
-| Service[서비스 번호].Plan[플랜번호].Unit | 해당 서비스의 해당 플랜의 제한 단위. 일반적으로 API 서비스는 일별 또는 월별 호출 수에 제한을 둔다. |
+| Service[Service Number].Name | Enter name of the  API service in english |
+| Service[Service Number].Description | Description about the API service. When registered in a marketplace, it is exposed to platform users (developers |
+| Service[Service Number].Provider | URL or company name who provides API services |
+| Service[Service Number].DocumentUrl | API 서비스의 기술문서나 명세를 확인할 수 있는 URL |
+| Service[Service Number].EndPoint | API를 요청하는 URL |
+| Service[Service Number].Plan[Plan Number].Name | 해당 서비스의 플랜명. <br>서비스에 따라 복수의 플랜을 가질 수 있기 때문에 플랜번호를 부여하지만, 일반적으로 API 서비스는 단일 플랜을 갖는다. |
+| Service[Service Number].Plan[Plan Number]..Description | 해당 서비스의 해당 플랜에 대한 설명 |
+| Service[Service Number].Plan[Plan Number].Bullet | 해당 서비스의 해당 플랜의 서비스 제한 형태. 일반적으로 API 서비스는 호출 수에 제한을 두어 서비스를 관리한다. |
+| Service[Service Number].Plan[Plan Number].Unit | 해당 서비스의 해당 플랜의 제한 단위. 일반적으로 API 서비스는 일별 또는 월별 호출 수에 제한을 둔다. |
 
 ### <div id='44'></div> 6.1. 공공 API 서비스 브로커 설정파일 정의
 제공되는 2개의 샘플 서비스 브로커 중 공공 API 서비스 브로커의 서비스 목록은 다음과 같이 정의 되어있다.

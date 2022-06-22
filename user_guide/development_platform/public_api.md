@@ -215,14 +215,14 @@ At least one plan must be defined in the configuration file for each service. If
 
 | <b>Key Value</b>      | <b>Description</b> | <b>Example of Value</b> |
 |-------------|-----------------------------|-----------------------------|
-| Service1.Plan1.Name | Plan Name. 플랜명은 서비스만 다르다면 고유의(Unique)값일 필요가 없다. | Basic |
-| Service1.Plan1.Description | 플랜에 대한 간략한 설명을 입력한다. 설정파일에 정의해 놓지 않은 경우에는 "no plan description"이라고 입력된다. | total 1,000,000 calls |
-| Service1.Plan1.Bullet | 플랜의 과금 정보. API 서비스이기 때문에 최대 허용 호출 수를 입력한다. 복수 입력을 하려면 코드의 수정이 필요하다. | 1,000,000 callsr |
-| Service1.Plan1.Unit | 최대 허용 호출 수의 단위를 입력한다. 예를 들면, per month, per day, weekly, total등으로 입력할 수 있다. | Total |
+| Service1.Plan1.Name | Plan Name. Plan name doesnt need a unique value as long as the services are different. | Basic |
+| Service1.Plan1.Description | Enter a brief description of the plan. If not defined in the configuration file, enter "no plan descriptio. | total 1,000,000 calls |
+| Service1.Plan1.Bullet | Billing information for the plan. Since it is an API service, enter the maximum number of allowed calls. Multiple inputs require modification of the code. | 1,000,000 callsr |
+| Service1.Plan1.Unit | Enter the units of the maximum number of allowed calls. For example, it can be entered as per month, per day, weekly, total, etc. | Total |
 
-### <div id='17'></div> 4.2. 카탈로그
-※ 세부정보는 서비스팩 개발 가이드문서의 [2.5.1. Catalog API 가이드]를 참고한다.  
-##### <div id='18'></div> 4.2.1 요청
+### <div id='17'></div> 4.2. Catalog
+※ Refer to [2.5.1. Catalog API Guide] of the Service Pack Development Guide document for detailed information.  
+##### <div id='18'></div> 4.2.1 Request
 - Route
   ```
   GET /v2/catalog
@@ -232,59 +232,59 @@ At least one plan must be defined in the configuration file for each service. If
   ```
   curl -H "X-Broker-API-Version: 2.5" http://username:password@broker-url/v2/catalog
   ```
-  ※ 'username:password'는 서비스 브로커의 인증ID와 인증Password를 의미한다. 서비스 브로커 구현 시, 라이브러리에 정의된 값이다. 정의되어 있는 인증ID는 'admin', 인증Password는 'cluoudfoundry'이다.
+  ※ 'username:password' means the authentication ID and the authentication password of the service broker. When implementing a service broker, it is a value defined in the library. The defined authentication ID is 'admin' and the authentication password is 'cloudfoundry'..
   
-##### <div id='19'></div> 4.2.2 응답
-※{1}은 코드 내에서 설정파일에 정의된 서비스와 플랜의 키(Key) 값을 순서대로 불러오기 위한 변수 값이다.
-<br>※ Key값의[ ](대괄호)내의 문자는 설정파일에 정의된 서비스의 키(Key) 값을 의미한다.
+##### <div id='19'></div> 4.2.2 Response
+※{1} is a variable value to retrieve the key values of the service and plan defined in the setup file in order within the code.
+<br>※ A character in [ ](bracket)of the key value refers to the key value of the service defined in the setting file.
 
 - body
 
-  | <b>응답필드</b>      | <b>설명</b> | <b>샘플데이터</b> |
+  | <b>Response Field</b>      | <b>Description</b> | <b>Sample Data</b> |
   |-------------|-----------------------------|-----------------------------|
-  | services* | 각각의 서비스 객체를 담은 객체의 리스트 | |
-  | &nbsp;&nbsp;id* | 서비스 ID. 고유(Unique)해야 하며, 설정파일에서 읽어 온 값과 지정된 텍스트의 조합으로 생성됨. <br>형태: "Service"+{1}+[Service1.Name]+"ServiceID" | |
-  | &nbsp;&nbsp;name* | 서비스명. 설정파일에서 읽어 온 값. <br>Key값: [Service1.Name] | PublicPerformance |
-  | &nbsp;&nbsp;description* | 서비스 설명. 설정파일에서 읽어 온 값. <br>Key값: [Service1.Name] | Performances, exhibits information display |
-  | &nbsp;&nbsp;bindable* | 어플리케이션과 바인드 가능 여부. boolean 타입. <br>지정값: true | true |
-  | &nbsp;&nbsp;tags | 서비스의 분류, 속성, 또는 기반 기술을 노출 <br>지정값: "Public API Service" | Public API Service |
-  | &nbsp;&nbsp;metadata | 서비스 제공을 위한 메타 데이터의 목록. 상세 설명은 아래 '서비스 메타데이터' 참고 | |
-  | &nbsp;&nbsp;requires* | 사용자가 서비스를 제공 하는 권한 목록. 현재는 syslog_drain 권한만 지원함 <br>지정값: "syslog_drain" | syslog_drain |
-  | plan_updateable | 서비스의 플랜 변경 지원 여부. boolean 타입. <br>지정값: false | false |
-  | &nbsp;&nbsp;plans* | 서비스에 대한 각각의 플랜 객체를 담은 객체의 리스트 | |
-  | &nbsp;&nbsp;&nbsp;&nbsp;id* | 플랜 ID. 고유(Unique)해야 하며, 설정파일에서 읽어 온 값과 지정된 텍스트의 조합으로 생성됨. <br>형태: "Service"+{1}+[Service1.Name]+"Plan"+{1}+[Service1.Plan1.Name]+"PlanID" | Service1 PublicPerformance Plan1 basic PlanID |
-  | &nbsp;&nbsp;&nbsp;&nbsp;name* | 플랜명. 설정파일에서 읽어 온 값. <br>Key값: [Service1.Plan1.Name] | basic |
-  | &nbsp;&nbsp;&nbsp;&nbsp;description* | 플랜 설명. 설정파일에서 읽어 온 값. <br>Key값: [Service1.Plan1.Description] | total 1,000,000 calls |
-  | &nbsp;&nbsp;&nbsp;&nbsp;metadata | 서비스의 플랜을 위한 메타 데이터의 목록. 상세 설명은 아래 '플랜 메타데이터' 참고 | |
-  | &nbsp;&nbsp;&nbsp;&nbsp;free | 유/무료 과금 정책을 표시.boolean 타입. 기본값은 true. <br>지정값: true | true |
+  | services* | List of objects containing each service object | |
+  | &nbsp;&nbsp;id* | Service ID. Must be unique, created with a combination of values read from the settings file and specified text. <br>Form: "Service"+{1}+[Service1.Name]+"ServiceID" | |
+  | &nbsp;&nbsp;name* | Service Name. Value read from the settings file. <br>Key value: [Service1.Name] | PublicPerformance |
+  | &nbsp;&nbsp;description* | Service Description. Value read from the settings file. <br>Key value: [Service1.Name] | Performances, exhibits information display |
+  | &nbsp;&nbsp;bindable* | If it is bindable with the application. boolean type. <br>set value: true | true |
+  | &nbsp;&nbsp;tags | Expose the classification, attributes, or underlying technology of a service <br>set value: "Public API Service" | Public API Service |
+  | &nbsp;&nbsp;metadata | A list of meta data for providing the service. refer to 'Service Metadata' below for detailed description | |
+  | &nbsp;&nbsp;requires* | Authorization list of services provided by the user. currently, only syslog_drain authority is provided <br>set values: "syslog_drain" | syslog_drain |
+  | plan_updateable | Whether the service supports modifying of plans. boolean type. <br>set value: false | false |
+  | &nbsp;&nbsp;plans* | List of objects containing each plan object for the service | |
+  | &nbsp;&nbsp;&nbsp;&nbsp;id* | Plan ID. Must be unique, created with a combination of values read from the settings file and specified text. <br>form: "Service"+{1}+[Service1.Name]+"Plan"+{1}+[Service1.Plan1.Name]+"PlanID" | Service1 PublicPerformance Plan1 basic PlanID |
+  | &nbsp;&nbsp;&nbsp;&nbsp;name* | Plan name. Value read from the settings file. <br>Key value: [Service1.Plan1.Name] | basic |
+  | &nbsp;&nbsp;&nbsp;&nbsp;description* | Plan name. Value read from the settings file. <br>Key value: [Service1.Plan1.Description] | total 1,000,000 calls |
+  | &nbsp;&nbsp;&nbsp;&nbsp;metadata | A list of metadata for the plan of the service. Check 'Plan metadata' below for a detailed description | |
+  | &nbsp;&nbsp;&nbsp;&nbsp;free | Display the Paid/Free Billing Policy.Boolean type. Default is true. <br>set value: true | true |
 
-- 서비스 메타데이터
+- Service Metadata
 
-  | <b>응답필드</b>      | <b>설명</b> | <b>샘플데이터</b> |
+  | <b>Response Field</b>      | <b>Description</b> | <b>Sample Data</b> |
   |-------------|-----------------------------|-----------------------------|
-  | metadata.displayName | 그래픽 클라이언트에 표시되는 서비스명 <br>Key값: [Service1.Name] | PublicPerformance |
-  | metadata.imageUrl | 서비스에 대한 이미지 URL <br>지정값: "no image" | no image |
-  | metadata.longDescription | 서비스 상세 설명 <br>Key값: [Service1.Description] | Performances, exhibits information display |
-  | metadata.providerDisplayName | 실제 서비스를 제공하는 기관명 <br>Key값: [Service1.Provider] | Performances, exhibits information display |
-  | metadata.documentationUrl | 서비스 관련 문서 URL <br>Key값: [Service1.DocumentationUrl] | https://www.data.go.kr/subMain.jsp#/L3B1YnIvdXNlL3ByaS9Jcm9z...(생략) |
-  | metadata.supportUrl | 서비스 지원 URL <br>Key값: [SupportUrl] | http://www.openpaas.org |
+  | metadata.displayName | Service name as it appears in the graphical client <br>Key value: [Service1.Name] | PublicPerformance |
+  | metadata.imageUrl | Image URL for the service <br>set value: "no image" | no image |
+  | metadata.longDescription | Service Detailed Description <br>Key value: [Service1.Description] | Performances, exhibits information display |
+  | metadata.providerDisplayName | Name of the organization that provides the actual service <br>Key value: [Service1.Provider] | Performances, exhibits information display |
+  | metadata.documentationUrl | Service-related document URL <br>Key value: [Service1.DocumentationUrl] | https://www.data.go.kr/subMain.jsp#/L3B1YnIvdXNlL3ByaS9Jcm9z...(skip) |
+  | metadata.supportUrl | service supporting URL <br>Key value: [SupportUrl] | http://www.openpaas.org |
 
-- 플랜 메타데이터
+- Plan Metadata
 
-  | <b>응답필드</b>      | <b>설명</b> | <b>샘플데이터</b> |
+  | <b>Response Field</b>      | <b>Description</b> | <b>Sample Data</b> |
   |-------------|-----------------------------|-----------------------------|
-  | metadata.bullets | 플랜의 과금 정보. API 서비스이기 때문에 최대 호출 수를 입력 <br>Key값: [Service1.Plan1.Bullet] | 1,000,000 calls |
-  | metadata.costs | 플랜의 비용 정보.Map타입의 amount와 String타입의 unit으로 구성. <br>amount 지정값: "KRW",0 <br>※KRW는 한국 통화단위 <br>unit Key값: [Service1.Plan1.Unit] | Json 구조 <br>"costs": [{"amount": {"KRW": 0} "unit": "total" }] |
-  | metadata.displayName | 그래픽 클라이언트에 표시되는 플랜명 <br>Key값: [Service1.Plan1.Name] | basic |
+  | metadata.bullets | Billing information for the plan. Enter the maximum number of calls because it is an API service <br>Key value: [Service1.Plan1.Bullet] | 1,000,000 calls |
+  | metadata.costs | Cost information of the plan. Consists of the map type amount and string type unit. <br>amount set value: "KRW",0 <br>※KRW is in Korean currency <br>unit Key value: [Service1.Plan1.Unit] | Json structure <br>"costs": [{"amount": {"KRW": 0} "unit": "total" }] |
+  | metadata.displayName | The plan name that appears in the graphical client <br>Key value: [Service1.Plan1.Name] | basic |
 
-### <div id='20'></div> 4.3. 프로비전
-※ 세부정보는 서비스팩 개발 가이드문서의 [2.5.1  Provision 가이드]를 참고한다.
-##### <div id='21'></div>  4.3.1 요청
+### <div id='20'></div> 4.3. Provision
+※ Refer to [2.5.1 Provision Guide] of the Service Pack Development Guide document for detailed information.
+##### <div id='21'></div>  4.3.1 Request
 - Route
   ```
   PUT /v2/service_instances/:instance_id
   ```
-  ※ instance_id는 서비스 인스턴스 생성 명령어를 입력 했을 때, 클라우드 컨트롤러에서 생성하는 고유의(Unique) ID이다.
+  ※ Instance_id is a unique ID generated by the cloud controller when a service instance creation command is entered.
   
 - cURL
   ```
@@ -295,30 +295,30 @@ At least one plan must be defined in the configuration file for each service. If
   "space_guid":        "[space-guid-here]"
   }' -X PUT -H "X-Broker-API-Version: 2.5" -H "Content-Type: application/json"
   ```
-  ※ ''username:password'는 서비스 브로커의 인증ID와 인증Password를 의미한다. 서비스 브로커 구현 시, 라이브러리에 정의된 값이다. 정의되어 있는 인증ID는 'admin', 인증Password는 'cluoudfoundry'이다.
+  ※ 'username:password' means the authentication ID and the authentication password of the service broker. When implementing a service broker, it is a value defined in the library. The defined authentication ID is 'admin' and the authentication password is 'cloudfoundry'.
 
 - body
 
-  | <b>요청필드</b>      | <b>설명</b> | <b>샘플데이터</b> |
+  | <b>Request Field</b>      | <b>Description</b> | <b>Sample Data</b> |
   |-------------|-----------------------------|-----------------------------|
-  | service_id* | 카탈로그에서 생성한 서비스ID | Service1 PublicPerformance ServiceID |
-  | plan_id* | 카탈로그에서 생성한 플랜ID | 카탈로그에서 생성한 플랜ID |
-  | organization_guid* | 프로비전을 요청한 사용자 Org의 GUID 값 | [클라우드 컨트롤러에서 Org 식별을 위해 사용하는 GUID 값] |
-  | space_guid* | 프로비전을 요청한 사용자 Space의 GUID 값 | [클라우드 컨트롤러에서 Space 식별을 위해 사용하는 GUID 값] |
+  | service_id* | Service ID created from catalog | Service1 PublicPerformance ServiceID |
+  | plan_id* | Plan ID created from catalog  | Plan ID created from catalog |
+  | organization_guid* | GUID value of user org requesting for provision | [The GUID value that the cloud controller used for Org identification] |
+  | space_guid* | GUID value of user Space requesting for provision | [The GUID value that the cloud controller used for space identification] |
   
-##### <div id='22'></div> 4.3.2 응답
-| <b>응답필드</b>      | <b>설명</b> | <b>샘플데이터</b> |
+##### <div id='22'></div> 4.3.2 Response
+| <b>Response Field</b>      | <b>Description</b> | <b>Sample Data</b> |
 |-------------|-----------------------------|-----------------------------|
-| dashboard_url | 공공데이터포털 URL을 사용 <br>Key값: [DashboardUrl] | http://www.data.go.kr |
+| dashboard_url | Uses the public data portal URL <br>Key value: [DashboardUrl] | http://www.data.go.kr |
 
-### <div id='23'></div> 4.4. 업데이트
-※ 세부정보는 서비스팩 개발 가이드 문서의 [2.5.3  Update Instance API 가이드]를 참고한다.
-##### <div id='24'></div> 4.4.1 요청
+### <div id='23'></div> 4.4. Update
+※ Refer to [2.5.3 Update Instance API Guide] in the Service Pack Development Guide document for detailed information.
+##### <div id='24'></div> 4.4.1 Request
 - Route
   ```
   PATCH /v2/service_instances/:instance_id
   ```
-  ※ instance_id는 프로비전에서 생성된 서비스 인스턴스의 고유(Unique)ID
+  ※ instance_id is the unique ID of the service instance created by the provision
   
 - cURL
   ```
@@ -326,23 +326,23 @@ At least one plan must be defined in the configuration file for each service. If
   "plan_id": "Service1 PublicPerformance Plan2 special PlanID"
   }' -X PATCH -H "X-Broker-API-Version: 2.4" -H "Content-Type: application/json"
   ```
-  ※ 'username:password'는 서비스 브로커의 인증ID와 인증Password를 의미한다. 서비스 브로커 구현 시, 라이브러리에 정의된 값이다. 정의되어 있는 인증ID는 'admin', 인증Password는 'cluoudfoundry'이다.
+  ※ 'username:password' means the authentication ID and the authentication password of the service broker. When implementing a service broker, it is a value defined in the library. The defined authentication ID is 'admin' and the authentication password is 'cloudfoundry'.
 
 - body
 
-  | <b>요청필드</b>      | <b>설명</b> | <b>샘플데이터(공연전시정보 API)</b> |
+  | <b>Request Field</b>      | <b>Description</b> | <b>Sample Data(Performance Exhibition Information API)</b> |
   |-------------|-----------------------------|-----------------------------|
-  | plan_id | 카탈로그에서 생성된, 변경할 플랜의 ID | Service1 PublicPerformance Plan2 special PlanID |
-  | service_id* | 카탈로그에서 생성된, 플랜을 변경하고자 하는 서비스의 ID | Service1 PublicPerformance ServiceID |
+  | plan_id |Plan ID to modify which was created from catalog | Service1 PublicPerformance Plan2 special PlanID |
+  | service_id* | Service ID to modify the plan which was created from the catalog | Service1 PublicPerformance ServiceID |
 
-##### <div id='25'></div> 4.4.2 응답
-| <b>응답필드</b>      | <b>설명</b> |
+##### <div id='25'></div> 4.4.2 Response
+| <b>Response Field</b>      | <b>Description</b> |
 |-------------|-----------------------------|
-| {} | 업데이트가 성공적으로 진행되었을 경우, "{}"의 형태로 응답된다. |
+| {} | When the update was successfully done, it responses in "{}" form. |
 
-### <div id='26'></div> 4.5. 바인드
-※ 세부정보는 서비스팩 개발 가이드 문서의 [2.5.5  Bind API 가이드]를 참고한다.
-##### <div id='27'></div> 4.5.1 요청
+### <div id='26'></div> 4.5. Bind
+※ Refer to [2.5.5 Bind API Guide] in the Service Pack Development Guide document for detailed information.
+##### <div id='27'></div> 4.5.1 Request
 - Route
   ```
   PUT /v2/service_instances/:instance_id/service_bindings/:binding_id
@@ -357,35 +357,35 @@ At least one plan must be defined in the configuration file for each service. If
   "app_guid":       "app-guid-here"
   }' -X PUT -H "X-Broker-API-Version: 2.5" -H "Content-Type: application/json"
   ```
-  ※ 'username:password'는 서비스 브로커의 인증ID와 인증Password를 의미한다. 서비스 브로커 구현 시, 라이브러리에 정의된 값이다. 정의되어 있는 인증ID는 'admin', 인증Password는 'cluoudfoundry'이다.
+  ※ 'username:password' means the authentication ID and the authentication password of the service broker. When implementing a service broker, it is a value defined in the library. The defined authentication ID is 'admin' and the authentication password is 'cloudfoundry'.
 
 - body
 
-  | <b>요청필드</b>      | <b>설명</b> | <b>샘플데이터</b> |
+  | <b>Request Field</b>      | <b>Description</b> | <b>Sample Data</b> |
   |-------------|-----------------------------|-----------------------------|
-  | plan_id | 카탈로그에서 생성된, 바인드하는 서비스 인스턴스의 플랜ID | Service1 PublicPerformance Plan1 basic PlanID |
-  | service_id | 카탈로그에서 생성된, 바인드하는 서비스 인스턴스의 서비스ID | Service1 PublicPerformance ServiceID |
-  | app_guid | 바인드하는 어플리케이션의 GUID | 바인드하는 어플리케이션의 GUID |
+  | plan_id | Plan ID of the service instance to bind which was created from the catalog | Service1 PublicPerformance Plan1 basic PlanID |
+  | service_id | Service ID of the service instance that you are binding which was created in the catalog | Service1 PublicPerformance ServiceID |
+  | app_guid | GUID of the application to bind | GUID of the application to bind |
 
-##### <div id='28'></div> 4.5.2 응답
+##### <div id='28'></div> 4.5.2 Response
 - body
 
-  | <b>응답필드</b>      | <b>설명</b> | <b>샘플데이터</b> |
+  | <b>Response Field</b>      | <b>Description</b> | <b>Sample Data</b> |
   |-------------|-----------------------------|-----------------------------|
-  | credentials | Application이 서비스에 접근할수 있는 credentials 정보. 해시 형태로 제공. 자세한 정보는 'Credentials'를 참고 | |
-  | syslog_drain_url | 개방형 클라우드 플랫폼에 bound 된 Application에 대한 로그 URL | |
+  | credentials | Credential information that allows application to access the service. It is provided in hash form. Check 'Credentials' for detailed information | |
+  | syslog_drain_url | Log URL for applications bound to open cloud platforms | |
   
 - Credentials
 
-  | <b>Credential</b>      | <b>설명</b> | <b>샘플데이터</b> |
+  | <b>Credential</b>      | <b>Description</b> | <b>Sample Data</b> |
   |-------------|-----------------------------|-----------------------------|
-  | url | 설정파일에 정의된 API 서비스의 엔드포인트 <br>Key값: [Service1.Endpoint] | http://www.culture.go.kr/openapi/rest/publicperformancedisplays |
-  | serviceKey | API 서비스를 사용하기 위해 서비스 제공자로부터 발급받은 인증키 <br>※ 서비스 바인드 시, 입력 | [사용자가 발급받은 키값] |
-  | documentUrl | API 서비스의 기술문서, 개발 가이드 등을 확인할 수 있는 URL <br>Key값: [Service1.DocumentationUrl] | https://www.data.go.kr/subMain.jsp#/L3B1YnIvdXNlL3ByaS... (생략) |
+  | url | Endpoints in API services defined in the settings file <br>Key value: [Service1.Endpoint] | http://www.culture.go.kr/openapi/rest/publicperformancedisplays |
+  | serviceKey | Authentication key issued from service provider to use API service <br>※ Ente when binding the service | [Key value issued by the user] |
+  | documentUrl | URL for checking API service technical documentation, development guide, etc <br>Key value: [Service1.DocumentationUrl] | https://www.data.go.kr/subMain.jsp#/L3B1YnIvdXNlL3ByaS... (skip) |
   
-### <div id='29'></div> 4.6. 언바인드
-※ 세부정보는 서비스팩 개발 가이드문서의 [2.5.6  Unbind API 가이드]를 참고한다.
-##### <div id='30'></div> 4.6.1 요청
+### <div id='29'></div> 4.6. Unbind
+※ Refer to [2.5.6 Unbind API Guide] of the service pack development guide document for detailed information.
+##### <div id='30'></div> 4.6.1 Request
 - Route
   ```
   DELETE /v2/service_instances/:instance_id/service_bindings/:binding_id
@@ -396,25 +396,25 @@ At least one plan must be defined in the configuration file for each service. If
   $ curl 'http://username:password@broker-url/v2/service_instances/:instance_id/
   service_bindings/:binding_id?service_id=Service1 PublicPerformance ServiceID &plan_id=Service1 PublicPerformance Plan1 basic PlanID' -X DELETE -H "X-Broker-API-Version: 2.4"
   ```
-  ※ 'username:password'는 서비스 브로커의 인증ID와 인증Password를 의미한다. 서비스 브로커 구현 시, 라이브러리에 정의된 값이다. 정의되어 있는 인증ID는 'admin', 인증Password는 'cluoudfoundry'이다.
+  ※ 'username:password' means the authentication ID and the authentication password of the service broker. When implementing a service broker, it is a value defined in the library. The defined authentication ID is 'admin' and the authentication password is 'cloudfoundry'.
 
 - body
 
-  | <b>요청필드</b>      | <b>설명</b> | <b>샘플데이터</b> |
+  | <b>Request Field</b>      | <b>Description</b> | <b>Sample Data</b> |
   |-------------|-----------------------------|-----------------------------|
-  | service_id | 카탈로그에서 생성된, 언바인드하는 서비스 인스턴스의 서비스ID | Service1 PublicPerformance ServiceID |
-  | plan_id | 카탈로그에서 생성된, 언바인드하는 서비스 인스턴스의 플랜ID | Service1 PublicPerformance Plan1 basic PlanID |
+  | service_id | Service ID of the service instance to unbind which was created from catalog | Service1 PublicPerformance ServiceID |
+  | plan_id | Plan ID of the service instance to unbind which was created from catalog | Service1 PublicPerformance Plan1 basic PlanID |
 
-##### <div id='31'></div> 4.6.2 응답
+##### <div id='31'></div> 4.6.2 Response
 - body
 
-  | <b>응답</b>      | <b>설명</b> |
+  | <b>Response</b>      | <b>Description</b> |
   |-------------|-----------------------------|
-  | {} | 언바인드가 성공적으로 진행되었을 경우, "{}"의 형태로 응답된다. |
+  | {} | If the unbinding was successfully done, it responses in "{}" form. |
 
-### <div id='32'></div> 4.6. 디프로비전
-※ 세부정보는 서비스팩 개발 가이드문서의 [2.5.4  Deprovision API 가이드]를 참고한다.
-##### <div id='33'></div> 4.7.1 요청
+### <div id='32'></div> 4.6. Deprovision
+※ Refer to [2.5.4 Deferral API Guide] of the service pack development guide document for detailed information.
+##### <div id='33'></div> 4.7.1 Request
 - Route
   ```
   DELETE /v2/service_instances/:instance_id
@@ -425,26 +425,26 @@ At least one plan must be defined in the configuration file for each service. If
   $ curl 'http://username:password@broker-url/v2/service_instances/:instance_id?service_id=
   Service1 PublicPerformance ServiceID plan_id=Service1 PublicPerformance Plan1 basic PlanID -X DELETE -H "X-Broker-API-Version: 2.5"
   ```
-  ※ 'username:password'는 서비스 브로커의 인증ID와 인증Password를 의미한다. 서비스 브로커 구현 시, 라이브러리에 정의된 값이다. 정의되어 있는 인증ID는 'admin', 인증Password는 'cluoudfoundry'이다.
+  ※ 'username:password' means the authentication ID and the authentication password of the service broker. When implementing a service broker, it is a value defined in the library. The defined authentication ID is 'admin' and the authentication password is 'cloudfoundry'.
 
 - body
 
-  | <b>요청필드</b>      | <b>설명</b> | <b>샘플데이터</b> |
+  | <b>Request Field</b>      | <b>Description</b> | <b>Sample Data</b> |
   |-------------|-----------------------------|-----------------------------|
-  | service_id | 카탈로그에서 생성된, 디프로비전하는 서비스 인스턴스의 서비스ID | Service1 PublicPerformance ServiceID |
-  | plan_id | 카탈로그에서 생성된, 디프로비전하는 서비스 인스턴스의 플랜ID | Service1 PublicPerformance Plan1 basic PlanID |
+  | service_id | Service ID of the service instance that is being deprovisioned, which was created from catalog | Service1 PublicPerformance ServiceID |
+  | plan_id | Plan ID of the service instance that is being deprovisioned, which was created from catalog | Service1 PublicPerformance Plan1 basic PlanID |
 
-##### <div id='34'></div> 4.7.2 응답
+##### <div id='34'></div> 4.7.2 Response
 - body
 
-  | <b>응답</b>      | <b>설명</b> |
+  | <b>Response</b>      | <b>Description</b> |
   |-------------|-----------------------------|
-  | {} | 모든 응답은 Body는 JSON Object "{}" 형식으로 한다. |
+  | {} | All responses of Body of JSON Object is in "{}" form. |
 
-# <div id='35'></div>   5. API 서비스 브로커 배포
+# <div id='35'></div>   5. API Service Broker Deployment
 개방형 클라우드 플랫폼에서 사용하기 위해서 서비스 브로커를 구동한다. 서비스 브로커는 하나의 어플리케이션으로 개방형 클라우드 플랫폼 내에 어플리케이션 형태로 구동하여 사용할 수 있지만, 본 문서는 외부 서버에서 구동하여 개방형 클라우드 플랫폼에서 사용하는 방법을 안내한다. 서비스 브로커가 구동되는 외부 서버는 개방형 클라우드 플랫폼과 통신이 가능한 환경을 구성하여야 한다. 서비스 브로커 구동에 대한 안내는 따로 진행하지 않는다.
 
-### <div id='36'></div> 5.1. 개방형 클라우드 플랫폼 로그인
+### <div id='36'></div> 5.1. Log in to Open Cloud Platform
 개방형 클라우드 플랫폼에서 서비스 브로커를 생성한다. 서비스 브로커 생성을 위해서는 개방형 클라우드 플랫폼의 관리자 권한이 필요하다. 하단의 명령어를 통해 개방형 클라우드 플랫폼에 관리자 계정으로 로그인 한다.
 ```
   $ cf login

@@ -160,62 +160,62 @@ As the window expands, information about API services can be checked.
 | Service Provider    | Enter the name of the organization that actually provides the service and the URL. |
 | Guide Document URL | URL where the platform user (developer) can check the guide document of the service. The platform user can use the service by checking the operation or request parameters in the guide document of this URL. |
 | Request address(Endpoint)   | URL for using API services. Service brokers use the term Endpoint. |
-| Allowable Traffic    | 서비스 제공자가 허락하는 요청 횟수와 그 단위. 서비스에 따라 일/1,000회, 월/100,000회 등으로 허용 횟수와 단위가 다르다. |
+| Allowable Traffic    | The number and unit of requests permitted by the service provider. Depending on the service, the number and unit of requests differ from 1,000 per day to 100,000 per month. |
 
-# <div id='8'></div>   3. API 서비스 브로커 개요
-### <div id='9'></div>  3.1. 개요
-서비스 브로커는 개방형 클라우드 플랫폼과 플랫폼 외부의 서비스를 연결하는 역할을 한다. 서비스 브로커는 플랫폼 운영자가 직접 개발하거나 플랫폼 내에 서비스를 제공하고자 하는 외부 서비스의 제공자(provider)가 개발하여 플랫폼 운영자에게 제공할 수 있다. 서비스 브로커 개발은 카탈로그(Catalog), 프로비전(Provision), 업데이트(Update), 바인드(Bind), 언바인드(Unbind), 디프로비전(Deprovision)의 6개 API를 구현함으로써 이루어진다. 서비스 브로커의 개발은 제공하고자 하는 서비스의 특성 또는 서비스 정책에 따라 상이하므로 개발 이전에 제공하고자 하는 서비스에 대한 이해가 바탕이 되어야 한다. 본 문서에서 안내를 제공하는 2개의 API 서비스 브로커는 API 서비스의 특성에 맞게 설계되었다.
+# <div id='8'></div>   3. API Service Broker Outline
+### <div id='9'></div>  3.1. Outline
+Service brokers serve to connect open cloud platforms with services outside the platform. Service brokers can be developed directly by platform operators or developed by external service providers who want to provide services within the platform and provided to platform operators. Service Broker Development is embodied by implementing six APIs: Catalog, Provision, Update, Bind, Unbind, and Deprovision. Since the development of a service broker varies depending on the characteristics of the service to be provided or the service policy, the understanding of the service to be provided before development should be based on. The two API service brokers that provide guidance in this document are designed to suit the characteristics of the API service.
 
-### <div id='10'></div> 3.2. 서비스 브로커 APIs
-- 카탈로그(Catalog): 서비스의 목록을 생성한다.
-- 프로비전(Provision): 서비스 인스턴스를 생성한다.
-- 업데이트(Update): 카탈로그를 업데이트 한다.
-- 바인드(Bind): 서비스와 어플리케이션을 바인드한다.
-- 언바인드(Unbind): 서비스와 어플리케이션의 바인드를 해제한다.
-- 디프로비전(Deprovision): 서비스 인스턴스를 삭제한다.
+### <div id='10'></div> 3.2. Service Broker APIs
+- Catalog: Creates the list of services.
+- Provision: Creates service instances.
+- Update: Updates catalog.
+- Bind: Binds service and application.
+- Unbind: Unnind service and applications.
+- Deprovision: Deletes service instance.
 
-| <b>서비스 브로커 APIs</b>      | <b>관련 명령어</b> |
+| <b>Service Broker APIs</b>      | <b>Related Commands</b> |
 |-------------|-----------------------------|
-| 카탈로그(Catalog)    | cf create-service-broker [서비스 브로커명] [username] [password] [서비스 브로커 URL] <br>확인: cf service-access |
-| 프로비전(Provision) | cf create-service [서비스명] [플랜명] [서비스 인스턴스명] <br>확인: cf services |
-| 업데이트(Update)   | cf update-service-broker [서비스 브로커명] [username] [password] [서비스 브로커 URL] <br>확인: cf service-access |
-| 바인드(Bind)    | cf bind-service [어플리케이션명] [서비스 인스턴스명] <br>확인: cf env [어플리케이션명] |
-| 언바인드(Unbind)    | cf unbind-service [어플리케이션명] [서비스 인스턴스명] <br>확인: cf env |
-| 디프로비전(Deprovision)    | cf delete-service [서비스 인스턴스명] <br>확인: cf services |
-※ 서비스 브로커 APIs에 대한 상세 정보는 서비스팩 개발 가이드 문서의 [2.5 개발가이드]를 참고한다.
+| Catalog    | cf create-service-broker [Service Broker Name] [username] [password] [Service Borker URL] <br>check: cf service-access |
+| Provision | cf create-service [Service Name] [Plan Name] [Service Instance Name] <br>check: cf services |
+| Update   | cf update-service-broker [Service Broker Name] [username] [password] [Service Broker URL] <br>check: cf service-access |
+| Bind    | cf bind-service [Application Name] [Service Instance Name] <br>check: cf env [Application Name] |
+| Unbind    | cf unbind-service [Application Name] [Service Instance Name] <br>check: cf env |
+| Deprovision    | cf delete-service [Service Instance Name] <br>check: cf services |
+※ For more information on service broker APIs, see [2.5 Development Guide] in the Service Pack Development Guide document.
 
-### <div id='11'></div> 3.3. API 서비스 브로커 동작구조
+### <div id='11'></div> 3.3. How API Service Broker Broker Works
 ![3-3-0-0]
 
-API 서비스 브로커는 API 포털에 소개된 API 서비스 중, 사용하고자 하는 서비스에 대한 정보를 설정파일에 담고 있는다. 플랫폼 운영자 또는 플랫폼 사용자가 개방형 클라우드 플랫폼에 명령어를 입력하여 API 요청을 서비스 브로커로 보내면, API 서비스 브로커는 설정 파일에 정의된 정보를 이용하여 플랫폼이 요구하는 형태로 응답을 보낸다. 이를 바탕으로 플랫폼은 각각의 명령어에 대한 동작을 실행하게 된다. 서비스 브로커의 구현 플랫폼과 통신하는 6개의 API를 구현함으로써 이루어진다.
+he API service broker contains information on the service to be used among the API services introduced in the API portal in a configuration file. When a platform operator or platform user enters a command into an open cloud platform and sends an API request to a service broker, the API service broker uses the information defined in the configuration file to send a response in the form requested by the platform. Based on this, the platform executes the operation for each command. It is accomplished by implementing six APIs that communicate with the implementation platform of the service broker.
 
-# <div id='12'></div>   4. API 서비스 브로커 구현
-### <div id='13'></div> 4.1. API 서비스 브로커 설정 파일
-##### <div id='14'></div> 4.1.1 공통 설정 값
+# <div id='12'></div>   4. API Service Broker Implementation
+### <div id='13'></div> 4.1. API Service Broker Setting File
+##### <div id='14'></div> 4.1.1 Common Settings
 API 서비스 브로커를 통해 서비스되는 서비스들이 공통적으로 갖게 되는 값을 설정파일에 정의하였다.
 
-| <b>키(Key) 값</b>      | <b>설명</b> | <b>Value 값 예시</b> |
+| <b>Key Value</b>      | <b>Description</b> | <b>Example of Value</b> |
 |-------------|-----------------------------|-----------------------------|
-| DashboardUrl    | 대시보드 URL. 포털의 URL로 이해할 수 있으며, API를 제공하는 포털에 따라 서비스 브로커를 구분하기 때문에 하나의 서비스 브로커의 서비스들은 공통의 대시보드 URL을 갖는다. | http://www.data.go.kr |
-| SupportUrl | 개방형 클라우드 플랫폼의 공식 사이트 주소를 입력한다. | http://www.openpaas.org |
+| DashboardUrl    | Dashboard URL. It can be understood as a portal URL, and services of one service broker have a common dashboard URL because service brokers are classified according to the portal that provides the API. | http://www.data.go.kr |
+| SupportUrl | Enter the official site address of the open cloud platform. | http://www.openpaas.org |
 
-##### <div id='15'></div> 4.1.2 서비스 설정 값
-각각의 서비스마다 별도로 가지는 값을 설정파일에 정의하였다. 키 값에 서비스 번호를 붙여 서로 다른 서비스들을 구분한다. 서비스를 추가함에 따라 서비스 번호를 늘려갈 수 있으며, 서비스 번호는 1번부터 순서대로 부여되어야 한다.
+##### <div id='15'></div> 4.1.2 Service Settings
+A separate value for each service was defined in the setting file. Different services are distinguished by attaching a service number to the key value. As the service is added, the service number can be increased, and the service number must be assigned in order from number 1..
 
-| <b>키(Key) 값</b>      | <b>설명</b> | <b>Value 값 예시</b> |
+| <b>Key Value</b>      | <b>Description</b> | <b>Example of Value</b> |
 |-------------|-----------------------------|-----------------------------|
-| Service1.Name | 서비스명. 임의로 정할 수 있으나 반드시 고유의(Unique)값이어야 한다. 다른 서비스 브로커에서도 같은 서비스 명을 사용할 수 없다. | PublicPerformance |
-| Service1.Description | API 서비스에 대한 간략한 설명을 입력한다. 설정파일에 정의해 놓지 않은 경우에는 "no service description"이라고 입력된다. 개방형 클라우드 플랫폼의 서비스 마켓플레이스에서 사용자에게 노출된다. | Performances, exhibits information display |
-| Service1.Provider | API 서비스의 제공 기관의 이름 또는 URL이다. | http://www.culture.go.kr |
-| Service1.DocumentUrl | API 서비스에 대한 기술문서, 가이드문서 등을 확인할 수 있는 URL이다. | https://www.data.go.kr/subMain.jsp#/L3B1YnIvd....(생략) |
-| Service1.Endpoint | API 서비스의 서비스 URL/URI이다. | http://www.culture.go.kr/openapi/rest/publicperformancedisplays |
+| Service1.Name | Service Name. It can be determined arbitrarily, but must be a unique value. The same service name cannot be used by other service brokers. | PublicPerformance |
+| Service1.Description | Enter a brief description of the API service. If not defined in the configuration file, enter "no service description". It is exposed to users in a service marketplace on an open cloud platform. | Performances, exhibits information display |
+| Service1.Provider | Name or URL of the provider of the API service. | http://www.culture.go.kr |
+| Service1.DocumentUrl | It is a URL where technical documents and guide documents for API services can be checked. | https://www.data.go.kr/subMain.jsp#/L3B1YnIvd....(Skip) |
+| Service1.Endpoint | Service URL/URI of API service. | http://www.culture.go.kr/openapi/rest/publicperformancedisplays |
 
-##### <div id='16'></div> 4.1.3 플랜 설정 값
-각각의 서비스에 대해서 최소한 한 개 이상의 플랜을 설정파일에 정의해 주어야 한다. 플랜이 정의되어 있지 않으면 개방형 클라우드 플랫폼에서 해당 서비스를 사용할 수 없다. 플랜의 키 값은 서비스번호와 플랜번호를 포함하는데, 예를 들어 키 값이 [Service1.Plan1.Name]이라면 1번 서비스의 첫 번째 플랜의 명칭이라는 의미이다. 플랜번호는 1번부터 순서대로 부여되어야 한다.
+##### <div id='16'></div> 4.1.3 Plan Settings
+At least one plan must be defined in the configuration file for each service. If a plan is not defined, the service cannot be used on an open cloud platform. The key value of the plan includes the service number and the plan number, and for example, if the key value is [Service1.Plan1.Name], it means that it is the name of the first plan of service 1. Plan numbers should be given in order from number 1.
 
-| <b>키(Key) 값</b>      | <b>설명</b> | <b>Value 값 예시</b> |
+| <b>Key Value</b>      | <b>Description</b> | <b>Example of Value</b> |
 |-------------|-----------------------------|-----------------------------|
-| Service1.Plan1.Name | 플랜명. 플랜명은 서비스만 다르다면 고유의(Unique)값일 필요가 없다. | Basic |
+| Service1.Plan1.Name | Plan Name. 플랜명은 서비스만 다르다면 고유의(Unique)값일 필요가 없다. | Basic |
 | Service1.Plan1.Description | 플랜에 대한 간략한 설명을 입력한다. 설정파일에 정의해 놓지 않은 경우에는 "no plan description"이라고 입력된다. | total 1,000,000 calls |
 | Service1.Plan1.Bullet | 플랜의 과금 정보. API 서비스이기 때문에 최대 허용 호출 수를 입력한다. 복수 입력을 하려면 코드의 수정이 필요하다. | 1,000,000 callsr |
 | Service1.Plan1.Unit | 최대 허용 호출 수의 단위를 입력한다. 예를 들면, per month, per day, weekly, total등으로 입력할 수 있다. | Total |

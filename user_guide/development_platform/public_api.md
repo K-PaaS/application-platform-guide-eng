@@ -526,19 +526,19 @@ If the service number and plan number are not entered in order from number 1, th
 | Service[Service Number].Name | Enter name of the  API service in english |
 | Service[Service Number].Description | Description about the API service. When registered in a marketplace, it is exposed to platform users (developers |
 | Service[Service Number].Provider | URL or company name who provides API services |
-| Service[Service Number].DocumentUrl | API 서비스의 기술문서나 명세를 확인할 수 있는 URL |
-| Service[Service Number].EndPoint | API를 요청하는 URL |
-| Service[Service Number].Plan[Plan Number].Name | 해당 서비스의 플랜명. <br>서비스에 따라 복수의 플랜을 가질 수 있기 때문에 플랜번호를 부여하지만, 일반적으로 API 서비스는 단일 플랜을 갖는다. |
-| Service[Service Number].Plan[Plan Number]..Description | 해당 서비스의 해당 플랜에 대한 설명 |
-| Service[Service Number].Plan[Plan Number].Bullet | 해당 서비스의 해당 플랜의 서비스 제한 형태. 일반적으로 API 서비스는 호출 수에 제한을 두어 서비스를 관리한다. |
-| Service[Service Number].Plan[Plan Number].Unit | 해당 서비스의 해당 플랜의 제한 단위. 일반적으로 API 서비스는 일별 또는 월별 호출 수에 제한을 둔다. |
+| Service[Service Number].DocumentUrl | URL where you can check the technical documentation or specification of the API service |
+| Service[Service Number].EndPoint | A URL that requests for API |
+| Service[Service Number].Plan[Plan Number].Name | Plan name for the service. <br>Depending on the service, the plan number is given because it can have multiple plans, but API services generally have a single plan. |
+| Service[Service Number].Plan[Plan Number].Description | Description of the plan for the service |
+| Service[Service Number].Plan[Plan Number].Bullet | The form of service restrictions in plan of the service. Generally, API services manage services by giving limit on the number of calls. |
+| Service[Service Number].Plan[Plan Number].Unit | The limit unit of the applicable plan for the service. In general, API services limit the number of daily or monthly calls. |
 
-### <div id='44'></div> 6.1. 공공 API 서비스 브로커 설정파일 정의
-제공되는 2개의 샘플 서비스 브로커 중 공공 API 서비스 브로커의 서비스 목록은 다음과 같이 정의 되어있다.
+### <div id='44'></div> 6.1. Public API Service Broker Settings File Definitions
+Among the two sample service brokers provided, the service list of the public API service brokers is defined as follows.
 
-| <b>설정 파일 키(key) 값</b>      | <b>Value 값</b> |
+| <b>Settings file key value</b>      | <b>Value</b> |
 |-------------|-----------------------------|
-| 서비스 1 - 공연전시 정보 조회 서비스 |
+| Service 1 - Performance Exhibition Information Inquiry Service |
 | Service1.Name | PublicPerformance |
 | Service1.Description | Performances, exhibits information display |
 | Service1.Provider | http://www.culture.go.kr |
@@ -548,7 +548,7 @@ If the service number and plan number are not entered in order from number 1, th
 | Service1.Plan1.Description | total 1,000,000 calls |
 | Service1.Plan1.Bullet | 1,000,000 calls |
 | Service1.Plan1.Unit | Total |
-| 서비스 2 - 인천광역시 문화행사 |
+| Service 2 - Incheon's Cultural Event |
 | Service2.Name | IncheonCulture |
 | Service2.Description | Culture performances information held in Incheon City |
 | Service2.Provider | http://iq.ifac.or.kr/ |
@@ -558,7 +558,7 @@ If the service number and plan number are not entered in order from number 1, th
 | Service2.Plan1.Description | 5,000 calls per day |
 | Service2.Plan1.Bullet | 5,000 calls |
 | Service2.Plan1.Unit | per day |
-| 서비스 3 - 대전광역시 문화축제 |
+| Service 3 - Daejeon Cultural Festival |
 | Service3.Name | DaejeonFestival |
 | Service3.Description | Culture Festival information held in Daejeon City |
 | Service3.Provider | http://data.daejeon.go.kr/ |
@@ -568,7 +568,7 @@ If the service number and plan number are not entered in order from number 1, th
 | Service3.Plan1.Description | 1,000 calls per day |
 | Service3.Plan1.Bullet |1,000 calls |
 | Service3.Plan1.Unit | per day |
-| 서비스 4 - 전시공연/테마파크 정보 |
+| Service 4 - Exhibition performance/ theme park information |
 | Service4.Name | JeonnamPerformanceList |
 | Service4.Description | Performances, exhibits information held in Jeonnam |
 | Service4.Provider | http://api.namdokorea.com/ |
@@ -579,12 +579,12 @@ If the service number and plan number are not entered in order from number 1, th
 | Service4.Plan1.Bullet | 5,000 calls |
 | Service4.Plan1.Unit | per day |
 
-### <div id='45'></div> 6.2. 네이버 API 서비스 브로커 설정파일 정의
-제공되는 2개의 샘플 서비스 브로커 중, 네이버 API 서비스 브로커의 서비스 목록은 다음과 같이 정의 되어있다.
+### <div id='45'></div> 6.2.  Naver API Service Broker Settings File Definitions
+Among the two sample service brokers provided, the service list of Naver API service brokers is defined as follows.
 
-| <b>설정 파일 키(key) 값</b>      | <b>Value 값</b> |
+| <b>Setting file key value</b>      | <b>Value</b> |
 |-------------|-----------------------------|
-| 서비스 1 - 네이버 지도 서비스 |
+| Service 1 - Naver Map Service |
 | Service1.Name | NaverMap |
 | Service1.Description | Naver map API service |
 | Service1.Provider | http://www.naver.com |
@@ -594,7 +594,7 @@ If the service number and plan number are not entered in order from number 1, th
 | Service1.Plan1.Description | 1,000,000 calls per day |
 | Service1.Plan1.Bullet | 1,000,000 calls |
 | Service1.Plan1.Unit | per day |
-| 서비스 2 - 네이버 주소-좌표 변환 서비스 |
+| Service 2 - Naver Address-Coordinate Translation Service |
 | Service2.Name | NaverAddressToGPS |
 | Service2.Description | Convert address into gps coordinate |
 | Service2.Provider | http://www.naver.com |
@@ -604,7 +604,7 @@ If the service number and plan number are not entered in order from number 1, th
 | Service2.Plan1.Description | 1,000,000 calls |
 | Service2.Plan1.Bullet | 1,000,000 calls |
 | Service2.Plan1.Unit | per day |
-| 서비스 3 - 네이버 검색 서비스 |
+| Service 3 - Naver Search Service |
 | Service3.Name | NaverSearch |
 | Service3.Description | Naver search API(Blog, News, Movie, Local, etc.) |
 | Service3.Provider | http://www.naver.com |
@@ -615,38 +615,38 @@ If the service number and plan number are not entered in order from number 1, th
 | Service3.Plan1.Bullet | 25,000 calls |
 | Service3.Plan1.Unit | per day |
 
-# <div id='46'></div>   7. API 서비스 브로커 검증
-※ 플랫폼 사용자(개발자)가 API 서비스를 어플리케이션에 바인드하여 사용할 수 있는지 확인한다. 이를 위해 API 서비스를 사용하는 샘플 어플리케이션을 제작해 정상 작동 여부를 검증한다.
-<br>※ 검증에 필요한 API 서비스들을 사용하기 위해 공공 데이터 포털 서비스 브로커와 네이버 Open API 서비스 브로커의 구현이 완료된 상태에서 검증을 진행한다.
+# <div id='46'></div>   7. API Service Broker Verification
+※ Check whether the platform user (developer) can bind the API service to the application and use it. To this end, a sample application using API service is produced to verify whether it operates normally.
+<br>※ Verification is carried out with the implementation of the public data portal service broker and Naver Open API service broker completed to use API services necessary for verification.
 
 
-### <div id='47'></div> 7.1. 샘플 어플리케이션 개요
-전국 각지의 지방자치단체별로 제공하는 지역 문화행사 API 서비스를 이용하여 행사 장소를 지도에 표시한다. 네이버 지도 API를 통해 지도를 화면에 출력하고 하단에 셀렉트 박스를 만들어 사용자가 지역을 선택할 수 있도록 한다. 선택된 지역에 따라서 해당 지역에서 제공하는 문화행사 API를 사용하여 행사 위치를 지도에 마커로 표시한다.
+### <div id='47'></div> 7.1. Sample Application Outline
+The venue of the event is displayed on the map using the local cultural event API service provided by local governments across the country. The map is printed on the screen through the Naver Map API and a select box is created at the bottom so that users can select regions. Depending on the selected region, the location of the event is marked on the map using the cultural event API provided by the region.
 
-### <div id='48'></div> 7.2. 사용 API 서비스
-##### <div id='49'></div> 7.2.1. 공공 데이터 포털 API 서비스
-##### 7.2.1.1 공연전시정보조회 서비스
-  1. API 소개<br>
-  전국 단위의 공연전시 정보를 제공하는 서비스이다. [문화포털](http://www.culture.go.kr)에서 서비스하고 있으며, 지역별, 기간별, 분야별 검색이 가능하다. 서비스 키는 공공 데이터 포털을 통해 발급한다. 서비스키 신청을 하면, 승인까지 1~2일 가량의 대기기간을 가져야 한다.<br>
-  ※ 요청 변수의 샘플 데이터 컬럼은 샘플 어플리케이션에서 사용한 값을 명시한다.
+### <div id='48'></div> 7.2.Using API Service
+##### <div id='49'></div> 7.2.1. Public Data Portal API Services
+##### 7.2.1.1 Performance exhibition information inquiry service
+  1. API Introduction<br>
+  It is a service that provides information on performance exhibitions at the national level. It is serviced by the [Culture Portal] (http://www.culture.go.kr), and searching by region, period, and field is possible. Service key is issued through the public data portal. If you apply for a service key, you must have a waiting period of 1 to 2 days until the approval.<br>
+  ※ The sample data column of the request variable specifies the values used in the sample application.
   
-  2. 명세<br>
+  2. Classification<br>
   
-  | 메소드 | GET |
+  | Method | GET |
   |-------------|-----------------------------|
-  | 엔드포인트 | http://www.culture.go.kr/openapi/rest/publicperformancedisplays |
-  | 오퍼레이션 | /area |
+  | Endpoint | http://www.culture.go.kr/openapi/rest/publicperformancedisplays |
+  | Operation | /area |
 
-  3. 요청<br>
+  3. Request<br>
   
-  | <br>변수명 | <br>샘플데이터 | <br>설명 |
+  | <br>Variable Name | <br>Sample Data | <br>Description |
   |-------------|-----------------------------|-----------------------------|
   | serviceKey | 999 | 페이지당 행사 정보의 개수이다. 한 페이지에 전체를 조회하기 위해 '999'를 입력한다. |
-  | (sido) | (서울) | 모든 지역을 조회할 경우 변수를 넣지 않고, 서울의 공연전시 정보만 조회할 때, 값을 '서울'로 넣는다. |
+  | (sido) | (Seoul) | 모든 지역을 조회할 경우 변수를 넣지 않고, 서울의 공연전시 정보만 조회할 때, 값을 '서울'로 넣는다. |
 
-  4. 응답<br>
+  4. Response<br>
   
-  | <br>변수명 | <br>설명 |
+  | <br>Variable Name | <br>Description |
   |-------------|-----------------------------|
   | title | 행사의 제목이다. |
   | place | 행사가 진행되는 장소이다. |

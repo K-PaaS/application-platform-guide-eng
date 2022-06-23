@@ -75,73 +75,71 @@ Create API service applications in Java language. The API service creates an app
   <tr>
      <td rowspan="4">Runtime</td>
      <td>Metering/Grading/Charging Policy</td>
-     <td>API 서비스 제공자가 제공하는 서비스에 대한 각종 정책 정의 정보. JSON 형식으로 되었으며, 해당 정책을 CF-ABACUS에 등록하면 정책에 정의한 내용에 따라 API 사용량을 집계 한다.<br>
-정책은 서비스 제공자가 정의해야 하며, JSON 스키마는 다음을 참조한다.<br>
+     <td>Various policy definition information for services provided by API service providers. It is in JSON format, and when the policy is registered with CF-ABACUS, API usage is aggregated according to the policy defined.<br>
+The policy must be defined by the service provider, refer below for the the JSON schema.<br>
 https://github.com/cloudfoundry-incubator/cf-abacus/blob/master/doc/api.md
 </td>
   </tr>
    <tr>
-     <td width="160px">서비스 브로커 API</td>
-     <td>Cloud Controller와 Service Broker 사이의 규약으로써 서비스 브로커 API 개발에 대해서는 서비스팩 개발 가이드를 참조한다.
+     <td width="160px">Service Broker API</td>
+     <td>Refer to the Service Pack Development Guide for service broker API development as a protocol between Cloud Controller and Service Broker.
 </td>
   </tr> 
   <tr>
-     <td>서비스 API</td>
-     <td>서비스 제공자가 제공하는 API 서비스 기능 및 API 사용량을 CF-ABACUS에 전송하는 기능으로 구성되었다.</td>
+     <td>Service API</td>
+     <td>It consists of an API service function provided by a service provider and a function to transmit API usage to CF-ABACUS.</td>
   </tr> 
    <tr>
-     <td>대시보드</td>
-     <td>서비스를 제공하기 위한 인증, 서비스 모니터링 등을 위한 대시보드 기능으로 서비스 제공자가 개발해야 한다.</td>
+     <td>Dashboad</td>
+     <td>It should be developed by the service provider as a dashboard function for authentication to provide services, service monitoring, etc.</td>
   </tr> 
   <tr>
   	<td colspan ="2">CF-ABACUS</td>
-    <td>CF-ABACUS 핵심 기능으로써 수집한 사용량 정보를 집계한다.<br>
-CF-ABACUS은 CF 설치 후, CF에 마이크로 서비스 형태로 설치한다. 자세한 사항은 다음을 참조한다.<br>
+    <td>Aggregates usage information collected as a CF-ABACUS core function.<br>
+CF-ABACUS is installed in the form of micro-service in CF after CF installation. See the following for details.<br>
 https://github.com/cloudfoundry-incubator/cf-abacus
 </td>
   </tr>
 </table>                                              
 
-※ 본 개발 가이드는 ***API 서비스*** 개발에 대해서만 기술하며, 다른
-컴포넌트의 개발 또는 설치에 대해서 링크한 사이트를 참조한다.
+※ This development guide describes ***API service*** development only and refers to the site linked to the development or installation of other components.
 
 
 
-## <div id='8'/>2.2 개발환경 구성
+## <div id='8'/>2.2 Configure Development Environment
 
 
-Java 애플리케이션 개발을 위해 다음과 같은 환경으로 개발환경을 구성 한다.
+The development environment is constructed in the following environment for Java application development.
 
 
 
--   CF release: v226 이상
+-   CF release: v226 above
 -   java version "1.8.0_101"
 -   springBootVersion : 1.3.0.BUILD-SNAPSHOT
 -   gradle 2.14
--   Spring Tool Suite 혹은 Eclipse
+-   Spring Tool Suite or Eclipse
 
 
 
-### <div id='9'/>2.2.1 CF-Abacus 설치
+### <div id='9'/>2.2.1 CF-Abacus Installation
     
 
-별도 제공하는 Abacus 설치 가이드를 참고하여 CF-Abacus를 설치한다.
+Install CF-Abacus by referring to the Abacus installation guide provided separately.
 
 
-## <div id='10'/>2.3 샘플 API 서비스 개발 
+## <div id='10'/>2.3 Sample API Service Development 
     
-샘플 api 서비스는 서비스 요청이 있는 경우, 해당 요청에 대한 응답 처리와
-api 서비스 요청에 대한 미터링 정보를 CF-ABACUS에 전송하는 처리를 한다.
+If there is a service request, the sample api service processes the response to that request and sends metering information to CF-ABACUS.
 
 
-### <div id='11'/>2.3.1 gradle 프로젝트를 생성
+### <div id='11'/>2.3.1 Create gradle Project
 
-프로젝트 디렉터리를 생성하고, gradle 프로젝트로 초기화 한다
+Create a project directory and initialize it into a gradle project
 
 
-	$ mkdir sample_api_java_service // 프로젝트 디렉토리
+	$ mkdir sample_api_java_service // Project Directory
 	$ cd sample_api_java_service/
-	~/sample_api_java_service $ gradle init --type java-library // gradle 초기화
+	~/sample_api_java_service $ gradle init --type java-library // gradle reset
 	: wrapper
 	: init
 
@@ -153,43 +151,43 @@ api 서비스 요청에 대한 미터링 정보를 CF-ABACUS에 전송하는 처
 	https://docs.gradle.org/2.14/userguide/gradle_daemon.html
   
 
-### <div id='12'/>2.3.2 샘플 API 서비스 형상
+### <div id='12'/>2.3.2 Sample API Service Features
 
 ![Java_Api_Service_Metering_Image02]
 
-의존성 및 프로퍼티 형상 설명
+Describe dependencies and properties geometry
 
-| **파일**       |           **목적**          |
+| **File**       |           **Purpose**          |
 |---------------|-----------------------------|
-|build.gradle   |애플리케이션에 필요한 의존성 정보를 기술    |
-|.gitignore     |Git을 통한 형상 관리 시, 형상 관리를 할 필요가 없는 파일 또는 디렉토리를 설정한다.               |
-|manifest.yml   |애플리케이션을 파스-타 플랫폼에 배포 시 적용하는 애플리케이션에 대한 환경 설정 정보 <br> 애플리케이션의 이름, 배포 경로, 인스턴스 수 등을 정의할 수 있다.        |
-|gradlew        |Linux 환경에서 사용하는 gradlew 빌드 실행 파일 <br> gradle 초기화 시 자동 생성 된다.     |
-|gradlew.bat    |Window 환경에서 사용하는 gradle 빌드 실행 파일 <br> gradle 초기화 시 자동 생성 된다.      |
-|settings.gradle    |gradlew 실행 시 적용하는 환경 설정 파일  <br> gradle 초기화 시 자동 생성 된다.    |
+|build.gradle   |Describe the dependency information your application needs    |
+|.gitignore     |When configuration management is performed through Git, a file or directory that does not require configuration management is set.               |
+|manifest.yml   |Configuration information for the application to be applied when deploying an application to a parser platform <br>Can define the name, deployment path, and number of instances of the application.        |
+|gradlew        |Gradlew build executable for Linux environment. <br> Automatically generated when initializing gradle.     |
+|gradlew.bat    |Gradle build executable for use in Windows environment. <br> Automatically generated when initializing gradle.      |
+|settings.gradle    |Configuration file to apply when gradlew runs  <br> Automatically generated when initializing gradle.    |
 
 
-Java 파일 형상 설명
+Java File Shape Description
   
-| **파일**       |           **목적**          |
+| **File**       |           **Purpose**          |
 |---------------|-----------------------------|
-|MeteringConfig   |애플리케이션 구동 시 metering.properties를 로드 한다    |
-|MeteringAuthService     |파스-타 플랫폼 상의 UAA 서버에서 abacus-usage-collector 에 대한 접근 권한 토큰을 취득하여 리턴 한다.              |
-|MeteringService   |API 서비스 사용 요청 이 SampleApiJavaServiceController 에서 처리 될 때 API 서비스 처리에 대해 미터링이 적용된 사용량 보고서를 abacus-usage-collector 에 리포팅 한다.       |
-|SampleApiJavaServiceApplication        |SpringBoot이 구동할 때, SpringBoot애플리케이션에 필요한 context 객체 들을 로드 한다.   |
-|SampleApiJavaServiceController   |API 서비스 사용 요청을 처리하는 REST Controller.<br> 본 샘플 애플리케이션에서는 API 서비스 고유의 비즈니스 로직은 구현 하지 않았으며, API 사용량을 abacus-collector에 전송하는 기능만 수행 한다.|
-|application.properties     |SpringBoot이 구동할 때, spring 에 필요한 property    |
-|metering.properties      |API 사용량을 abacus-collector 전송 시에 설정 할 property 들이 정의 되어 있다.    |
+|MeteringConfig   |Load metering.properties when running application    |
+|MeteringAuthService     |Obtain and return an access token to the abacus-usage-collector from a UAA server on a PAS-Other platform.              |
+|MeteringService   |When API service usage requests are processed by the SampleApiJavaServiceController, a metering usage report is reported to the abacus-usage-collector for API service processing.       |
+|SampleApiJavaServiceApplication        |When SpringBoot is running, it loads the context objects required for the SpringBoot application.   |
+|SampleApiJavaServiceController   |REST Controller that handles API service usage requests.<br> This sample application does not implement API service-specific business logic, but only performs the function of sending API usage to abacus-collector.|
+|application.properties     |When the SpringBoot is running, the properties required for the spring    |
+|metering.properties      |Properties to be set when sending API usage to abacus-collector are defined.    |
 
-### <div id='13'/>2.3.3 의존성 및 프로퍼티의 설정
+### <div id='13'/>2.3.3 Dependencies and Properties Setting
 
 
 -  build.gradle
 
-	샘플 Api 서비스 애플리케이션이 사용하는 의존성에 대해 기술한다.
+	Describe the dependencies used by the sample Api service application.
 
   
-		중략..
+		Skip..
 
 		dependencies {
 
@@ -199,14 +197,14 @@ Java 파일 형상 설명
 		    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat:${springBootVersion}")
 		    compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
 		
-		    // 미터링 사용량 객체 생성 dependency
-		    compile("org.json:json:20160212")    // Json object 생성시
-		    compile("com.sun.jersey:jersey-bundle:1.18.1") ")    // https connection 생성시
+		    // Metering usage object generation dependency
+		    compile("org.json:json:20160212")    // When Creating Json object
+		    compile("com.sun.jersey:jersey-bundle:1.18.1") ")    // When Creating https connection
 		    compile("com.googlecode.json-simple:json-simple:1.1") // json parse 
-		    compile("commons-codec:commons-codec:1.5") // https connection 생성시
+		    compile("commons-codec:commons-codec:1.5") // When Creating https connection
 		}	
 
-		후략..
+		Skipped..
 
   
 
@@ -214,15 +212,14 @@ Java 파일 형상 설명
 
 -   manifest.yml
 
-	앱을 CF에 배포할 때 필요한 설정 정보 및 앱 실행 환경에 필요한 설정
-	정보를 기술 한다.
+	Describes the configuration information required when deploying the app to CF and the configuration information required for the app execution environment.
 ```yml
 applications:
-- name: sample-api-node-service  # 애플리케이션 이름
-  memory: 512M # 애플리케이션 메모리 사이즈
-  instances: 1 # 애플리케이션 인스턴스 개수
+- name: sample-api-node-service  # Application Name
+  memory: 512M # Application Memory Size
+  instances: 1 # Number of Application Instances
   host: sample-api-java-service
-  path: ./build/libs/sample_api_java_service.jar # 배포될 애플리케이션의 위치
+  path: ./build/libs/sample_api_java_service.jar # Location of the Application to be Deployed
   env:
     SPRING_PROFILES_ACTIVE : cloud
 ```
@@ -230,34 +227,33 @@ applications:
 
 -   metering.properties
 
-	API 서비스의 사용량 정보를 abacus-collector에 전송 할 때, 필요한 설정
-	정보 및 계정 정보를 기술 한다.
+	Describes the necessary configuration information and account information when sending API service usage information to the abacus-collector.
 
 
-		# abacus usage collector RESTAPI 의 주소
+		# Address of abacus usage collector RESTAPI
 
-		abacus.collector = https://abacus-usage-collector.<CF도메인/v1/metering/collected/usage
+		abacus.collector = https://abacus-usage-collector.<CFdomain/v1/metering/collected/usage
 
-		# abacus usage collector 가 secured 모드 true / 아닐 경우 false
+		# abacus usage collector is secure mode true / if not false
 
 		abacus.secured = true
 
-		# 파스-타 플랫폼의 uaa server
+		# uaa server of the PaaS-TA platform
 
-		uaa.server = https://uaa.<CF도메인>
+		uaa.server = https://uaa.<CFdomain>
 
-		# abacus usage collector RESTAPI 계정 정보 및 사용권한 (UAA server에 미리 설정)
+		# abacus usage collector RESTAPI account information and authentications (Preset to UAA server)
 
-		uaa.client.id = <abacus.usage.read/write scope 권한을 가진 ID>
+		uaa.client.id = <abacus.usage.read/write ID with scope authorities>
 
-		uaa.client.secret = <abacus.usage.read/write scope 권한을 가진 ID 비밀번호>
+		uaa.client.secret = <abacus.usage.read/write PW with scope authorities>
 
 		uaa.client.scope = abacus.usage.object-storage.write,abacus.usage.object-storage.read
   
 
-### <div id='14'/>2.3.4 MeteringAuthService 클래스
+### <div id='14'/>2.3.4 MeteringAuthService Class
     
-UAA 서버 URL 및 계정 정보를 참조 하여, UAA token 을 취득하여 리턴 한다.
+The UAA token is acquired and returned by referring to the UAA server URL and account information.
  
 	public String getUaacTokenHTTPS () throws MalformedURLException {
 	
@@ -311,7 +307,7 @@ UAA 서버 URL 및 계정 정보를 참조 하여, UAA token 을 취득하여 �
 	}
 
 
-metering.properties 에서 취득한 계정 정보를 BASE64 로 인코딩 한다.
+Encodes the account information acquired from metering.properties to BASE64.
 
 	public String getAuthKey(String id, String secret) throws Exception {	
 		String authKey = ""; 	
@@ -329,7 +325,7 @@ metering.properties 에서 취득한 계정 정보를 BASE64 로 인코딩 한�
 	}
 
 
-UAA SERVER 에서 리턴 받은 JSON 오브젝트 에서 access_token 을 추출한다.
+Extract access_token from JSON object returned from UAA SERVER.
 
   
 	private String parseAuthToken(String jsonStr) throws ParseException{		
@@ -344,9 +340,8 @@ UAA SERVER 에서 리턴 받은 JSON 오브젝트 에서 access_token 을 추출
 
 
 
-### <div id='15'/>2.3.5 MeteringService 클래스
-abacus-collector의 Auth 설정 정보에 따라, 전송 방식에 대한 분기 처리를
-한다.
+### <div id='15'/>2.3.5 MeteringService Class
+According to the Auth setting information of the abacus-collector, branch processing for the transmission method is performed.
 
 	public void reportUsageData(String orgId, String spaceId, String appId, String planId) throws Exception {
 		JSONObject serviceUsage = buildServiceUsage(orgId, spaceId, appId, planId);
@@ -359,8 +354,7 @@ abacus-collector의 Auth 설정 정보에 따라, 전송 방식에 대한 분기
 	}
 
 
-API 사용량을 Abacus-collector에 전송하기 위해, CF 또는 인증 서버로부터
-토큰을 취득하여 HTTP header에 설정하고 HTTPS Connection을 생성 한다.
+To transfer API usage to the Abacus-collector, a token is acquired from a CF or authentication server, set to the HTTP header, and create an HTTPS Connection.
 
 	public void reportUsageDataHTTPS(JSONObject serviceUsage) throws Exception {
 		StringBuffer sb = new StringBuffer();
@@ -371,7 +365,7 @@ API 사용량을 Abacus-collector에 전송하기 위해, CF 또는 인증 서�
 				}
 	
 				public void checkClientTrusted(X509Certificate[] certs, String authType) {
-				}  // 인증서를 생성 한다.
+				}  // Create Authentication Certificate.
 	
 				public void checkServerTrusted(X509Certificate[] certs, String authType) {
 				}
@@ -421,8 +415,7 @@ API 사용량을 Abacus-collector에 전송하기 위해, CF 또는 인증 서�
 	}
 
 
-API 사용량을 Abacus-collector에 전송하기 위한 HTTP header를 설정하고
-HTTP Connection을 생성 한다.
+Set up an HTTP header to send API usage to the Abacus-collector and create an HTTP Connection.
 
 	public void reportUsageDataHTTP(JSONObject serviceUsage) throws Exception {
 	
@@ -453,7 +446,7 @@ HTTP Connection을 생성 한다.
 	}
 
 
-Abacus-collector에 전송 할 API 서비스 사용량 JSON을 생성 한다.
+Create an API service usage JSON to be sent to the Abacus-collector.
 
 	private JSONObject buildServiceUsage (String orgId, String spaceId, String appId, String planId)
 			throws JSONException {
@@ -500,21 +493,21 @@ Abacus-collector에 전송 할 API 서비스 사용량 JSON을 생성 한다.
 	}	
 
 
--   API 서비스 미터링 전송 항목 (전송 리포트 JSON 상세)
+-   API Service Metering Transfer Items (Transfer Report JSON Details)
 
- | 항목명  |유형 | 설명| 예시|
+ | Classification  |Type | Description| Example|
  |---------|---|----|-----|
- |  start  |  UNIX |  Timestamp  |   API처리 시작 시각  | 1396421450000 |
- |  end       |  UNIX | Timestamp   | API처리 응답 시각    | 1396421451000
- |  space_id  |   String| API를 호출한 앱의 영역 ID   | d98b5916-3c77-44b9-ac12-04456df23eae    |
- |  resource_id       | String  | API 자원 ID   | sample_api    |
- | plan_id        | String  | API 미터링 Plan ID   | basic    |
- |  resource_instance_id       | String  | API를 호출한 앱 ID   | d98b5916-3c77-44b9-ac12-04d61c7a4eae    |
- | measured_usage      | Array  |  미터링 항목  |   -  |
- | measure        |  String | 미터링 대상 명   |  api_calls   |
- | quantity        |Number   | 해당 API 요청에 대한 API 처리 횟수    | 10    |
+ |  start  |  UNIX |  Timestamp  |   API processing start time  | 1396421450000 |
+ |  end       |  UNIX | Timestamp   | API processing response time    | 1396421451000
+ |  space_id  |   String| Area ID of the app that called the API   | d98b5916-3c77-44b9-ac12-04456df23eae    |
+ |  resource_id       | String  | API Resource ID   | sample_api    |
+ | plan_id        | String  | API Metering Plan ID   | basic    |
+ |  resource_instance_id       | String  | App ID that called API   | d98b5916-3c77-44b9-ac12-04d61c7a4eae    |
+ | measured_usage      | Array  |  Metering Items  |   -  |
+ | measure        |  String | Metering Target Name   |  api_calls   |
+ | quantity        |Number   | Number of API processing for that API request    | 10    |
  					
-※ JSON 변환 예제
+※ Example of JSON conversion
 
 	{
 	  "start": 1396421450000,
@@ -533,12 +526,11 @@ Abacus-collector에 전송 할 API 서비스 사용량 JSON을 생성 한다.
 	  ]
 
 
-### <div id='16'/>2.3.6 SampleApiJavaServiceController 클래스
+### <div id='16'/>2.3.6 SampleApiJavaServiceController Class
 
-서비스 사용 요청을 처리하는 REST Controller. 본 샘플 애플리케이션에서는
-미터링을 하는 기능만 수행 한다.
+서비스 사용 요청을 처리하는 REST Controller. 본 샘플 애플리케이션에서는 미터링을 하는 기능만 수행 한다.
 
-	중략..
+	Skipped..
 	@RequestMapping (value = "/plan1", method = RequestMethod.POST)
 	public ResponseEntity<String> serviceAPIPlan01(@RequestBody String input) throws Exception {	
 		JSONParser jsonParser = new JSONParser ();

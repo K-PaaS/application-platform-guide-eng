@@ -528,7 +528,7 @@ Create an API service usage JSON to be sent to the Abacus-collector.
 
 ### <div id='16'/>2.3.6 SampleApiJavaServiceController Class
 
-서비스 사용 요청을 처리하는 REST Controller. 본 샘플 애플리케이션에서는 미터링을 하는 기능만 수행 한다.
+REST Controller for handling service usage requests. In this sample application, only metering functions are performed.
 
 	Skipped..
 	@RequestMapping (value = "/plan1", method = RequestMethod.POST)
@@ -551,20 +551,18 @@ Create an API service usage JSON to be sent to the Abacus-collector.
 		
 		return new ResponseEntity<>(successStr, HttpStatus.OK);
 	} 
-	후략..
+	Skip..
 
 
 
-## <div id='17'/>2.4 API 서비스 연동 샘플 애플리케이션
+## <div id='17'/>2.4 API Service Interworking Sample Application
 
-본 가이드에서는 API 서비스를 호출하는 애플리케이션의 개발에 대해서는
-기술하지 않는다. 샘플 애플리케이션의 개발에 대해서는 **Node.js
-API 미터링 개발 가이드**의 **Api서비스 연동 애플리케이션 개발**을
-참고 한다.
+The current guide does not describe the development of an application calling an API service.. 
+For the development of sample applications, see **Api Service Interworking Application Development** in the **Node.js API Metering Development Guide**.
 
-### <div id='18'/>2.4.1 API 서비스 연동 샘플 애플리케이션 인터페이스 항목
+### <div id='18'/>2.4.1 API Service Interworking Sample Application Interface Items
 
-#### 1.  **API 서비스 엔드 포인트**
+#### 1.  **API Service Endpoint**
 
 	GET|POST|PUT|DELETE <api_service_restful_api>
 

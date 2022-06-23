@@ -70,11 +70,11 @@
 # <div id='1'></div> 1. Document Outline
 
 ### <div id='2'></div> 1.1. Purpose
-Applications deployed on open cloud platforms (OpenPaas) will be able to use externally provided services through service brokers. This document implements and validates service brokers so that external API services can be used on an open cloud platform. Through this, platform operators can register API services necessary for developers in the marketplace of open cloud platforms, and the purpose of this document is help users understand better.
+Applications deployed on open cloud platforms (OpenPaas) will be able to use externally provided services through service brokers. This document implements and validates service brokers so that external API services can be used on an open cloud platform. Through this, platform operators can register API services necessary for developers in the marketplace of open cloud platforms, and the purpose of this document is to help users understand better.
 
 ### <div id='3'></div> 1.2. Range 
 Platform operators expose the services that developers will use to marketplaces on open cloud platforms. Therefore, this document describes the implementation and deployment of API service brokers, and how to add API services in the application (Chapter 2-6) and guides the application to use API services in the application (Chapter 7), which is the domain of application developers, not platform operators, but necessary for verification.
-In order to understand Chapter 4 API Service Broker Implementation of this document, it is necessary to be familiar with Chapter 2 Service Broker API Development Guide of the Service Pack Development Guide document, and only the JAVA method implementation is described.
+To understand Chapter 4 API Service Broker Implementation of this document, it is necessary to be familiar with Chapter 2 Service Broker API Development Guide of the Service Pack Development Guide document, and only the JAVA method implementation is described.
 
 ### <div id='4'></div> 1.3. References
 - Servicepack Development Guide
@@ -83,16 +83,16 @@ In order to understand Chapter 4 API Service Broker Implementation of this docum
 - Naver Developer's Center(**<http://developer.naver.com/wiki/pages/Tutorial_JavaScript>**)
 
 # <div id='5'></div>  2. Selecting API Service
-Open cloud platform operators select APIs to provide platform users (developers) and provide them on the platform through service brokers. Since the provision of API services through service brokers requires the authority of the platform operator, developers can ask the operator to provide the necessary API services. Service brokers implement separately for each API portal because there may be differences in implementation methods depending on the portal that provides/introduces the service. For example, the public data portal (https://www.data.go.kr/) API service) implements and provides the public data portal API service, and the Naver (http://www.naver.com/) API service implements and provides the Naver API service broker.
+Open cloud platform operators select APIs to provide platform users (developers) and provide them on the platform through service brokers. Since the provision of API services through service brokers requires the authority of the platform operator, developers can ask the operator to provide the necessary API services. Service brokers implement separately for each API portal because there may be differences in implementation methods depending on the portal that provides/introduces the service. For example, the public data portal (https://www.data.go.kr/) API service) implements and provides the public data portal API service, and the Naver (http://www.naver.com/) API service implements and provides the Naver API, service broker.
 
-※ Public API services are provided by each public institution and are open to the public in the form of an integrated introduction of these API services in a data portal. Representative data portals include the public data portal (https://www.data.go.kr/), Seoul Open Data Square (http://data.seoul.go.kr/)).
+※ Public API services are provided by each public institution and are open to the public in the form of an integrated introduction of these API services in a data portal. Representative data portals include the public data portal (https://www.data.go.kr/), and Seoul Open Data Square (http://data.seoul.go.kr/)).
 
-※ This document describes guide based on the public data portal (https://www.data.go.kr/). Details may vary depending on each portal or API service.
+※ This document describes a guide based on the public data portal (https://www.data.go.kr/). Details may vary depending on each portal or API service.
 
 ### <div id='6'></div> 2.1. Data Portal Sign in and Log in
-※ Most data portals allow only logged-in users to issue service keys. Service key issuance is a role of a developer, not platform operator. It guides registration and login process because it is necessary to issue a service key to proceed with Chapter 7 (API service broker verification). 
+※ Most data portals allow only logged-in users to issue service keys. Service key issuance is a role of a developer, not a platform operator. It guides the registration and login process because it is necessary to issue a service key to proceed with Chapter 7 (API service broker verification). 
 
-In order to use the API of the public data portal, you must be signed in. Access the public data portal (https://www.data.go.kr) and click the [Sign In] button at the top to proceed to Sign in.
+To use the API of the public data portal, you must be signed in. Access the public data portal (https://www.data.go.kr) and click the [Sign In] button at the top to proceed to Sign in.
 
 ![2-1-0-0]
 
@@ -100,7 +100,7 @@ Select a general member or institutional member from the moved membership screen
 
 ![2-1-0-1]
 
-Enter name and email then click [Join] button.
+Enter name and email then click the [Join] button.
 
 ![2-1-0-2]
 
@@ -115,11 +115,11 @@ When there is no user created with the information input even after checking the
 ![2-1-0-6]
 
 Enter user basic information and user contact information. 
-(1) Verify the email from the user's contact information. Verification email will be sent by clicking the [Verify Email] button and a (2)Enter Verification Code field appears. Enter the verification code sent to the email inputed and click [OK] button to complete the pocess. Click (3) [Finish] button the complete registering and go to the main page.
+(1) Verify the email from the user's contact information. A verification email will be sent by clicking the [Verify Email] button and a (2)Enter Verification Code field appears. Enter the verification code sent to the email input and click the [OK] button to complete the process. Click (3) [Finish] button the complete registering and go to the main page.
 
 ![2-1-0-7]
 
-Sign in is completed.
+Sign-in is completed.
 
 ![2-1-0-8]
 
@@ -127,7 +127,7 @@ On the main screen of the public data portal, log in by pressing the [Login] but
 
 ![2-1-0-9]
 
-Enter ID and PW to login.
+Enter ID and PW to log in.
 
 ### <div id='7'></div>  2.2. API Search
 Access the data portal to search for API services. Check the Open API service of the data portal.
@@ -138,7 +138,7 @@ Go to Open API Category.
 
 ![2-2-0-1]
 
-If you go to the Opn API category, you can search by ①API service name or check the list classified by ②various filters.
+If you go to the Open API category, you can search by ①API service name or check the list classified by ②various filters.
 
 ![2-2-0-2]
 
@@ -157,21 +157,21 @@ As the window expands, information about API services can be checked.
 
 | Portal URL      | URL of the portal that provides/introduces the service |
 |-------------|-----------------------------|
-| Service Provider    | Enter the name of the organization that actually provides the service and the URL. |
+| Service Provider    | Enter the name of the organization that provides the service and the URL. |
 | Guide Document URL | URL where the platform user (developer) can check the guide document of the service. The platform user can use the service by checking the operation or request parameters in the guide document of this URL. |
 | Request address(Endpoint)   | URL for using API services. Service brokers use the term Endpoint. |
 | Allowable Traffic    | The number and unit of requests permitted by the service provider. Depending on the service, the number and unit of requests differ from 1,000 per day to 100,000 per month. |
 
 # <div id='8'></div>   3. API Service Broker Outline
 ### <div id='9'></div>  3.1. Outline
-Service brokers serve to connect open cloud platforms with services outside the platform. Service brokers can be developed directly by platform operators or developed by external service providers who want to provide services within the platform and provided to platform operators. Service Broker Development is embodied by implementing six APIs: Catalog, Provision, Update, Bind, Unbind, and Deprovision. Since the development of a service broker varies depending on the characteristics of the service to be provided or the service policy, the understanding of the service to be provided before development should be based on. The two API service brokers that provide guidance in this document are designed to suit the characteristics of the API service.
+Service brokers serve to connect open cloud platforms with services outside the platform. Service brokers can be developed directly by platform operators or developed by external service providers who want to provide services within the platform and provided to platform operators. Service Broker Development is embodied by implementing six APIs: Catalog, Provision, Update, Bind, Unbind, and Deprovision. Since the development of a service broker varies depending on the characteristics of the service to be provided or the service policy, the understanding of the service to be provided before development should be based on. The two API service brokers that guide this document are designed to suit the characteristics of the API service.
 
 ### <div id='10'></div> 3.2. Service Broker APIs
 - Catalog: Creates the list of services.
 - Provision: Creates service instances.
 - Update: Updates catalog.
 - Bind: Binds service and application.
-- Unbind: Unnind service and applications.
+- Unbind Unnind service and applications.
 - Deprovision: Deletes service instance.
 
 | <b>Service Broker APIs</b>      | <b>Related Commands</b> |
@@ -187,7 +187,7 @@ Service brokers serve to connect open cloud platforms with services outside the 
 ### <div id='11'></div> 3.3. How API Service Broker Broker Works
 ![3-3-0-0]
 
-he API service broker contains information on the service to be used among the API services introduced in the API portal in a configuration file. When a platform operator or platform user enters a command into an open cloud platform and sends an API request to a service broker, the API service broker uses the information defined in the configuration file to send a response in the form requested by the platform. Based on this, the platform executes the operation for each command. It is accomplished by implementing six APIs that communicate with the implementation platform of the service broker.
+The API service broker contains information on the service to be used among the API services introduced in the API portal in a configuration file. When a platform operator or platform user enters a command into an open cloud platform and sends an API request to a service broker, the API service broker uses the information defined in the configuration file to send a response in the form requested by the platform. Based on this, the platform executes the operation for each command. It is accomplished by implementing six APIs that communicate with the implementation platform of the service broker.
 
 # <div id='12'></div>   4. API Service Broker Implementation
 ### <div id='13'></div> 4.1. API Service Broker Setting File
@@ -200,12 +200,12 @@ API 서비스 브로커를 통해 서비스되는 서비스들이 공통적으�
 | SupportUrl | Enter the official site address of the open cloud platform. | http://www.openpaas.org |
 
 ##### <div id='15'></div> 4.1.2 Service Settings
-A separate value for each service was defined in the setting file. Different services are distinguished by attaching a service number to the key value. As the service is added, the service number can be increased, and the service number must be assigned in order from number 1..
+A separate value for each service was defined in the setting file. Different services are distinguished by attaching a service number to the key value. As the service is added, the service number can be increased, and the service number must be assigned in order from number 1.
 
 | <b>Key Value</b>      | <b>Description</b> | <b>Example of Value</b> |
 |-------------|-----------------------------|-----------------------------|
-| Service1.Name | Service Name. It can be determined arbitrarily, but must be a unique value. The same service name cannot be used by other service brokers. | PublicPerformance |
-| Service1.Description | Enter a brief description of the API service. If not defined in the configuration file, enter "no service description". It is exposed to users in a service marketplace on an open cloud platform. | Performances, exhibits information display |
+| Service1.Name | Service Name. It can be determined arbitrarily but must be a unique value. The same service name cannot be used by other service brokers. | PublicPerformance |
+| Service1.Description | Enter a brief description of the API service. If not defined in the configuration file, enter "no service description". It is exposed to users in a service marketplace on an open cloud platform. | Performances exhibits information display |
 | Service1.Provider | Name or URL of the provider of the API service. | http://www.culture.go.kr |
 | Service1.DocumentUrl | It is a URL where technical documents and guide documents for API services can be checked. | https://www.data.go.kr/subMain.jsp#/L3B1YnIvd....(Skip) |
 | Service1.Endpoint | Service URL/URI of API service. | http://www.culture.go.kr/openapi/rest/publicperformancedisplays |
@@ -215,9 +215,9 @@ At least one plan must be defined in the configuration file for each service. If
 
 | <b>Key Value</b>      | <b>Description</b> | <b>Example of Value</b> |
 |-------------|-----------------------------|-----------------------------|
-| Service1.Plan1.Name | Plan Name. Plan name doesnt need a unique value as long as the services are different. | Basic |
-| Service1.Plan1.Description | Enter a brief description of the plan. If not defined in the configuration file, enter "no plan descriptio. | total 1,000,000 calls |
-| Service1.Plan1.Bullet | Billing information for the plan. Since it is an API service, enter the maximum number of allowed calls. Multiple inputs require modification of the code. | 1,000,000 callsr |
+| Service1.Plan1.Name | Plan Name. Plan name doesn't need a unique value as long as the services are different. | Basic |
+| Service1.Plan1.Description | Enter a brief description of the plan. If not defined in the configuration file, enter "no plan description. | total 1,000,000 calls |
+| Service1.Plan1.Bullet | Billing information for the plan. Since it is an API service, enter the maximum number of allowed calls. Multiple inputs require modification of the code. | 1,000,000 calls |
 | Service1.Plan1.Unit | Enter the units of the maximum number of allowed calls. For example, it can be entered as per month, per day, weekly, total, etc. | Total |
 
 ### <div id='17'></div> 4.2. Catalog
@@ -232,7 +232,7 @@ At least one plan must be defined in the configuration file for each service. If
   ```
   curl -H "X-Broker-API-Version: 2.5" http://username:password@broker-url/v2/catalog
   ```
-  ※ 'username:password' means the authentication ID and the authentication password of the service broker. When implementing a service broker, it is a value defined in the library. The defined authentication ID is 'admin' and the authentication password is 'cloudfoundry'..
+  ※ 'username: password' means the authentication ID and the authentication password of the service broker. When implementing a service broker, it is a value defined in the library. The defined authentication ID is 'admin' and the authentication password is 'cloudfoundry'.
   
 ##### <div id='19'></div> 4.2.2 Response
 ※{1} is a variable value to retrieve the key values of the service and plan defined in the setup file in order within the code.
@@ -295,7 +295,7 @@ At least one plan must be defined in the configuration file for each service. If
   "space_guid":        "[space-guid-here]"
   }' -X PUT -H "X-Broker-API-Version: 2.5" -H "Content-Type: application/json"
   ```
-  ※ 'username:password' means the authentication ID and the authentication password of the service broker. When implementing a service broker, it is a value defined in the library. The defined authentication ID is 'admin' and the authentication password is 'cloudfoundry'.
+  ※ 'username: password' means the authentication ID and the authentication password of the service broker. When implementing a service broker, it is a value defined in the library. The defined authentication ID is 'admin' and the authentication password is 'cloudfoundry'.
 
 - body
 
@@ -326,7 +326,7 @@ At least one plan must be defined in the configuration file for each service. If
   "plan_id": "Service1 PublicPerformance Plan2 special PlanID"
   }' -X PATCH -H "X-Broker-API-Version: 2.4" -H "Content-Type: application/json"
   ```
-  ※ 'username:password' means the authentication ID and the authentication password of the service broker. When implementing a service broker, it is a value defined in the library. The defined authentication ID is 'admin' and the authentication password is 'cloudfoundry'.
+  ※ 'username: password' means the authentication ID and the authentication password of the service broker. When implementing a service broker, it is a value defined in the library. The defined authentication ID is 'admin' and the authentication password is 'cloudfoundry'.
 
 - body
 
@@ -338,7 +338,7 @@ At least one plan must be defined in the configuration file for each service. If
 ##### <div id='25'></div> 4.4.2 Response
 | <b>Response Field</b>      | <b>Description</b> |
 |-------------|-----------------------------|
-| {} | When the update was successfully done, it responses in "{}" form. |
+| {} | When the update was successfully done, it responds in "{}" form. |
 
 ### <div id='26'></div> 4.5. Bind
 ※ Refer to [2.5.5 Bind API Guide] in the Service Pack Development Guide document for detailed information.
@@ -357,7 +357,7 @@ At least one plan must be defined in the configuration file for each service. If
   "app_guid":       "app-guid-here"
   }' -X PUT -H "X-Broker-API-Version: 2.5" -H "Content-Type: application/json"
   ```
-  ※ 'username:password' means the authentication ID and the authentication password of the service broker. When implementing a service broker, it is a value defined in the library. The defined authentication ID is 'admin' and the authentication password is 'cloudfoundry'.
+  ※ 'username: password' means the authentication ID and the authentication password of the service broker. When implementing a service broker, it is a value defined in the library. The defined authentication ID is 'admin' and the authentication password is 'cloudfoundry'.
 
 - body
 
@@ -372,7 +372,7 @@ At least one plan must be defined in the configuration file for each service. If
 
   | <b>Response Field</b>      | <b>Description</b> | <b>Sample Data</b> |
   |-------------|-----------------------------|-----------------------------|
-  | credentials | Credential information that allows application to access the service. It is provided in hash form. Check 'Credentials' for detailed information | |
+  | credentials | Credential information that allows the application to access the service. It is provided in hash form. Check 'Credentials' for detailed information | |
   | syslog_drain_url | Log URL for applications bound to open cloud platforms | |
   
 - Credentials
@@ -396,7 +396,7 @@ At least one plan must be defined in the configuration file for each service. If
   $ curl 'http://username:password@broker-url/v2/service_instances/:instance_id/
   service_bindings/:binding_id?service_id=Service1 PublicPerformance ServiceID &plan_id=Service1 PublicPerformance Plan1 basic PlanID' -X DELETE -H "X-Broker-API-Version: 2.4"
   ```
-  ※ 'username:password' means the authentication ID and the authentication password of the service broker. When implementing a service broker, it is a value defined in the library. The defined authentication ID is 'admin' and the authentication password is 'cloudfoundry'.
+  ※ 'username: password' means the authentication ID and the authentication password of the service broker. When implementing a service broker, it is a value defined in the library. The defined authentication ID is 'admin' and the authentication password is 'cloudfoundry'.
 
 - body
 
@@ -410,7 +410,7 @@ At least one plan must be defined in the configuration file for each service. If
 
   | <b>Response</b>      | <b>Description</b> |
   |-------------|-----------------------------|
-  | {} | If the unbinding was successfully done, it responses in "{}" form. |
+  | {} | If the unbinding was successfully done, it responds in "{}" form. |
 
 ### <div id='32'></div> 4.6. Deprovision
 ※ Refer to [2.5.4 Deferral API Guide] of the service pack development guide document for detailed information.
@@ -425,7 +425,7 @@ At least one plan must be defined in the configuration file for each service. If
   $ curl 'http://username:password@broker-url/v2/service_instances/:instance_id?service_id=
   Service1 PublicPerformance ServiceID plan_id=Service1 PublicPerformance Plan1 basic PlanID -X DELETE -H "X-Broker-API-Version: 2.5"
   ```
-  ※ 'username:password' means the authentication ID and the authentication password of the service broker. When implementing a service broker, it is a value defined in the library. The defined authentication ID is 'admin' and the authentication password is 'cloudfoundry'.
+  ※ 'username: password' means the authentication ID and the authentication password of the service broker. When implementing a service broker, it is a value defined in the library. The defined authentication ID is 'admin' and the authentication password is 'cloudfoundry'.
 
 - body
 
@@ -445,7 +445,7 @@ At least one plan must be defined in the configuration file for each service. If
 Drives a service broker to use in an Open Cloud Platform. Service brokers can be used by driving in the form of an application within an open cloud platform as a single application, but this document guides you through how to use it in an open cloud platform by running it on an external server. An external server in which a service broker is driven must configure an environment in which communication with an open cloud platform is possible. There is no separate guidance on the operation of the service broker.  
 
 ### <div id='36'></div> 5.1. Log in to Open Cloud Platform
-Create service broker from the Open Cloud Platform. Administrator authority of open cloud platform is required to create service broker. Log in to the open cloud platform with an administrator account through the command below.
+Create a service broker from the Open Cloud Platform. Administrator authority of open cloud platform is required to create a service broker. Log in to the open cloud platform with an administrator account through the command below.
 ```
   $ cf login
 ```
@@ -458,7 +458,7 @@ Example)
 ```
 
 ### <div id='37'></div> 5.2. Create Service Broker
-Create a service broker from Open Cloud Platform. When the service broker creating command as show below is entered, the catalog will be performed and will define service based on the service information in the configuration file.
+Create a service broker from Open Cloud Platform. When the service broker creating command as shown below is entered, the catalog will be performed and will define service based on the service information in the configuration file.
 
 ##### <div id='38'></div> 5.2.1 Create Service Broker
 ```
@@ -480,7 +480,7 @@ The command to check the list of service brokers. Can be used to verify that the
 ![5-2-2-0]
 
 ##### <div id='40'></div> 5.2.3 Check Catalog
-When a service broker is created on an open cloud platform, it proceeds with a catalog that generates a list of API services serviced through the service broker. The cataloged services are added to the service access list, and by checking the service access list, it is possible to confirm that the catalog has been successfully performed..
+When a service broker is created on an open cloud platform, it proceeds with a catalog that generates a list of API services serviced through the service broker. The cataloged services are added to the service access list, and by checking the service access list, it is possible to confirm that the catalog has been successfully performed.
 ```
   $ cf service-access
 ```
@@ -488,19 +488,19 @@ When a service broker is created on an open cloud platform, it proceeds with a c
 ![5-2-3-0]
 
 ### <div id='41'></div> 5.3. Allow Service Access
-The catalog of the service access list in [5.2.3. Check Catalog] is set to none. This setting has to be modified so that the service list will be seen at the marktetplace. Use the command below to allow the access to the service.
+The catalog of the service access list in [5.2.3. Check Catalog] is set to none. This setting has to be modified so that the service list will be seen in the marketplace. Use the command below to allow access to the service.
 
 ```
   $ cf enable-service-access [Service Name] -p [Plan Name]
 ```
-※ [Service name] and [plan name] refer to the service name and plan name defined in the service broker configuration file. Through the cf service-access command, you can check the list of service and plan names of services that is allowed to access the service.
+※ [Service name] and [plan name] refer to the service name and plan name defined in the service broker configuration file. Through the cf service-access command, you can check the list of services and plan names of services that are allowed to access the service.
 
 Example)
 ```
-  $ cf enalbe-service-access PublicPerformance -p basic
+  $ cf enable-service-access PublicPerformance -p basic
 ```
 
-After allowing access to the services to be exposed to the marketplace using the command above, check the service access list again with the command below to confirm that the access setting of the services has been changed to all.
+After allowing access to the services to be exposed to the marketplace using the command above, check the service access-list again with the command below to confirm that the access setting of the services has been changed to all.
 ```
   $ cf service-access
 ```
@@ -508,7 +508,7 @@ After allowing access to the services to be exposed to the marketplace using the
 ![5-3-0-0]
 
 ### <div id='42'></div> 5.4. Check Marketplace
-Services that allow access are registered in the marketplace, making them available to developers. Use the command to check the market place.
+Services that allow access are registered in the marketplace, making them available to developers. Use the command to check the marketplace.
 
 ```
   $ cf marketplace
@@ -517,20 +517,20 @@ Services that allow access are registered in the marketplace, making them availa
 ![5-4-0-0]
 
 # <div id='43'></div>   6. Add/ Remove API Service
-The add or remove API services from a sample service broker is accomplished by inserting or deleting information in the [4.1 API Service Broker Setting File].The sample service broker is designed to read the necessary information through the key value of the configuration file and use it in the service catalog and bind. The file name of the configuration file is 'application-mvc.properties' and information on API services required by the sample service broker is as follows.
+The add or remove API services from a sample service broker is accomplished by inserting or deleting information in the [4.1 API Service Broker Setting File]. The sample service broker is designed to read the necessary information through the key value of the configuration file and use it in the service catalog and bind. The file name of the configuration file is 'application-mvc. properties' and information on API services required by the sample service broker is as follows.
 ※ The sample service broker is designed to read the service or plan in order of service number and plan number.
-If the service number and plan number are not entered in order from number 1, the service or plan cannot be read normally. After adding or removing a service or plan, ensure that the service number or plan number continues from No. 1.
+If the service number and plan number are not entered in the order from number 1, the service or plan cannot be read normally. After adding or removing a service or plan, ensure that the service number or plan number continues from No. 1.
 
 | <b>Setting files key value</b>      | <b>Description</b> |
 |-------------|-----------------------------|
-| Service[Service Number].Name | Enter name of the  API service in english |
-| Service[Service Number].Description | Description about the API service. When registered in a marketplace, it is exposed to platform users (developers |
+| Service[Service Number]. Name | Enter the name of the  API service in English |
+| Service[Service Number].Description | Description of the API service. When registered in a marketplace, it is exposed to platform users (developers |
 | Service[Service Number].Provider | URL or company name who provides API services |
 | Service[Service Number].DocumentUrl | URL where you can check the technical documentation or specification of the API service |
 | Service[Service Number].EndPoint | A URL that requests for API |
 | Service[Service Number].Plan[Plan Number].Name | Plan name for the service. <br>Depending on the service, the plan number is given because it can have multiple plans, but API services generally have a single plan. |
 | Service[Service Number].Plan[Plan Number].Description | Description of the plan for the service |
-| Service[Service Number].Plan[Plan Number].Bullet | The form of service restrictions in plan of the service. Generally, API services manage services by giving limit on the number of calls. |
+| Service[Service Number].Plan[Plan Number].Bullet | The form of service restrictions in the plan of the service. Generally, API services manage services by giving a limit on the number of calls. |
 | Service[Service Number].Plan[Plan Number].Unit | The limit unit of the applicable plan for the service. In general, API services limit the number of daily or monthly calls. |
 
 ### <div id='44'></div> 6.1. Public API Service Broker Settings File Definitions
@@ -627,7 +627,7 @@ The venue of the event is displayed on the map using the local cultural event AP
 ##### <div id='49'></div> 7.2.1. Public Data Portal API Services
 ##### 7.2.1.1 Performance exhibition information inquiry service
   1. API Introduction<br>
-  It is a service that provides information on performance exhibitions at the national level. It is serviced by the [Culture Portal] (http://www.culture.go.kr), and searching by region, period, and field is possible. Service key is issued through the public data portal. If you apply for a service key, you must have a waiting period of 1 to 2 days until the approval.<br>
+  It is a service that provides information on performance exhibitions at the national level. It is serviced by the [Culture Portal] (http://www.culture.go.kr), and searching by region, period, and field is possible. The service key is issued through the public data portal. If you apply for a service key, you must have a waiting period of 1 to 2 days until the approval.<br>
   ※ The sample data column of the request variable specifies the values used in the sample application.
   
   2. Classification<br>
@@ -642,7 +642,7 @@ The venue of the event is displayed on the map using the local cultural event AP
   | <br>Variable Name | <br>Sample Data | <br>Description |
   |-------------|-----------------------------|-----------------------------|
   | serviceKey | 999 | The number of event information per page. Enter '999' to view the entire page. |
-  | (sido) | (Seoul) | When inquiring all regions, do not include variables, but when inquiring only about Seoul's performance exhibition information, put the value as 'Seoul'. |
+  | (sido) | (Seoul) | When inquiring about all regions, do not include variables, but when inquiring only about Seoul's performance exhibition information, but the value as 'Seoul'. |
 
   4. Response<br>
   
@@ -658,7 +658,7 @@ The venue of the event is displayed on the map using the local cultural event AP
 
 ##### 7.2.1.2 Incheon Metropolitan City Cultural Event
   1. API Introduction<br>
-  A service that provides event information in Incheon registered on the Incheon Culture and Arts Information Site. It is being served at the [Incheon Culture Portal](http://iq.ifac.or.kr). Although it is introduced on the public data portal, the issuance of service keys must be applied directly from the [Incheon Culture and Arts Information Public Open API Center](http://iq.ifac.or.kr/openAPI) Service keys are automatically approved, so there is no need to wait for approval.
+  A service that provides event information in Incheon registered on the Incheon Culture and Arts Information Site. It is being served at the [Incheon Culture Portal](http://iq.ifac.or.kr). Although it is introduced on the public data portal, the issuance of service keys must be applied directly from the [Incheon Culture and Arts Information Public Open API Center](http://iq.ifac.or.kr/openAPI) Service keys are automatically approved, so there is no need to wait for the approval.
   
   2. Outline<br>
   
@@ -674,8 +674,8 @@ The venue of the event is displayed on the map using the local cultural event AP
   | pSize | 999 | The number of event information per page. Enter the maximum value of '999' to query the maximum data. |
   | resultType | xml | You can specify the output method of the response result between json and xml. |
   | svID | culture | This is a service ID for inquiring the cultural event information. |
-  | srh_periodType | p | It is a value for inquiring event information by period. If omitted, events that are not currently held are also inquired. |
-  | srh_sDate | culture | If you enter the variable 'srh_periodType', it is the date that becomes the search criterion. The sample application queries based on the requested date, so the date of the day is put in the form of 'yyyyMMdd'. |
+  | srh_periodType | p | It is a value for inquiring about event information by period. If omitted, events that are not currently held are also inquired about. |
+  | srh_sDate | culture | If you enter the variable 'srh_periodType', it is the date that becomes the search criterion. The sample application queries are based on the requested date, so the date of the day is put in the form of 'yyyyMMdd'. |
 
   4. Response<br>
   
@@ -716,7 +716,7 @@ The venue of the event is displayed on the map using the local cultural event AP
 
 ##### 7.2.1.4 Exhibition performance/ theme park information
   1. API Introduction<br>
-  It is an API service provided by [Jeonnam Smart Tourism Culture Open API](http://api.namdokorea.com).It provides information on exhibition performances and theme parks in Jeollanam-do, but exhibition performance information is rare and virtually close to API services that provide information on tourist attractions. Application for service key issuance is available on the public data portal and the [Jeonnam-do Public Data Community Center] (http://data.jeonnam.go.kr), and it takes about one to two days to approve and issue.
+  It is an API service provided by [Jeonnam Smart Tourism Culture Open API](http://api.namdokorea.com). It provides information on exhibition performances and theme parks in Jeollanam-do, but exhibition performance information is rare and virtually close to API services that provide information on tourist attractions. Application for service key issuance is available on the public data portal and the [Jeonnam-do Public Data Community Center] (http://data.jeonnam.go.kr), and it takes about one to two days to approve and issue.
   
   2. Classification<br>
   
@@ -808,10 +808,10 @@ The venue of the event is displayed on the map using the local cultural event AP
 
 ### <div id='51'></div> 7.3. API Acquire API service key
 ##### <div id='52'></div> 7.3.1. Obtain Public Data Portal API Service Key
-Most APIs introduced on public data portals can issue service keys on public data portals, but some must apply directly to service providers. Among the four public data portal APIs described in this document, [7.2.1.1, Performance Exhibition Information Inquiry Service], [7.2.1.3, Daejeon Metropolitan City Cultural Festival], and [7.2.1.4 Exhibition Performance/ Theme Park Information] can issue service keys on the public data portal. On the other hand, in the case of [7.2.1.2. Incheon Cultural Event], the service key acquisition procedure of the public data portal and the service key acquisition procedure of the [Incheon Culture and Arts Information Public Open API Center](http://iq.ifac.or.kr/openAPI) are divided and described.
+Most APIs introduced on public data portals can issue service keys on public data portals, but some must apply directly to service providers. Among the four public data portal APIs described in this document, [7.2.1.1, Performance Exhibition Information Inquiry Service], [7.2.1.3, Daejeon Metropolitan City Cultural Festival], and [7.2.1.4 Exhibition Performance/ Theme Park Information] can issue service keys on the public data portal. On the other hand, in the case of [7.2.1.2. Incheon Cultural Event], the service key acquisition procedure of the public data portal, and the service key acquisition procedure of the [Incheon Culture and Arts Information Public Open API Center](http://iq.ifac.or.kr/openAPI) are divided and described.
 ##### 7.3.1.1 Public Data Portal Service Key Acquisition Procedure
   1. Sign in and login<br>
-  ※ Refer to [2.1. Data Portal Sign in and Log in] in Chapter 2 of this document for public data portal membership and login.
+  ※ Refer to [2.1. Data Portal Sign in and login] in Chapter 2 of this document for public data portal membership and login.
 
   2. Application for the service key<br>
   ![7-3-1-0]<br>
@@ -841,7 +841,7 @@ Most APIs introduced on public data portals can issue service keys on public dat
 
 ##### 7.3.1.2 Incheon Culture and Arts Information Public Open API Center Service Key Acquisition Procedure
   1. Sign in and login<br>
-  In order to use the API service of the Incheon Culture and Arts Information Public Open API Center, you must be a member of the [Incheon Cultural Foundation] (http://www.ifac.or.kr)site. First, go to [Incheon Culture and Arts Information Public Open API Center](http://iq.ifac.or.kr/openAPI).
+  To use the API service of the Incheon Culture and Arts Information Public Open API Center, you must be a member of the [Incheon Cultural Foundation] (http://www.ifac.or.kr)site. First, go to [Incheon Culture and Arts Information Public Open API Center](http://iq.ifac.or.kr/openAPI).
 
   ![7-3-1-8]<br>
   After accessing, click [Sign in] at the top right of the main page.
@@ -855,23 +855,23 @@ Most APIs introduced on public data portals can issue service keys on public dat
   ![7-3-1-11]<br>
   ![7-3-1-12]<br>
   ![7-3-1-13]<br>
-  On the agreement screen of the terms and conditions, (1) check the member agreement and  the guidance on the (2) collection and use of personal information, and  press the (3) I agree button.
+  On the agreement screen of the terms and conditions, (1) check the member agreement and the guidance on the (2) collection and use of personal information, and press the (3) I agree button.
   
   ![7-3-1-14]<br>
-  Enter the basic information and select whether to receive the information and press the [Membership] button. Basic information must be entered to the mailing address.
+  Enter the basic information and select whether to receive the information and press the [Membership] button. Basic information must be entered into the mailing address.
   
   ![7-3-1-15]<br>
   Check if the registration is completed.
   
   ![7-3-1-16]<br>
-  Access to the main page of [Incheon Culture and Arts Information Public Open API Center](http://iq.ifac.or.kr/openAPI) and click [Login] to log in.
+  Access the main page of [Incheon Culture and Arts Information Public Open API Center](http://iq.ifac.or.kr/openAPI) and click [Login] to log in.
   
   2. Apply fo Service Key<br>
   ![7-3-1-17]<br>
   On the API tour screen, you can check the list of available APIs. Press the [Apply] button on the right side of the API to use to proceed with the service key application process.
 
   ![7-3-1-18]<br>
-  On the application form completion screen, (1) fill in all required input fields, (2) accept the terms and conditions, and (3) press the [OK] button to complete the service key application process..
+  On the application form completion screen, (1) fill in all required input fields, (2) accept the terms and conditions, and (3) press the [OK] button to complete the service key application process.
   
   ![7-3-1-19]<br>
   The service key application registration has been completed.
@@ -881,7 +881,7 @@ Most APIs introduced on public data portals can issue service keys on public dat
   On the main screen, click the [Key Issue/Manage] button in the middle right of the [Incheon Culture and Arts Information Public Open API Center](http://iq.ifac.or.kr/openAPI).
 
   ![7-3-1-21]<br>
-  If you go to the authentication key management screen, you can check (1) service key, (2) traffic, (3) approval status, and (4) delete service key.<br>
+  If you go to the authentication key management screen, you can check (1) the service key, (2) traffic, (3) approval status, and (4) the delete service key.<br>
   ※ In the case of [7.2.1.2. Incheon Metropolitan City Cultural Event], the service key is applied directly to the API service provider, so unlike the application of the service key on the public data portal, there is no waiting period and approval is automatically approved, so it can be used immediately.
 
 ##### <div id='53'></div> 7.3.2 Obtain Naver Open API Service Key
@@ -889,7 +889,7 @@ Most APIs introduced on public data portals can issue service keys on public dat
 
   1. Sign in and Login<br>
   ![7-3-2-0]<br>
-  Access to [Naver Developer Center's Open API Page](http://developer.naver.com/wiki/pages/OpenAPI) and click [Sign in] at the right.
+  Access [Naver Developer Center's Open API Page](http://developer.naver.com/wiki/pages/OpenAPI) and click [Sign in] at the right.
 
   ![7-3-2-1]<br>
   ![7-3-2-2]<br>
@@ -901,7 +901,7 @@ Most APIs introduced on public data portals can issue service keys on public dat
   Enter input items including a mobile phone number on the subscription screen, and press the (1) [Authentication] button to authenticate the mobile phone. Enter the authentication number delivered through the mobile phone,  press the(2) [OK] button to complete the authentication, and press the (3) [Sign In] button to complete the registration.
   
   ![7-3-2-6]<br>
-  Access to [Naver Developer Center's Open API Page](http://developer.naver.com/wiki/pages/OpenAPI)and click [Login] button from the right top part and log in.
+  Access [Naver Developer Center's Open API Page](http://developer.naver.com/wiki/pages/OpenAPI)and click the [Login] button from the right top part and log in.
   
   2. Apply fo Service Key<br>
   ![7-3-2-7]<br>
@@ -909,7 +909,7 @@ Most APIs introduced on public data portals can issue service keys on public dat
 
   ![7-3-2-8]<br>
   Key management for API services provided by Naver may be performed on the key issuance/management screen.<br>
-  Click (1) [Add Key] button to get the service key of [7.2.2.3. Naver Search] API, and click (2) [Add Key] button of [7.2.2.1. Naver Map], [7.2.2.2. Naver address-to-coordinate translation] API to issue the service key. [7.2.2.1. Naver Map] and [7.2.2.2. Naver address-to-coordinate translation] API service can be used commonly with one key.<br>
+  Click the (1) [Add Key] button to get the service key of [7.2.2.3. Naver Search] API, and click (2) [Add Key] button of [7.2.2.1. Naver Map], [7.2.2.2. Naver address-to-coordinate translation] API to issue the service key. [7.2.2.1. Naver Map] and [7.2.2.2. Naver address-to-coordinate translation] API service can be used commonly with one key.<br>
 	
   (1)Issuing Naver Search API Key.<br>
   Click the [Add Key] button in the Naver Search API.<br>
@@ -920,22 +920,22 @@ Most APIs introduced on public data portals can issue service keys on public dat
   ② Naver Search API requires mobile phone authentication in the process of issuing keys.<br>
   ③ Enter the security character on the left. Do not separate uppercase and lowercase characters in security text input.<br>
   ④ Check if you understand and agree to the terms and conditions.<br>
-  ⑤ Click [Issue Key] button and complete issueing of the key.<br>
+  ⑤ Click the [Issue Key] button and complete issuing of the key.<br>
 
   (2) Issuing Naver Map API Key<br>
   Click the [Add Key] button on the Naver Map API<br>
   
   ![7-3-2-10]<br>
   ① Select the use environment.<br>
-  ② Must enter URL information because you selected 'Web' in your environment. If it is not enter it correctly, you cannot use the API service. In this case, the value input in the URL field and the domain used by the application in the open cloud platform should match. The domain of the application is determined when the application is deployed on an open cloud platform.<br>
+  ② Must enter URL information because you selected 'Web' in your environment. If it is not entered correctly, you cannot use the API service. In this case, the value input in the URL field and the domain used by the application in the open cloud platform should match. The domain of the application is determined when the application is deployed on an open cloud platform.<br>
   Refer to: [7.4.2. Application Deployment]<br>
   ③ Enter the security character on the left. Do not separate uppercase and lowercase characters in security text input.<br>
   ④ Check if you understand and agree to the terms and conditions.<br>
-  ⑤ Click [Issue Key] button and complete issueing of the key.<br>
+  ⑤ Click the [Issue Key] button and complete the issuing of the key.<br>
 
   3. Check Service Key<br>
   ![7-3-2-11]<br>
-  Access to [Naver Developer Center's Open API Page](http://developer.naver.com/wiki/pages/OpenAPI) and login. Click [Issue/ Manage Key] button located at the right side.
+  Access to [Naver Developer Center's Open API Page](http://developer.naver.com/wiki/pages/OpenAPI) and log in. Click the [Issue/ Manage Key] button located on the right side.
 
   ![7-3-2-12]<br>
   Go to the screen where you can manage the entire service key of the API service provided by Naver. ① For each API, the service key, registration URL, and ② the number of API calls issued can be checked. [7.2.2.3. Naver Search] API service can be used as the issuing key of the top search API, and [7.2.2.1. Naver Map] and [7.2.2.2.2.1. Naver Address-coordinate conversion] API service can be used as the issuing key of the map API.
@@ -1026,7 +1026,7 @@ Example)
 All seven API services to be used by the application are bound as shown above.
 
 ##### <div id='62'></div> 7.6.2. Check Bound Service
-When you bind an application and a service, information about each bound service can be found in the VCAP_SERVICES information of the application.
+When you bind an application and service, information about each bound service can be found in the VCAP_SERVICES information of the application.
 
 ```
   $ cf env [Application Name]
@@ -1053,9 +1053,9 @@ Verify the application if it is running and access the URL from a web browser. T
 Go to [URL]/main and check if the map is displayed on the screen.
 
 ![7-7-0-2]<br>
-※ In most cases, when a map is not visible on the screen, the URL entered when applying for the Naver Map service key is not the same as the application URL. For example, when issuing a Naver Map API service key, http://public-naver.10.244.0.34.xip.io ,a URL that is checked on the top screen, must be entered in the URL input window. For details, refer to [(2) Issuing Naver Map API Key] and [7.3. Sample Application Deployment] of [2. Obtain Service Key] from [7.3.2 Obtain Naver Open API service key].<br>
+※ In most cases, when a map is not visible on the screen, the URL entered when applying for the Naver Map service key is not the same as the application URL. For example, when issuing a Naver Map API service key, http://public-naver.10.244.0.34.xip.io, a URL that is checked on the top screen, must be entered in the URL input window. For details, refer to [(2) Issuing Naver Map API Key] and [7.3. Sample Application Deployment] of [2. Obtain Service Key] from [7.3.2 Obtain Naver Open API service key].<br>
 
-Check that each API operates normally by selecting an area in the lower left select box of the screen.
+Check that each API operates normally by selecting an area in the lower-left select box of the screen.
 
 ![7-7-0-3]
 

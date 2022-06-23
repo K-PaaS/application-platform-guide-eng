@@ -935,127 +935,127 @@ Most APIs introduced on public data portals can issue service keys on public dat
 
   3. Check Service Key<br>
   ![7-3-2-11]<br>
-  [네이버 개발자센터의 Open API 페이지](http://developer.naver.com/wiki/pages/OpenAPI)에 접속하고 로그인한 상태에서 우측 중간의 [키 발급/관리] 버튼을 클릭한다.
+  Access to [Naver Developer Center's Open API Page](http://developer.naver.com/wiki/pages/OpenAPI) and login. Click [Issue/ Manage Key] button located at the right side.
 
   ![7-3-2-12]<br>
-  네이버에서 제공하는 API 서비스의 서비스키 전체를 관리할 수 있는 화면으로 이동한다. 각각의 API별로 ①발급된 사용자의 서비스 키와 등록 URL과 ②API 호출 수를 확인 할 수 있다. ③키 추가 및 ④수정/삭제 또한 이 화면에서 이루어 진다. [7.2.2.3. 네이버 검색] API 서비스는 상단의 검색 API의 발급 키로 사용이 가능하고 [7.2.2.1. 네이버 지도]와 [7.2.2.2. 네이버 주소-좌표 변환] API 서비스는 지도 API의 발급 키로 사용이 가능하다.
+  Go to the screen where you can manage the entire service key of the API service provided by Naver. ① For each API, the service key, registration URL, and ② the number of API calls issued can be checked. [7.2.2.3. Naver Search] API service can be used as the issuing key of the top search API, and [7.2.2.1. Naver Map] and [7.2.2.2.2.1. Naver Address-coordinate conversion] API service can be used as the issuing key of the map API.
 
-### <div id='54'></div> 7.4. 샘플 어플리케이션 배포
-##### <div id='55'></div> 7.4.1. 개방형 클라우드 플랫폼 로그인
-개방형 클라우드 플랫폼에 개발자 계정으로 로그인 한다. 개발자 계정은 운영자가 계정을 생성하고 개발자 권한을 부여함으로써 사용할 수 있게 된다. 개발자 계정 생성 및 권한 부여에 대한 설명은 기술하지 않는다. 본 문서에 기술된 검증절차는 관리자 계정으로 접속하여 검증하여도 무방하다.
+### <div id='54'></div> 7.4. Sample Application Deployment
+##### <div id='55'></div> 7.4.1. Open Cloud Platform Login
+Log in to an open cloud platform with a developer account. The developer account can be used by the operator by creating the account and granting developer rights. It does not describe the creation and authorization of developer accounts. The verification procedure described in this document may be verified by accessing the administrator account.
 
 ```
   $ cf login
 ```
 
-예시)
+Example)
 ```
   $ cf login
   Email> kimdojun
   Password> asd20kwl
 ```
 
-##### <div id='56'></div> 7.4.2. 어플리케이션 배포
-개방형 클라우드 플랫폼에 어플리케이션을 배포(Deploy)한다. 어플리케이션 배포는 아래와 같은 명령어를 사용한다.
+##### <div id='56'></div> 7.4.2. Application Deployment
+Deploy applications on an open cloud platform. Application distribution uses the following command:
 
 ```
-  $ cf push [어플리케이션명] -p [파일 경로] -b [빌드팩] -m [메모리] --no-start
+  $ cf push [Application Name] -p [File Path] -b [Buildpack] -m [Memory] --no-start
 ```
 
-※ [어플리케이션 명]은 개방형 클라우드 플랫폼에서 사용하는 어플리케이션의 이름으로 임의의 값을 지정할 수 있다. 배포 시 따로 옵션을 주지 않으면 어플리케이션 명을 바탕으로 어플리케이션의 도메인을 결정하게 된다. 네이버 Open API는 서비스키 발급 시, URL을 입력하도록 되어있다. 어플리케이션의 도메인이 서비스키를 발급 받을 때 입력한 URL과 다를 경우, API를 사용할 수 없다.<br>
-※ '-p [파일 경로]'는 빌드 된 파일의 경로를 의미한다.<br>
-※ '-b [빌드팩]'은 어플리케이션의 빌드팩을 선택할 수 있는 옵션이다. 입력하지 않을 경우 자동으로 찾게 된다. 선택 가능한 빌드팩 목록은 명령어 'cf buildpacks'로 확인 할 수 있다.<br>
-※ '-m [메모리]'는 어플리케이션이 점유할 메모리의 크기를 지정하는 옵션이다. <br>
-※ 어플리케이션 배포가 되면 자동으로 어플리케이션을 구동하게 되는데, '--no-start' 옵션은 어플리케이션이 자동으로 구동되지 않도록 한다.<br>
+※ [Application Name]may specify an arbitrary value as the name of an application used in an open cloud platform. If no option is given at the time of deployment, the domain of the application is determined based on the application name. Naver Open API is required to enter a URL when issuing a service key. If the domain of the application is different from the URL entered when the service key is issued, the API cannot be used..<br>
+※ '-p [File Path]' means the path to the built file.<br>
+※ '-b [Buildpack]'is an option to select a buildpack of an application. If you do not enter it, it will automatically find it. The list of selectable buildpacks can be checked with the command 'cf buildpacks'.<br>
+※ '-m [memory]'is an option to specify the size of memory that the application will occupy. <br>
+※ When an application is deployed, it will automatically run the application, but the '--no-start' option prevents the application from running automatically.<br>
 
-예시)
+Example)
 ```
   $ cf push public-naver -p /home/kimdojun/sample/openpaas-service-java-broker-public-naver-api-sample.war -b java_buildpack -m 1024M --no-start
 ```
 
-### <div id='57'></div> 7.5. 서비스 인스턴스 생성
-마켓 플레이스에 등록된 서비스에 대해서 인스턴스 생성이 가능해진다.<br>
-※ 서비스를 마켓 플레이스에 등록하는 것은 플랫폼 운영자의 역할이다. 마켓 플레이스에 서비스를 등록하는 방법은 본 문서의 [5.3. 서비스 접근 허용]을 참고한다.
-##### <div id='58'></div> 7.5.1. 서비스 인스턴스 생성
+### <div id='57'></div> 7.5. Create Service Instance
+Instances can be created for services registered in the marketplace.<br>
+※ It is the role of the platform operator to register the service in the marketplace. Refer to [5.3. Allow Service Access] in this document for information on how to register services in the marketplace.
+##### <div id='58'></div> 7.5.1. Create Service Instance
 ```
-  $ cf create-service [서비스명] [플랜명] [서비스 인스턴스명]
+  $ cf create-service [Service Name] [Plan Name] [Service Instance Name]
 ```
-※ [서비스명]과 [플랜명]은 서비스 브로커 설정 파일에 정의된 서비스명과 플랜명을 의미한다. [서비스 인스턴스명]은 사용자가 임의로 입력하는 값이지만 제공되는 샘플 어플리케이션은 서비스 인스턴스명으로 서비스를 식별하도록 구현되어 있기 때문에, 임의의 값을 사용할 경우, 샘플 어플리케이션에서 서비스를 식별하지 못하므로 샘플 어플리케이션 소스의 수정이 필요하다.<br><br>
+※ [Service Name] and [Plan Name]refer to the service name and plan name defined in the service broker configuration file. [Service Instance Name]is a value that the user randomly inputs, but the provided sample application is implemented to identify the service with the service instance name, so if the arbitrary value is used, the sample application cannot identify the service, so the sample application source needs to be modified.<br><br>
 
-※ 샘플 어플리케이션은 개방형 클라우드 플랫폼에서의 서비스 인스턴스명을 아래의 표를 따르도록 강제한다. 서비스명의 첫 글자를 소문자로 바꾼 형태이다. 임의의 서비스 인스턴스명을 사용하기 위해서는 샘플 어플리케이션의 수정이 필요하다.<br>
+※ The sample application forces the service instance name in the open cloud platform to follow the table below. It is a form in which the first letter of the service name is changed to lowercase. Modification of the sample application is required to use any service instance name.<br>
 
-| <b>API 서비스</b>      | <b>서비스명</b> | <b>서비스 인스턴스명</b> |
+| <b>API Service</b>      | <b>Service Name</b> | <b>Service Instance Name</b> |
 |-------------|-----------------------------|-----------------------------|
-| 공연전시정보조회 서비스 | PublicPerformance | publicPerformance |
-| 인천광역시 문화행사 | IncheonCulture | incheonCulture |
-| 대전광역시 문화축제 | DaejeonFestival | daejeonFestival |
-| 전시공연/테마파크 정보 | JeonnamPerformanceList | jeonnamPerformanceList |
-| 네이버 지도 | NaverMap | naverMap |
-| 네이버 주소-좌표 변환 | NaverAddressToGPS | naverAddressToGPS |
-| 네이버 검색 | NaverSearch | naverSearch |
+| Performance exhibition information inquiry service | PublicPerformance | publicPerformance |
+| Incheon Metropolitan City Cultural Event | IncheonCulture | incheonCulture |
+| Daejeon Metropolitan City Cultural Festival | DaejeonFestival | daejeonFestival |
+| Exhibition performance/ theme park information | JeonnamPerformanceList | jeonnamPerformanceList |
+| Naver Map | NaverMap | naverMap |
+| Naver Address-Coordinate Translation | NaverAddressToGPS | naverAddressToGPS |
+| Naver Search | NaverSearch | naverSearch |
 
-예시)
+Example)
 ```
   $ cf create-service PublicPerformance basic publicPerformance
 ```
 
-##### <div id='59'></div> 7.5.2. 서비스 인스턴스 확인
-서비스 인스턴스의 생성을 통해 개방형 클라우드 플랫폼에서 서비스와 어플리케이션의 바인드가 가능해진다. 서비스 인스턴스의 생성을 확인하기 위해서, 서비스 인스턴스 목록을 노출하는 명령어를 사용한다.
+##### <div id='59'></div> 7.5.2. Check Created Service Instance
+The creation of service instances enables the binding of services and applications on an open cloud platform. To verify the creation of a service instance, use a command that exposes the list of service instances.
 
 ```
   $ cf services
 ```
 
-생성된 서비스의 인스턴스명과 서비스명, 플랜, 바인드 된 어플리케이션을 확인할 수 있다. bound apps의 값이 바인드 된 어플리케이션을 의미한다.<br>
+It is possible to check the instance name, service name, plan, and bound application of the generated service. The value of bound apps refers to the application bound.<br>
 ![7-5-2-0]
 
-### <div id='60'></div> 7.6. 서비스 바인드
-[7.5. 서비스 인스턴스 생성]에서 생성된 서비스 인스턴스를 어플리케이션과 바인드하여 어플리케이션에서 API서비스를 사용할 수 있게 된다.
-##### <div id='61'></div> 7.6.1. 서비스 바인드
+### <div id='60'></div> 7.6. Bind Service
+Bind the service instance created from [7.5. Create Service Instance] and Application to be able to use API service.
+##### <div id='61'></div> 7.6.1. Bind Service
 생성된 서비스 인스턴스와 어플리케이션을 바인드한다. 바인드 시, -c 옵션을 주어 사용자가 직접 발급받은 해당 서비스의 서비스키를 입력할 수 있도록 한다. 샘플 서비스 브로커의 경우는 서비스 키를 입력하지 않을 경우 바인드가 정상적으로 진행되지 않도록 설계되어 있다.
 
 ```
-  $ cf bind-service [어플리케이션명] [서비스 인스턴스명] -c '{"serviceKey":"[서비스키]"}'
+  $ cf bind-service [Application Name] [Service Instance Name] -c '{"serviceKey":"[Service Key]"}'
 ```
-※ [서비스 인스턴스명]은 서비스 인스턴스를 생성할 때, 입력한 명칭으로 서비스 명과 다르다. 서비스명과 서비스 인스턴스명의 차이는 [7.5.1. 서비스 인스턴스 생성]을 참고한다.
+※ [Service Instance Name] is the name entered when creating the service instance and is different from the service name. Refer to [7.5.1. Create Service Instance] for the difference between service name and service instance name.
 
-예시)
+Example)
 ```
   $ cf bind-service public-naver publicPerformance -c '{"serviceKey":"adn2d241aaml%%3D"}'
 ```
-위와 같은 형태로 어플리케이션이 사용할 7개의 API 서비스를 모두 바인드한다.
+All seven API services to be used by the application are bound as shown above.
 
-##### <div id='62'></div> 7.6.2. 서비스 바인드 확인
-어플리케이션과 서비스를 바인드하면 바인드 된 각각의 서비스에 대한 정보는 어플리케이션의 VCAP_SERVICES 정보에서 확인할 수 있다.
+##### <div id='62'></div> 7.6.2. Check Bound Service
+When you bind an application and a service, information about each bound service can be found in the VCAP_SERVICES information of the application.
 
 ```
-  $ cf env [어플리케이션 명]
+  $ cf env [Application Name]
 ```
 
-예시)
+Example)
 ```
   $ cf env public-naver
 ```
 ![7-6-2-0]<br>
-VCAP_SERVICES 정보를 확인하면 그림과 같이 각각의 서비스 별로 플랜, 엔드포인트, 바인드에서 -c 옵션을 통해 입력한 서비스키 등의 서비스 정보를 확인 할 수 있다. 샘플 어플리케이션은 이 VCAP_SERVICES 정보에서 엔드포인트와 서비스키를 가져와 필요한 API 서비스를 사용한다.
+If you check VCAP_SERVICES information, you can check service information such as plans, endpoints, and service keys entered through -c options for each service as shown in the figure. The sample application takes the endpoint and the service key from this VCAP_SERVICES information and uses the required API service.
 
-### <div id='62'></div> 7.7. 샘플 어플리케이션 동작 확인
-명령어를 통해 어플리케이션의 URL을 확인할 수 있다.
+### <div id='62'></div> 7.7. Check Sample Application Behavior
+You can check the URL of the application through the command.
 
 ```
   $ cf apps
 ```
 
 ![7-7-0-0]<br>
-어플리케이션이 구동 중임을 확인하고 웹 브라우저에서 URL로 접속한다. 샘플 어플리케이션은 메인화면에서 'Hello World'를 출력하도록 구현되어있다.
+Verify the application if it is running and access the URL from a web browser. The sample application is implemented to output 'Hello World' on the main screen.
 
 ![7-7-0-1]<br>
-[URL]/main으로 이동하여 지도가 화면에 출력되는 것을 확인한다.
+Go to [URL]/main and check if the map is displayed on the screen.
 
 ![7-7-0-2]<br>
-※ 지도가 화면에 보이지 않는 경우는 네이버 지도 서비스키 신청 시 입력한 URL이 어플리케이션 URL과 동일하지 않아서 생기는 경우가 대부분이다. 샘플 어플리케이션을 예로 들면, 네이버 지도 API 서비스키 발급 시 URL 입력 창에 상단 화면에서 확인되는 URL인 http://public-naver.10.244.0.34.xip.io 를 입력하여야 한다. 자세한 내용은 [7.3.2 네이버 Open API 서비스 키 획득]의 [2. 서비스키 획득]에서 [(2) 네이버 지도 API 키 발급]과 [7.3. 샘플 어플리케이션 배포]을 참고한다.<br>
+※ In most cases, when a map is not visible on the screen, the URL entered when applying for the Naver Map service key is not the same as the application URL. For example, when issuing a Naver Map API service key, http://public-naver.10.244.0.34.xip.io ,a URL that is checked on the top screen, must be entered in the URL input window. For details, refer to [(2) Issuing Naver Map API Key] and [7.3. Sample Application Deployment] of [2. Obtain Service Key] from [7.3.2 Obtain Naver Open API service key].<br>
 
-화면의 좌측 하단 셀렉트 박스에서 지역을 선택해보면서 각각의 API들이 정상적으로 작동하는 것을 확인한다.
+Check that each API operates normally by selecting an area in the lower left select box of the screen.
 
 ![7-7-0-3]
 
@@ -1125,4 +1125,4 @@ VCAP_SERVICES 정보를 확인하면 그림과 같이 각각의 서비스 별로
 
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Public API 개발
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Public API Development

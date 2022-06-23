@@ -855,18 +855,18 @@ Most APIs introduced on public data portals can issue service keys on public dat
   ![7-3-1-11]<br>
   ![7-3-1-12]<br>
   ![7-3-1-13]<br>
-  약관 동의화면에서 (1)회원가입약관과 (2)개인정보 수집 및 이용에 관한 안내에 동의를 체크하고 (3)동의함 버튼을 누른다.
+  On the agreement screen of the terms and conditions, (1) check the member agreement and  the guidance on the (2) collection and use of personal information, and  press the (3) I agree button.
   
   ![7-3-1-14]<br>
-  기본정보와 정보수신여부를 선택하고 [회원가입] 버튼을 누른다. 기본정보는 우편수령지까지 빠짐없이 입력해야 한다.
+  Enter the basic information and select whether to receive the information and press the [Membership] button. Basic information must be entered to the mailing address.
   
   ![7-3-1-15]<br>
-  회원 가입 완료를 확인한다.
+  Check if the registration is completed.
   
   ![7-3-1-16]<br>
-  [인천문화예술정보 공공 Open API 센터](http://iq.ifac.or.kr/openAPI)메인 화면에 다시 접속하여 [로그인]을 클릭하여 로그인 한다.
+  Access to the main page of [Incheon Culture and Arts Information Public Open API Center](http://iq.ifac.or.kr/openAPI) and click [Login] to log in.
   
-  2. 서비스키 신청<br>
+  2. Apply fo Service Key<br>
   ![7-3-1-17]<br>
   API둘러보기 화면에서는 사용할 수 있는 API의 목록을 확인할 수 있다. 사용할 API의 우측 [신청하기] 버튼을 눌러 서비스키 신청절차를 진행한다.
 
@@ -874,17 +874,17 @@ Most APIs introduced on public data portals can issue service keys on public dat
   신청서 작성 화면에서 (1) 필수입력필드를 모두 채우고 (2) 약관에 동의한 뒤, (3) [확인] 버튼을 눌러 서비스키 신청절차를 완료한다.
   
   ![7-3-1-19]<br>
-  서비스키 신청 등록이 완료되었다.
+  The service key application registration has been completed.
   
-  3. 서비스키 발급 확인<br>
+  3. Verify the service key issuance<br>
   ![7-3-1-20]<br>
-  [인천문화예술정보 공공 Open API 센터](http://iq.ifac.or.kr/openAPI)에 로그인 한 상태로 메인 화면에서 우측 중간 [키 발급/관리] 버튼을 클릭한다.
+  [Incheon Culture and Arts Information Public Open API Center](http://iq.ifac.or.kr/openAPI)에 로그인 한 상태로 메인 화면에서 우측 중간 [Key Issue/ Manage] 버튼을 클릭한다.
 
   ![7-3-1-21]<br>
   인증키 관리 화면으로 이동하면 (1) 서비스키, (2) 트래픽, (3) 승인 상태를 확인할 수 있고 (4) 서비스키 삭제도 가능하다.<br>
   ※ [7.2.1.2. 인천광역시 문화행사]의 경우 API서비스 제공자에게 직접 서비스키 신청을 하게 되기 때문에 공공 데이터 포털에서 서비스키 신청을 하는 경우와 달리 대기기간이 없고 승인 역시 자동승인 되므로 신청 절차만 완료하면 바로 사용할 수 있다.
 
-##### <div id='53'></div> 7.3.2 네이버 Open API 서비스 키 획득
+##### <div id='53'></div> 7.3.2 Obtain Naver Open API Service Key
 [2.2.1. 네이버 지도], [2.2.2. 네이버 주소-좌표 변환], [2.2.3. 네이버 검색] API 서비스키를 발급받기 위해서는 네이버 ID로 로그인이 되어 있어야 한다. [네이버 개발자센터의 Open API 페이지](http://developer.naver.com/wiki/pages/OpenAPI)에 접속하여 네이버 ID로 로그인하거나 회원가입을 진행한다.<br>
 
   1. 회원가입 및 로그인<br>

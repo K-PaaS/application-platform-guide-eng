@@ -806,51 +806,51 @@ The venue of the event is displayed on the map using the local cultural event AP
   | mapx | The X-coordinate value for the address for which the search was requested. It uses a coordinate system different from other APIs as a Cartec coordinate system value. |
   | mapy | The Y-coordinate value for the address for which the search was requested. It uses a coordinate system different from other APIs as a Cartec coordinate system value. |
 
-### <div id='51'></div> 7.3. API 서비스키 획득
-##### <div id='52'></div> 7.3.1. 공공 데이터 포털 API 서비스
-공공 데이터 포털에 소개된 대부분의 API는 공공 데이터 포털에서 서비스키 발급이 가능하지만 일부는 서비스 제공 기관에 직접 서비스키 신청을 해야 한다. 본 문서에서 설명하는 4개의 공공 데이터 포털 API 중, [7.2.1.1. 공연전시정보조회 서비스], [7.2.1.3. 대전광역시 문화축제], [7.2.1.4 전시공연/테마파크 정보]는 공공 데이터 포털에서 서비스키 발급이 가능하다. 반면, [7.2.1.2. 인천광역시 문화행사]의 경우, [인천문화예술정보 공공 Open API 센터](http://iq.ifac.or.kr/openAPI)에서만 서비스키 발급이 가능하기 때문에 공공 데이터 포털의 서비스키 획득 절차와 인천문화예술정보 공공 Open API 센터의 서비스키 획득 절차를 나누어 기술한다.
-##### 7.3.1.1 공공 데이터 포털 서비스키 획득 절차
-  1. 회원가입 및 로그인<br>
-  ※ 공공 데이터 포털 회원가입과 로그인은 본 문서 2장의 [2.1. 데이터 포털 회원가입 및 로그인]을 참고한다.
+### <div id='51'></div> 7.3. API Acquire API service key
+##### <div id='52'></div> 7.3.1. Obtain Public Data Portal API Service Key
+Most APIs introduced on public data portals can issue service keys on public data portals, but some must apply directly to service providers. Among the four public data portal APIs described in this document, [7.2.1.1, Performance Exhibition Information Inquiry Service], [7.2.1.3, Daejeon Metropolitan City Cultural Festival], and [7.2.1.4 Exhibition Performance/ Theme Park Information] can issue service keys on the public data portal. On the other hand, in the case of [7.2.1.2. Incheon Cultural Event], the service key acquisition procedure of the public data portal and the service key acquisition procedure of the [Incheon Culture and Arts Information Public Open API Center](http://iq.ifac.or.kr/openAPI) are divided and described.
+##### 7.3.1.1 Public Data Portal Service Key Acquisition Procedure
+  1. Sign in and login<br>
+  ※ Refer to [2.1. Data Portal Sign in and Log in] in Chapter 2 of this document for public data portal membership and login.
 
-  2. 서비스키 신청<br>
+  2. Application for the service key<br>
   ![7-3-1-0]<br>
-  로그인을 완료하고 메인 화면의 상단 중앙의 검색 필드에 서비스키를 발급받고자 하는 API를 검색한다.
+  After completing the login, search for the API that you want to issue the service key in the search field at the top center of the main screen.
 
   ![7-3-1-1]<br>
-  검색결과에서 사용하고자 하는 API를 찾아 클릭한다.
+  Find the API you want to use in the search results and click it.
   
   ![7-3-1-2]<br>
-  (1) [활용신청] 버튼을 누르면 서비스키 신청화면으로 넘어가며 신청절차를 진행하게 되고<br>
-  (2) [상세정보] 버튼을 누르면 해당 API서비스에 관한 상세정보 및 각각의 서비스에 대한 기술문서를 확인할 수 있다.
+  (1) [Application for utilization] Press the button, to go to the service key application screen and proceed with the application process.<br>
+  Check details about the API service and technical documents for each service by pressing the (2) [Detailed Information] button.
 
   ![7-3-1-3]<br>
-  시스템 유형을 선택한다.
+  Select service type.
   
   ![7-3-1-4]<br>
-  활용정보를 선택한다.
+  Select utilization information.
   
   ![7-3-1-5]<br>
-  API서비스의 상세 기능 중 어떤 기능을 사용할지 선택한다.
+  Select which of the API service's detailed functions to use.
   
   ![7-3-1-6]<br>
-  (1) 라이센스 표시에 동의하고 (2) [신청] 버튼을 클릭한다.
+  Accept the(1) license display and click the (2) [Apply] button.
   
   ![7-3-1-7]<br>
-  서비스키 신청절차가 완료되었음을 알리는 안내메시지를 확인한다.
+  Check the notification message indicating that the service key application process has been completed.
 
-##### 7.3.1.2 인천 문화예술 정보 공공 Open API 센터 서비스키 획득 절차
-  1. 회원가입 및 로그인<br>
-  인천문화예술정보 공공 Open API 센터의 API서비스를 사용하기 위해서는 [인천 문화재단](http://www.ifac.or.kr)패밀리 사이트 통합 회원가입이 되어 있어야 한다. 먼저 [인천문화예술정보 공공 Open API 센터](http://iq.ifac.or.kr/openAPI)로 접속한다.
+##### 7.3.1.2 Incheon Culture and Arts Information Public Open API Center Service Key Acquisition Procedure
+  1. Sign in and login<br>
+  In order to use the API service of the Incheon Culture and Arts Information Public Open API Center, you must be a member of the [Incheon Cultural Foundation] (http://www.ifac.or.kr)site. First, go to [Incheon Culture and Arts Information Public Open API Center](http://iq.ifac.or.kr/openAPI).
 
   ![7-3-1-8]<br>
-  접속 후, 메인화면 우측 상단의 [회원가입]을 클릭한다.
+  After accessing, click [Sign in] at the top right of the main page.
   
   ![7-3-1-9]<br>
-  [회원가입] 버튼을 클릭하면, 인천문화재단 패밀리 사이트 통합 회원가입 화면으로 이동한다. (1) 회원가입 여부를 확인하기 위해 아이핀 또는 휴대폰 인증 중 한가지를 선택하고 (2) 인증을 진행한다.
+  When the [Sign in] button is clicked, it goes to the Incheon Culture and Arts Foundation family site. elect one of IPIN or mobile phone authentication to check whether you have (1) registered as a member or not and proceed to (2) authentication.
 
   ![7-3-1-10]<br>
-  [회원가입] 버튼을 눌러 회원가입을 진행한다.
+  Click [Sign in] button and register.
   
   ![7-3-1-11]<br>
   ![7-3-1-12]<br>

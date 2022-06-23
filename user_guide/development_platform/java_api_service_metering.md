@@ -35,55 +35,46 @@
     * [API and CF-Abacus Interworking Tests](#29)
     * [Sample Code](#30)
 	
-# <div id='1'/>1. 개요
+# <div id='1'/>1. Outline
 
-## <div id='2'/>1.1. 문서 개요
+## <div id='2'/>1.1. Document Outline
 
-### <div id='3'/>1.1.1. 목적
+### <div id='3'/>1.1.1. Purpose
 
-본 문서(Java API 서비스 미터링 적용개발 가이드)는 파스-타 플랫폼
-프로젝트의 미터링 플러그인과 Java API 미터링 서비스 애플리케이션을
-연동시켜 API 서비스를 미터링 하는 방법에 대해 기술 하였다.
+This document (Java API Service Metering Application Development Guide) describes how to meter API services by linking the metering plug-in of the Pas-Ta platform project with the Java API Metering Service application.
 
 
 
-### <div id='4'/>1.1.2. 범위
-본 문서의 범위는 파스-타 플랫폼 프로젝트의 JAVA API 서비스
-애플리케이션에 대한 미터링 방법에 대한 개발과 CF-Abacus 연동에 대한
-내용으로 한정되어 있다.
+### <div id='4'/>1.1.2. Range
+The range of this document is limited to the development of metering methods for JAVA API service applications in PAS-TAR platform projects and the CF-Abacus linkage.
 
-본 문서는 API 미터링 서비스 애플리케이션을 Java 언어로 작성 하는 것에
-대해 기술 한다.
+This document describes the creation of API metering service applications in Java languages.
 
-본 문서는 API 서비스 고유의 비즈니스 로직은 구현 하지 않으며, API 서비스
-호출 시의 미터링을 하는 기능만 구현 한다.
+This document does not implement API service-specific business logic, but only the function of metering when API service is called.
 
-본 문서에서 언급 하는 “API 서비스를 사용하는 애플리케이션”은 별도로 제공
-하는 **Node.js API 미터링 개발 가이드**를 참고 하여 개발 한다.
+"Applications using API services" referred to in this document are developed by referring to the separately provided **Node.js API Metering Development Guide**.
 
-### <div id='5'/>1.1.3. 참고 자료
+### <div id='5'/>1.1.3. References
 -   [https://docs.cloudfoundry.org/devguide/](https://docs.cloudfoundry.org/devguide/)
 -   [https://github.com/cloudfoundry-incubator/cf-abacus](https://github.com/cloudfoundry-incubator/cf-abacus)
 
 
-## <div id='6'/>2. JAVA API 서비스 미터링 개발가이드
-### <div id='7'/>2.1 개요
+## <div id='6'/>2. JAVA API Service Metering Development Guide
+### <div id='7'/>2.1 Outline
 
 
-API 서비스 애플리케이션을 Java 언어로 작성 한다. API 서비스는 서비스
-요청을 처리함과 동시에 API 사용 내역을 CF-ABACUS에 전송하는
-애플리케이션을 작성 한다.
+Create API service applications in Java language. The API service creates an application that processes the service request and sends API usage history to CF-ABACUS.
 
 ![Java_Api_Service_Metering_Image01]
 
 <table border = "1px;">
   <tr>
-    <th colspan ="2">기능</th>
-     <th>설명</th>
+    <th colspan ="2">function</th>
+     <th>Description</th>
   </tr>
   <tr>
      <td rowspan="4">Runtime</td>
-     <td>미터링/등급/과금 정책</td>
+     <td>Metering/Grading/Charging Policy</td>
      <td>API 서비스 제공자가 제공하는 서비스에 대한 각종 정책 정의 정보. JSON 형식으로 되었으며, 해당 정책을 CF-ABACUS에 등록하면 정책에 정의한 내용에 따라 API 사용량을 집계 한다.<br>
 정책은 서비스 제공자가 정의해야 하며, JSON 스키마는 다음을 참조한다.<br>
 https://github.com/cloudfoundry-incubator/cf-abacus/blob/master/doc/api.md

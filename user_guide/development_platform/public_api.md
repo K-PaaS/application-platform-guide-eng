@@ -881,59 +881,59 @@ Most APIs introduced on public data portals can issue service keys on public dat
   On the main screen, click the [Key Issue/Manage] button in the middle right of the [Incheon Culture and Arts Information Public Open API Center](http://iq.ifac.or.kr/openAPI).
 
   ![7-3-1-21]<br>
-  인증키 관리 화면으로 이동하면 (1) 서비스키, (2) 트래픽, (3) 승인 상태를 확인할 수 있고 (4) 서비스키 삭제도 가능하다.<br>
-  ※ [7.2.1.2. 인천광역시 문화행사]의 경우 API서비스 제공자에게 직접 서비스키 신청을 하게 되기 때문에 공공 데이터 포털에서 서비스키 신청을 하는 경우와 달리 대기기간이 없고 승인 역시 자동승인 되므로 신청 절차만 완료하면 바로 사용할 수 있다.
+  If you go to the authentication key management screen, you can check (1) service key, (2) traffic, (3) approval status, and (4) delete service key.<br>
+  ※ In the case of [7.2.1.2. Incheon Metropolitan City Cultural Event], the service key is applied directly to the API service provider, so unlike the application of the service key on the public data portal, there is no waiting period and approval is automatically approved, so it can be used immediately.
 
 ##### <div id='53'></div> 7.3.2 Obtain Naver Open API Service Key
-[2.2.1. 네이버 지도], [2.2.2. 네이버 주소-좌표 변환], [2.2.3. 네이버 검색] API 서비스키를 발급받기 위해서는 네이버 ID로 로그인이 되어 있어야 한다. [네이버 개발자센터의 Open API 페이지](http://developer.naver.com/wiki/pages/OpenAPI)에 접속하여 네이버 ID로 로그인하거나 회원가입을 진행한다.<br>
+[2.2.1. Naver Map], [2.2.2. Naver address-to-coordinate translation], [2.2.3. Naver Search] In order to get API service key, you must be logged in with Naver ID. Access to [Naver Developer Center's Open API Page](http://developer.naver.com/wiki/pages/OpenAPI) and login with naver ID  or sign in.<br>
 
-  1. 회원가입 및 로그인<br>
+  1. Sign in and Login<br>
   ![7-3-2-0]<br>
-  [네이버 개발자센터의 Open API 페이지](http://developer.naver.com/wiki/pages/OpenAPI)에 접속하여 우측 중간 [회원가입] 버튼을 클릭한다.
+  Access to [Naver Developer Center's Open API Page](http://developer.naver.com/wiki/pages/OpenAPI) and click [Sign in] at the right.
 
   ![7-3-2-1]<br>
   ![7-3-2-2]<br>
   ![7-3-2-3]<br>
   ![7-3-2-4]<br>
-  약관 동의 화면에서 필수 동의 항목인 네이버 이용약관과 개인정보 수집 및 이용에 대한 안내에 동의를 체크하고 하단의 [동의] 버튼을 클릭한다.
+  On the agreement screen of the terms and conditions, check the consent of Naver's terms and conditions and instructions on the collection and use of personal information, and click the [I Agree] button at the bottom.
   
   ![7-3-2-5]<br>
-  가입화면에서 휴대전화번호를 포함한 입력항목들을 입력하고 (1) [인증] 버튼을 눌러 휴대전화 인증을 실시한다. 휴대전화를 통해 전달된 인증번호를 입력하고 (2) [확인] 버튼을 눌러 인증을 마치고 (3) [가입하기] 버튼을 눌러 회원가입을 완료한다.
+  Enter input items including a mobile phone number on the subscription screen, and press the (1) [Authentication] button to authenticate the mobile phone. Enter the authentication number delivered through the mobile phone,  press the(2) [OK] button to complete the authentication, and press the (3) [Sign In] button to complete the registration.
   
   ![7-3-2-6]<br>
-  [네이버 개발자센터의 Open API 페이지](http://developer.naver.com/wiki/pages/OpenAPI)에 접속하여 우측 상단 [로그인] 버튼을 클릭하여 로그인 한다.
+  Access to [Naver Developer Center's Open API Page](http://developer.naver.com/wiki/pages/OpenAPI)and click [Login] button from the right top part and log in.
   
-  2. 서비스키 신청<br>
+  2. Apply fo Service Key<br>
   ![7-3-2-7]<br>
-  로그인이 완료되고 다시 네이버 개발자센터의 Open API 페이지로 이동하면 우측 중간에 [키 발급/관리] 버튼을 확인할 수 있다.
+  After login, go to the Open API page of Naver Developer Center again, and you can check the [Issue/Manage Key] button in the middle of the right.
 
   ![7-3-2-8]<br>
-  키 발급/관리 화면에서 네이버에서 제공하는 API 서비스에 대한 키 관리를 할 수 있다.<br>
-  (1) [키 추가]버튼을 눌러 [7.2.2.3. 네이버 검색] API의 서비스 키를 발급받을 수 있고 (2) [키 추가] 버튼을 눌러 [7.2.2.1. 네이버 지도], [7.2.2.2. 네이버 주소-좌표 변환] API의 서비스키를 발급받을 수 있다. 하나의 서비스키로 [7.2.2.1. 네이버 지도]와 [7.2.2.2. 네이버 주소-좌표 변환] API 서비스를 공통으로 사용할 수 있다.<br>
+  Key management for API services provided by Naver may be performed on the key issuance/management screen.<br>
+  Click (1) [Add Key] button to get the service key of [7.2.2.3. Naver Search] API, and click (2) [Add Key] button of [7.2.2.1. Naver Map], [7.2.2.2. Naver address-to-coordinate translation] API to issue the service key. [7.2.2.1. Naver Map] and [7.2.2.2. Naver address-to-coordinate translation] API service can be used commonly with one key.<br>
 	
-  (1) 네이버 검색 API 키 발급<br>
-  네이버 검색 API의 [키 추가] 버튼을 클릭한다<br>
+  (1)Issuing Naver Search API Key.<br>
+  Click the [Add Key] button in the Naver Search API.<br>
 
   ![7-3-2-9]<br>
-  ① 서비스를 사용할 도메인 정보를 입력해야 한다. 정확히 입력하지 않으면, API 서비스를 사용할 수 없다. 이때, Identifier 필드에 입력한 값과 개방형 클라우드 플랫폼에서 어플리케이션이 사용하는 도메인이 일치해야 한다. 어플리케이션의 도메인은 개방형 클라우드 플랫폼에 어플리케이션을 배포하는 시점에 결정한다.<br>
-  참고: [7.3. 샘플 어플리케이션 배포]<br>
-  ② 네이버 검색 API는 키 발급 과정에서도 휴대폰 인증을 실시해야 한다.<br>
-  ③ 좌측의 보안문자를 입력한다. 보안문자 입력에서 대문자와 소문자는 구분하지 않는다.<br>
-  ④ 약관의 내용을 숙지하고 동의하면, 체크한다.<br>
-  ⑤ [키 발급] 버튼을 눌러 키 발급을 완료한다.<br>
+  ① You must enter domain information to use the service. If you do not enter it correctly, you cannot use the API service. In this case, the domain used by the application in the open cloud platform must match the value input in the Identifier field. The domain of the application is determined when the application is deployed on an open cloud platform.<br>
+  Refer to: [7.3. Sample Application Deployment]<br>
+  ② Naver Search API requires mobile phone authentication in the process of issuing keys.<br>
+  ③ Enter the security character on the left. Do not separate uppercase and lowercase characters in security text input.<br>
+  ④ Check if you understand and agree to the terms and conditions.<br>
+  ⑤ Click [Issue Key] button and complete issueing of the key.<br>
 
-  (2) 네이버 지도 API 키 발급<br>
-  네이버 지도 API의 [키 추가] 버튼을 클릭한다<br>
+  (2) Issuing Naver Map API Key<br>
+  Click the [Add Key] button on the Naver Map API<br>
   
   ![7-3-2-10]<br>
-  ① 사용환경을 선택한다.<br>
-  ② 사용환경에서 '웹'을 선택했기 때문에 URL 정보를 입력해야 한다. 정확히 입력하지 않으면, API 서비스를 사용할 수 없다. 이때, URL 필드에 입력한 값과 개방형 클라우드 플랫폼에서 어플리케이션이 사용하는 도메인이 일치해야 한다. 어플리케이션의 도메인은 개방형 클라우드 플랫폼에 어플리케이션을 배포하는 시점에 결정한다.<br>
-  참고: [7.4.2. 어플리케이션 배포]<br>
-  ③ 좌측의 보안문자를 입력한다. 보안문자 입력에서 대문자와 소문자는 구분하지 않는다.<br>
-  ④ 약관의 내용을 숙지하고 동의하면, 체크한다.<br>
-  ⑤ [키 발급] 버튼을 눌러 키 발급을 완료한다.<br>
+  ① Select the use environment.<br>
+  ② Must enter URL information because you selected 'Web' in your environment. If it is not enter it correctly, you cannot use the API service. In this case, the value input in the URL field and the domain used by the application in the open cloud platform should match. The domain of the application is determined when the application is deployed on an open cloud platform.<br>
+  Refer to: [7.4.2. Application Deployment]<br>
+  ③ Enter the security character on the left. Do not separate uppercase and lowercase characters in security text input.<br>
+  ④ Check if you understand and agree to the terms and conditions.<br>
+  ⑤ Click [Issue Key] button and complete issueing of the key.<br>
 
-  3. 서비스키 확인<br>
+  3. Check Service Key<br>
   ![7-3-2-11]<br>
   [네이버 개발자센터의 Open API 페이지](http://developer.naver.com/wiki/pages/OpenAPI)에 접속하고 로그인한 상태에서 우측 중간의 [키 발급/관리] 버튼을 클릭한다.
 

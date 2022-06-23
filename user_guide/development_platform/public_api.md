@@ -641,170 +641,170 @@ The venue of the event is displayed on the map using the local cultural event AP
   
   | <br>Variable Name | <br>Sample Data | <br>Description |
   |-------------|-----------------------------|-----------------------------|
-  | serviceKey | 999 | 페이지당 행사 정보의 개수이다. 한 페이지에 전체를 조회하기 위해 '999'를 입력한다. |
-  | (sido) | (Seoul) | 모든 지역을 조회할 경우 변수를 넣지 않고, 서울의 공연전시 정보만 조회할 때, 값을 '서울'로 넣는다. |
+  | serviceKey | 999 | The number of event information per page. Enter '999' to view the entire page. |
+  | (sido) | (Seoul) | When inquiring all regions, do not include variables, but when inquiring only about Seoul's performance exhibition information, put the value as 'Seoul'. |
 
   4. Response<br>
   
   | <br>Variable Name | <br>Description |
   |-------------|-----------------------------|
-  | title | 행사의 제목이다. |
-  | place | 행사가 진행되는 장소이다. |
-  | startDate | 행사가 시작되는 날짜이다. |
-  | endDate | 행사가 종료되는 날짜이다. |
-  | thumbnail | 행사 포스터 이미지의 URL이다. |
-  | gpsX | GPS X좌표이다. |
-  | gpsY | GPS Y좌표이다. |
+  | title | The title of the event. |
+  | place | The place where the even is taken. |
+  | startDate | The starting date of the event. |
+  | endDate | The last day of the event. |
+  | thumbnail | The URL of the event's image poster. |
+  | gpsX | GPS X coordinates. |
+  | gpsY | GPS Y coordinates. |
 
-##### 7.2.1.2 인천광역시 문화행사
-  1. API 소개<br>
-  인천문화예술정보 사이트에 등록되어있는 인천 내의 행사정보를 제공하는 서비스이다. [인천문화포털](http://iq.ifac.or.kr)에서 서비스 하고 있다. 공공 데이터 포털에 소개되어 있지만, 서비스키 발급은 [인천문화예술정보 공공 Open API 센터](http://iq.ifac.or.kr/openAPI)에서 직접 신청해야 한다. 서비스키는 자동 승인되므로 승인을 기다릴 필요가 없다.
+##### 7.2.1.2 Incheon Metropolitan City Cultural Event
+  1. API Introduction<br>
+  A service that provides event information in Incheon registered on the Incheon Culture and Arts Information Site. It is being served at the [Incheon Culture Portal](http://iq.ifac.or.kr). Although it is introduced on the public data portal, the issuance of service keys must be applied directly from the [Incheon Culture and Arts Information Public Open API Center](http://iq.ifac.or.kr/openAPI) Service keys are automatically approved, so there is no need to wait for approval.
   
-  2. 명세<br>
+  2. Outline<br>
   
-  | 메소드 | GET |
+  | Method | GET |
   |-------------|-----------------------------|
-  | 엔드포인트 | http://iq.ifac.or.kr/openAPI/real/search.php |
+  | Endpoint | http://iq.ifac.or.kr/openAPI/real/search.php |
   
-  3. 요청<br>
+  3. Request<br>
   
-  | <br>변수명 | <br>샘플데이터 | <br>설명 |
+  | <br>Variable Name | <br>Sample Data | <br>Description |
   |-------------|-----------------------------|-----------------------------|
-  | apiKey | [서비스키] | 서비스 인증 키이다. 사용자가 직접 발급받아야 하므로 샘플 데이터를 넣지 않는다. |
-  | pSize | 999 | 페이지당 행사 정보의 개수이다. 최대의 데이터를  조회하기 위해 최대값인 '999'를 입력한다. |
-  | resultType | xml | json과 xml중 응답결과의 출력방식을 지정할 수 있다. |
-  | svID | culture | 문화행사정보를 조회하기 위한 서비스 ID이다. |
-  | srh_periodType | p | 행사정보를 기간별로 조회하기 위한 값이다. 누락할 경우 현재 실시되지 않는 행사도 함께 조회된다. |
-  | srh_sDate | culture | 'srh_periodType' 변수를 입력할 경우 검색 기준이 되는 날짜이다. 샘플 어플리케이션에서는 요청 일을 기준으로 조회하기 때문에 당일의 날짜를 'yyyyMMdd'의 형태로 넣는다. |
+  | apiKey | [Service Key] | It is the service authorization key. Do not put in sample data because the user has to issue directly. |
+  | pSize | 999 | The number of event information per page. Enter the maximum value of '999' to query the maximum data. |
+  | resultType | xml | You can specify the output method of the response result between json and xml. |
+  | svID | culture | This is a service ID for inquiring the cultural event information. |
+  | srh_periodType | p | It is a value for inquiring event information by period. If omitted, events that are not currently held are also inquired. |
+  | srh_sDate | culture | If you enter the variable 'srh_periodType', it is the date that becomes the search criterion. The sample application queries based on the requested date, so the date of the day is put in the form of 'yyyyMMdd'. |
 
-  4. 응답<br>
+  4. Response<br>
   
-  | <br>변수명 | <br>설명 |
+  | <br>Variable Name | <br>Description |
   |-------------|-----------------------------|
-  | title | 행사의 제목이다. |
-  | place | 행사가 진행되는 장소이다. 좌표 값을 응답하지 않기 때문에, 네이버 검색 API를 사용하여 장소명을 검색해 좌표 값을 얻는다 |
-  | startDate | 행사가 시작되는 날짜이다. |
-  | endDate | 행사가 종료되는 날짜이다. |
-  | thumbnail | 행사 포스터 이미지의 URL이다. |
+  | title | The title of the event. |
+  | place | The place where the event is taken. Since the coordinate value is not responded to, the coordinate value is obtained by searching for a place name using the Naver search API. |
+  | startDate | The starting date of the event. |
+  | endDate | The last day of the event. |
+  | thumbnail | The URL of the event's image poster. |
 
-##### 7.2.1.3 대전광역시 문화행사
-  1. API 소개<br>
-  대전광역시 공공정보 [Open API Service](http://data.daejeon.go.kr)에서 제공하는 대전광역시 문화축제 API 서비스이다. 대전광역시 내의 문화 축제정보를 제공하며, 서비스키 발급은 공공 데이터 포탈과 대전광역시 공공정보 Open API Service 양쪽에서 모두 가능하다. 서비스키를 신청하면 승인과 발급에 2~3일 가량이 소요된다.
+##### 7.2.1.3 Daejeon Metropolitan City Cultural Events
+  1. API Introduction<br>
+  It is an API service for the Daejeon Cultural Festival provided by Daejeon Metropolitan City Public Information [Open API Service] (http://data.daejeon.go.kr)t provides information on cultural festivals in Daejeon Metropolitan City, and service keys can be issued on both the public data portal and the Daejeon Public Information Open API Service. If you apply for a service key, it will take about two to three days to approve and issue it.
   
-  2. 명세<br>
+  2. Classification<br>
   
-  | 메소드 | GET |
+  | Method | GET |
   |-------------|-----------------------------|
-  | 엔드포인트 | http://data.daejeon.go.kr/openapi-data/service/rest/festival/festivalDaejeonService/festivalDaejeon |
+  | Endpoint | http://data.daejeon.go.kr/openapi-data/service/rest/festival/festivalDaejeonService/festivalDaejeon |
   
-  3. 요청<br>
+  3. Request<br>
   
-  | <br>변수명 | <br>샘플데이터 | <br>설명 |
+  | <br>Variable Name | <br>Sample Data | <br>Description |
   |-------------|-----------------------------|-----------------------------|
-  | serviceKey | [서비스키] | 서비스 인증 키이다. 사용자가 직접 발급받아야 하므로 샘플 데이터를 넣지 않는다. |
-  | numOfRows | 999 | 페이지당 행사 정보의 개수이다. 한 페이지에 전체를 조회하기 위해 '999'를 입력한다. |
+  | serviceKey | [Service Key] |  It is the service authorization key. Do not put in sample data because the user has to issue directly. |
+  | numOfRows | 999 | The number of event information per page. Enter the maximum value of '999' to query the maximum data. |
   
-  4. 응답<br>
+  4. Response<br>
   
-  | <br>변수명 | <br>설명 |
+  | <br>Variable Name | <br>Description |
   |-------------|-----------------------------|
-  | title | 행사의 제목이다. |
-  | place | 행사가 진행되는 장소이다. 좌표 값을 응답하지 않기 때문에, 네이버 검색 API를 사용하여 장소명을 검색해 좌표 값을 얻는다 |
-  | startDate | 행사가 시작되는 날짜이다. |
-  | endDate | 행사가 종료되는 날짜이다. |
-  | thumbnail | 행사 포스터 이미지의 URL이다. |
+  | title | The title of the event. |
+  | place | The place where the event is taken. Since the coordinate value is not responded to, the coordinate value is obtained by searching for a place name using the Naver search API |
+  | startDate | The starting date of the event. |
+  | endDate | The last day of the event. |
+  | thumbnail | The URL of the event's image poster. |
 
-##### 7.2.1.4 전시공연/테마파크 정보
-  1. API 소개<br>
-  [전남 스마트 관광 문화 Open API](http://api.namdokorea.com)에서 제공하는 API 서비스이다. 전라남도 도내의 전시공연 및 테마파크 정보를 제공하지만, 전시공연정보는 드물고 사실상 관광지 정보를 제공하는 API 서비스에 가깝다. 서비스키 발급 신청은 공공 데이터 포털과 [전라남도 공공 데이터 커뮤니티 센터](http://data.jeonnam.go.kr)에서 가능하며, 승인 및 발급에 약 1~2일의 기간이 소요된다.
+##### 7.2.1.4 Exhibition performance/ theme park information
+  1. API Introduction<br>
+  It is an API service provided by [Jeonnam Smart Tourism Culture Open API](http://api.namdokorea.com).It provides information on exhibition performances and theme parks in Jeollanam-do, but exhibition performance information is rare and virtually close to API services that provide information on tourist attractions. Application for service key issuance is available on the public data portal and the [Jeonnam-do Public Data Community Center] (http://data.jeonnam.go.kr), and it takes about one to two days to approve and issue.
   
-  2. 명세<br>
+  2. Classification<br>
   
-  | 메소드 | GET |
+  | Method | GET |
   |-------------|-----------------------------|
-  | 엔드포인트 | http://api.namdokorea.com/openapi/performance/list |
+  | Endpoint | http://api.namdokorea.com/openapi/performance/list |
   
-  3. 요청<br>
+  3. Request<br>
   
-  | <br>변수명 | <br>샘플데이터 | <br>설명 |
+  | <br>Variable Name | <br>Sample Data | <br>Description |
   |-------------|-----------------------------|-----------------------------|
-  | key | [서비스키] | 서비스 인증 키이다. 사용자가 직접 발급받아야 하므로 샘플 데이터를 넣지 않는다. |
-  | pageSize | 999 | 페이지당 행사 정보의 개수이다. 한 페이지에 전체를 조회하기 위해 '999'를 입력한다. |
-  | format | xml | json과 xml중 응답결과의 출력방식을 지정할 수 있다. |
+  | key | [Service Key] | It is the service authorization key. Do not put in sample data because the user has to issue directly. |
+  | pageSize | 999 | The number of event information per page. Enter the maximum value of '999' to query the maximum data. |
+  | format | xml | You can specify the output method of the response result between json and xml. |
   
-  4. 응답<br>
+  4. Response<br>
   
-  | <br>변수명 | <br>설명 |
+  | <br>Variable | <br>Description |
   |-------------|-----------------------------|
-  | NAME | 관광지명이다. |
-  | NEWADDR | 관광지의 주소이다. 좌표 값을 응답하지 않기 때문에, 네이버 주소-좌표 변환 API를 사용하여 해당 주소에 대한 좌표 값을 얻는다 |
-  | MASTERIMG | 관광지의 이미지 URL이다. |
+  | NAME | The name of the tourist attraction. |
+  | NEWADDR | It is the address of a tourist attraction. Since the coordinate value is not responded to, the coordinate value for that address is obtained using the Naver address-coordinate translation API. |
+  | MASTERIMG | The image URL of the tourist attraction. |
 
-##### <div id='50'></div> 7.2.1. 네이버 Open API 서비스
-##### 7.2.1.1 네이버 지도
-  1. API 소개<br>
-  [네이버 개발자센터 Open API](http://developer.naver.com/wiki/pages/OpenAPI)에서 제공하는 지도 API이다. 샘플 어플리케이션에서는 자바스크립트를 이용하여 네이버 지도를 사용한다. 이를 위해서 HTML파일에 다음과 같은 태그를 작성하게 된다.
+##### <div id='50'></div> 7.2.1. Naver Open API Service
+##### 7.2.1.1 Naver Map
+  1. API Introduction<br>
+  The map API provided from the [Naver Developers Center Open API](http://developer.naver.com/wiki/pages/OpenAPI). The sample application uses a Naver map using JavaScript. To this end, the following tags are written in the HTML file..
   
   ```
-   <script type="text/javascript" src="[엔드포인트]?ver=2.0&key=[서비스키]"></script>
+   <script type="text/javascript" src="[Endpoint]?ver=2.0&key=[Service key]"></script>
   ```
-  어플리케이션에서는 다음과 같은 형태로 입력하여 사용하게 된다.
+  In the application, it is input and used in the following form.
   ```
    <script type="text/javascript" src="http://openapi.map.naver.com/openapi/naverMap.naver?ver=2.0&key=f32441ebcd3cc9de474f80s1wf1e54e3"></script>
   ```
-  자자세한 사용법은 아래의 URL을 참조한다. 
-  네이버 개발자센터 튜토리얼: http://developer.naver.com/wiki/pages/Tutorial_JavaScript
+  Refer to the URL below for detailed usage. 
+  Naver Developer's Center Tutorial: http://developer.naver.com/wiki/pages/Tutorial_JavaScript
 
-##### 7.2.2.2 네이버 주소-좌표 변환
-  1. API 소개<br>
-  [네이버 개발자센터 Open API](http://developer.naver.com/wiki/pages/OpenAPI)에서 제공하는 주소-좌표 변환 API이다. 요청 변수로 주소를 입력하면, 해당 주소에 대한 좌표 값을 응답한다. 주소가 정확하지 않은 경우 값을 응답하지 않거나 잘못된 값을 응답한다. 서비스키는 네이버 지도 API와 같은 키를 사용하기 때문에 서비스키 당 호출횟수가 함께 집계된다.
+##### 7.2.2.2 Naver address-to-coordinate translation
+  1. API Introduction<br>
+  It is an address-to-coordinate translation API provided by [Naver Developer's Center Open API](http://developer.naver.com/wiki/pages/OpenAPI) When an address is entered as a request variable, a coordinate value for the address is responded. If the address is not correct, it does not respond to the value or it responds to the wrong value. Since the service key uses the same key as the Naver Map API, the number of calls per service key is counted together.
   
-  2. 명세<br>
+  2. Classification<br>
   
-  | 메소드 | GET |
+  | Method | GET |
   |-------------|-----------------------------|
-  | 엔드포인트 | http://openapi.map.naver.com/api/geocode |
+  | Endpoint | http://openapi.map.naver.com/api/geocode |
   
-  3. 요청<br>
+  3. Request<br>
   
-  | <br>변수명 | <br>샘플데이터 | <br>설명 |
+  | <br>Variable Name | <br>Sample Data | <br>Description |
   |-------------|-----------------------------|-----------------------------|
-  | key | [서비스키] | 서비스 인증 키이다. 사용자가 직접 발급받아야 하므로 샘플 데이터를 넣지 않는다. 네이버 지도 API와 같은 키 값을 사용한다. |
-  | query | [주소] | 좌표로 변환하고자 하는 주소를 입력한다. |
+  | key | [Service Key] |  The service authentication key. The user needs to be issued directly, so the sample data is not included. Use the same key value as the Naver Map API. |
+  | query | [Address] | Enter the address you want to convert to coordinates. |
   
-  4. 응답<br>
+  4. Response<br>
   
-  | <br>변수명 | <br>설명 |
+  | <br>Variable Name | <br>Description |
   |-------------|-----------------------------|
-  | x | 검색을 요청한 주소에 대한 GPS X좌표 값이다. |
-  | y | 검색을 요청한 주소에 대한 GPS Y좌표 값이다. |
+  | x | GPS X coordinate value for address requested for search. |
+  | y | GPS Y coordinate value for address requested for search. |
 
-##### 7.2.2.3 네이버 검색
-  1. API 소개<br>
-  [네이버 개발자센터 Open API](http://developer.naver.com/wiki/pages/OpenAPI)에서 제공하는 지역 검색 API이다. 네이버 검색 API는 블로그, 뉴스, 책, 지역 등의 검색 API를 제공한다. 이 중 어떤 검색을 사용할지는 요청변수의 taget 값을 통해 결정한다. 네이버 지역검색은 검색어에 대한 주소, 좌표 등의 정보를 응답하는데 여기서 응답되는 좌표 값은 네이버 주소-좌표 변환 API에서 사용하는 경위도 좌표계(WGS84)가 아닌 카텍좌표계를 사용하므로 주의가 필요하다.
+##### 7.2.2.3 Naver Search
+  1. API Introduction<br>
+  It is a regional search API provided by [Naver Developer's Center Open API](http://developer.naver.com/wiki/pages/OpenAPI). Naver search API provides search APIs such as blogs, news, books, and regions. Which of these searches will be used is determined through the tag value of the request variable. Naver regional search responds to information such as addresses and coordinates for search terms, and the corresponding coordinate values use a Cartec coordinate system (WGS84) rather than a longitude coordinate system (WGS84) used by the Naver address-coordinate transformation API.
   
-  2. 명세<br>
+  2. Classification<br>
   
-  | 메소드 | GET |
+  | Method | GET |
   |-------------|-----------------------------|
-  | 엔드포인트 | http://openapi.naver.com/search |
+  | Endpoint | http://openapi.naver.com/search |
   
-  3. 요청<br>
+  3. Request<br>
   
-  | <br>변수명 | <br>샘플데이터 | <br>설명 |
+  | <br>Variable Name | <br>Sample Data | <br>Description |
   |-------------|-----------------------------|-----------------------------|
-  | key | [서비스키] | 서비스 인증 키이다. 사용자가 직접 발급받아야 하므로 샘플 데이터를 넣지 않는다 |
-  | query | [주소] | 검색하고자 하는 장소의 명칭을 입력한다. |
-  | target | local | 네이버 검색 API 중 지역 검색을 사용하기 위해서 입력한다. |
-  | start | 1 | 검색의 시작 위치이다. |
-  | display | 1 | 검색결과 출력 건수이다. 네이버 검색 API는 정확도가 높은 순서로 여러 건의 검색 결과를 노출하기 첫 번째 결과 값만 이용한다. |
+  | key | [Serive Key] | This is the service authentication key. Do not put in sample data because the user has to issue directly |
+  | query | [Address] | Enter the name of the place you want to search. |
+  | target | local | Enter to use regional search among Naver search APIs. |
+  | start | 1 | The starting location of the search. |
+  | display | 1 | This is the number of search results output. Naver search API uses only the first result value to expose multiple search results in a high-accuracy order. |
   
-  4. 응답<br>
+  4. Response<br>
   
-  | <br>변수명 | <br>설명 |
+  | <br>Variable Name | <br>Description |
   |-------------|-----------------------------|
-  | mapx | 검색을 요청한 주소에 대한 X좌표 값이다. 카텍좌표계 값으로 다른 API와는 다른 좌표계를 사용한다. |
-  | mapy | 검색을 요청한 주소에 대한 Y좌표 값이다. 카텍좌표계 값으로 다른 API와는 다른 좌표계를 사용한다. |
+  | mapx | The X-coordinate value for the address for which the search was requested. It uses a coordinate system different from other APIs as a Cartec coordinate system value. |
+  | mapy | The Y-coordinate value for the address for which the search was requested. It uses a coordinate system different from other APIs as a Cartec coordinate system value. |
 
 ### <div id='51'></div> 7.3. API 서비스키 획득
 ##### <div id='52'></div> 7.3.1. 공공 데이터 포털 API 서비스

@@ -868,17 +868,17 @@ Most APIs introduced on public data portals can issue service keys on public dat
   
   2. Apply fo Service Key<br>
   ![7-3-1-17]<br>
-  API둘러보기 화면에서는 사용할 수 있는 API의 목록을 확인할 수 있다. 사용할 API의 우측 [신청하기] 버튼을 눌러 서비스키 신청절차를 진행한다.
+  On the API tour screen, you can check the list of available APIs. Press the [Apply] button on the right side of the API to use to proceed with the service key application process.
 
   ![7-3-1-18]<br>
-  신청서 작성 화면에서 (1) 필수입력필드를 모두 채우고 (2) 약관에 동의한 뒤, (3) [확인] 버튼을 눌러 서비스키 신청절차를 완료한다.
+  On the application form completion screen, (1) fill in all required input fields, (2) accept the terms and conditions, and (3) press the [OK] button to complete the service key application process..
   
   ![7-3-1-19]<br>
   The service key application registration has been completed.
   
   3. Verify the service key issuance<br>
   ![7-3-1-20]<br>
-  [Incheon Culture and Arts Information Public Open API Center](http://iq.ifac.or.kr/openAPI)에 로그인 한 상태로 메인 화면에서 우측 중간 [Key Issue/ Manage] 버튼을 클릭한다.
+  On the main screen, click the [Key Issue/Manage] button in the middle right of the [Incheon Culture and Arts Information Public Open API Center](http://iq.ifac.or.kr/openAPI).
 
   ![7-3-1-21]<br>
   인증키 관리 화면으로 이동하면 (1) 서비스키, (2) 트래픽, (3) 승인 상태를 확인할 수 있고 (4) 서비스키 삭제도 가능하다.<br>

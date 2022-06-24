@@ -22,9 +22,9 @@
      * [SampleApiJavaServiceController Class](#16)
     * [API Service Interworking Sample Application](#17)
     * [API Service Interworking Sample Application Interface Items](#18)
-    * [Metering/Grading/Charging Policy](#19)
+    * [Metering/Rating/Charging Policy](#19)
      * [Metering Policy](#20)
-     * [Grading Policy](#21)
+     * [Rating Policy](#21)
      * [Charging Policy](#22)
      * [Register Policy](#23)
     * [Deployment](#24)
@@ -74,7 +74,7 @@ Create API service applications in Java language. The API service creates an app
   </tr>
   <tr>
      <td rowspan="4">Runtime</td>
-     <td>Metering/Grading/Charging Policy</td>
+     <td>Metering/Rating/Charging Policy</td>
      <td>Various policy definition information for services provided by API service providers. It is in JSON format, and when the policy is registered with CF-ABACUS, API usage is aggregated according to the policy defined.<br>
 The policy must be defined by the service provider, refer below for the the JSON schema.<br>
 https://github.com/cloudfoundry-incubator/cf-abacus/blob/master/doc/api.md
@@ -567,22 +567,22 @@ For the development of sample applications, see **Api Service Interworking Appli
 	GET|POST|PUT|DELETE <api_service_restful_api>
 
 
-#### 2.  **API 서비스 미터링 전송 항목**
+#### 2.  **List of API Service Meterings Sent**
 
-| 항목명  |유형 | 설명| 예시|
+| Classification  |Type | Description| Example|
 |---------|---|----|-----|
-|  org_id       | String  | API 서비스를 요청한 앱의 조직 ID    | 54257f98-83f0-4eca-ae04-9ea35277a538    |
-|  space_id       | String  |API 서비스를 요청한 앱의 영역 ID     |d98b5916-3c77-44b9-ac12-04456df23eae     |
-|consumer_id         |String   |API 서비스를 요청한 앱 ID         |d98b5916-3c77-44b9-ac12-045678edabae     |
-|instance_id         |String   |API 서비스를 요청한 앱의 자원 인스턴스 ID     |d98b5916-3c77-44b9-ac12-045678edabad     |
-|plan_id         |String   |앱의 요청한 API 서비스의 plan ID    |basic     |
-|credentials         |JSON   |서비스 요청에 필요한 credential 항목을 설정한다.    |credentials: {<br>key: value,<br>…<br>}     |
-| inputs        |JSON   |서비스 요청에 필요한 입력 정보를 설정한다.    | inputs: {<br>key:value,<br>...<br>}    |
+|  org_id       | String  | Organization ID of the app that requested API service    | 54257f98-83f0-4eca-ae04-9ea35277a538    |
+|  space_id       | String  |Space ID of the app that requested API service     |d98b5916-3c77-44b9-ac12-04456df23eae     |
+|consumer_id         |String   |App ID requesting for API service         |d98b5916-3c77-44b9-ac12-045678edabae     |
+|instance_id         |String   |Resource instance ID of the app requesting for API service     |d98b5916-3c77-44b9-ac12-045678edabad     |
+|plan_id         |String   |Plan ID of the requested API service for the app    |basic     |
+|credentials         |JSON   |Set the required credentials for the service request    |credentials: {<br>key: value,<br>…<br>}     |
+| inputs        |JSON   |Set input required for service request.    | inputs: {<br>key:value,<br>...<br>}    |
 
 
 
 
-#### 3.  **API 서비스 미터링 전송 항목 예제**
+#### 3.  **Example of API Service Metering Sent Items**
 
 	{
 	  organization_id: 'd6ce3670-ab9c-4453-b993-f2821f54846b',
@@ -602,39 +602,35 @@ For the development of sample applications, see **Api Service Interworking Appli
 
 
 
-## <div id='19'/>2.5. 미터링/등급/과금 정책
+## <div id='19'/>2.5. Metering/Rating/Charging Policy
 
-서비스, 그리고 서비스 제공자 마다 미터링/등급/과금 정책 다르기 때문에 본
-가이드에서는 정책의 개발 예제를 다루지는 않는다. 다만 CF-ABACUS에 적용할
-수 있는 형식에 대해 설명한다.
+This guide does not address examples of development of policies because they differ from service provider to service and from metering to rating to billing policy. However, the format applicable to CF-ABACUS is described.
 
 
-### <div id='20'/>2.5.1. 미터링 정책
+### <div id='20'/>2.5.1. Metering Policy
 
-미터링 정책이란 수집한 미터링 정보에서 미터링 대상의 지정 및 집계 방식을
-정의한 JSON 형식의 오브젝트이다. 서비스 제공자는 미터링 정책 스키마에
-맞춰 서비스에 대한 정책을 개발한다.
+Metering policy is an object in JSON format that defines the designation and aggregation method of metering targets from the collected metering information. The service provider develops a policy for the service in line with the metering policy schema.
 
 
-#### 1.  **미터링 정책 스키마**
+#### 1.  **Metering Policy Schema**
 
-| 항목명  |유형 | 필수| 예시|
+| Classification  |Type | Necessity| Example|
 |---------|---|----|-----|
-|plan_id         |String   | O   |API 미터링 Plan ID     |
-|measures         |Array   |최소 하나    |API 미터링 정보 수집 대상 정의     |
-|  name         |String   |O    |미터링 정보 수집 대상 명     |
-|  unit         |String   |O    |미터링 정보 수집 대상 단위     |
-|metrics        |Array   |최소 하나    |API 미터링 집계 방식 정의     |
-|  name         |String   |O    |미터링 정보 수집 대상 명     |
-|  unit         |String   |O    |미터링 정보 수집 대상 단위     |
-|  meter         |String   |X    |미터링 정보에 대해서 수집 단계에 적용하는 계산식 또는 변환식     |
-|  accumulate         |String   |X    |미터링 정보에 대해서 누적 단계에 적용하는 계산식 또는 변환식     |
-|  aggregate         |String   |X   |미터링 정보에 대해서 집계 단계에 적용하는 계산식 또는 변환식     |
-|  summarize         |String   |X   |미터링 정보를 보고할 때 적용하는 계산식 또는 변환식     |
-|  title         |String   |X   |API 미터링 제목     |
+|plan_id         |String   | O   |API Metering Plan ID     |
+|measures         |Array   |At least one    |Define API metering information collection targets     |
+|  name         |String   |O    |Metering Information Collection Target Name     |
+|  unit         |String   |O    |Units to which metering information is collected     |
+|metrics        |Array   |At least one    |Define API metering aggregation schemes     |
+|  name         |String   |O    |Metering Information Collection Target Name     |
+|  unit         |String   |O    |Units to which metering information is collected     |
+|  meter         |String   |X    |Calculation or conversion expressions that apply to the collection stage for metering information     |
+|  accumulate         |String   |X    |Calculation or conversion expressions that apply to the cumulative phase for metering information     |
+|  aggregate         |String   |X   |Calculation or conversion expressions that apply to the aggregation stage for metering information     |
+|  summarize         |String   |X   |Calculation or conversion expressions that is applied when reporting metering information     |
+|  title         |String   |X   |API metering title     |
 
 
-#### 2.  **미터링 정책 예제**
+#### 2.  **Metering Policy Example**
 
 	{
 	  "plan_id": "basic-object-storage",
@@ -667,24 +663,24 @@ For the development of sample applications, see **Api Service Interworking Appli
 	}
 
 
-### <div id='21'/>2.5.2. 등급 정책
+### <div id='21'/>2.5.2. Rating Policy
 
-등급 정책이란 각 서비스의 사용 가중치를 정의한 JSON 형식의 오브젝트이다.
-서비스 제공자는 등급 정책 스키마에 맞춰 서비스에 대한 정책을 개발한다.
+A rating policy is an object in JSON format that defines the usage weight of each service.
+The service provider develops a policy for the service in line with the rating policy schema.
 
-#### 1.  **등급 정책 스키마**
+#### 1.  **Rating Policy Schema**
 
-| 항목명  |유형 | 필수| 설명|
+| Classification  |Type | Necessity| Description|
 |---------|---|----|-----|
-| plan_id|   String |  O        |   API 등급 Plan ID    |
-| metrics |   Array  |  최소 하나 |  등급 정책 목록	|
-| name    |   String |  O        |   등급 정의 대상 명|
-| rate    |   String |  X        |   가중치 계산식 또는 변환식|
-| charge  |   String |  X        |   사용량에 대한 과금 계산식 또는 변환식|
-| title   |   String |  X        |   등급 정책 명|
+| plan_id|   String |  O        |   API rating Plan ID    |
+| metrics |   Array  |  at least one|  List of rating policy	|
+| name    |   String |  O        |   Grade difinition subject name|
+| rate    |   String |  X        |   Weight calculation or conversion formula|
+| charge  |   String |  X        |   Billing formula or conversion formula for usage|
+| title   |   String |  X        |   Rating Poicy Title|
 
 
-#### 2.  **등급 정책 예제**
+#### 2.  **Example of Rating Policy**
 
 	{
 	  "plan_id": "object-rating-plan",
@@ -701,26 +697,25 @@ For the development of sample applications, see **Api Service Interworking Appli
 	}
 
 
-### <div id='22'/>2.5.3. 과금 정책
+### <div id='22'/>2.5.3. Billing Policy
 
-과금 정책이란 각 서비스에 대한 사용 단가를 정의한 JSON 형식의
-오브젝트이다. 서비스 제공자는 과금 정책 스키마에 맞춰 서비스에 대한
-정책을 개발한다.
+A billing policy is an object in the form of JSON that defines the unit cost of use for each service. 
+The service provider develops a policy for the service in line with the billing policy schema.
 
-#### 1.  **과금 정책 스키마**
+#### 1.  **Billing Policy Schema**
 
-| 항목명  |유형 | 필수| 설명|
+| Classification  |Type | Necessity| Description|
 |---------|---|----|-----|
-| plan_id|   String |  O        |   API 과금 Plan ID|
-| metrics  |  Array   | 최소 하나 |  과금 정책 목록|
-| name     |  String  | O        |   과금 대상 명|
-| price    |  Array   | 최소 하나 |  과금 정책 상세|
-| country  |  String  | O        |   서비스 사용 단가에 적용할 통화|
-| price    |  Number  | O        |   서비스 사용 단가|
-| title    |  String  | X        |   과금 정책 제목|
+| plan_id|   String |  O        |   API Billing Plan ID|
+| metrics  |  Array   | at least one |  List of Billing Policy|
+| name     |  String  | O        |   Billing target name|
+| price    |  Array   | at least one |  Billing policy details|
+| country  |  String  | O        |   Currency to be applied to the unit price of the service|
+| price    |  Number  | O        |   Unit price of service use|
+| title    |  String  | X        |   Billing policy title|
 
 
-#### 2.  **과금 정책 예제**
+#### 2.  **Example of Billing Policy**
 		
 	{
 	  "plan_id": "object-pricing-basic",
@@ -764,39 +759,37 @@ For the development of sample applications, see **Api Service Interworking Appli
 
 
 
-### <div id='23'/>2.5.4. 정책 등록
-정책은 2가지 방식 중 하나의 방법으로 CF-ABACUS에 등록할 수 있다.
+### <div id='23'/>2.5.4. Register Policy
+Policies can be registered to CF-ABACUS in one of two ways:
 
-#### 1.  **js 파일을 등록하는 방식**
+#### 1.  **By registering a js File**
 
-작성한 정책을 다음의 디렉토리에 저장한 후, CF에 CF-ABACUS를 배포 또는 재
-배포 한다.
+After storing the prepared policy in the following directory, CF-ABACUS is deployed or redeploy into CF.
 
--   미터링 정책의 경우
+-   In case of Metering Policy
 		
 		cf-abacus/lib/plugins/provisioning/src/plans/metering
 
--   등급 정책의 경우
+-   In case of Rating Policy
 
 		cf-abacus/lib/plugins/provisioning/src/plans/pricing
 
--   과금 정책의 경우
+-   In case of Billing Policy
 
 		cf-abacus/lib/plugins/provisioning/src/plans/rating
 
 
-#### 2.  **DB에 등록하는 방식**
+#### 2.  **By Registering in the DB**
 
-작성한 정책을 curl 등을 이용해 DB에 저장하는 방식으로 CF-ABACUS를
-재배포할 필요는 없다. 정책 등록 시, 정책 ID는 고유해야 한다.
+There is no need to redeploy CF-ABACUS by storing the prepared policy in DB using curl or the like. When registering a policy, the policy ID must be unique.
 
 
--   미터링 정책의 경우
+-   In case of Metering Policy
 
 		POST /v1/metering/plans/:metering_plan_id
 	>
 	
-		## 예제
+		## Example
 		$ curl -k -X POST 'http://abacus-provisioning-plugin.bosh-lite.com/v1/metering/plans/sample-linux-container' \
 			 -H "Content-Type: application/json" \
 			 -d '{"plan_id":"sample-linux-container","measures":[{"name":"current_instance_memory","unit":"GIGABYTE"},{"name":"current_running_instances","unit":"NUMBER"},{"name":"previous_instance_memory","unit":"GIGABYTE"},{"name":"previous_running_instances","unit":"NUMBER"}],"metrics":[{"name":"memory","unit":"GIGABYTE","type":"time-based","meter":"((m)=>({previous_consuming:newBigNumber(m.previous_instance_memory||0).div(1073741824).mul(m.previous_running_instances||0).mul(-1).toNumber(),consuming:newBigNumber(m.current_instance_memory||0).div(1073741824).mul(m.current_running_instances||0).toNumber()})).toString()","accumulate":"((a,qty,start,end,from,to,twCell)=>{if(end<from||end>=to)returnnull;constpast=from-start;constfuture=to-start;consttd=past+future;return{consuming:a&&a.since>start?a.consuming:qty.consuming,consumed:newBigNumber(qty.consuming).mul(td).add(newBigNumber(qty.previous_consuming).mul(td)).add(a?a.consumed:0).toNumber(),since:a&&a.since>start?a.since:start};}).toString()","aggregate":"((a,prev,curr,aggTwCell,accTwCell)=>{if(!curr)returna;constconsuming=newBigNumber(curr.consuming).sub(prev?prev.consuming:0);constconsumed=newBigNumber(curr.consumed).sub(prev?prev.consumed:0);return{consuming:consuming.add(a?a.consuming:0).toNumber(),consumed:consumed.add(a?a.consumed:0).toNumber()};}).toString()","summarize":"((t,qty,from,to)=>{if(!qty)return0;constrt=Math.min(t,to?to:t);constpast=from-rt;constfuture=to-rt;consttd=past+future;constconsumed=newBigNumber(qty.consuming).mul(-1).mul(td).toNumber();returnnewBigNumber(qty.consumed).add(consumed).div(2).div(3600000).toNumber();}).toString()"}]}' \
@@ -804,12 +797,12 @@ For the development of sample applications, see **Api Service Interworking Appli
 
 
 
--   등급 정책의 경우
+-   In case of Rating Policy
 
 	 	POST /v1/rating/plans/:rating_plan_id
 	>
 
-		## 예제
+		## Example
 		$ curl -k -X POST 'http://abacus-provisioning-plugin.bosh-lite.com/v1/rating/plans/linux-rating-sample' \
 			 -H "Content-Type: application/json" \
 		     -d '{"plan_id":"linux-rating-sample","metrics":[{"name":"memory","rate":"((price,qty)=>({price:price,consuming:qty.consuming,consumed:qty.consumed})).toString(),charge:((t,qty,from,to)=>{if(!qty)return0;constrt=Math.min(t,to?to:t);constpast=from-rt;constfuture=to-rt;consttd=past+future;constconsumed=newBigNumber(qty.consuming).mul(-1).mul(td).toNumber();constgbhour=newBigNumber(qty.consumed).add(consumed).div(2).div(3600000).toNumber();returnnewBigNumber(gbhour).mul(qty.price).toNumber();}).toString()"}]}' \
@@ -817,12 +810,12 @@ For the development of sample applications, see **Api Service Interworking Appli
 
 
 
--   과금 정책의 경우
+-   In case of Billing Policy
 
 		POST /v1/pricing/plans/:pricing_plan_id
 	>
 
-		## 예제
+		## Example
 		$ curl -k -X POST 'http://abacus-provisioning-plugin.bosh-lite.com/v1/pricing/plans/linux-pricing-sample' \
 			 -H "Content-Type: application/json" \
 			 -d '{"plan_id":"linux-pricing-sample","metrics":[{"name":"memory","prices":[{"country":"USA","price":0.00014}]}]}' \
@@ -830,51 +823,47 @@ For the development of sample applications, see **Api Service Interworking Appli
 
 
 
-## <div id='24'/>2.6. 배포
+## <div id='24'/>2.6. Deployment
 
-파스-타 플랫폼에 애플리케이션을 배포하면 배포한 애플리케이션과 파스-타
-플랫폼이 제공하는 서비스를 연결하여 사용할 수 있다. 파스-타 플랫폼상에서
-실행을 해야만 파스-타 플랫폼의 애플리케이션 환경변수에 접근하여 서비스에
-접속할 수 있다.
+When deploying an application on PaaS-TA Platform, the application can be connected and be used with the services provided by the PaaS-TA Platform.
+Only when executed on the PaaS-TA Platform can access service in the application environment variable of the PaaS-TA Platform.
 
 
-### <div id='25'/>2.6.1 파스-타 플랫폼 로그인
+### <div id='25'/>2.6.1 PaaS-TA Platform Login
 
-아래의 과정을 수행하기 위해서 파스-타 플랫폼에 로그인
+Login to PaaS-TA Platform to follow the process below
 	
-`$ cf api --skip-ssl-validation`*`https://api.`**`<파스-타 도메인> `**`#파스-타 플랫폼TARGET지정`*
+`$ cf api --skip-ssl-validation`*`https://api.`**`<PAAS-TA DOMAIN> `**`#Set PAAS-TA Platform TARGET`*
 
-`$ cf login -u <user name> -o <org name> -s <space name>#로그인 요청`
+`$ cf login -u <user name> -o <org name> -s <space name>#request login`
 
 
-### <div id='26'/>2.6.2. API 서비스 브로커 생성
+### <div id='26'/>2.6.2. Create API Service Broker
 
-애플리케이션에서 사용할 서비스를 파스-타 플랫폼을 통하여 생성한다.
-별도의 서비스 설치과정 없이 생성할 수 있으며, 애플리케이션과
-바인딩과정을 통해 접속정보를 얻을 수 있다.
+Create the service to be used in the application is through the PaaS-TA platform.
+Can generate without a separate service installation process, and access information can be obtained through an application and binding process.
 
--   서비스 생성 (cf marketplace 명령을 통해 서비스 목록과 각 서비스의
-    플랜을 조회할 수 있다.)
+-   Create Service (cf marketplace command allows you to view the list of services and the plan for each service.)
 
-		##서비스 브로커 CF 배포
-		$ cd <샘플 서비스 브로커 경로>/sample_api_java_broker
+		##Service Broker CF Deployment
+		$ cd <Sample Service Broker Path>/sample_api_java_broker
 		$ cf push
 
 
-  		##서비스 브로커 생성
-  		$ cf create-service-broker <서비스 브로커 명> <인증ID> <인증Password> <서비스 브로커 주소>
+  		##Create Service Broker
+  		$ cf create-service-broker <Service Broker Name> <Authentication ID> <Authentication Password> <Service Broker Address>
 
-  		예)
+  		Example)
   		$ cf create-service-broker sample-api-broker admin cloudfoundry http://sample-api-java-broker.bosh-lite.com
 
-  		##서비스 브로커 확인
+  		##Check Service Broker
   		$ cf service-brokers
   		Getting service brokers as admin...
 
  		name url
   		sample-api-broker http://sample-api-java-broker.bosh-lite.com
 
-  		##서비스 카탈로그 확인
+  		##Check Service Catalog
   		$ cf service-access
   		Getting service access as admin...
   		broker: sample-api-broker
@@ -882,27 +871,25 @@ For the development of sample applications, see **Api Service Interworking Appli
   		standard_obejct_storage_light_api_calls standard none
   		standard_obejct_storage_heavy_api_calls basic none
 
-  		##등록한 서비스 접근 허용
-  		$ cf enable-service-access <서비스명> -p <플랜 명>
+  		##Allow Access to Registered Services
+  		$ cf enable-service-access <Service Name> -p <Plan Name>
 
-		  예)
+		  Example)
   		$ cf enable-service-access standard_obejct_storage_light_api_calls -p standard
 
 
-### <div id='27'/>2.6.3. API 서비스 애플리케이션 배포 및 서비스 등록
+### <div id='27'/>2.6.3. API Service Application Deployment and Service Registration
 
-API 서비스 애플리케이션을 파스-타 플랫폼에 배포한다. 서비스 등록한 API는
-다른 애플리케이션과 바인다 하여 API 서비스를 할 수 있다.
+Deploys API service applications on the PaaS-TA platform. The API registered as a service can provide API services by combining it with other applications.
+1.  **Application Deployment**
 
-1.  **애플리케이션 배포**
+	-	build with gradle build -x test command.
 
-	-	gradle build -x test 명령으로 빌드 한다.
+	-	Deploy with cf push command. Uses the settings in manifest.yml unless you add a separate value
 
-	-	cf push 명령으로 배포한다. 별도의 값을 넣지않으면 manifest.yml의 설정을 사용한다
-
-			## API 서비스 배포
-			$ cd <샘플api서비스 경로>/sample_api_java_service
-  			## gradle 빌드
+			## API Service Deployment
+			$ cd <Sample API Service Path>/sample_api_java_service
+  			## gradle build
   			$ gradle build -x test
   			:compileJava
   			:processResources
@@ -919,12 +906,12 @@ API 서비스 애플리케이션을 파스-타 플랫폼에 배포한다. 서비
 			Total time: 13.426 secs
 	  		$ cf push
 	
-			##서비스 생성
-	  		$ cf create-service <서비스명> <플랜 명> <서비스 인스턴스 명>
+			##Create Service
+	  		$ cf create-service <Service Name> <Plan Name> <Service Instance Name>
 	  		예)
 	  		$ cf create-service standard_obejct_storage_light_api_calls standard sampleNodejslightCallApi
 	
-	  		##서비스 확인
+	  		##Service Check
 	  		$ cf services
 	  		Getting services in org real / space ops as admin...
 	  		OK
@@ -933,24 +920,23 @@ API 서비스 애플리케이션을 파스-타 플랫폼에 배포한다. 서비
 	  		sampleNodejslightCallApi standard_obejct_storage_light_api_calls standard create succeeded
 
 
-### <div id='28'/>2.6.4. API 서비스 연동 샘플 애플리케이션 배포 및 서비스 연결
+### <div id='28'/>2.6.4. API Service Interworking Sample Application Deployment and Service Connection
 
-애플리케이션과 서비스를 연결하는 과정을 '바인드(bind)라고 하며, 이
-과정을 통해 서비스에 접근할 수 있는 접속정보를 생성한다.
+The process of connecting an application to a service is called a 'bind', and through this process, access information to access the service is generated.
 
--   애플리케이션과 서비스 연결
+-   Binding Application and Service
 
-		## API 서비스 연동 샘플 애플리케이션 배포
-		$ cd <샘플 애플리케이션 경로>/sample_api_node_caller
+		## API Service Interworking Sample Application Deployment
+		$ cd <Sample Application Path>/sample_api_node_caller
 		$ npm install && npm run babel && npm run cfpack && ./cfpush.sh
 		
-		## 서비스 바인드
+		## Service Bind
 		$ cf bind-service <APP_NAME> <SERVICE_INSTANCE> -c <PARAMETERS_AS_JSON>
 		
-		예) 
+		Example) 
 		$ cf bind-service sample-api-node-caller sampleNodejslightCallApi -c '{"serviceKey": "cloudfoundry"}'
 		
-		## 서비스 연결 확인
+		## Check Service Connection
 		$ cf services
 		Getting services in org real / space ops as admin...
 		OK
@@ -958,13 +944,13 @@ API 서비스 애플리케이션을 파스-타 플랫폼에 배포한다. 서비
 		name                       service                                   plan       bound apps               last operation   
 		sampleNodejslightCallApi   standard_obejct_storage_light_api_calls   standard   sample-api-node-caller   create succeeded
 		
-		## 애플리케이션 실행
+		## Execute Application
 		$ cf start <APP_NAME>
 		
-		예)
+		Example)
 		$ cf start sample-api-node-caller
 		
-		## 형상 확인
+		## Check Form
 		$ cf a
 		Getting apps in org real / space ops as admin...
 		OK
@@ -976,29 +962,28 @@ API 서비스 애플리케이션을 파스-타 플랫폼에 배포한다. 서비
 
 
 
-## <div id='29'/>2.7. API 및 CF-Abacus 연동 테스트
+## <div id='29'/>2.7. API and CF-Abacus Interworking Tests
 
-API 연동 샘플 애플리케이션의 url을 통해 웹 브라우저에서 접속하면 API
-연동 및 API 사용량에 대한 CF-Abacus 연동 테스트를 진행 할 수 있다.
+Access from a web browser through the url of the API-linked sample application. CF-Abacus-linked tests on API-linked and API usage can be conducted.
 
-1.  **CF-Abacus 연동 확인**
+1.  **Check CF-Abacus Connection**
 
 
-		## 조직 guid 확인
-		$ cf org <샘플 애플리케이션을 배포한 조직> --guid
+		## Check Organization guid 
+		$ cf org <The organization that deployed sample application> --guid
 		
-		예)
+		Example)
 		$ cf org real --guid
 		877d01b2-d177-4209-95b0-00de794d9bba
 		
-		## 샘플 애플리케이션 guid 확인
-		$ cf env <샘플 애플리케이션 명>
-		예)
+		## Check Sample Application guid
+		$ cf env <Sample Application Name>
+		Example)
 		$ cf env sample-api-node-caller
 		Getting env variables for app sample-api-node-caller in org real / space ops as admin...
 		OK
 		
-		<<중략>>
+		<<Skip>>
 		{
 		 "VCAP_APPLICATION": {
 		  "application_id": "58872d8a-edfc-44df-97f0-df67cf9033a7",
@@ -1023,22 +1008,22 @@ API 연동 샘플 애플리케이션의 url을 통해 웹 브라우저에서 접
 		 }
 		}
 		
-		<<후략>> 
+		<<Skipped>> 
 		
-		## API 사용량 확인
-		$ curl 'http://abacus-usage-reporting.<파스-타 도메인>/v1/metering/organizations/<샘플 애플리케이션을 배포한 조직>/aggregated/usage'
+		## Check API usage
+		$ curl 'http://abacus-usage-reporting.<PaaS-TA Domain>/v1/metering/organizations/<organization that deployed sample application>/aggregated/usage'
 		
 		예)
 		$ curl 'http://abacus-usage-reporting.bosh-lite.com/v1/metering/organizations/877d01b2-d177-4209-95b0-00de794d9bba/aggregated/usage'
 
-## <div id='30'/>2.8. 샘플코드
+## <div id='30'/>2.8. Sample Code
 
-샘플코드는 아래의 사이트에 다운로드 할 수 있다.
+Sample Code downloaded from the site below.
 
-[다운로드](https://nextcloud.paas-ta.org/index.php/s/mEbGNcJjrEj7GWx/download)
+[Download](https://nextcloud.paas-ta.org/index.php/s/mEbGNcJjrEj7GWx/download)
 
 [Java_Api_Service_Metering_Image01]:./images/Java_Api_Service_Metering/meteringAPI_development_range.png
 [Java_Api_Service_Metering_Image02]:./images/Java_Api_Service_Metering/sampleAPI_Service.png
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Java API Service Metering 개발
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Java API Service Metering Development

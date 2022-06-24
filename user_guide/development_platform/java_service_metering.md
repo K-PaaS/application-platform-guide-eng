@@ -1,76 +1,70 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Java Service Metering 개발
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Java Service Metering Development
 
 ## Table of Contents
 
-1. [개요](#1)
-	* [문서 개요](#2)
-	 * [목적](#3)
-	 * [범위](#4)
-	 * [참고자료](#5)
+1. [Outline](#1)
+	* [Document Outline](#2)
+	 * [Purpose](#3)
+	 * [Range](#4)
+	 * [References](#5)
 
-2. [JAVA API 서비스 미터링 개발가이드](#6)
-    * [개요](#7)
-    * [개발 환경 구성](#8)
-    * [서비스 브로커 라이브러리](#9)
-     * [서비스 브로커 라이브러리란 무엇인가?](#10)
-     * [서비스 브로커 라이브러리를 다운로드 한 후, 프로젝트 import 한다](#11)
-     * [서비스 브로커 라이브러리에서 미터링을 위해 추가 되거나 수정 되는 파일들](#12)
+2. [JAVA API Service Metering Development Guide](#6)
+    * [Outline](#7)
+    * [Configuring the Development Environment](#8)
+    * [Service Broker Library](#9)
+     * [What is Service Broker Library?](#10)
+     * [Download the service broker library and import the project](#11)
+     * [Files added or modified for metering in the service broker library](#12)
      * [ServiceInstanceBindingController](#13)
      * [ServiceInstanceBinding](#14)
-     * [SampleMeteringReportService 추상화 클래스](#15)
-     * [SampleMeteringOAuthService 추상화 클래스](#16)
-    * [서비스 브로커 라이브러리](#17)
-     * [mongo-db 서비스 브로커 API](#18)
-     * [mongo-db 서비스 브로커 API 다운로드](#19)
-     * [mongo-db 서비스 브로커 API에 추가 및 수정 되는 파일](#20)
-     * [gradle build를 위한 dependency 추가](#21)
-     * [application-mvc.properties 설정](#22)
-     * [datasource.properties 설정](#23)
-     * [MongoServiceInstanceBindingService 구현체](#24)
-     * [SampleMeteringOAuthService 구현](#25)
-     * [SampleMeteringReportService 구현](#26)
-    * [미터링/등급/과금 정책](#27)
-     * [미터링 정책](#28)
-     * [등급 정책](#39)
-     * [과금 정책](#30)
-     * [정책 등록](#31)
-    * [배포](#32)
-     * [파스-타 플랫폼 로그인](#33)
-     * [mongo-db 서비스 브로커 생성](#34)
-     * [API 서비스 연동 샘플 애플리케이션 배포 및 서비스 연결](#35)
-    * [서비스 바인딩 CF-Abacus 연동 테스트](#36)
-    * [단위 테스트](#37)
-    * [샘플 코드](#38)
+     * [SampleMeteringReportService  Abstract Class](#15)
+     * [SampleMeteringOAuthService  Abstract Class](#16)
+    * [Service Broker Library](#17)
+     * [mongo-db Service Broker API](#18)
+     * [mongo-db Service Broker API Download](#19)
+     * [Files that are added and modified in the mongo-db Service Broker API](#20)
+     * [Add dependency for gradle build](#21)
+     * [application-mvc.properties Settings](#22)
+     * [datasource.properties Settings](#23)
+     * [MongoServiceInstanceBindingService Implementation ](#24)
+     * [SampleMeteringOAuthService Implementation ](#25)
+     * [SampleMeteringReportService Implementation ](#26)
+    * [Metering/Rating/Billing Policy](#27)
+     * [Metering Policy](#28)
+     * [Rating Policy](#39)
+     * [Billing Policy](#30)
+     * [Register Policy](#31)
+    * [Deployment](#32)
+     * [Login to PaaS-TA Platforn](#33)
+     * [Create mongo-db Service Broker](#34)
+     * [API Service Interworking Sample Application Deployment and Service Connection](#35)
+    * [Service Binding CF-Abacus Interworking Test](#36)
+    * [Unit Test](#37)
+    * [Sample Code](#38)
 
 
-# <div id='1'/>1.  개요
-## <div id='2'/> 1.1 문서 개요
-### <div id='3'/>1.1.1.  목적
+# <div id='1'/>1.  Outline
+## <div id='2'/> 1.1 Document Outline
+### <div id='3'/>1.1.1.  Purpose
 
 
-본 문서(Java 서비스브로커 미터링 애플리케이션 개발 가이드)는 파스-타
-플랫폼 프로젝트의 서비스 브로커에 미터링 서비스를 추가하여, CF(Cloud
-Foundry) 서비스를 미터링 하는 방법에 대해 기술 한다.
+This document (Java Service Broker Metering Application Development Guide) describes how to meter CF (Cloud Foundry) services by adding metering services to service brokers in PaaS-TA platform projects.
 
 
-### <div id='4'/>1.1.2.  범위
+### <div id='4'/>1.1.2.  Range
 
-본 문서의 범위는 파스-타 플랫폼 프로젝트의 Cloud Foundry JAVA 서비스
-브로커 애플리케이션 미터링 개발과 CF-Abacus 연동에 대한 내용으로
-한정되어 있다. 서비스브로커 API 개발에 대해서는 별도 제공 하는
-서비스브로커 API 개발 가이드를 참고 한다.
+The range of this document is limited to the development of Cloud Foundry JAVA service broker application metering and CF-Abacus linkage in the Pas-Ta platform project.
+For service broker API development, refer to the service broker API development guide provided separately.
 
-본 문서는 Ubuntu 14.04 ver의 개발 환경을 전제로 기술 한다.
+This document describes the development environment of Ubuntu 14.04 ver.
 
-본 문서는 mongo-db 서비스 팩이 설치 되어 있는 개발 환경을 전제로 기술
-한다.
+본 문서는 mongo-db 서비스 팩이 설치 되어 있는 개발 환경을 전제로 기술한다.
 
 mongo-db 서비스 팩 설치는 Mongo-DB 설치 문서를 참고 하여 설치 한다.
 
 
 본 문서는 cf-abacus 가 설치 되어 있는 개발 환경을 전제로 기술 한다.
-(cf-abacus 설치는 별도 제공하는 Abacus 설치 가이드를 참고하여
-CF-Abacus를 설치한다.)
+(cf-abacus 설치는 별도 제공하는 Abacus 설치 가이드를 참고하여 CF-Abacus를 설치한다.)
 
 ## <div id='5'/>1.3.  참고 자료
 

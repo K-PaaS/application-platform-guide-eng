@@ -143,7 +143,7 @@ Create a project directory and initialize it into a gradle project
 	: wrapper
 	: init
 
-	BUILD SUCCESSFU
+	BUILD SUCCESSFUL
 
 	Total time: 2.435 secs
 
@@ -161,7 +161,7 @@ Describe dependencies and properties geometry
 |---------------|-----------------------------|
 |build.gradle   |Describe the dependency information your application needs    |
 |.gitignore     |When configuration management is performed through Git, a file or directory that does not require configuration management is set.               |
-|manifest.yml   |Configuration information for the application to be applied when deploying an application to a parser platform <br>Can define the name, deployment path, and number of instances of the application.        |
+|manifest.yml   |Configuration information for the application to be applied when deploying an application to a parser platform <br>Can define the name, deployment path, and several instances of the application.        |
 |gradlew        |Gradlew build executable for Linux environment. <br> Automatically generated when initializing gradle.     |
 |gradlew.bat    |Gradle build executable for use in Windows environment. <br> Automatically generated when initializing gradle.      |
 |settings.gradle    |Configuration file to apply when gradlew runs  <br> Automatically generated when initializing gradle.    |
@@ -187,7 +187,7 @@ Java File Shape Description
 	Describe the dependencies used by the sample Api service application.
 
   
-		Skip..
+		Skip...
 
 		dependencies {
 
@@ -204,7 +204,7 @@ Java File Shape Description
 		    compile("commons-codec:commons-codec:1.5") // When Creating https connection
 		}	
 
-		Skipped..
+		Skipped...
 
   
 
@@ -551,13 +551,13 @@ REST Controller for handling service usage requests. In this sample application,
 		
 		return new ResponseEntity<>(successStr, HttpStatus.OK);
 	} 
-	Skip..
+	Skip...
 
 
 
 ## <div id='17'/>2.4 API Service Interworking Sample Application
 
-The current guide does not describe the development of an application calling an API service.. 
+The current guide does not describe the development of an application calling an API service. 
 For the development of sample applications, see **Api Service Interworking Application Development** in the **Node.js API Metering Development Guide**.
 
 ### <div id='18'/>2.4.1 API Service Interworking Sample Application Interface Items
@@ -604,12 +604,12 @@ For the development of sample applications, see **Api Service Interworking Appli
 
 ## <div id='19'/>2.5. Metering/Rating/Charging Policy
 
-This guide does not address examples of development of policies because they differ from service provider to service and from metering to rating to billing policy. However, the format applicable to CF-ABACUS is described.
+This guide does not address examples of the development of policies because they differ from service provider to service and from metering to rating to billing policy. However, the format applicable to CF-ABACUS is described.
 
 
 ### <div id='20'/>2.5.1. Metering Policy
 
-Metering policy is an object in JSON format that defines the designation and aggregation method of metering targets from the collected metering information. The service provider develops a policy for the service in line with the metering policy schema.
+The metering policy is an object in JSON format that defines the designation and aggregation method of metering targets from the collected metering information. The service provider develops a policy for the service in line with the metering policy schema.
 
 
 #### 1.  **Metering Policy Schema**
@@ -626,7 +626,7 @@ Metering policy is an object in JSON format that defines the designation and agg
 |  meter         |String   |X    |Calculation or conversion expressions that apply to the collection stage for metering information     |
 |  accumulate         |String   |X    |Calculation or conversion expressions that apply to the cumulative phase for metering information     |
 |  aggregate         |String   |X   |Calculation or conversion expressions that apply to the aggregation stage for metering information     |
-|  summarize         |String   |X   |Calculation or conversion expressions that is applied when reporting metering information     |
+|  summarize         |String   |X   |Calculation or conversion expressions that are applied when reporting metering information     |
 |  title         |String   |X   |API metering title     |
 
 
@@ -674,10 +674,10 @@ The service provider develops a policy for the service in line with the rating p
 |---------|---|----|-----|
 | plan_id|   String |  O        |   API rating Plan ID    |
 | metrics |   Array  |  at least one|  List of rating policy	|
-| name    |   String |  O        |   Grade difinition subject name|
+| name    |   String |  O        |   Grade definition subject name|
 | rate    |   String |  X        |   Weight calculation or conversion formula|
 | charge  |   String |  X        |   Billing formula or conversion formula for usage|
-| title   |   String |  X        |   Rating Poicy Title|
+| title   |   String |  X        |   Rating Policy Title|
 
 
 #### 2.  **Example of Rating Policy**
@@ -764,17 +764,17 @@ Policies can be registered to CF-ABACUS in one of two ways:
 
 #### 1.  **By registering a js File**
 
-After storing the prepared policy in the following directory, CF-ABACUS is deployed or redeploy into CF.
+After storing the prepared policy in the following directory, CF-ABACUS is deployed or redeployed into CF.
 
--   In case of Metering Policy
+-   In the case of Metering Policy
 		
 		cf-abacus/lib/plugins/provisioning/src/plans/metering
 
--   In case of Rating Policy
+-   In the case of Rating Policy
 
 		cf-abacus/lib/plugins/provisioning/src/plans/pricing
 
--   In case of Billing Policy
+-   In the case of Billing Policy
 
 		cf-abacus/lib/plugins/provisioning/src/plans/rating
 
@@ -784,7 +784,7 @@ After storing the prepared policy in the following directory, CF-ABACUS is deplo
 There is no need to redeploy CF-ABACUS by storing the prepared policy in DB using curl or the like. When registering a policy, the policy ID must be unique.
 
 
--   In case of Metering Policy
+-   In the case of Metering Policy
 
 		POST /v1/metering/plans/:metering_plan_id
 	>
@@ -825,13 +825,13 @@ There is no need to redeploy CF-ABACUS by storing the prepared policy in DB usin
 
 ## <div id='24'/>2.6. Deployment
 
-When deploying an application on PaaS-TA Platform, the application can be connected and be used with the services provided by the PaaS-TA Platform.
+When deploying an application on the PaaS-TA Platform, the application can be connected and be used with the services provided by the PaaS-TA Platform.
 Only when executed on the PaaS-TA Platform can access service in the application environment variable of the PaaS-TA Platform.
 
 
 ### <div id='25'/>2.6.1 PaaS-TA Platform Login
 
-Login to PaaS-TA Platform to follow the process below
+Login to the PaaS-TA Platform to follow the process below
 	
 `$ cf api --skip-ssl-validation`*`https://api.`**`<PAAS-TA DOMAIN> `**`#Set PAAS-TA Platform TARGET`*
 
@@ -840,7 +840,7 @@ Login to PaaS-TA Platform to follow the process below
 
 ### <div id='26'/>2.6.2. Create API Service Broker
 
-Create the service to be used in the application is through the PaaS-TA platform.
+Create the service to be used in the application through the PaaS-TA platform.
 Can generate without a separate service installation process, and access information can be obtained through an application and binding process.
 
 -   Create Service (cf marketplace command allows you to view the list of services and the plan for each service.)
@@ -885,7 +885,7 @@ Deploys API service applications on the PaaS-TA platform. The API registered as 
 
 	-	build with gradle build -x test command.
 
-	-	Deploy with cf push command. Uses the settings in manifest.yml unless you add a separate value
+	-	Deploy with the cf push command. Uses the settings in manifest.yml unless you add a separate value
 
 			## API Service Deployment
 			$ cd <Sample API Service Path>/sample_api_java_service

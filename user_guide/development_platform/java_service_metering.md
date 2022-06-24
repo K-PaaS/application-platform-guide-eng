@@ -58,15 +58,15 @@ For service broker API development, refer to the service broker API development 
 
 This document describes the development environment of Ubuntu 14.04 ver.
 
-본 문서는 mongo-db 서비스 팩이 설치 되어 있는 개발 환경을 전제로 기술한다.
+This document describes the development environment in which the Mongo-db service pack is installed.
 
-mongo-db 서비스 팩 설치는 Mongo-DB 설치 문서를 참고 하여 설치 한다.
+Mongo-db service pack installation shall be performed by referring to Mongo-DB installation document.
 
 
-본 문서는 cf-abacus 가 설치 되어 있는 개발 환경을 전제로 기술 한다.
-(cf-abacus 설치는 별도 제공하는 Abacus 설치 가이드를 참고하여 CF-Abacus를 설치한다.)
+Mongo-db service pack installation shall be performed by referring to Mongo-DB installation document.
+(For cf-abacus installation, refer to the Abacus installation guide provided separately.)
 
-## <div id='5'/>1.3.  참고 자료
+## <div id='5'/>1.3.  References
 
 -   **[https://docs.cloudfoundry.org/devguide/](https://docs.cloudfoundry.org/devguide/)**
 -   **[http://cli.cloudfoundry.org/ko-KR/cf/](http://cli.cloudfoundry.org/ko-KR/cf/)**
@@ -74,34 +74,23 @@ mongo-db 서비스 팩 설치는 Mongo-DB 설치 문서를 참고 하여 설치 
 -   **[https://github.com/cloudfoundry-incubator/cf-abacus](https://github.com/cloudfoundry-incubator/cf-abacus)**
 
 
-# <div id='6'/>2.  Java서비스 미터링 개발가이드
+# <div id='6'/>2.  Java Service Metering Development Guide
 
 
-## <div id='7'/>2.1.  개요
+## <div id='7'/>2.1.  Outline
 
 
-CF Services 는 Service Broker API 라고 불리우는 cloud controller
-클라이언트 API를 구현하여 개방형 클라우드 플랫폼에서 사용된다. Services
-API는 독립적인 cloud controller API의 버전이다. 이는 플랫폼에서 외부
-application을 이용 가능하게 한다. (database, message queue, rest
-endpoint, etc.)
+CF Services is used in open cloud platforms by implementing a cloud controller client API called the Service Broker API.
+The Services API is a version of the independent cloud controller API.
+This makes external applications available on the platform. (database, message queue, rest endpoint, etc.)
 
-개방형 클라우드 플랫폼 Service API는 Cloud Controller 와 Service Broker
-사이의 규약 (catalog, provision, de provision, update provision plan,
-bind, unbind)이고 Service Broker 는 RESTful API 로 구현하고 Cloud
-Controller 에 등록한다.
+The open cloud platform service API is a protocol (catalog, provision, de provision, update provision plan, bind, unbound) between Cloud Controller and Service Broker, which is implemented as a RESTful API and registered with Cloud Controller.
 
-서비스에 미터링 구현하고자 할 때, 이 규약들 중 서비스 정책 및 취지에
-맞는 프로세스를 선택하여, 그 프로세스에 미터링을 연동할 수 있다.
+When  implementing metering for a service, select a process that fits the service policy and purpose of these conventions and link metering to that process.
 
-본 개발가이드에서는 mongo-db 서비스를 예시로, bind 와 unbind 시 미터링을
-하는 방법에 대해 가이드 한다.
+This development guide guides how to measure bind and unbind time using the mongo-db service as an example.
 
-서비스를 사용하고자 하는 애플리케이션과 API 서비스를 바인딩 할 때, CF
-CLI 바인딩 요청 request에 적용 된 애플리케이션 환경정보(org guid, space
-guid, app guid, metering plan id) 를 이용해 바인딩 정보를 획득 하여,
-서비스 요청을 처리함과 동시에 서비스의 사용 내역을 CF-ABACUS에 전송하는
-미터링 서비스 기능을 mongo-db 서비스 브로커에 추가하여 개발 한다.
+When binding an API service with an application intended to use the service, the binding information is obtained using the application environment information (orgguid, spaceguid, appguid, metering planid) applied to CF CLI binding request, and a metering service function is added to the mongo-db service.
 
 
 Service Broker API Architecture
@@ -112,12 +101,12 @@ Service Broker API Architecture
 
 <table>
   <tr>
-    <th colspan ="2">기능</th>
-     <th>설명</th>
+    <th colspan ="2">function</th>
+     <th>description</th>
   </tr>
   <tr>
      <td rowspan="4">Runtime</td>
-     <td>미터링/등급/과금 정책</td>
+     <td>metering/rating/billing policy</td>
      <td>서비스 제공자가 제공하는 서비스에 대한 각종 정책 정의 정보. JSON 형식으로 되었으며, 해당 정책을 CF-ABACUS에 등록하면 정책에 정의한 내용에 따라 서비스 사용량을 집계 한다.
 정책은 서비스 제공자가 정의해야 하며, JSON 스키마는 다음을 참조한다. <br>
 <a href = "https://github.com/cloudfoundry-incubator/cf-abacus/blob/master/doc/api.md" >https://github.com/cloudfoundry-incubator/cf-abacus/blob/master/doc/api.md

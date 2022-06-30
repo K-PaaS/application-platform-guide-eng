@@ -154,16 +154,16 @@ Following environment is premised on the development environment for service met
 -   gradle 2.14
 -   java version "1.8.0_101"
 -   springBootVersion: 1.3.0. BUILD-SNAPSHOT
--   mongo-db service broker 2.5 (미터링 서비스를 추가 하기 위한 대상 서비스 브로커 프로젝트)
--   springBootCfServiceBrokerVersion "2.5.0" (서비스 브로커 라이브러리)
--   Spring Tool Suite 혹은 Eclipse
+-   mongo-db service broker 2.5 (Target Service Broker Project to Add Metering Services)
+-   springBootCfServiceBrokerVersion "2.5.0" (Service Broker Library)
+-   Spring Tool Suite or Eclipse
 
 
-## <div id='9'/>2.3.  서비스 브로커 라이브러리
+## <div id='9'/>2.3.  Service Broker Library
 
 
 
-### <div id='10'/>2.3.1.  서비스 브로커 라이브러리는 무엇인가?
+### <div id='10'/>2.3.1.  What is Service Broker Library?
 
 
 CF (개방형 플랫폼) 에서는 플랫폼 상에서 서비스 할 수 있는 다양한

@@ -107,55 +107,54 @@ Service Broker API Architecture
   <tr>
      <td rowspan="4">Runtime</td>
      <td>metering/rating/billing policy</td>
-     <td>서비스 제공자가 제공하는 서비스에 대한 각종 정책 정의 정보. JSON 형식으로 되었으며, 해당 정책을 CF-ABACUS에 등록하면 정책에 정의한 내용에 따라 서비스 사용량을 집계 한다.
-정책은 서비스 제공자가 정의해야 하며, JSON 스키마는 다음을 참조한다. <br>
+     <td>Various policy definition information for services provided by the service provider. It is in JSON format, and when the policy is registered with CF-ABACUS, the service usage is aggregated according to the policy defined.
+The policy must be defined by the service provider, for JSON schema refer to: <br>
 <a href = "https://github.com/cloudfoundry-incubator/cf-abacus/blob/master/doc/api.md" >https://github.com/cloudfoundry-incubator/cf-abacus/blob/master/doc/api.md
 </a>
 </td>
   </tr>
    <tr>
-     <td width="160px">서비스 브로커 API</td>
-     <td>Cloud Controller와 Service 사이에서 서비스의 create, delete, update, bind, unbind를 처리한다. 본문서에서는 mongo-db 서비스 브로커 API를 대상으로 미터링 서비스를 개발 하여 추가 한다.
+     <td width="160px">Service Broker API</td>
+     <td>Process service create, delete, update, bind, and unbind between Cloud Controller and Service. In this document, a metering service is developed and added to the Mongo-db service broker API.
 </td>
   </tr> 
   <tr>
-     <td>서비스 브로커 <br>미터링 서비스
+     <td>Service Broker <br>Metering Service 
 </td>
-     <td>서비스 브로커 API 가 abacus-usage-collector 에 서비스 사용량 정보를 전송하는 서비스 (본 문서에서 가이드 할 개발 영역 이다)</td>
+     <td>Service that the service broker API sends service usage information to the abacus-usage-collector (this is the development area to guide in this document)</td>
   </tr> 
    <tr>
-     <td>서비스</td>
-     <td>서비스 제공자가 제공하는 서비스 기능</td>
+     <td>Service</td>
+     <td>Service capabilities provided by service provider</td>
   </tr> 
   <tr>
   	<td colspan ="2">CF-ABACUS</td>
-    <td>CF-ABACUS 핵심 기능으로써 수집한 사용량 정보를 집계한다.<br>
-CF-ABACUS은 CF 설치 후, CF에 마이크로 서비스 형태로 설치한다. 자세한 사항은 다음을 참조한다.<br>
+    <td>Aggregates usage information collected as a CF-ABACUS core function.<br>
+CF-ABACUS is installed in the form of micro-service in CF after CF installation. Check below for details.<br>
 <a href = "https://github.com/cloudfoundry-incubator/cf-abacus" >https://github.com/cloudfoundry-incubator/cf-abacus</a>
 </td>
   </tr>
 </table>                
 
 
-※ 본 개발 가이드는 ***애플리케이션과 서비스가 바인드 되는 시점을 서비스의 이용 시작으로 판단할 수 있는 서비스에 대해 미터링 하는 기능 개발***에 대해서만 기술한다.
+※ This development guide only describes ***Development of functions that meter services that can determine when applications and services are bound as the start of service use**.
 
-※ ***서비스의 특정 API 호출 , 서비스의 특정 자원 이용 등에 대한 미터링 기능 개발에 대해서는 기술하지 않는다.***
-※ API 호출에 대한 미터링은 API 서비스 미터링 개발 가이드를 참조한다.
+※ ***It does not describe the development of metering functions for specific API calls for services and the use of specific resources for services.***
+※ Refer to the API Service Metering Development Guide for metering of API calls.
 
-※ 다른 컴포넌트의 개발 또는 설치에 대해서 링크한 사이트를 참조한다.
-
-
-## <div id='8'/>2.2.  개발환경 구성
+※ Refer to the linked site for development or installation of other components.
 
 
-서비스 미터링 개발을 위해 다음과 같은 환경을 개발환경을 전제 한다.
+## <div id='8'/>2.2.  Configure Development Environment
 
--   CF release: v226 이상 (bosh-lite 설치 환경에서 테스트)
+
+Following environment is premised on the development environment for service metering development.
+
+-   CF release: v226 and above (Test in a bosh-lite installation envionment)
 -   gradle 2.14
 -   java version "1.8.0_101"
 -   springBootVersion: 1.3.0. BUILD-SNAPSHOT
--   mongo-db service broker 2.5 (미터링 서비스를 추가 하기 위한 대상
-    서비스 브로커 프로젝트)
+-   mongo-db service broker 2.5 (미터링 서비스를 추가 하기 위한 대상 서비스 브로커 프로젝트)
 -   springBootCfServiceBrokerVersion "2.5.0" (서비스 브로커 라이브러리)
 -   Spring Tool Suite 혹은 Eclipse
 

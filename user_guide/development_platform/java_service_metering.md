@@ -201,17 +201,17 @@ After adding the Gradle plug-in to the Eclipse, importing the gradle makes devel
 |---------|---|----|
 |    Modify     | ServiceIncetanceBindingController  | A controller that processes the service binding request of cloud controller.<br> Obtain the uaatoken from Sample MeteringOuthService and add the process of calling with the parameters of Sample MeteringReportService.   |
 |    Modify     | ServiceInstanceBinding  | When the service-binding-request is processed by the ServiceIncidenceBinding Controller, report the usage report to the abacus-usage-collector with metering applied to the binding connection.   |     
-|    Add     | SampleMeteringReportService  | SampleMeteringReportService abstracted interface with no information related to metering/rating/charging policies. This is an abstraction class provided for service providers to implement this interface to apply to service implementations. 이는 이 인터페이스를 구현할 서비스 제공자가 서비스 구현체에 적용할 수 있도록 제공되고 있는 추상화 클래스 이다.<br>SampleMeteringReportService 추상화 된 인터페이스로서, 미터링/등급/과금 정책과 관련된 그 어떠한 정보도 가지고 있지 않다. 이는 이 인터페이스를 구현할 서비스 제공자가 서비스 구현체에 적용할 수 있도록 제공되고 있는 추상화 클래스 이다.|     
-|    Add     | SampleMeteringOAuthService  | 개방형 플랫폼 상의 UAA 서버에서 abacus-usage-collector 에 대한 접근 권한 토큰을 취득하여, SampleMeteringReportService 에 토큰을 전달 하기 위한 추상화 클래스 이다.   |
+|    Add     | SampleMeteringReportService  | SampleMeteringReportService abstracted interface with no information related to metering/rating/charging policies. This is an abstraction class provided for service providers to implement this interface to apply to service implementations. This is an abstraction class provided for service providers to implement this interface to apply to service implementations.<br>SampleMeteringReportService abstracted interface with no information related to metering/rating/charging policies. This is an abstraction class that is provided so that service providers who will implement this interface can apply it to service implementations.|     
+|    Add     | SampleMeteringOAuthService  | It is an abstraction class for obtaining an access token to the abacus-usage-collector from a UAA server on an open platform and delivering the token to the SampleMeteringReportService.   |
 
 
-서비스 브로커 라이브러리에서 미터링을 위해 추가 되거나 수정 되는 파일의 형상
+Appearance of files added or modified for metering in the service broker library
 
 ![Java_Service_Metering_Image04]
 
 ### <div id='13'/>2.3.4.  ServiceInstanceBindingController
 
-bindServiceInstance 프로세스 에 SampleMeteringOAuthService 에서 uaa token 을 취득하여, SampleMeteringReportService 의 파라메터로 호출 하는 프로세스를 추가 한다.
+In the bindServiceInstance process, add the process of obtaining uaa token from  SampleMeteringOAuthServiceand calling with parameters from SampleMeteringReportService.
 
 	@RequestMapping (value = BASE_PATH + "/{bindingId}", method = RequestMethod.PUT)
 	public ResponseEntity<ServiceInstanceBindingResponse> bindServiceInstance (
@@ -250,11 +250,7 @@ bindServiceInstance 프로세스 에 SampleMeteringOAuthService 에서 uaa token
 
 ### <div id='14'/>2.3.5.  ServiceInstanceBinding 
 
-ServiceInstanceBinding 에 미터링 서비스를 구현하기 위해 바인딩 되는
-애플리케이션의 환경 정보 필드를 추가 한다. 추가 된 필드 들은
-ServiceInstanceBindingService 의 구현체 에서 서비스 바인딩 request
-parameter 의 필드 값들을 매핑 처리 한 후, mongo-db repository 에 전달될
-것이다. 라이브러리를 gradle build 한다.
+Add the environment information field of the application to be bound to implement the metering service to the Service InstanceBinding. The added fields will be passed to the mongo-db repository after mapping the field values of the service binding request parameter in the implementation of the Service Instance Binding Service. Gradle build the library.
 
 	package org.openpaas.servicebroker.model;
 	
@@ -269,10 +265,10 @@ parameter 의 필드 값들을 매핑 처리 한 후, mongo-db repository 에 �
 	private String serviceInstanceId;
 	private Map<String,Object> credentials = new HashMap<String,Object>();
 	private String syslogDrainUrl;
-	// 미터링에 사용되는 필드
+	// Field used in metering
 	private String appGuid;
 	
-	// 미터링을 위해 추가 된 필드
+	// Field added for metering
 	private String appOrganizationId;
 	private String appSpaceId;
 	private String meteringPlanId;
@@ -299,12 +295,10 @@ parameter 의 필드 값들을 매핑 처리 한 후, mongo-db repository 에 �
 	}
 
 
-### <div id='15'/>2.3.6.  SampleMeteringOAuthService 추상화 클래스
+### <div id='15'/>2.3.6.  SampleMeteringOAuthService  Abstract Class
 
-UAA OAuthToken은 Abacus가 Secured로 운영될 경우, abucus-collector
-RESTAPI에 접근 하기 위해 필요하다.<br>
-SampleMeteringOAuthService를 상속하는 클래스는 UAA OAuthToken을 취득하여
-리턴하는 처리를 구현해야 한다.
+UAA OAuthToken is needed to access abucus-collector RESTAPI if Abacus operates as Secured.<br>
+The class that inherits the SampleMeteringOAuthServicemust implement the process of acquiring and returning UAA OAuthToken.
 
 	package org.openpaas.servicebroker.service;
 	import org.openpaas.servicebroker.exception.ServiceBrokerException;
@@ -314,11 +308,8 @@ SampleMeteringOAuthService를 상속하는 클래스는 UAA OAuthToken을 취득
 	}
 
 
-### <div id='16'/>2.3.7.  SampleMeteringReportService 추상화 클래스
-SampleMeteringReportService를 상속하는 클래스는 create binding request와
-delete binding request를 처리 할 때, 각각 해당 이벤트 정보를
-abacus-collector에 전송하고 해당 처리에 대한 상태코드(HTTP 상태코드)를
-리턴하는 처리를 구현해야 한다.
+### <div id='16'/>2.3.7.  SampleMeteringReportService  Abstract Class
+The class that inherits the SampleMeteringReportServicemust implement the process of sending the event information to the abacus-collector and returning the status code (HTTP status code) for the processing when processing the create binding request and delete binding request.
 
 	package org.openpaas.servicebroker.service;
 	import org.openpaas.servicebroker.exception.ServiceBrokerException;
@@ -337,38 +328,36 @@ abacus-collector에 전송하고 해당 처리에 대한 상태코드(HTTP 상�
 
 
 
-## <div id='17'/>2.4.  서비스 브로커 라이브러리
+## <div id='17'/>2.4.  Service Broker Library
 
-### <div id='18'/>2.4.1.  mongo-db 서비스 브로커 API
+### <div id='18'/>2.4.1.  mongo-db Service Broker API
 
-지금까지 서비스 브로커 라이브러리를 개수 하여, 미터링을 위한 추상화
-클래스 및 모델 객체들을 준비 했다. 지금 부터는 서비스 브로커
-라이브러리를 구현한 mongo-db 서비스 브로커 API에서 미터링을 구현 하는
-것에 대해 기술 한다.
+The service broker library has been modified to prepare abstraction classes and model objects for metering. 
+From now on, we will describe implementing metering in the mongo-db service broker API that implements the service broker library.
 
-### <div id='19'/>2.4.2.  mongo-db 서비스 브로커 API 다운로드
+### <div id='19'/>2.4.2.  mongo-db Service Broker API Download
 
-mongo-db 서비스 브로커 API는 별도 제공되는 압축 파일 패키지를 사용한다.
+The mongo-db service broker API uses a separate Zip file package.
 
-### <div id='20'/>2.4.3.  mongo-db 서비스 브로커 API에 추가 및 수정 되는 파일
+### <div id='20'/>2.4.3.  Files that are added and modified in the mongo-db Service Broker API
 
-| 　　|유형 | 필수|
+| 　　|Type | Necessity|
 |---------|---|----|
-|   수정      |build.gradle   |  빌드 설정 파일<br>미터링 사용량 객체 생성에 필요한 dependency 를 추가 한다.|     
-|   수정      | application-mvc.properties  | 서비스 바인딩 request 의 정보들을 매핑한다.<br>미터링 서비스를 구현하기 위해 바인딩 되는 애플리케이션의 환경정보 필드를 추가 한다.|     
-|   수정      | datasource.properties   | Mongo-db 서비스 정보   |     
-|   수정     | MongoServiceInstanceBindingService  |service broker binding request parameter 로 입력 받은 미터링 정보를 ServiceInstanceBinding 에 매핑하는 프로세스를 추가 한다.    |     
-|   추가      | SampleMeteringReportServiceImpl  | SampleMeteringReportService 를 구현 한다.   |     
-|   추가     |SampleMeteringOAuthServiceImpl   | SampleMeteringOAuthService 를 구현 한다.   |     
-|   수정     |Manifest.yml   | 앱을 CF에 배포할 때 필요한 설정 정보 및 앱 실행 환경에 필요한 설정 정보를 기술한다.   |
+|   Modify      |build.gradle   |  Build setting file<br>Add the required dependency to create the metering usage object.|     
+|   Modify      | application-mvc.properties  | Map the information in the service binding request.<br>Add an environmental information field of the application to be bound to implement the metering service.|     
+|   Modify      | datasource.properties   | Mongo-db Service Information   |     
+|   Modify     | MongoServiceInstanceBindingService  |Add the process of mapping the metering information received by the service broker binding request parameter to the service instance binding.    |     
+|   Add      | SampleMeteringReportServiceImpl  | Implement SampleMeteringReportService.   |     
+|   Add     |SampleMeteringOAuthServiceImpl   | Implement SampleMeteringOAuthService.   |     
+|   Modify     |Manifest.yml   | Describes the configuration information required when distributing the app to CF and the configuration information required for the app execution environment.   |
 
 
-### <div id='21'/>2.4.4.  gradle build를 위한 dependency 추가
-서비스브로커 라이브러리 mongo-db서비스 브로커 jar 파일을 적용
+### <div id='21'/>2.4.4.  Add dependency for gradle build
+Apply service broker library mongo-db service broker jar file
 
 ![Java_Service_Metering_Image03]
 
-서비스 브로커 라이브러리를 gradle build 한다.
+Gradle build the service broker library.
 
 	@openpaas-service-broker/openpaas-service-java-broker$ gradle build -x test
 	:compileJava
@@ -387,21 +376,17 @@ mongo-db 서비스 브로커 API는 별도 제공되는 압축 파일 패키지�
 
 
 
-빌드가 성공하면
-/openpaas-service-java-broker/build/libs/openpaas-service-java-broker.jar가
-생성 된다.
+When Build is successed, /openpaas-service-java-broker/build/libs/openpaas-service-java-broker.jar gets created.
 
-이 jar 파일을 mongo-db 서비스 브로커의
-/openpaas-service-java-broker-mongo/libs 경로로 복사 하고, mongo-db
-서비스브로커 gradle build 파일에 dependency를 추가 한다.
+Copy the jar file to the /openpaas-service-java-broker-mongo/libs path of the mongo-db service broker and add dependency to the mongo-db service broker gradle build file.
 
 
-mongo-db 서비스 브로커 build.gradle 파일의 dependencies 부분
+The dependencies portion of the mongo-db service broker build.gradle file
 
 	dependencies {
-	    // 서비스브로커 라이브러리 
+	    // Service Broker Library 
 	    compile files('libs/openpaas-service-java-broker.jar')
-	    // 미터링 사용량 객체 생성 dependency
+	    // Metering usage object generating dependency
 	    compile("org.json:json:20160212")
 	    compile("com.googlecode.json-simple:json-simple:1.1")
 	
@@ -419,25 +404,24 @@ mongo-db 서비스 브로커 build.gradle 파일의 dependencies 부분
 	}
 
 
-### <div id='22'/>2.4.5.  application-mvc.properties 설정
+### <div id='22'/>2.4.5.  application-mvc.properties Settings
 
-	# abacus usage collector RESTAPI 의 주소
-	abacus.collector: https://abacus-usage-collector.<파스-타 도메인> /v1/metering/collected/usage
-	# abacus usage collector 가 secured 모드 true / 아닐 경우 false
+	# The address of abacus usage collector RESTAPI
+	abacus.collector: https://abacus-usage-collector.<PaaS-TA Domain> /v1/metering/collected/usage
+	# If the abacus usage collector is in secured mode, then true / if not, false
 	abacus.secured: true
-	# 개발형 플랫폼의 uaa server 
-	uaa.server: https://uaa.<파스-타 도메인>
-	# abacus usage collector RESTAPI 사용권한 (UAA server 에 미리 등록한다.)
+	# uaa server of the Open Platform
+	uaa.server: https://uaa.<PaaS-TA Domain>
+	# abacus usage collector RESTAPI use authority (Register at UAA server a head of time.)
 	uaa.client.id: abacus-linux-container
 	uaa.client.secret: secret
 	uaa.client.scope: abacus.usage.linux-container.write,abacus.usage.linux-container.read 
 
 
-uaa 계정 설정 방법에 관해서 별도의 **abacus****설치 가이드**의 **Secured
-Abacus****를 위한****UAA****계정 등록**을 참고한다.
+Refer to uaa ****UAA****Account Registration** for **Secured Abacus**** in the separate **abacus****Installation Guide** regarding on how to set up the uaa account.
 
 
-### <div id='23'/>2.4.6.  datasource.properties 설정
+### <div id='23'/>2.4.6.  datasource.properties Settings
 
 	# Mongo-DB 서비스 배포 manifest파일을 참조하여 설정한다.
 	mongodb.hosts = 10.244.14.2, 10.244.14.14, 10.244.14.26

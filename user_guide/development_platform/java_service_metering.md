@@ -166,27 +166,17 @@ Following environment is premised on the development environment for service met
 ### <div id='10'/>2.3.1.  What is Service Broker Library?
 
 
-CF (개방형 플랫폼) 에서는 플랫폼 상에서 서비스 할 수 있는 다양한
-서비스들이 존재한다.<br>
-이 서비스들은 각각 그 서비스 고유의 서비스 브로커를 개발 함으로써, CF
-(개방형 플랫폼) 에서 애플리케이션이 서비스를 사용 할 수 있도록 하고
-있다.<br>
-서비스는 다양하지만, 서비스를 사용하기 위한 개방형 플랫폼의 RESTAPI가
-미리 정해져 있다.<br>
-서비스 브로커 라이브러리는 각각 다른 서비스 브로커들이 서비스 브로커
-라이브러리 Jar 파일을 build path 에 추가 하고, 추상화 클래스들을 구현
-하는 것으로 이 개방형 플랫폼의 REST API에 기반 하여, 서비스가 제공 될 수
-있도록 해주는 라이브러리 이다.
+In CF (Open Platform), there are various services that can be serviced on the platform.<br>
+As each of these services are developing its own service broker, enables the applications to use the service in CF (open platform).<br>
+The services vary, but the RESTAPI of the open platform for using the services is predetermined.<br>
+The Service Broker Library is a library that allows different service brokers to provide services based on the REST API of this open platform by adding the service broker library Jar file to the build path and implementing abstraction classes.
 
-본 가이드에서는 mongo-db 서비스 브로커에 미터링 서비스를 구현하기
-위해서는 이 서비스 브로커 라이브러리에 미터링을 하기 위한 추상화
-클래스를 추가 한 후, mongo-db 서비스 브로커에서 이 라이브러리를
-dependency로 사용하여 빌드 한다.
+In this guide, implementing metering services in the mongo-db service broker, an abstraction class for metering is added to this service broker library, and then the mongo-db service broker builds this library using dependency.
 
 
-### <div id='11'/>2.3.2.  서비스 브로커 라이브러리를 다운로드 한 후, 프로젝트 import 한다.
+### <div id='11'/>2.3.2. Download the service broker library and import the project.
 
-#### 1.  오픈 소스로 제공되고 있는 서비스 브로커 소스를 git clone 으로 다운받는다.<br>
+#### 1.  Download the service broker source that is being provided as an open source using git clone.<br> 
 
 **[https://github.com/cloudfoundry-community/spring-boot-cf-service-broker/tree/master/src/main/java/org/cloudfoundry/community/servicebroker/controller](https://github.com/cloudfoundry-community/spring-boot-cf-service-broker/tree/master/src/main/java/org/cloudfoundry/community/servicebroker/controller)**
   
@@ -199,34 +189,29 @@ dependency로 사용하여 빌드 한다.
 	Checking connectivity... done.
 
 
-다운 받은 소스를 Java 개발 도구 Eclipse 및 Spring Tool Suite 로 import
-한다.
+Import downloaded sources into Java development tools Eclipse and Spring Tool Suite.
 
-gradle 플러그인을 Eclipse 에 추가한 후, gradle import 하면 개발이 보다
-용이 해진다.
+After adding the Gradle plug-in to the Eclipse, importing the gradle makes development easier.
 
 
-### <div id='12'/>2.3.3.  서비스 브로커 라이브러리에서 미터링을 위해 추가 되거나 수정 되는 파일들
+### <div id='12'/>2.3.3.  Files added or modified for metering in the service broker library
 
 
-| 　　  |Java class | 설명|
+| 　　  |Java class | Description|
 |---------|---|----|
-|    수정     | ServiceIncetanceBindingController  | 클라우드 컨트롤러의 서비스 바인딩 요청을 처리하는 컨트롤러,<br> SampleMeteringOAuthService 에서 uaa token 을 취득하여, SampleMeteringReportService 의 파라메터로 호출 하는 프로세스를 추가 한다.   |
-|    수정     | ServiceInstanceBinding  | service-binding-request 가 ServiceIncetanceBindingController 에서 처리 될 때 바인딩 연결에 대해 미터링이 적용된 사용량 보고서를 abacus-usage-collector 에 리포팅 한다.   |     
-|    추가     | SampleMeteringReportService  | SampleMeteringReportService 추상화 된 인터페이스로서, 미터링/등급/과금 정책과 관련된 그 어떠한 정보도 가지고 있지 않다. 이는 이 인터페이스를 구현할 서비스 제공자가 서비스 구현체에 적용할 수 있도록 제공되고 있는 추상화 클래스 이다.<br>SampleMeteringReportService 추상화 된 인터페이스로서, 미터링/등급/과금 정책과 관련된 그 어떠한 정보도 가지고 있지 않다. 이는 이 인터페이스를 구현할 서비스 제공자가 서비스 구현체에 적용할 수 있도록 제공되고 있는 추상화 클래스 이다.|     
-|    추가     | SampleMeteringOAuthService  | 개방형 플랫폼 상의 UAA 서버에서 abacus-usage-collector 에 대한 접근 권한 토큰을 취득하여, SampleMeteringReportService 에 토큰을 전달 하기 위한 추상화 클래스 이다.   |
+|    Modify     | ServiceIncetanceBindingController  | A controller that processes the service binding request of cloud controller.<br> Obtain the uaatoken from Sample MeteringOuthService and add the process of calling with the parameters of Sample MeteringReportService.   |
+|    Modify     | ServiceInstanceBinding  | When the service-binding-request is processed by the ServiceIncidenceBinding Controller, report the usage report to the abacus-usage-collector with metering applied to the binding connection.   |     
+|    Add     | SampleMeteringReportService  | SampleMeteringReportService abstracted interface with no information related to metering/rating/charging policies. This is an abstraction class provided for service providers to implement this interface to apply to service implementations. 이는 이 인터페이스를 구현할 서비스 제공자가 서비스 구현체에 적용할 수 있도록 제공되고 있는 추상화 클래스 이다.<br>SampleMeteringReportService 추상화 된 인터페이스로서, 미터링/등급/과금 정책과 관련된 그 어떠한 정보도 가지고 있지 않다. 이는 이 인터페이스를 구현할 서비스 제공자가 서비스 구현체에 적용할 수 있도록 제공되고 있는 추상화 클래스 이다.|     
+|    Add     | SampleMeteringOAuthService  | 개방형 플랫폼 상의 UAA 서버에서 abacus-usage-collector 에 대한 접근 권한 토큰을 취득하여, SampleMeteringReportService 에 토큰을 전달 하기 위한 추상화 클래스 이다.   |
 
 
-서비스 브로커 라이브러리에서 미터링을 위해 추가 되거나 수정 되는 파일의
-형상
+서비스 브로커 라이브러리에서 미터링을 위해 추가 되거나 수정 되는 파일의 형상
 
 ![Java_Service_Metering_Image04]
 
 ### <div id='13'/>2.3.4.  ServiceInstanceBindingController
 
-bindServiceInstance 프로세스 에 SampleMeteringOAuthService 에서 uaa
-token 을 취득하여, SampleMeteringReportService 의 파라메터로 호출 하는
-프로세스를 추가 한다.
+bindServiceInstance 프로세스 에 SampleMeteringOAuthService 에서 uaa token 을 취득하여, SampleMeteringReportService 의 파라메터로 호출 하는 프로세스를 추가 한다.
 
 	@RequestMapping (value = BASE_PATH + "/{bindingId}", method = RequestMethod.PUT)
 	public ResponseEntity<ServiceInstanceBindingResponse> bindServiceInstance (

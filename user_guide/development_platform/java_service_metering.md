@@ -623,24 +623,24 @@ In the following example, the constants for metering reporting are described acc
 	}
 
 
-**abacus-collector** **인터페이스 항목**
+**abacus-collector** **Interface List**
 
-| 항목명                 |유형             | 설명                                          | 예시                                           |
+| Classification                 |Type             | Description                                          | Example                                           |
 |-----------------------|-----------------|----------------------------------------------|------------------------------------------------|
-|   start               | UNIX Timestamp  |바인드/언바인드 처리 시작 시각                   |1396421450000                                   |
-|   end                 | UNIX Timestamp  |  바인드/언바인드 처리 응답 시각                 |1396421451000                                   |
-|  organization_id      | String          | 바인드 요청을 호출한 앱의 조직 ID               | us-south:54257f98-83f0-4eca-ae04-9ea35277a538  |
-|   space_id            |String           | 서비스 바인드 요청을 호출한 앱의 영역 ID         |d98b5916-3c77-44b9-ac12-04456df23eae            |
-|  consumer_id          | String          |서비스 바인드 요청을 호출한 앱 ID                | App: d98b5916-3c77-44b9-ac12-04d61c7a4eae      |
-|  resource_id          |String           |서비스 자원 ID                                 |linux-container                                 |
-|  plan_id              |String           | 서비스 미터링 Plan ID                         |standard                                        |
-|  resource_instance_id | String          |바인드 요청을 호출한 앱 ID                      | d98b5916-3c77-44b9-ac12-04d61c7a4eae            |
-|  measured_usage       | Array           | 미터링 항목                                   | -                                         |
-|   measure             | String          | 미터링 대상 명                                |sample_service_usage_param1                     |
-|  quantity             |Number           |  서비스 사용량 예제는 메모리 사용량 (byte)      |1000000000                                       |
+|   start               | UNIX Timestamp  |Bind/Unbind processing start time                   |1396421450000                                   |
+|   end                 | UNIX Timestamp  | Bind/Unbind Processing Response Time                 |1396421451000                                   |
+|  organization_id      | String          | Organization ID of the app that called the bind request               | us-south:54257f98-83f0-4eca-ae04-9ea35277a538  |
+|   space_id            |String           | Area ID of the app that called the service bind request         |d98b5916-3c77-44b9-ac12-04456df23eae            |
+|  consumer_id          | String          |App ID calling service bind request                | App: d98b5916-3c77-44b9-ac12-04d61c7a4eae      |
+|  resource_id          |String           |Service Resource ID                                 |linux-container                                 |
+|  plan_id              |String           | Service Metering Plan ID                         |standard                                        |
+|  resource_instance_id | String          |App ID that invoked the bind request                      | d98b5916-3c77-44b9-ac12-04d61c7a4eae            |
+|  measured_usage       | Array           | Metering List                                   | -                                         |
+|   measure             | String          | Metering Target Name                                |sample_service_usage_param1                     |
+|  quantity             |Number           |  Example of service usage is memory usage (byte)      |1000000000                                       |
 
 
-※ JSON 변환 예제
+※ Example of JSON conversion
 
 	{  
 	   "consumer_id":"app:d98b5916-3c77-44b9-ac12-04d61c7a4eae ",
@@ -673,29 +673,26 @@ In the following example, the constants for metering reporting are described acc
 
 
 
-# <div id='27'/>2.5.  미터링/등급/과금 정책
+# <div id='27'/>2.5.  Metering/Rating/Billing Policy
 
-서비스, 그리고 서비스 제공자 마다 미터링/등급/과금 정책 다르기 때문에 본
-가이드에서는 정책의 개발 예제를 다루지는 않는다. 다만 CF-ABACUS에 적용할
-수 있는 형식에 대해 설명한다.
-
-
-### <div id='28'/>2.5.1.  미터링 정책
-미터링 정책 스키마
-미터링 정책이란 수집한 미터링 정보에서 미터링 대상의 지정 및 집계 방식을
-정의한 JSON 형식의 오브젝트이다. 서비스 제공자는 미터링 정책 스키마에
-맞춰 서비스에 대한 정책을 개발한다.
+This guide does not address examples of development of policies because they differ from service provider to service and from metering to rating to billing policy.
+However, the format applicable to CF-ABACUS will be described.
 
 
-#### 1.  **미터링 정책 스키마**
+### <div id='28'/>2.5.1.  Metering Policy
+Metering policy Schema Metering policy is an object in JSON format that defines the designation and aggregation method of metering targets from the collected metering information.
+Service providers develop policies for services in line with the metering policy schema.
 
-| 항목명  |유형 | 필수| 설명|
+
+#### 1.  **Metering Policy Schema**
+
+| Classification  |Type | Necessity| Description|
 |---------|---|----|-----|
-|plan_id      |  String | O   |  API 서비스 미터링 Plan ID   |
-|measures     | Array  |  최소 하나  |  API 서비스 미터링 정보 수집 대상 정의   |
-|    name     | String  | O   |  미터링 정보 수집 대상 명   |
-|    unit     | String  |  O  |  미터링 정보 수집 대상 단위   |
-|metrics     | Array  | 최소 하나   | API 서비스 미터링 집계 방식 정의    |
+|plan_id      |  String | O   |  API Service Metering Plan ID   |
+|measures     | Array  |  At least one  |  Define API service metering information collection targets   |
+|    name     | String  | O   |  Metering Information Collection Target Name   |
+|    unit     | String  |  O  |  Units to which metering information is collected   |
+|metrics     | Array  | At least one   | API 서비스 미터링 집계 방식 정의    |
 |    name     |  String | O   | 미터링 정보 수집 대상 명    |
 |    unit      |  String |  O  | 미터링 정보 수집 대상 단위    |
 |    meter     |  String | X   | 미터링 정보에 대해서 수집 단계에 적용하는 계산식 또는 변환 식    |
@@ -704,7 +701,7 @@ In the following example, the constants for metering reporting are described acc
 |    summarize      | String  |  X  | 미터링 정보를 보고할 때 적용하는 계산식 또는 변환식    |
 |    title      |  String |   X | API 서비스 미터링 제목    |
 
-#### 2.  **미터링 정책 예제**
+#### 2.  **Metering Policy Example**
 
 	{
 	  "plan_id": "basic-linux-container",

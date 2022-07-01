@@ -535,14 +535,14 @@ Create usage information JSON.
 
 RESOURCE_ID linux-container and STANDARD_PLAN_ID standard are metric schemas provided by abacus as samples.
 
-본 가이드에서는 이 미터링 스키마를 mongo-db 서비스 바인딩과 언바인딩에 대한 미터링 스키마로 이용하여 기술 했다.
+In this guide, this metering schema is described as a metering schema for mongo-db service binding and unbinding.
 
-서비스 제공자는 제공 하려는 서비스에 맞는 정책을 정하여, 미터링 스키마를 abacus-프로비저닝에 등록 해야, abacus-collector 에 미터링을 전송할 수 있게 된다. (정책 등록에 대한 자세한 내용은 본문 하기의 **미터링/과금 정책 참조**)
+The service provider must set a policy that matches the service to be provided and register the metering schema with abacus-provisioning to transmit metering to the abacus-collector. (See **metering/charging policies below for more information on policy registration**)
 
 
-다음 예제의 미터링 리포팅 용 상수들은 abacus의 linux-container 미터링 스키마에 맞게 기술 되었고, PLAN_STANDARD_QUANTITY, PLAN_EXTRA_QUANTITY 등은 임의로 정한 수치 이다. 서비스에 맞게 해당 항목을 DB 또는 프로퍼티 등을 통해 설정한다.
+In the following example, the constants for metering reporting are described according to abacus' linux-container metering scheme, and PLAN_STANDARD_QUANTITY, PLAN_EXTRA_QUANTITY, etc. are arbitrarily determined. Set the corresponding item according to the service through DB or property, etc.
 
-	// 미터링 리포트용 상수
+	// Constant for metering reports
 	private static final String RESOURCE_ID = "linux-container";
 	private static final int BIND = 1;
 	private static final int UNBIND = 0;
@@ -556,7 +556,7 @@ RESOURCE_ID linux-container and STANDARD_PLAN_ID standard are metric schemas pro
 	private static final String SECURED = "true";
 	
 	/***************************************************
-	 * @description : 리포트 용 JSON 생성
+	 * @description : Creating JSON for Reports
 	 * @title : buildServiceUsage
 	 * @return : JSONObject
 	 ***************************************************/

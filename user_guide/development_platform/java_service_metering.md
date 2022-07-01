@@ -692,14 +692,14 @@ Service providers develop policies for services in line with the metering policy
 |measures     | Array  |  At least one  |  Define API service metering information collection targets   |
 |    name     | String  | O   |  Metering Information Collection Target Name   |
 |    unit     | String  |  O  |  Units to which metering information is collected   |
-|metrics     | Array  | At least one   | API 서비스 미터링 집계 방식 정의    |
-|    name     |  String | O   | 미터링 정보 수집 대상 명    |
-|    unit      |  String |  O  | 미터링 정보 수집 대상 단위    |
-|    meter     |  String | X   | 미터링 정보에 대해서 수집 단계에 적용하는 계산식 또는 변환 식    |
-|    accumulate      |String   |  X  | 미터링 정보에 대해서 누적 단계에 적용하는 계산식 또는 변환식    |
-|    aggregate      |  String |  X  | 미터링 정보에 대해서 집계 단계에 적용하는 계산식 또는 변환식    |
-|    summarize      | String  |  X  | 미터링 정보를 보고할 때 적용하는 계산식 또는 변환식    |
-|    title      |  String |   X | API 서비스 미터링 제목    |
+|metrics     | Array  | At least one   | Define API Service Metering Aggregation Scheme    |
+|    name     |  String | O   | Metering Information Collection Target Name    |
+|    unit      |  String |  O  | Units to which metering information is collected    |
+|    meter     |  String | X   | Calculation or conversion expressions that apply to the collection stage for metering information    |
+|    accumulate      |String   |  X  | Calculation or conversion expressions that apply to the cumulative phase for metering information    |
+|    aggregate      |  String |  X  | Calculation or conversion expressions that apply to the aggregation stage for metering information    |
+|    summarize      | String  |  X  | Calculation or conversion expressions that you apply when reporting metering information    |
+|    title      |  String |   X | API Service Metering Title    |
 
 #### 2.  **Metering Policy Example**
 
@@ -788,25 +788,25 @@ Service providers develop policies for services in line with the metering policy
 	};
 
 
-### <div id='29'/>2.5.2.  등급 정책 
+### <div id='29'/>2.5.2.  Rating Policy
 
-등급 정책이란 각 서비스의 사용 가중치를 정의한 JSON 형식의 오브젝트이다.
-서비스 제공자는 등급 정책 스키마에 맞춰 서비스에 대한 정책을 개발한다.
+A rating policy is an object in JSON format that defines the usage weight of each service.
+The service provider develops a policy for the service in line with the rating policy schema.
 
 
-#### 1.  **등급 정책 스키마**
+#### 1.  **Rating Policy Schema**
 
-| 항목명  |유형 | 필수| 설명|
+| Classification  |Type | Necessity| Description|
 |---------|---|----|-----|
-|plan_id      |  String | O   |  API 서비스 미터링 Plan ID   |
-|metrics     | Array  |  최소 하나  |  등급 정책 목록   |
-|    name     | String  | O   |  등급 정의 대상 명   |
-|    rate     | String  |  X  |  가중치 계산식 또는 변환식   |
-|    charge     | String  | X   | 사용량에 대한 과금 계산식 또는 변환식    |
-|    title     |  String | X   | 등급 정책 명    |
+|plan_id      |  String | O   |  API Service Metering Plan ID   |
+|metrics     | Array  |  At least one  |  List of rating policies   |
+|    name     | String  | O   |  Class Definition Destination Name   |
+|    rate     | String  |  X  |  Weight calculation or conversion formula   |
+|    charge     | String  | X   | Billing formula or conversion formula for usage    |
+|    title     |  String | X   | Class Policy Name    |
 
 
-#### 2.  **등급 정책 예제**
+#### 2.  **Rating Policy Example**
 
 	{
 	  "plan_id": "standard",
@@ -823,27 +823,26 @@ Service providers develop policies for services in line with the metering policy
 	}
 
 
-### <div id='30'/>2.5.3. 과금 정책 
+### <div id='30'/>2.5.3. Billing Policy 
 
-과금 정책이란 각 서비스에 대한 사용 단가를 정의한 JSON 형식의
-오브젝트이다. 서비스 제공자는 과금 정책 스키마에 맞춰 서비스에 대한
-정책을 개발한다.
+과금 정책이란 각 서비스에 대한 사용 단가를 정의한 JSON 형식의 오브젝트이다.
+서비스 제공자는 과금 정책 스키마에 맞춰 서비스에 대한 정책을 개발한다.
 
 
-#### 1.  **과금 정책 스키마**
+#### 1.  **Billing Policy Schema**
 
-| 항목명  |유형 | 필수| 설명|
+| Classification  |Type | Necessity| Description|
 |---------|---|----|-----|
-|plan_id      |  String | O   |  API 서비스 미터링 Plan ID   |
-|metrics     | Array  |  최소 하나  |  과금 정책 목록   |
-|    name     | String  | O   |  과금 대상 명  |
-|    price     | String  |  최소 하나  |  과금 정책 상세   |
-|    country     | String  | O   | 서비스 사용 단가에 적용할 통화    |
+|plan_id      |  String | O   |  API Service Metering Plan ID   |
+|metrics     | Array  |  At least one  |  Billing Policy List   |
+|    name     | String  | O   |  Billing target name  |
+|    price     | String  |  At least one  |  Billing Policy Details   |
+|    country     | String  | O   | Currency to be applied to the unit price of the service    |
 |    price     |  String | O   | 서비스 사용 단가    |
 |    title     |  String | X   | 과금 정책 제목    |
 
 
-#### 2.  **과금 정책 예제**
+#### 2.  **Billing Policy Example**
 
 	{
 	  "plan_id": "standard",

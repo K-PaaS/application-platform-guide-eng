@@ -26,9 +26,9 @@
      * [Add dependency for gradle build](#21)
      * [application-mvc.properties Settings](#22)
      * [datasource.properties Settings](#23)
-     * [MongoServiceInstanceBindingService Implementation ](#24)
-     * [SampleMeteringOAuthService Implementation ](#25)
-     * [SampleMeteringReportService Implementation ](#26)
+     * [MongoServiceInstanceBindingService Implementation Body](#24)
+     * [SampleMeteringOAuthService Implementation](#25)
+     * [SampleMeteringReportService Implementation](#26)
     * [Metering/Rating/Billing Policy](#27)
      * [Metering Policy](#28)
      * [Rating Policy](#39)
@@ -423,7 +423,7 @@ Refer to uaa ****UAA****Account Registration** for **Secured Abacus**** in the s
 
 ### <div id='23'/>2.4.6.  datasource.properties Settings
 
-	# Mongo-DB 서비스 배포 manifest파일을 참조하여 설정한다.
+	# Set by referring to the Mongo-DB service deployment manifest file.
 	mongodb.hosts = 10.244.14.2, 10.244.14.14, 10.244.14.26
 	mongodb.port = 27017
 	mongodb.dbName = mongo-broker
@@ -431,23 +431,21 @@ Refer to uaa ****UAA****Account Registration** for **Secured Abacus**** in the s
 	mongodb.authSource = admin
 	mongodb.password = openpaas
 
-### <div id='24'/>2.4.7.  MongoServiceInstanceBindingService 구현체
+### <div id='24'/>2.4.7.  MongoServiceInstanceBindingService Implementation Body
 
-애플리케이션 환경 정보는 service broker binding CLI 요청 시, parameter
-객체를 통해서 입력된다. 이 정보 들을 ServiceInstanceBinding에 미터링
-필드를 매핑한다.
+When requesting the service broker binding CLI, the application environment information is input through the parameter object.
+Map these information to the ServiceInstanceBinding in the metering field.
 
--   service broker binding CLI 요청 예제
+-   Request example of service broker binding CLI 
 
   	    $ cf bind-service sample-api-node-caller mongod_service -c 
 		'{"app_organization_id":"test05","app_space_id":"testspaceId","metering_plan_id":"standard"}'
 
 
-parameter 넘어온 정보들을 mongo-db 에 저장하기 위해
-ServiceInstanceBinding 객체에 매핑한다. mongo-db repository 를 통해 저장
-후, 바인딩 정보를 리턴 한다.
+Map information transferred to parameters to a Service InstanceBinding object to store in mongo-db. 
+After storing through the mongo-db repository, return the bound information.
 	
-	// parameter 로 입력 받은 미터링 관련 정보를 취득하여 ServiceInstanceBinding 에 매핑한다.
+	// Acquire metering-related information input by parameter and map it to ServiceInstanceBinding.
 	Map<String, Object> paraMap = request.getParameters();
 	String appOrganizationId = (String) paraMap.get("app_organization_id");
 	String appSpaceId = (String) paraMap.get("app_space_id");
@@ -459,10 +457,9 @@ ServiceInstanceBinding 객체에 매핑한다. mongo-db repository 를 통해 �
 	return binding;
 
 
-### <div id='25'/>2.4.8.  SampleMeteringOAuthService 구현
+### <div id='25'/>2.4.8.  SampleMeteringOAuthService Implementation
 
-application-mvc.properties의 UAA server에서 UAA 토큰을 취득하기 위한
-정보들을 클래스로 호출한다.
+Information for obtaining a UAA token from the UAA server in application-mvc.properties is called to the class.
 
 	@Component
 	@Service
@@ -484,11 +481,10 @@ application-mvc.properties의 UAA server에서 UAA 토큰을 취득하기 위한
 
 
 
-SampleMeteringOAuthServiceImpl은 SampleMeteringOAuthService를 구현한다.
+SampleMeteringOAuthServiceImpl implements SampleMeteringOAuthService.
 
-SampleMeteringOAuthServiceImpl는 https 커넥션을 생성하여 UAA 서버에
-토큰을 요청한다. 이때 abacusSecured (abacus-collector 의 secured 설정
-여부) 에 따라 공백({}) 또는 토큰을 리턴 한다.
+SampleMeteringOAuthServiceImpl creates an https connection and requests a token from the UAA server.
+At this time, the blank ({}) or token is returned according toabacusSecured (Whether the abacus-collector is set to secured).
 
 	@Override
 	public String getUAAToken() throws ServiceBrokerException {
@@ -521,41 +517,30 @@ SampleMeteringOAuthServiceImpl는 https 커넥션을 생성하여 UAA 서버에
 	} 
 
 
-### <div id='26'/>2.4.9.  SampleMeteringReportService 구현
+### <div id='26'/>2.4.9.  SampleMeteringReportService Implementation
 
-SampleMeteringReportServiceImpl에서는 SampleMeteringOAuthServiceImpl에서
-취득한 uaa token 으로 https 커넥션을 생성하여, abacus-collector에 서비스
-사용량 정보를 POST 한다.
+SampleMeteringReportServiceImpl  creates an https connection with the uaa token obtained from SampleMeteringOAuthServiceImpland POSTs service usage information to abacus-collector.
 
-abacus-collector 에서는 미터링 정책에 따라 POST 받을 양식에 대한
-프로세스를 준비 하고 있기 때문에 abacus-collector가 알 수 있는 양식으로
-JSON을 생성 후 POST 한다.
+Since abacus-collector is preparing a process for the form to be POST according to the metering policy, JSON is generated in the form known by the abacus-collector and POST.
 
-SampleMeteringReportServiceImpl 은 크게 나누어 2가지 처리를 하고 있다.
+SampleMeteringReportServiceImpl is largely divided into two to process.
 
 
-#### 1.  **ServiceInstanceBinding 정보를 참조 하여 ,사용량 정보 JSON을 생성 한다.**
+#### 1.  **Create usage information JSON by refering to the ServiceInstanceBinding Information.**
 
-#### 2.  **생성한 사용량 정보 JSON을 abacus-collector로 전송한다. (HTTPS, HTTP)**
-
-
-사용량 정보 JSON 을 생성 한다.
-
-RESOURCE_ID linux-container 와 STANDARD_PLAN_ID standard 는
-abacus에서 sample 로 제공 되는 미터링 스키마이다.
-
-본 가이드에서는 이 미터링 스키마를 mongo-db 서비스 바인딩과 언바인딩에
-대한 미터링 스키마로 이용하여 기술 했다.
-
-서비스 제공자는 제공 하려는 서비스에 맞는 정책을 정하여, 미터링 스키마를
-abacus-프로비저닝에 등록 해야, abacus-collector 에 미터링을 전송할 수
-있게 된다. (정책 등록에 대한 자세한 내용은 본문 하기의 **미터링/과금 정책 참조**)
+#### 2.  **Send the generated usage information JSON to abacus-collector. (HTTPS, HTTP)**
 
 
-다음 예제의 미터링 리포팅 용 상수들은 abacus의 linux-container 미터링
-스키마에 맞게 기술 되었고, PLAN_STANDARD_QUANTITY,
-PLAN_EXTRA_QUANTITY 등은 임의로 정한 수치 이다. 서비스에 맞게 해당
-항목을 DB 또는 프로퍼티 등을 통해 설정한다.
+Create usage information JSON.
+
+RESOURCE_ID linux-container and STANDARD_PLAN_ID standard are metric schemas provided by abacus as samples.
+
+본 가이드에서는 이 미터링 스키마를 mongo-db 서비스 바인딩과 언바인딩에 대한 미터링 스키마로 이용하여 기술 했다.
+
+서비스 제공자는 제공 하려는 서비스에 맞는 정책을 정하여, 미터링 스키마를 abacus-프로비저닝에 등록 해야, abacus-collector 에 미터링을 전송할 수 있게 된다. (정책 등록에 대한 자세한 내용은 본문 하기의 **미터링/과금 정책 참조**)
+
+
+다음 예제의 미터링 리포팅 용 상수들은 abacus의 linux-container 미터링 스키마에 맞게 기술 되었고, PLAN_STANDARD_QUANTITY, PLAN_EXTRA_QUANTITY 등은 임의로 정한 수치 이다. 서비스에 맞게 해당 항목을 DB 또는 프로퍼티 등을 통해 설정한다.
 
 	// 미터링 리포트용 상수
 	private static final String RESOURCE_ID = "linux-container";

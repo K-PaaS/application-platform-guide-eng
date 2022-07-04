@@ -13,10 +13,10 @@
      * [2.3 Sample API Service Broker and Dashboard Development](#10)
      * [2.4 Sample API Service Development](#11)
 	     * [2.4.1 Sample API Service Application Code Implementation](#12)
-	     * [2.4.2 Sample API Service Application Metering Interworking List](#13)
+	     * [2.4.2 Sample API Service Application Metering Interworking Item](#13)
      * [2.5 API Service Interworking Sample Application Development](#14)
 	     * [2.5.1 API Service Interworking Sample Application Code](#15)
-	     * [2.5.2 API Service Interworking Sample Application Interface List](#16)
+	     * [2.5.2 API Service Interworking Sample Application Interface Item](#16)
 	     * [2.5.3 VCAP_SERVICES Environment Setting Information](#17)
      * [2.6 Metering/Rating/Billing Policy](#18)
 	     * [2.6.1 Metering Policy](#19)
@@ -222,59 +222,60 @@ If there is a service request, the sample api service processes the response to 
 	    "test": "eslint && mocha",        						## npm test: test development source
 	    "lint": "eslint",                    					## npm run lint: Check Development Source
 	    "pub": "publish",                 						## npm run publish: Publish Development Source
-	    "cfpack": "cfpack",               						## npm run cfpack: 컴파일한 개발 소스를 패키지화
-	    "cfpush": "cfpush"              						## npm run cfpush: 패키지화 한 개발 소스를 cf에 push
+	    "cfpack": "cfpack",               						## npm run cfpack: Packaging of compiled development sources
+	    "cfpush": "cfpush"              						## npm run cfpush: Push packaged development source to cf
 	  },
 	  "author": "PAASTA", 
-	  "license": "Apache-2.0",                    				## 라이선스 선언
+	  "license": "Apache-2.0",                    				## Declare License
 	  "dependencies": {
-	    "body-parser": "^1.15.2",                 				## json parser 모듈
-	    "cors": "^2.8.1",                         				## cross domain request 허용 모듈
-	    "express": "^4.14.0",                     				## node.js 웹 프레임워크
-	    "abacus-oauth": "^0.0.6-dev.8",							## Secured Abacus와 통신을 위한 Oauth 모듈
-	    "request": "^2.74.0",                    				## request 모듈
-	    "babel-preset-es2015": "^6.6.0",         				## ECMA5를 ECMA6으로 변환하기 위한 모듈
-	    "commander": "^2.8.1",                 					## 명령어 실행 모듈
-	    "underscore": "^1.8.3"               					## javascript에 사용할 수 있는 함수가 정의된 모듈
+	    "body-parser": "^1.15.2",                 				## json parser module
+	    "cors": "^2.8.1",                         				## cross domain request allowing module
+	    "express": "^4.14.0",                     				## node.js web framework
+	    "abacus-oauth": "^0.0.6-dev.8",							## Oauth Module for Communication with Secure Abacus
+	    "request": "^2.74.0",                    				## request module
+	    "babel-preset-es2015": "^6.6.0",         				## Module for converting ECMA5 to ECMA6
+	    "commander": "^2.8.1",                 					## Command Executing Module
+	    "underscore": "^1.8.3"               					## Modules with defined functions available for javascript
 	  },
-	  "devDependencies": {                  					## 개발 환경에서 의존하는 패키지
-	    "abacus-babel": "file:../../tools/babel",				## 개발 소스를 ECMA5 -> ECMA6으로 변환
-	    "abacus-cfpack": "file:../../tools/cfpack",				## 개발 소스를 cf에 push 할 수 있도록 패키지화 하는 패키지
-	    "abacus-cfpush": "file:../../tools/cfpush",  			## 개발 소스를 cf에 push하는 패키지
-	    "abacus-coverage": "file:../../tools/coverage",			## 개발 소스에 대해 테스트 소스의 coverage율 체크 패키지
-	    "abacus-eslint": "file:../../tools/eslint",      		## 개발 소스 코드 체크 패키지
-	    "abacus-mocha": "file:../../tools/mocha",				## mocha 테스트 실행 패키지
-	    "abacus-publish": "file:../../tools/publish"  			## 개발 소스 퍼블리시 패키지
+	  "devDependencies": {                  					## Packages dependent on development environments
+	    "abacus-babel": "file:../../tools/babel",				## Convert development source to ECMA5 -> ECMA6
+	    "abacus-cfpack": "file:../../tools/cfpack",				## A package to package development source to push to cf
+	    "abacus-cfpush": "file:../../tools/cfpush",  			## Package to push development source to cf
+	    "abacus-coverage": "file:../../tools/coverage",			## Test source coverage rate check package for development source
+	    "abacus-eslint": "file:../../tools/eslint",      		## Development Source Code Check Package
+	    "abacus-mocha": "file:../../tools/mocha",				## mocha test execution package
+	    "abacus-publish": "file:../../tools/publish"  			## Development source publish package
 	  },
 	  "engines": {
-	    "node": ">=5.11.1",                     				## nodejs 버전
-	    "npm": ">=3.8.6"                       					## npm 버전
+	    "node": ">=5.11.1",                     				## nodejs version
+	    "npm": ">=3.8.6"                       					## npm version
 	  }
 	}
 
 
-#### 2.  Manifest.yml 앱을 CF에 배포할 때 필요한 설정 정보 및 앱 실행 환경에 필요한 설정 정보를 기술한다.
+#### 2.  Describes the setting information required when deploying the Manifest.yml app to CF and the setting information required for the app execution environment.
+.
 
 ```yml
 applications:
-- name: sample-api-node-service   								# 애플리케이션 이름
-  host: sample-api-node-service   								# 애플리케이션 호스트명
-  memory: 512M                    								# 애플리케이션 메모리 사이즈
-  disk_quota: 512M                								# 애플리케이션 디스크 사이즈
-  instances: 1                    								# 애플리케이션 인스턴스 개수
-  command: npm start              								# CF에서의 애플리케이션 시작 명령어
-  path: ./.cfpack/app.zip         								# 배포될 애플리케이션의 위치
+- name: sample-api-node-service   								# Application Name
+  host: sample-api-node-service   								# Appliction Host Name
+  memory: 512M                    								# Application Memory Size
+  disk_quota: 512M                								# Application Disk Size
+  instances: 1                    								# Application Number of Instances
+  command: npm start              								# Application Start Command At the CF
+  path: ./.cfpack/app.zip         								# Location of the Application to be Deployed
   env:
-    CONF: default              									# 명령어 실행 환경 설정 정보
-    DEBUG: s*                 									# 디버그 출력 대상 설정
+    CONF: default              									# Command Executing Environment Setting Information
+    DEBUG: s*                 									# Set debug output destination
     NODE_TLS_REJECT_UNAUTHORIZED: 0 # SSL flag off
-    API: https://api.bosh-lite.com     							# CF API 서비스 엔드포인트
-    COLLECTOR: https://localhost/v1/metering/collected/usage  	# api 사용량 전송 엔드포인드 
-    SECURED: true                            					# Secured Abacus 설정: false or true
-    AUTH_SERVER: https://api.bosh-lite.com:443					# oauth 서비스 엔드포인트
-    CLIENT_ID: abacus	                    					# oauth 권한 id
-    CLIENT_SECRET: secret                     					# oauth id 비밀번호
-    JWTKEY: |+                             						# 앱을 secured mode로 서비스 하기 위해 유효성 체크를 위한 인증 서비스 공개키 
+    API: https://api.bosh-lite.com     							# CF API Service endpoint
+    COLLECTOR: https://localhost/v1/metering/collected/usage  	# api usage sending endpoint 
+    SECURED: true                            					# Secured Abacus Setting: false or true
+    AUTH_SERVER: https://api.bosh-lite.com:443					# oauth Service Endpoint
+    CLIENT_ID: abacus	                    					# oauth authentication id
+    CLIENT_SECRET: secret                     					# oauth id password
+    JWTKEY: |+                             						# Authentication service public key that validates the application to service in secure mode 
       -----BEGIN PUBLIC KEY-----
       MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDHFr+KICms+tuT1OXJwhCUmR2d
       KVy7psa8xzElSyzqx7oJyfJ1JZyOzToj9T5SfTIq396agbHJWVfYphNahvZ/7uMX
@@ -284,17 +285,17 @@ applications:
     JWTALGO: RS256
 ```
 
--	ENV 항목
-	- 아래에 기술한 항목 이외에 서비스에 필요한 항목을 추가할 수 있다.
+-	ENV item
+	- In addition to the items described below, the items required for the service can be added.
 
 	<table>
 	  <tr>
-	    <th>ENV 항목</th>
-	    <th>설명</th>
+	    <th>ENV item</th>
+	    <th>Description</th>
 	  </tr>
 	  <tr>
 	    <td>DEBUG</td>
-	    <td>애플리케이션 디버그 로그 출력 대상 설정</td>
+	    <td>Set application debug log output destination</td>
 	  </tr>
 	  <tr>
 	    <td>NODE_TLS_REJECT_UNAUTHORIZED</td>
@@ -302,45 +303,45 @@ applications:
 	  </tr>
 	  <tr>
 	    <td>API</td>
-	    <td>CF API URL<br>https://api.<파스-타 도메인></td>
+	    <td>CF API URL<br>https://api.<PaaS-TA Domain></td>
 	  </tr>
 	  <tr>
 	    <td>COLLECTOR</td>
-	    <td>Abacus Collector 앱의 사용량 수집 서비스 URL<br>
-	    https://<abacus-collector 도메인> /v1/metering/collected/usage
+	    <td>Usage collection service URL for the Abacus Collector app<br>
+	    https://<abacus-collector Domain> /v1/metering/collected/usage
 	    </td>
 	  </tr>
 	  <tr>
 	    <td>SECURED</td>
-	    <td>Secured abacus를 운용할 경우, 반드시 true를 설정한다.</td>
+	    <td>When operating a secure abacus, always set true.</td>
 	  </tr>
 	  <tr>
 	    <td>AUTH_SERVER</td>
-	    <td>SECURED가 true인 경우 설정한다.<br>
-	    - CF UAA를 Auth_server로 설정할 경우, https://api.<파스-타 도메인><br>
-	    - Abacus의 AuthServer를 Auth_server로 설정할 경우, abacus-authserver-plugin
+	    <td>Set if SECURED is true.<br>
+	    - when setting CF UAA as Auth_server, https://api.<PaaS-TA Domain><br>
+	    - When setting AuthServer of Abacus as Auth_server, abacus-authserver-plugin
 	    </td>
 	  </tr>
 	  <tr>
 	    <td>CLIENT_ID</td>
-	    <td>SECURED가 true인 경우 설정한다.<br>Abacus.usage 권한 id</td>
+	    <td>Set when SECURED is true.<br>Abacus.usage authorized id</td>
 	  </tr>
 	  <tr>
 	    <td>CLIENT_SECRET</td>
-	    <td>SECURED가 true인 경우 설정한다.<br>Abacus.usage 권한 비밀번호</td>
+	    <td>Set when SECURED is true.<br>Abacus.usage authorized password</td>
 	  </tr>
 	  <tr>
 	    <td>JWTKEY</td>
-	    <td>SECURED가 true인 경우 설정한다.<br>
-	    - CF UAA를 Auth_server로 설정할 경우, CF 배포 manifest의 properties.jwt.verification_key 값을 설정<br>
-	    - Abacus의 AuthServer를 Auth_server로 설정할 경우, Key 값을 설정
+	    <td>Set when SECURED is true.<br>
+	    - If CF UAA is set to Auth_server, set the value of properties.jwt.verification_key in CF deployment manifest<br>
+	    - If AuthServer of Abacus is set to Auth_server, set the Key value
 	    </td>
 	  </tr>
 	  <tr>
 	    <td>JWTALGO</td>
-	    <td>SECURED가 true인 경우 설정한다.<br>
-	    - CF UAA를 Auth_server로 설정할 경우, RS256
-	    - Abacus의 AuthServer를 Auth_server로 설정할 경우, HS256
+	    <td>Set when SECURED is true.<br>
+	    - When CF UAA is set as Auth_server, RS256
+	    - When AuthServer of Abacus is set as Auth_server, HS256
 	    </td>
 	  </tr>
 	</table>

@@ -68,77 +68,77 @@ Using environmental information (VCAP_SERVICES) bound to the application, access
   <tr>
     <td rowspan='4'>Runtime</td>
     <td width="160">Metering/Rating/Biling Policy</td>
-    <td>API 서비스 제공자가 제공하는 서비스에 대한 각종 정책 정의 정보. JSON 형식으로 되었으며, 해당 정책을 CF-ABACUS에 등록하면 정책에 정의한 내용에 따라 API 사용량을 집계 한다.<br> 정책은 서비스 제공자가 정의해야 하며, JSON 스키마는 다음을 참조한다.<br> <u><b><a href="https://github.com/cloudfoundry-incubator/cf-abacus/blob/master/doc/api.md">https://github.com/cloudfoundry-incubator/cf-abacus/blob/master/doc/api.md</a></b></u>
+    <td>Various policy definition information for services provided by API service providers. It is in JSON format, and when the policy is registered with CF-ABACUS, API usage is aggregated according to what is defined in the policy.<br> The policy must be defined by the service provider, refer to the following for JSON schema.<br> <u><b><a href="https://github.com/cloudfoundry-incubator/cf-abacus/blob/master/doc/api.md">https://github.com/cloudfoundry-incubator/cf-abacus/blob/master/doc/api.md</a></b></u>
     </td>
   </tr>
   <tr>
-    <td>서비스 브로커 API</td>
-    <td>Cloud Controller와 Service Broker 사이의 규약으로써 서비스 브로커 API 개발에 대해서는 서비스팩 개발 가이드를 참조한다.<br>
+    <td>Service Broker API</td>
+    <td>Refer to the Service Pack Development Guide for service broker API development as a protocol between Cloud Controller and Service Broker.<br>
     </td>
   </tr>
   <tr>
-    <td>서비스 API</td>
-    <td>서비스 제공자가 제공하는 API 서비스 기능 및 API 사용량을 CF-ABACUS에 전송하는 기능으로 구성되었다.</td>
+    <td>Service API</td>
+    <td>Consists of an API service function provided by a service provider and a function to transmit API usage to CF-ABACUS.</td>
   </tr>
   <tr>
-    <td>대시보드</td>
-    <td>서비스를 제공하기 위한 인증, 서비스 모니터링 등을 위한 대시보드 기능으로 서비스 제공자가 개발해야 한다.</td>
+    <td>Dashboard</td>
+    <td>A authentication to provide the service and service monitoring dashboard functions should be developed by the service provider.</td>
   </tr>
   <tr>
     <td colspan="2">CF-ABACUS</td>
-    <td>CF-ABACUS 핵심 기능으로써 수집한 사용량 정보를 집계한다.<br> CF-ABACUS은 CF 설치 후, CF에 마이크로 서비스 형태로 설치한다. 자세한 사항은 다음을 참조한다.<br>
+    <td>It aggregates usage information collected as a CF-ABACUS core function.<br> For CF-ABACUS, install as mirco service form at the CF after installing the CF. Refer next for details.<br>
     <u><b><a href="https://github.com/cloudfoundry-incubator/cf-abacus">https://github.com/cloudfoundry-incubator/cf-abacus</a></b></u>
     </td>
   </tr>
 </table>
 
-※ 본 개발 가이드는 **API** **서비스** 개발에 대해서만 기술하며, 다른 컴포넌트의 개발 또는 설치에 대해서 링크한 사이트를 참조한다.
+※ This development guide describes about the **API** **Service** development only. Refer to the linked site below for development and installation of other components.
 
-### <div id='7'></div> 2.2 개발환경 구성
+### <div id='7'></div> 2.2 Construct Development Environment
 
-Node.js 애플리케이션 개발을 위해 다음과 같은 환경으로 개발환경을 구성 한다.
+For the development of Node.js application, the development environment is constructed with the following environment.
 
--   CF release: v226 이상
--   nodejs_buildpack: nodejs_buildpack-cached-v1.5.18.zip 이상
+-   CF release: v226 and above
+-   nodejs_buildpack: nodejs_buildpack-cached-v1.5.18.zip and above
 -   Node.js: v5.11.1
 -   npm: v3.8.6
 
-### <div id='8'></div> 2.2.1 Node.js 및 npm 설치
+### <div id='8'></div> 2.2.1 Installation of Node.js and npm
 
-#### 1.  Node.js 및 npm 설치  
+#### 1.  Installation of Node.js and npm  
 
 	$ sudo apt-get install curl
 
-	## Node.js version 6.x를 설치할 경우
-	## Source Repository 등록
+	## When installing Node.js version 6.x
+	## Register Source Repository
 	$ curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash –
 
-	## Node.js & Npm 설치
+	## Node.js & Npm Installation
 	$ sudo apt-get install -y nodejs
 
-		## Node.js & Nmp 설치 확인
+		## Check Node.js & Nmp Installation
 		$ node -v
 		$ npm -v
 
-※ Windows 용은 다음 사이트에서 Node.js를 다운 받는다.  
+※ For Windows, download Node.js from the following site:  
 **<a href="https://nodejs.org/ko/download/">https://nodejs.org/ko/download/</a>**
 
-※ 개발도구  
-Node.js는 javascript기반의 언어로 Notepad++, Sublim Text, EditPlus등 문서편집기를 개발도구로 사용할 수 있다. 또한 Eclipse의 플러그인 Nodeclipse를 설치하여 사용할 수 있다. 그리고 상용 개발 도구로써는 WebStome 등이 있다.
+※ Development Tool  
+Node.js is a javascript-based language that can use document editors such as Notepad++, Sublim Text, and EditPlus as development tools. Can also install and use Nodeclipse, the plug-in of Eclipse. As a commercial development tool, there are WebStome and etc.
 
-### <div id='9'></div> 2.2.2 CF-Abacus 설치
+### <div id='9'></div> 2.2.2 CF-Abacus Installation
 
-별도 제공하는 Abacus 설치 가이드를 참고하여 CF-Abacus를 설치한다.
+Install CF-Abacus by referring to the Abacus installation guide provided separately.
 
-### <div id='10'></div> 2.3 샘플 API 서비스 브로커 및 대시보드 개발
+### <div id='10'></div> 2.3 Sample API Service Broker and Dashboard Development
 
-서비스 브로커 개발 가이드를 참고하여 서비스 브로커 및 대시보드를 개발한다.
+Develop service brokers and dashboards by referring to the service broker development guide.
 
-### <div id='11'></div> 2.4 샘플 API 서비스 개발
+### <div id='11'></div> 2.4 Sample API Service Development
 
-샘플 api 서비스는 서비스 요청이 있는 경우, 해당 요청에 대한 응답 처리와 api 서비스 요청에 대한 미터링 정보를 CF-ABACUS에 전송하는 처리를 한다.
+If there is a service request, the sample api service processes the response to the request and transmits metering information about the api service request to CF-ABACUS.
 
-1.  샘플 API 서비스 형상  
+1.  Sample API Service Features  
 
 		sample_api_node_service/
 		├── .apprc
@@ -154,50 +154,50 @@ Node.js는 javascript기반의 언어로 Notepad++, Sublim Text, EditPlus등 문
 
 <table>
   <tr>
-    <th>파일/폴더</th>
-    <th>목적</th>
+    <th>File/Folder</th>
+    <th>Purpose</th>
   </tr>
   <tr>
     <td>.apprc</td>
-    <td>앱 실행 환경 설정 파일</td>
+    <td>App Run Environment Setting File</td>
   </tr>
   <tr>
     <td>.gitignore</td>
-    <td>Git을 통한 형상 관리 시, 형상 관리를 할 필요가 없는 파일 또는 디렉토리를 설정한다.</td>
+    <td>When managing the shape through Git, set a file or directory that does not require configuration management.</td>
   </tr>
   <tr>
     <td>manifest.yml</td>
-    <td>애플리케이션을 파스-타 플랫폼에 배포 시 적용하는 애플리케이션에 대한 환경 설정 정보<br>
-    애플리케이션의 이름, 배포 경로, 인스턴스 수 등을 정의할 수 있다.
+    <td>Configuration information for applications that you apply when deploying applications to a PaaS-TA Platform<br>
+    The name of the application, the distribution path, and the number of instances may be defined.
     </td>
   </tr>
   <tr>
     <td>.npmrc</td>
-    <td>Npm 실행 환경 설정 파일</td>
+    <td>Npm Execution Envrionment Setting File</td>
   </tr>
   <tr>
     <td>package.json</td>
-    <td>node.js 어플리케이션에 필요한 npm의 의존성 정보를 기술하는데 사용 한다.<br>
-    npm install 명령을 실행시 install 뒤에 아무런 정보를 입력하지 않으면 이 파일의 정보를 이용하여 npm을 설치한다.
+    <td>Used to describe the dependency information of npm required for the node.js application.<br>
+    If you do not enter any information after installing the npm install command, use the information in this file to install npm.
     </td>
   </tr>
   <tr>
     <td>sampleApiService</td>
-    <td>서비스 앱 실행 스크립트</td>
+    <td>Service App Executing Script</td>
   </tr>
   <tr>
     <td>app.js</td>
-    <td>서비스 앱<br> 서비스 요청에 대한 라우팅 정보와 미터링 정보 전송 처리를 정의한다.</td>
+    <td>Service App <br> Routing information and metering information transmission processing for a service request are defined.</td>
   </tr>
   <tr>
     <td>test.js</td>
-    <td>서비스 앱 단위 테스트 모듈<br> mocha를 통한 서비스 앱의 단위 테스트를 정의한다.</td>
+    <td>Service app unit test module <br> Define a unit test of a service app through mocha.</td>
   </tr>
 </table>
      
-### <div id='12'></div> 2.4.1 샘플 API 서비스 애플리케이션 코드 구현
+### <div id='12'></div> 2.4.1 Sample API Service Application Code Implementation
 
-#### 1.  Package.json 샘플 애플리케이션의 코드 구성에 대해 기술한다.
+#### 1.  Describes the code configuration of the Package.json Sample Application.
 
 
 	{

@@ -201,27 +201,27 @@ If there is a service request, the sample api service processes the response to 
 
 
 	{
-	  "name": "sample-api-node-service",   						## 앱 명
-	  "version": "0.0.1",                    					## 앱 버전
+	  "name": "sample-api-node-service",   						## App Name
+	  "version": "0.0.1",                    					## App Version
 	  "description": "CF API Usage Service Metering Sample",
-	  "main": "lib/app.js",                  					## 개발 소스의 메인
+	  "main": "lib/app.js",                  					## Main of the Development Source
 	  "bin": {
 	    "sampleApiService": "./sampleApiService"
 	  },
-	  "files": [                            					## 형상 관리 대상의 파일 또는 디렉토리를 기술
+	  "files": [                            					## Describes the files or directories to be configured
 	    ".apprc",
 	    ".npmrc",
 	    "manifest.yml",
 	    "src/",
 	    "sampleApiService"
 	  ],
-	  "scripts": {                           					## npm run 명령어 또는 npm 명령어로 실행
-	    "start": "./sampleApiService start",   					## npm start: 앱 실행
-	    "stop": "./sampleApiService stop",   					## npm stop: 앱 중지
-	    "babel": "babel",                  						## npm run babel: 개발 소스를 컴파일
-	    "test": "eslint && mocha",        						## npm test: 개발 소스를 테스트
-	    "lint": "eslint",                    					## npm run lint: 개발 소스 체크
-	    "pub": "publish",                 						## npm run publish: 개발 소스를 퍼블리시
+	  "scripts": {                           					## execute with npm run command or npm command
+	    "start": "./sampleApiService start",   					## npm start: execute app
+	    "stop": "./sampleApiService stop",   					## npm stop: stop app
+	    "babel": "babel",                  						## npm run babel: compile developemt source
+	    "test": "eslint && mocha",        						## npm test: test development source
+	    "lint": "eslint",                    					## npm run lint: Check Development Source
+	    "pub": "publish",                 						## npm run publish: Publish Development Source
 	    "cfpack": "cfpack",               						## npm run cfpack: 컴파일한 개발 소스를 패키지화
 	    "cfpush": "cfpush"              						## npm run cfpush: 패키지화 한 개발 소스를 cf에 push
 	  },

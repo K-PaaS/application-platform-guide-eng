@@ -497,7 +497,7 @@ applications:
 		  // Send api usage to abacus
 		  request.post(options, function(error, response, body) {
 		
-		    // abacus 전송 처리 판정
+		    // Checking the transmission process of abacus
 		    if (error) console.log(error);
 		    else if (response.statusCode === 201 || response.statusCode === 200) {
 		      // console.log('Successfully reported usage %j with headers %j',
@@ -505,14 +505,14 @@ applications:
 		      res.status(201).send(response.body);
 		      return;
 		    }
-		    // abacus에 api 사용량을 중복 송신한 경우 발생
+		    // Occurs when duplicate API usage is sent to abacus
 		    else if (response.statusCode === 409) {
 		      // console.log('Conflicting usage %j. Response: %j',
 		      //   usage, response);
 		      res.sendStatus(409);
 		      return;
 		    }
-		    // 기타 400 / 500 계열의 오류 체크
+		    // other 400 / 500 series error checks
 		    else {
 		      // console.log('failed report usage %j with headers %j',
 		      //   usage, response.headers);

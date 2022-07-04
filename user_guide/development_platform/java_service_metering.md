@@ -886,124 +886,118 @@ The service provider develops a policy for the service in line with the rating p
 
 
 
-### <div id='31'/>2.5.4.  정책 등록
+### <div id='31'/>2.5.4.  Register Policy
 
-정책은 2가지 방식 중 하나의 방법으로 CF-ABACUS에 등록할 수 있다.
+Policies can be registered to CF-ABACUS in one of two ways.
 
-#### **1.  js 파일을 등록하는 방식**
+#### **1.  By registering a js file**
 
-작성한 정책을 다음의 디렉토리에 저장한 후, CF에 CF-ABACUS를 배포 또는
-재배포 한다.
+Save the created policy to the following directory and deploy or redeploy CF-ABACUS into CF.
 
--	미터링 정책의 경우
+-	In case of Metering Policy
 
 		cf-abacus/lib/plugins/provisioning/src/plans/metering
 
--	등급 정책의 경우
+-	In case of rating Policy
 
 		cf-abacus/lib/plugins/provisioning/src/plans/pricing
 
--	과금 정책의 경우
+-	In case of Billing Policy
 
 		cf-abacus/lib/plugins/provisioning/src/plans/rating
 
 
-#### **2.  DB에 등록하는 방식**
+#### **2.  By registering it to the DB**
 
-작성한 정책을 curl 등을 이용해 DB에 저장하는 방식으로 CF-ABACUS를
-재배포할 필요는 없다. 정책 등록 시, 정책 ID는 고유해야 한다.
+There is no need to redeploy CF-ABACUS by storing the prepared policy in DB using curl or the like. When registering a policy, the policy ID must be unique.
 
--   미터링 정책의 경우
+-   In case of Metering Policy
 
   		POST /v1/metering/plans/:metering_plan_id
 
 
--   등급 정책의 경우
+-   In case of Rating Policy
 
   		POST /v1/rating/plans/:rating_plan_id
 
--   과금 정책의 경우
+-   In case of Billing Policy
 
   		POST /v1/pricing/plans/:pricing_plan_id
 
 
-## <div id='32'/>2.6  배포
-파스-타 플랫폼에 애플리케이션을 배포하면 배포한 애플리케이션과 파스-타
-플랫폼이 제공하는 서비스를 연결하여 사용할 수 있다. 파스-타 플랫폼상에서
-실행을 해야만 파스-타 플랫폼의 애플리케이션 환경변수에 접근하여 서비스에
-접속할 수 있다.
+## <div id='32'/>2.6  Deployment
+When an application is deployed on the PaaS-TA platform, you can connect and use the deployed application with the services provided from the PaaS-TA platform.
+It should be executed only on the PaaS-TA platform to access the application environment variable and access the service.
 
-### <div id='33'/> 2.6.1. 파스-타 플랫폼 로그인
+### <div id='33'/> 2.6.1. PaaS-TA Platform Login
 
-아래의 과정을 수행하기 위해서 파스-타 플랫폼에 로그인
+Log in to PaaS-TA platform to perform the procedure below
 
-  >$ cf api --skip-ssl-validation **https://api**.<***파스-타 도메인***> # **파스-타 플랫폼 TARGET 지정**
+  >$ cf api --skip-ssl-validation **https://api**.<***PaaS-TA Domain***> # **Set PaaS-TA Platform TARGET**
 
-  >$ cf login -u *<**user name**>* -o *<**org name**>* -s *<**space name**>* **#로그인 요청**
+  >$ cf login -u *<**user name**>* -o *<**org name**>* -s *<**space name**>* **#Request login**
 
 
-### <div id='34'/>2.6.2.  mongo-db 서비스 브로커 생성
+### <div id='34'/>2.6.2.  Create mongo-db Service Broker
 
-애플리케이션에서 사용할 서비스를 파스-타 플랫폼을 통하여 생성한다.
-mongo-db 서비스 팩이 배포하고자 파스-타 플랫폼 환경에 release 되어
-있어야 한다. 애플리케이션과 바인딩 과정을 통해 접속정보를 얻을 수 있다.
+Create the service to use at the application through the PaaS-TA Platform.  
+Mongo-db service must be deployed in the PaaS-TA platform environment.  
+Access information can be obtained through the application and binding process.  
 
--   **서비스 생성 (cf marketplace 명령을 통해 서비스 목록과 각 서비스의
-    플랜을 조회할 수 있다.)**
+-   **Create Service (The cf marketplace command allows you to view the list of services and the plan for each service.)**
 
-		## 서비스 브로커 CF 배포
+		## Service Broker CF Deployment
 		$ cd openpaas-service-java-broker-mongo
 		$ cf push
 		
-		## 서비스 브로커 생성
-		$ cf create-service-broker <서비스 브로커 명> <인증ID> <인증Password> <서비스 브로커 주소>
+		## Create Service Broker
+		$ cf create-service-broker <Service Broker Name> <Authentication ID> <Aunthentication Password> <Service Broker Address>
 		
-		예)
+		Example)
 		$ cf create-service-broker openpaas-mongo-broker admin cloudfoundry http://openpaas-mongo-broker.bosh-lite.com
 		
-		## 서비스 브로커 확인
+		## Check Service Broker
 		$ cf service-brokers
 		Getting service brokers as admin...
 		
 		name                url   
-		openpaas-mongo-broker http://openpaas-mongo-broker.<파스-타 도메인>
+		openpaas-mongo-broker http://openpaas-mongo-broker.<PaaS-TA Domain>
 		
-		## 서비스 카탈로그 확인
+		## Check Service Catalog
 		$ cf service-access
 		Getting service access as admin...
 		broker: sample-mongodb-broker
 		   service                                   plan       access   orgs   
 		   Mongo-DB                               default-plan none        
 		   
-		## 등록한 서비스 접근 허용
-		$ cf enable-service-access <서비스명> -p <플랜 명>
+		## Allow access to registered services
+		$ cf enable-service-access <Service Name> -p <Plan Name>
 		
-		예)
+		Example)
 		$ cf enable-service-access Mongo-DB
 		
-		# 서비스 생성
+		# Create Service
 		$ cf create-service Mongo-DB default-plan  mongod_service
 
 
-## <div id='35'/>2.6.3.  API 서비스 연동 샘플 애플리케이션 배포 및 서비스 연결
+## <div id='35'/>2.6.3.  API Service Interworking Sample Application Deployment and Service Connection
 
-애플리케이션과 서비스를 연결하는 과정을 '바인드(bind)라고 하며, 이
-과정을 통해 서비스에 접근할 수 있는 접속정보를 생성한다.
+The process of connecting an application to a service is called a 'bind'. Through this process, access information to access the service is generated.
 
--   애플리케이션과 서비스 연결
--   이때 -c 옵션으로 미터링에 필요한 애플리케이션 환경정보를 세팅한다.
+-   Bind Application and Service
+-   Set the application environment information necessary for metering with -c option.
 
-		## API 서비스 연동 샘플 애플리케이션 배포
+		## API Service Interworking Sample Application Deployment
 		$ cd /binding-test-app
 		$ cf push
 		
-		## 서비스 바인드
+		## Service Bind
 		$ cf bind-service <APP_NAME> <SERVICE_INSTANCE> -c <PARAMETERS_AS_JSON>
 		
-		예) 
+		Example) 
 		$ cf bind-service binding-test-app mongod_service -c '{"app_organization_id":"test05","app_space_id":"testspaceId","metering_plan_id":"standard"}'
 		
-		## 서비스 연결 확인
+		## Check Service Connection
 		$ cf services
 		Getting services in org real / space ops as admin...
 		OK
@@ -1011,59 +1005,57 @@ mongo-db 서비스 팩이 배포하고자 파스-타 플랫폼 환경에 release
 		name                       service                                   plan       bound apps               last operation   
 		binding-test-app mongod_service standard   binding-test-app create succeeded
 		
-		## 애플리케이션 실행
+		## Application Execution
 		$ cf start <APP_NAME>
 		
-		예)
+		Example)
 		$ cf start binding-test-app
 		
-		## 형상 확인
+		## Check Shape
 		$ cf a
 		Getting apps in org real / space ops as admin...
 		OK
 		
 		name                      requested state   instances   memory   disk   urls   
-		binding-test-app          started           1/1         512M     512M   binding-test-app.<파스-타 도메인>
-		openpaas-mongo-broker     started           1/1         512M     1G     openpaas-mongo-broker.<파스-타 도메인>
+		binding-test-app          started           1/1         512M     512M   binding-test-app.<PaaS-TA Domain>
+		openpaas-mongo-broker     started           1/1         512M     1G     openpaas-mongo-broker.<PaaS-TA Domain>
 
 
-## <div id='36'/>2.7.  서비스 바인딩 CF-Abacus 연동 테스트
+## <div id='36'/>2.7.  Service Binding CF-Abacus Interworking Test
 
-binding-test-app 과 mongo-db 서비스를 바인딩 실행해, CF-Abacus 연동
-테스트를 진행 할 수 있다.
+he binding-test-app and mongo-db services can be bound to perform a CF-Abacus interworking test.
 
-CF-Abacus 연동 확인
+Check CF-Abacus Interwork
 
-	## 테스트 바인딩
+	## Test Binding
 	$ cf bind-service binding-test-app mongod_service -c '{"app_organization_id":"testOrgGuid","app_space_id":"testSpaceGuId","metering_plan_id":"standard"}'
 	
-	<<후략>> 
+	<<Skip>> 
 	
-	## API 사용량 확인
-	$ curl 'http://abacus-usage-reporting.<파스-타 도메인>/v1/metering/organizations/<샘플 애플리케이션을 배포한 조직>/aggregated/usage'
+	## Check API Usage
+	$ curl 'http://abacus-usage-reporting.<PaaS-TA Domain>/v1/metering/organizations/<샘플 애플리케이션을 배포한 조직>/aggregated/usage'
 	
-	예)
+	Example)
 	$ curl 'http://abacus-usage-reporting.bosh-lite.com/v1/metering/organizations/testOrgGuid /aggregated/usage'
 
 
-## <div id='37'/>2.8.  단위 테스트
+## <div id='37'/>2.8.  Unit Test
 
-Junit 테스트로 구현 되어 있으며, 테스트 service class 에 대한 부분적
-mock 적용을 위하여, owermock-mockito-release-full:1.6.1 을 사용하였다.
+It is implemented as a Junit test and owermock-mockito-release-full:1.6.1 was used for the partial mock appliance for the test service class.
 
 
--   테스트를 위한 gradle.build dependency 작성
+-   Create gradle.build dependency for test
 
 
 		dependencies {
 		
-		// 서비스브로커 라이브러리 
+		// Service Broker Library 
 		compile files('libs/openpaas-service-java-broker-ex.jar')
 		
-		// 미터링 사용량 객체 생성 의존 라이브러리
+		// Metering Usage Object Create Dependent Library
 		compile("org.json:json:20160212")
 		
-		…중략
+		…Skip
 		
 		:${springBootCfServiceBrokerVersion}")
 		
@@ -1071,20 +1063,19 @@ mock 적용을 위하여, owermock-mockito-release-full:1.6.1 을 사용하였�
 		testCompile("com.jayway.jsonpath:json-path:${jsonPathVersion}")
 		testCompile("org.apache.httpcomponents:httpclient:4.4.1")
 		testCompile("org.powermock:powermock-mockito-release-full:1.6.1")    
-		…후략
+		…Skip
 		}
 
 
-1.  테스트 실행
+1.  Execute Test
 	
-	-   Spring Tool Suite 의 네비게이터 트리의 /meteringTest 경로에서 오른쪽
-			마우스 클릭 > Run As > JUNIT 테스트
+	-   Right click /meteringTest path in the Navigator Tree from Spring Tool Suite > Run As > JUNIT Test
 
-## <div id='38'/>2.9. 샘플코드
+## <div id='38'/>2.9. Sample Code
 
-샘플 코드는 아래의 사이트에 다운로드 할 수 있다.
+The Sample code can be downloaded from the site below.
 
-[다운로드](https://paas-ta.kr/data/packages/2.0/PaaSTA-Metering.zip)
+[Download](https://paas-ta.kr/data/packages/2.0/PaaSTA-Metering.zip)
 
 
 [Java_Service_Metering_Image01]:./images/Java_Service_Metering/service_broker_api_architecture.png
@@ -1093,4 +1084,4 @@ mock 적용을 위하여, owermock-mockito-release-full:1.6.1 을 사용하였�
 [Java_Service_Metering_Image04]:./images/Java_Service_Metering/service_broker_library_architecture.png
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Java Service Metering 개발
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Java Service Metering Development

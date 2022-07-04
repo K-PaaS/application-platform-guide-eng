@@ -346,88 +346,86 @@ applications:
 	  </tr>
 	</table>
                             
-#### 3.  App.js 애플리케이션의 기능 및 미터링 정보 전송 기능을 구현한다. 샘플 애플리케이션은 다음과 같이 기능을 구현하였다.
+#### 3.  Implement the functions of the App.js application and the metered information transmission function. The sample application implemented the function as follows.
 
--   의존 모듈 선언
+-   Declare Dependency Module
 
 		'use strict';
 
 	 	// Implemented in ES5 for now
-		/* eslint no-var: 0 */                   // ECMA5로 개발할 경우, eslint 체크에서 var 사용 제한을 풀어준다.
+		/* eslint no-var: 0 */                   // When developing with ECMA5, release the var usage restriction from the eslint check.
 
-		var express = require('express');        // 웹 프레임워크 모듈
-		var request = require('request');        // request 모듈
-		var bodyParser = require('body-parser'); // request 정보를 json으로 변환하는 모듈
+		var express = require('express');        // Web Framework Module
+		var request = require('request');        // request Module
+		var bodyParser = require('body-parser'); // Module that convert request information to json
 		var cp = require('child_process');
-		var commander = require('commander');    // command 사용 가능 모듈
-		var oauth = require('abacus-oauth');     // oauth 모듈
+		var commander = require('commander');    // Module that can use commands
+		var oauth = require('abacus-oauth');     // oauth module
 
 
--   변수 선언
+-   Declare Variable
 
 		// Create router
-		var routes = express.Router(); // 앱 서비스 엔드포인트를 설정 할 미들웨어
+		var routes = express.Router(); // Middleware to set up app service endpoints
 
 		// Abacus Collector App's URL
-		var abacusCollectorUrl = process.env.COLLECTOR; // api 사용량 전송 url (abacus)
+		var abacusCollectorUrl = process.env.COLLECTOR; // api usage sending url (abacus)
 
 		// Abacus System Token Scope
-		var scope = 'abacus.usage.write abacus.usage.read'; // abacus를 secured로 설정할 경우, api 사용량 정보의 전송을 위한
-		token scope 설정 (scope 설정에 대해서는 abacus 설치 가이드 참조)
+		var scope = 'abacus.usage.write abacus.usage.read'; // If abacus is set to secure, set up token scope for transmission of API usage information (see abacus installation guide for scope setting)
 
-		// 크로스 도메인 허용을 위한 헤더 설정
+		// Set headers for cross-domain acceptance
 		var accessControlAllowHeader = 'Origin,X-Requested-With,Content-Type,Accept';
 
-		// 아래의 항목은 더미로 설정한 미터링 대상 정보이다.
-		// 실제 서비스를 구현할 경우, 해당 항목을 제공하는 API 호출이나 프로퍼티 값 등을 통해
-		// 설정한다.
+		// The item below is the piled metering target information set .
+		// When implementing an actual service, it is set through API calls or property values that provide the corresponding item.
 		var resourceId = 'object-storage';
 		var measure1 = 'storage';
 		var measure2 = 'light_api_calls';
 		var measure3 = 'heavy_api_calls';
 		var serviceKey = '[cloudfoundry]';
 
--   Secure Abacus 보안 구현
+-   Secure Abacus Security Implementation
 
-		// abacus 토큰 초기화
+		// abacus token reset
 		var abacusToken = void 0;
 		
-		// Secure 설정
+		// Secure settings
 		var secured = function secured() {
 		  return process.env.SECURED === 'true' ? true : false;
 		};
 		
-		// abacus에 api usage를 전송할 때, request header 설정
+		// Set request header when sending api usage to abacus
 		var authHeader = function authHeader(token) {
 		  return token ? { authorization: token() } : {};
 		};
 		
-		… 중략 …
+		… Skip …
 		
 		var sampleApiService = function sampleApiService() {
 		
 		  var app = express();
 		
-		  // Secured abacue의 경우, 앱 서비스를 시작할 때, abacus 토큰을 구한다.
+		  // In the case of Secured abacue, an abacus token is obtained when starting the app service.
 		  if (secured()) {
 		    /*
-		     AUTH_SERVER:   인증 서버 엔드포인트 https://hostname:port or 
+		     AUTH_SERVER:   Authentication Server Endpoint https://hostname:port or 
 		                    https://hostname
-		     CLIENT_ID:     인증 서버 권한 아이디
-		     CLIENT_SECRET: 인증 서버 권한 비밀번호
-		     SCOPE:         토큰 scope
+		     CLIENT_ID:     Authentication Server Authorized ID
+		     CLIENT_SECRET: Authentication Server Authorized Password
+		     SCOPE:         token scope
 		     */
 		
 		    abacusToken = oauth.cache(process.env.AUTH_SERVER, process.env.CLIENT_ID,
 		      process.env.CLIENT_SECRET, scope);
 		
-		    // abacus Token을 주기적으로 갱신한다.
+		    // Update abacus Token periodically.
 		    abacusToken.start();
 		  };
 		
-		 // api 서비스 또한 secured 모드로 실행 할 수 있다.
-		 // secured 모드로 실행할 경우, route에 등록한 모든 서비스에 대해 유효성 체크를 실행하도록 구현한다.
-		 // 본 샘플에서는 abacus의 oauth 서비스의 유효성 체크를 사용하였다.
+		 // The API service can also be executed in the secure mode.
+		 // When running in the secure mode, implement to perform a validation check on all services registered in the route..
+		 // In this sample, the validity check of abacus' oauth service was used.
 		 // if (secured())
 		 //   app.use(/^\/plan[0-9]/,
 		 //     oauth.validator(process.env.JWTKEY, process.env.JWTALGO));
@@ -437,12 +435,12 @@ applications:
 		  return app;
 		};
 		
-		… 후략 …
+		… Skip …
 
 
--   COR 설정
+-   COR Settings
 
-		// api 서비스는 요청한 서비스의 응답 처리 이외에 abacus에 대해 request 처리가 추가로 필요하므로 크로스 도메인을 설정 한다.
+		// The API service sets up a cross-domain because it requires additional request processing for abacus in addition to the response processing of the requested service.
 		routes.use(function(req, res, next) {
 		  res.header('Access-Control-Allow-Origin', '*');
 		  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
@@ -450,20 +448,20 @@ applications:
 		  next();
 		});
 
--   서비스 API 구현
+-   Service API Implementation
 
 		/*
 		 Sample API 'Plan1'
-		 1. Caller의 요청에 API 서비스를 처리 응답 (Sample에서는 생략)
-		 2. abacus에 api usage 전송
+		 1. Responding to Caller's request to process API service (Skip in Sample)
+		 2. send api usage to abacus
 		 */
 		routes.post('/plan1', function(req, res, next) {
 		
-		  // api 요청 시각 설정
+		  // Set api request time
 		  var d = new Date();
 		  var eventTime = Date.parse(d);
 		
-		  // 사용량 미터링에 필요한 메타 정보 설정
+		  // Setting Meta Information Required for Metering Usage
 		  var orgid = req.body.organization_id;
 		  var spaceid = req.body.space_id;
 		  var instanceid = reqs.body.instance_id ? reqs.body.instance_id : reqs.body.consumer_id;
@@ -471,32 +469,32 @@ applications:
 		  var planid = req.body.plan_id;
 		  var credential = req.body.credential;
 		
-		  // 실제 서비스에 실행에 필요한 메타 정보는 inputs에 설정
+		  // Meta information required to run the actual service is set in inputs
 		  // var inputs = req.body.inputs;
 		
-		  // 서비스 이용 권한 체크, 해당 체크 내용은 제공할 서비스에 맞게 변형한다.
+		  // Service usage rights check, the contents of the check are modified to suit the service to be provided.
 		  if (credential.serviceKey != serviceKey)
 		    return res.status(401).send();
 		
-		  // 필수 항목 체크
+		  // Check necessary items
 		  if (!orgid || !spaceid || !appid)
 		    return res.status(400).send();
 		
-		  // abacus에 리포팅할 api 사용량 정보를 작성한다. (JSON 형식)
+		  // Write the API usage information to report to abacus. (JSON Format)
 		  var usage =
 		    buildAppUsage(orgid, spaceid, appid, instanceid, planid, eventTime);
 		
-		  // api 사용량 정보 체크
+		  // api usage information check
 		  if (usage.usage === null) return res.status(400).send();
 		
-		  // api 사용량 전송을 위한 요청 정보 설정
+		  // Set request information for sending api usage
 		  var options = {
 		    uri: abacusCollectorUrl,
 		    headers: authHeader(abacusToken),
 		    json: usage.usage
 		  };
 		
-		  // api usage를 abacus에 전송
+		  // Send api usage to abacus
 		  request.post(options, function(error, response, body) {
 		
 		    // abacus 전송 처리 판정

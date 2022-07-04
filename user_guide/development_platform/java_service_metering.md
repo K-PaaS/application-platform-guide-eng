@@ -60,10 +60,10 @@ This document describes the development environment of Ubuntu 14.04 ver.
 
 This document describes the development environment in which the Mongo-db service pack is installed.
 
-Mongo-db service pack installation shall be performed by referring to Mongo-DB installation document.
+Mongo-db service pack installation shall be performed by referring to the Mongo-DB installation document.
 
 
-Mongo-db service pack installation shall be performed by referring to Mongo-DB installation document.
+Mongo-db service pack installation shall be performed by referring to the Mongo-DB installation document.
 (For cf-abacus installation, refer to the Abacus installation guide provided separately.)
 
 ## <div id='5'/>1.3.  References
@@ -86,7 +86,7 @@ This makes external applications available on the platform. (database, message q
 
 The open cloud platform service API is a protocol (catalog, provision, de provision, update provision plan, bind, unbound) between Cloud Controller and Service Broker, which is implemented as a RESTful API and registered with Cloud Controller.
 
-When  implementing metering for a service, select a process that fits the service policy and purpose of these conventions and link metering to that process.
+When implementing metering for a service, select a process that fits the service policy and purpose of these conventions and link metering to that process.
 
 This development guide guides how to measure bind and unbind time using the mongo-db service as an example.
 
@@ -142,15 +142,15 @@ CF-ABACUS is installed in the form of micro-service in CF after CF installation.
 ※ ***It does not describe the development of metering functions for specific API calls for services and the use of specific resources for services.***
 ※ Refer to the API Service Metering Development Guide for metering of API calls.
 
-※ Refer to the linked site for development or installation of other components.
+※ Refer to the linked site for the development or installation of other components.
 
 
 ## <div id='8'/>2.2.  Configure Development Environment
 
 
-Following environment is premised on the development environment for service metering development.
+The following environment is premised on the development environment for service metering development.
 
--   CF release: v226 and above (Test in a bosh-lite installation envionment)
+-   CF release: v226 and above (Test in a bosh-lite installation environment)
 -   gradle 2.14
 -   java version "1.8.0_101"
 -   springBootVersion: 1.3.0. BUILD-SNAPSHOT
@@ -166,8 +166,8 @@ Following environment is premised on the development environment for service met
 ### <div id='10'/>2.3.1.  What is Service Broker Library?
 
 
-In CF (Open Platform), there are various services that can be serviced on the platform.<br>
-As each of these services are developing its own service broker, enables the applications to use the service in CF (open platform).<br>
+In CF (Open Platform), various services can be serviced on the platform.<br>
+As each of these services is developing its service broker, enables the applications to use the service in CF (open platform).<br>
 The services vary, but the RESTAPI of the open platform for using the services is predetermined.<br>
 The Service Broker Library is a library that allows different service brokers to provide services based on the REST API of this open platform by adding the service broker library Jar file to the build path and implementing abstraction classes.
 
@@ -176,7 +176,7 @@ In this guide, implementing metering services in the mongo-db service broker, an
 
 ### <div id='11'/>2.3.2. Download the service broker library and import the project.
 
-#### 1.  Download the service broker source that is being provided as an open source using git clone.<br> 
+#### 1.  Download the service broker source that is being provided as an open-source using git clone.<br> 
 
 **[https://github.com/cloudfoundry-community/spring-boot-cf-service-broker/tree/master/src/main/java/org/cloudfoundry/community/servicebroker/controller](https://github.com/cloudfoundry-community/spring-boot-cf-service-broker/tree/master/src/main/java/org/cloudfoundry/community/servicebroker/controller)**
   
@@ -199,19 +199,19 @@ After adding the Gradle plug-in to the Eclipse, importing the gradle makes devel
 
 | 　　  |Java class | Description|
 |---------|---|----|
-|    Modify     | ServiceIncetanceBindingController  | A controller that processes the service binding request of cloud controller.<br> Obtain the uaatoken from Sample MeteringOuthService and add the process of calling with the parameters of Sample MeteringReportService.   |
+|    Modify     | ServiceIncetanceBindingController  | A controller that processes the service binding request of the cloud controller.<br> Obtain the uaatoken from Sample MeteringOuthService and add the process of calling with the parameters of Sample MeteringReportService.   |
 |    Modify     | ServiceInstanceBinding  | When the service-binding-request is processed by the ServiceIncidenceBinding Controller, report the usage report to the abacus-usage-collector with metering applied to the binding connection.   |     
-|    Add     | SampleMeteringReportService  | SampleMeteringReportService abstracted interface with no information related to metering/rating/charging policies. This is an abstraction class provided for service providers to implement this interface to apply to service implementations. This is an abstraction class provided for service providers to implement this interface to apply to service implementations.<br>SampleMeteringReportService abstracted interface with no information related to metering/rating/charging policies. This is an abstraction class that is provided so that service providers who will implement this interface can apply it to service implementations.|     
+|    Add     | SampleMeteringReportService  | SampleMeteringReportService abstracted interface with no information related to metering/rating/charging policies. This is an abstraction class provided for service providers to implement this interface to apply to service implementations. This is an abstraction class provided for service providers to implement this interface to apply to service implementations.<br>SampleMeteringReportService abstracted interface with no information related to metering/rating/charging policies. This is an abstract class that is provided so that service providers who will implement this interface can apply it to service implementations.|     
 |    Add     | SampleMeteringOAuthService  | It is an abstraction class for obtaining an access token to the abacus-usage-collector from a UAA server on an open platform and delivering the token to the SampleMeteringReportService.   |
 
 
-Appearance of files added or modified for metering in the service broker library
+The appearance of files added or modified for metering in the service broker library
 
 ![Java_Service_Metering_Image04]
 
 ### <div id='13'/>2.3.4.  ServiceInstanceBindingController
 
-In the bindServiceInstance process, add the process of obtaining uaa token from  SampleMeteringOAuthServiceand calling with parameters from SampleMeteringReportService.
+In the bindServiceInstance process, add the process of obtaining the uaa token from  SampleMeteringOAuthServiceand calling with parameters from SampleMeteringReportService.
 
 	@RequestMapping (value = BASE_PATH + "/{bindingId}", method = RequestMethod.PUT)
 	public ResponseEntity<ServiceInstanceBindingResponse> bindServiceInstance (
@@ -250,7 +250,7 @@ In the bindServiceInstance process, add the process of obtaining uaa token from 
 
 ### <div id='14'/>2.3.5.  ServiceInstanceBinding 
 
-Add the environment information field of the application to be bound to implement the metering service to the Service InstanceBinding. The added fields will be passed to the mongo-db repository after mapping the field values of the service binding request parameter in the implementation of the Service Instance Binding Service. Gradle build the library.
+Add the environment information field of the application to be bound to implement the metering service to the Service InstanceBinding. The added fields will be passed to the mongo-db repository after mapping the field values of the service binding request parameter in the implementation of the Service Instance Binding Service. Gradle builds the library.
 
 	package org.openpaas.servicebroker.model;
 	
@@ -309,7 +309,7 @@ The class that inherits the SampleMeteringOAuthServicemust implement the process
 
 
 ### <div id='16'/>2.3.7.  SampleMeteringReportService  Abstract Class
-The class that inherits the SampleMeteringReportServicemust implement the process of sending the event information to the abacus-collector and returning the status code (HTTP status code) for the processing when processing the create binding request and delete binding request.
+The class that inherits the SampleMeteringReportServicemust implements the process of sending the event information to the abacus-collector and returning the status code (HTTP status code) for the processing when processing the create binding request and delete binding request.
 
 	package org.openpaas.servicebroker.service;
 	import org.openpaas.servicebroker.exception.ServiceBrokerException;
@@ -345,7 +345,7 @@ The mongo-db service broker API uses a separate Zip file package.
 |---------|---|----|
 |   Modify      |build.gradle   |  Build setting file<br>Add the required dependency to create the metering usage object.|     
 |   Modify      | application-mvc.properties  | Map the information in the service binding request.<br>Add an environmental information field of the application to be bound to implement the metering service.|     
-|   Modify      | datasource.properties   | Mongo-db Service Information   |     
+|   Modify      | datasource. properties   | Mongo-db Service Information   |     
 |   Modify     | MongoServiceInstanceBindingService  |Add the process of mapping the metering information received by the service broker binding request parameter to the service instance binding.    |     
 |   Add      | SampleMeteringReportServiceImpl  | Implement SampleMeteringReportService.   |     
 |   Add     |SampleMeteringOAuthServiceImpl   | Implement SampleMeteringOAuthService.   |     
@@ -357,7 +357,7 @@ Apply service broker library mongo-db service broker jar file
 
 ![Java_Service_Metering_Image03]
 
-Gradle build the service broker library.
+Gradle builds the service broker library.
 
 	@openpaas-service-broker/openpaas-service-java-broker$ gradle build -x test
 	:compileJava
@@ -376,9 +376,9 @@ Gradle build the service broker library.
 
 
 
-When Build is successed, /openpaas-service-java-broker/build/libs/openpaas-service-java-broker.jar gets created.
+When Build is succeeded, /openpaas-service-java-broker/build/libs/openpaas-service-java-broker.jar gets created.
 
-Copy the jar file to the /openpaas-service-java-broker-mongo/libs path of the mongo-db service broker and add dependency to the mongo-db service broker gradle build file.
+Copy the jar file to the /openpaas-service-java-broker-mongo/libs path of the mongo-db service broker and add a dependency to the mongo-db service broker gradle build file.
 
 
 The dependencies portion of the mongo-db service broker build.gradle file
@@ -434,9 +434,9 @@ Refer to uaa ****UAA****Account Registration** for **Secured Abacus**** in the s
 ### <div id='24'/>2.4.7.  MongoServiceInstanceBindingService Implementation Body
 
 When requesting the service broker binding CLI, the application environment information is input through the parameter object.
-Map these information to the ServiceInstanceBinding in the metering field.
+Map this information to the ServiceInstanceBinding in the metering field.
 
--   Request example of service broker binding CLI 
+-   Request an example of a service broker binding CLI 
 
   	    $ cf bind-service sample-api-node-caller mongod_service -c 
 		'{"app_organization_id":"test05","app_space_id":"testspaceId","metering_plan_id":"standard"}'
@@ -459,7 +459,7 @@ After storing through the mongo-db repository, return the bound information.
 
 ### <div id='25'/>2.4.8.  SampleMeteringOAuthService Implementation
 
-Information for obtaining a UAA token from the UAA server in application-mvc.properties is called to the class.
+Information for obtaining a UAA token from the UAA server in application-MVC. properties are called to the class.
 
 	@Component
 	@Service
@@ -484,7 +484,7 @@ Information for obtaining a UAA token from the UAA server in application-mvc.pro
 SampleMeteringOAuthServiceImpl implements SampleMeteringOAuthService.
 
 SampleMeteringOAuthServiceImpl creates an https connection and requests a token from the UAA server.
-At this time, the blank ({}) or token is returned according toabacusSecured (Whether the abacus-collector is set to secured).
+At this time, the blank ({}) or token is returned according to toabacusSecured (Whether the abacus-collector is set to secure).
 
 	@Override
 	public String getUAAToken() throws ServiceBrokerException {
@@ -519,21 +519,21 @@ At this time, the blank ({}) or token is returned according toabacusSecured (Whe
 
 ### <div id='26'/>2.4.9.  SampleMeteringReportService Implementation
 
-SampleMeteringReportServiceImpl  creates an https connection with the uaa token obtained from SampleMeteringOAuthServiceImpland POSTs service usage information to abacus-collector.
+SampleMeteringReportServiceImpl creates an https connection with the uaa token obtained from SampleMeteringOAuthServiceImpland POSTs service usage information to abacus-collector.
 
-Since abacus-collector is preparing a process for the form to be POST according to the metering policy, JSON is generated in the form known by the abacus-collector and POST.
+Since the abacus-collector is preparing a process for the form to be POST according to the metering policy, JSON is generated in the form known by the abacus-collector and POST.
 
-SampleMeteringReportServiceImpl is largely divided into two to process.
+SampleMeteringReportServiceImpl is largely divided into two processes.
 
 
-#### 1.  **Create usage information JSON by refering to the ServiceInstanceBinding Information.**
+#### 1.  **Create usage information JSON by referring to the ServiceInstanceBinding Information.**
 
 #### 2.  **Send the generated usage information JSON to abacus-collector. (HTTPS, HTTP)**
 
 
 Create usage information JSON.
 
-RESOURCE_ID linux-container and STANDARD_PLAN_ID standard are metric schemas provided by abacus as samples.
+RESOURCE_ID linux-container and STANDARD_PLAN_ID standard are metric schemas provided by the abacus as samples.
 
 In this guide, this metering schema is described as a metering schema for mongo-db service binding and unbinding.
 
@@ -675,7 +675,7 @@ In the following example, the constants for metering reporting are described acc
 
 # <div id='27'/>2.5.  Metering/Rating/Billing Policy
 
-This guide does not address examples of development of policies because they differ from service provider to service and from metering to rating to billing policy.
+This guide does not address examples of the development of policies because they differ from service provider to service and from metering to rating to billing policy.
 However, the format applicable to CF-ABACUS will be described.
 
 
@@ -894,7 +894,7 @@ Policies can be registered to CF-ABACUS in one of two ways.
 
 Save the created policy to the following directory and deploy or redeploy CF-ABACUS into CF.
 
--	In case of Metering Policy
+-	In the case of Metering Policy
 
 		cf-abacus/lib/plugins/provisioning/src/plans/metering
 
@@ -902,7 +902,7 @@ Save the created policy to the following directory and deploy or redeploy CF-ABA
 
 		cf-abacus/lib/plugins/provisioning/src/plans/pricing
 
--	In case of Billing Policy
+-	In the case of Billing Policy
 
 		cf-abacus/lib/plugins/provisioning/src/plans/rating
 
@@ -911,27 +911,27 @@ Save the created policy to the following directory and deploy or redeploy CF-ABA
 
 There is no need to redeploy CF-ABACUS by storing the prepared policy in DB using curl or the like. When registering a policy, the policy ID must be unique.
 
--   In case of Metering Policy
+-   In the case of Metering Policy
 
   		POST /v1/metering/plans/:metering_plan_id
 
 
--   In case of Rating Policy
+-   In the case of Rating Policy
 
   		POST /v1/rating/plans/:rating_plan_id
 
--   In case of Billing Policy
+-   In the case of Billing Policy
 
   		POST /v1/pricing/plans/:pricing_plan_id
 
 
 ## <div id='32'/>2.6  Deployment
-When an application is deployed on the PaaS-TA platform, you can connect and use the deployed application with the services provided from the PaaS-TA platform.
+When an application is deployed on the PaaS-TA platform, you can connect and use the deployed application with the services provided by the PaaS-TA platform.
 It should be executed only on the PaaS-TA platform to access the application environment variable and access the service.
 
 ### <div id='33'/> 2.6.1. PaaS-TA Platform Login
 
-Log in to PaaS-TA platform to perform the procedure below
+Log in to the PaaS-TA platform to perform the procedure below
 
   >$ cf api --skip-ssl-validation **https://api**.<***PaaS-TA Domain***> # **Set PaaS-TA Platform TARGET**
 
@@ -985,7 +985,7 @@ Access information can be obtained through the application and binding process.
 The process of connecting an application to a service is called a 'bind'. Through this process, access information to access the service is generated.
 
 -   Bind Application and Service
--   Set the application environment information necessary for metering with -c option.
+-   Set the application environment information necessary for metering with the -c option.
 
 		## API Service Interworking Sample Application Deployment
 		$ cd /binding-test-app
@@ -1023,7 +1023,7 @@ The process of connecting an application to a service is called a 'bind'. Throug
 
 ## <div id='36'/>2.7.  Service Binding CF-Abacus Interworking Test
 
-he binding-test-app and mongo-db services can be bound to perform a CF-Abacus interworking test.
+The binding-test-app and mongo-db services can be bound to perform a CF-Abacus interworking test.
 
 Check CF-Abacus Interwork
 
@@ -1044,7 +1044,7 @@ Check CF-Abacus Interwork
 It is implemented as a Junit test and owermock-mockito-release-full:1.6.1 was used for the partial mock appliance for the test service class.
 
 
--   Create gradle.build dependency for test
+-   Create gradle. build dependency for test
 
 
 		dependencies {
@@ -1069,7 +1069,7 @@ It is implemented as a Junit test and owermock-mockito-release-full:1.6.1 was us
 
 1.  Execute Test
 	
-	-   Right click /meteringTest path in the Navigator Tree from Spring Tool Suite > Run As > JUNIT Test
+	-   Right-click /meteringTest path in the Navigator Tree from Spring Tool Suite > Run As > JUNIT Test
 
 ## <div id='38'/>2.9. Sample Code
 

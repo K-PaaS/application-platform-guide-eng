@@ -1,49 +1,49 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Node.js API Service Metering 개발
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Node.js API Service Metering Development
 
 ## Table of Contents
-1. [문서 개요](#1)
-     * [1.1. 목적](#2)
-     * [1.2. 범위](#3)
-     * [1.3. 참고 자료](#4)
-2. [Node.js API 미터링 개발가이드](#5)
-     * [2.1. 개요](#6)
-     * [2.2. 개발환경 구성](#7)
-	     * [2.2.1 Node.js 및 npm 설치](#8)
-	     * [2.2.2 CF-Abacus 설치](#9)
-     * [2.3 샘플 API 서비스 브로커 및 대시보드 개발](#10)
-     * [2.4 샘플 API 서비스 개발](#11)
-	     * [2.4.1 샘플 API 서비스 애플리케이션 코드 구현](#12)
-	     * [2.4.2 샘플 API 서비스 애플리케이션 미터링 연동 항목](#13)
-     * [2.5 API 서비스 연동 샘플 애플리케이션 개발](#14)
-	     * [2.5.1 API 서비스 연동 샘플 애플리케이션 코드](#15)
-	     * [2.5.2 API 서비스 연동 샘플 애플리케이션 인터페이스 항목](#16)
-	     * [2.5.3 VCAP_SERVICES 환경설정 정보](#17)
-     * [2.6 미터링/등급/과금 정책](#18)
-	     * [2.6.1 미터링 정책](#19)
-	     * [2.6.2 등급 정책](#20)
-	     * [2.6.3 과금 정책](#21)
-	     * [2.6.4 정책 등록](#22)
-     * [2.7 배포](#23)
-	     * [2.7.1 파스-타 플랫폼 로그인](#24)
-	     * [2.7.2 API 서비스 브로커 생성](#25)
-	     * [2.7.3 API 서비스 애플리케이션 배포 및 서비스 등록](#26)
-	     * [2.7.4 API 서비스 연동 샘플 애플리케이션 배포 및 서비스 연결](#27)
-     * [2.8 테스트](#28)
-     * [2.9 API 및 CF-Abacus 연동 테스트](#29)
-     * [2.10 샘플 코드](#30)
+1. [Document Outline](#1)
+     * [1.1. Purpose](#2)
+     * [1.2. Range](#3)
+     * [1.3. References](#4)
+2. [Node.js API Metering Development Guide](#5)
+     * [2.1. Outline](#6)
+     * [2.2. Construct Development Environment](#7)
+	     * [2.2.1 Installation of Node.js and npm](#8)
+	     * [2.2.2 CF-Abacus Installation](#9)
+     * [2.3 Sample API Service Broker and Dashboard Development](#10)
+     * [2.4 Sample API Service Development](#11)
+	     * [2.4.1 Sample API Service Application Code Implementation](#12)
+	     * [2.4.2 Sample API Service Application Metering Interworking List](#13)
+     * [2.5 API Service Interworking Sample Application Development](#14)
+	     * [2.5.1 API Service Interworking Sample Application Code](#15)
+	     * [2.5.2 API Service Interworking Sample Application Interface List](#16)
+	     * [2.5.3 VCAP_SERVICES Environment Setting Information](#17)
+     * [2.6 Metering/Rating/Billing Policy](#18)
+	     * [2.6.1 Metering Policy](#19)
+	     * [2.6.2 Rating Policy](#20)
+	     * [2.6.3 Billing Policy](#21)
+	     * [2.6.4 Policy Registration](#22)
+     * [2.7 Deployment](#23)
+	     * [2.7.1 PaaS-TA Platform Login](#24)
+	     * [2.7.2 Create API Service Broker](#25)
+	     * [2.7.3 API Service Application Deployment and Service Registration](#26)
+	     * [2.7.4 API Service Interworking Sample Application Deployment and Service Connection](#27)
+     * [2.8 Test](#28)
+     * [2.9 API and CF-Abacus Interworking Test](#29)
+     * [2.10 Sample Code](#30)
  
 
 
-# <div id='1'></div> 1. 문서 개요
+# <div id='1'></div> 1. Document Outline
 
-### <div id='2'></div> 1.1 목적
+### <div id='2'></div> 1.1 Purpose
 
-본 문서(node.js API 서비스 미터링 애플리케이션 개발 가이드)는 파스-타 플랫폼 프로젝트의 미터링 플러그인과 Node.js API 애플리케이션을 연동시켜 API 서비스를 미터링하는 방법에 대해 기술 하였다.
+This document (the Node.js API Service Metering Application Development Guide) describes how to meter API services by interworking the metering plug-in of the PaaS-TA platform project with the Node.js API application.
 
-### <div id='3'></div> 1.2 범위
-본 문서의 범위는 파스-타 플랫폼 프로젝트의 Node.js API 서비스 애플리케이션 개발과 CF-Abacus 연동에 대한 내용으로 한정되어 있다.
+### <div id='3'></div> 1.2 Range
+The range of this document is limited to the development of Node.js API service application and CF-Abacus interworking of PaaS-TA platform projects.
 
-### <div id='4'></div> 1.3 참고자료
+### <div id='4'></div> 1.3 References
 **<https://docs.cloudfoundry.org/devguide/>**  
 **<https://docs.cloudfoundry.org/buildpacks/node/node-tips.html>**  
 **<https://nodejs.org/>**  
@@ -51,22 +51,23 @@
 **<https://github.com/cloudfoundry-incubator/cf-abacus>**  
 
 
-# <div id='5'></div> 2. Node.js API 미터링 개발가이드
+# <div id='5'></div> 2. Node.js API Metering Development Guide
 
-### <div id='6'></div> 2.1 개요
+### <div id='6'></div> 2.1 Outline
 
-API 서비스 및 해당 API 서비스를 사용하는 애플리케이션을 Node.js 언어로 작성 한다. API 서비스를 사용하는 애플리케이션과 API 서비스를 바인딩하고 해당 애플리케이션에 바인딩된 환경정보(VCAP_SERVICES)를 이용해 각 서비스별 접속정보를 획득하여 애플리케이션에 적용하여 API 서비스를 호출하는 애플리케이션을 작성 한다. 또한 API 서비스는 서비스 요청을 처리함과 동시에 API 사용 내역을 CF-ABACUS에 전송하는 애플리케이션을 작성 한다.
+The API service and the application using the API service are to be written in Node.js language. Bind the application that uses API Service and the API serivce.
+Using environmental information (VCAP_SERVICES) bound to the application, access information for each service is acquired and applied to the application to create an application that calls API services. The API service also creates an application that processes service requests and sends API usage history to CF-ABACUS.
 
 ![Development_Guide_Nodejs_Image01]
 
 <table>
   <tr>
-    <th colspan='2'>기능</th>
-    <th>설명</th>
+    <th colspan='2'>Function</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td rowspan='4'>Runtime</td>
-    <td width="160">미터링/등급/과금 정책</td>
+    <td width="160">Metering/Rating/Biling Policy</td>
     <td>API 서비스 제공자가 제공하는 서비스에 대한 각종 정책 정의 정보. JSON 형식으로 되었으며, 해당 정책을 CF-ABACUS에 등록하면 정책에 정의한 내용에 따라 API 사용량을 집계 한다.<br> 정책은 서비스 제공자가 정의해야 하며, JSON 스키마는 다음을 참조한다.<br> <u><b><a href="https://github.com/cloudfoundry-incubator/cf-abacus/blob/master/doc/api.md">https://github.com/cloudfoundry-incubator/cf-abacus/blob/master/doc/api.md</a></b></u>
     </td>
   </tr>

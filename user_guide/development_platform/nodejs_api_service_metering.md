@@ -524,9 +524,9 @@ applications:
 		});
 
 
--   Abacus 전송 Json 생성
+-   Create Abacus Sending Json 
 
-		// abacus로 전송할 데이터 포맷을 만든다.
+		// Create a data format to send to abacus.
 		var buildAppUsage =
 		  function buildAppUsage(orgid, spaceid, appid, insid, planid, eventTime) {
 		
@@ -565,18 +565,18 @@ applications:
 		  };
 
 
--   기타
+-   Other
 
-		// 앱 서비스를 위한 설정 정보
-		// PORT, HOST명 등을 설정한다.
+		// Setting Information for the App Service
+		// Set name of the PORT, HOST and etc.
 		var conf = function conf() {
 		  process.env.PORT = commander.port || process.env.PORT || 9602;
 		};
 		
-		// Command line 인터페이스 설정
-		// package에 기술한 start, stop 스크립트를 실행할 수 있다.
-		// 앱 시작: npm start
-		// 앱 중지: npm stop
+		// Create Command line Interface
+		// can execute the start and stop scripts described in the package.
+		// Start App: npm start
+		// Stop App: npm stop
 		
 		var runCLI = function runCLI() {
 		
@@ -612,84 +612,84 @@ applications:
 
 
 
-### <div id='13'></div> 2.4.2 샘플 API 서비스 애플리케이션 미터링 연동 항목
+### <div id='13'></div> 2.4.2 Sample API Service Application Metering Interworking Item
 
-#### 1.  미터링 정보 전송 API 엔드포인
+#### 1.  Metering Information Sending API Endpoints
 
 	POST /v1/metering/collected/usage
 
-#### 2.  API 서비스 미터링 전송 항목
+#### 2.  API Service Metering Sending Items
 <table>
   <tr>
-    <th>항목명</th>
-    <th>유형</th>
-    <th>설명</th>
-    <th>예시</th>
+    <th>Classification</th>
+    <th>Type</th>
+    <th>Description</th>
+    <th>Example</th>
   </tr>
   <tr>
     <td>start</td>
     <td>UNIX Timestamp</td>
-    <td>API처리 시작 시각</td>
+    <td>API process start time</td>
     <td>1396421450000</td>
   </tr>
   <tr>
     <td>end</td>
     <td>UNIX Timestamp</td>
-    <td>API처리 응답 시각</td>
+    <td>API process response time</td>
     <td>1396421451000</td>
   </tr>
   <tr>
     <td>organization_id</td>
     <td>String</td>
-    <td>API를 호출한 앱의 조직 ID</td>
+    <td> App Organization ID that called API</td>
     <td>us-south:54257f98-83f0-4eca-ae04-9ea35277a538</td>
   </tr>
   <tr>
     <td>space_id</td>
     <td>String</td>
-    <td>API를 호출한 앱의 영역 ID</td>
+    <td>Area ID of the app that called the API</td>
     <td>d98b5916-3c77-44b9-ac12-04456df23eae</td>
   </tr>
   <tr>
     <td>consumer_id</td>
     <td>String</td>
-    <td>API를 호출한 앱 ID</td>
+    <td>App ID that called API</td>
     <td>App: d98b5916-3c77-44b9-ac12-04d61c7a4eae</td>
   </tr>
   <tr>
     <td>resource_id</td>
     <td>String</td>
-    <td>API 자원 ID</td>
+    <td>API resource ID</td>
     <td>sample_api</td>
   </tr>
   <tr>
     <td>plan_id</td>
     <td>String</td>
-    <td>API 미터링 Plan ID</td>
+    <td>API Metering Plan ID</td>
     <td>basic</td>
   </tr>
   <tr>
     <td>resource_instance_id</td>
     <td>String</td>
-    <td>API를 호출한 앱 ID</td>
+    <td>App ID that called API</td>
     <td>d98b5916-3c77-44b9-ac12-04d61c7a4eae</td>
   </tr>
   <tr>
     <td>measured_usage</td>
     <td>Array</td>
-    <td>미터링 항목</td>
+    <td>Metering Item</td>
     <td>-</td>
   </tr>
   <tr>
     <td>measure</td>
     <td>String</td>
-    <td>미터링 대상 명</td>
+    <td>Metering Target Name</td>
     <td>api_calls</td>
   </tr>
   <tr>
     <td>quantity</td>
     <td>Number</td>
-    <td>해당 API 요청에 대한 API 처리 횟수</td>
+    <td>Number of API processed for the API request</td>
     <td>10</td>
   </tr>
 </table>

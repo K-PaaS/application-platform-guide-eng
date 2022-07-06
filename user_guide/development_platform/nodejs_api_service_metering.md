@@ -695,7 +695,7 @@ applications:
 </table>
                                                                    
 
-#### 3.  API 서비스 미터링 전송 항목 예제
+#### 3.  API Service Metering Send Item Example
 
 	{
 	  "start": 1396421450000,
@@ -715,15 +715,15 @@ applications:
 	}
 
 
-참고: <u><b><a href="https://github.com/cloudfoundry-incubator/cf-abacus/blob/master/doc/api.md">https://github.com/cloudfoundry-incubator/cf-abacus/blob/master/doc/api.md</a></b></u>
+Refer: <u><b><a href="https://github.com/cloudfoundry-incubator/cf-abacus/blob/master/doc/api.md">https://github.com/cloudfoundry-incubator/cf-abacus/blob/master/doc/api.md</a></b></u>
 
 
-### <div id='14'></div> 2.5 API 서비스 연동 샘플 애플리케이션 개발
+### <div id='14'></div> 2.5API Service Interworking Sample Application Development
 
-  Api 서비스를 이용하는 애플리케이션으로 본 샘플은 웹 화면을 통행 단순히 api 서비스를 요청하는 기능만을 구현 하였다.
+ As an application using the Api service, this sample implemented only the function of simply requesting the API service through the web screen..
 
 
-#### 1.  API 서비스 연동 샘플 애플리케이션 형상
+#### 1.  API service interwork sample application shape
 
 	sample_api_node_caller/
 	├── .apprc
@@ -747,65 +747,65 @@ applications:
 
 <table>
   <tr>
-    <th>파일/폴더</th>
-    <th>목적</th>
+    <th>File/Folder</th>
+    <th>Purpose</th>
   </tr>
   <tr>
     <td>.apprc</td>
-    <td>앱 실행 환경 설정 파일</td>
+    <td>App execution configuration file</td>
   </tr>
   <tr>
     <td>cfpush.sh</td>
-    <td>Manifest의 org_id를 현재 target 설정된 org의 guid로 수정하고 패키지한 앱을 cf에 push 한다.</td>
+    <td>Modify the org_id of Manifest to the guid of the currently targeted org and push the packaged app to the cf.</td>
   </tr>
   <tr>
     <td>.eslintignore</td>
-    <td>Eslint 실행 시, 체크 제외 대상의 파일 및 디렉토리를 설정한다.</td>
+    <td>When executing Eslint, set files and directories to exclude check.</td>
   </tr>
   <tr>
     <td>.gitignore</td>
-    <td>Git을 통한 형상 관리 시, 형상 관리를 할 필요가 없는 파일 또는 디렉토리를 설정한다.</td>
+    <td>When configuration management through Git, set files or directories that do not need configuration management.</td>
   </tr>
   <tr>
     <td>manifest.yml</td>
-    <td>파스-타 플랫폼에 배포시 애플리케이션에 대한 설정이다. 애플리케이션의 이름, 배포 경로, 인스턴스 수 등을 정의할 수 있다.</td>
+    <td>This is the setting for the application when deploying to the PaaS-TA platform. You can define the name of the application, the deployment path, the number of instances, etc.</td>
   </tr>
   <tr>
     <td>.npmrc</td>
-    <td>Npm 실행 환경 설정 파일</td>
+    <td>Npm Execution Environment Configuration File</td>
   </tr>
   <tr>
     <td>package.json</td>
-    <td>node.js 어플리케이션에 필요한 npm의 의존성 정보를 기술하는데 사용 한다.<br>
-    npm install 명령을 실행시 install 뒤에 아무런 정보를 입력하지 않으면 이 파일의 정보를 이용하여 npm을 설치한다.
- </td>
+    <td>Used to describe dependency information of npm required for node.js application.<br>
+   When no information is entered after installing the npm install command, it uses the information that is in the file to install npm..
+ </td> 
   </tr>
   <tr>
     <td>sampleApiCaller</td>
-    <td>서비스 호출 앱 실행 스크립트</td>
+    <td>Service call app execution script</td>
   </tr>
   <tr>
     <td>app.js</td>
-    <td>서비스 호출 앱<br>웹 서비스 및 bind 한 api 서비스 호출에 대한 라우팅 정보를 정의한다.</td>
+    <td>Service call app<br>It defines routing information for web service and bind api service calls.</td>
   </tr>
   <tr>
     <td>bower_components</td>
-    <td>프론트엔드 라이브러리 디렉토리</td>
+    <td>Frontend library directory</td>
   </tr>
   <tr>
     <td>test.js</td>
-    <td>서비스 앱 단위 테스트 모듈<br>mocha를 통한 서비스 앱의 단위 테스트를 정의한다.</td>
+    <td>Service app unit test module<br>Define unit tests of service app through mocha.</td>
   </tr>
   <tr>
     <td>views</td>
-    <td>샘플 API 서비스 호출 데모 화면</td>
+    <td>Sample API service call demo screen</td>
   </tr>
 </table>
 
-### <div id='15'></div> 2.5.1 API 서비스 연동 샘플 애플리케이션 코드
+### <div id='15'></div> 2.5.1 API Service Interworking Sample Application Code
 
 #### 1.  Package.json  
-샘플 애플리케이션의 코드 구성에 대해 기술한다.
+Describes the code configuration of the sample application.
 
 	{
 	  "name": "sample-api-node-caller",
@@ -840,7 +840,7 @@ applications:
 	    "body-parser": "^1.15.2",
 	    "cors": "^2.8.1",
 	    "express": "^4.14.0",
-	    "express-handlebars": "^3.0.0",       ## 핸들러 모듈
+	    "express-handlebars": "^3.0.0",       ## handler module
 	    "babel-preset-es2015": "^6.6.0",
 	    "request": "^2.74.0",
 	    "commander": "^2.8.1",
@@ -864,16 +864,16 @@ applications:
 
 
 #### 2.  Manifest.yml  
-앱을 CF에 배포할 때 필요한 설정 정보 및 앱 실행 환경에 필요한 설정 정보를 기술한다.
+Describes the setting information required when deploying the app to the CF and the setting information required for the app execution environment.
 ```yml
 ---
 applications:
-- name: sample-api-node-caller  # 애플리케이션 이름
-  memory: 512M                  # 애플리케이션 메모리 사이즈
+- name: sample-api-node-caller  # application name
+  memory: 512M                  # application memory size
   disk_quota: 512M
-  instances: 1                  # 애플리케이션 인스턴스 개수
-  path: ./.cfpack/app.zip       # 배포될 애플리케이션의 위치
-  command: npm start            # CF에서의 애플리케이션 시작 명령어
+  instances: 1                  # number of application instances
+  path: ./.cfpack/app.zip       # location of the application to be deployed
+  command: npm start            # application start command in CF
   env:
     DEBUG: a*
     ORG_ID: d6ce3670-ab9c-4453-b993-f2821f54846b
@@ -883,48 +883,48 @@ applications:
     #CLIENT_SECRET: secret
 ```
 
--   ENV 항목
-	- 아래에 기술한 항목 이외에 서비스에 필요한 항목을 추가할 수 있다.
+-   ENV ITEMS
+	- In addition to the items described below, items necessary for the service may be added.
     
 	<table>
 	  <tr>
-        <th>ENV 항목</th>
-        <th>설명</th>
+        <th>ENV ITEMS</th>
+        <th>Description</th>
       </tr>
       <tr>
         <td>DEBUG</td>
-        <td>애플리케이션 디버그 로그 출력 대상 설정</td>
+        <td>Setting the application debug log output destination</td>
       <tr>
       <tr>
         <td>ORG_ID</td>
-        <td>Caller 애플리케이션을 배포할 조직 ID</td>
+        <td>Organization ID to deploy Caller Application</td>
       <tr>
       <tr>
         <td>SECURED</td>
-        <td>API 서비스를 Secured로 운용할 경우, 반드시 true를 설정한다.</td>
+        <td>When operating the API service as Secured, it must be set to true.</td>
       <tr>
       <tr>
         <td>AUTH_SERVER</td>
-        <td>SECURED가 true인 경우 설정한다.
-        - CF UAA를 Auth_server로 설정할 경우, https://api.<파스-타 도메인>
-        - Abacus의 AuthServer를 Auth_server로 설정할 경우, abacus-authserver-plugin
+        <td>Set when SECURED is true.
+        - when setting CF UAA as Auth_server, https://api.<PaaS-TA Domain>
+        - When setting AuthServer of Abacus as Auth_server, abacus-authserver-plugin
         </td>
       <tr>
       <tr>
         <td>CLIENT_ID</td>
-        <td>SECURED가 true인 경우 설정한다.<br>Abacus.usage 권한 id</td>
+        <td>Set when SECURED is true.<br>Abacus.usage authentication id</td>
       <tr>
       <tr>
         <td>CLIENT_SECRET</td>
-        <td>SECURED가 true인 경우 설정한다.Abacus.usage 권한 비밀번호<br></td>
+        <td>Set when SECURED is true.Abacus.usage authentication password<br></td>
       <tr>
 	</table>
 	                   
 	                   
 #### 3.  App.js  
-Api 서비스를 요청하는 애플리케이션을 구현한다.
+Implement an application that requests API services.
 
--   의존 모듈 선언
+-   Declare dependent modules
 
 		'use strict';
 
@@ -936,11 +936,11 @@ Api 서비스를 요청하는 애플리케이션을 구현한다.
 		var bodyParser = require('body-parser');
 		var cp = require('child_process');
 		var commander = require('commander');
-		var handlebars = require('express-handlebars').create({ defaultLayout:'main' }); // 웹 서비스 뷰 처리 모듈
+		var handlebars = require('express-handlebars').create({ defaultLayout:'main' }); // Web service view processing module
 
--   변수 선언
+-   Declare Variable
 
-		// 크로스 도메인 요청 헤더
+		// Cross domain request headers
 		var accessControlAllowHeader = 'Origin,X-Requested-With,Content-Type,Accept';
 		
 		var vcapApp = undefined;
@@ -948,22 +948,22 @@ Api 서비스를 요청하는 애플리케이션을 구현한다.
 		var dummyOrgId = undefined;
 		var vcapBindServices = undefined;
 		
-		// vcap_application 정보 설정
+		// vcap_application information settings
 		vcapApp = JSON.parse(process.env.VCAP_APPLICATION);
 		
-		// vcap_service 정보 설정
+		// vcap_service information settings
 		vcapService = JSON.parse(process.env.VCAP_SERVICES);
 		
-		// 조직 guid 설정
+		// Organization guid settings
 		dummyOrgId = process.env.ORG_ID;
 
--   Secure Abacus 보안 구현
+-   Implement Secure Abacus security
 
-		// api 서비스를 참고 하여 api service 요청 시, header에 token을 설정하는 처리를 구현한다.
+		// When requesting an api service by referring to the api service, implement the process of setting the token in the header.
 
--   COR 설정
+-   COR settings
 
-		// api 서비스는 요청한 서비스의 응답 처리 이외에 abacus에 대해 request 처리가 추가로 필요하므로 크로스 도메인을 설정 한다.
+		// The api service requires additional request processing for abacus in addition to response processing of the requested service. so set up a cross domain.
 		routes.use(function(req, res, next) {
 		  res.header('Access-Control-Allow-Origin', '*');
 		  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
@@ -972,21 +972,21 @@ Api 서비스를 요청하는 애플리케이션을 구현한다.
 		});
 
 
--   서비스 API 구현
+-   Implement the service API
 
-		// VCAP_SERVICE에서 앱과 바인드한 서비스 정보를 가져온다.
-		// 복수의 서비스가 앱에 바인드 될 수 있다.
+		// Get the service information bound to the app from VCAP_SERVICE.
+		// Multiple services can be bound to an app.
 		vcapBindServices = vcapService[Object.keys(vcapService)[0]];
 		
 		var sampleApiCaller = function sampleApiCaller() {
 		
 		  var app = express();
 		
-		  // 웹 서비스 뷰 처리
+		  // Web service view process
 		  app.engine('handlebars', handlebars.engine);
 		  app.set('view engine', 'handlebars');
 		
-		  // 크로스 도메인 처리
+		  // Cross domain process
 		  app.use(function(req, res, next) {
 		    res.header('Access-Control-Allow-Origin', '*');
 		    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
@@ -994,14 +994,14 @@ Api 서비스를 요청하는 애플리케이션을 구현한다.
 		    next();
 		  });
 		
-		  // 뷰에서 참조하는 js 모듈을 미들웨어에 마운트 한다.
+		  // Mount the js module being referenced by the view to the middleware.
 		  app.use('/bower_components',
 		    express.static(__dirname + '/bower_components'));
 		
-		  // 웹 서비스 메인을 미들웨어에 마운트 한다.
+		  // Mount the web service main on the middleware.
 		  app.get('/', function(req, res) {
 		    res.type('text/html');
-		    res.render('apiCaller');         // 뷰 생성
+		    res.render('apiCaller');         // create view
 		  });
 		
 		  // to support JSON-encoded bodies
@@ -1014,25 +1014,25 @@ Api 서비스를 요청하는 애플리케이션을 구현한다.
 		
 		  /*
 		   Sample Web Service
-		   1. API 서비스를 요청
+		   1. Request API service
 		   */
 		  app.post('/sampleApiSerivceCall', function(req, res, next) {
 		
-		    // 앱에 Bind한 서비스가 없는 경우
+		    // When there is no service bound to the app
 		    if (typeof vcapBindServices !== 'object') {
 		      return res.status(502).send('unbind service called');
 		      next();
 		    };
 		
-		    // API Service와 연동 할 서비스를 구한다.
-		    // 바인드된 복수의 서비스 중에서 연동 할 서비스 정보를 구한다.
+		    // Find a service to interwork with API Service.
+		    // Obtain service information to be interlocked among a plurality of bound services.
 		    var bindApiService = vcapBindServices[0];
 		
-		    // 위에서 구한 서비스 정보에서 서비스 url를 구한다.
+		    // Obtain the service url from the service information obtained above.
 		    var serviceUrl = bindApiService.credentials.uri ?
 		      bindApiService.credentials.uri : bindApiService.credentials.url;
 		
-		    // API Service에 요청 할 JSON 을 작성한다.
+		    // Write JSON to request to API Service.
 		    var callEvent = buildSendData(req.body, bindApiService);
 		
 		    // Set request options
@@ -1041,7 +1041,7 @@ Api 서비스를 요청하는 애플리케이션을 구현한다.
 		      json: callEvent
 		    };
 		
-		    // api Service에 요청하고 결과를 응답한다.
+		    // It makes a request to the api service and respond to the result.
 		    request.post(options, function(error, response, body) {
 		
 		      if (error) console.log(error);
@@ -1072,9 +1072,9 @@ Api 서비스를 요청하는 애플리케이션을 구현한다.
 		};
 
 
--   Abacus 전송 Json 생성  
+-   Create Abacus Sending Json
 
-		// 서비스로 보낼 데이터를 JSON 형식으로 작성한다.
+		// Write the data to be sent to the service in JSON format.
 		var buildSendData = function buildSendData(args, bindApiService) {
 		
 		  return {
@@ -1090,10 +1090,10 @@ Api 서비스를 요청하는 애플리케이션을 구현한다.
 		};
 
 
--   기타
+-   Etc.
 
-		// 앱 서비스를 위한 설정 정보
-		// PORT, HOST명 등을 설정한다.
+		// Setting information for app services
+		// Set PORT, HOST name, etc.
 		var conf = function conf() {
 		  process.env.PORT = commander.port || process.env.PORT || 9601;
 		};
@@ -1175,7 +1175,7 @@ Api 서비스를 요청하는 웹 화면
 	        });
 	    });
 	
-	    // 요청 서비스 입력 항목 설정, JSON 형식으로 작성한다.
+	    // Set request service input item, write in JSON format.
 	    var sendData = function buildJSON( input_param1, input_param2 ) {
 	
 	        return {
@@ -1203,55 +1203,55 @@ Api 서비스를 요청하는 웹 화면
 	</html>
 
 
-### <div id='16'></div> 2.5.2 API 서비스 연동 샘플 애플리케이션 인터페이스 항목
+### <div id='16'></div> 2.5.2 API Service Interworking Sample Application Interface Item
 
-#### 1.  API 서비스 엔드포인트
+#### 1.  API Service Endpoint
 
 	GET|POST|PUT|DELETE <api_service_restful_api>
 
-#### 2.  API 서비스 미터링 전송 항목
+#### 2.  API Service Metering Send Items
 
 <table>
   <tr>
-    <th>항목명</th>
-    <th>유형</th>
-    <th>설명</th>
-    <th>예시</th>
+    <th>Classification</th>
+    <th>Type</th>
+    <th>Description</th>
+    <th>Example</th>
   </tr>
   <tr>
     <td>org_id</td>
     <td>String</td>
-    <td>API 서비스를 요청한 앱의 조직 ID</td>
+    <td>Organization ID of the app that requested the API service</td>
     <td>54257f98-83f0-4eca-ae04-9ea35277a538</td>
   </tr>
   <tr>
     <td>space_id</td>
     <td>String</td>
-    <td>API 서비스를 요청한 앱의 영역 ID</td>
+    <td>Area ID of the app that requested API service</td>
     <td>d98b5916-3c77-44b9-ac12-04456df23eae</td>
   </tr>
   <tr>
     <td>consumer_id</td>
     <td>String</td>
-    <td>API 서비스를 요청한 앱 ID</td>
+    <td>App ID that requested API service</td>
     <td>d98b5916-3c77-44b9-ac12-045678edabae</td>
   </tr>
   <tr>
     <td>instance_id</td>
     <td>String</td>
-    <td>API 서비스를 요청한 앱의 자원 인스턴스 ID</td>
+    <td>The resource instance ID of the app that requested the API service.</td>
     <td>d98b5916-3c77-44b9-ac12-045678edabad</td>
   </tr>
   <tr>
     <td>plan_id</td>
     <td>String</td>
-    <td>앱의 요청한 API 서비스의 plan ID</td>
+    <td>The plan ID of the requested API service in the app.</td>
     <td>basic</td>
   </tr>
   <tr>
     <td>credentials</td>
     <td>JSON</td>
-    <td>서비스 요청에 필요한 credential 항목을 설정한다.</td>
+    <td>Set the credential required for service request.</td>
     <td>credentials: {<br>
            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key: value,<br>
            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;…<br>
@@ -1261,7 +1261,7 @@ Api 서비스를 요청하는 웹 화면
   <tr>
     <td>inputs</td>
     <td>JSON</td>
-    <td>서비스 요청에 필요한 입력 정보를 설정한다.</td>
+    <td>Set input information required for service request.</td>
     <td>
       inputs: {<br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key: value,s<br>
@@ -1272,7 +1272,7 @@ Api 서비스를 요청하는 웹 화면
 </table>
 
 
-#### 3.  API 서비스 미터링 전송 항목 예제
+#### 3.  API Service Metering Send Items Example
 
 	{
 	  organization_id: 'd6ce3670-ab9c-4453-b993-f2821f54846b',
@@ -1291,12 +1291,12 @@ Api 서비스를 요청하는 웹 화면
 	}
 
 
-### <div id='17'></div> 2.5.3 VCAP_SERVICES 환경설정 정보
+### <div id='17'></div> 2.5.3 VCAP_SERVICES Environment Setting Information
 
-파스-타 플랫폼에 배포되는 애플리케이션이 바인딩된 서비스별 접속 정보를 얻기 위해서는 애플리케이션별로 등록되어있는 VCAP_SERVICES 환경설정 정보를 읽어들여 정보를 획득 할 수 있다.
+In order to obtain access information for each service to which an application deployed on the PaaS-TA platform is bound, the information may be obtained by reading the VCAP_SERVICES envionment setting information registered for each application.
 
-#### 1.  파스-타 플랫폼의 애플리케이션 환경정보
--   서비스를 바인딩하면 JSON 형태로 환경설정 정보가 애플리케이션 별로 등록된다.
+#### 1.  Application environment information of PaaS-TA platform
+-   When the service is bound, the configuration information in JSON format is registered for each application.
 
 		{
 		 "VCAP_SERVICES": {
@@ -1347,105 +1347,105 @@ Api 서비스를 요청하는 웹 화면
 
 
 
-#### 2.  Node.js에서 파스-타 플랫폼의 애플리케이션 환경정보에 접근하는 방법
+#### 2.  How to access application environment information of PaaS-TA platform in Node.js
 
--   시스템 환경변수의 VCAP_SERVICES값을 읽어서 접근 할 수 있다.
+-   It can be accessed by reading the VCAP_SERVICES value of the system environment variable.
 
  		process.env.VCAP_SERVICES
 
-### <div id='18'></div> 2.6 미터링/등급/과금 정책
+### <div id='18'></div> 2.6 Metering/Rating/Billing Policy
 
-서비스, 그리고 서비스 제공자 마다 미터링/등급/과금 정책 다르기 때문에 본 가이드에서는 정책의 개발 예제를 다루지는 않는다. 다만 CF-ABACUS에 적용할 수 있는 형식에 대해 설명한다.
+Since the Metering/Rating/Billing Policy is different for each service and each service provider, this guide does not cover an example of policy development. However, the format applicable to CF-ABACUS will be described.
 
-### <div id='19'></div> 2.6.1 미터링 정책
+### <div id='19'></div> 2.6.1 Metering Policy
 
-미터링 정책이란 수집한 미터링 정보에서 미터링 대상의 지정 및 집계 방식을 정의한 JSON 형식의 오브젝트이다. 서비스 제공자는 미터링 정책 스키마에 맞춰 서비스에 대한 정책을 개발한다.
+Metering Policy is a JSON-formatted object that defines metering target designation and aggregation method from collected metering information. The service provider develops the policy for the service according to the metering policy schema.
 
-#### 1.  미터링 정책 스키마
+#### 1.  Metering Policy Schema
 
 <table>
   <tr>
-    <th>항목명</th>
-    <th>유형</th>
-    <th>필수</th>
-    <th>설명</th>
+    <th>Classification</th>
+    <th>Type</th>
+    <th>Necessity</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td>plan_id</td>
     <td>String</td>
     <td>O</td>
-    <td>API 미터링 Plan ID</td>
+    <td>API Metering Plan ID</td>
   </tr>
   <tr>
     <td>measures</td>
     <td>Array</td>
-    <td>최소 하나</td>
-    <td>API 미터링 정보 수집 대상 정의</td>
+    <td>At least one</td>
+    <td>Defines API metering information collect targets</td>
   </tr>
   <tr>
     <td>name</td>
     <td>String</td>
     <td>O</td>
-    <td>미터링 정보 수집 대상 명</td>
+    <td>Metering information collect target name</td>
   </tr>
   <tr>
     <td>unit</td>
     <td>String</td>
     <td>O</td>
-    <td>미터링 정보 수집 대상 단위</td>
+    <td>Metering information collect target unit</td>
   </tr>
   <tr>
     <td>metrics</td>
     <td>Array</td>
-    <td>최소 하나</td>
-    <td>API 미터링 집계 방식 정의</td>
+    <td>At least one</td>
+    <td>Defines API Metering Aggregation Scheme</td>
   </tr>
   <tr>
     <td>name</td>
     <td>String</td>
     <td>O</td>
-    <td>미터링 정보 수집 대상 명</td>
+    <td>Metering information collect target name</td>
   </tr>
   <tr>
     <td>unit</td>
     <td>String</td>
     <td>O</td>
-    <td>미터링 정보 수집 대상 단위</td>
+    <td>Metering information collect target unit</td>
   </tr>
   <tr>
     <td>meter</td>
     <td>String</td>
     <td>X</td>
-    <td>미터링 정보에 대해서 수집 단계에 적용하는 계산식 또는 변환식</td>
+    <td>Calculation formula or conversion formula applied to the collection stage for metering information</td>
   </tr>
   <tr>
     <td>accumulate</td>
     <td>String</td>
     <td>X</td>
-    <td>미터링 정보에 대해서 누적 단계에 적용하는 계산식 또는 변환식</td>
+    <td>Calculation formula or conversion formula applied to the cumulative step for metering information</td>
   </tr>
   <tr>
     <td>aggregate</td>
     <td>String</td>
     <td>X</td>
-    <td>미터링 정보에 대해서 집계 단계에 적용하는 계산식 또는 변환식</td>
+    <td>Calculation formula or conversion formula applied to the aggregation step for metering information</td>
   </tr>
   <tr>
     <td>summarize</td>
     <td>String</td>
     <td>X</td>
-    <td>미터링 정보를 보고할 때 적용하는 계산식 또는 변환식</td>
+    <td>Calculation formula or conversion formula applied when reporting metering information</td>
   </tr>
   <tr>
     <td>title</td>
     <td>String</td>
     <td>X</td>
-    <td>API 미터링 제목</td>
+    <td>API Metering Title</td>
   </tr>
 </table>
                       
 
-#### 2.  미터링 정책 예제
+#### 2.  Metering Policy Example
 
 	{
 	  "plan_id": "basic-object-storage",
@@ -1478,59 +1478,59 @@ Api 서비스를 요청하는 웹 화면
 	}
 
 
-### <div id='20'></div> 2.6.2 등급 정책
+### <div id='20'></div> 2.6.2 Rating Policy
 
-등급 정책이란 각 서비스의 사용 가중치를 정의한 JSON 형식의 오브젝트이다.
-서비스 제공자는 등급 정책 스키마에 맞춰 서비스에 대한 정책을 개발한다.
+Rating Policy is a JSON-formatted object that defines the usage weight of each service.
+A service provider develops a policy for a service according to the Rating Policy Schema.
 
-#### 1.  등급 정책 스키마
+#### 1.  Rating Policy Schema
 
 <table>
   <tr>
-    <th>항목명</th>
-    <th>유형</th>
-    <th>필수</th>
-    <th>설명</th>
+    <th>Classification</th>
+    <th>Type</th>
+    <th>Necessity</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td>plan_id</td>
     <td>String</td>
     <td>O</td>
-    <td>API 등급 Plan ID</td>
+    <td>API Ranting Plan ID</td>
   </tr>
   <tr>
     <td>metrics</td>
     <td>Array</td>
-    <td>최소 하나</td>
-    <td>등급 정책 목록</td>
+    <td>At least one</td>
+    <td>Rating Policy List</td>
   </tr>
   <tr>
     <td>name</td>
     <td>String</td>
     <td>O</td>
-    <td>등급 정의 대상 명</td>
+    <td>Rating Definition Target Name</td>
   </tr>
   <tr>
     <td>rate</td>
     <td>String</td>
     <td>X</td>
-    <td>가중치 계산식 또는 변환식</td>
+    <td>Weight calculation formula or conversion formula</td>
   </tr>
   <tr>
     <td>charge</td>
     <td>String</td>
     <td>X</td>
-    <td>사용량에 대한 과금 계산식 또는 변환식</td>
+    <td>Charging for usage calculation formula or conversion formula</td>
   </tr>
   <tr>
     <td>title</td>
     <td>String</td>
     <td>X</td>
-    <td>등급 정책 명</td>
+    <td>Rating Policy Name</td>
   </tr>
 </table>
                    
-#### 2.  등급 정책 예제
+#### 2.  Rating Policy Example
 
 	{
 	  "plan_id": "object-rating-plan",
@@ -1548,64 +1548,64 @@ Api 서비스를 요청하는 웹 화면
 
 
 
-### <div id='21'></div> 2.6.3 과금 정책
+### <div id='21'></div> 2.6.3 Billing Policy
 
-과금 정책이란 각 서비스에 대한 사용 단가를 정의한 JSON 형식의 오브젝트이다. 서비스 제공자는 과금 정책 스키마에 맞춰 서비스에 대한 정책을 개발한다.
+Billing Policy is a JSON-formatted object that defines the unit price for each service. The service provider develops the policy for the service according to the Charging Policy schema.
 
-#### 1.  과금 정책 스키마
+#### 1.  Billing Policy Schema
 
 <table>
   <tr>
-    <th>항목명</th>
-    <th>유형</th>
-    <th>필수</th>
-    <th>설명</th>
+    <th>Classification</th>
+    <th>Type</th>
+    <th>Necessity</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td>plan_id</td>
     <td>String</td>
     <td>O</td>
-    <td>API 과금 Plan ID</td>
+    <td>API Billing Plan ID</td>
   </tr>
   <tr>
     <td>metrics</td>
     <td>Array</td>
-    <td>최소 하나</td>
-    <td>과금 정책 목록</td>
+    <td>At least one</td>
+    <td>Billing Policy List</td>
   </tr>
   <tr>
     <td>name</td>
     <td>String</td>
     <td>O</td>
-    <td>과금 대상 명</td>
+    <td>Charging target name</td>
   </tr>
   <tr>
     <td>price</td>
     <td>Array</td>
-    <td>최소 하나</td>
-    <td>과금 정책 상세</td>
+    <td>at least one</td>
+    <td>Billing Policy Details</td>
   </tr>
   <tr>
     <td>country</td>
     <td>String</td>
     <td>O</td>
-    <td>서비스 사용 단가에 적용할 통화</td>
+    <td>Currency to be applied to the unit price for using the service</td>
   </tr>
   <tr>
     <td>price</td>
     <td>Number</td>
     <td>O</td>
-    <td>서비스 사용 단가</td>
+    <td>Service Usage Unit Price</td>
   </tr>
   <tr>
     <td>title</td>
     <td>String</td>
     <td>X</td>
-    <td>과금 정책 제목</td>
+    <td>Billing Policy Title</td>
   </tr>
 </table>
              
-#### 2.  과금 정책 예제
+#### 2.  Billing Policy Example
 
 	{
 	  "plan_id": "object-pricing-basic",
@@ -1648,30 +1648,30 @@ Api 서비스를 요청하는 웹 화면
 	}
 
 
-### <div id='22'></div> 2.6.4 정책 등록
+### <div id='22'></div> 2.6.4 Policy Registration
 
-정책은 2가지 방식 중 하나의 방법으로 CF-ABACUS에 등록할 수 있다.
+A policy can be registered in CF-ABACUS in one of two ways.
 
-#### 1.  js 파일을 등록하는 방식  
-작성한 정책을 다음의 디렉토리에 저장한 후, CF에 CF-ABACUS를 배포 또는 재배포 한다.
+#### 1.  By registering js file  
+After saving the created policy in the following directory, deploy or redeploy CF-ABACUS to the CF..
 
--   미터링 정책의 경우
+-   For Metering Policy
 
 		cf-abacus/lib/plugins/provisioning/src/plans/metering
 
--   등급 정책의 경우
+-   For Rating Policy
 
 		cf-abacus/lib/plugins/provisioning/src/plans/pricing
 
--   과금 정책의 경우
+-   For Billing Policy
 
 	 	cf-abacus/lib/plugins/provisioning/src/plans/rating
 
 
-#### 2.  DB에 등록하는 방식  
-작성한 정책을 curl 등을 이용해 DB에 저장하는 방식으로 CF-ABACUS를 재배포할 필요는 없다. 정책 등록 시, 정책 ID는 고유해야 한다.
+#### 2.  By registering it to the DB  
+There is no need to redeploy CF-ABACUS by saving the created policy in the DB using curl, etc. When registering a policy, the policy ID must be unique.
 
--   미터링 정책의 경우  
+-   For Metering Policy 
 
 		POST /v1/metering/plans/:metering_plan_id
 	>
@@ -1683,25 +1683,25 @@ Api 서비스를 요청하는 웹 화면
 
 
 
--   등급 정책의 경우  
+-   For Rating Policy  
 
 		POST /v1/rating/plans/:rating_plan_id
 	>
 
-		# 예제
+		# Example
 		$ curl -k -X POST 'http://abacus-provisioning-plugin.bosh-lite.com/v1/rating/plans/linux-rating-sample' \
 			 -H "Content-Type: application/json" \
 		     -d '{"plan_id":"linux-rating-sample","metrics":[{"name":"memory","rate":"((price,qty)=>({price:price,consuming:qty.consuming,consumed:qty.consumed})).toString(),charge:((t,qty,from,to)=>{if(!qty)return0;constrt=Math.min(t,to?to:t);constpast=from-rt;constfuture=to-rt;consttd=past+future;constconsumed=newBigNumber(qty.consuming).mul(-1).mul(td).toNumber();constgbhour=newBigNumber(qty.consumed).add(consumed).div(2).div(3600000).toNumber();returnnewBigNumber(gbhour).mul(qty.price).toNumber();}).toString()"}]}' \
 			 -H "Authorization: $(cf oauth-token | grep bearer)"
 
 
--   과금 정책의 경우
+-   For Billing Policy
 
 		POST /v1/pricing/plans/:pricing_plan_id
 
 	>
 
-		# 예제
+		# Example
 		$ curl -k -X POST 'http://abacus-provisioning-plugin.bosh-lite.com/v1/pricing/plans/linux-pricing-sample' \
 			 -H "Content-Type: application/json" \
 			 -d '{"plan_id":"linux-pricing-sample","metrics":[{"name":"memory","prices":[{"country":"USA","price":0.00014}]}]}' \
@@ -1709,29 +1709,28 @@ Api 서비스를 요청하는 웹 화면
 
 
 
-### <div id='23'></div> 2.7 배포
+### <div id='23'></div> 2.7 Deployment
 
-파스-타 플랫폼에 애플리케이션을 배포하면 배포한 애플리케이션과 파스-타 플랫폼이 제공하는 서비스를 연결하여 사용할 수 있다. 파스-타 플랫폼상에서 실행을 해야만 파스-타 플랫폼의 애플리케이션 환경변수에 접근하여 서비스에 접속할 수 있다.
+When an application is deployed on the PaaS-TA platform, the deployed application can be used by connecting the service provided by the PaaS-TA platform. You can access the service by accessing the application environment variables of the PaaS-TA platform only when it is executed on the PaaS-TA platform.
 
-### <div id='24'></div> 2.7.1 파스-타 플랫폼 로그인
+### <div id='24'></div> 2.7.1 PaaS-TA Platform Login
 
-아래의 과정을 수행하기 위해서 파스-타 플랫폼에 로그인
+Log in to the PaaS-TA platform to perform the process below
 
-	$ cf api --skip-ssl-validation https://api.<파스-타 도메인> # 파스-타 플랫폼 TARGET 지정
+	$ cf api --skip-ssl-validation https://api.<PaaS-TA Domain> # Set PaaS-TA Platform TARGET 
 	
-	$ cf login -u <user name> -o <org name> -s <space name> # 로그인 요청
+	$ cf login -u <user name> -o <org name> -s <space name> # Login request
 
 
-### <div id='25'></div> 2.7.2  API 서비스 브로커 생성
+### <div id='25'></div> 2.7.2  Create API Service Broker
 
-애플리케이션에서 사용할 서비스를 파스-타 플랫폼을 통하여 생성한다. 별도의 서비스 설치과정 없이 생성할 수 있으며, 애플리케이션과
-바인딩과정을 통해 접속정보를 얻을 수있다.
+Create service to use at the application through PaaS-TA Platform. It can be create without a separate installation process, and can obtain access information through binding pocess with the application.
 
--   서비스 생성 (cf marketplace 명령을 통해 서비스 목록과 각 서비스의 플랜을 조회할 수 있다.)
--   Gradle 버전: 2.2
+-   Service Creation (Can check the service plan and service list using the cf marketplace command.)
+-   Gradle Version: 2.2
 
-		## 서비스 브로커 CF 배포
-		$ cd <샘플 서비스 브로커 경로>/sample_api_java_broker
+		## Service Broker CF Deployment
+		$ cd <Sample service broker path>/sample_api_java_broker
 		$ gradle build -x test
 		:compileJava
 		Note: ~/PAASTA-API-METERING-SAMPLE/lib/sample_api_java_broker/src/main/java/org/openpaas/servicebroker/api/config/CatalogConfig.java uses unchecked or unsafe operations.
@@ -1753,10 +1752,10 @@ Api 서비스를 요청하는 웹 화면
 		
 		$ cf push
 		
-		## 서비스 브로커 생성
-		$ cf create-service-broker <서비스 브로커 명> <인증ID> <인증Password> <서비스 브로커 주소>
+		## Create service broker
+		$ cf create-service-broker <Service Broker Name> <Authentication ID> <Authentication Password> <Service Broker Address>
 		
-		예)
+		Example)
 		$ cf create-service-broker sample-api-broker admin cloudfoundry http://sample-api-java-broker.bosh-lite.com
 		
 		## 서비스 브로커 확인
@@ -1766,7 +1765,7 @@ Api 서비스를 요청하는 웹 화면
 		name                url   
 		sample-api-broker   http://sample-api-java-broker.bosh-lite.com
 		
-		## 서비스 카탈로그 확인
+		## Check Service Catalog
 		$ cf service-access
 		Getting service access as admin...
 		broker: sample-api-broker
@@ -1774,31 +1773,31 @@ Api 서비스를 요청하는 웹 화면
 		   standard_obejct_storage_light_api_calls   standard   none        
 		   standard_obejct_storage_heavy_api_calls   basic      none
 		
-		## 등록한 서비스 접근 허용
-		$ cf enable-service-access <서비스명> -p <플랜명>
+		## Allow access to the registered services
+		$ cf enable-service-access <Service Name> -p <Plan Name>
 		
-		예)
+		Example)
 		$ cf enable-service-access standard_obejct_storage_light_api_calls -p standard
 
 
-### <div id='26'></div> 2.7.3 API 서비스 애플리케이션 배포 및 서비스 등록
+### <div id='26'></div> 2.7.3 API Service Application Deployment and Service Registration
 
-API 서비스 애플리케이션을 파스-타 플랫폼에 배포한다. 서비스 등록한 API는 다른 애플리케이션과 바인드하여 API 서비스를 할 수 있다.
+Deploy the API service application to the PaaS-TA platform. The API service registered can be bound with other applications to provide API services.
 
-#### 1.  애플리케이션 배포
+#### 1.  Application Deployment
 
--   cf push 명령으로 배포한다. 별도의 값을 넣지않으면 manifest.yml의 설정을 사용한다.
+-   Deploy with the cf push command. If you do not enter a separate value, the settings in manifest.yml are used.
 
-		## API 서비스 배포
-		$ cd <샘플 api 서비스 경로>/sample_api_node_service
+		## API Service Deployment
+		$ cd <Sample api Service path>/sample_api_node_service
 		$ npm install && npm run babel && npm run cfpack && cf push
 		
-		## 서비스 생성
-		$ cf create-service <서비스명> <플랜명> <서비스 인스턴스명>
-		예)
+		## Create Service
+		$ cf create-service <Service Name> <Plan Name> <Service Instance Name>
+		Example)
 		$ cf create-service standard_obejct_storage_light_api_calls standard sampleNodejslightCallApi
 		
-		## 서비스 확인
+		## Service Check
 		$ cf services
 		Getting services in org real / space ops as admin...
 		OK
@@ -1808,23 +1807,23 @@ API 서비스 애플리케이션을 파스-타 플랫폼에 배포한다. 서비
 
 
 
-### <div id='27'></div> 2.7.4 API 서비스 연동 샘플 애플리케이션 배포 및 서비스 연결
+### <div id='27'></div> 2.7.4 API Service Interworking Sample Application Deployment and Service Connection
 
-애플리케이션과 서비스를 연결하는 과정을 '바인드(bind)라고 하며, 이 과정을 통해 서비스에 접근할 수 있는 접속정보를 생성한다.
+The process of connecting an application and a service is called 'bind', and through this process, access information to access the service is created.
 
--   애플리케이션과 서비스 연결
+-   Connecting applications and services
 
-		## API 서비스 연동 샘플 애플리케이션 배포
-		$ cd <샘플 애플리케이션 경로>/sample_api_node_caller
+		## API Service Interworking Sample Application Deployment
+		$ cd <Sample Application Path>/sample_api_node_caller
 		$ npm install && npm run babel && npm run cfpack && ./cfpush.sh
 		
-		## 서비스 바인드
+		## Service bind
 		$ cf bind-service <APP_NAME> <SERVICE_INSTANCE> -c <PARAMETERS_AS_JSON>
 		
-		예) 
+		Example) 
 		$ cf bind-service sample-api-node-caller sampleNodejslightCallApi -c '{"serviceKey": "[cloudfoundry]"}'
 		
-		## 서비스 연결 확인
+		## Check service connection
 		$ cf services
 		Getting services in org real / space ops as admin...
 		OK
@@ -1832,13 +1831,13 @@ API 서비스 애플리케이션을 파스-타 플랫폼에 배포한다. 서비
 		name                       service                                   plan       bound apps               last operation   
 		sampleNodejslightCallApi   standard_obejct_storage_light_api_calls   standard   sample-api-node-caller   create succeeded
 		
-		## 애플리케이션 실행
+		## Execute Application
 		$ cf start <APP_NAME>
 		
-		예)
+		Example)
 		$ cf start sample-api-node-caller
 		
-		## 형상 확인
+		## Shape check
 		$ cf a
 		Getting apps in org real / space ops as admin...
 		OK
@@ -1849,62 +1848,61 @@ API 서비스 애플리케이션을 파스-타 플랫폼에 배포한다. 서비
 		sample-api-node-caller    started           1/1         512M     512M   sample-api-node-caller.bosh-lite.com
 
 
-### <div id='28'></div> 2.8 테스트
+### <div id='28'></div> 2.8 Test
 
-샘플 애플리케이션은 REST 서비스로 구현되어 있으며, 코드 체크, 테스트 및 커버리스 체크를 위해서 eslint/mocha/Istanbul 모듈을 사용하였다. 테스트를 진행하기 위해서는 mocha 모듈을 포함한 package.json 안의 devDependencies모듈이 설치 되어 있어야한다. (npm install)
+The sample application is implemented as a REST service, and the eslint/mocha/Istanbul module is used for code check, test, and coverage check. To proceed with the test, the devDependencies module in package.json including the mocha module must be installed. (npm install)
 
-#### 1.  코드 테스트를 위한 개발 환경 구성
+#### 1.  Configuring Development Environment for Code Testing
 
--   테스트를 위한 형상
+-   Shape for testing
 
-		<앱>/
-		├── .eslint                           // 코드 체크 대상 설정
-		├── .eslintignore                     // 코드 체크에서 제외할 파일 또는 디렉토리 정의
-		├── package.json                    // 앱 구성 요소 정의
-		├── lib                            // npm run babel을 실행하면 자동으로 생성된다. cfpack 및 mocha 테스트 는 lib에 있는 모듈을 대상 한다.
-		│   ├── app.js                     // ECMA5로 변환된 app.js
+		<App>/
+		├── .eslint                           // Set target for code check
+		├── .eslintignore                     // Defines directory and file to exclude when code checking
+		├── package.json                    // Defines app components
+		├── lib                            // Automatically created when npm run babel is executed. The cfpack and mocha tests target the modules in the lib.
+		│   ├── app.js                     // app.js converted to ECMA5
 		│   ├── bower_components
 		│   └── test
 		│       └── test.js
-		├── src                           // 코드 변환 및 코드 체크 대상 디렉토리
+		├── src                           // Code conversion and code check target directory
 		│   ├── app.js
 		│   ├── bower_components
-		│   └── test                      // mocha 테스트 모듈은 반드시 src/test 디렉토리에 있어야 한다.
+		│   └── test                      // The mocha test module must be in the src/test directory.
 		│       └── test.js
-		└── views                        // src/lib 이외에 위치한 디렉토리와 파일은 체크 및 mocha 테스트 대상이 아니다.
+		└── views                        // Directories and files located other than src/lib are not subject to check and mocha testing.
 		    ├── apiCaller.handlebars
 		    └── layouts
 		        └── main.handlebars
 
 
--   테스트를 위한 package.json 구성
+-   Configuration package.json for testing
 
 		{
-		  ... 중략
+		  ... skip
 
 		  "scripts": {
-		    "babel": "babel",                       // 코드 변환
-		    "test": "eslint && mocha",              // 코드 체크 및 테스트
-		    "lint": "eslint"                          // 코드 체크
+		    "babel": "babel",                       // Code Conversion
+		    "test": "eslint && mocha",              // Code Check and Test
+		    "lint": "eslint"                          // Code Check
 		  },
 		
-		  ... 중략
+		  ... skip
 		  
 		  "devDependencies": {
-		    "abacus-babel": "^0.0.6-dev.8",          // 코드 변환 (ECMA6 -> ECMA5)
-		    "abacus-coverage": "^0.0.6-dev.8",       // 테스트 커버리지 체크
-		    "abacus-eslint": "^0.0.6-dev.8",          // 코드 체크
-		    "abacus-mocha": "^0.0.6-dev.8"         // 코드 테스트
-		  },
+		    "abacus-babel": "^0.0.6-dev.8",          // Code Conversion (ECMA6 -> ECMA5)
+		    "abacus-coverage": "^0.0.6-dev.8",       // Test Coverage Check
+		    "abacus-eslint": "^0.0.6-dev.8",          // Code Check
+		    "abacus-mocha": "^0.0.6-dev.8"         // Code Test 		  },
 		  
-		  ... 후략
+		  ... skip
 		}
 
 
--   Eslint 설정
+-   Eslint settings
 
-		// false / 0 / disable을 설정한 항목에 대해서만 체크를 생략한다.
-		// 규칙에 대한 자세한 내용은 http://eslint.org/docs/rules/ 을 참고 한다.
+		// Skip the check only for items with false / 0 / disable.
+		// For more information on the rules, see http://eslint.org/docs/rules/.
 		---
 		parser: espree
 		
@@ -1928,17 +1926,17 @@ API 서비스 애플리케이션을 파스-타 플랫폼에 배포한다. 서비
 		
 		rules:
 		  # ERRORS
-		  space-before-blocks: 2                              // 공백 문자가 2개 이상 연속
-		  indent: [2, 2, { "SwitchCase": 1 }]                 // 들여쓰기 형식 설정 (공백문자 2개만 허용)
+		  space-before-blocks: 2                              // 2 or more consecutive whitespace characters
+		  indent: [2, 2, { "SwitchCase": 1 }]                 // Set indentation format (only 2 space characters allowed)
 		  #strict: [2, "global"]
-		  semi: [2, "always"]                                 // ‘;’ 누락
+		  semi: [2, "always"]                                 // ‘;’ omission
 		  comma-dangle: [2, "never"]                     
 		  no-unused-expressions: 2                      
 		  block-scoped-var: 2
 		  dot-notation: 2
-		  consistent-return: 2                                // 함수의 응답 결과 형식 불일치
-		  no-unused-vars: [2, args: none]                     // 소스내 참조되지 않는 변수 선언
-		  quotes: [2, 'single']                               // 문자열에 ‘“’ 사용 금지
+		  consistent-return: 2                                // Inconsistency in response result format of function
+		  no-unused-vars: [2, args: none]                     // Declare a variable that is not referenced in the source
+		  quotes: [2, 'single']                               // Do not use ‘“” in text line
 		  space-infix-ops: 2
 		  no-else-return: 2
 		  no-extra-parens: 2
@@ -1955,14 +1953,14 @@ API 서비스 애플리케이션을 파스-타 플랫폼에 배포한다. 서비
 		  space-before-function-paren: [2, "never"]
 		  generator-star-spacing: [2, "before"]
 		  spaced-comment: [2, "always"]
-		  eol-last: 2                                         // 소스 코드의 마지막에 개행문자 없음
+		  eol-last: 2                                         //  no open characters at the end of the source code.
 		  no-multi-spaces: 2
 		  curly: [2, "multi"]
-		  camelcase: [2, {properties: "never"}]               // 변수명에 ‘_’ 사용 허용
+		  camelcase: [2, {properties: "never"}]               // '_' is allowed in variable names
 		  no-eval: 2
 		  #require-yield: 2
-		  no-var: 2                                           // 변수 선언에 var 금지 (ECMA6)
-		  max-len: [2, 80]                                    // 한줄에 80자까지 허용
+		  no-var: 2                                           // Forbid var in variable declaration (ECMA6)
+		  max-len: [2, 80]                                    // Allows up to 80 characters per line
 		  complexity: [2, 6]
 		  arrow-parens: [2, "always"]
 		
@@ -1988,17 +1986,17 @@ API 서비스 애플리케이션을 파스-타 플랫폼에 배포한다. 서비
 		  space-in-brackets: 0
 
 
-#### 2.  테스트 실행
+#### 2.  Run Test
 
--   Test 디렉토리 아래에 있는 모듈을 테스트 한다.
+-   Test the module under the Test directory.
 
-		$ cd <샘플 애플리케이션 경로>/<앱>
+		$ cd <Sample application path>/<App>
 		$ npm install && npm run babel && npm test
 		
 		$ npm install && npm run babel && npm test
 		sample-api-node-service@0.0.1 ~/PAASTA-API-METERING-SAMPLE/lib/sample_api_node_service
 		├─┬ abacus-babel@0.0.6-dev.8 
-		...  설치 패키지 트리 출력 ...
+		...  Installation package tree output ...
 		
 		npm WARN sample-api-node-service@0.0.1 No repository field.
 		
@@ -2042,7 +2040,7 @@ API 서비스 애플리케이션을 파스-타 플랫폼에 배포한다. 서비
 		// Implemented in ES5 for now
 		/* eslint no-var: 0 */
 		
-		... 중략 ...
+		... skip ...
 		
 		// Export our public functions
 		module.exports = sampleApiService;
@@ -2052,27 +2050,27 @@ API 서비스 애플리케이션을 파스-타 플랫폼에 배포한다. 서비
 		
 		Run time 686ms
 
-### <div id='29'></div> 2.9 API 및 CF-Abacus 연동 테스트
+### <div id='29'></div> 2.9 API and CF-Abacus Interworking Test
 
-API 연동 샘플 애플리케이션의 url을 통해 웹 브라우저에서 접속하면 API 연동 및 API 사용량에 대한 CF-Abacus 연동 테스트를 진행 할 수 있다.
+CF-Abacus interworking test for API interworking and API usage can be performed by accessing from a web browser through the url of the API interworking sample application.
 
-#### 1.  CF-Abacus 연동 확인
+#### 1.  Check CF-Abacus interwork
 
-	## 조직 guid 확인
-	$ cf org <샘플 애플리케이션을 배포한 조직> --guid
+	## Check the organization guid
+	$ cf org <Organization that deployed the sample application> --guid
 	
-	예)
+	Example)
 	$ cf org real --guid
 	877d01b2-d177-4209-95b0-00de794d9bba
 	
-	## 샘플 애플리케이션 guid 확인
-	$ cf env <샘플 애플리케이션 명>
-	예)
+	## Check the sample application guid
+	$ cf env <Sample application name>
+	Example)
 	$ cf env sample-api-node-caller
 	Getting env variables for app sample-api-node-caller in org real / space ops as admin...
 	OK
 	
-	<<중략>>
+	<<skip>>
 	{
 	 "VCAP_APPLICATION": {
 	  "application_id": "58872d8a-edfc-44df-97f0-df67cf9033a7",
@@ -2097,19 +2095,19 @@ API 연동 샘플 애플리케이션의 url을 통해 웹 브라우저에서 접
 	 }
 	}
 	
-	<<후략>> 
+	<<skip>> 
 	
-	## API 사용량 확인
-	$ curl 'http://abacus-usage-reporting.<파스-타 도메인>/v1/metering/organizations/<샘플 애플리케이션을 배포한 조직>/aggregated/usage'
+	## Check API usage
+	$ curl 'http://abacus-usage-reporting.<PaaS-TA domain>/v1/metering/organizations/<Organization that deployed the sample application>/aggregated/usage'
 	
-	예)
+	Example)
 	$ curl 'http://abacus-usage-reporting.bosh-lite.com/v1/metering/organizations/877d01b2-d177-4209-95b0-00de794d9bba/aggregated/usage'
 
-### <div id='30'/> 2.10. 샘플코드
+### <div id='30'/> 2.10. Sample Code
 
-샘플코드는 아래의 사이트에 다운로드 할 수 있다.
+Sample Code can be downloaded from the site below.
 
-[다운로드](https://nextcloud.paas-ta.org/index.php/s/mEbGNcJjrEj7GWx/download)
+[Download](https://nextcloud.paas-ta.org/index.php/s/mEbGNcJjrEj7GWx/download)
 
 
 [Development_Guide_Nodejs_Image01]:./images/nodejs_Service_Metering/2-0-0.png

@@ -1,137 +1,128 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > On-Demand Service 개발
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > On-Demand Service Development
 
 ## Table of Contents
-1. [문서 개요](#1)
-    * [1.1. 목적](#11)
-    * [1.2. 범위](#12)
-    * [1.3. 참고자료](#13)
-2. [온디멘드 서비스 개요](#2)
-    * [2.1. 온디멘드 서비스 아키텍쳐 및 프로세스](#21)
-    * [2.2. 용어 정의](#22)
-3. [온디멘드 서비스 브로커 API](#3)
+1. [Document Outline](#1)
+    * [1.1. Purpose](#11)
+    * [1.2.Range](#12)
+    * [1.3. References](#13)
+2. [On-Demand Service Outline](#2)
+    * [2.1. On-Demand Service Architecture and Process](#21)
+    * [2.2. Term Definition](#22)
+3. [On-Demand Service Broker API](#3)
     * [3.1. Service Architecture](#31)
     * [3.2. Service Broker API Architecture](#32)
     * [3.3. Pivotal(Cloud Foundry) Marketplace Model](#33)
-4. [온디멘드 서비스 브로커 API 개발 가이드](#4)
-    * [4.1. 개발 가이드](#41)
-    * [4.2. 서비스 및 VM Instance 생성 API 가이드](#42)
-    * [4.3. On-Demand Service-Broker 구현 소스 개발가이드](#43)
-    * [4.4. On-Demand 릴리즈 개발가이드](#44)
-    * [4.5. On-Demand Deployment 개발가이드](#45)
+4. [On-Demand Service Broker API Development Guide](#4)
+    * [4.1. Development Guide](#41)
+    * [4.2. Servcie and VM Instance Creating API Guide](#42)
+    * [4.3. On-Demand Service-Broker Implementation Source Development Guide](#43)
+    * [4.4. On-Demand Release Development Guide](#44)
+    * [4.5. On-Demand Deployment Development Guide](#45)
 
-# <a name="1"/>1. 문서 개요
+# <a name="1"/>1. Document Outline
 
-### <a name="11"/>1.1. 목적
+### <a name="11"/>1.1. Purpose
 
-본 문서(개발가이드\_온디멘드)는 개방형 클라우드 플랫폼 프로젝트의 온디멘드
-서비스 개발 표준을 가이드하는 문서로써, 온디멘드 서비스 아키텍처부터 테스트
-까지의 내용을 포함하고 있다.
+This document (Development Guide\_OnDemand) guides the on-demand service development standards for open cloud platform projects and includes the contents from the on-demand service architecture to testing..
 
-본 가이드 문서를 통해 온디멘드 서비스에 대한 이해도를 높여, 온디멘드 서비스
-개발의 효율성과 유지보수성을 향상시키고자 한다. 또한 제시된 표준에 따라 개발된
-온디멘드 서비스는 개방형 클라우드 플랫폼에서의 기능성(Functionality)과
-통합성(Integrability)를 보장한다.
+Through this guide document, we intend to improve the efficiency and maintenance of on-demand service development by increasing the understanding of on-demand service. In addition, on-demand services developed according to the presented standards ensure functionality and integrity in open cloud platforms..
 
-### <a name="12"/>1.2. 범위
-본 문서의 범위는 개방형 클라우드 플랫폼 프로젝트와 관련된 온디멘드 서비스 개발에
-대한 내용으로 한정하며, 기타 오픈소스 도입의 경우 예외를 둔다.
+### <a name="12"/>1.2. Range
+The range of this document is limited to the on-demand service development related to
+the open cloud platform project, except for other open source introductions.
 
-### <a name="13"/>1.3. 참고자료
+### <a name="13"/>1.3. References
 
-# <a name="2"/>2. 온디멘드 서비스 개요
-온디멘드 서비스 브로커는 자바 스프링 프레임워크를 사용하여 개발한다.
-온디멘드는 사용자가 서비스 요청시 공급자가 서비스를 생산해 제공하기
-때문에 무분별한 자원 낭비를 방지한다.
-현재 온디멘드 서비스는 데이케이트 형식으로만 제공한다.
-본 장에서는 사용되는 용어들을 정의하고, 온디멘드 아키텍처를 설명한다.
+# <a name="2"/>2. On-Demand Service Outline
+The on-demand service broker is developed using the Java Spring Framework.
+On-demand prevents reckless waste of resources because the provider produces and
+provides the service when the user requests the service.
+Currently, the on-demand service is provided only in the dedicating form.
+This chapter defines the terms used and describes the on-demand architecture.
 
-### <a name="21"/>2.1. 온디멘드 서비스 아키텍쳐 및 프로세스
+### <a name="21"/>2.1. On-Demand Service Architecture and Process
 
 >![On-Demand_Image_01]
 
-**그림 2-1 개방형 클라우드 플랫폼에서의 온디멘드 서비스 아키텍쳐**
+**Picture 2-1 On-demand service architecture on an open cloud platform**
 
 >![On-Demand_Image_02]
 
-**그림 2-2 개방형 클라우드 플랫폼에서의 온디멘드 서비스 프로세스**
+**Picture 2-2 On-demand service process on open cloud platform**
 
-개방형 클라우드 플랫폼에 배포되는 온디멘드 서비스는 크게
-서비스 신청(Create_Service), 서비스 바인딩(Service_binding),
-서비스 준비(Service_inprogress), 서비스 삭제(Service_delete)
-4가지의 프로세스를 제공한다.
-
-사용자가 개방형 클라우드 플랫폼에 어플리케이션 배포를 요청하면, 배포
-프로세스가 시작된다. 각 단계는 다음과 같은 동작을 한다.
-
--   **서비스 신청(Create_Service):** 서비스 생성 요청시 서비스를 생성한다.
-
--   **서비스 준비(Service_inprogress):** 서비스 구동시 필요한 VM을 생성한다.
-
--   **서비스 바인딩(Service_binding):** 서비스의 환경설정을 어플리케이션 환경설정에 적용한다.
-
--   **서비스 삭제(Service_delete):** 사용자 요청시 서비스 삭제 및 VM 가동을 삭제(중지)한다.
-
-사용자가 서비스 신청을 하면 서비스를 구동하기위한 VM생성을 진행한다. 진행중 서비스는
-준비상태로 전환되며 VM이 생성완료되고 난 후 해당 서비스는 완료상태로 전환되며 사용자에게
-서비스를 제공한다.
-
-### <a name="22"/>2.2. 용어 정의
-
-아키텍처 설명에 앞서, 본 문서에서 사용하는 몇가지 용어들을 정리하면
-다음과 같다.
-
--   **온디멘드(On-Demand)**: '요구만 있으면 (언제든지)'~ 즉,
-    공급 중심이 아니라 수요가 모든 것을 결정하는 시스템이나
-    전략 등을 총칭한다.
+The on-demand service deployed in the open cloud platform provides four major processes:
+Service Registration(Create_Service), Service Binding(Service_binding),
+Service Preparation(Service_inprogress), Service Deletion(Service_delete)
 
 
--   **어플리케이션(application)**: 개방형 클라우드 플랫폼에서
-    어플리케이션은 배포의 단위이다. 즉, 소스코드 또는 패키징된 형태(예를
-    들면, .war)의 파일과 배포 시 사용할 부가정보(meta)들을 정의한 파일의
-    조합을 의미한다.
+When a user requests to deploy an application to an open cloud platform,
+the deployment process begins. Each step does the following:
 
--   **서비스(Service)**: 서비스는 Service Broker API 라고 불리우는
-    cloud controller 클라이언트 API를 구현하여 개방형 클라우드 플랫폼에서 사용된다.
-    Services API는 독립적인 cloud controller API의 버전이다.
-    이는 플랫폼에서 외부 application을 이용 가능하게 한다.
+-   **Service Registration (Create_Service):** Creates the service when service creation is requested.
 
-# <a name="3"/>3. 온디멘드 서비스 브로커 API
-개방형 클라우드 플랫폼 Service API는 Cloud Controller와 Service Broker 사이의 규약을 정의한다. Broker는 HTTP (or HTTPS) endpoints URI 형식으로 구현된다. 하나 이상의 Service가 하나의 Broker 에 의해 제공 될 수 있고, 로드 밸런싱과 수평 확장성이 가능하게 제공 될 수 있다.
+-   **Service Preparation (Service_inprogress):** Creates the VM needed when executing the service.
+
+-   **Service Binding (Service_binding):** Applies the service's environment settings at the application's environment setting.
+
+-   **Service Deletion (Service_delete):** Deletes (stop) the service when user requests for it.
+
+When a user requests a service, a VM is created to run the service. The in-progress service is converted to the ready state,
+and after the VM is created, the corresponding service is converted to the complete state and provides the service to the user.
+
+### <a name="22"/>2.2. Term Definition
+
+Before explaining the architecture, some terms used in this document are summarized below.
+
+-   **On-Demand: 'As long as there is a demand (at anytime)'~ In other words,
+      it is a generic term for a system or strategy in which demand determines everything and not supply-oriented.
+
+
+-   **Application**: In an open cloud platform, an application is a unit of deployment.
+      That is, it refers to a combination of a file in a source code or packaged form
+      (eg, .war) and a file defining additional information (meta) to be used during deployment.
+
+-   **서비스(Service)**: The service is used in an open cloud platform by implementing a cloud controller client API called the Service Broker API.
+The Services API is a version of the independent cloud controller API. This makes external applications available on the platform.
+
+# <a name="3"/>3. On-Demand Service Broker API
+The open cloud platform Service API defines the protocol between the Cloud Controller and the Service Broker. Broker is implemented in HTTP (or HTTPS) endpoints URI format. One or more services may be provided by one broker, and load balancing and horizontal scalability may be provided.
 
 #### <a name="31"/>3.1. Service Architecture
 >![On-Demand_Image_03]  
-[그림출처]: http://docs.cloudfoundry.org/services/overview.html
+[Picture Source]: http://docs.cloudfoundry.org/services/overview.html
 
-Services 는 Service Broker API 라고 불리우는 cloud controller 클라이언트 API를 구현하여 개방형 클라우드 플랫폼에서 사용된다. Services API는 독립적인 cloud controller API의 버전이다.
-이는 플랫폼에서 외부 application을 이용 가능하게 한다. (database, message queue, rest endpoint , etc)
+
+Services are used in an open cloud platform by implementing a cloud controller client API
+called Service Broker API. The Services API is an independent version of the cloud controller API.
+This makes external applications available on the platform. (database, message queue, rest endpoint , etc)
 
 #### <a name="32"/>3.2. Service Broker API Architecture
 >![On-Demand_Image_04]  
-[그림출처]: http://docs.cloudfoundry.org/services/api.html
+[Picture Source]: http://docs.cloudfoundry.org/services/api.html
 
-개방형 클라우드 플랫폼 Service API는 Cloud Controller 와 Service Broker 사이의 규약 (catalog, provision, deprovision, update provision plan, bind, unbind)이고 Service Broker 는 RESTful API 로 구현하고 Cloud Controller 에 등록한다.
+The Open Cloud Platform Service API is a protocol between Cloud Controller and Service Broker (catalog, provision, deprovision, update provision plan, bind, unbound), and the Service Broker implements it as a RESTful API and registers it with the Cloud Controller.
 
 #### <a name="33"/>3.3. Pivotal(Cloud Foundry) Marketplace Model
 >![On-Demand_Image_05]  
-[그림출처]: http://www.slideshare.net/platformcf/cloud-foundry-marketplacepowered-by-appdirect
+[Picture Source]: http://www.slideshare.net/platformcf/cloud-foundry-marketplacepowered-by-appdirect
 
-AppDirect: 클라우드 서비스 marketplace 및 관리 솔루션의 선두 업체이고 많은 글로벌 회사의 marketplace를 구축하였다. (삼성, Cloud Foundry, ETC)
-AppDirect는 Cloud Foundry 서비스 중개(brokerage) 기능과 부가 서비스를 제공한다.
+It is a leader in cloud service marketplace and management solutions, and has established a marketplace of many global companies. (Samsung, Cloud Foundry, ETC)
+AppDirect provides Cloud Foundry service brokerages and additional services.
 
-Service Provider 및 Cloud Foundry 통합에 관련 설명
->![On-Demand_Image_06]  
-[그림출처]: http://www.slideshare.net/platformcf/cloud-foundry-marketplacepowered-by-appdirect
+Description of Service Provider and Cloud Foundry integration
+>![On-Demand_Image_06]
+[Picture Source]: http://www.slideshare.net/platformcf/cloud-foundry-marketplacepowered-by-appdirect
 
-# <a name="4"/>4. 온디멘드 서비스 브로커 API 개발 가이드
+# <a name="4"/>4. On-Demand Service Broker API Development Guide
 
-#### <a name="41"/>4.1. 개발 가이드
-서비스의 구현 방법은 서비스 제공자(Provider) 와 개발자(developer)의 몫이다. 개방형 클라우드 플랫폼은 서비스 제공자가 6가지의 Service Broker API를 구현해야 한다. 이때 2.4 Pivotal Marketplace Model를 이용해서 AppDirect 에서 제공중인 서비스 제공자와 협의 하여 AppDirect 의 중개 기능을 이용해서 제공할수도 있다. 또한 Broker 는 별도의 애플리케이션으로 구현하든지 기존 서비스에 필요한 HTTP endpoint를 추가함으로써 구현 될 수 있다.
+#### <a name="41"/>4.1. Development Guide
+The method of implementing the service is up to the provider and developer. Open cloud platforms require service providers to implement six Service Broker APIs. At this time, using the 2.4 Pivotal Marketplace Model, it can be provided using AppDirect's brokerage function in consultation with the service provider provided by AppDirect. Broker can also be implemented as a separate application or by adding the HTTP endpoint required for existing services.
 
-기본적인 서비스브로커 API가이드는 (문서 URL) 참고해서 개발을 진행한다.
-현재 On-Demand 서비스 브로커 개발은 JAVA만 지원한다.
+The basic service broker API guide (Document URL) is referred to and development proceeds.
+Currently, on-demand service broker development supports only JAVA.
 
 
-On-Demand 서비스 브로커의 환경파일 (application.yml)은 다음과 같다 {}의 값은 조건에 맞춰 넣어주면 된다. (deploy시 수정가능)
+The environment file (application.yml) of the On-Demand service broker is as follows The value of {} should be placed according to the conditions. (Can be modified when deploying)
 ```
 server:
   port: 8080
@@ -192,14 +183,14 @@ instance:
 
 ```
 
-##### <a name="42"/>4.2. 서비스 및 VM Instance 생성 API 가이드
-참고: On-Demand 서비스 브로커는 Bosh API를 사용한다.
-On-Demand 형식을 구현하기 위한 Bosh API는 다음과 같다.
+##### <a name="42"/>Service and VM Instance Creation API Guide
+Note: The On-Demand service broker uses the Bosh API.
+The Bosh API to implement the On-Demand format is as follows.
 
 
 1. Bosh Api Setting
 1.1.   BoshDirector
-Bosh Director에 로그인 및 토큰을 받아 저장 및 Bosh API 접근가능한 오브젝트를 생성한다.
+Log in to Bosh Director and receive tokens to save and create an object with access to the Bosh API.
 
 ##### parameter
 
@@ -217,7 +208,7 @@ Bosh Director에 로그인 및 토큰을 받아 저장 및 Bosh API 접근가능
 
 2. ServiceInstace
 2.1 VMInstance
-    Bosh에 배포된 VMInstance 정보를 가져온다.
+    Get the VMInstance information deployed in Bosh.
 
 ##### parameter
 
@@ -228,16 +219,16 @@ Bosh Director에 로그인 및 토큰을 받아 저장 및 Bosh API 접근가능
 
     Get bosh_url + "/deployments/" + deployment_name + "/instances?format=full"
 
-    format=full로 조회하는 방식은 Bosh 자체적으로 task를 발생시켜 redirect로 테스크를 찾아 값을 반환하는 방식으로 되어있다.
+    The way to search with format=full is to generate a task by Bosh itself, find the task with redirect, and return a value.
 
-    기본 Resttemplate으로 api요청시 redirect 부분에서 오류가 발생하기 때문에 따로 redirect 기능을 하지 않게 Resttemplate을 생성해서 요청해야한다.
+    As an error occurs in the redirect part when requesting an api with the default Resttemplate, you need to create and request a Resttemplate so that the redirect function is not performed.
 
 ##### Response
      task :: string
 
 
 2.2. TaskResult
-Bosh task를 조회한다. (option :: output=result) 해당 deployment의 상세값을 확인할수 있다.
+Check the Bosh task. (option: output=result) You can check the detailed value of the deployment.
 
 ##### parameter
 
@@ -247,17 +238,17 @@ Bosh task를 조회한다. (option :: output=result) 해당 deployment의 상세
 
     Get bosh_url + "/deployments/" + deployment_name + "/instances?format=full"
 
-    format=full로 조회하는 방식은 Bosh 자체적으로 task를 발생시켜 redirect로 테스크를 찾아 값을 반환하는 방식으로 되어있다.
+    The way to search with format=full is to generate a task by Bosh itself, find the task with redirect, and return a value.
 
-    기본 Resttemplate으로 api요청시 redirect 부분에서 오류가 발생하기 때문에 따로 redirect 기능을 하지 않게 Resttemplate을 생성해서 요청해야한다.
+    As an error occurs in the redirect part when requesting an api with the default Resttemplate, you need to create and request a Resttemplate so that the redirect function is not performed.
 
 ##### Response
     result :: string
-    Bosh API에서 List<Map>형식으로 커스텀해 반환해준다.
+	Bosh API customizes and returns it in List<Map> format.
 
 
 2.3. GetLock
-Deployment Update 하기전 해당 Deployment가 작업(Lock)여부 조회하는 기능이다.
+It is a function that inquires whether the deployment is locked before the deployment update.
 
 ##### parameter
 
@@ -269,10 +260,10 @@ Deployment Update 하기전 해당 Deployment가 작업(Lock)여부 조회하는
 
 ##### Response
     result :: string
-    Bosh API에서 Json형식으로 반환해준다.
+    It is returned in Json format from Bosh API.
 
 2.4. UpdateInstance
-해당 Instance상태를 업데이트한다 (stop --> start)
+Update the instance status (stop --> start)
 
 ##### parameter
 
@@ -281,8 +272,8 @@ Deployment Update 하기전 해당 Deployment가 작업(Lock)여부 조회하는
     instance_id :: string
     type :: string
 
-    type은 "started" 또는 "detached"로 정한다.
-
+   The type is set to "started" or "detached".
+  
 ##### Request
 
     Get bosh_url + "/deployments/" + deployment_name + "/jobs/" + job_name + "/" + job_id + "?state=" + state
@@ -291,7 +282,7 @@ Deployment Update 하기전 해당 Deployment가 작업(Lock)여부 조회하는
     null
 
 2.5. GetTaskID
-현재 작업중인(state = queued, processing,cancelling) Task중 해당 deployment_name과 같은 ID를 조회한다.
+Among the tasks currently in operation (state = queued, processing, and cancelling), the ID such as the corresponding deployment_name is queried.
 
 ##### parameter
 
@@ -305,7 +296,7 @@ Deployment Update 하기전 해당 Deployment가 작업(Lock)여부 조회하는
     List<map>
 
 ##### StartInstance
-해당 Instance VM을 실행시킨다.(stop -> start)
+Run the Instance VM.(stop -> start)
 
 ##### parameter
 
@@ -321,7 +312,7 @@ Deployment Update 하기전 해당 Deployment가 작업(Lock)여부 조회하는
     String
 
 ##### CreateInstance
-서비스 신청이 들어올 때 할당해줄 VM이 없을시  Instace 개수를 늘려 VM 하나를 생성하는 기능이다.
+It is a function that creates one VM by increasing the number of Instances when there is no VM to allocate when a service application comes in.
 
 ##### parameter
 
@@ -333,9 +324,9 @@ Deployment Update 하기전 해당 Deployment가 작업(Lock)여부 조회하는
     Post bosh_url + "/deployments"
 
 ##### body
-bosh deploy할때 필요한 manifest.yml구성된 내용을 String으로 변환해서 담아야한다.
+The contents of the manifest.ymml configuration required for bosh deployment should be converted into strings and included.
 
-예시)
+Example)
 ```
 instance_groups:
 - azs:
@@ -419,15 +410,14 @@ update:
     null
 
 
-##### <a name="43"/>4.3. On-Demand Service-Broker 구현 소스 개발가이드
-On-Demand 구현에 관련한 서비스 브로커 개발 가이드를 진행한다.
-현재 JAVA 버전만 사용이 가능하다. 예시로 나와있는 소스는 PaaS-TA GitHub의
-On-Demand-broker에서 찾아볼수 있다.
+##### <a name="43"/>4.3. On-Demand Service-Broker Implementation Source Development Guide
+Service broker development guide related to on-demand implementation will be processed.
+Currently, only JAVA version is available. The source shown in the example can be found in PaaS-TA GitHub's On-Demand-broker.
 
 1. On-Demand ServiceInstace
-할당된 VM의 대한 정보를 broker DB에 ServiceIntance객제와 함께 저장한다.
+The information on the assigned VM is stored in the broker DB with the ServiceInstance object.
 
-예시)JpaServiceInstance Class
+Example)JpaServiceInstance Class
 ```
 @Entity
 @Table(name = "on_demand_info")
@@ -651,16 +641,16 @@ public class JpaServiceInstance extends ServiceInstance {
     }
 }
 ```
-◎ 1.1. On-Demand-broker에서 커스텀한 변수의 대한 설명
+◎ 1.1. Description of variables customized in On-Demand-broker
 
-##### vm_instance_id : 서비스 인스턴스에 할당할 VM의 Instance Id
-##### appGuid : 서비스 바인딩을 진행할 application의 Guid
-##### taskId : 서비스에 할당할 VM작업을 진행하는 BOSH의 task Id
+##### vm_instance_id : Instance Id of the VM to be assigned to the service instance
+##### appGuid : The GUID of the application that will perform service binding.
+##### taskId : Task ID of BOSH performing VM task to assign to service
 
-◎ 1.2. JPAInstance(CreateServiceInstanceRequest request) 생성자
-##### PaaS-TA Portal을 이용한 앱 템플릿을 사용하기 위해 임의로 지정한 키에 할당된 서비스 파라미터 값을 받아 appGuid에 할당한다.
+◎ 1.2. JPAInstance(CreateServiceInstanceRequest request) creator
+##### To use the app template using the PaaS-TA Portal, the service parameter value assigned to the arbitrarily designated key is received and assigned to the appGuid.
        ```
-       예시)
+       Example)
        public JpaServiceInstance(CreateServiceInstanceRequest request) {
         super(request);
         setServiceDefinitionId(request.getServiceDefinitionId());
@@ -691,26 +681,26 @@ public class JpaServiceInstance extends ServiceInstance {
       ```
 
 2. On-Demand createServiceInstance
-사용자가 서비스를 신청할 경우 과정에서 VM 재기동 또는 생성을 진행한다.
+When a user requests a service, the VM restarts or is created in the process.
 
-1.1. Deployment가 현재 구성이 제대로 되어있는지 확인 및 Instance List를 가져온다.
+1.1. Check if Deployment is currently configured properly and bring up the Instance List.
      ```
 
      ```
-##### 1.1. 에서 에러가 날 경우 서비스 생성을 중지한다.
+##### Stop service creation when an error occurs in 1.1.
 
      ```
-     예시)
+     Example)
      List<DeploymentInstance> deploymentInstances = onDemandDeploymentService.getVmInstance(deployment_name, instance_name);
             if (deploymentInstances == null) {
                 throw new ServiceBrokerException(deployment_name + " is Working");
             }
      ```
 
-1.2. Instance List중 유휴 VM이 있을경우 해당 VM정보가 저장된 Service Instance를 생성해 제공한다.
+ If there is an idle VM in the 1.2. Instance List, it creates and provides a Service Instance where the VM information is stored.
 
      ```
-     예시)
+     Example)
      List<DeploymentInstance> startedDeploymentInstances = deploymentInstances.stream().filter((x) -> x.getState().equals(BoshDirector.INSTANCE_STATE_START) && x.getJobState().equals("running")).collect(Collectors.toList());
             for(DeploymentInstance dep : startedDeploymentInstances){
                 if(jpaServiceInstanceRepository.findByVmInstanceId(dep.getId()) == null){
@@ -720,25 +710,25 @@ public class JpaServiceInstance extends ServiceInstance {
                     jpaServiceInstance.withAsync(true);
                     SecurityGroups securityGroups = common.cloudFoundryClient().securityGroups();
                     cloudFoundryService.SecurityGurop(request.getSpaceGuid(), jpaServiceInstance.getDashboardUrl(), securityGroups);
-                    logger.info("서비스 인스턴스 생성");
+                    logger.info("Create service instance");
                     return jpaServiceInstance;
                 }
             }
      ```
 
-1.3. 유휴 VM이 없을경우 Instance를 업데이트 하기 전 현재 Deployment가 Lock인 상태인지 체크한다. Lock인 상태인 경우엔 "생성할 수 없습니다." 에러를 발생시킨다.
+1.3. If there are no idle VMs, check if the deployment is currently locked before updating the instance. If it is in a locked-in state, it causes a "create not possible" error.
 
      ```
-     예시)
+     Example)
      if (onDemandDeploymentService.getLock(deployment_name)) {
                 throw new ServiceBrokerException(deployment_name + " is Working");
      }
      ```
 
-1.4. 정지상태인 VM을 찾아 있을경우 해당 VM을 실행시키며 해당 VM정보를 가진 Service Instance를 생성해 제공한다.
+1.4. When it finds a VM in a stopped state, it launches the VM and creates and provides a service instance with the VM information.
 
      ```
-     예시)
+     Example)
      List<DeploymentInstance> detachedDeploymentInstances = deploymentInstances.stream().filter(x -> x.getState().equals(BoshDirector.INSTANCE_STATE_DETACHED)).collect(Collectors.toList());
      String taskID = "";
      for (DeploymentInstance dep : detachedDeploymentInstances) {
@@ -769,10 +759,10 @@ public class JpaServiceInstance extends ServiceInstance {
      }
      ```
 
-1.5. 1.4.에서 정지된 VM이 없을경우 해당 Deployment의 manifest를 수정해 Service Instance에 필요한 VM을 늘린 후 해당 정보를 가진 Instance를 생성해 제공한다.
+1.5. If there is no VM stopped in 1.4., modify the manifest of the deployment to increase the VMs required for the service instance, and then create and provide an instance with the relevant information.
 
      ```
-     예시)
+     Example)
      onDemandDeploymentService.createInstance(deployment_name, instance_name);
      while (true) {
        Thread.sleep(1000);
@@ -809,17 +799,16 @@ public class JpaServiceInstance extends ServiceInstance {
 
 3. On-Demand getOperationServiceInstance
 
-1.1. 현재 Bosh의 Task를 조회해 running task중 Deployment가 포함되어있으면
-     inprogress 상태를 반환 없을경우 succeed 상태를 반환한다.
+1.1. Inquire the current Bosch task and if Deployment is included in the running task, return the status of progress if there is no progress status.
 
      ```
-     CloudController에서 null을 반환받을경우 inprogress를 최종적으로 반환한다.
-     반대로 instance값을 전달받을경우 succeed를 반환한다.
-     예시)
+     If null is returned from CloudController, inprogress is returned as final.
+     Conversely, if an instance value is passed, succeed is returned.
+     Example)
      public JpaServiceInstance getOperationServiceInstance(String Instanceid) {
         JpaServiceInstance instance = jpaServiceInstanceRepository.findByServiceInstanceId(Instanceid);
         if (onDemandDeploymentService.runningTask(deployment_name, instance)) {
-            logger.info("인스턴스 생성완료");
+            logger.info("Instance Creation Succesful");
             ExecutorService executor = Executors.newSingleThreadExecutor();
             CompletableFuture.runAsync(() -> {
                 try {
@@ -834,19 +823,19 @@ public class JpaServiceInstance extends ServiceInstance {
             }, executor);
             return instance;
         }
-        logger.info("인스턴스 생성중");
+        logger.info("Creating an instance");
         return null;
      }
     ```
 
 4. On-Demand deleteServiceInstance
 
-1.1. Service Instance를 제거해 반환한다.
-1.2. 비동기방식으로 삭제한 Instance에 할당된 VM을 중지시키기 위한 준비를 한다.
-##### 해당 Deployment가 Lock상태인지 조회한다. Lock인경우 15초 뒤에 다시 조회후 Lock이 아닌 경우 해당 VM을 중지시킨다.
+1.1. Remove and return the service instance.
+1.2. Prepare to stop VMs assigned to instances that have been deleted asynchronously.
+##### Check whether the deployment is in a locked state. If it is Lock, check again after 15 seconds, and if it is not Lock, stop the corresponding VM.
 
       ```
-      예시)
+      Example)
       ExecutorService executor = Executors.newSingleThreadExecutor();
             CompletableFuture.runAsync(() -> {
                 lock.lock();
@@ -868,13 +857,13 @@ public class JpaServiceInstance extends ServiceInstance {
             }, executor);
       ```
 
-##### <a name="44"/>4.4. On-Demand 릴리즈 개발가이드
-service를 Bosh release를 통해 배포 해야 하기 때문에 Bosh release 개발 방식에 따라 작성되어야한다.Bosh release 는 packages 와 jobs 관련 스크립트로 구성되어 있다.
+##### <a name="44"/>4.4. On-Demand Release Development Guide
+Since the service must be distributed through Bosh release, it must be written according to the Bosh release development method.Bosch release consists of scripts related to packages and jobs.
 
-1. On-Demand Release 기본구성
+1. On-Demand Release Basic Configuration
 
     ```
-    예시)
+    Example)
     .
     ├── README.md
     ├── blobs
@@ -933,11 +922,10 @@ service를 Bosh release를 통해 배포 해야 하기 때문에 Bosh release �
 
     ```
 
-2. 해당서비스를 On-Demand로 적용시켜 Release를 개발할 경우 jobs, packages, src에 추가
-   해서 Release 파일을 생성하면 된다.
+2. When developing a release by applying the service as On-Demand, you can add it to jobs, packages, and src to create a release file.
 
     ```
-    예시) On-Demand Redis Relases Tree
+    Example) On-Demand Redis Relases Tree
     .
     ├── README.md
     ├── blobs
@@ -1020,28 +1008,28 @@ service를 Bosh release를 통해 배포 해야 하기 때문에 Bosh release �
             └── paas-ta-on-demand-broker.jar
     ```
 
-3. Release 구성을 완료한 후에 bosh cli 명령어를 통해 tgz파일을 만든후 업로드를 한다.
+3. After completing the release configuration, create a tgz file using the bosh cli command and upload it.
 
     ```
-    예시)
+    Example)
     $ bosh create-release --force --tarball on-demand-release.tgz --name on-demand-release --version 1.0
     $ bosh upload-release on-demand-release.tgz(bosh ur on-demand-release.tgz)
 
-    또는 create.sh파일을 커스텀한후 실행시키면 된다.
+	or , you can customize the create.sh file and run it.
     ```
 
-##### <a name="45"/>4.5. On-Demand Deployment 개발가이드
-BOSH Deploymentmanifest 는 components 요소 및 배포의 속성을 정의한YAML  파일이다.
-Deployment manifest 에는 sotfware를 설치 하기 위해서 어떤 Stemcell (OS, BOSH agent) 을 사용할것이며 Release (Software packages, Config templates, Scripts) 이름과 버전, VMs 용량, Jobs params 등을 정의하여 Bosh deploy CLI 을 이용하여 software(여기서는 서비스팩)를 설치 한다.
+##### <a name="45"/>4.5. On-Demand Deployment Development Guide
+The BOSH Deploymentmanifest is a YAML file that defines components and deployment properties.
+In the deployment manifest, which Stemcell (OS, BOSH agent) will be used to install the sotfware, and the Release (Software packages, Config templates, Scripts) name and version, VMs capacity, Jobs params, etc. are defined, and the software ( Here, the service pack) is installed.
 
-1. On-Demand Deployment 기본 구성
+1. On-Demand Deployment Basic Configuration
 
     ```
     .
-    ├── deploy-vsphere.sh                     bosh deploy 실행파일
-    ├── necessary_on_demand_vars.yml          manifest.yml에 들어갈 필수 변경 property파일
-    ├── paasta_on_demand_service_broker.yml   deploy manifest.yml 파일
-    └── unnecessary_on_demand_vars.yml        manifest.yml에 들어갈 property파일
+    ├── deploy-vsphere.sh                     bosh deploy execution file
+    ├── necessary_on_demand_vars.yml          Required Change property file to be included in manifest.yml
+    ├── paasta_on_demand_service_broker.yml   deploy manifest.yml file
+    └── unnecessary_on_demand_vars.yml        property file to be included in manifest.yml
     ```
     deploy-vsphere.sh
 
@@ -1051,7 +1039,7 @@ Deployment manifest 에는 sotfware를 설치 하기 위해서 어떤 Stemcell (
    -l unnecessary_on_demand_vars.yml
     ```
 
-    necessary_on_demand_vars.yml : 변경해야 하는 필수 property파일(정확히 기입안할시 deploy에서 error 발생)
+    necessary_on_demand_vars.yml : Required property files that need to be modified(If not entered correctly, an error occurs during deployment)
 
     ```
     #!/bin/bash
@@ -1086,7 +1074,7 @@ Deployment manifest 에는 sotfware를 설치 하기 위해서 어떤 Stemcell (
     mariadb_user_password: DB_password                              # MariaDB Root Password
     ```
 
-    unnecessary_on_demand_vars.yml : 변경하지 않아도 되는 property파일
+    unnecessary_on_demand_vars.yml : property file that does not need to be changed
 
     ```
     #!/bin/bash
@@ -1099,17 +1087,16 @@ Deployment manifest 에는 sotfware를 설치 하기 위해서 어떤 Stemcell (
     service_instance_plan_guid: 2a26b717-b8b5-489c-8ef1-02bcdc445720
     service_instance_plan_name: dedicated-vm
     service_instance_plan_desc: Redis service to provide a key-value store
-    service_instance_org_limitation: -1                                        # org당 서비스 개수 제한 -1일경우 limit 없음
-    service_instance_space_limitation: -1                                      # space당 서비스 개수 제한 -1일경우 limit 없음
+    service_instance_org_limitation: -1                                        # Limit the number of services per org, If -1, there is no limit
+    service_instance_space_limitation: -1                                      #Limit the number of services per service, If -1, there is no limit
 
     ```
 
-    paasta_on_demand_service_broker.yml : On-demand-Service의 manifest.yml 파일
+    paasta_on_demand_service_broker.yml : manifest.yml file of On-demand-Service
 
     ```
     ---
-    name: "((deployment_name))"        #서비스 배포이름(필수) bosh deployments 로 확인 가능한 이름
-
+    name: "((deployment_name))"        #Service deployment name (required) that can be checked with bosh deployments
     stemcells:
     - alias: "((stemcell_alias))"
       os: "((stemcell_os))"
@@ -1120,8 +1107,8 @@ Deployment manifest 에는 sotfware를 설치 하기 위해서 어떤 Stemcell (
       type: password
 
     releases:
-    - name: "((releases_name))"                  # 서비스 릴리즈 이름(필수) bosh releases로 확인 가능
-      version: "1.0"                                             # 서비스 릴리즈 버전(필수):latest 시 업로드된 서비스 릴리즈 최신버전
+    - name: "((releases_name))"                  # Service release name (required), can be checked with  bosh releases
+      version: "1.0"                                             # Service release version (required):The latest version of the service release uploaded at latest
 
     update:
       canaries: 1                                               # canary 인스턴스 수(필수)
@@ -1193,20 +1180,20 @@ Deployment manifest 에는 sotfware를 설치 하기 위해서 어떤 Stemcell (
           admin:
             id: "((cloudfoundry_admin_id))"
             password: "((cloudfoundry_admin_password))"
-      mariadb:                                                # MARIA DB SERVER 설정 정보
-        port: "((mariadb_port))"                                            # MARIA DB PORT 번호
+      mariadb:                                                # MARIA DB SERVER setting information
+        port: "((mariadb_port))"                                            # MARIA DB PORT Number
         admin_user:
-          password: "((mariadb_user_password))"                             # MARIA DB ROOT 계정 비밀번호
+          password: "((mariadb_user_password))"                             # MARIA DB ROOT Account Password
         host_names:
         - mariadb0   
 
     ```
 
-2. 서비스를 추가한 On-Demand-Service 배포하기(On-Demand-Service-Redis)
-서비스를 추가한 On-Demand-Service를 배포하기 위해선 서비스에 필요한 프로퍼티 설정 및 manifest.yml에 추가해 deploy를 진행하면 된다.
+2. Deploy the service added On-Demand-Service (On-Demand-Service-Redis)
+To deploy the On-Demand-Service that has added the service, you can proceed with deployment by setting the properties required for the service and adding it to the manifest.yml.
 
 
-    On-Demand-Redis property.yml(예시)
+    On-Demand-Redis property.yml(Example)
     ```
     #!/bin/bash
 
@@ -1239,7 +1226,7 @@ Deployment manifest 에는 sotfware를 설치 하기 위해서 어떤 Stemcell (
     mariadb_port: 3306                                              # MariaDB Server Port
     mariadb_user_password: DB_password                              # MariaDB Root Password
 
-    ### On-Demand Dedicated Service Instance Properties ###         #서비스에 적용시킬 프로퍼티 추가 기입
+    ### On-Demand Dedicated Service Instance Properties ###         #Add additional properties to apply to the service
 
     on_demand_service_instance_name: redis                          # On-Demand Service Instance Name
     service_password: service_password
@@ -1247,10 +1234,10 @@ Deployment manifest 에는 sotfware를 설치 하기 위해서 어떤 Stemcell (
 
     ```
 
-    On-Demand-Redis paasta_on_demand_service_broker(예시)
+    On-Demand-Redis paasta_on_demand_service_broker(Example)
     ```
     ---
-    name: "((deployment_name))"        #서비스 배포이름(필수) bosh deployments 로 확인 가능한 이름
+    name: "((deployment_name))"        #Service deployment name (required) that can be checked with bosh deployments
 
     stemcells:
     - alias: "((stemcell_alias))"

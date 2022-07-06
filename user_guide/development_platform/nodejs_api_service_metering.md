@@ -55,7 +55,7 @@ The range of this document is limited to the development of Node.js API service 
 
 ### <div id='6'></div> 2.1 Outline
 
-The API service and the application using the API service are to be written in Node.js language. Bind the application that uses API Service and the API serivce.
+The API service and the application using the API service are to be written in Node.js language. Bind the application that uses API Service and the API service.
 Using environmental information (VCAP_SERVICES) bound to the application, access information for each service is acquired and applied to the application to create an application that calls API services. The API service also creates an application that processes service requests and sends API usage history to CF-ABACUS.
 
 ![Development_Guide_Nodejs_Image01]
@@ -92,7 +92,7 @@ Using environmental information (VCAP_SERVICES) bound to the application, access
   </tr>
 </table>
 
-※ This development guide describes about the **API** **Service** development only. Refer to the linked site below for development and installation of other components.
+※ This development guide describes the **API** **Service** development only. Refer to the linked site below for development and installation of other components.
 
 ### <div id='7'></div> 2.2 Construct Development Environment
 
@@ -124,7 +124,7 @@ For the development of Node.js application, the development environment is const
 **<a href="https://nodejs.org/ko/download/">https://nodejs.org/ko/download/</a>**
 
 ※ Development Tool  
-Node.js is a javascript-based language that can use document editors such as Notepad++, Sublim Text, and EditPlus as development tools. Can also install and use Nodeclipse, the plug-in of Eclipse. As a commercial development tool, there are WebStome and etc.
+Node.js is a javascript-based language that can use document editors such as Notepad++, Sublim Text, and EditPlus as development tools. Can also install and use Nodeclipse, the plug-in of Eclipse. As a commercial development tool, there are WebStome, etc.
 
 ### <div id='9'></div> 2.2.2 CF-Abacus Installation
 
@@ -720,7 +720,7 @@ Refer: <u><b><a href="https://github.com/cloudfoundry-incubator/cf-abacus/blob/m
 
 ### <div id='14'></div> 2.5API Service Interworking Sample Application Development
 
- As an application using the Api service, this sample implemented only the function of simply requesting the API service through the web screen..
+ As an application using the Api service, this sample implemented only the function of simply requesting the API service through the web screen.
 
 
 #### 1.  API service interwork sample application shape
@@ -1293,7 +1293,7 @@ Api 서비스를 요청하는 웹 화면
 
 ### <div id='17'></div> 2.5.3 VCAP_SERVICES Environment Setting Information
 
-In order to obtain access information for each service to which an application deployed on the PaaS-TA platform is bound, the information may be obtained by reading the VCAP_SERVICES envionment setting information registered for each application.
+To obtain access information for each service to which an application deployed on the PaaS-TA platform is bound, the information may be obtained by reading the VCAP_SERVICES environment setting information registered for each application.
 
 #### 1.  Application environment information of PaaS-TA platform
 -   When the service is bound, the configuration information in JSON format is registered for each application.
@@ -1550,7 +1550,7 @@ A service provider develops a policy for a service according to the Rating Polic
 
 ### <div id='21'></div> 2.6.3 Billing Policy
 
-Billing Policy is a JSON-formatted object that defines the unit price for each service. The service provider develops the policy for the service according to the Charging Policy schema.
+A billing policy is a JSON-formatted object that defines the unit price for each service. The service provider develops the policy for the service according to the Charging Policy schema.
 
 #### 1.  Billing Policy Schema
 
@@ -1653,7 +1653,7 @@ Billing Policy is a JSON-formatted object that defines the unit price for each s
 A policy can be registered in CF-ABACUS in one of two ways.
 
 #### 1.  By registering js file  
-After saving the created policy in the following directory, deploy or redeploy CF-ABACUS to the CF..
+After saving the created policy in the following directory, deploy or redeploy CF-ABACUS to the CF.
 
 -   For Metering Policy
 
@@ -1711,7 +1711,7 @@ There is no need to redeploy CF-ABACUS by saving the created policy in the DB us
 
 ### <div id='23'></div> 2.7 Deployment
 
-When an application is deployed on the PaaS-TA platform, the deployed application can be used by connecting the service provided by the PaaS-TA platform. You can access the service by accessing the application environment variables of the PaaS-TA platform only when it is executed on the PaaS-TA platform.
+When an application is deployed on the PaaS-TA platform, the deployed application can be used by connecting to the service provided by the PaaS-TA platform. You can access the service by accessing the application environment variables of the PaaS-TA platform only when it is executed on the PaaS-TA platform.
 
 ### <div id='24'></div> 2.7.1 PaaS-TA Platform Login
 
@@ -1724,7 +1724,7 @@ Log in to the PaaS-TA platform to perform the process below
 
 ### <div id='25'></div> 2.7.2  Create API Service Broker
 
-Create service to use at the application through PaaS-TA Platform. It can be create without a separate installation process, and can obtain access information through binding pocess with the application.
+Create a service to use at the application through the PaaS-TA Platform. It can be created without a separate installation process, and can obtain access information through a binding process with the application.
 
 -   Service Creation (Can check the service plan and service list using the cf marketplace command.)
 -   Gradle Version: 2.2
@@ -1809,7 +1809,7 @@ Deploy the API service application to the PaaS-TA platform. The API service regi
 
 ### <div id='27'></div> 2.7.4 API Service Interworking Sample Application Deployment and Service Connection
 
-The process of connecting an application and a service is called 'bind', and through this process, access information to access the service is created.
+The process of connecting an application and service is called 'bind', and through this process, access information to access the service is created.
 
 -   Connecting applications and services
 
@@ -2105,7 +2105,7 @@ CF-Abacus interworking test for API interworking and API usage can be performed 
 
 ### <div id='30'/> 2.10. Sample Code
 
-Sample Code can be downloaded from the site below.
+The sample Code can be downloaded from the site below.
 
 [Download](https://nextcloud.paas-ta.org/index.php/s/mEbGNcJjrEj7GWx/download)
 
@@ -2113,4 +2113,4 @@ Sample Code can be downloaded from the site below.
 [Development_Guide_Nodejs_Image01]:./images/nodejs_Service_Metering/2-0-0.png
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Node.js API Service Metering 개발
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Node.js API Service Metering Development

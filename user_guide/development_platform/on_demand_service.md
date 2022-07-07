@@ -1259,14 +1259,14 @@ To deploy the On-Demand-Service that has added the service, you can proceed with
       sha1: f2bd126b17b3591160f501d88d79ccf0aba1ae54
       url: git+https://github.com/cloudfoundry-incubator/bpm-release
       version: 1.0.3
-    - name: "((releases_name))"                  # 서비스 릴리즈 이름(필수) bosh releases로 확인 가능
-      version: "1.0"                                             # 서비스 릴리즈 버전(필수):latest 시 업로드된 서비스 릴리즈 최신버전
+    - name: "((releases_name))"                  # Service release name (required), identifiable as bosh releases
+      version: "1.0"                                             # Service release version (required): The latest version of the service release uploaded
 
     update:
-      canaries: 1                                               # canary 인스턴스 수(필수)
-      canary_watch_time: 5000-120000                            # canary 인스턴스가 수행하기 위한 대기 시간(필수)
-      update_watch_time: 5000-120000                            # non-canary 인스턴스가 수행하기 위한 대기 시간(필수)
-      max_in_flight: 1                                          # non-canary 인스턴스가 병렬로 update 하는 최대 개수(필수)
+      canaries: 1                                               # Number of canary instances (required)
+      canary_watch_time: 5000-120000                            # Waiting time for the canary instance to perform (required)
+      update_watch_time: 5000-120000                            # Waiting time for non-canary instances to perform (required)
+      max_in_flight: 1                                          # Maximum number of parallel updates by non-canary instances (required)
       serial: false
 
     instance_groups:
@@ -1356,10 +1356,10 @@ To deploy the On-Demand-Service that has added the service, you can proceed with
           admin:
             id: "((cloudfoundry_admin_id))"
             password: "((cloudfoundry_admin_password))"
-      mariadb:                                                # MARIA DB SERVER 설정 정보
-        port: "((mariadb_port))"                                            # MARIA DB PORT 번호
+      mariadb:                                                # MARIA DB SERVER Setting Information
+        port: "((mariadb_port))"                                            # MARIA DB PORT Number
         admin_user:
-          password: "((mariadb_user_password))"                             # MARIA DB ROOT 계정 비밀번호
+          password: "((mariadb_user_password))"                             # MARIA DB ROOT Account Password
         host_names:
         - mariadb0
     ######### SERVICE PROPERTIES #################
@@ -1368,7 +1368,7 @@ To deploy the On-Demand-Service that has added the service, you can proceed with
         port: "((service_port))"
 
     ```
-3. 서비스 배포 성공후 브로커 등록 및 서비스 신청시 해당 서비스 instance 생성 확인, 생성 완료시 On-Demand-Service 설치 완료
+3. Check the created service instance when registering as a broker and applying for the service after successful service deployment. On-Demand-Service installation completed upon completion of creation.
 
 
 [On-Demand_Image_01]:./images/on-demand/1.png
@@ -1379,4 +1379,4 @@ To deploy the On-Demand-Service that has added the service, you can proceed with
 [On-Demand_Image_06]:./images/on-demand/6.png
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > On-Demand Service 개발
+### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > On-Demand Service Development

@@ -1067,7 +1067,7 @@ Refer: If the service back-end (refer to the software: 2.2 Service Architecture 
 The directory structure can be configured with the Bosh release. Bosh is an open-source tool for release engineering, deployment, and lifecycle management of large-scale distributed services.
 
 ##### <a name="22"/>3.3.1. packages
-Packages provide the information necessary to prepare a binary dependency for Bosch release installation. (packaging, pre_packaging, spec file)
+Packages provide the information necessary to prepare a binary dependency for Bosh release installation. (packaging, pre_packaging, spec file)
 
 >![openpaas-servicepack-35]
  

@@ -799,7 +799,7 @@ When a user requests a service, the VM restarts or is created in the process.
 
 3. On-Demand getOperationServiceInstance
 
-1.1. Inquire the current Bosch task and if Deployment is included in the running task, return the status of progress if there is no progress status.
+1.1. Inquire the current Bosh task and if Deployment is included in the running task, return the status of progress if there is no progress status.
 
      ```
      If null is returned from CloudController, inprogress is returned as final.

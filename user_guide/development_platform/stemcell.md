@@ -444,7 +444,7 @@ Describe the procedure for generating stemcells using remote server OS images.
 	|Operating system name      |O      |OS type                    |Centos|
 	|Operating system version   |O      |OS version                    |7|
 	|Agent type                 |X      |Agent type               |Go|
-	|OS image s3 bucket name    |O      |OS Image Bucket Name for Bosch     |Bosh-os-image|
+	|OS image s3 bucket name    |O      |OS Image Bucket Name for Bosh     |Bosh-os-image|
 	|OS image key               |O      |OS image name                |Bosh-centos-7-os-image.tgz|
 
 

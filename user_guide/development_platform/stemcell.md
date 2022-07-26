@@ -236,7 +236,7 @@ The procedure for BOSH installation is as follows.
 		#Install git
 		$ sudo apt-get install git
 
-		#Create execution directory
+		#Create an execution directory
 		$ mkdir -p ~/workspace
 		$ cd ~/workspace
 
@@ -264,7 +264,7 @@ The procedure for BOSH installation is as follows.
 
 ## 2.5.  Vagrant Installation
 
-Vagrant is an open-source that builds a virtual environment. Use vagrant to manage VMs for creating stemcells.
+Vagrant is an open source that builds a virtual environment. Use vagrant to manage VMs for creating stemcells.
 
 
 1.  Install Vagrant
@@ -454,7 +454,7 @@ Describe the procedure for generating stemcells using remote server OS images.
 	※ Agent type is not a necessary item, but since it does not support agents other than go type as of the moment, so enter go.
 
 
-3.  Configuring Setable Options
+3.  Configuring Suitable Options
 
 	|Infrastructure             |Hypervisor                |OS|
 	|--------------------------|-------------------------|----------------------------|
@@ -484,7 +484,7 @@ Describes the procedure for generating a stemcell using a local OS image.
 
 
 
-2.  If you downloaded default OS image, upload it to a stemcell-generated VM.
+2.  If you downloaded the default OS image, upload it to a stemcell-generated VM.
 
 
 3.  Execute build\_with\_local\_os\_image
@@ -513,7 +513,7 @@ Describes the procedure for generating a stemcell using a local OS image.
 	※ Agent type is not a necessary item, but since it does not support agents other than go type as of the moment, so enter go.
 
 
-5.  Configuring Setable Options
+5.  Configuring Suitable Options
 
 	|Infrastructure             |Hypervisor                |OS|
 	|--------------------------|-------------------------|----------------------------|

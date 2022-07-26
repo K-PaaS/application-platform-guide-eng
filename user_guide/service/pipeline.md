@@ -105,7 +105,7 @@ This document is written about how to use the deployment pipeline service based 
 2. log in to the Portal by entering User ID and Password then click “LOGIN”.  
 ![003]
 
-3. Go to Catalog page after logging in.  
+3. Go to the Catalog page after logging in.  
 ![004]
 
 
@@ -173,7 +173,7 @@ The Pipeline deployment service consists of the following parts: Pipeline search
 	</tr>
 	<tr>
 		<td>Quality Profile</td>
-		<td>Manages coding rules that serve as standard for analyzing the quality of source code</td>
+		<td>Manages coding rules that serve as standards for analyzing the quality of source code</td>
 	</tr>
 	<tr>
 		<td>Quality Gate</td>
@@ -183,7 +183,7 @@ The Pipeline deployment service consists of the following parts: Pipeline search
 
 
 ## <div id='3-2'/> 3.2 Pipeline Deployment User Menu Setting
-This chapter describes about the 4 menus in the pipeline deployment.
+This chapter describes the 4 menus in the pipeline deployment.
 
 ### <div id='3-2-1'/> 3.2.1. User Management
 The user management menu is visible only to the administrators. This chapter describes the authorization management and information check and manages users of pipeline deployment service.
@@ -191,18 +191,18 @@ The user management menu is visible only to the administrators. This chapter des
 #### <div id='3-2-1-1'/> 3.2.1.1. User Dashboard
 
 ##### <div id='3-2-1-1-1'/> 3.2.1.1.1. Check User List Search
-1. CLick “User Management” button at the top-right menu.  
+1. Click the “User Management” button at the top-right menu.  
 ![011]
 
 2. Go to the user dashboard.  
 ![012]
 
-3. two conditions can be searched in the user dashboard list: a search with a user ID as a search term and a search whose type is an administrator/user. Click "Enter" or "Magnifying class" button to search.  
+3. two conditions can be searched in the user dashboard list: a search with a user ID as a search term and a search whose type is an administrator/user. Click the "Enter" or "Magnifying class" button to search.  
 ![013]  
 ![014]
 
 ##### <div id='3-2-1-1-2'/> 3.2.1.1.2. User Detail Check/ Modify
-1. Select ID from the user dashboard and proceed to user details check/ modify page.  
+1. Select ID from the user dashboard and proceed to the user details check/ modify the page.  
 ![015]
 
 2. Check the detailed information of the user.  
@@ -211,7 +211,7 @@ The user management menu is visible only to the administrators. This chapter des
 3. When you want to modify the information, enter a new input value. Authority can be selected between administrator/user.  
 ![017]
 
-4. After entering the new value, click “Modify” button.  
+4. After entering the new value, click the “Modify” button.  
 ![018]
 
 5. Check the modified information.    
@@ -235,7 +235,7 @@ This chapter describes the two methods of how to manage pipeline.
 ##### <div id='3-2-2-2-1'/> 3.2.2.2.1. Create New Pipeline(1)
 1. Click “Pipeline List” from the menu on top to create a new Pipeline just by entering the name.  
 ![024]
-2. After clicking register button, the added pipeline can be checked on the dashboard.  
+2. After clicking the register button, the added pipeline can be checked on the dashboard.  
 ![025]
 3. The registered Pipeline can also be checked from the Dropdown Menu.  
 ![026]
@@ -245,14 +245,14 @@ This chapter describes the two methods of how to manage pipeline.
 ![027]
 2.	Go to Create New Pipeline Page.    
 ![028]
-3.	Pipeline name is REQUIRED. Make sure to enter the Pipeline name and click “Create” button.    
+3.	Pipeline name is REQUIRED. Make sure to enter the Pipeline name and click the “Create” button.    
 ![029]
-4.	Go to Pipeline dashboard page and check the created pipeline's name.    
+4.	Go to the Pipeline dashboard page and check the created pipeline's name.    
 ![030]
 
 ##### <div id='3-2-2-2-3'/> 3.2.2.2.3. Create New Pipeline(3)
 ***※ Users do not have authority as contributors to the pipeline and cannot proceed to the pipeline's details page.***
-1. Click “Create New” button at the top right.    
+1. Click the “Create New” button at the top right.    
 ![031]
 2. Go to Create New Pipeline Page.    
 ![032]
@@ -262,15 +262,15 @@ This chapter describes the two methods of how to manage pipeline.
 ##### <div id='3-2-2-3-1'/> 3.2.2.3.1. Pipeline List Search Check
 1. A desired pipeline can be searched by entering the Pipeline name. Or the Pipeline list could be arranged by the sequence of created dates, updated dates, and alphabetical order.  
 ![033]
-2.	Click “ENTER” or “Magnifying glass” image button to search.  
+2.	Click the “ENTER” or “Magnifying glass” image button to search.  
 ![034]
 3.	If you select a search type filter for both a list inquire/search list inquire, it will be reflected immediately.  
 ![035]
 
 ##### <div id='3-2-2-3-2'/> 3.2.2.3.2. Pipeline Detail Information Check
-1.	Go to Pipeline details page by clicking the pipeline's name from the pipeline dashboard.  
+1.	Go to the Pipeline details page by clicking the pipeline's name from the pipeline dashboard.  
 ![036]
-2.	Click “View/Modify information” button at the top right of the pipeline details page.  
+2.	Click the “View/Modify information” button at the top right of the pipeline details page.  
 ![037]
 3.	Check the details of the selected Pipeline from the view/modify Pipeline Information page.  
 ![038]
@@ -295,9 +295,9 @@ This chapter describes overall contributor management, such as adding, modifying
 ##### <div id='3-2-2-4-1'/> 3.2.2.4.1. Manage Contributors
 ###### <div id='3-2-2-4-1-1'/> 3.2.2.4.1.1. Add Contributors
 ***※	Administrators are pipeline creators, so they are contributors with creation authority by default..***
-1.	Select Contributors tab from the pipeline details page.  
+1.	Select the Contributors tab from the pipeline details page.  
 ![043]
-2.	Click “Add Contributor” button at the top right.  
+2.	Click the “Add Contributor” button at the top right.  
 ![044]
 3.	Go to the Add Contributors page to search for users who are currently invited to the pipeline deployment and select. Select one of the authorities between view, create, or execute and click the "Add" button.  
 ![045]
@@ -307,7 +307,7 @@ This chapter describes overall contributor management, such as adding, modifying
 ###### <div id='3-2-2-4-1-2'/> 3.2.2.4.1.2. Check Contributors List Search
 1.	The condition that can be searched in the contributor list is one contributor ID.  
 ![047]
-2.	After entering the search word, click “ENTER” or “Magnifying glass” image button to check.  
+2.	After entering the search word, click the “ENTER” or “Magnifying glass” image button to check.  
 ![048]
 
 ###### <div id='3-2-2-4-1-3'/> 3.2.2.4.1.3.	Check/ Modify Contributor's Detail Information
@@ -315,7 +315,7 @@ This chapter describes overall contributor management, such as adding, modifying
 ![049]
 2.	Go to the check/modify page for contributor details and check the contributor's details.  
 ![050]
-3.	Select the authority to modify and click "Modify" button.  
+3.	Select the authority to modify and click the "Modify" button.  
 ![051]
 4.	Check the modified authority of the contributor from the contributor's list.  
 ![052]
@@ -324,9 +324,9 @@ This chapter describes overall contributor management, such as adding, modifying
 ###### <div id='3-2-2-4-1-4'/> 3.2.2.4.1.4.	Delete Contributor
 1.	Select a contributor to delete from the list.  
 ![053]
-2.	Go to detailed information check/modify page of the selected contributor.  
+2.	Go to the detailed information and check/modify the page of the selected contributor.  
 ![053-2]
-3.	Click “Delete Contributor” button.  
+3.	Click the “Delete Contributor” button.  
 ![054]
 4.	Check from the list if the Contributor is deleted.  
 ![055]
@@ -334,9 +334,9 @@ This chapter describes overall contributor management, such as adding, modifying
 
 ##### <div id='3-2-2-4-2'/> 3.2.2.4.2. Build Job
 ###### <div id='3-2-2-4-2-1'/> 3.2.2.4.2.1. Create Build Job 
-1.	Click ‘click here to add new Job’ button from the pipeline details page.  
+1.	Click the ‘click here to add new Job’ button from the pipeline details page.  
 ![056]
-2.	Proceed to configuration details page.  
+2.	Proceed to the configuration details page.  
 ![057]
 3. Select a job type and select the desired repository as the input type. Enter the ID and password of the selected repository, and the path of the repository to click the "Retrieve" button. Select the retrieved Branch and choose the suitable job trigger.<br>  
 ![058]
@@ -344,14 +344,14 @@ This chapter describes overall contributor management, such as adding, modifying
 4.	Check the newly created Build Job from the Pipeline details page.  
 ![059]
 
-***※ Creating a Build Job can only be done by administrator and authorized contributors of pipeline.***
+***※ Creating a Build Job can only be done by the administrator and authorized contributors of the pipeline.***
 
 ###### <div id='3-2-2-4-2-2'/> 3.2.2.4.2.2. Check/ Modify Build Job Configuration
 1. Click the “Configuration” icon of the created Build Job.<br>  
 ![060]
 2. Go to the configuration details page and look up the configuration information saved when creating.  
 ![061]
-3. When modifying, re-enter the information to modify in each input form and click "Save" button.  
+3. When modifying, re-enter the information to modify in each input form and click the "Save" button.  
 ![062]
 4. Go to the configuration detail page and check the modified information.  
 ![063]
@@ -359,7 +359,7 @@ This chapter describes overall contributor management, such as adding, modifying
 ***※ All pipeline Contributors can check the build job configuration. However, modifications can only be made by administrators and pipeline Contributors with creation authority.***
 
 ###### <div id='3-2-2-4-2-3'/> 3.2.2.4.2.3. Run Build Job
-1. Click “Run” icon from the Pipeline details page.<br>  
+1. Click the “Run” icon from the Pipeline details page.<br>  
 ![064]
 2. Once it starts running, the bar turns blue and blinks. (View logs in real-time by clicking the "log/history" icon while running.)  
 ![065]
@@ -381,7 +381,7 @@ This chapter describes overall contributor management, such as adding, modifying
 ###### <div id='3-2-2-4-2-5'/> 3.2.2.4.2.5.	Build Job Log/History
 1.	 Logs can be seen in real-time by clicking the "log/history" icon when the build job is running.  
 ![069]
-2.	Go to log check page. Check the logs in real-time.  
+2.	Go to the log check page. Check the logs in real-time.  
 ![070]
 3.	Confirm that the build job execution is complete, and verify the history.  
 ![071]
@@ -425,7 +425,7 @@ This chapter describes overall contributor management, such as adding, modifying
 ***※	Build Job Duplication can only be done by the administrator and pipeline contributors with creation authority.***
 
 ###### <div id='3-2-2-4-2-9'/> 3.2.2.4.2.9.	Delete Build Job
-1.	Click “Delete” button of Build job from the pipeline details page.  
+1.	Click the “Delete” button of the Build job from the pipeline details page.  
 ![084]
 2.	Check if the Build Job has been deleted.  
 ![084-2]
@@ -435,11 +435,11 @@ This chapter describes overall contributor management, such as adding, modifying
 
 ##### <div id='3-2-2-4-3'/> 3.2.2.4.3. Test Job
 ###### <div id='3-2-2-4-3-1'/> 3.2.2.4.3.1. Create Test Job
-1.	Click “Add” button from the Job.  
+1.	Click the “Add” button from the Job.  
 ![084-3]
-2.	Go to configuration page and select job type as Test then enter the desired quality profile, quality gate, and Job group. Select suitable job trigger.  
+2.	Go to the configuration page and select job type as Test then enter the desired quality profile, quality gate, and Job group. Select a suitable job trigger.  
 ![085]
-3.	Click “Save” button and check the created test job at the pipeline details page.  
+3.	Click the “Save” button and check the created test job on the pipeline details page.  
 ![086]
 
 ***※	Creating of Test Job can only be done by the administrator and pipeline contributors with creation authority***
@@ -449,7 +449,7 @@ This chapter describes overall contributor management, such as adding, modifying
 ![087]
 2.	Go to the configuration details page and look up the configuration information saved when creating.  
 ![087-2]
-3.	When modifying, re-enter the information to modify in each input form and click "Save" button.  
+3.	When modifying, re-enter the information to modify in each input form and click the "Save" button.  
 ![088]
 4.	Go to the configuration detail page and check the modified information.  
 ![089]
@@ -457,7 +457,7 @@ This chapter describes overall contributor management, such as adding, modifying
 ***※	All pipeline Contributors can check the Test job configuration. However, modifications can only be made by administrators and pipeline Contributors with creation authority.***
 
 ###### <div id='3-2-2-4-3-3'/> 3.2.2.4.3.3.	Run Test Job
-1.	Click “Run” icon of Test Job from the Pipeline details page.  
+1.	Click the “Run” icon of Test Job from the Pipeline details page.  
 ![090]
 2.	Once it starts running, the bar turns blue and blinks. (View logs in real-time by clicking the "log/history" icon while running.)  
 ![091]
@@ -476,7 +476,7 @@ This chapter describes overall contributor management, such as adding, modifying
 ###### <div id='3-2-2-4-3-5'/> 3.2.2.4.3.5.	Test Job Log/ History
 1.	Logs can be seen in real-time by clicking the "log/history" icon when the Test job is running.  
 ![094]
-2.	Go to log check page. Check the logs in real-time.  
+2.	Go to the log check page. Check the logs in real-time.  
 ![095]
 3.	Confirm that the Test job execution is complete, and verify the history.  
 ![096]
@@ -495,7 +495,7 @@ This chapter describes overall contributor management, such as adding, modifying
 ###### <div id='3-2-2-4-3-7'/> 3.2.2.4.3.7.	Add Test Job
 1.	click the "Add" button on the Test Job on the Pipeline Details page.  
 ![098]
-2.	Refer to 3.2.2.4.2.7. Add Build Job  for the next procedures.
+2.	Refer to 3.2.2.4.2.7. Add Build Job for the next procedures.
 
 ***※	Adding a Test job is only possible for administrators and pipeline contributors with creation authority.***
 
@@ -508,7 +508,7 @@ This chapter describes overall contributor management, such as adding, modifying
 ***※	Test Job Duplication can only be done by the administrator and pipeline contributors with creation authority.***
 
 ###### <div id='3-2-2-4-3-8'/> 3.2.2.4.3.9.	Delete Test Job
-1.	Click “Delete” button of Test job from the pipeline details page.  
+1.	Click the “Delete” button of the Test job from the pipeline details page.  
 ![101]
 2.	Check if the Test Job has been deleted.  
 ![102]
@@ -520,26 +520,26 @@ This chapter describes overall contributor management, such as adding, modifying
 ###### <div id='3.2.2.4.4.1'/> 3.2.2.4.4.1.	Create Deployment Job
 1. Click the “Add” button from Job.<br>  
 ![103]
-2.	Go to configuration page and select the job type to Deploy, and the Cloud Foundry information that has been saved during Pipeline management. (Procedures for bringing Cloud Foundry information have to be done first. Refer to 3.2.3.1. Cloud Foundry information management). Select whether to use MANIFEST or not. then enter input type and job trigger.  
+2.	Go to the configuration page and select the job type to Deploy, and the Cloud Foundry information that has been saved during Pipeline management. (Procedures for bringing Cloud Foundry information have to be done first. Refer to 3.2.3.1. Cloud Foundry information management). Select whether to use MANIFEST or not. then enter input type and job trigger.  
 ![104]
-3.	Click “Save” button and check the newly created deployment Job from the pipeline details page.  
+3.	Click the “Save” button and check the newly created deployment Job from the pipeline details page.  
 ![105]
 
-***※	Creating a Deployment Job can only be done by administrator and authorized pipeline contributors.***
+***※	Creating a Deployment Job can only be done by the administrator and authorized pipeline contributors.***
 
 ###### <div id='3-2-2-4-4-2'/> 3.2.2.4.4.2.	Check/ Modify Deployment Job Configuration
 1.	Click the “Configuration” icon of the created Deployment Job.  
 ![106]
-2.	Go to Configuration details page and check the configured informations saved.  
+2.	Go to the Configuration details page and check the coninformationrmations saved.  
 ![104]
-3.	To modify, re-enter the inputs and click “Save” button.  
+3.	To modify, re-enter the inputs and click “the Save” button.  
 ![107]
-4.	Check the modified informations on the configuration details page.
+4.	Check the modified information on the configuration details page.
 
 ***※	 All pipeline contributors can check out the Deployment Job configurations. However, modifying is only permitted to the administrators and the contributors with the permission to create.***
 
 ###### <div id='3-2-2-4-4-3'/> 3.2.2.4.4.3.	Run Deployment Job
-1.	Click “Run” icon of Deployment Job from the pipeline details page.  
+1.	Click the “Run” icon of Deployment Job from the pipeline details page.  
 ![108]
 2.	Once it starts running, the bar turns blue and blinks. (View logs in real-time by clicking the "log/history" icon while running.)  
 ![109]
@@ -559,7 +559,7 @@ This chapter describes overall contributor management, such as adding, modifying
 ###### <div id='3-2-2-4-4-5'/> 3.2.2.4.4.5.	Deployment Job Log/History
 1.	Logs can be seen in real-time by clicking the "log/history" icon when the deployment job is running.  
 ![113]
-2.	Go to log check page to check the logs in real-time.  
+2.	Go to the log check page to check the logs in real-time.  
 ![114]
 3.	Confirm that the deployment job execution is complete, and verify the history.  
 ![115]
@@ -569,10 +569,10 @@ This chapter describes overall contributor management, such as adding, modifying
 ***※	The deployment Job log/history is visible to the administrator and all pipeline Contributors, but the Run and Stop buttons can only be seen by Contributors with creation and execution authority.***
 
 ###### <div id='3-2-2-4-4-6'/> 3.2.2.4.4.6.	Deployment Job Rollback to Current Job
-1.	Click “Rollback to Current Job” button on Deployment Job on the Log/History page.  
+1.	Click the “Rollback to Current Job” button on Deployment Job on the Log/History page.  
 ![117]
 2.	A window appears to roll back to the current task and allows you to modify Cloud Foundry information and organizational/space input values.
-As an example, set the application name as ‘test-hrjin’ and click “Rollback” button.  
+As an example, set the application name as ‘test-hrjin’ and click the “Rollback” button.  
 ![118]
 3.	Progress Rollback.  
 ![119]
@@ -582,14 +582,14 @@ As an example, set the application name as ‘test-hrjin’ and click “Rollbac
 ***※	Deployment Job Rollback to Current Job is permitted only to administrators and contributors with creation and execution authorities.***
 
 ###### <div id='3-2-2-4-4-7'/> 3.2.2.4.4.7.	Add Deployment Job
-1.	Click “Add” button of deployment job from the Pipeline details page.  
+1.	Click the “Add” button of the deployment job from the Pipeline details page.  
 ![121]
 2.	Refer to 3.2.2.4.2.7. Add Build Job and 3.2.2.4.3.7. Add Test Job for the next procedures.
 
 ***※	Adding of Deployment Job is permitted to Administrators and contributors with creation authority only.***
 
 ###### <div id='3-2-2-4-4-8'/> 3.2.2.4.4.8.	Duplicate Deployment Job
-1.	Click “Duplicate” button of Deployment Job from the pipeline details page.  
+1.	Click the “Duplicate” button of Deployment Job from the pipeline details page.  
 ![122]
 2.	Check the duplicated Deployment Job.  
 ![123]
@@ -597,7 +597,7 @@ As an example, set the application name as ‘test-hrjin’ and click “Rollbac
 ***※	Deployment Job Duplication is permitted only to Administrators and Contributors with creation authority.***
 
 ###### <div id='3-2-2-4-4-9'/> 3.2.2.4.4.9.	Delete Deployment Job
-1.	Click “Delete” button of Deployment Job from the pipeline details page.  
+1.	Click the “Delete” button of Deployment Job from the pipeline details page.  
 ![124]
 2.	Check the deleted deployment Job.  
 ![125]
@@ -605,9 +605,9 @@ As an example, set the application name as ‘test-hrjin’ and click “Rollbac
 ***※	Deletion of Deployment Job is permitted to Administrator and Contributors with creation authority only.***
 
 ##### <div id='3-2-2-4-5'/> 3.2.2.4.5. Job Sorting
-1.	From the pipeline details page, click “Job sorting” icon for each Job.  
+1.	From the pipeline details page, click the “Job sorting” icon for each Job.  
 ![126]
-2.	A list of the remaining Job numbers that can be sorted within the current workgroup appears in drop-down menu.  
+2.	A list of the remaining Job numbers that can be sorted within the current workgroup appears in the drop-down menu.  
 ![127]
 3.	Click the number of the Job to re-arrange and they will interchange places.  
 ![128]
@@ -615,11 +615,11 @@ As an example, set the application name as ‘test-hrjin’ and click “Rollbac
 ***※	Job Sorting is permitted to Administrators and Contributors with creation authority only.***
 
 ##### <div id='3-2-2-4-6'/> 3.2.2.4.6. Add New Job Group
-1.	Click “Add New Job Group” button from the pipeline details page.  
+1.	Click the “Add New Job Group” button from the pipeline details page.  
 ![129]
-2.	Go to Job configuration details page.  
+2.	Go to the Job configuration details page.  
 ![130]
-3.	Create a new Job and go back to pipeline details page. A dotted line will be created below the previous Job group and the newly created Job is separated.  
+3.	Create a new Job and go back to the pipeline details page. A dotted line will be created below the previous Job group and the newly created Job is separated.  
 ![131]
 
 ***※	Adding of New Job Group is permitted only to Administrators and Contributors with creation authority only.***
@@ -628,13 +628,13 @@ As an example, set the application name as ‘test-hrjin’ and click “Rollbac
 This chapter describes the process of linking the Cloud Foundry target URL to deploy the Job by registering Cloud Foundry information.
 #### <div id='3-2-3-1'/> 3.2.3.1. Cloud Foundry Information Management
 ###### <div id='3-2-3-1-1'/> 3.2.3.1.1. Cloud Foundry Account Registration
-1. Click “Register Cloud Foundry Account” button from top right of Cloud Foundry Information Management Dashboard.  
+1. Click the “Register Cloud Foundry Account” button from the top right of the Cloud Foundry Information Management Dashboard.  
 ![132]
 2. Go to Cloud Foundry Account Registering Page.  
 ![133]
 3. After entering the account name, enter the ID and password required for the Cloud Foundry login.  
 ![134]
-4. Click "URL Management" button on the URL and when pop-up window appears, click "URL Register" button to register the Cloud Foundry account information.<br>  
+4. Click the "URL Management" button on the URL and when the pop-up window appears, click the "URL Register" button to register the Cloud Foundry account information.<br>  
 ![135]
 5. Enter Cloud Foundry API Name(ex. API), and Job deployment account to use as Cloud Foundry target API URL(ex. https://api.115.68.46.186.nip.io) and click “Save URL”.  
 ![136]
@@ -648,18 +648,18 @@ This chapter describes the process of linking the Cloud Foundry target URL to de
 ###### <div id='3-2-3-1-2'/> 3.2.3.1.2. Cloud Foundry Account Modification
 1.	Select the account to modify from the Cloud Foundry information management dashboard.  
 ![140]
-2.	Input the values to modify and click “Modify” button.  
+2.	Input the values to modify and click the “Modify” button.  
 ![141]
-3.	Go back to account details page through the dashboard and check if the modification was completely done.
+3.	Go back to the account details page through the dashboard and check if the modification was completely done.
 
 ### <div id='3-2-4'/> 3.2.4. Quality Management
 This chapter describes quality issues and coding rules, quality profiles, and quality gates in relation to source codes inspected through the test Job.
 #### <div id='3-2-4-1'/> 3.2.4.1. Quality Issue
 1.	Go to Quality Issue Dashboard by clicking Quality Issue from the Quality Management Menu.  
 ![142]
-2.	Click “Rule Details” button.  
+2.	Click the “Rule Details” button.  
 ![143]
-3.	Click “List” button at the top right to proceed to the quality issue dashboard with the Job test list.
+3.	Click the “List” button at the top right to proceed to the quality issue dashboard with the Job test list.
 
 #### <div id='3-2-4-2'/> 3.2.4.2. Coding Rules
 1.	On the Quality Management menu, click Coding Rules to navigate to the Coding Rules dashboard.  
@@ -668,34 +668,34 @@ This chapter describes quality issues and coding rules, quality profiles, and qu
 ![145]
 3. In the lower-left corner of the Quality Profile menu, click Default^Default-QualityProfile selected in the previous step to verify that the coding rule has been added.<br>  
 ![146]
-4.	Click "Remove from Profile" button.  
+4.	Click the "Remove from Profile" button.  
 ![147]
 5.	Confirm if the coding rule has been removed from the quality profile.  
 ![148]
 
 #### <div id='3-2-4-3'/> 3.2.4.3. Quality Profile
 ##### <div id='3-2-4-3-1'/> 3.2.4.3.1. Create Quality Profile
-1.	From the quality management menu, click quality profile and proceed to the quality profile dashboard.  
+1.	From the quality management menu, click a quality profile and proceed to the quality profile dashboard.  
 ![149]
-2.	Click “create” button at the top right.  
+2.	Click the “create” button at the top right.  
 ![150]
-3.	Enter the quality profile name and select the development language then click  “Create” button.  
+3.	Enter the quality profile name and select the development language then click the “Create” button.  
 ![151]
 4.	Check the created quality profile.  
 ![152]
 
 ##### <div id='3-2-4-3-2'/> 3.2.4.3.2. Duplicate Quality Profile
-1.	Click “Duplicate” button from the quality profile dashboard.  
+1.	Click the “Duplicate” button from the quality profile dashboard.  
 ![153]
-2.	Enter the quality profile to duplicate then click “Duplicate” button.  
+2.	Enter the quality profile to duplicate then click the “Duplicate” button.  
 ![154]
 3.	Check the duplicated quality profile.  
 ![155]
 
 ##### <div id='3-2-4-3-3'/> 3.2.4.3.3. Modify Quality Profile
-1.	Click “Modify” button from the quality profile dashboard.  
+1.	Click the “Modify” button from the quality profile dashboard.  
 ![156]
-2.	Modify the quality profile name from the pop-up window and click “Modify” button.  
+2.	Modify the quality profile name from the pop-up window and click the “Modify” button.  
 ![157]
 3. 	Check the modified quality profile name.  
 ![158]
@@ -703,12 +703,12 @@ This chapter describes quality issues and coding rules, quality profiles, and qu
 ##### <div id='3-2-4-3-4'/> 3.2.4.3.4. Connect Quality Profile Project
 1.	Check the connected project list from the quality profile dashboard. (The first picture shows the quality profile set to Default-Quality Profile when retrieving the test Job configuration. Therefore, the newly created quality profile example [QualityProfile_hrjin] in the second picture does not show any connected projects.)  
 ![159]
-2.	When there is no project connected, click “Not Connected” tab.  
+2.	When there is no project connected, click the “Not Connected” tab.  
 ![160]
 3.	Select a test Job project to connect with the corresponding quality profile. Multiple project connections are possible per quality profile.  
 ![161]
 ##### <div id='3-2-4-3-5'/> 3.2.4.3.5. Delete Quality Profile
-1.	Click “Delete” button from the quality profile dashboard.  
+1.	Click the “Delete” button from the quality profile dashboard.  
 ![162]
 2.	Check the deleted quality profile.  
 ![163]
@@ -718,25 +718,25 @@ This chapter describes quality issues and coding rules, quality profiles, and qu
 ##### <div id='3-2-4-4-1'/> 3.2.4.4.1. Create Quality Gate
 1.	From the quality management menu, click quality gate and proceed to the quality gate dashboard.  
 ![164]
-2.	Click “Create” button at the top right.  
+2.	Click the “Create” button at the top right.  
 ![165]
-3.	Enter Quality Gate Name and click “Create” button.  
+3.	Enter Quality Gate Name and click the “Create” button.  
 ![166]
 4.	Check the created quality gate.  
 ![167]
 
 ##### <div id='3-2-4-4-2'/> 3.2.4.4.2. Duplicate Quality Gate
-1.	Click “Duplicate” button from the quality gate dashboard.  
+1.	Click the “Duplicate” button from the quality gate dashboard.  
 ![168]
-2.	Enter the quality gate to duplicate then click “Duplicate” button.  
+2.	Enter the quality gate to duplicate then click the “Duplicate” button.  
 ![169]
 3.	Check the duplicated quality gate.  
 ![170]
 
 ##### <div id='3-2-4-4-3'/> 3.2.4.4.3. Modify Quality Gate
-1.	Click “Modify” button from the quality gate dashboard.  
+1.	Click the “Modify” button from the quality gate dashboard.  
 ![171]
-2.	Modify the quality gate name from the pop-up window and click “Modify” button.  
+2.	Modify the quality gate name from the pop-up window and click the “Modify” button.  
 ![172]
 3.	Check the modified quality gate name.  
 ![173]
@@ -744,9 +744,9 @@ This chapter describes quality issues and coding rules, quality profiles, and qu
 ##### <div id='3-2-4-4-4'/> 3.2.4.4.4. Add Quality Gate Conditions
 1.	Check the additional conditions that can set the conditions for passing the Job test from the quality gate dashboard. The user can add conditions and set criteria.  
 ![174]
-2.	Based on the criterias, if the test result meets the standard score, it may pass.  
+2.	Based on the criteria, if the test result meets the standard score, it may pass.  
 ![175]
-3.	Refer to ‘Default-QualityGate’ which is the default standard set for quality gate as of the moment.  
+3.	Refer to ‘Default-QualityGate’ which is the default standard set for the quality gate as of the moment.  
 ![176]
 
 ##### <div id='3-2-4-4-5'/> 3.2.4.4.5. Connect Quality Gate Project
@@ -756,7 +756,7 @@ This chapter describes quality issues and coding rules, quality profiles, and qu
 ![177]
 
 ##### <div id='3-2-4-4-6'/> 3.2.4.4.6. Delete Quality Gate
-1.	Click “Delete” button from the quality gate dashboard.  
+1.	Click the “Delete” button from the quality gate dashboard.  
 ![178]
 2.	Check the deleted quality gate.  
 ![179]

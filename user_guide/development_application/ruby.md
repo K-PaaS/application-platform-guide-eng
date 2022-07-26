@@ -62,7 +62,7 @@ The following environment was constructed for Ruby Application Development.
 
 -	OS : Windows 7 64bit
 -	Ruby : 1.9.3-p551
--	Framwork : Ruby On Rails 4.1.8
+-	Framework : Ruby On Rails 4.1.8
 -	IDE : RubyMine 7.1.1   
 
 ※	The latest Ruby driver version of CubidDB supported up to Ruby 1.9.3 and was selected. It is recommended that you use the Ruby version that fits the supported driver (or Gem) for each service.   
@@ -84,20 +84,20 @@ DEVELOPMENT KIT : DevKit-tdm-32-4.5.2-20111229-1559-sfx
 - Click “OK” button  
 
 ![ruby03]  
-- Click “I accept the License” and “Next” button after   
+- Click the “I accept the License” and “Next” button after   
 
 ![ruby04]  
-- Select “Add Ruby executables to your PATH” and click “Install” button   
+- Select “Add Ruby executables to your PATH” and click the “Install” button   
 	
 ![ruby05]  
-- Click “Finish” button and complete Ruby installation.   
+- Click the “Finish” button and complete the Ruby installation.   
 
 
 3)	DEVELOPMENT KIT Installation
 - Double-click DevKit-tdm-32-4.5.2-20111229-1559-sfx.exe and execute installation.   
 ![ruby06]  
 ![ruby07]  
-- Specify the folder to install and click the "Extract" button..
+- Specify the folder to install and click the "Extract" button.
 - Run the CMD window in Windows to the DevKit installation folder.  
 
 >ruby dk.rb init
@@ -115,7 +115,7 @@ DEVELOPMENT KIT : DevKit-tdm-32-4.5.2-20111229-1559-sfx
 ![ruby11] 
 -	Execute “gem install rails –v 4.1.8” command and install rails.
 ![ruby12] 
--	Check the rails version by using “rails –v” command.
+-	Check the rails version by using the “rails –v” command.
 ![ruby13] 
 
 
@@ -126,7 +126,7 @@ It describes the creation and environment setting of applications to develop Rub
 
 - Download Sample Application
 
- The completed sample application can be downloade in the /OpenPaaSSample/ruby-sample-app link below.
+ The completed sample application can be downloaded in the /OpenPaaSSample/ruby-sample-app link below.
 
 > https://nextcloud.paas-ta.org/index.php/s/x8Tg37WDFiL5ZDi/download
 
@@ -150,7 +150,7 @@ It describes the creation and environment setting of applications to develop Rub
 </tr>
 <tr>
     <td> README </td>
-    <td> This file is a short description for the application. A guide for installation and usage. </td>
+    <td> This file is a short description of the application. A guide for installation and usage. </td>
 </tr>
 <tr>
     <td> Rakefile </td>
@@ -182,7 +182,7 @@ It describes the creation and environment setting of applications to develop Rub
 </tr>
 <tr>
     <td> public/ </td>
-    <td> This is the only folder that can be viewed externally.Keep images, JavaScript, style sheets, and other static files here. </td>
+    <td> This is the only folder that can be viewed externally. Keep images, JavaScript, style sheets, and other static files here. </td>
 </tr>
 <tr>
     <td> script/ </td>
@@ -190,7 +190,7 @@ It describes the creation and environment setting of applications to develop Rub
 </tr>
 <tr>
     <td> test/ </td>
-    <td> Unit test, fixture, and other test tools. Rail application test is in charge of this part. </td>
+    <td> Unit test, fixture, and other test tools. The rail application test is in charge of this part. </td>
 </tr>
 <tr>
     <td> tmp/ </td>
@@ -205,7 +205,7 @@ It describes the creation and environment setting of applications to develop Rub
 ##### <div id='12'></div> 2.3.2.	Application Environment Setting
 
 The example is based on Ruby 1.9.3 and installed with an explicit selection of each driver's version.  
-When modifying(Setting) ./Gemfile, it is recommend to install the appropriate Gem for the version of Ruby installed.
+When modifying(Setting) ./Gemfile, it is recommended to install the appropriate Gem for the version of Ruby installed.
 
 <table>
 <tr align=center>
@@ -283,7 +283,7 @@ end
 ※	Since the sample is Ruby 1.9.3 (not 64 bit), CUBRID-Windows-x86 (32 bit) version is installed.   
 
 2)	Gem Installation
--	Install the Gem defined in the Gemfile..  
+-	Install the Gem defined in the Gemfile.  
 ```
 bundle install
 ```
@@ -307,7 +307,7 @@ module RubySampleApp
     # -- all .rb files in that directory are automatically loaded.
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
-    # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
+    # Run "rake -D time" for a list of tasks for finding time zone names. The default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
@@ -325,7 +325,7 @@ end
 ```
 
 4)	Modify ./config/routes.rb
--	Set Mapping for Requesting URL abd Controller
+-	Set Mapping for Requesting URL and Controller
 ```
 Rails.application.routes.draw do
 
@@ -387,7 +387,7 @@ config.action_controller.allow_forgery_protection    = false
 
 ##### <div id='13'></div> 2.3.3.	VCAP_SERVICES Environment Setting Information
 
-To obtain access information for each service to which an application distributed on an open platform is bound, information may be obtained by reading VCAP_SERVICES configuration information registered for each application..
+To obtain access information for each service to which an application distributed on an open platform is bound, information may be obtained by reading VCAP_SERVICES configuration information registered for each application.
 
 <table>
 <tr align=center>
@@ -401,7 +401,7 @@ To obtain access information for each service to which an application distribute
 </table>
 
 1)	Applications environment information of the Open Platform
--	When the service is bound, environment setting information is registered for each application in the form of JSON..
+-	When the service is bound, environment setting information is registered for each application in the form of JSON.
 
 ```
 {
@@ -429,7 +429,7 @@ To obtain access information for each service to which an application distribute
 ```
 
 2)	Create ./lib/vcap.rb file
--	A class that reads connection information per service from VCAP_SERVICES environment information of the application from open platform
+-	A class that reads connection information per service from VCAP_SERVICES environment information of the application from an open platform
 ```
 # Use cf-app-utils library
 require 'cf-app-utils' 
@@ -522,7 +522,7 @@ class OrgChartMysqlController < ApplicationController
     @query = Connector::MysqlQuery.new
   end
 
-# Service closed after method calling is done
+# Service closed after method call is done
   def db_close
     @client.close
   end
@@ -619,7 +619,7 @@ class OrgChartMysqlController < ApplicationController
     @query = Connector::MysqlQuery.new
   end
 
-# Service closed after method calling is done
+# Service closed after method call is done
   def db_close
     @client.close
   end
@@ -985,7 +985,7 @@ class UploadController < ApplicationController
   end
 end
 ```
-※The class is a sample example, and the method of obtaining and utilizing access information for the service can be used according to the structure and characteristics of the application..
+※The class is a sample example, and the method of obtaining and utilizing access information for the service can be used according to the structure and characteristics of the application.
 
 
 ### <div id='21'></div> 2.4.	Deployment
@@ -1069,8 +1069,8 @@ sample-redis-instance        redis-sb      shared-vm         python-sample-....	
 
 ```
 $ cf push -b https://github.com/cloudfoundry/ruby-buildpack.git#v1.3.1 --no-start 
-# Execute application upload and dont start.
-# Current Ruby buildpacks (1.3.1 and later) do not support Ruby 1.9.3 by default. Designate and deploy buildpacks that support Ruby 1.9.3. Each application should specify and use a buildpack that fits the Ruby version. You can exclude the –b option if you use a basic build pack provided by an open platform. .
+# Execute application upload and don't start.
+# Current Ruby buildpacks (1.3.1 and later) do not support Ruby 1.9.3 by default. Designate and deploy buildpacks that support Ruby 1.9.3. Each application should specify and use a buildpack that fits the Ruby version. You can exclude the –b option if you use a basic build pack provided by an open platform.
 # cf push –b [User Buildpack URL] –no-start
 
 $ cf services   # Check Service List
@@ -1104,7 +1104,7 @@ http://sourceforge.net/projects/dos2unix/files/latest/download
 3.	Convert the three files in the bin folder to UNIX files using the following command.
 >dos2unix bin/bundle bin/rake bin/rails   
 >※	This command does not run on Windows Power Shell. Command prompts allow you to execute commands.
-Once the conversion has completed successfully, you can see the following screen:
+Once the conversion has been completed successfully, you can see the following screen:
 >![ruby16] 
 
 4.	Perform the procedure [4) Start Application and Bind Service on Open Platform Application] again.
@@ -1135,7 +1135,7 @@ Ruby Application Test using Rspec
 
 2)	Execute Test
 >bundle exec rspec   
-      ※In order to proceed with the test normally, access to the service must be possible.(proxy, tunneling, etc.)
+      ※ To proceed with the test normally, access to the service must be possible.(proxy, tunneling, etc.)
       
 
 

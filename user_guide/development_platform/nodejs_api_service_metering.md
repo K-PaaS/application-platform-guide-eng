@@ -67,7 +67,7 @@ Using environmental information (VCAP_SERVICES) bound to the application, access
   </tr>
   <tr>
     <td rowspan='4'>Runtime</td>
-    <td width="160">Metering/Rating/Biling Policy</td>
+    <td width="160">Metering/Rating/Billing Policy</td>
     <td>Various policy definition information for services provided by API service providers. It is in JSON format, and when the policy is registered with CF-ABACUS, API usage is aggregated according to what is defined in the policy.<br> The policy must be defined by the service provider, refer to the following for JSON schema.<br> <u><b><a href="https://github.com/cloudfoundry-incubator/cf-abacus/blob/master/doc/api.md">https://github.com/cloudfoundry-incubator/cf-abacus/blob/master/doc/api.md</a></b></u>
     </td>
   </tr>
@@ -173,7 +173,7 @@ If there is a service request, the sample api service processes the response to 
   </tr>
   <tr>
     <td>.npmrc</td>
-    <td>Npm Execution Envrionment Setting File</td>
+    <td>Npm Execution Environment Setting File</td>
   </tr>
   <tr>
     <td>package.json</td>
@@ -187,7 +187,7 @@ If there is a service request, the sample api service processes the response to 
   </tr>
   <tr>
     <td>app.js</td>
-    <td>Service App <br> Routing information and metering information transmission processing for a service request are defined.</td>
+    <td>Service App <br> Routing information and metering information transmission processing for a service request is defined.</td>
   </tr>
   <tr>
     <td>test.js</td>
@@ -372,12 +372,12 @@ applications:
 		var abacusCollectorUrl = process.env.COLLECTOR; // api usage sending url (abacus)
 
 		// Abacus System Token Scope
-		var scope = 'abacus.usage.write abacus.usage.read'; // If abacus is set to secure, set up token scope for transmission of API usage information (see abacus installation guide for scope setting)
+		var scope = 'abacus.usage.write abacus.usage.read'; // If abacus is set to secure, set up token scope for transmission of API usage information (see the abacus installation guide for scope setting)
 
 		// Set headers for cross-domain acceptance
 		var accessControlAllowHeader = 'Origin,X-Requested-With,Content-Type,Accept';
 
-		// The item below is the piled metering target information set .
+		// The item below is the piled metering target information set.
 		// When implementing an actual service, it is set through API calls or property values that provide the corresponding item.
 		var resourceId = 'object-storage';
 		var measure1 = 'storage';
@@ -424,7 +424,7 @@ applications:
 		  };
 		
 		 // The API service can also be executed in the secure mode.
-		 // When running in the secure mode, implement to perform a validation check on all services registered in the route..
+		 // When running in the secure mode, implement to perform a validation check on all services registered in the route.
 		 // In this sample, the validity check of abacus' oauth service was used.
 		 // if (secured())
 		 //   app.use(/^\/plan[0-9]/,
@@ -440,7 +440,7 @@ applications:
 
 -   COR Settings
 
-		// The API service sets up a cross-domain because it requires additional request processing for abacus in addition to the response processing of the requested service.
+		// The API service sets up a cross-domain because it requires additional request processing for the abacus in addition to the response processing of the requested service.
 		routes.use(function(req, res, next) {
 		  res.header('Access-Control-Allow-Origin', '*');
 		  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
@@ -480,7 +480,7 @@ applications:
 		  if (!orgid || !spaceid || !appid)
 		    return res.status(400).send();
 		
-		  // Write the API usage information to report to abacus. (JSON Format)
+		  // Write the API usage information to report to the abacus. (JSON Format)
 		  var usage =
 		    buildAppUsage(orgid, spaceid, appid, instanceid, planid, eventTime);
 		
@@ -497,7 +497,7 @@ applications:
 		  // Send api usage to abacus
 		  request.post(options, function(error, response, body) {
 		
-		    // Checking the transmission process of abacus
+		    // Checking the transmission process of the abacus
 		    if (error) console.log(error);
 		    else if (response.statusCode === 201 || response.statusCode === 200) {
 		      // console.log('Successfully reported usage %j with headers %j',
@@ -526,7 +526,7 @@ applications:
 
 -   Create Abacus Sending Json 
 
-		// Create a data format to send to abacus.
+		// Create a data format to send to the abacus.
 		var buildAppUsage =
 		  function buildAppUsage(orgid, spaceid, appid, insid, planid, eventTime) {
 		
@@ -568,12 +568,12 @@ applications:
 -   Other
 
 		// Setting Information for the App Service
-		// Set name of the PORT, HOST and etc.
+		// Set the name of the PORT, HOST, etc.
 		var conf = function conf() {
 		  process.env.PORT = commander.port || process.env.PORT || 9602;
 		};
 		
-		// Create Command line Interface
+		// Create Command-line Interface
 		// can execute the start and stop scripts described in the package.
 		// Start App: npm start
 		// Stop App: npm stop
@@ -777,7 +777,7 @@ Refer: <u><b><a href="https://github.com/cloudfoundry-incubator/cf-abacus/blob/m
   <tr>
     <td>package.json</td>
     <td>Used to describe dependency information of npm required for node.js application.<br>
-   When no information is entered after installing the npm install command, it uses the information that is in the file to install npm..
+   When no information is entered after installing the npm install command, it uses the information that is in the file to install npm.
  </td> 
   </tr>
   <tr>
@@ -963,7 +963,7 @@ Implement an application that requests API services.
 
 -   COR settings
 
-		// The api service requires additional request processing for abacus in addition to response processing of the requested service. so set up a cross domain.
+		// The api service requires additional request processing for the abacus in addition to response processing of the requested service. so set up a cross-domain.
 		routes.use(function(req, res, next) {
 		  res.header('Access-Control-Allow-Origin', '*');
 		  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
@@ -986,7 +986,7 @@ Implement an application that requests API services.
 		  app.engine('handlebars', handlebars.engine);
 		  app.set('view engine', 'handlebars');
 		
-		  // Cross domain process
+		  //Cross-domain process
 		  app.use(function(req, res, next) {
 		    res.header('Access-Control-Allow-Origin', '*');
 		    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
@@ -1041,7 +1041,7 @@ Implement an application that requests API services.
 		      json: callEvent
 		    };
 		
-		    // It makes a request to the api service and respond to the result.
+		    // It requests the api service and responds to the result.
 		    request.post(options, function(error, response, body) {
 		
 		      if (error) console.log(error);
@@ -1251,7 +1251,7 @@ Api 서비스를 요청하는 웹 화면
   <tr>
     <td>credentials</td>
     <td>JSON</td>
-    <td>Set the credential required for service request.</td>
+    <td>Set the credential required for the service requests.</td>
     <td>credentials: {<br>
            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key: value,<br>
            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;…<br>
@@ -1295,7 +1295,7 @@ Api 서비스를 요청하는 웹 화면
 
 To obtain access information for each service to which an application deployed on the PaaS-TA platform is bound, the information may be obtained by reading the VCAP_SERVICES environment setting information registered for each application.
 
-#### 1.  Application environment information of PaaS-TA platform
+#### 1.  Application environment information of the PaaS-TA platform
 -   When the service is bound, the configuration information in JSON format is registered for each application.
 
 		{
@@ -1347,7 +1347,7 @@ To obtain access information for each service to which an application deployed o
 
 
 
-#### 2.  How to access application environment information of PaaS-TA platform in Node.js
+#### 2.  How to access application environment information of the PaaS-TA platform in Node.js
 
 -   It can be accessed by reading the VCAP_SERVICES value of the system environment variable.
 
@@ -1652,7 +1652,7 @@ A billing policy is a JSON-formatted object that defines the unit price for each
 
 A policy can be registered in CF-ABACUS in one of two ways.
 
-#### 1.  By registering js file  
+#### 1.  By registering the js file  
 After saving the created policy in the following directory, deploy or redeploy CF-ABACUS to the CF.
 
 -   For Metering Policy
@@ -1752,7 +1752,7 @@ Create a service to use at the application through the PaaS-TA Platform. It can 
 		
 		$ cf push
 		
-		## Create service broker
+		## Create a service broker
 		$ cf create-service-broker <Service Broker Name> <Authentication ID> <Authentication Password> <Service Broker Address>
 		
 		Example)

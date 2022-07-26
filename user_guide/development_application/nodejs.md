@@ -34,7 +34,7 @@
 
 ### <div id='2'> 1.1. Purpose
 
-This document, node.js Application Development Guide, is a use guide on how to deploy the application and use the service by connecting Node.js application with the servicepack (Mysql, Cubrid, MongoDB, RabbitMQ, Redis, GlusterFS) of the Open Platform Project.
+This document, node.js Application Development Guide, is a use guide on how to deploy the application and use the service by connecting the Node.js application with the servicepack (Mysql, Cubrid, MongoDB, RabbitMQ, Redis, GlusterFS) of the Open Platform Project.
 
 
 ### <div id='3'> 1.2. Range
@@ -60,7 +60,7 @@ This document covers the Node.js Application Development and servicepack connect
 
 Bind the various servicepacks registered in Open PaaS with the application made in Node.js language. The Node.js application can be created in a Windows environment so that access information for each service can be obtained from environmental information (VCAP_SERVICES) bound to the application and applied to the application.
 
-Configure the development environment to develop Node.js Application as shown below.
+Configure the development environment to develop the Node.js Application as shown below.
 
 - BuildPack: v1.3.4
 - OS : Windows 7 64bit
@@ -83,11 +83,11 @@ Configure the development environment to develop Node.js Application as shown be
 
 ![2-2-1-1]
 
-- Click "Run" button to continue.
+- Click the "Run" button to continue.
 
 ![2-2-1-2]
 
-- Click "Next" button to continue.
+- Click the "Next" button to continue.
 
 ![2-2-1-3]
 
@@ -95,7 +95,7 @@ Configure the development environment to develop Node.js Application as shown be
 
 ![2-2-1-4]
 
-- Enter or select the installation path and click "Next" button to continue the process.
+- Enter or select the installation path and click the "Next" button to continue the process.
 For this example, the installation path was set to C:\Program Files\nodejs\.
 
 ![2-2-1-5]
@@ -105,15 +105,15 @@ For this example, Node.js, npm, and doc were selected and installed. The environ
 
 ![2-2-1-6]
 
-- Click "Install" button and install.
+- Click the "Install" button and install.
 
 ![2-2-1-7]
 
-- Click "Finish" button to complete the installation.
+- Click the "Finish" button to complete the installation.
 
 ![2-2-1-8]
 
-- 'Window Key+R' or 'Start->Run' icon to open the run window and enter 'cmd', click "OK" button to open the command window.
+- 'Window Key+R' or 'Start->Run' icon to open the run window and enter 'cmd', click the "OK" button to open the command window.
 
 ![2-2-1-9]
 
@@ -160,7 +160,7 @@ Data management for sample applications uses either MySQL, CubridDB, or MongoDB,
 ><div>>node bin/www
 ![2-3-1-3]
 
-- Access the link address below with browser and verify if the application works properly.
+- Access the link address below with the browser and verify if the application works properly.
 
 ><div>http://localhost:3000/
 ![2-3-1-4]
@@ -220,7 +220,7 @@ Data management for sample applications uses either MySQL, CubridDB, or MongoDB,
   </tr>
   <tr>
     <td>test/</td>
-    <td>a directory that wrote mocha test.</td>
+    <td>a directory that wrote the mocha test.</td>
   </tr>
   <tr>
     <td>(node_modules)</td>
@@ -232,7 +232,7 @@ Data management for sample applications uses either MySQL, CubridDB, or MongoDB,
   </tr>
   <tr>
     <td>manifest.yml</td>
-    <td>An application setting when deploying at the Open Platform. Application Name, Path to be deployed, and number of instance can be defined.</td>
+    <td>An application setting when deploying at the Open Platform. Application Name, Path to be deployed, and number of instances can be defined.</td>
   </tr>
   <tr>
     <td>.cfignore</td>
@@ -398,7 +398,7 @@ When modifying package.json, it is recommended to install the module that matche
   </tr>
   <tr>
     <td>npm</td>
-    <td>npm verion to use in application<br>
+    <td>npm version to use in application<br>
     Like Node.js, there are restrictions on versions available depending on the version supported by Node Buildpack.</td>
   </tr>
 </table>
@@ -608,7 +608,7 @@ var pooling   = generic_pool.Pool({
     conn.connect(function(err){
       if( err) console.log("error in connecting mysql");
       else {
-      //  console.log("mysql connected succesfully");
+      //  console.log("mysql connected successfully");
       } cb(err, conn);
       // Throw the connection object into the pooling via the callback function
     });
@@ -813,7 +813,7 @@ exports.close = function(){
 
 ### <div id='16'> 3.9. Connect RabbitMQ
 1)  ./route/rabbitMQ/rabbitMQ.js
-- Create rabbirMQ Connection by accessing application environment information on an open platform
+- Create rabbitMQ Connection by accessing application environment information on an open platform
 
 ```javascript
 var amqp = require('amqp');
@@ -913,7 +913,7 @@ client.getContainer(container_name, function(err, container){
         {
           // if container created successfully, set a readable member(X-Contaner-Read: .r:*)
           // if the container was created successfully, set the container to be readable by anyone.(X-Contaner-Read: .r:*)
-          // There is a bug in the code(pkgcloud). so i used api call.
+          // There is a bug in the code(pkgcloud). so I used api call.
           // if metadata is placed to pkgcloud module, set through API because the value above cannot be entered properly when the logic is attached with prefix.
           var serviceUrl = url.parse(create_container.client._serviceUrl);
           var option = {
@@ -957,7 +957,7 @@ Log in to Open Platform to perform the task below
 
 ### <div id='20'> 4.2.  Create Service
 Create the application to use at the service through Open Platform. It may be generated without a separate service installation process, and access information may be obtained through an application and binding process.
-- Service list and plan of each service can be checked through create service command (cf marketplace).
+- Service list and plan of each service can be checked through Create Service command (cf marketplace).
 
 ><div># cf create-service SERVICE PLAN SERVICE_INSTANCE [-c PARAMETERS_AS_JSON] [-t TAGS]
 ><div>$ cf create-service p-mysql 100mb node-mysql
@@ -983,7 +983,7 @@ applications:
 - name: node-sample-app # Application name
   memory: 512M # Application's memory size
   instances: 1 # Application's number of instance
-  command: npm start # Command to execute application
+  command: npm start # Command to execute the application
   path: ./ # path of the application to be located
 ```
 
@@ -1032,7 +1032,7 @@ ON DELETE CASCADE;
 
 ##### 3. Application Deployment
 
-- Deploy with cf push command. If the value was not set, it uses the setting of manifest.yml. Since the service is not connected yet, deploy with --no-start option and do not execute yet.
+- Deploy with the cf push command. If the value was not set, it uses the setting of manifest.yml. Since the service is not connected yet, deploy with --no-start option and do not execute yet.
 
 ><div>$ cf push --no-start
 ![2-4-3-0]

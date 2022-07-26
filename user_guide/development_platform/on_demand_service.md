@@ -14,7 +14,7 @@
     * [3.3. Pivotal(Cloud Foundry) Marketplace Model](#33)
 4. [On-Demand Service Broker API Development Guide](#4)
     * [4.1. Development Guide](#41)
-    * [4.2. Servcie and VM Instance Creating API Guide](#42)
+    * [4.2. Service and VM Instance Creating API Guide](#42)
     * [4.3. On-Demand Service-Broker Implementation Source Development Guide](#43)
     * [4.4. On-Demand Release Development Guide](#44)
     * [4.5. On-Demand Deployment Development Guide](#45)
@@ -23,9 +23,9 @@
 
 ### <a name="11"/>1.1. Purpose
 
-This document (Development Guide\_OnDemand) guides the on-demand service development standards for open cloud platform projects and includes the contents from the on-demand service architecture to testing..
+This document (Development Guide\_OnDemand) guides the on-demand service development standards for open cloud platform projects and includes the contents from the on-demand service architecture to testing.
 
-Through this guide document, we intend to improve the efficiency and maintenance of on-demand service development by increasing the understanding of on-demand service. In addition, on-demand services developed according to the presented standards ensure functionality and integrity in open cloud platforms..
+Through this guide document, we intend to improve the efficiency and maintenance of on-demand service development by increasing the understanding of on-demand service. In addition, on-demand services developed according to the presented standards ensure functionality and integrity in open cloud platforms.
 
 ### <a name="12"/>1.2. Range
 The range of this document is limited to the on-demand service development related to
@@ -48,7 +48,7 @@ This chapter defines the terms used and describes the on-demand architecture.
 
 >![On-Demand_Image_02]
 
-**Picture 2-2 On-demand service process on open cloud platform**
+**Picture 2-2 On-demand service processes on an open cloud platform**
 
 The on-demand service deployed in the open cloud platform provides four major processes:
 Service Registration(Create_Service), Service Binding(Service_binding),
@@ -64,7 +64,7 @@ the deployment process begins. Each step does the following:
 
 -   **Service Binding (Service_binding):** Applies the service's environment settings at the application's environment setting.
 
--   **Service Deletion (Service_delete):** Deletes (stop) the service when user requests for it.
+-   **Service Deletion (Service_delete):** Deletes (stop) the service when the user requests it.
 
 When a user requests a service, a VM is created to run the service. The in-progress service is converted to the ready state,
 and after the VM is created, the corresponding service is converted to the complete state and provides the service to the user.
@@ -73,8 +73,8 @@ and after the VM is created, the corresponding service is converted to the compl
 
 Before explaining the architecture, some terms used in this document are summarized below.
 
--   **On-Demand: 'As long as there is a demand (at anytime)'~ In other words,
-      it is a generic term for a system or strategy in which demand determines everything and not supply-oriented.
+-   **On-Demand: 'As long as there is a demand (at any time)'~ In other words,
+      it is a generic term for a system or strategy in which demand determines everything and is not supply-oriented.
 
 
 -   **Application**: In an open cloud platform, an application is a unit of deployment.
@@ -94,7 +94,7 @@ The open cloud platform Service API defines the protocol between the Cloud Contr
 
 Services are used in an open cloud platform by implementing a cloud controller client API
 called Service Broker API. The Services API is an independent version of the cloud controller API.
-This makes external applications available on the platform. (database, message queue, rest endpoint , etc)
+This makes external applications available on the platform. (database, message queue, rest endpoint, etc)
 
 #### <a name="32"/>3.2. Service Broker API Architecture
 >![On-Demand_Image_04]  
@@ -174,7 +174,7 @@ cloudfoundry:
       sslSkipValidation: true
   user:
     admin:
-      username: {cloudfoundry_admin_id} # YOUR CF ADMIN ACCOUT
+      username: {cloudfoundry_admin_id} # YOUR CF ADMIN ACCOUNT
       password: {cloudfoundry_admin_password}# YOUR CF ADMIN PASSWORD
 
 instance:
@@ -219,7 +219,7 @@ Log in to Bosh Director and receive tokens to save and create an object with acc
 
     Get bosh_url + "/deployments/" + deployment_name + "/instances?format=full"
 
-    The way to search with format=full is to generate a task by Bosh itself, find the task with redirect, and return a value.
+    The way to search with format=full is to generate a task by Bosh itself, find the task with a redirect, and return a value.
 
     As an error occurs in the redirect part when requesting an api with the default Resttemplate, you need to create and request a Resttemplate so that the redirect function is not performed.
 
@@ -238,7 +238,7 @@ Check the Bosh task. (option: output=result) You can check the detailed value of
 
     Get bosh_url + "/deployments/" + deployment_name + "/instances?format=full"
 
-    The way to search with format=full is to generate a task by Bosh itself, find the task with redirect, and return a value.
+    The way to search with format=full is to generate a task by Bosh itself, find the task with a redirect, and return a value.
 
     As an error occurs in the redirect part when requesting an api with the default Resttemplate, you need to create and request a Resttemplate so that the redirect function is not performed.
 
@@ -282,7 +282,7 @@ Update the instance status (stop --> start)
     null
 
 2.5. GetTaskID
-Among the tasks currently in operation (state = queued, processing, and cancelling), the ID such as the corresponding deployment_name is queried.
+Among the tasks currently in operation (state = queued, processing, and canceling), the ID such as the corresponding deployment_name is queried.
 
 ##### parameter
 
@@ -411,8 +411,8 @@ update:
 
 
 ##### <a name="43"/>4.3. On-Demand Service-Broker Implementation Source Development Guide
-Service broker development guide related to on-demand implementation will be processed.
-Currently, only JAVA version is available. The source shown in the example can be found in PaaS-TA GitHub's On-Demand-broker.
+The service broker development guide related to on-demand implementation will be processed.
+Currently, only the JAVA version is available. The source shown in the example can be found in PaaS-TA GitHub's On-Demand-broker.
 
 1. On-Demand ServiceInstace
 The information on the assigned VM is stored in the broker DB with the ServiceInstance object.
@@ -697,7 +697,7 @@ When a user requests a service, the VM restarts or is created in the process.
             }
      ```
 
- If there is an idle VM in the 1.2. Instance List, it creates and provides a Service Instance where the VM information is stored.
+ If there is an idle VM in the 1.2. Instance List, creates and provides a Service Instance where the VM information is stored.
 
      ```
      Example)
@@ -858,7 +858,7 @@ When a user requests a service, the VM restarts or is created in the process.
       ```
 
 ##### <a name="44"/>4.4. On-Demand Release Development Guide
-Since the service must be distributed through Bosh release, it must be written according to the Bosh release development method.Bosch release consists of scripts related to packages and jobs.
+Since the service must be deployed through the Bosh release, it must be written according to the Bosh release development method. Bosh release consists of scripts related to packages and jobs.
 
 1. On-Demand Release Basic Configuration
 
@@ -1015,12 +1015,12 @@ Since the service must be distributed through Bosh release, it must be written a
     $ bosh create-release --force --tarball on-demand-release.tgz --name on-demand-release --version 1.0
     $ bosh upload-release on-demand-release.tgz(bosh ur on-demand-release.tgz)
 
-	or , you can customize the create.sh file and run it.
+	or, you can customize the create.sh file and run it.
     ```
 
 ##### <a name="45"/>4.5. On-Demand Deployment Development Guide
 The BOSH Deploymentmanifest is a YAML file that defines components and deployment properties.
-In the deployment manifest, which Stemcell (OS, BOSH agent) will be used to install the sotfware, and the Release (Software packages, Config templates, Scripts) name and version, VMs capacity, Jobs params, etc. are defined, and the software ( Here, the service pack) is installed.
+In the deployment manifest, which Stemcell (OS, BOSH agent) will be used to install the software, and the Release (Software packages, Config templates, Scripts) name and version, VMs capacity, Jobs params, etc. are defined, and the software ( Here, the service pack) is installed.
 
 1. On-Demand Deployment Basic Configuration
 
@@ -1108,7 +1108,7 @@ In the deployment manifest, which Stemcell (OS, BOSH agent) will be used to inst
 
     releases:
     - name: "((releases_name))"                  # Service release name (required), can be checked with  bosh releases
-      version: "1.0"                                             # Service release version (required):The latest version of the service release uploaded at latest
+      version: "1.0"                                             # Service release version (required): The latest version of the service release uploaded at the latest
 
     update:
       canaries: 1                                               # canary 인스턴스 수(필수)

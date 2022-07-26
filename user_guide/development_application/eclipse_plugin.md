@@ -365,7 +365,7 @@ A list of deployed applications can be found in the application list found in th
 
 1. Double-click the Open Platform of the application route to manage and execute the server editor.  
     Find the “Route” list from the editor.  
-    Click “Remove…” button.  
+    Click the “Remove…” button.  
     ![](./images/openpaas-eclipse/image68.png)
 
 2.  “Cloud Route List” dialog box appears. This dialog box allows to check or remove the cloud route list.  
@@ -380,7 +380,7 @@ Find the application list from the editor and locate and click the application f
 ![](./images/openpaas-eclipse/image72.png)
 
 Various information about the application instance is displayed on the right screen of the editor.  
-Information shown is as follows:
+The information shown is as follows:
 * General: Name, Start Status, Mapping URL, Number of Instances, Manifest
 * General(Application restart required): Memory Limit, Environment Variable
 * Application Behavior: Restart, Stop, Update and Restart, Deployment, Debug
@@ -407,7 +407,7 @@ Information shown is as follows:
 3. “Add or Modify Application URL” dialog box appears. Applications can be added through this dialog box.  
       Enter the subdomain of your choice and select domain. “Deployed URL” will be entered automatically.  
       Click “Finish” after inputting.  
-      Click "Cancel” button to dismiss.    
+      Click the "Cancel” button to dismiss.    
      ![](./images/openpaas-eclipse/image77.png)
 
 4. The “Mapped URL” is not reflected in the current platform server state. Click the “Finish” button from the “Mapped URL” setting dialog box to complete. If the “Cancel” button is clicked, the process done so far gets canceled.  
@@ -422,7 +422,7 @@ Information shown is as follows:
 
 3. “Add or Modify Application URL” dialog box appears. This dialog box allows modifying the application.  
       Enter the subdomain of your choice and select domain. “Deployed URL” will be entered automatically.  
-      Click “Finish” button after inputting.  
+      Click the “Finish” button after inputting.  
     ![](./images/openpaas-eclipse/image81.png)
 
 4. The “Mapped URL” is not reflected in the current platform server state. Click the “Finish” button from the “Mapped URL” setting dialog box to complete. If the “Cancel” button is clicked, the process done so far gets canceled.  
@@ -502,7 +502,7 @@ Memory limit modification is completed.
 ##### Restart Application
 
 Look for the application behavior section from [***Manage Application Instance***](#54-애플리케이션-인스턴스-관리).  
-      Click “Restart” button to restart.    
+      Click the “Restart” button to restart.    
 ![](./images/openpaas-eclipse/image98.png)
 
 ##### Stop Application
@@ -602,7 +602,7 @@ Look for the application behavior section from  [***Manage Application Instance*
      \* manifest.yml file example:    
      ![](./images/openpaas-eclipse/image121.png)
   
-2. Deploy application.  
+2. Deploy the application.  
     Refer to [***“Application Deployment”***](#51-애플리케이션-배포) for the deployment procedures.  
 
 3. When executing the application deployment wizard, the manifest values can be found the same as the set values.  
@@ -634,7 +634,7 @@ The deployment settings of the deployed application can be saved as a manifest f
 2. Eclipse environment settings can be done in the “Preferences” dialog box.  
     Click Open Platform from the right side of the “Preferences” dialog box and check “HTTP Log Track” below to know whether “HTTP Log Tracking” is set or not.  
     If you want to display "HTTP Log" in the console window, check "HTTP Log Track". Otherwise, do not check it.  
-    Click “OK” button to complete Setting.  
+    Click the “OK” button to complete Setting.  
      ![](./images/openpaas-eclipse/image130.png)
 
 

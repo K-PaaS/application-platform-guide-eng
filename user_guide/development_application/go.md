@@ -5,7 +5,7 @@
 #### 1.1. Document Outline
 
 ##### 1.1.1. Purpose
-This document (Go Application Development Guide) is a document that presents the service packs (Mysql, MongoDB, RabbitMQ, Radis, and ClusterFS) of Open PaaS projects in connection with Go applications to use services and deploy applications.
+This document (Go Application Development Guide) is a document that presents the service packs (Mysql, MongoDB, RabbitMQ, Redis, and ClusterFS) of Open PaaS projects in connection with Go applications to use services and deploy applications.
 
 ##### 1.1.2. Range
 The range of this document is limited to the Go application development and service pack linkage of Open PaaS projects.
@@ -27,7 +27,7 @@ Configure the development environment of the Go Application as shown below.
 -   OS : Windows 7 64bit
 -   Go : 1.5.2
 -   IDE : Intellij IDEA  
-There are Community and Ultimate version for Intellij IDEA. Community Version is for Free and the Ultimate version is a 30-day trial version.
+There are Community and Ultimate versions for Intellij IDEA. Community Version is for Free and the Ultimate version is a 30-day trial version.
 
 ##### 2.2.1. Go SDK Installation
 1.  Download Go SDK
@@ -211,13 +211,13 @@ Data management for sample applications uses either MySQL or MongoDB, so when re
 
 <img src="./images/go/image40.png" width="560" height="305" />
 
-##### 2.3.3. Connection through VCAP\_SERVICES Enviroment Setting Information 
+##### 2.3.3. Connection through VCAP\_SERVICES Environment Setting Information 
 
 To obtain access information for each service to which an application distributed on an open platform is bound, information may be obtained by reading VCAP\_SERVICES environment Setting information registered for each application.
 
 1).  Application Environment Information of the Open Platform
 
--   When the service is bound, environment information is registered by application in the form of JSON.
+-   When the service is bound, environment information is registered by the application in the form of JSON.
 
 ~~~
 {
@@ -679,7 +679,7 @@ The test can be done directly at the command window using the curl command.
 ### Check all Organizations information
 curl -v http://”depolyed_sample_app_name”/orgs
 
-### Check specified Organization's information
+### Check the specified Organization's information
 curl -v http:// ”depolyed_sample_app_name”/orgs/{org_id}
 
 ### Create Organization

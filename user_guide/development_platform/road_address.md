@@ -141,9 +141,9 @@ CREATE TABLE IF NOT EXISTS `egov_common`.`doro_juso` (
   `update_date` CHAR(8) NULL COMMENT '',
   `defore_doro` VARCHAR(25) NULL COMMENT '',
   `sigungu_gunmul` VARCHAR(200) NULL COMMENT '',
-  `gongdong` CHAR(1) NULL COMMENT '0:Non-appartment, 1:Appartment',
+  `gongdong` CHAR(1) NULL COMMENT '0:Non-apartment, 1:Appartment',
   `gicho_no` CHAR(5) NULL COMMENT '',
-  `juso_sang` CHAR(1) NULL COMMENT '0:Not awared, 1:Awarded',
+  `juso_sang` CHAR(1) NULL COMMENT '0:Not awarded, 1:Awarded',
   `bigo1` VARCHAR(15) NULL COMMENT '',
   `bigo2` VARCHAR(15) NULL COMMENT '',
   PRIMARY KEY (`gunmul_no`)  COMMENT '')
@@ -240,10 +240,10 @@ The information on the components developed using the Spring Framework is as fol
   <tr>
     <td>addrLinkApi.do?currentPage={currentPage}&</td>
     <td>GET</td>
-    <td>Perform searching by recieving the  CurrentPage, Number of data per page (countPerPage), and word to search (keyword) as Paramater.</td>
+    <td>Perform searching by receiving the  CurrentPage, Number of data per page (countPerPage), and word to search (keyword) as Parameter.</td>
   </tr>
 </table>
-※  Refer to Annex A. for detailed definition of the API.
+※  Refer to Annex A. for a detailed definition of the API.
 
 #### <a name="16"/>4.2.2. Road Name Address Manage Service
 <table>
@@ -255,12 +255,12 @@ The information on the components developed using the Spring Framework is as fol
   <tr>
     <td>/dorojuso/manager/{currentPage}/{countPerPage}/{keyword}</td>
     <td>GET</td>
-    <td>Perform searching by recieving the  CurrentPage, Number of data per page (countPerPage), and word to search (keyword) as Paramater. (PATH Method)</td>
+    <td>Perform searching by receiving the  CurrentPage, Number of data per page (countPerPage), and word to search (keyword) as parameters. (PATH Method)</td>
   </tr>
   <tr>
     <td>/dorojuso/manager/{building_code}</td>
     <td>GET</td>
-    <td>Take the building management number (PK) as a path variable and retrieve an road name address.</td>
+    <td>Take the building management number (PK) as a path variable and retrieve a road name address.</td>
   </tr>    
   <tr>
     <td>/dorojuso/manager</td>
@@ -278,7 +278,7 @@ The information on the components developed using the Spring Framework is as fol
     <td>Deletes the Road name address data.</td>
   </tr>
 </table>
-※ Refer to Annex A. for detailed definition of the API.
+※ Refer to Annex A. for a detailed definition of the API.
 
 ### <a name="17"/>4.3. Source Description
 
@@ -454,7 +454,7 @@ The endpoint entered here is the default, and the API and parameter are attached
 picture. Endpoint Registration
 
 
-When Endpoint registration is completed, proceed to the last step which is access setting.  
+When Endpoint registration is completed, proceed to the last step which is the access setting.  
 Set the communication method (http, https) and the access limit setting (Tier Availability). Please refer to the API platform manual to add more restrictions.  
 Only basic settings are done here. Set the Tier Availability to Unlimited.  
 When connecting to an open cloud platform, only Unlimited is enabled for the services (service packs) that connect the two systems because they are supposed to monitor without any restrictions.
@@ -579,7 +579,7 @@ The Sample Web App is deployed to the Open Cloud Platform as an App. Here, Sprin
   <tr>
     <td>Java</td>
     <td>1.7</td>
-    <td>Java Comfiler/Execution Evironment</td>
+    <td>Java Compiler/Execution Evironment</td>
   </tr>
   <tr>
     <td>Spring Boot</td>
@@ -633,7 +633,7 @@ The Sample Web App is deployed to the Open Cloud Platform as an App. Here, Sprin
 
 ### <a name="28"/>7.2. Binding and Provisioning for Service in Open Cloud Platform
 To use the registered service described in chapter 6, it should be provisioned or bound. The App should be deployed at least once to be connected.
-For a detailed description of the Open Cloud Platform's usage, refer to the service usage. Here, a brief explanation on the connection of the road name address service will be done.
+For a detailed description of the Open Cloud Platform's usage, refer to the service usage. Here, a brief explanation of the connection of the road name address service will be done.
 
 #### <a name="29"/>7.2.1 Provisioning of Service
 First, check if there are services on the open cloud platform Marketplace.
@@ -673,7 +673,7 @@ After checking the name of the My App, Bind the service and app.
 $ cf bind-service {My App Name} {My Service Name}
 ````
 - My App Name: In the example above, service_egov_common_juso_sampleApp. Talks about the unique name of My App.
-- My Service Name: The name given when provisioning for the Service.
+- My Service Name: The name is given when provisioning for the Service.
 
 When the connection is successful, it asks the app for a restage. Currently, the app and service are not bound. To check if they are properly bound, restaging is required.
 ````
@@ -686,7 +686,7 @@ dorojusodb      dorojusodb      Unlimited   service_egov_common_juso_sampleApp  
 위의 내용을 보면 service_egov_common_juso_sampleApp가 dorojusodbmgt와 dorojusodb완 연결되어 있는 것을 확인할 수 있습니다.
 
 ### <a name="31"/>7.3. Source List and Description
-The location of the source will be located on the Git Hub of the "Open Cloud Platform" and the location to be open to the public will be shared separately through the website.
+The location of source will be located on the Git Hub of the "Open Cloud Platform" and the location to be open to the public will be shared separately through the website.
 (The Private location for developers: https://github.com/PaaS-TA/SERVICE-EGOV-COMMON-JUSO-SAMPLEAPP.)
 
 #### <a name="32"/>7.3.1. Spring Server Area
@@ -826,7 +826,7 @@ Only the developed part are organized from the source description of the Web. Th
 # <a name="34"/>8. Annex A. Road Name Address Search API Definitions
 
 ## <a name="35"/>8.1. Road Name Address Search
-A service is used when a user searches with a road name address. The road name address API (http://www.juso.go.kr) was used for spec.
+A service is used when a user searches for a road name address. The road name address API (http://www.juso.go.kr) was used for spec.
 
 ### 8.1.1. Route
 ````
@@ -847,7 +847,7 @@ GET/ http://<server & base path>/addrLinkApi.do
   </tr>
   <tr> 
     <td>countPerPage</td>
-    <td>Number of datas per page</td>
+    <td>Number of data per page</td>
   </tr>
   <tr>
     <td>keyword</td>
@@ -950,7 +950,7 @@ N/A
 Accept : application/json
 ````
 
-### 9.1.3. Responser
+### 9.1.3. Response
 
 #### 9.1.3.1. Status
 ````

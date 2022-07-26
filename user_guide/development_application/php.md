@@ -102,7 +102,7 @@ BOSH creates and manages VMs that create stemcells on AWS. To create a stemcell,
   4.	When the installation is complete, a message stating Control Panel is Ready. The settings are set as Default so just start and it will be executed as the Control Panel shown below.
     
   ![./images/php/php_develope_guide5.png](./images/php/php_develope_guide5.png)<br>
-    XAMP Managing Pannel Screen
+    XAMP Managing Panel Screen
     
   Select the desired service and click "Start" to execute the selected service(Only Apache will be used in the example). However, the port used by the service(80 for Apache) should not be in use.
     

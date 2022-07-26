@@ -263,7 +263,7 @@ Command used to log in to OpenPaaS
 # When parameter is specified
 $ cf login --skip-ssl-validation -a https://api.10.244.0.34.xip.io -u admin -p admin -o crossent -s development
 
-# When parameter is not specified
+# When the parameter is not specified
 $ cf login
 API endpoint: https://api.10.244.0.34.xip.io
 
@@ -333,7 +333,7 @@ $ cf passwd
 
 
 ```
-Change users password in OpenPaaS.
+Change the user's password in OpenPaaS.
 ```
 
 
@@ -385,13 +385,13 @@ Set the target organization and space to be used by the logged-in user.
 - **Use Example**
 
 ```
-# When parameter is specified
+# When the parameter is specified
 $ cf target -o cf -s development
 API endpoint:   https://api.10.244.0.34.xip.io (API version: 2.29.0)   
 User:           admin   
 Org:            cf   
 Space:          development
-# When parameter is not specified(Outputs currently targeted information)
+# When the parameter is not specified(Outputs currently targeted information)
 $ cf target
 API endpoint:   https://api.10.244.0.34.xip.io (API version: 2.29.0)   
 User:           admin   
@@ -505,7 +505,7 @@ View list of Apps in the target space.
 
 
   ```
-  Checks the status of App.
+  Checks the status of the App.
   ```
 
 
@@ -546,7 +546,7 @@ View list of Apps in the target space.
 
   | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |APP_NAME     |Name of th app to be pushed(directory name if not specified)                         |O        |
+  |APP_NAME     |Name of the app to be pushed(directory name if not specified)                         |O        |
   |-b BUILDPACK |custom buildpack URL  |X        |
   |-c COMMAND   |App start command              |X        |
   |-d DOMAIN    |App Domain                      |X        |
@@ -562,7 +562,7 @@ View list of Apps in the target space.
   |--no-manifest     |Ignore Manifest File.                         |X        |
   |--no-route     |Delete route information to a pushed app and do not map route information to an app   |X        |
   |--no-start     |Push App but do not Start                       |X        |
-  |--random-route    |Create random route infromation to App                |X        |
+  |--random-route    |Create random route information to App                |X        |
 
   - **Use Example**
 
@@ -584,7 +584,7 @@ View list of Apps in the target space.
 
 
   ```
-  Adjust the app's memory, disk size, and number of instances.
+  Adjust the app's memory, disk size, and the number of instances.
   ```
 
 
@@ -1386,7 +1386,7 @@ View list of Apps in the target space.
   | Parameter name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
   |SERVICE_INSTANCE       |Service instance name                       |O        |
-  |NEW_SERVICE_INSTANCE   |New service instace name             |O        |
+  |NEW_SERVICE_INSTANCE   |New service instance name             |O        |
 
   - **Use Example**
 
@@ -1544,7 +1544,7 @@ View list of Apps in the target space.
 
 
   ```
-  Binds sertive instance and app.<br> - Service Instance and APP must be bound in order to use the service in App
+  Binds sertive instance and app.<br> - Service Instance and APP must be bound to use the service in App
   ```
 
 
@@ -1649,7 +1649,7 @@ View list of Apps in the target space.
 
 
   ```
-  Modifies information of user-provided service instance.
+  Modifies information of user-provided service instances.
   ```
 
 
@@ -1685,7 +1685,7 @@ View list of Apps in the target space.
 
 
   ```
-  Retrieve list of organization information...
+  Retrieve a list of organization information...
   ```
 
 
@@ -1785,7 +1785,7 @@ View list of Apps in the target space.
 
 
   ```
-  Retrieve list of the organization's information.
+  Retrieve a list of the organization's information.
   ```
 
 
@@ -1795,7 +1795,7 @@ View list of Apps in the target space.
   | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
   |ORG_NAME      |Organization Name                          |O        |
-  |-f           |Deletes organization information without confirmation message.  |X        |
+  |-f           |Deletes organization information without a confirmation message.  |X        |
 
 
   - **Use Example**
@@ -1854,7 +1854,7 @@ View list of Apps in the target space.
 
 
   ```
-  Retrieve list of space.
+  Retrieve the list of space.
   ```
 
 
@@ -1884,7 +1884,7 @@ View list of Apps in the target space.
 
 
   ```
-  Retrieve detailed list of space.
+  Retrieve the detailed list of space.
   ```
 
 
@@ -1959,7 +1959,7 @@ View list of Apps in the target space.
   | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
   |SPACE_NAME   |Space Name                           |O         |
-  |-f           |Deletes space without confirmation message. |X         |
+  |-f           |Deletes space without a confirmation message. |X         |
 
   - **Use Example**
 
@@ -1991,7 +1991,7 @@ View list of Apps in the target space.
   | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
   |SPACE_NAME     |Space Name                           |O         |
-  |NEW_SPACE_NAME |Deletes space without confirmation message. |O         |
+  |NEW_SPACE_NAME |Deletes space without a confirmation message. |O         |
 
   - **Use Example**
 
@@ -2090,7 +2090,7 @@ View list of Apps in the target space.
   | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
   |DOMAIN       |Domain name                           |O         |
-  |-f           |Deletes domain without confirmation message. |X         |
+  |-f           |Deletes domain without a confirmation message. |X         |
 
 
   - **Use Example**
@@ -2156,7 +2156,7 @@ View list of Apps in the target space.
   | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
   |DOMAIN       |Domain Name                           |O         |
-  |-f           |Deletes domain without confirmation message.    |X         |
+  |-f           |Deletes domain without a confirmation message.    |X         |
 
   - **Use Example**
 
@@ -2394,7 +2394,7 @@ View list of Apps in the target space.
   |-------------|--------------------------------|-----------|
   |DOMAIN       |Domain to assign to the App             |O         |
   |-n HOSTNAME  |Host to assign to the App              |X         |
-  |-f           |Deletes route information without confirmation message.              |X         |
+  |-f           |Deletes route information without a confirmation message.              |X         |
 
 
   - **Use Example**
@@ -2426,7 +2426,7 @@ View list of Apps in the target space.
 
   | Parameter Name   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
-  |-f           |Deletes route information without confirmation message.           |X         |
+  |-f           |Deletes route information without a confirmation message.           |X         |
 
 
   - **Use Example**
@@ -2452,7 +2452,7 @@ View list of Apps in the target space.
 
 
   ```
-  Retrieve list of buildpacks.
+  Retrieve the list of buildpacks.
   ```
 
 
@@ -2730,7 +2730,7 @@ View list of Apps in the target space.
 
 
   ```
-  Removes users assigned role in a specific organization.
+  Removes user's assigned role in a specific organization.
   ```
 
 
@@ -2741,7 +2741,7 @@ View list of Apps in the target space.
   |-------------|--------------------------------|-----------|
   |USERNAME     |Username                          |O         |
   |ORG          |Organizaion Name                          |O         |
-  |ROLE        |Role Name <br>  - OrgManager : Authority to manage User and modifies/plan setting <br> - BillingManager :enerates and manages billing and billing informations <br>  - OrgAuditor : Retrieve organizational quota utilization and user role             |O         |
+  |ROLE        |Role Name <br>  - OrgManager : Authority to manage User and modifies/plan setting <br> - BillingManager :generates and manages billing and billing informations <br>  - OrgAuditor : Retrieve organizational quota utilization and user role             |O         |
 
 
 
@@ -2847,7 +2847,7 @@ View list of Apps in the target space.
   |USERNAME     |Username                         |O         |
   |ORG          |Organization Name                           |O         |
   |SPACE        |Space Name                       |O         |
-  |ROLE         |Role Name  <br>  - SpaceManager: Manages user accounts and view the number of instances in the space, service binding status, and resource status in the space as an administrator of the space. <br> - SpaceDeveloper: Deploys App to service Management <br> - SpaceAuditor: Retrieve service bindings, number of instances, app utilization, etc. in space   |O         |
+  |ROLE         |Role Name  <br>  - SpaceManager: Manages user accounts and views the number of instances in the space, service binding status, and resource status in the space as an administrator of the space. <br> - SpaceDeveloper: Deploys App to service Management <br> - SpaceAuditor: Retrieve service bindings, number of instances, app utilization, etc. in space   |O         |
 
   - **Use Example**
 
@@ -2872,7 +2872,7 @@ View list of Apps in the target space.
 
 
   ```
-  Retrieve Quota list.
+  Retrieve the Quota list.
   ```
 
 
@@ -2980,7 +2980,7 @@ View list of Apps in the target space.
   |QUOTA                       |QUOTA Name                                                       |O         |
   |-m TOTAL_MEMORY             |Total amount of memory a space can have  <br> Ex) 1024M, 1G, 10G                         |X         |
   |-i INSTANCE_MEMORY          |Maximum amount of memory an application instance can have (-1 equals to infinity) <br>  Ex) 1024M, 1G, 10G                        |X         |
-  |-r ROUTES                   |Total number of route                                                 |X         |
+  |-r ROUTES                   |Total number of routes                                                 |X         |
   |-s SERVICE_INSTANCES        |Total number of service instance                                         |X         |
   |--allow-paid-service-plans  |Can provision instances of paid service plans                                       |X        |
 
@@ -3054,7 +3054,7 @@ View list of Apps in the target space.
   |-i INSTANCE_MEMORY          |Maximum amount of memory an application instance can have (-1 equals to infinity) <br>  Ex) 1024M, 1G, 10G                        |X         |
   |-n NEW_NAME                 |New name when changing QUOTA name                                      |X         |
   |-r ROUTES                   |Total number of routes                                                 |X         |
-  |-s SERVICE_INSTANCES        |Total number of service instance                                         |X         |
+  |-s SERVICE_INSTANCES        |Total number of service instances                                         |X         |
   |--allow-paid-service-plans  |Can provision instances of paid service plans                                       |X        |
   |--disallow-paid-service-plans  |Cannot provision instances of paid service plans                                      |X        |
 
@@ -3079,7 +3079,7 @@ View list of Apps in the target space.
 
 
   ```
-  Share private Domain with other organization.
+  Share private Domain with other organizations.
   ```
 
 
@@ -3149,7 +3149,7 @@ View list of Apps in the target space.
 
 
   ```
-  Retrieve Space-quota information list.
+  Retrieve the Space-quota information list.
   ```
 
 
@@ -3265,7 +3265,7 @@ View list of Apps in the target space.
   |-i MAX-INSTANCE-MEMORY      ||Maximum amount of memory an application instance can have (-1 equals to infinity) <br>  Ex) 1024M, 1G, 10G                        |X         |
   |-m MEMORY                   |Maximum memory a space can have                               |X         |
   |-n NEW_NAME                 |New SPACE-QUOTA Name to change                                       |X         |
-  |-r ROUTES                   |Maximum number of route a space can have                               |X         |
+  |-r ROUTES                   |Maximum number of the route a space can have                               |X         |
   |-s SERVICES                 |Maximum number of service instance a space can have                       |X         |
   |--allow-paid-service-plans  |Can provision instances of paid service plan                                       |X        |
   |--disallow-paid-service-plans  |Cannot provision instances of paid service plan                                   |X        |
@@ -3399,7 +3399,7 @@ View list of Apps in the target space.
 
 
   ```
-  Retrieve service authentication token list.
+  Retrieve the service authentication token list.
   ```
 
 
@@ -3538,7 +3538,7 @@ View list of Apps in the target space.
 
 
   ```
-  Retrieve list of Service Broker information.
+  Retrieve the list of Service Broker information.
   ```
 
 
@@ -3792,7 +3792,7 @@ View list of Apps in the target space.
 
 
   ```
-  Retrieve list of service to be accessed.
+  Retrieve the list of services to be accessed.
   ```
 
 
@@ -3900,7 +3900,7 @@ View list of Apps in the target space.
 
 
   ```
-  Retrieve detailed information of security group.
+  Retrieve detailed information of the security group.
   ```
 
 
@@ -3935,7 +3935,7 @@ View list of Apps in the target space.
 
 
   ```
-  Retrieve list of Security group.
+  Retrieve the list of Security groups.
   ```
 
 
@@ -4171,7 +4171,7 @@ View list of Apps in the target space.
 
 
   ```
-  Retrieve Staging security group information list.
+  Retrieve the Staging security group information list.
   ```
 
 
@@ -4234,7 +4234,7 @@ View list of Apps in the target space.
 
 
   ```
-  Retrieve list of running security groups.
+  Retrieve the list of running security groups.
   ```
 
 
@@ -4399,7 +4399,7 @@ View list of Apps in the target space.
 
 
   ```
-  Retrieve list of feature flags.
+  Retrieve the list of feature flags.
   ```
 
 
@@ -4610,7 +4610,7 @@ View list of Apps in the target space.
 
 
   ```
-  Retrieve token value received from CF by user after cf login.
+  Retrieve token value received from CF by the user after cf login.
   ```
 
 
@@ -4713,7 +4713,7 @@ View list of Apps in the target space.
 
 
   ```
-  Retrieves list of plugin repository(Storage) added in CLI.
+  Retrieves a list of plugin repositories (Storage) added in CLI.
   ```
 
 

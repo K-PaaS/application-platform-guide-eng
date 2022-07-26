@@ -11,7 +11,7 @@
 2. [python Application Development Guide](#2)  
 
 	-	[2.1. Outline](#2-1)  
-	-	[2.2. Development Evnvironment Configuration](#2-2)  
+	-	[2.2. Development Environment Configuration](#2-2)  
 		-	[2.2.1.	python Installation](#2-2-1)  
 		-	[2.2.2.	python Virtual Environment Configuration](#2-2-2)  
 		-	[2.2.3.	Django Installation](#2-2-3)  
@@ -115,7 +115,7 @@ Windows x86-64 MSI installer
 
 ![python-5]  
 
-※ pip is a tool that supports the installation of python-related packages. In general, installing python will also install pip. But in some cases, pip installation may not be possible. In this case, install pip using easy_install, another installation tool that is provided as a basic installation for python installation.
+※ pip is a tool that supports the installation of Python-related packages. In general, installing python will also install pip. But in some cases, pip installation may not be possible. In this case, install pip using easy_install, another installation tool that is provided as a basic installation for python installation.
 
 ※ pip installation using easy_install
  At the command prompt, navigate to the Scripts directory in the python installation path. 
@@ -135,7 +135,7 @@ Windows x86-64 MSI installer
 
 ` pip install virtualenv`
 
-* Go to the directory where you want to create the virtual environment and create virtual environment 
+* Go to the directory where you want to create the virtual environment and create the virtual environment 
 
 `cd c:\`
 
@@ -215,7 +215,7 @@ The file is created in the following structure.
 	</tr>
 	<tr>
 		<td>__init__.py</td>
-		<td>Defines the script that runs when the package is imported.. If the __init__.py file is deleted, the submodule in the directory cannot be found and the import fails.</td>
+		<td>Defines the script that runs when the package is imported. If the __init__.py file is deleted, the submodule in the directory cannot be found and the import fails.</td>
 	</tr>
 	<tr>
 </table>
@@ -257,7 +257,7 @@ By looking at the structure of the project's file, you can see that a red boxed 
 	</tr>
 	<tr>
 		<td>__init__.py</td>
-		<td>Defines the script that runs when the package is imported.. If the __init__.py file is deleted, the submodule in the directory cannot be found and the import fails.	</td>
+		<td>Defines the script that runs when the package is imported. If the __init__.py file is deleted, the submodule in the directory cannot be found and the import fails.	</td>
 	</tr>
 </table>
 
@@ -300,7 +300,7 @@ INSTALLED_APPS = (
 
 - TIME_ZONE = 'UTC'  #Modify as shown
 + TIME_ZONE = ' Asia/Seoul'
-#	Change the application's time setting to 'Asia/Seoul'
+#	Change the application's time set to 'Asia/Seoul'
 
 +STATIC_BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 +STATICFILES_DIRS = (
@@ -653,7 +653,7 @@ Once the target has been designated, log in via the login command.
 
 ![pyhthon-11]
 
- The service to be used is generated from the list of services identified through the command above. The sample application uses MySQL, Cubrid, MongoDB, Resdis, RabbitMQ, and ClusterFS services, creating six services. The service creation command is as follows. The part marked in the blue box in the picture above is the service name.
+ The service to be used is generated from the list of services identified through the command above. The sample application uses MySQL, Cubrid, MongoDB, Redis, RabbitMQ, and ClusterFS services, creating six services. The service creation command is as follows. The part marked in the blue box in the picture above is the service name.
 
 ```
  # cf create-service SERVICE PLAN SERVICE_INSTANCE [-c PARAMETERS_AS_JSON] [-t TAGS]
@@ -815,7 +815,7 @@ The Eclipse development environment was made in the following environment.
 
 * OS : Windows 8 64bit 
 * python : 2.7.10 
-* Framwork : Django 1.8.6 
+* Framework : Django 1.8.6 
 * Eclipse: version Mars.1 Release (4.5.1)
 
 Eclipse download uses the following link. Download Eclipse with the appropriate environment. 

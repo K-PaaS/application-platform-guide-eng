@@ -5,7 +5,7 @@
 #### 1.1. Document Outline
 
 ##### 1.1.1. Purpose
-This Document (Java Application Development Guide) presents the service pack of Open PaaS projects (Mysql, Cubrid, MongoDB, RabbitMQ, Radis, and GlusterFS) to work with Java applications and to deploy applications.
+This Document (Java Application Development Guide) presents the service pack of Open PaaS projects (Mysql, Cubrid, MongoDB, RabbitMQ, Radis, and GlusterFS) to work with Java applications and deploy applications.
 
 ##### 1.1.2. Range
 The range of this document is limited to the Java application development and service pack linkage of Open PaaS projects.
@@ -41,7 +41,7 @@ The development environment is constructed in the following environment for Java
 
 2. Install JDK
 
-  -  jdk-8u65-windows-x64.exe Double-click to execute installation.
+  -  jdk-8u65-windows-x64.exe Double-click to execute the installation.
 
 <img src="./images/java/image2.png" width="612" height="300" />
 
@@ -52,7 +52,7 @@ The development environment is constructed in the following environment for Java
   -  Installation is executed.
 
 <img src="./images/java/image4.png" width="400" height="300" />
-  -   Click Close button to quit installation.
+  -   Click the Close button to quit the installation.
 
 3. JDK  Environment Setting
 
@@ -87,7 +87,7 @@ The development environment is constructed in the following environment for Java
   - Click Existing Maven Project.  
 <img src="./images/java/image12.png" width="400" height="150" />
 
-  - Click Browse button and select the file with java-sample project. Click Finish button.
+  - Click the Browse button and select the file with java-sample project. Click the Finish button.
 <img src="./images/java/image13.png" width="400" height="150" />
 
   - Verify the added java sample Application.  

@@ -157,13 +157,13 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 	|2          |--ca-cert                 |Specify the CA certificate used for the Director and UAA connection|
 	|3          |--client                  |Define Username or UAA Client|
 	|4          |-n                        |Don't ask for user input|
-	|5          |--json                    |Change output format to JSON|
+	|5          |--json                    |Change the output format to JSON|
 	|6          |--tty                     |Include all commonly displayed text in the output when the command is not redirected|
 	|7          |--no-color                |Disable colors|
 	|8          |--deployment, -d          |Specify a placement for deploy commands|
 	|9          |-h, --help                |See help message|
 	|10         |--column=                 |Show filtered columns only|
-	|11         |-e, --enviroment          |Director environment name or URL|
+	|11         |-e, --environment          |Director environment name or URL|
 	|12         |--sha2     |Use SHA256 checksum|
 	|13         |--parallel=                |Maximum number of parallel operations|
 	|14         |--client-secret=                |Password or UAA client password reset|
@@ -206,11 +206,11 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|deploymentFile|Install Manfiest file|O|
+	|deploymentFile|Install Manifest file|O|
 	|--state path|Deployment state file path|X|
 	|-v|Manifest Replace variable ex) internal_ip, deployment_name|X|
 	|-o|option Manifest File ex) jumpbox-user.yml, uaa.yml...|X|
-	|--vars -store path|creds.yml file, Authentication key and Job Password yml file path|X|
+	|--vars -store path|creds.yml file, Authentication key, and Job Password yml file path|X|
 
 - **Used Example**
 
@@ -289,17 +289,17 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 - **Description**
 
-	Deletes previously created VM based on the manifest. Same flags provided to create-env command should be given to the delete-env command.
+	Deletes previously created VM based on the manifest. The same flags provided to create-env command should be given to the delete-env command.
 
 - **Parameter**
 
 	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|deploymentFile|Installed Manfiest File|O|
+	|deploymentFile|Installed Manifest File|O|
 	|--state path|Deployment state file path|O|
 	|-v|Manifest Replace variable ex) internal_ip, deployment_name|X|
 	|-o|option Manifest File ex) jumpbox-user.yml, uaa.yml…|X|
-	|--vars -store path|creds.yml file, authentication key and Job Password yml file path|X|
+	|--vars -store path|creds.yml file, authentication key, and Job Password yml file path|X|
 
 - **Used Example**
 
@@ -351,7 +351,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 - **Description**
 
-	Logs out currently logged in user
+	Logs out currently logged-in user
 
 - **Parameter**
 
@@ -491,7 +491,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 	|**Parameter Name**|**Description**|**Necessity****(O/X)**|
 	|----------|-------------------------|--------------------------------|
-	|--git|Create appropriate .gitignore file for BOSH release Git repository|X|
+	|--git|Create an appropriate .gitignore file for BOSH release Git repository|X|
 	|--dir|Create an empty release configuration file for directory|X|
 
 - **Parameter**
@@ -529,7 +529,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 - **Description**
 
-	Create empty file for package for release in dir
+	Create an empty file for a package for release in dir
 
 - **Parameter**
 
@@ -716,7 +716,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 - **Description**
 
-	synchronize blob of blobstore within release
+	synchronize blob of blobstore within the release
 
 - **Used Example**
 
@@ -1237,7 +1237,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 - **Description**
 
-	Delete VM with deployment name specified by director.
+	Delete VM with deployment name specified by the director.
 
 - **Parameter**
 
@@ -1318,7 +1318,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 - **Description**
 
-	Restart the instance related VM specified by director.
+	Restart the instance-related VM specified by the director.
 
 - **Parameter**
 
@@ -1494,7 +1494,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 	|----------|-------------------------|--------------------------------|
 	|my-env|Specified Director Environment Name|O|
 	|my-dep|Specify deployment name|O|
-	|--vitals|View VM's default informations such as RAM CPU disk|X|
+	|--vitals|View VM's default information such as RAM CPU disk|X|
 
 - **Used Example**
 
@@ -1581,7 +1581,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 - **Description**
 
-	Delete unusing disk
+	Delete unused disk
 
 - **Parameter**
 
@@ -1615,7 +1615,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 	|my-env|Specified Director Environment Name|O|
 	|my-dep|Specify deployment name|O|
 	|-c|Specify command line|X|
-	|destination|Set SSH destination group or group and inctance ID|X|
+	|destination|Set SSH destination group or group and instance ID|X|
 	|--opts|send option to ssh ex) Port forwarding|X|
 	|--gw-*|Construct SSH Gateway|X|
 	|-r, --recursive|Allow repeated copies of directory|X|
@@ -1676,7 +1676,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 		$ bosh -e vbox -d cf scp diego-cell/209c42e5-3c1a-432a-8445-ab8d7c9f69b0:/tmp/script.sh ~/Downloads/script.sh
 		$ bosh -e vbox -d cf scp windows_diego_cell:c:/temp/script/script.ps1:~/Downloads/script.ps1
 
-		# copy files from each instance into instance specific local directory
+		# copy files from each instance into the instance-specific local directory
 		$ bosh -e vbox -d cf scp diego-cell:/tmp/logs/ /tmp/logs/((instance_id))
 
 ## <div id='75'/>BOSH CLI - Errands
@@ -1689,7 +1689,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 - **Description**
 
-	View list of all errands defined as deployment
+	View list of all errands defined as the deployment
 
 - **Parameter**
 	
@@ -1709,7 +1709,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 		Name
 		smoke-tests
 
-		1 errands
+		1 errand
 
 		Succeeded
 
@@ -1734,7 +1734,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 	|--keep-alive|Keep VMs where errand runs|X|
 	|--when-changed|errand sets skip: When it ran (successfully) before and if the errand job value has not changed|X|
 	|--download-logs|Save the errand log as a whole in the path specified in --logs-dir|X|
-	|--logs-dir=<dir>|File Path to sace errand log|X|
+	|--logs-dir=<dir>|File Path to save errand log|X|
 	|instance=<instance-group/instance-id> (v2.0.31+)|Decide which instance to use to run errand|X|
 
 
@@ -1754,7 +1754,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 		# (note that select instance may not necessarily be first based on its index)
 		$ bosh -e vbox -d zookeeper run-errand status --instance zookeeper/first
 
-		# execute errand on all instance in an instance group
+		# execute errand on all instances in an instance group
 		$ bosh -e vbox -d zookeeper run-errand status --instance zookeeper
 
 		# execute errand on two instances

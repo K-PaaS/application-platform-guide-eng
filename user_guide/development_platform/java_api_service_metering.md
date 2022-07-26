@@ -96,7 +96,7 @@ https://github.com/cloudfoundry-incubator/cf-abacus/blob/master/doc/api.md
   <tr>
   	<td colspan ="2">CF-ABACUS</td>
     <td>Aggregates usage information collected as a CF-ABACUS core function.<br>
-CF-ABACUS is installed in the form of micro-service in CF after CF installation. See the following for details.<br>
+CF-ABACUS is installed in the form of a micro-service in CF after CF installation. See the following for details.<br>
 https://github.com/cloudfoundry-incubator/cf-abacus
 </td>
   </tr>
@@ -175,7 +175,7 @@ Java File Shape Description
 |MeteringAuthService     |Obtain and return an access token to the abacus-usage-collector from a UAA server on a PAS-Other platform.              |
 |MeteringService   |When API service usage requests are processed by the SampleApiJavaServiceController, a metering usage report is reported to the abacus-usage-collector for API service processing.       |
 |SampleApiJavaServiceApplication        |When SpringBoot is running, it loads the context objects required for the SpringBoot application.   |
-|SampleApiJavaServiceController   |REST Controller that handles API service usage requests.<br> This sample application does not implement API service-specific business logic, but only performs the function of sending API usage to abacus-collector.|
+|SampleApiJavaServiceController   |REST Controller that handles API service usage requests.<br> This sample application does not implement API service-specific business logic, but only performs the function of sending API usage to the abacus-collector.|
 |application.properties     |When the SpringBoot is running, the properties required for the spring    |
 |metering.properties      |Properties to be set when sending API usage to abacus-collector are defined.    |
 
@@ -530,7 +530,7 @@ Create an API service usage JSON to be sent to the Abacus-collector.
 
 REST Controller for handling service usage requests. In this sample application, only metering functions are performed.
 
-	Skipped..
+	Skipped...
 	@RequestMapping (value = "/plan1", method = RequestMethod.POST)
 	public ResponseEntity<String> serviceAPIPlan01(@RequestBody String input) throws Exception {	
 		JSONParser jsonParser = new JSONParser ();
@@ -577,7 +577,7 @@ For the development of sample applications, see **Api Service Interworking Appli
 |instance_id         |String   |Resource instance ID of the app requesting for API service     |d98b5916-3c77-44b9-ac12-045678edabad     |
 |plan_id         |String   |Plan ID of the requested API service for the app    |basic     |
 |credentials         |JSON   |Set the required credentials for the service request    |credentials: {<br>key: value,<br>…<br>}     |
-| inputs        |JSON   |Set input required for service request.    | inputs: {<br>key:value,<br>...<br>}    |
+| inputs        |JSON   |Set input required for the service request.    | inputs: {<br>key:value,<br>...<br>}    |
 
 
 
@@ -797,7 +797,7 @@ There is no need to redeploy CF-ABACUS by storing the prepared policy in DB usin
 
 
 
--   In case of Rating Policy
+-   In the case of Rating Policy
 
 	 	POST /v1/rating/plans/:rating_plan_id
 	>
@@ -810,7 +810,7 @@ There is no need to redeploy CF-ABACUS by storing the prepared policy in DB usin
 
 
 
--   In case of Billing Policy
+-   In the case of Billing Policy
 
 		POST /v1/pricing/plans/:pricing_plan_id
 	>

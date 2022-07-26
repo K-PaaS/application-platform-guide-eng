@@ -49,7 +49,7 @@
 ##### <a name="3"/>1.1.1. Purpose
 
 This document (servicepack guide) is presented as a guide to define various standards and measures to be applied to achieve quality goals in the development and operation of service packs for Open PaaS projects based on the e-government standard framework.
-The purpose of this development standard guide is to improve the quality of the development system, to enhance readability and understanding of source code among service pack developers, and to support smooth system maintenance after completion of the project.
+The purpose of this development standard guide is to improve the quality of the development system, to enhance readability and understanding of source code among service pack developers, and support smooth system maintenance after completion of the project.
 
 ##### <a name="4"/>1.1.2. Range
 The range of this document is limited to the development of service packs for Open PaaS projects based on the e-government standard framework.
@@ -455,7 +455,7 @@ Single Sign-On (SSO) allows open cloud platform users to access dashboards of th
 
 2. In the case of Cubrid DB 
 
-	- Create and move the directory to create database
+	- Create and move the directory to create a database
 	$ mkdir <databasename>
 	$ cd <databasename>
 	
@@ -484,7 +484,7 @@ Single Sign-On (SSO) allows open cloud platform users to access dashboards of th
 4.3.	NoSQL DB
 1. In case of mongoDB
 
-	- Create new database
+	- Create a new database
 	>use <databasename>
 	switched to db <databasename>
 
@@ -1123,7 +1123,7 @@ bosh upload release CLI
 boshupload release [<release_file>] [--rebase] [--skip-if-exists]
 release_file: local files or remote URIs information
     --rebase:Set to Director with the latest version
-    --skip-if-exists:Do not upload if release exists
+    --skip-if-exists:Do not upload if the release exists
 
 1.	Installation process using the Yaml file [When <release_file> parameter is yml file]: Read the cf-<service_name>-<version>.yml file inside the release directory and set value as sha1. It is a method of accessing and installing the blobstore of config/final.yml with the blobstore_id of index.yml in the corresponding packages or jobs folder in the final_builds folder.
 	

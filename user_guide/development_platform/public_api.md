@@ -7,7 +7,7 @@
      * [1.2. Range](#3)
      * [1.3. References](#4)
 2. [Selecting API Service](#5)
-     * [2.1. Data Portal Sign in and Log in](#6)
+     * [2.1. Data Portal Sign in and Login](#6)
      * [2.2. API Search](#7)
 3. [API Service Broker Outline](#8)
      * [3.1. Outline](#9)
@@ -147,7 +147,7 @@ If you go to the Open API category, you can search by ①API service name or che
 
 ![2-2-0-3]
 
-Click the Details button on the moved screen.
+Click the Details button on the proceeded screen.
 
 ![2-2-0-4]
 
@@ -176,7 +176,7 @@ Service brokers serve to connect open cloud platforms with services outside the 
 
 | <b>Service Broker APIs</b>      | <b>Related Commands</b> |
 |-------------|-----------------------------|
-| Catalog    | cf create-service-broker [Service Broker Name] [username] [password] [Service Borker URL] <br>check: cf service-access |
+| Catalog    | cf create-service-broker [Service Broker Name] [username] [password] [Service Broker URL] <br>check: cf service-access |
 | Provision | cf create-service [Service Name] [Plan Name] [Service Instance Name] <br>check: cf services |
 | Update   | cf update-service-broker [Service Broker Name] [username] [password] [Service Broker URL] <br>check: cf service-access |
 | Bind    | cf bind-service [Application Name] [Service Instance Name] <br>check: cf env [Application Name] |
@@ -244,17 +244,17 @@ At least one plan must be defined in the configuration file for each service. If
   |-------------|-----------------------------|-----------------------------|
   | services* | List of objects containing each service object | |
   | &nbsp;&nbsp;id* | Service ID. Must be unique, created with a combination of values read from the settings file and specified text. <br>Form: "Service"+{1}+[Service1.Name]+"ServiceID" | |
-  | &nbsp;&nbsp;name* | Service Name. Value read from the settings file. <br>Key value: [Service1.Name] | PublicPerformance |
-  | &nbsp;&nbsp;description* | Service Description. Value read from the settings file. <br>Key value: [Service1.Name] | Performances, exhibits information display |
+  | &nbsp;&nbsp;name* | Service Name. The value read from the settings file. <br>Key value: [Service1.Name] | PublicPerformance |
+  | &nbsp;&nbsp;description* | Service Description. The value read from the settings file. <br>Key value: [Service1.Name] | Performances, exhibits information display |
   | &nbsp;&nbsp;bindable* | If it is bindable with the application. boolean type. <br>set value: true | true |
   | &nbsp;&nbsp;tags | Expose the classification, attributes, or underlying technology of a service <br>set value: "Public API Service" | Public API Service |
-  | &nbsp;&nbsp;metadata | A list of meta data for providing the service. refer to 'Service Metadata' below for detailed description | |
+  | &nbsp;&nbsp;metadata | A list of metadata for providing the service. refer to 'Service Metadata' below for a detailed description | |
   | &nbsp;&nbsp;requires* | Authorization list of services provided by the user. currently, only syslog_drain authority is provided <br>set values: "syslog_drain" | syslog_drain |
-  | plan_updateable | Whether the service supports modifying of plans. boolean type. <br>set value: false | false |
+  | plan_updateable | Whether the service supports modifying plans. boolean type. <br>set value: false | false |
   | &nbsp;&nbsp;plans* | List of objects containing each plan object for the service | |
   | &nbsp;&nbsp;&nbsp;&nbsp;id* | Plan ID. Must be unique, created with a combination of values read from the settings file and specified text. <br>form: "Service"+{1}+[Service1.Name]+"Plan"+{1}+[Service1.Plan1.Name]+"PlanID" | Service1 PublicPerformance Plan1 basic PlanID |
-  | &nbsp;&nbsp;&nbsp;&nbsp;name* | Plan name. Value read from the settings file. <br>Key value: [Service1.Plan1.Name] | basic |
-  | &nbsp;&nbsp;&nbsp;&nbsp;description* | Plan name. Value read from the settings file. <br>Key value: [Service1.Plan1.Description] | total 1,000,000 calls |
+  | &nbsp;&nbsp;&nbsp;&nbsp;name* | Plan name. The value read from the settings file. <br>Key value: [Service1.Plan1.Name] | basic |
+  | &nbsp;&nbsp;&nbsp;&nbsp;description* | Plan name. The value read from the settings file. <br>Key value: [Service1.Plan1.Description] | total 1,000,000 calls |
   | &nbsp;&nbsp;&nbsp;&nbsp;metadata | A list of metadata for the plan of the service. Check 'Plan metadata' below for a detailed description | |
   | &nbsp;&nbsp;&nbsp;&nbsp;free | Display the Paid/Free Billing Policy.Boolean type. Default is true. <br>set value: true | true |
 
@@ -500,7 +500,7 @@ Example)
   $ cf enable-service-access PublicPerformance -p basic
 ```
 
-After allowing access to the services to be exposed to the marketplace using the command above, check the service access-list again with the command below to confirm that the access setting of the services has been changed to all.
+After allowing access to the services to be exposed to the marketplace using the command above, check the service access list again with the command below to confirm that the access setting of the services has been changed to all.
 ```
   $ cf service-access
 ```
@@ -540,7 +540,7 @@ Among the two sample service brokers provided, the service list of the public AP
 |-------------|-----------------------------|
 | Service 1 - Performance Exhibition Information Inquiry Service |
 | Service1.Name | PublicPerformance |
-| Service1.Description | Performances, exhibits information display |
+| Service1.Description | Performances exhibits information display |
 | Service1.Provider | http://www.culture.go.kr |
 | Service1.DocumentUrl | https://www.data.go.kr/subMain.jsp#/L3B1YnIvdXNlL3ByaS9Jcm9zT3BlbkFwaURldGFpbC9vcGVuQXBpTGlzdFBhZ2UkQF4wMTJtMSRAXnB1YmxpY0RhdGFQaz0xNTAwMDEyMCRAXmJybUNkPU9DMDAwOCRAXnJlcXVlc3RDb3VudD0zNDQkQF5vcmdJbmRleD1PUEVOQVBJ |
 | Service1.EndPoint | http://www.culture.go.kr/openapi/rest/publicperformancedisplays |
@@ -743,7 +743,7 @@ The venue of the event is displayed on the map using the local cultural event AP
 ##### <div id='50'></div> 7.2.1. Naver Open API Service
 ##### 7.2.1.1 Naver Map
   1. API Introduction<br>
-  The map API provided from the [Naver Developers Center Open API](http://developer.naver.com/wiki/pages/OpenAPI). The sample application uses a Naver map using JavaScript. To this end, the following tags are written in the HTML file..
+  The map API provided from the [Naver Developers Center Open API](http://developer.naver.com/wiki/pages/OpenAPI). The sample application uses a Naver map using JavaScript. To this end, the following tags are written in the HTML file.
   
   ```
    <script type="text/javascript" src="[Endpoint]?ver=2.0&key=[Service key]"></script>
@@ -850,7 +850,7 @@ Most APIs introduced on public data portals can issue service keys on public dat
   When the [Sign in] button is clicked, it goes to the Incheon Culture and Arts Foundation family site. elect one of IPIN or mobile phone authentication to check whether you have (1) registered as a member or not and proceed to (2) authentication.
 
   ![7-3-1-10]<br>
-  Click [Sign in] button and register.
+  Click the [Sign in] button and register.
   
   ![7-3-1-11]<br>
   ![7-3-1-12]<br>
@@ -866,7 +866,7 @@ Most APIs introduced on public data portals can issue service keys on public dat
   ![7-3-1-16]<br>
   Access the main page of [Incheon Culture and Arts Information Public Open API Center](http://iq.ifac.or.kr/openAPI) and click [Login] to log in.
   
-  2. Apply fo Service Key<br>
+  2. Apply for Service Key<br>
   ![7-3-1-17]<br>
   On the API tour screen, you can check the list of available APIs. Press the [Apply] button on the right side of the API to use to proceed with the service key application process.
 
@@ -885,7 +885,7 @@ Most APIs introduced on public data portals can issue service keys on public dat
   ※ In the case of [7.2.1.2. Incheon Metropolitan City Cultural Event], the service key is applied directly to the API service provider, so unlike the application of the service key on the public data portal, there is no waiting period and approval is automatically approved, so it can be used immediately.
 
 ##### <div id='53'></div> 7.3.2 Obtain Naver Open API Service Key
-[2.2.1. Naver Map], [2.2.2. Naver address-to-coordinate translation], [2.2.3. Naver Search] In order to get API service key, you must be logged in with Naver ID. Access to [Naver Developer Center's Open API Page](http://developer.naver.com/wiki/pages/OpenAPI) and login with naver ID  or sign in.<br>
+[2.2.1. Naver Map], [2.2.2. Naver address-to-coordinate translation], [2.2.3. Naver Search] To get the API service key, you must be logged in with Naver ID. Access to [Naver Developer Center's Open API Page](http://developer.naver.com/wiki/pages/OpenAPI) and log in with Naver ID  or sign in.<br>
 
   1. Sign in and Login<br>
   ![7-3-2-0]<br>
@@ -903,7 +903,7 @@ Most APIs introduced on public data portals can issue service keys on public dat
   ![7-3-2-6]<br>
   Access [Naver Developer Center's Open API Page](http://developer.naver.com/wiki/pages/OpenAPI)and click the [Login] button from the right top part and log in.
   
-  2. Apply fo Service Key<br>
+  2. Apply for Service Key<br>
   ![7-3-2-7]<br>
   After login, go to the Open API page of Naver Developer Center again, and you can check the [Issue/Manage Key] button in the middle of the right.
 

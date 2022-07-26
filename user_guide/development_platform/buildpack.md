@@ -524,7 +524,7 @@ To support the package, there are two ways to implement packaging and versioning
 
 > Buildpack packager is a buildpack package tool provided by Cloud Foundry.
 > Buildpack-packager is to cache the dependencies of the build pack, not the dependencies of the application.
-> Below is how to package RUBY buildpack uses buildpack-packager.
+> Below is how to package RUBY buildpack using buildpack-packager.
 >
 > \# Fetch submodules(compile-extentions) from ruby-buildpack git.
 ````

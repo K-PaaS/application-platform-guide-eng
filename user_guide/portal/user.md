@@ -65,7 +65,7 @@
      * [3.2.1.3.7.  Log](#63)
      * [3.2.1.3.7.1.  Log Management](#64)
      * [3.2.1.3.7.2.  Tail Log](#90)
-     * [3.2.1.3.7.3.  Auto scaling Setting](#91)
+     * [3.2.1.3.7.3.  Auto-scaling Setting](#91)
      * [3.2.1.3.7.4.  Notification Setting](#92)
      * [3.2.2.  Catalog](#65)
      * [3.2.2.1.  Search Catalog](#66)
@@ -116,7 +116,7 @@ This chapter describes the account creation and password reset screen for using 
 2.  Click “Login”. 
 ![2-1-1]
 
-3.  Click “Create Account” Link.
+3.  Click the “Create Account” Link.
 ![2-1-2]
 
 4.  Enter the E-mail address to use. Click “Send authentication mail”.
@@ -133,10 +133,10 @@ This chapter describes the account creation and password reset screen for using 
 
 
 ### <div id='6'/> 2.2.  Reset PaaS-TA User Portal Password
-1.  Click “Reset password” link.
+1.  Click the “Reset password” link.
 ![2-2-0]
 
-2.  Enter User's email address. Click “Reset Password”.
+2.  Enter the User's email address. Click “Reset Password”.
 ![2-2-1]
 
 3.  Click the "Reset Password" link in the received email.
@@ -144,7 +144,7 @@ This chapter describes the account creation and password reset screen for using 
      > **Email Format to Receive**
      > ![passwordemail]
 
-4.  Enter new password. Click “Change” button to complete password reset. 
+4.  Enter new password. Click the “Change” button to complete the password reset. 
 ![2-2-2]
 
 
@@ -152,7 +152,7 @@ This chapter describes the account creation and password reset screen for using 
 1.  Enter user ID and Password. Click “SIGN IN” to log in to the user portal.
 ![2-3-0]
 
-2.  After the account is created, Dashboard page will appear directly at the first login.
+2.  After the account is created, the Dashboard page will appear directly at the first login.
 ![dashboard]
 
 3.  Dashboard Page ① "Organization Management" Click the link or ②" Organization Management" at the menu on the right side. After the account is created, it is moved to the Dashboard page at the first login. More information can be found in 3.2.1.1 of this document.
@@ -177,12 +177,12 @@ The PaaS-TA User Portal consists of a section that manages organizations, spaces
   <tr>
     <td>Organization, Space, Application Management</td>
     <td>Dashboard</td>
-    <td>Manages Organizaion, Space Creation and Application, Service, Domain, Invite User and etc.</td>
+    <td>Manages Organization, Space Creation and Application, Service, Domain, Invite User, etc. </td>
   </tr>
   <tr>
     <td>Development Environment, Create Service</td>
     <td>Catalog</td>
-    <td>Application Development Envicronment and Create Service</td>
+    <td>Application Development Environment and Create Service</td>
   </tr>
   <tr>
     <td rowspan="5">Check Information</td>
@@ -210,14 +210,14 @@ This chapter describes the three main categories of PaaS-TA user portals.
 
 ### <div id='12'/> 3.2.1.1.  Organization and Space
 ### <div id='13'/> 3.2.1.1.1.  Organization Management
-① Click "Organization Management" link or ②"Organization Management" on menu to proceed to organization dashboard page.
+① Click the "Organization Management" link or ②" Organization Management" on the menu to proceed to the organization dashboard page.
 ![2-3-1]
 
 ### <div id='14'/> 3.2.1.1.1.1.  Create Organization
-1. ① Click "Organization Management" link or ②"Organization Management" on the menu to proceed to the organization dashboard.
+1. Click ①"Organization Management" link or ②"Organization Management" on the menu to proceed to the organization dashboard.
 ![2-3-1]
 
-2.  Click “Add New Organization” to proceed to the organization creating page.
+2.  Click “Add New Organization” to proceed to the organization creating a page.
 ![2-3-1-1]
 
      > **To enable "Add New Organization"** button, [PaaS-TA Portal Deployment Guide Document](https://github.com/PaaS-TA/Guide-3.0-Penne-/blob/master/Use-Guide/portal/PaaS-TA%20Portal%20%EB%B0%B0%ED%8F%AC%20%EA%B0%80%EC%9D%B4%EB%93%9C_v1.1.md#7-1) Refer to **2.2. Enable create user organization Flag**.
@@ -229,23 +229,23 @@ This chapter describes the three main categories of PaaS-TA user portals.
  -  **Instance Memory** : Maximum quota a application instance can have (ex.) 1024M, 1G ,10G <br>
  -  **Route** : Maximum number of routes <br>
  -  **Service Instance** : Maximum number of service instance <br>
- -  **Price** :  Billing servcie <br>
+ -  **Price** :  Billing service <br>
  -   **Instance** : Maximum number of instance  <br>
  -  **Route Port** : Reserved route port number <br>
 
-4.  Click the "Proced" button on the confirm pop-up to view the newly created organization on the Organization Management page.
+4.  Click the "Proceed" button on the confirmation pop-up to view the newly created organization on the Organization Management page.
 ![2-3-1-3]
 ![2-3-1-4]
      > 3.2.1.1.1.1-3 Screen appears when creating the first new organization for the account. Click “Create New Organization” when creating an organization afterward. 
 
 ### <div id='15'/> 3.2.1.1.1.2.  Modify Organization Name
-1. ① Click "Organization Management" Link or ②"Organization Management" at the menu to proceed to organization dashboard page.
+1. ① Click the "Organization Management" Link or ②"Organization Management" at the menu to proceed to the organization dashboard page.
 ![2-3-1]
 
 2.  Click "View details" on the  ① sub-menu at the right, then click ② "Change Name".
 ![3-2-1-1-1-2-1]
 
-3.  Enter new organization name. Click "Change".
+3.  Enter the new organization name. Click "Change".
 ![3-2-1-1-1-2-2]
 
 4. Click the "Change" button on the pop-up to complete the organization name change.
@@ -253,40 +253,40 @@ This chapter describes the three main categories of PaaS-TA user portals.
 
 
 ### <div id='16'/> 3.2.1.1.1.3.  Delete Organization
-1.  Click ② "Delete" on ① sub-menu at the right side beside "View Details".
+1.  Click ② "Delete" on the ① sub-menu on the right side beside "View Details".
 ![3-2-1-1-1-3-0]
 
-2.  Click the "Delete" button on the confirm pop-up to complete the deletion of the organization.
+2.  Click the "Delete" button on the confirmation pop-up to complete the deletion of the organization.
 ![3-2-1-1-1-3-1]
 
 ### <div id='17'/> 3.2.1.1.2.  Space Management
 ![3-2-1-2-1-0]
 
 ### <div id='18'/> 3.2.1.1.2.1.  Create Space
-1. ① Click "Organization Management" Link or ②"Organization Management" at the menu to proceed to organization dashboard page.
+1. ① Click the "Organization Management" Link or ②"Organization Management" at the menu to proceed to the organization dashboard page.
 ![2-3-1]
 
 2.  Click “View Details” on the right side.
 ![3-2-1-1-2-1-0]
 
-3.  Click "+ Create Space" then enter space name.
+3.  Click "+ Create Space" then enter the space name.
 ![3-2-1-1-2-1-1]
 
 4.  Click “Create” to complete creating space.
 ![3-2-1-1-2-1-2]
 
 ### <div id='27'/> 3.2.1.1.2.2.  Modify Space Name
-1.  Click  ① "Notepad" to modify space name. 
+1.  Click  ① "Notepad" to modify the space name. 
 ![3-2-1-2-1-1-0]
 
-2. Enter new space name. Click "Change” to complete changing space name.
+2. Enter the new space name. Click "Change” to complete changing space name.
 ![3-2-1-2-1-1-1]
 
 ### <div id='28'/> 3.2.1.1.2.3.  Delete Space
 1.  Click ①“Trash bin”.
 ![3-2-1-2-1-2-0]
 
-2.  Click the "Delete" button on the confirm pop-up to complete the deletion of the space.
+2.  Click the "Delete" button on the confirmation pop-up to complete the deletion of the space.
 ![3-2-1-2-1-2-1]
 
 ### <div id='19'/> 3.2.1.1.3.  Domain Management
@@ -303,7 +303,7 @@ This chapter describes the three main categories of PaaS-TA user portals.
 1.  Click the ① "Trash bin"button of the domain to delete.
 ![3-2-1-1-3-2-0]
 
-2.  Click the "Delete" button on the confirm pop-up to complete the domain deletion.
+2.  Click the "Delete" button on the confirmation pop-up to complete the domain deletion.
 ![3-2-1-1-3-2-1]
 
 
@@ -318,7 +318,7 @@ This chapter describes the three main categories of PaaS-TA user portals.
 2.  Enter the user account to invite. Empower the organization, the space.
 ![3-2-1-1-4-1-1]
 
-3.  Click “Invite” button to complete inviting.
+3.  Click the “Invite” button to complete inviting.
 ![3-2-1-1-4-1-2]
 
 4.  An email is sent to the user who has been invited. The invited user will have access to the organization when “Accept Invite" link has been clicked.
@@ -337,16 +337,16 @@ This chapter describes the three main categories of PaaS-TA user portals.
 ![3-2-1-2-2-0]
 
 ### <div id='31'/> 3.2.1.2.1.1.  Create Application
-1.  Click "Dashboard" menu to go to the Dashboard page. Set the organization and space of the dashboard, and select the Application tab menu.
+1.  Click the "Dashboard" menu to go to the Dashboard page. Set the organization and space of the dashboard, and select the Application tab menu.
 ![3-2-1-2-1-3-0]
 
-2.  Click ① "+" and proceed to catalog menu.
+2.  Click ① "+" and proceed to the catalog menu.
 ![3-2-1-2-1-3-1]
 
 3.  Click ① App Development Environment at the Catalog list. Select ② App Development Environment to create.
 ![3-2-2-3-0]
 
-4.  Enter necessary inputs needed to create an app development environment.
+4.  Enter the necessary inputs needed to create an app development environment.
 ![3-2-2-3-1]
 
  -  Choose Organization from **Organization List**. <br>
@@ -357,89 +357,89 @@ This chapter describes the three main categories of PaaS-TA user portals.
  -  Set **App Launch Status**. <br>
  -  Upload file in case of user app being used. <br>
 
-5.  Click “Create User App” or “Create Sample App” to complete creating app development environment.
+5.  Click “Create User App” or “Create Sample App” to complete creating an app development environment.
 
 ### <div id='32'/> 3.2.1.2.1.2.  Modify Application Name
-1.  Click ① sub menu of the application of the application to rename in the list and click ② "Change App Name".
+1.  Click ① sub-menu of the application to rename in the list and click ② "Change App Name".
 ![3-2-1-2-2-4-0]
 
-2.  Enter new name of the application. Click "Change" to complete application name change.
+2.  Enter the new name of the application. Click "Change" to complete the application name change.
 ![3-2-1-2-2-4-1]
 
 ### <div id='33'/> 3.2.1.2.1.3.  Run/ Stop Application
-1.  Click ① sub menu of the application to stop then click ②“Stop”(■) or “Run"(▶).
+1.  Click ① sub-menu of the application to stop then click ②“Stop”(■) or “Run"(▶).
 ![3-2-1-2-2-3-0]
 
 2.  Enter the name of the application to run. Click the "Stop" button to stop running the application.
 ![3-2-1-2-2-3-1]
 
 ### <div id='34'/> 3.2.1.2.1.4.  Delete Application
-1.  Click  ① sub menu of the application to delete from the list and click ②“Delete”.
+1.  Click  ① sub-menu of the application to delete from the list and click ②“Delete”.
 ![3-2-1-2-2-5-0]
 
-2.  Click the "Delete" button on the confirm pop-up to complete the application deletion.
+2.  Click the "Delete" button on the confirmation pop-up to complete the application deletion.
 ![3-2-1-2-2-5-1]
 
 ### <div id='36'/> 3.2.1.2.2.  Service Management
 ![3-2-1-2-3-0]
 
 ### <div id='37'/> 3.2.1.2.2.1.  Create Service
-1.  Click "Dashboard" menu to go to the Dashboard page. Set the organization and space of the dashboard, and select the Application tab menu.
+1.  Click the "Dashboard" menu to go to the Dashboard page. Set the organization and space of the dashboard, and select the Application tab menu.
 ![3-2-1-2-1-4-0]
 
-2. Click ① "+" to proceed to catalog menu.
+2. Click ① "+" to proceed to the catalog menu.
 ![3-2-1-2-1-4-1]
 
-3.   Click ① App development Environment from catalog list. Select ② Service Environment to create.
+3.   Click ① App development Environment from the catalog list. Select ② Service Environment to create.
 ![3-2-2-4-0]
 
-4.  Enter the necessary inputs to create service.
+4.  Enter the necessary inputs to create a service.
 ![3-2-2-4-1]
 
- -  Choose location from **Location List**. <br>
- -  Choose organization from **Organization List**. <br>
+ -  Choose a location from **Location List**. <br>
+ -  Choose an organization from **Organization List**. <br>
  -  Choose space from **Space List**. <br>
  -  Enter **Service Name**.  <br>
  -  Enter **Service Parameter**. (Appears only when service parameter is required.)  <br>
  -  Choose an app to connect from **App List** or click ‘Start without connecting an app’. <br>
  -  Select Service Plan from **Service Specification Selection List**. <br>
 
-5.  Click "Create”  button to complete creating.
+5.  Click the "Create”  button to complete creating.
 ![3-2-2-4-2]
 
 ### <div id='38'/> 3.2.1.2.2.2.  Modify Service Name
-1.  Click ① sub menu of the service to rename and click ② "Modify Service".
+1.  Click ① sub-menu of the service to rename and click ② "Modify Service".
 ![3-2-1-2-3-4-0]
 
-2. Enter the new name of the service. Click "Change" button to complete the service name change.
+2. Enter the new name of the service. Click the "Change" button to complete the service name change.
 ![3-2-1-2-3-4-1]
 
 ### <div id='39'/> 3.2.1.2.2.4.  Delete Service
-1.   Click ① sub menu of the service to delete from the list and click ②“delete”.
+1.   Click ① sub-menu of the service to delete from the list and click ②“delete”.
 ![3-2-1-2-3-5-0]
 
-2.  Click “Delete” button on the confirm pop-up to complete deletion of the service.
+2.  Click the “Delete” button on the confirmation pop-up to complete the deletion of the service.
 ![3-2-1-2-3-5-1]
 
-### <div id='40'/> 3.2.1.2.3.1.  Create User Provided Service
+### <div id='40'/> 3.2.1.2.3.1.  Create User-Provided Service
 1.  Click “Create User Provided”.
 ![3-2-1-2-3-3-0]
 
-2.  Enter Service Name, Credentials, and Syslog Drain URL. Click “Create” button to complete creating User Provided Service.
+2.  Enter Service Name, Credentials, and Syslog Drain URL. Click the “Create” button to complete creating User Provided Service.
 ![3-2-1-2-3-3-1]
 
 ### <div id='41'/> 3.2.1.2.3.2.  Modify User Provided Service
-1.  Click ① sub menu of the User Provided Service to rename from the list and click ② "Modify Service".
+1.  Click ① sub-menu of the User Provided Service to rename from the list and click ② "Modify Service".
 ![userprovide-service]
 
-2.  Enter Service Name, Credentials, and Syslog Drain URL of the service to modify.Click “Modify” button from the confirm pop-up to complete User Provided Service Modification.
+2.  Enter the Service Name, Credentials, and Syslog Drain URL of the service to modify. Click the “Modify” button from the confirm pop-up to complete User Provided Service Modification.
 ![userprovide-service2]
 
 ### <div id='42'/> 3.2.1.2.3.3.  Delete User Provided Service
-1.  Click ① sub menu of the User Provided Service to delete from the list and click  ②“Delete”.
+1.  Click ① sub-menu of the User Provided Service to delete from the list and click  ②“Delete”.
 ![userprovide-del]
 
-2.  Click the "Delete" button on the confirm pop-up to complete the deletion of the User Provided service.
+2.  Click the "Delete" button on the confirmation pop-up to complete the deletion of the User Provided service.
 ![userprovide-del2]
 
 ### <div id='43'/> 3.2.1.3.  Application
@@ -448,10 +448,10 @@ Click the name of the application created in the catalog list to go to the appli
 ![3-2-1-3-1-0]
 
 ### <div id='45'/> 3.2.1.3.1.1.  Modify Application Name
-1.  Click ① sub menu and click list ② "Change Name".
+1.  Click ① sub-menu and click list ② "Change Name".
 ![3-2-1-3-1-1-0]
 
-2.  Enter the new name of the application. Click imaged button ①“Save” to complete modifying application name.
+2.  Enter the new name of the application. Click imaged button ①“Save” to complete modifying the application name.
 ![3-2-1-3-1-1-1]
 
 ### <div id='46'/> 3.2.1.3.1.2.  Restart Application
@@ -459,18 +459,18 @@ Click the name of the application created in the catalog list to go to the appli
 ![3-2-1-3-1-4-0]
 
 ### <div id='47'/> 3.2.1.3.1.3.  Run/Stop Application
-1.  Click ①“Run” or “Stop” imaged button.
+1.  Click the ①“Run” or “Stop” image button.
 ![3-2-1-3-1-3-0-00]
 
 ### <div id='48'/> 3.2.1.3.1.4.  Delete Application
-1.  Click ① sub menu and click ② "delete" from the list.
+1.  Click ① sub-menu and click ② "delete" from the list.
 ![3-2-1-3-1-2-0]
 
-2.  CLick “delete” button from the confirm pop-up to complete deletion of the application.
+2.  Click the “delete” button from the confirm pop-up to complete the deletion of the application.
 ![3-2-1-3-1-2-1]
 
 ### <div id='49'/> 3.2.1.3.1.5.  Number of Instance/Memory Capacity/Disk Capacity Setting
-1.  After setting ① Number of Instance, ② Memory Capacity, ③ Disk Capacity, click “Save” button from each.
+1.  After setting ① Number of Instance, ② Memory Capacity, and ③ Disk Capacity, click the “Save” button from each.
 ![3-2-1-3-1-5-0]
 
 ### <div id='50'/> 3.2.1.3.2.  Event
@@ -482,14 +482,14 @@ Click the name of the application created in the catalog list to go to the appli
 ![3-2-1-3-2-1-0]
 
 ### <div id='52'/> 3.2.1.3.3.  Status
-1.  Click ①“Status” menu or ② View all.
+1.  Click the ①“Status” menu or ② View all.
 ![3-2-1-3-3-0]
 
-2.  Can check the following information from the status list: Status, CPU, Memory, Disk, UPTIME(updatetime), and RESTART. Instance can be restarted with "RESTART" button.
+2.  Can check the following information from the status list: Status, CPU, Memory, Disk, UPTIME(updatetime), and RESTART. An instance can be restarted with the "RESTART" button.
 ![3-2-1-3-3-1]
 
 ### <div id='52-1'/> 3.2.1.3.3.1.  SSH Access
-1.  Click ①“Status” menu or ② View all.
+1.  Click the ①“Status” menu or ② View all.
 ![3-2-1-3-3-1-0]
 
 2.  Click “SSH Connect” according to the corresponding instance number to access.
@@ -506,31 +506,31 @@ Click the name of the application created in the catalog list to go to the appli
 1.  Click “+ Connect Service”.
 ![3-2-1-3-4-1-0]
 
-2.  Click “Connect” button after selecting service from the list.
+2.  Click the “Connect” button after selecting a service from the list.
 ![3-2-1-3-4-1-1] <br>
-     > **The list of services found are only for services that can be app bounded.** 
+     > **The list of services found is only for services that can be app bounded.** 
      
-3.  Click “Save” button to complete connecting after checking the confirm pop-up.
+3.  Click the “Save” button to complete connecting after checking the confirmation pop-up.
 ![3-2-1-3-4-2-3]
 
-4.  Click App “Restart” button from the App restart confirm pop-up screen.
+4.  Click the App “Restart” button from the App restart confirm pop-up screen.
 ![3-2-1-3-4-2-4]
      
 ### <div id='78'/> 3.2.1.3.4.2.  Service Information
-1.  Click ① "Notepad" button to check service access information from the list.
+1.  Click the ① "Notepad" button to check service access information from the list.
 ![3-2-1-3-4-2-2]
 
-2.  Can check the following information through the confirm pop-up screen: Hostname, jdbcUrl, Name,Port, Username, and Password.
+2.  Can check the following information through the confirm pop-up screen: Hostname, jdbcUrl, Name, Port, Username, and Password.
 ![3-2-1-3-4-2-1]
 
 ### <div id='55'/> 3.2.1.3.4.3.  Unconnect Service
-1.  Click “Unconnect” button of the service to unconnect from the list.
+1.  Click the “Unconnect” button of the service to unconnect from the list.
 ![3-2-1-3-4-2-0]
 
-2.  Click "Save" button from the confirm pop-up to complete the disconnect service.
+2.  Click the "Save" button from the confirm pop-up to complete the disconnect service.
 ![3-2-1-3-4-2-5]
 
-3.  Click “Restart” button from the App restart confirm pop-up.
+3.  Click the “Restart” button from the App restart confirm pop-up.
 ![3-2-1-3-4-2-4]
 
 ### <div id='56'/> 3.2.1.3.5.  Environment Variable
@@ -538,21 +538,21 @@ Click the name of the application created in the catalog list to go to the appli
 ![3-2-1-3-5-0]
 
 ### <div id='57'/> 3.2.1.3.5.1.  Add Environment Variable
-1.  CLick ①“+ Add” button. Enter environment variable name and value.Click ②“Save” button to complete adding environment variable.
+1.  CLick ①“+ Add” button. Enter environment variable name and value. Click ②“Save” button to complete adding the environment variable.
 ![3-2-1-3-5-1-0]
 
 ### <div id='58'/> 3.2.1.3.5.2.  Modify Environment Variable
-1.  Click ① "Notepad" button of the environment variable to modify from the list.
+1.  Click the ① "Notepad" button of the environment variable to modify from the list.
 ![3-2-1-3-5-2-0]
 
-2.  After modifying the value of the environment variable, click  "Save" button to complete the modification.
+2.  After modifying the value of the environment variable, click the "Save" button to complete the modification.
 ![3-2-1-3-5-2-1]
 
 ### <div id='59'/> 3.2.1.3.5.3.  Delete Environment Variable
-1.  Click ①“Trashbin" button of the environment variable to delete from the list.
+1.  Click the ①“Trashbin" button of the environment variable to delete it from the list.
 ![3-2-1-3-5-3-0]
 
-2.  Click “Delete” button from the confirm pop-up to complete delation of the environment variable.
+2.  Click the “Delete” button from the confirm pop-up to complete the deletion of the environment variable.
 ![3-2-1-3-5-3-1]
 
 ### <div id='60'/> 3.2.1.3.6.  Route
@@ -560,19 +560,19 @@ Click the name of the application created in the catalog list to go to the appli
 ![3-2-1-3-6-0]
 
 ### <div id='61'/> 3.2.1.3.6.1.  Add Route
-1.  Click “+Connect” button.
+1.  Click the “+Connect” button.
 ![3-2-1-3-6-1-0]
 
 2.  Enter the name of the route to add. Click "Save".
 
-3.  Click "OK" button from the confirm pop-up to complete adding route.
+3.  Click the "OK" button from the confirm pop-up to complete adding a route.
 
 ### <div id='62'/> 3.2.1.3.6.2.  Unconnect Route
-1.  Click “Unconnect” button of the route to remove from the list.
+1.  Click the “Unconnect” button of the route to remove it from the list.
 ![3-2-1-3-6-2-0]
 
 ### <div id='63'/> 3.2.1.3.7.  Log
-1.  Click ①“Log” menu or ② View all.
+1.  Click the ①“Log” menu or ② View all.
 ![3-2-1-3-7-0]
 
 ### <div id='64'/> 3.2.1.3.7.1.  Log Management
@@ -583,7 +583,7 @@ Click the name of the application created in the catalog list to go to the appli
 1.  Clock ① **</>Tail Logs** link to check the newly opened Tail Logs page. Click ② "URL LInk". 
 ![3-2-1-3-7-1-1] 
 
-2.  Check Tail Logs tab to view the output of real time log from the URL page opened.
+2.  Check the Tail Logs tab to view the output of the real-time log from the URL page opened.
 ![3-2-1-3-7-1-2]
 
 ### <div id='91'/> 3.2.1.3.7.3. Auto Scaling
@@ -593,17 +593,17 @@ Click the name of the application created in the catalog list to go to the appli
 ![3-2-1-3-7-1-3]
 1.  Click monitoring of ① App Layout. Click ② Setting tab button.
 
-2.  Number of Instances: In case of auto-scaling, input the minimum and maximum number of instances.
+2.  Number of Instances: In the case of auto-scaling, input the minimum and maximum number of instances.
 
-3.  CPU Threshold Value(%) : (③ Checked box being checked means threshold will be applied. Unchecked -> not applied) When Auto-scaling, enter minimum and maximum CPU value.\
-(Number of Instances increases when CPU percentage increases than the applied maximum instance. On the other hand, the number of instances decreases when instance is lower than the minimum instance)
+3.  CPU Threshold Value(%) : (③ Checked box being checked means threshold will be applied. Unchecked -> not applied) When Auto-scaling, enter a minimum and maximum CPU value.\
+(Number of Instances increases when CPU percentage increases than the applied maximum instance. On the other hand, the number of instances decreases when the instance is lower than the minimum instance)
 
-4. Memory Threshold Value(%)  :(③ ③ Checked box being checked means threshold will be applied. Unchecked -> not applied) When Auto-scaling, enter minimum and maximum memory value.\
-(Number of Instances increases when CPU percentage increases than the applied maximum instance. On the other hand, the number of instances decreases when instance is lower than the minimum instance)
+4. Memory Threshold Value(%)  :(③ ③ Checked box being checked means threshold will be applied. Unchecked -> not applied) When Auto-scaling, enter a minimum and maximum memory value.\
+(Number of Instances increases when CPU percentage increases than the applied maximum instance. On the other hand, the number of instances decreases when the instance is lower than the minimum instance)
 
 5. Time Measure(Second): Apply time measurement. The average value of each instance's memory and CPU values for the measured time is calculated and auto-scaling is applied.
 
-6. Instance increse/decrease value: Apply the number of instances to increase during auto-scaling.
+6. Instance increase/decrease value: Apply the number of instances to increase during auto-scaling.
 
 7. Virtual Machine Auto-expansion: Apply whether to automatically create an instance.
 
@@ -613,11 +613,11 @@ Click the name of the application created in the catalog list to go to the appli
 
 ### <div id='92'/> 3.2.1.3.7.4. Notification Setting
 ![3-2-1-3-7-1-4]
-1.  CPU Threshold Value(%) : Enter minimum and maximum CPU value of notification.\
+1.  CPU Threshold Value(%) : Enter the minimum and maximum CPU value of the notification.
 (Notification appears when the instance increases/decreases than what is applied at the CPU value percentage.)
 
-4. Memory Threshold Value(%):Enter the minimum and maximum memory value of notification.\
-(Number of Instances increases when CPU percentage increases than the applied maximum instance. On the other hand, the number of instances decreases when instance is lower than the minimum instance)
+4. Memory Threshold Value(%):Enter the minimum and maximum memory value of the notification.
+(Number of Instances increases when CPU percentage increases than the applied maximum instance. On the other hand, the number of instances decreases when the instance is lower than the minimum instance)
 
 5. Time Measure(Second): Apply time measurement. The average value of each instance's memory and CPU values for the measured time is calculated and auto-scaling is applied.
 
@@ -628,14 +628,14 @@ Click the name of the application created in the catalog list to go to the appli
 8. Click change to save settings.
 
 ### <div id='65'/> 3.2.2.  Catalog
-1.  Go to Catalogs page by clicking the “Catalog” button at the menu on top.
+1.  Go to the Catalogs page by clicking the “Catalog” button at the menu on top.
 ![3-2-2-0]
 
 ### <div id='66'/> 3.2.2.1.  Search Catalog
-1.  Results searched from ① Catalog Search automatically shows its outputs. 
+1.  Results searched from ① Catalog Search automatically show its outputs. 
 ![3-2-2-1-0]
 
-### <div id='67'/> 3.2.3.  Decument
+### <div id='67'/> 3.2.3.  Document
 1.  Click the "Documents" button on the top menu to go to the document page.
 ![3-2-4-0]
 
@@ -645,7 +645,7 @@ Click the name of the application created in the catalog list to go to the appli
 ![3-2-7-1-0]
 
 ### <div id='69'/> 3.2.5.  My Account
-1.  Go to My accounts dashboard page by clicking "My Account" from the menu on right.
+1.  Go to the My accounts dashboard page by clicking "My Account" from the menu on right.
 ![3-2-7-2-0]
 
 ### <div id='70'/> 3.2.5.1.  Profile
@@ -659,17 +659,17 @@ Click the name of the application created in the catalog list to go to the appli
 ![3-2-7-2-1-0-1]
 
 ### <div id='72'/> 3.2.5.2.1. Change Password
-1.  Click ①“Notepad” button.
+1.  Click the ①“Notepad” button.
 ![3-2-7-2-1-2-0]
 
-2.  Enter recent password and new password. Click “Change” button to complete.
+2.  Enter recent password and new password. Click the “Change” button to complete.
 ![3-2-7-2-1-2-1]
 
 ### <div id='73'/> 3.2.5.3.  User Information
 ![3-2-7-2-1-0]
 
 ### <div id='74'/> 3.2.5.3.1  Use Name
-1. Enter new name. Click "Change" button to complete.
+1. Enter new name. Click the "Change" button to complete.
 ![userinfo-name]
 
 ### <div id='75'/> 3.2.5.3.2  User Contact Number
@@ -677,40 +677,40 @@ Click the name of the application created in the catalog list to go to the appli
 ![userinfo-phone]
 
 ### <div id='76'/> 3.2.5.3.3 User Postal Code
-1. When entering a new postal code, up to 15 characters or less letters and number can be entered. Click "Change" button to complete the process.
+1. When entering a new postal code, up to 15 characters or fewer letters and numbers can be entered. Click the "Change" button to complete the process.
 ![userinfo-cz]
 
 ### <div id='77'/> 3.2.5.3.3 User Address
-1. When entering new address, up to 256 characters or less letters and number can be entered. Click "Change" button to complete the process.
+1. When entering a new address, up to 256 characters or fewer letters and numbers can be entered. Click the "Change" button to complete the process.
 ![userinfo-add]
 
 ### <div id='81'/>  3.2.5.4.  My Organization
 ![3-2-7-2-1-0-2]
 
 ### <div id='79'/> 3.2.5.4.1  Leave My Organization
-1.  Click ① "Trashbin" button of the organization to leave from the list.
+1.  Click the ① "Trashbin" button of the organization to leave the list.
 ![3-2-7-2-4-3-0]
 
-2.  Click “Delete” button from the confirm pop-up to complete the process.
+2.  Click the “Delete” button from the confirm pop-up to complete the process.
 ![3-2-7-2-4-3-1]
 
 ### <div id='80'/> 3.2.5.5.  Delete Account
-1.  Click “Delete Account” button.
+1.  Click the “Delete Account” button.
 ![3-2-7-2-2-2-1]
 
-2.  Enter user ID and password at the confirm pop-up. Click “Delete” button to complete the process.
+2.  Enter user ID and password at the confirm pop-up. Click the “Delete” button to complete the process.
 ![3-2-7-2-2-2-0]
 
 ### <div id='81'/> 3.2.5.6.  Logout
-1.  Click “Logout” from menu on the left side.
+1.  Click “Logout” from the menu on the left side.
 ![3-2-7-4-0]
 
 ### <div id='82'/> 3.3.6.1.  CAAS Deployments 
-1.  Click Deployment tab of the CAAS service installed organization.
+1.  Click the Deployment tab of the CAAS service installed organization.
 ![cass-dashboard1]
 
 ### <div id='83'/> 3.3.6.2.  CAAS Pods
-1.  Click Pods tab of the CAAS service installed organization.
+1.  Click the the Pods tab of the CAAS service installed organization.
 ![cass-dashboard2]
 
 ### <div id='84'/> 3.3.6.3.  CAAS Replica Sets
@@ -718,7 +718,7 @@ Click the name of the application created in the catalog list to go to the appli
 ![cass-dashboard3]
 
 ### <div id='85'/> 3.3.6.4.  CAAS Pvc
-1.  Click Pvc tab of the CAAS service installed organization.
+1.  Click the Pvc tab of the CAAS service installed organization.
 ![cass-dashboard4]
 
 [2-1-0]:./images/user-portal/2-1-0.png

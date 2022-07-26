@@ -47,7 +47,7 @@
 This document describes how to use configuration management user.
 
 ### <div id='3'/> 1.2. Range
-This document is written on how to use the Configuration Management User Portal based on Windows environment.
+This document is written on how to use the Configuration Management User Portal based on the Windows environment.
 
 # <div id='4'/> 2. PaaS-TA User Portal Service
 
@@ -66,19 +66,19 @@ One Configuration Management Service can be created per organization. Refer to P
 1.	Access to PaaS-TA User Portal.  
 ![002]
 
-2. Click "Login" button.  
+2. Click the "Login" button.  
 ![003]
 
-3.	Enter the email address and password to use and click “SIGN IN” button.  
+3.	Enter the email address and password to use and click the “SIGN IN” button.  
 ![004]
 
-4.	When logged in, it goes to dashboard page. Enter the organization name to create and click “Create Organization” button.  
+4.	When logged in, it goes to the dashboard page. Enter the organization name to create and click the “Create Organization” button.  
 ![005]
 
-5.	When an Organization is created, organization, space, domain and user appear on screen. Click “Catalog” menu on top and proceed to catalog list page.
+5.	When an Organization is created, organization, space, domain, and user appear on the screen. Click the “Catalog” menu on top and proceed to the catalog list page.
   !![006]
 
-6.	At the very bottom part of catalog's [Integrated Development Tool] List, click  “Configuration Management Service” image to go to the configuration management's details page.  
+6.	At the very bottom part of the catalog's [Integrated Development Tool] List, click the “Configuration Management Service” image to go to the configuration management's details page.  
 ![007]
 
 7.	On the detailed page of the configuration management service, input the content for creating the configuration management service. Enter the service name in English and click the "Create" button to complete creating the configuration management service instance and proceeds to the space dashboard.  
@@ -87,23 +87,23 @@ One Configuration Management Service can be created per organization. Refer to P
 8.	Check the Configuration Management Service Instance that was entered at the space dashboard. Go to Configuration Management Dashboard by clicking the “Dashboard” button on the right side of Configuration Management Service Instance.  
 ![009]
 
-9.	When using the dashboard for the first time after creating a Configuration Management Service, enter password between 6~16 letters.  
+9.	When using the dashboard for the first time after creating a Configuration Management Service, enter a password between 6~16 letters.  
 ![010]
 
 ### <div id='9'/> 3.1.2. Repository Contributor Authority Management
-The purpose of managing the Repository Contributor Authority is to give authorities to the contributors. The management are the followings: 
+The purpose of managing the Repository Contributor Authority is to give authority to the contributors. The management is the followings: 
 Add, delete, and check Repository Contributor authority, check Instance User authority, search User ID repository contributor, and search instance ID through filtering.
 
 ### <div id='10'/> 3.1.2.1.1. Add Repository Contributor Authority
 1.	On the Configuration Management Repository List page, click the name of the repository to add authority.  
 ![011]
 
-2.	Once it's clicked, it will take you to the Repository Details page. Among the three tabs on the page, click the rightmost tab, Contributor tab, which is located below the 'View/Edit Details' and 'Create New' buttons.
+2.	Once it's clicked, it will take you to the Repository Details page. Among the three tabs on the page, click the rightmost tab, the Contributor tab, which is located below the 'View/Edit Details' and 'Create New' buttons.
 
-3.	Click “Add Contributor” button once the page appears.  
+3.	Click the “Add Contributor” button once the page appears.  
 ![012]
 
-4.	Enter the User to give authority within [Search Source Controller User]. After checking the user in the user search list, click "+" icon.  
+4.	Enter the User to give authority within [Search Source Controller User]. After checking the user in the user search list, click the "+" icon.  
 ![013]
 
 5.	Bellow [Search Source Controller User], [Invite Contributor], Authority and descriptions are shown.
@@ -115,11 +115,11 @@ After checking the information of User ID, Name, and Email added in [Invite Cont
 
 
 ### <div id='11'/> 3.1.2.1.2. Delete Repository Contributor Authority
-1.	Click the contributor to remove authority from the users list.
+1.	Click the contributor to remove authority from the user's list.
 
 2.	Click the repository name from the contribution management repository list.
 
-3.	Once it's clicked, it will take you to the Repository Details page. Among the three tabs on the page, click the rightmost tab, Contributor tab, which is located below the 'View/Edit Details' and 'Create New' buttons.
+3.	Once it's clicked, it will take you to the Repository Details page. Among the three tabs on the page, click the rightmost tab, the Contributor tab, which is located below the 'View/Edit Details' and 'Create New' buttons.
 
 4.	Once the screen appears, click the repository contributor authority to delete.  
 ![016]
@@ -127,11 +127,11 @@ After checking the information of User ID, Name, and Email added in [Invite Cont
     Or, adding authority to Repository Contributors likewise, enter the name of the contributor whose authority is to be removed in [Search Source Controller User]. Check the searched user and click the '-' icon beside it.  
 ![013]
 
-5.	When Notification “Contributor has been Deleted.” appears, the repository contributor authority has been deleted successfully.
+5.	When the Notification “Contributor has been Deleted.” appears, the repository contributor authority has been deleted successfully.
 
 
 ### <div id='12'/> 3.1.2.1.3. Check Repository Contributor Authority
-1.	From the Repository Details page. Among the three tabs on the page, click the rightmost tab, Contributor tab, which is located below the 'View/Edit Details' and 'Create New' buttons.
+1.	From the Repository Details page. Among the three tabs on the page, click the rightmost tab, the Contributor tab, which is located below the 'View/Edit Details' and 'Create New' buttons.
 
 2.	A list of all the contributors who created their repositories can be checked. Whether the contributor is managing configuration can be checked by the Active/Inactive image located on the right side of the page. The status of Repository Contributor Authority can be checked by Owner/Write/View images next to the Active/Inactive images.  
 ![017]
@@ -141,10 +141,10 @@ After checking the information of User ID, Name, and Email added in [Invite Cont
 
 
 ### <div id='13'/> 3.1.2.1.4. Check Instance User Authority
-1.	Click repository name to check the contributor authority from the repository list.  
+1.	Click the repository name to check the contributor authority from the repository list.  
 ![019]
 
-2.	Contributor's list can be checked by clicking “Contributor” located on the right side of the repository details tab. Contributor can be searched with the conditions of three following combobox:  “Contributor ID search”, “All/View/Modify", or “All/Active/Inactive”.  
+2.	Contributor's list can be checked by clicking “Contributor” located on the right side of the repository details tab. A contributor can be searched with the conditions of three following Combobox:  “Contributor ID search”, “All/View/Modify", or “All/Active/Inactive”.  
 ![020]
 
 
@@ -163,7 +163,7 @@ After checking the information of User ID, Name, and Email added in [Invite Cont
 1.	Repository Contributors can be searched from the search tab on the left side of the Users list page. Enter or click the magnifying glass after entering the ID or Name to search.  
 ![024]
 
-2.	Using of capital letters doesn't matter on the User's list page. Contributors can be searched according to authority other than the search function (All/Administrator/User) and (All/Active/Inactive).  
+2.	Using of capital letters doesn't matter on the User's list page. Contributors can be searched according to an authority other than the search function (All/Administrator/User) and (All/Active/Inactive).  
 ![025]
 
 
@@ -173,16 +173,16 @@ After checking the information of User ID, Name, and Email added in [Invite Cont
 2.	After logging in, click “Dashboard” from the top of creating organization page's menu to proceed to the organization dashboard page. Click the “dev” space name located at the center of the screen to go to the space dashboard.  
 ![026]
 
-3.	Click “Dashboard” button to go to the configuration management dashboard from the space dashboard configuration management service instance.  
+3.	Click the “Dashboard” button to go to the configuration management dashboard from the space dashboard configuration management service instance.  
 ![027]
 
-4.	When using the dashboard for the first time after creating a Configuration Management Service, enter password between 6~16 letters. (When registering created configuration management service, it automatically goes to configuration management dashboard.)  
+4.	When using the dashboard for the first time after creating a Configuration Management Service, enter a password between 6~16 letters. (When registering created configuration management service, it automatically goes to the configuration management dashboard.)  
 ![028]
 
-5.	Click “Create New” button from the menu on top.  
+5.	Click the “Create New” button from the menu on top.  
 ![029]
 
-6.	Input the repository name in English at the create new repository page, select type(Git, SVN), and click “Create” button. Click “OK” when a notification with the message “Repository was newly created.” appears.
+6.	Input the repository name in English at the create new repository page, select type(Git, SVN), and click the “Create” button. Click “OK” when a notification with the message “Repository was newly created.” appears.
   - Repository Name: XXX (English)
   - Type: Git
   - Repository Description : XXX  
@@ -194,17 +194,17 @@ After checking the information of User ID, Name, and Email added in [Invite Cont
 
 
 ### <div id='18'/> 3.1.3.1.2. Check User Repository List
-1.	Check the user's repository list by searching the Repository List page, combobox configuration management type, all repositories, and updating sequence from the repository list page.
+1.	Check the user's repository list by searching the Repository List page, Combobox configuration management type, all repositories, and updating sequence from the repository list page.
 
 
 ### <div id='19'/> 3.1.3.1.3. Delete Repository
 1.	Go to the repository details page by clicking the repository name on the repository list page.  
 ![019]
 
-2.	Click “View information/Modify” button on the right side of repository details page.  
+2.	Click the “View information/Modify” button on the right side of the repository details page.  
 ![031]
 
-3.	Click “Delete Repository” button at the right-bottom part of the view information/modify the page.  
+3.	Click the “Delete Repository” button at the right-bottom part of the view information/modify the page.  
 ![032]
 
 
@@ -217,7 +217,7 @@ After checking the information of User ID, Name, and Email added in [Invite Cont
 
 
 ### <div id='21'/> 3.1.3.1.5. Check Repository Details
-Can check the File,Commit, and Contributor at the repository details page.
+Can check the File, Commit, and Contributor on the repository details page.
 
 
 ### <div id='22'/> 3.1.3.1.6. Check Repository File List
@@ -231,17 +231,17 @@ Can check the File,Commit, and Contributor at the repository details page.
 
 
 ### <div id='23'/> 3.1.3.1.6.1. Check Repository Branch List
-1.	Click “Branch”: drop-down to check the branch used before. To search quickly, enter in the branch name at the branch search box.  
+1.	Click “Branch”: drop-down to check the branch used before. To search quickly, enter the branch name in the branch search box.  
 ![036]
 
 
 ### <div id='24'/> 3.1.3.1.6.2. Check Repository Tag List
-1.	Click “Tag”: drop-down to check the Tag used before. To search quickly, enter in the Tag name at the Tag search box.  
+1.	Click “Tag”: drop-down to check the Tag used before. To search quickly, enter the Tag name in the Tag search box.  
 ![037]
 
 
 ### <div id='25'/> 3.1.3.1.7. Check Repository Browser List
-1.	Folder/File Name, Final Commit, File and size, last updates can be checked from the Repository Browser List. SRC and Target can be seen on the first screen with the folder image.  
+1.	Folder/File Name, Final Commit, File and size, and last updates can be checked from the Repository Browser List. SRC and Target can be seen on the first screen with the folder image.  
 ![038]
 
 2.	Click [Folder] image to see other sources and information including the main.
@@ -273,20 +273,20 @@ This chapter describes the usage of 7 menus of the PaaS-TA User Portal.
 
 
 ### <div id='30'/> 3.1.4.1.3. Delete User
-1.	Click the user to delete from the user list.
+1.	Click the user to delete it from the user list.
 
-2.	Click “Delete User” button on the bottom-left part of the User Detail/Modify/Delete Page.  
+2.	Click the “Delete User” button on the bottom-left part of the User Detail/Modify/Delete Page.  
 ![044]
 
 
 ### <div id='31'/> 3.1.4.1.4. Modify User
 1.	Click the user to modify from the user list.
 
-2.	Click “Modify User” button on the bottom-left part of the User Detail/Modify/Delete Page.  
+2.	Click the “Modify User” button on the bottom-left part of the User Detail/Modify/Delete Page.  
 ![045]
 
 
-### <div id='32'/> 3.1.4.1.5. Check User's Detailed Informations
+### <div id='32'/> 3.1.4.1.5. Check User's Detailed Information
 1.	Users created and added are identified on the Users List page.
 
 2.	Click the ID of the Repository Contributor to check the Authority and go to the User Detail/Modify/Delete page.  
@@ -297,7 +297,7 @@ This chapter describes the usage of 7 menus of the PaaS-TA User Portal.
 
 
 ### <div id='33'/> 3.1.4.1.6. Check Users of Service Instance Repository
-1.	From the Repository Details page. Among the three tabs on the page, click the rightmost tab, Contributor tab, which is located below the 'View/Edit Details' and 'Create New' buttons.
+1.	From the Repository Details page. Among the three tabs on the page, click the rightmost tab, the Contributor tab, which is located below the 'View/Edit Details' and 'Create New' buttons.
 
 2.	A list of all the contributors who created their repositories can be checked. Whether the contributor is managing configuration can be checked by the Active/Inactive image located on the right side of the page. The status of Repository Contributor Authority can be checked by Owner/Write/View images next to the Active/Inactive images.  
 ![017]
@@ -309,9 +309,9 @@ This chapter describes the usage of 7 menus of the PaaS-TA User Portal.
 2.	Click the Repository Name from the Configuration Management Repository List page.  
 ![011]
 
-3.	Once clicked, it goes to the Repository details page. Among the three tabs on the page, click the rightmost tab, Contributor tab, which is located below the 'View/Edit Details' and 'Create New' buttons.
+3.	Once clicked, it goes to the Repository details page. Among the three tabs on the page, click the rightmost tab, the Contributor tab, which is located below the 'View/Edit Details' and 'Create New' buttons.
 
-4.	Click “Add Contributor” button from the page.  
+4.	Click the “Add Contributor” button from the page.  
 ![012]
 
 5.	 Enter the name of the contributor whose authority is to be removed in [Search Source Controller User]. Check the searched user and click the '-' icon beside it.  

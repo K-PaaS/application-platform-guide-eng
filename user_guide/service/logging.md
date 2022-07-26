@@ -50,11 +50,11 @@ This document is written about how to use the Logging service based on a Windows
 # <div id='2'/> 2. Logging Service Access
 
 ## <div id='2-1'/> 2.1 PaaS-TA User Portal Access
-- Click “Login” button from the accessed PaaS-TA User Portal.
+- Click the “Login” button from the accessed PaaS-TA User Portal.
 
 ![001]
 
-- Enter User ID and Password and click “SIGN IN” button and log in to PaaS-TA User Portal.
+- Enter User ID and Password and click the “SIGN IN” button and log in to PaaS-TA User Portal.
 ![002]
 
 - Click "Application Name" after logging in and go to the application details page.
@@ -62,7 +62,7 @@ This document is written about how to use the Logging service based on a Windows
 
 ## <div id='2-2'/> 2.2 Logging Service Access
 
-- Click "Log" Menu from the PaaS-TA Portal Application Details page.
+- Click the "Log" Menu from the PaaS-TA Portal Application Details page.
 ![004]
 
 - Click "Log Service" from the Application Log page.
@@ -95,25 +95,25 @@ Click "Discover" on the left side.
 ![007]
 
 #### <div id='3-2-1-1'/> 3.2.1.1. Search New
-Click "New" from "Discover" menu.
+Click "New" from the "Discover" menu.
 ![008]
 
 #### <div id='3-2-1-2'/> 3.2.1.2. Save Search
-Click "Save" from "Discover" menu.
+Click "Save" from the "Discover" menu.
 ![009]
 
 Click "Save" after entering the search word.
 ![010]
 
 #### <div id='3-2-1-3'/> 3.2.1.3. Open Search
-Click "Open" from "Discover" menu.
+Click "Open" from the "Discover" menu.
 ![011]
 
 Click "Search Object Name" from the search list.
 ![012]
 
 #### <div id='3-2-1-4'/> 3.2.1.4. Share Search
-Click "Share" from "Discover" menu.
+Click "Share" from the "Discover" menu.
 ![013]
 
 #### <div id='3-2-1-5'/> 3.2.1.5. Set Search Conditions
@@ -138,13 +138,13 @@ From the  ① area of the "Discover" menu's Selected Fields List, select(②) th
 This chapter describes the visualization composition and management of log data.
 
 #### <div id='3-2-2-1'/> 3.2.2.1. Create Visualization
-Click "Visualize" menu on the left.
+Click the "Visualize" menu on the left.
 ![019]
 
 Click "+" or "+ Create a visualization" button from the "Visualize" menu.
 ![020]
 
-Click type from Select Visualization Type list.
+Click type from the Select Visualization Type list.
 ![021]
 
 Click the index(①) or the "Search Name"(②) at the search list history(saved).
@@ -160,7 +160,7 @@ After entering the visualization name, click the "Save" button.
 ![025]
 
 #### <div id='3-2-2-2'/> 3.2.2.2. Modify Visualization
-Click "Visualize" menu on the left.
+Click the "Visualize" menu on the left.
 ![026]
 
 Click on "Visualization Object Name" in the visualization list.
@@ -171,7 +171,7 @@ Modify data and options(①), and click "Save".
 ![029]
 
 #### <div id='3-2-2-3'/> 3.2.2.3. Share Visualization
-Click "Visualize" menu on the left.
+Click the "Visualize" menu on the left.
 ![026]
 
 Click on "Visualization Object Name" in the visualization list.
@@ -181,7 +181,7 @@ Click "Share" on top.
 ![030]
 
 #### <div id='3-2-2-4'/> 3.2.2.4. Refresh Visualization
-Click "Visualize" menu on the left.
+Click the "Visualize" menu on the left.
 ![026]
 
 Click on "Visualization Object Name" in the visualization list.
@@ -191,7 +191,7 @@ Click "Refresh" on top.
 ![031]
 
 #### <div id='3-2-2-5'/> 3.2.2.5. Visualization Time Range Setting
-Click "Visualize" menu on the left.
+Click the "Visualize" menu on the left.
 ![026]
 
 Click on "Visualization Object Name" in the visualization list.
@@ -201,23 +201,23 @@ Click ① area and select the desired conditions from Time Range.
 ![032]
 
 #### <div id='3-2-2-6'/> 3.2.2.6. Delete Visualization
-Click "Visualize" menu on the left.
+Click the "Visualize" menu on the left.
 ![026]
 
-Select Visualized Object (①) from the Visualize Menu then click ② icon.
+Select Visualized Object (①) from the Visualize Menu then click the ② icon.
 ![033]
 
 ### <div id='3-2-3'/> 3.2.3. Dashboard
 This chapter describes the configuration and management of dashboards using stored search objects and stored visualization objects.
 
 #### <div id='3-2-3-1'/> 3.2.3.1. Create Dashboard
-Click "Dashboard" menu on the left.
+Click the "Dashboard" menu on the left.
 ![034]
 
 Click "+" or "+ Create a dashboard" button.
 ![035]
 
-Click the "Add"(①) on top or "Add" button(②).
+Click the "Add"(①) on top or the "Add" button(②).
 ![036]
 
 Click "Visualization" / "Saved Search" of Add Panels to check the saved object list.
@@ -229,11 +229,11 @@ From the retrieved saved object list, click "Object Name"(①) to configure the 
 Click "Save" on top.
 ![039]
 
-Enter dashboard name and click "Save" button.
+Enter dashboard name and click the "Save" button.
 ![040]
 
 #### <div id='3-2-3-2'/> 3.2.3.2. Modify Dashboard
-Click "Dashboard" menu on the left.
+Click the "Dashboard" menu on the left.
 ![041]
 
 Click "Dashboard Name" from the dashboard list.
@@ -243,7 +243,7 @@ After modifying the dashboard, click the "Save" button on top.
 ![043]
 
 #### <div id='3-2-3-3'/> 3.2.3.3. Share Dashboard
-Click "Dashboard" menu on the left.
+Click the "Dashboard" menu on the left.
 ![041]
 
 Click "Dashboard Name" from the dashboard list.
@@ -253,7 +253,7 @@ Click "Share" on top.
 ![044]
 
 #### <div id='3-2-3-4'/> 3.2.3.4. Dashboard Option and Time Range
-Click "Dashboard" menu on the left.
+Click the "Dashboard" menu on the left.
 ![041]
 
 Click "Dashboard Name" from the dashboard list.
@@ -269,7 +269,7 @@ Click ① area on top, and selects the desired conditions from the Time Range ar
 ![047]
 
 #### <div id='3-2-3-5'/> 3.2.3.5. Delete Dashboard
-Click "Dashboard" menu on the left.
+Click the "Dashboard" menu on the left.
 ![041]
 
 Select Dashboard Object (①) from the Dashboard List and click the ② icon.
@@ -278,7 +278,7 @@ Select Dashboard Object (①) from the Dashboard List and click the ② icon.
 ### <div id='3-2-4'/> 3.2.4. Management
 This chapter describes stored object management.
 
-Click "Management" menu at the left, and click "Saved Objects".
+Click the "Management" menu on the left, and click "Saved Objects".
 ![049]
 #### <div id='3-2-4-1'/> 3.2.4.1. Check Saved Objects
 Click "Dashboards" / "Searches" / "Visualization" and check each object list.
@@ -301,14 +301,14 @@ Click the "Export Everything" button.
 ![054]
 
 #### <div id='3-2-4-4'/> 3.2.4.4. Import Saved Objects
-Click "Import" button.
+Click the "Import" button.
 ![055]
 
 Click the object file from the directory and click the "Open" button.
 ![056]
 
 #### <div id='3-2-4-5'/> 3.2.4.5. Delete Saved Objects
-- Delete from object list
+- Delete from the object list
 Select object from object list of "Dashboards" / "Searches" / "Visualization"(①), click ② icon.
 ![057]
 

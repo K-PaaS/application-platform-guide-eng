@@ -84,7 +84,7 @@ CF Services is used in open cloud platforms by implementing a cloud controller c
 The Services API is a version of the independent cloud controller API.
 This makes external applications available on the platform. (database, message queue, rest endpoint, etc.)
 
-The open cloud platform service API is a protocol (catalog, provision, de provision, update provision plan, bind, unbound) between Cloud Controller and Service Broker, which is implemented as a RESTful API and registered with Cloud Controller.
+The open cloud platform service API is a protocol (catalog, provision, de-provision, update provision plan, bind, unbound) between Cloud Controller and Service Broker, which is implemented as a RESTful API and registered with Cloud Controller.
 
 When implementing metering for a service, select a process that fits the service policy and purpose of these conventions and link metering to that process.
 
@@ -130,7 +130,7 @@ The policy must be defined by the service provider, for JSON schema refer to: <b
   <tr>
   	<td colspan ="2">CF-ABACUS</td>
     <td>Aggregates usage information collected as a CF-ABACUS core function.<br>
-CF-ABACUS is installed in the form of micro-service in CF after CF installation. Check below for details.<br>
+CF-ABACUS is installed in the form of a micro-service in CF after CF installation. Check below for details.<br>
 <a href = "https://github.com/cloudfoundry-incubator/cf-abacus" >https://github.com/cloudfoundry-incubator/cf-abacus</a>
 </td>
   </tr>
@@ -200,7 +200,7 @@ After adding the Gradle plug-in to the Eclipse, importing the gradle makes devel
 | 　　  |Java class | Description|
 |---------|---|----|
 |    Modify     | ServiceIncetanceBindingController  | A controller that processes the service binding request of the cloud controller.<br> Obtain the uaatoken from Sample MeteringOuthService and add the process of calling with the parameters of Sample MeteringReportService.   |
-|    Modify     | ServiceInstanceBinding  | When the service-binding-request is processed by the ServiceIncidenceBinding Controller, report the usage report to the abacus-usage-collector with metering applied to the binding connection.   |     
+|    Modify     | ServiceInstanceBinding  | When the service-binding request is processed by the ServiceIncidenceBinding Controller, report the usage report to the abacus-usage-collector with metering applied to the binding connection.   |     
 |    Add     | SampleMeteringReportService  | SampleMeteringReportService abstracted interface with no information related to metering/rating/charging policies. This is an abstraction class provided for service providers to implement this interface to apply to service implementations. This is an abstraction class provided for service providers to implement this interface to apply to service implementations.<br>SampleMeteringReportService abstracted interface with no information related to metering/rating/charging policies. This is an abstract class that is provided so that service providers who will implement this interface can apply it to service implementations.|     
 |    Add     | SampleMeteringOAuthService  | It is an abstraction class for obtaining an access token to the abacus-usage-collector from a UAA server on an open platform and delivering the token to the SampleMeteringReportService.   |
 
@@ -297,7 +297,7 @@ Add the environment information field of the application to be bound to implemen
 
 ### <div id='15'/>2.3.6.  SampleMeteringOAuthService  Abstract Class
 
-UAA OAuthToken is needed to access abucus-collector RESTAPI if Abacus operates as Secured.<br>
+UAA OAuthToken is needed to access abacus-collector RESTAPI if Abacus operates as Secured.<br>
 The class that inherits the SampleMeteringOAuthServicemust implement the process of acquiring and returning UAA OAuthToken.
 
 	package org.openpaas.servicebroker.service;
@@ -412,7 +412,7 @@ The dependencies portion of the mongo-db service broker build.gradle file
 	abacus.secured: true
 	# uaa server of the Open Platform
 	uaa.server: https://uaa.<PaaS-TA Domain>
-	# abacus usage collector RESTAPI use authority (Register at UAA server a head of time.)
+	# abacus usage collector RESTAPI use authority (Register at UAA server ahead of time.)
 	uaa.client.id: abacus-linux-container
 	uaa.client.secret: secret
 	uaa.client.scope: abacus.usage.linux-container.write,abacus.usage.linux-container.read 
@@ -825,8 +825,8 @@ The service provider develops a policy for the service in line with the rating p
 
 ### <div id='30'/>2.5.3. Billing Policy 
 
-과금 정책이란 각 서비스에 대한 사용 단가를 정의한 JSON 형식의 오브젝트이다.
-서비스 제공자는 과금 정책 스키마에 맞춰 서비스에 대한 정책을 개발한다.
+The billing policy is a JSON-type object that defines the unit price of use for each service.
+Service providers develop policies for services in line with the billing policy schema.
 
 
 #### 1.  **Billing Policy Schema**
@@ -838,8 +838,8 @@ The service provider develops a policy for the service in line with the rating p
 |    name     | String  | O   |  Billing target name  |
 |    price     | String  |  At least one  |  Billing Policy Details   |
 |    country     | String  | O   | Currency to be applied to the unit price of the service    |
-|    price     |  String | O   | 서비스 사용 단가    |
-|    title     |  String | X   | 과금 정책 제목    |
+|    price     |  String | O   | Service usage unit price    |
+|    title     |  String | X   | Billing Policy Title    |
 
 
 #### 2.  **Billing Policy Example**
@@ -1033,7 +1033,7 @@ Check CF-Abacus Interwork
 	<<Skip>> 
 	
 	## Check API Usage
-	$ curl 'http://abacus-usage-reporting.<PaaS-TA Domain>/v1/metering/organizations/<샘플 애플리케이션을 배포한 조직>/aggregated/usage'
+	$ curl 'http://abacus-usage-reporting.<PaaS-TA Domain>/v1/metering/organizations/<Orgainization that deployed sampele application>/aggregated/usage'
 	
 	Example)
 	$ curl 'http://abacus-usage-reporting.bosh-lite.com/v1/metering/organizations/testOrgGuid /aggregated/usage'

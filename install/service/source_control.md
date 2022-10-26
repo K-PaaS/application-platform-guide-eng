@@ -15,12 +15,12 @@
   2.5. [Service Installation](#2.5)    
   2.6. [Service Installation Check](#2.6)  
   
-3. [Configuration management service management and application](#3)  
- 3.1. [Service Broker Registration](#3.1)  
+3. [Management and request for Configuration management service](#3)  
+ 3.1. [Register Service Broker Command](#3.1)  
  3.2. [UAA Client Registration](#3.2)  
- 3.3. [Service Application](#3.3)  
-　3.3.1. [Service Application - Portal](#3.3.1)   
-　3.3.2. [Service Application - CLI](#3.3.2)   
+ 3.3. [Service Request](#3.3)  
+　3.3.1. [Service Request - Portal](#3.3.1)   
+　3.3.2. [Service Request - CLI](#3.3.2)   
     
 
 ## <div id='1'/> 1. Document Outline
@@ -241,7 +241,7 @@ uaa_client_sc_secret: "clientsecret"                           # source-control-
 
 ### <div id="2.5"/> 2.5. Service Installation
 
-- Modify the VARIABLES settings in the Deploy script file to suit the server environment, and select whether to add the option file.  
+- Modify the VARIABLES settings in the Deploy script file to suit the server environment, and decide whether to add the option file.  
      (Optional) -o operations/cce.yml (Apply CCE when installing)
 
 > $ vi ~/workspace/service-deployment/source-control-service/deploy.sh
@@ -296,9 +296,9 @@ sourcecontrol-webui/840278e2-e1a2-4a30-b904-68538c7cd06f   running        z5  10
 Succeeded
 ```
 
-## <div id="3"/>3.  Configuration management service management and application
+## <div id="3"/>3.  Management and request for Configuration management service
 
-### <div id="3.1"/> 3.1. Service Broker Registration
+### <div id="3.1"/> 3.1. Register Service Broker Command
 
 Once the service is installed, a configuration management service broker must be registered to use the service on the PaaS-TA portal.  
 When registering a service broker, you must be logged in as a user with authority to register a service broker on an open cloud platform. 
@@ -429,9 +429,9 @@ scclient
     lastmodified: 1542894096080
 ```  
 
-### <div id='3.3'/> 3.3. Service Application
-#### <div id='3.3.1'/> 3.3.1. Service Application - Portal
-1. Access the PaaS-Ta operator portal and log in.
+### <div id='3.3'/> 3.3. Service Request
+#### <div id='3.3.1'/> 3.3.1. Service Request - Portal
+1. Access the PaaS-TA operator portal and log in.
 ![3-1-1]
 
 2. Login > Service Management > Check the Configuration Management Service Broker on Service Broker page.
@@ -465,7 +465,7 @@ scclient
 >  
 > ![3-2-2]
 
-- Access to PaaS-TA user portal then apply for service through catalog.   
+- Access to PaaS-TA user portal then request for service through catalog.   
 
 ![003]
 
@@ -474,10 +474,10 @@ scclient
 ![004]  
 
 
-#### <div id="3.3.2"/>  3.3.2. Service Application  - CLI
-Describes how to apply for configuration management services through the CLI.
+#### <div id="3.3.2"/>  3.3.2. Service Request  - CLI
+Describes how to request for configuration management services through the CLI.
 
-- Service Instance Application Commands
+- 4Command for Service Instance Request
 ```
 cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 
@@ -486,7 +486,7 @@ cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 [SERVICE_INSTANCE] : Name of the service instance to create
 ```
 
--Apply for service for the use of configuration management services. (PaaS-TA user_id, org name setting)
+-Request for service for the use of configuration management services. (PaaS-TA user_id, org name setting)
 > $ cf create-service p-paasta-sourcecontrol Default paasta-sourcecontrol -c '{"owner":"{user_id}", "org_name":"{org_name}"}'  
 ```
 Creating service instance paasta-sourcecontrol in org system / space dev as admin...

@@ -15,11 +15,11 @@
   2.5. [Service Installation](#2.5)    
   2.6. [Service Installation Check](#2.6)  
   
-3. [Application Gateway Service Management and Registration](#3)  
+3. [Management and request for Application Gateway Service](#3)  
  3.1. [Service Broker Registration](#3.1)   
- 3.2. [Service Application](#3.2)  
-　3.2.1. [Service Application - Portal](#3.2.1)   
-　3.2.2. [Service Application - CLI](#3.2.2)   
+ 3.2. [Service Request](#3.2)  
+　3.2.1. [Service Request - Portal](#3.2.1)   
+　3.2.2. [Service Request - CLI](#3.2.2)   
 
 
 
@@ -27,7 +27,7 @@
 
 ### <div id="1.1"/> 1.1. Purpose
 
-This document (Application Gateway Service Pack Installation Guide) describes how to install the Application Gateway Service Pack, which is a service pack provided by PaaS-TA, using Bosh  
+This document (Application Gateway Service Pack Installation Guide) describes how to install the Application Gateway Service Pack, which is a service pack provided by PaaS-TA, using Bosh.
 
 ### <div id="1.2"/> 1.2. Range
 
@@ -276,7 +276,7 @@ service-broker/6bcc651a-f94e-4b38-aee7-3640407315b6  running        z3  10.0.81.
 Succeeded
 ```
 
-## <div id="3"/>3.  Application Gateway Service Management and Registration
+## <div id="3"/>3.  Management and request for Application Gateway Service
 
 If you register and disclose the service through the PaaS-TA operator portal, you can apply for and use the service through the PaaS-TA user portal.
 
@@ -295,7 +295,7 @@ name   url
 No service brokers found
 ```
 
-- Service Broker Registration Commands
+- Command for registering Service Broker
 ```
 cf create-service-broker [SERVICE_BROKER] [USERNAME] [PASSWORD] [SERVICE_BROKER_URL]
 
@@ -349,8 +349,8 @@ broker: api-gateway-service-broker
    api-gateway   dedicated-vm   all
 ```
 
-### <div id='3.2'/> 3.2. Service Application
-#### <div id='3.2.1'/> 3.2.1. Service Application - Portal
+### <div id='3.2'/> 3.2. Service Request
+#### <div id='3.2.1'/> 3.2.1. Service Request - Portal
 
 Access the PaaS-TA operator portal and register the service.  
 
@@ -382,10 +382,10 @@ Access the PaaS-TA operator portal and register the service.
 
 ![004]  
 
-#### <div id='3.2.2'/> 3.2.2. Service Application - CLI
+#### <div id='3.2.2'/> 3.2.2. Service Request - CLI
 Explains how to apply for the Gateway service through the CLI.
 
-- Service Instance Application Commands
+- Commands for requesting Service Instance
 ```
 cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 

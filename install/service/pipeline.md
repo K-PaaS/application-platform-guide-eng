@@ -16,7 +16,7 @@
  2.6. [Service Installation Check](#2.6)  
  2.7. [[Optional] Extended language installation](#2.7)  
     
-3. [Manage and apply for deployment pipeline services](#3)  
+3. [Manage and request for deployment pipeline services](#3)  
  3.1. [Service Broker Registration](#3.1)  
  3.2. [UAA Client Registration](#3.2)  
  3.3. [Java Offline Buildpack Registration](#3.3)  
@@ -308,7 +308,7 @@ scheduler_internal_static_ips: "<SCHEDULER_PRIVATE_IP>"          # scheduler's p
 
 ### <div id='2.5'/> 2.5. Service Installation
 
-- Modify the VARIABLES settings in the Deploy script file to suit the server environment, and select whether to add the option file.  
+- Modify the VARIABLES settings in the Deploy script file to suit the server environment, and decide whether to add the option file.  
 
 > $ vi ~/workspace/service-deployment/pipeline-service/deploy.sh
 
@@ -406,7 +406,7 @@ ${mysql_path} -u${mysql_user} -p${mysql_password} -P${mysql_port} -Ddelivery_pip
 echo 'php data insert complete'
 ```
 
-- Copy and run extended language scripts to mariadb, and apply to pipeline services.  
+- Copy and run extended language scripts to mariadb, and request to pipeline services.  
 ```
 $ cd ~/workspace/service-deployment/pipeline-service/scripts/
 $ bosh -d pipeline-service scp php-mariadb-script.sh mariadb/0:/tmp/
@@ -416,8 +416,8 @@ $ mv /tmp/php-mariadb-script.sh /var/vcap/
 $ sh /var/vcap/php-mariadb-script.sh
 ```
 
-## <div id='3'/> 3. Manage and apply for deployment pipeline services 
-If you register and disclose the distribution pipeline service through the PaaS-TA operator portal, you can apply for and use the service through the PaaS-TA user portal.
+## <div id='3'/> 3. Manage and request for deployment pipeline services 
+If you register and disclose the distribution pipeline service through the PaaS-TA operator portal, you can request for and use the service through the PaaS-TA user portal.
 
 ### <div id='3.1'/> 3.1. Service Broker Registration
 
@@ -434,7 +434,7 @@ name   url
 No service brokers found
 ```  
 
-- Register Service Broker Command
+- Command for registering Service Broker
 ```
 cf create-service-broker [SERVICE_BROKER] [USERNAME] [PASSWORD] [SERVICE_BROKER_URL]
 
@@ -567,7 +567,7 @@ binary_buildpack         12         true      false    binary_buildpack-cflinuxf
   
 ### <div id='3.4'/> 3.4. Service Application
 #### <div id='3.4.1'/> 3.4.1. Service Application - Portal
-1. Access the PaaS-Ta operator portal and log in.
+1. Access the PaaS-TA operator portal and log in.
 ![3-1-1]
 
 2. Login > Service Management > Check the Deployment Pipeline Service Broker on the Service Broker page.
@@ -600,7 +600,7 @@ binary_buildpack         12         true      false    binary_buildpack-cflinuxf
 >  
 > ![3-2-2]
 
-- Access to PaaS-TA user portal then apply for service through catalog.   
+- Access to PaaS-TA user portal then request for service through catalog.   
 
 ![003]
 
@@ -610,9 +610,9 @@ binary_buildpack         12         true      false    binary_buildpack-cflinuxf
 
 
 #### <div id='3.4.2'/> 3.4.2. Service Application - CLI
-Describes how to apply for pipeline service through CLI.
+Describes how to request for pipeline service through CLI.
 
-- Service Instance Application Commands
+- Command for Requesting Service Instance
 ```
 cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 
@@ -621,7 +621,7 @@ cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 [SERVICE_INSTANCE] : Name of the service instance to create
 ```
 
-- Apply for pipeline service. (PaaS-TA user_id Setting)
+- Request for pipeline service. (PaaS-TA user_id Setting)
 > cf create-service delivery-pipeline delivery-pipeline-shared pipeline-service -c '{"owner":"{user_id}"}'  
 ```
 Creating service instance pipeline-service in org system / space dev as admin...

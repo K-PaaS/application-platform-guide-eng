@@ -15,11 +15,11 @@
   2.5. [Service Installation](#2.5)    
   2.6. [Service Installation Check](#2.6)  
  
-3. [Sample Web App Interworking Pinpoint Interworking](#3)    
+3. [Sample Web App Interworking Pinpoint](#3)    
   3.1. [Pinpoint Service Broker Registration](#3.1)  
   3.2. [Sample Web App Structure](#3.2)   
-  3.3. [Apply for service in PaaS-TA](#3.3)  
-  3.4. [Apply for service bind to Sample Web App and check for App](#3.4)  
+  3.3. [Request for service in PaaS-TA](#3.3)  
+  3.4. [Request for service bind to Sample Web App and check for App](#3.4)  
 
 ## <div id='1'> 1. Document Outline
 ### <div id='1.1'> 1.1. Purpose
@@ -43,7 +43,7 @@ To install the service pack, BOSH CLI v2 must be installed and logged in to BOSH
 If BOSH CLI v2 is not installed, you should first refer to the BOSH 2.0 installation guide document to install BOSH CLI v2 and familiarize the usage.  
 
 - Check the bosh runtime-config to see if there are pinpoints in the bosh-dns include deployments.  
- ※ If there is no pinpoint in bosh-dns include deployments, open the dns.yml in ~/workspace/paasta-deployment/bosh/runtime-configs to add pinpoint and update the bosh runtime-config.    
+ ※ (Note) If there is no pinpoint in bosh-dns include deployments, open the dns.yml in ~/workspace/paasta-deployment/bosh/runtime-configs to add pinpoint and update the bosh runtime-config.   
 
 > $ bosh -e micro-bosh runtime-config
 ```
@@ -244,7 +244,7 @@ webui_haproxy_public_ip: "<WEB_UI_PUBLIC_IP>"                    # webui haproxy
 
 ### <div id="2.5"/> 2.5. Service Installation
 
-- Modify the VARIABLES settings in the Deploy script file to suit the server environment, and select whether to add the option file.   
+- Modify the VARIABLES settings in the Deploy script file to suit the server environment, and decide whether to add the option file.  
      (optional) -o operations/cce.yml (Apply CCE when installing)
 
 > $ vi ~/workspace/service-deployment/pinpoint/deploy.sh
@@ -298,7 +298,7 @@ webui/30f7c9cf-ab03-4f78-a9bf-96c5148a9ec1            running        z5  10.30.1
 Succeeded
 ```
 
-##  <div id='3'> 3. Sample Web App Interworking Pinpoint Interworking
+##  <div id='3'> 3. Sample Web App Interworking Pinpoint
 
 This Sample Web App is deployed on an open cloud platform and Pinpoint's service can be used with Provision and Bind.
 
@@ -386,10 +386,10 @@ $ cd paasta-service-samples/pinpoint
 
 <br>
 
-### <div id='3.3'> 3.3. Apply for service in PaaS-TA
+### <div id='3.3'> 3.3. Request for service in PaaS-TA
 
-To use the Pinpoint service in the Sample Web App, you must apply for a service (Provision).  
-*Note: When applying for a service, you must be logged in as a user who can apply for a service in PaaS-TA.  
+To use the Pinpoint service in the Sample Web App, you must request for a service (Provision).  
+*Note: When requesting for a service, you must be logged in as a user who can request for a service in PaaS-TA.  
 
 - check whether there is a service in the PaaS-TA Marketplace first.
 
@@ -403,7 +403,7 @@ service    plans               description
 Pinpoint   Pinpoint_standard   A simple pinpoint implementation
 ```
 
-- Service Instance Application Commands
+- Command for requesting Service Instance
 ```
 cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 
@@ -412,7 +412,7 @@ cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 [SERVICE_INSTANCE] : Name of the service instance to create
 ```
 
-- If there is a service that you want in the Marketplace, create a service instance by applying for a service (Provision).
+- If there is a service that you want in the Marketplace, create a service instance by requesting for a service (Provision).
 
 > $ cf create-service Pinpoint Pinpoint_standard PS1
 
@@ -432,10 +432,10 @@ name   service      plan                 bound apps   last
 PS1    Pinpoint     Pinpoint_standard                 create succeeded
 ```
 
-### <div id='3.4'> 3.4. Apply for service bind to Sample Web App and check for App
+### <div id='3.4'> 3.4. Request for service bind to Sample Web App and check for App
 
 When the service application is completed, the Sample Web App binds the generated service instance and uses the Pinpoint service in the App.  
-*Note: When applying for service bind, you must be logged in as a user who can apply for service bind on the PaaS-TA platform.
+*Note: When requesting for service bind, you must be logged in as a user who can request for service bind on the PaaS-TA platform.
 
 - Check manifest fie. 
 	
@@ -497,7 +497,7 @@ memory usage:   1024M
 #0   down    2021-11-22T05:26:04Z   0.0%   0 of 0   0 of 0   
 ```  
 	
-- Apply for service instance bind created by Sample Web App.
+- Request for service instance bind created by Sample Web App.
 
 > $ cf bind-service spring-music-pinpoint PS1 -c '{"application_name":"spring-music-pinpoint"}'
 	
@@ -531,7 +531,7 @@ Creating security group pinpoint as admin...
 OK		
 ```
   
-- Apply the security group that you created to use the Pinpoint service.
+- Request the security group that you created to use the Pinpoint service.
 > $ cf bind-running-security-group pinpoint  
 ```
 Binding security group pinpoint to running as admin...

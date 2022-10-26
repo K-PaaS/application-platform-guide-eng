@@ -15,11 +15,11 @@
   2.5. [Service Installation](#2.5)     
   2.6. [Service Installation Check](#2.6)  
   
-3. [Lifecycle managing service management and application](#3)  
+3. [Management and request for Lifecycle managing service](#3)  
  3.1. [Service Broker Registration](#3.1)   
- 3.2. [Service Application](#3.2)  
-　3.2.1. [Service Application - Portal](#3.2.1)   
-　3.2.2. [Service Application - CLI](#3.2.2)   
+ 3.2. [Service Request](#3.2)  
+　3.2.1. [Service Request - Portal](#3.2.1)   
+　3.2.2. [Service Request - CLI](#3.2.2)   
 
 
 
@@ -225,7 +225,7 @@ postgres_port: "<APP_LIFECYCLE_POSTGRES_PORT>"                                  
 
 ### <div id="2.5"/> 2.5. Service Installation
 
-- Modify the VARIABLES settings in the Deploy script file to suit the server environment, and select whether to add the option file.  
+- Modify the VARIABLES settings in the Deploy script file to suit the server environment, and decide whether to add the option file.  
      (Optional) -o operations/cce.yml (Apply CCE when installing)
 
 > $ vi ~/workspace/service-deployment/lifecycle-service/deploy.sh
@@ -279,9 +279,9 @@ service-broker/3307c237-d9a9-4885-ae78-007db70a0e22  running        z3  10.0.81.
 Succeeded
 ```
 
-## <div id="3"/>3.  Lifecycle managing service management and application
+## <div id="3"/>3.  Management and request for Lifecycle managing service
 
-If you register and disclose the service through the PaaS-TA operator's portal, you can apply for and use the service through the PaaS-TA user's portal.
+If you register and disclose the service through the PaaS-TA operator's portal, you can request for and use the service through the PaaS-TA user's portal.
 
 ### <div id="3.1"/> 3.1. Service Broker Registration
 
@@ -298,7 +298,7 @@ name   url
 No service brokers found
 ```
 
-- Service Broker Registration Commands
+- Command for registering Service Broker
 ```
 cf create-service-broker [SERVICE_BROKER] [USERNAME] [PASSWORD] [SERVICE_BROKER_URL]
 
@@ -352,12 +352,12 @@ broker: app-lifecycle-service-broker
    app-lifecycle   dedicated-vm   all
 ```
 
-### <div id='3.2'/> 3.2. Service Application
-#### <div id='3.2.1'/> 3.2.1. Service Application - Portal
+### <div id='3.2'/> 3.2. Service Request
+#### <div id='3.2.1'/> 3.2.1. Service Request - Portal
 
 -	Access the PaaS-TA operator portal and register the service.  
 
-> ※ Operation Management > Catalog > App service registration
+> ※ (Note) Operation Management > Catalog > App service registration
 > - Name : Lifecycle Management Service
 > - Classification :  Development Support Tools
 > - Service : app-lifecycle
@@ -373,22 +373,22 @@ broker: app-lifecycle-service-broker
 > - Description :
 > TAIGA is provided in a dedicated manner, providing systematic Agile development support and communication-oriented documentation and knowledge sharing support required for project collaboration.  
 > 
-> The service administrator's account is serviceadmin/< Password is what the user has entered when applying for the service >.
+> The service administrator's account is serviceadmin/< Password is what the user has entered when requesting for the service >.
 >  
 > ![002]
 
--	Access the PaaS-TA User Portal, and apply for services through the catalog.   
+-	Access the PaaS-TA User Portal, and request for services through the catalog.   
 
 ![003]
 
--	Access to service through dashboard URL.  (The administrator account of the service is serviceadmin/[Password is what the user has entered when applying for the service])  
+-	Access to service through dashboard URL.  (The administrator account of the service is serviceadmin/[Password is what the user has entered when requesting for the service])  
 
 ![004]  
 
-#### <div id='3.2.2'/> 3.2.2. Service Application - CLI
-Explains how to apply for Lifecycle service through the CLI.
+#### <div id='3.2.2'/> 3.2.2. Service Request - CLI
+Explains how to request for Lifecycle service through the CLI.
 
-- Service Instance Application Commands
+- Command for Service Instance Request
 ```
 cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 
@@ -397,7 +397,7 @@ cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 [SERVICE_INSTANCE] : Name of the service instance to create
 ```
 
-- Apply for Lifecycle Service. (Set password  variable)
+- Request for Lifecycle Service. (Set password  variable)
 > $ cf create-service app-lifecycle dedicated-vm lifecycle -c '{"password":"password"}'
 ```
 Creating service instance app-lifecycle in org system / space dev as admin...

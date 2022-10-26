@@ -18,7 +18,7 @@
 3. [MySQL Linkage Sample Web App Description](#3)  
   3.1. [Service Broker Registration](#3.1)  
   3.2. [Sample Web App Download](#3.2)  
-  3.3. [Apply for services from PaaS-TA](#3.3)  
+  3.3. [Request for services from PaaS-TA](#3.3)  
   3.4. [Deploy Sample Web App and Verify MySQL Binds](#3.4)  
 
 4. [Access MySQL Client Tool](#4)  
@@ -197,7 +197,7 @@ mysql_broker_vm_type: "small"                                    # mysql broker 
 
 ### <div id="2.5"/> 2.5. Service Installation
 
-- Modify the VARIABLES settings in the Deploy script file to match your server environment, and select whether to add the option file.
+- Modify the VARIABLES settings in the Deploy script file to match your server environment, and decide whether to add the option file.
      (Optional) -o operations/cce.yml (Appky CCE when installing)
 
 
@@ -253,7 +253,7 @@ Succeeded
 This Sample App can be used as it is bound with the MySQL service when deployed to PaaS-TA while the MySQL service is provisioned.
 
 ### <div id='3.1'> 3.1. Register MySQL Service Broker
-Once the Mysql service pack has been deployed, the application must first register the MySQL service broker to use the service pack.
+Once the Mysql service pack has been deployed, you must first register the MySQL service broker to use the service pack in the application.
 When registering a service broker, you must be logged in as a user who can register a service broker in PaaS-TA.
 - Check the list of service brokers.
 
@@ -335,7 +335,7 @@ $ unzip paasta-service-samples.zip
 $ cd paasta-service-samples/mysql  
 ```
 
-### <div id='3.3'> 3.3. Apply for service in PaaS-TA
+### <div id='3.3'> 3.3. Request for service in PaaS-TA
 In order to use the MySQL service in the Sample App, you must apply for a service (Provision).
 
 *Note: you must be logged in as a user who can apply for the service from PaaS-TA when applying for a service.
@@ -353,7 +353,7 @@ Mysql-DB     Mysql-Plan1-10con, Mysql-Plan2-100con*   A simple mysql implementat
 TIP:  Use 'cf marketplace -s SERVICE' to view descriptions of individual plans of a given service.
 ```  
 
-- Service Instance Application Commands
+- Command for requesting Service Instance
 ```
 cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 
@@ -362,7 +362,7 @@ cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 [SERVICE_INSTANCE] : Name of the service instance to be created
 ```
 	
-- If there is a service you want from Marketplace, apply for a service (Provision).
+- If there is a service you want from Marketplace, request for a service (Provision).
 
 > $ cf create-service Mysql-DB Mysql-Plan2-100con mysql-service-instance   
 ```  
@@ -384,8 +384,7 @@ mysql-service-instance    Mysql-DB   Mysql-Plan2-100con                         
 ```  
 
 ### <div id='3.4'> 3.4. Sample Web App Deployment and MySQL Bind Verification 
-When the service application is completed, the Sample Web App binds the generated service instance and uses the MySQL service in the App.
-*참고: When applying for service bind, you must be logged in as a user who can apply for service bind in PaaS-TA.
+When the service application is completed, the Sample Web App binds the generated service instance and uses the MySQL service in the App. *Note: When applying for service bind, you must be logged in as a user who can apply for service bind in PaaS-TA.
 	
 - Check the manifest file. 
 
@@ -513,7 +512,7 @@ buildpacks:
 
 ## <div id='4'> 4. Access MySQL Client Tool
 
-The MySQL service connection information bound to the application is configured with Private IP and cannot be connected directly from the MySQL Client tool. Therefore, the MySQL Client tool should be connected using a tool that provides SSH tunnels, proxy tunnels, etc. This guide provides a way to connect using SSH tunnels and guides you to HeidiSQL, an open-source, using the MySQL Client tool. To connect from HeidiSQL, you must first create an SSH tunnelable VM instance. This instance must be accessible via SSH, and after that, a security group must be configured to access the service pack installed in Open PaaS with Private IP and its ports. This part is configured by contacting the vSphere administrator and OpenPaaS operator.
+The MySQL service connection information bound to the application is configured with Private IP and cannot be connected directly from the MySQL Client tool. Therefore, the MySQL Client tool should be connected using a tool that provides SSH tunnels, proxy tunnels, etc. This guide provides a way to connect using SSH tunnels and guides you to HeidiSQL, an open-source, using the MySQL Client tool. To connect from HeidiSQL, you must first create a VM instance which enables SSH tunneling. This instance must be accessible via SSH, and after accessing, a security group must be configured to access the service pack installed in Open PaaS with Private IP and its ports. This part is configured by contacting the vSphere administrator and OpenPaaS operator.
 
 ### <div id='4.1'> 4.1. Installing and Connecting HeidiSQL
 
@@ -539,7 +538,7 @@ The HeidiSQL program is an open-source software that can be used for free.
 
 <br>
 
-- It is about program license. Check I accept the agreement and click Next.
+- It is about program license. Check the button of "I accept the agreement" and click Next.
 
 >![mysql_vsphere_4.1.04]
 
@@ -560,7 +559,7 @@ The HeidiSQL program is an open-source software that can be used for free.
 
 <br>
 
-- There are 4 check boxes. Check and release considering the following cases.
+- There are 4 check boxes. Uncheck the check boxes:
 >
   When you create a shortcut icon on your desktop
   When running the sql extension as a HeidiSQL program
@@ -607,7 +606,7 @@ The HeidiSQL program is an open-source software that can be used for free.
 
 >![mysql_vsphere_4.1.13]
 
->The server information inputs the server information bound to the application. Check using the cfenv <app_name> command.
+>The server information inputs the server information bound to the application. Check using the cf env <app_name> command.
 
 >**Ex.)** $cf env hello-spring-mysql
 
@@ -615,7 +614,7 @@ The HeidiSQL program is an open-source software that can be used for free.
 
 <br>
 
-- - Click the SSH Tunnel tab and enter the SSH tunnelable server information provided to the OpenPaaS operations manager. The plink.exe location entry lets you enter the location where Putty runs the plink.exe and if the file is not present, plink. Click the download link to download the exe. Enter local port information arbitrarily and click the Open button to access the Mysql database.
+- - Click the SSH Tunnel tab and enter the information of a server which has SSH tunneling provided to the OpenPaaS operations manager. The plink.exe location entry lets you enter the location where Putty runs the plink.exe and if the file is not present, plink. Click the download link to download the exe. Enter local port information arbitrarily and click the Open button to access the Mysql database.
 
 >(Note) If access is possible with a private key, refer to the Open PaaS Mysql service pack installation guide for openstack.
 

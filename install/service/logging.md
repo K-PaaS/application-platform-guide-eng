@@ -50,7 +50,7 @@ $ sudo gem install cf-uaac
 $ uaac -v
 ```
 
-※ "firehose-to-syslog" uaac client check  
+※ (Note) "firehose-to-syslog" uaac client check  
 
 Verify if "firehose-to-syslog" is registered in uaac client, If registered, check "authorities" and grant "cloud_controller.admin" permission.  
 
@@ -302,7 +302,7 @@ laas_logo: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAABGCAYAAABll74gAA
 
 ### <div id="2.5"/> 2.5. Service Installation
 
-- Modify the VARIABLES settings in the Deploy script file to suit the server environment, and select whether to add the option file.   
+- Modify the VARIABLES settings in the Deploy script file to suit the server environment, and decide whether to add the option file.   
 
 > $ vi ~/workspace/service-deployment/logging-service/deploy.sh
 
@@ -428,7 +428,7 @@ laasclient
 
 ## <div id="3.2"/>  3.2. Logging Service Activation Code Registration
 
--	Access the PaaS-Ta operator portal and log in.
+-	Access the PaaS-TA operator portal and log in.
 ![002]
 
 -	Go to the code management menu of the operation management and register the code as follows.

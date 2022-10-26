@@ -18,8 +18,8 @@
 3. [On-Demand-Redis Service Broker Registration Using CF CLI](#3)  
   3.1. [On-Demand-Redis Service Broker Registration](#3.1)  
   3.2. [Sample App Download](#3.2)  
-  3.3. [Apply for service in PaaS-TA](#3.3)  
-  3.4. [Apply for service bind to Sample App and check for App](#3.4)  
+  3.3. [Request for service in PaaS-TA](#3.3)  
+  3.4. [Request for service bind to Sample App and check for App](#3.4)  
 
 4. [Redis Service Test using Portal](#4)  
   4.1. [Application for service](#4.1)  
@@ -223,7 +223,7 @@ service_instance_space_limitation: "-1"                                  # Limit
 
 ### <div id="2.5"/> 2.5. Service Installation
 
-- Modify the VARIABLES settings in the Deploy script file to suit the server environment, and select whether to add the option file. 
+- Modify the VARIABLES settings in the Deploy script file to suit the server environment, and decide whether to add the option file.
      (Optional) -o operations/cce.yml (Apply CCE when installting)
 
 > $ vi ~/workspace/service-deployment/redis/deploy.sh
@@ -273,7 +273,7 @@ Succeeded
 
 ## <div id='3'> 3. On-Demand-Redis service using CF CLI
 ### <div id='3.1'> 3.1. On-Demand-Redis Service Broker Registration
-When the Redis service pack deployment is complete, the application must first register the On-Demand-Redis service broker to use the service pack.
+When the Redis service pack deployment is complete, you must first register the On-Demand-Redis service broker to use the service pack in the application.
 When registering a service broker, you must log in as a user who can register a service broker in PaaS-TA.
 
 
@@ -287,7 +287,7 @@ name   url
 No service brokers found
 ```
 
-- Service Broker Registration Commands
+- Command for registering Service Broker
 ```
 cf create-service-broker [SERVICE_BROKER] [USERNAME] [PASSWORD] [SERVICE_BROKER_URL]
 
@@ -358,9 +358,9 @@ $ cd paasta-service-samples/redis
 
 <br>
 
-### <div id='3.3'> 3.3. Apply for service in PaaS-TA
-In order to use the Redis service in the Sample App, you must apply for a service (Provision).
-*Note: When applying for a service, you must be logged in as a user who can apply for a service in PaaS-TA.
+### <div id='3.3'> 3.3. Request for service in PaaS-TA
+In order to use the Redis service in the Sample App, you must request for a service (Provision).
+*Note: When Requesting for a service, you must be logged in as a user who can request for a service in PaaS-TA.
 
 - Check whether there is a service in the PaaS-TA Marketplace first.
 
@@ -374,7 +374,7 @@ redis     dedicated-vm   A paasta source control service for application develop
 
 <br>
 
-- Service Instance Application Commands
+- Command for requesting Service Instance
 ```
 cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 
@@ -383,7 +383,7 @@ cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 [SERVICE_INSTANCE] : Name of the service instance to create
 ```
 	
-- If there is a service you want on the Marketplace, apply for a service (Provision).
+- If there is a service you want on the Marketplace, request for a service (Provision).
 
 > $ cf create-service redis dedicated-vm redis
 
@@ -446,7 +446,7 @@ There are no bound apps for this service.
 <br>
 	
 - When a service is created through an on-demand-service, a security-group is created and automatically assigned to the space.
-- Verify that redis_[Service Assigned SpaceGuid] is created in the Secrety-group.
+- Verify that redis_[Service Assigned SpaceGuid] is created in the Security-group.
 	
 > $ cf space [space] --guid  
 ```
@@ -468,9 +468,9 @@ OK
 ```
 
 
-### <div id='3.4'> 3.4. Apply for service bind to Sample App and check for App
+### <div id='3.4'> 3.4. Request for service bind to Sample App and check for App
 When the service application is completed, the Sample App binds the generated service instance and uses the Redis service in the App.
-*Note: When applying for service bind, you must be logged in as a user who can apply for service bind in PaaS-TA.
+*Note: When Requesting for service bind, you must be logged in as a user who can request for service bind in PaaS-TA.
 
 - Check the manifest file.  
 
@@ -514,7 +514,7 @@ memory usage:   256M
 #0   down    2021-11-22T05:39:06Z   0.0%   0 of 0   0 of 0   
 ```  
   
-- Apply for service instance bind created by Sample Web App.
+- Request for service instance bind created by Sample Web App.
 
 > $ cf bind-service redis-example-app redis 
 
@@ -582,7 +582,7 @@ success
 <br>
 
 ## <div id='4'> 4. Redis Service Test using portal
-If the user and manager portals are installed, it is possible to apply for, bind, and test the Ladies service through the portal.
+If the user and manager portals are installed, it is possible to apply for, bind, and test the Redis service through the portal.
 
 
 - Access the Administrator Portal and check the list of brokers on the Service Broker page of Service Management.
@@ -600,11 +600,11 @@ Access is initially not permitted when registering as a service broker. Therefor
 ![6]
 
 ### <div id='4.1'> 4.1. Application for service
-In order to apply for a service on the user portal, you must register the service on the catalog page of the administrator portal first to use it.
+In order to request for a service on the user portal, you must register the service on the catalog page of the administrator portal first to use it.
 
 - Go to the catalog page of the operation management on the administrator portal and register the service.
 ![7]
-The app bind parameter adds app_guid automatic input, sets it to on-demand Y, and then registers the service.
+Set the app bind parameter value to app_guid and set the on-demand value to Y before proceeding with service registration.
 - After logging in to the user portal, create a service from the catalog page.
 ![8]
 

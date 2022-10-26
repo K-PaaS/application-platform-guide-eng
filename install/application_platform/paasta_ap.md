@@ -635,7 +635,7 @@ BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"					 # bosh director alias name (When Cre
 bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy paasta-deployment.yml \	# PaaS-TA Manifest File
 	-o operations/aws.yml \						# AWS Setting
 	-o operations/use-haproxy.yml \					# Apply HAProxy 
-	-o operations/use-haproxy-public-network.yml \			# APply HAProxy Public Network
+	-o operations/use-haproxy-public-network.yml \			# Apply HAProxy Public Network
 	-o operations/use-postgres.yml \				# Database Type Setting (Requiires Migration from versions lower than 3.5)
 	-o operations/cce.yml \						# CCE applied
 	-o operations/rename-network-and-deployment.yml \		# Rename Network and Deployment

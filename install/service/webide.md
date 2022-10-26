@@ -16,9 +16,9 @@
 
 3. [Web-IDE's PaaS-TA Portal Site Interworking](#3)  
  3.1. [WEB-IDE Service Broker Registration](#3.1)  
- 3.2. [Application for service](#3.2)  
-　3.2.1. [Application for service - Portal](#3.2.1)   
-　3.2.2. [Application for service - CLI](#3.2.2)   
+ 3.2. [Request for service](#3.2)  
+　3.2.1. [Request for service-Portal](#3.2.1)   
+　3.2.2. [Request for service-CLI](#3.2.2)   
 
 4. [Use guide of CF CLI in WEB-IDE](#4)  
   4.1. [WEB-IDE New Project Screen](#4.1)  
@@ -300,7 +300,7 @@ Succeeded
 
 ### <div id='3.1'/> 3.1. WEB-IDE Service Broker Registration
 
-- Service Broker Registration Commands
+- Command for registering Service Broker
 ```
 cf create-service-broker [SERVICE_BROKER] [USERNAME] [PASSWORD] [SERVICE_BROKER_URL]
 
@@ -355,8 +355,8 @@ broker: webide-service-broker
 ```
 <br>
 
-### <div id='3.2'/> 3.2. Application for service
-#### <div id='3.2.1'/> 3.2.1. Application for service - Portal
+### <div id='3.2'/> 3.2. Request for service
+#### <div id='3.2.1'/> 3.2.1. Request for service - Portal
 
 1. Access the Operator Portal go to Manage Operations > Catalog > App Service and click Register App Service.  
 
@@ -379,7 +379,7 @@ broker: webide-service-broker
 >  
 > ![3-2-2]
 
-- Access the PaaS-TA User Portal, and apply for services through the catalog.   
+- Access the PaaS-TA User Portal, and request for services through the catalog.   
 
 ![003]
 
@@ -388,8 +388,8 @@ broker: webide-service-broker
 ![004]  
 
 
-#### <div id="3.2.2"/>  3.2.2. Application for Service - CLI
-Guide on how to apply for the WEB-IDE service through the CLI.
+#### <div id="3.2.2"/>  3.2.2. Request for service - CLI
+Guide on how to request for the WEB-IDE service through the CLI.
 
 - Check if the service is available at PaaS-TA Marketplace.
 
@@ -403,7 +403,7 @@ webide     dedicated-vm   A paasta web ide service for application development.p
 ```
 <br>
 
-- Service Instance Application Commands
+- Command for requesting Service Instance
 ```
 cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 
@@ -412,7 +412,7 @@ cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 [SERVICE_INSTANCE] : Name of the service instance to create
 ```
 
--If there is a service you want on the Marketplace, apply for a service (Provision).
+-If there is a service you want on the Marketplace, reqyest for a service (Provision).
 
 > $ cf create-service webide dedicated-vm webide-service  
 ```

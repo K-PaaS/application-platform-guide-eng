@@ -15,11 +15,11 @@
   2.5. [Service Installation](#2.5)    
   2.6. [Service Installation Check](#2.6)  
   
-3. [Mongodb Linkage Sample Web App Description(#3)  
+3. [Mongodb Linkage Sample Web App Description](#3)  
   3.1. [Mongodb Service Broker Registration](#3.1)  
   3.2. [Sample App Download](#3.2)  
-  3.3. [Apply for service in PaaS-TA](#3.3)  
-  3.4. [Apply for service bind to Sample App and check for App](#3.4)   
+  3.3. [Request for service in PaaS-TA](#3.3)  
+  3.4. [Request for service bind to Sample App and check for App](#3.4)   
 
 
 ## <div id='1'> 1. Document Outline
@@ -269,7 +269,7 @@ broker_deregistrar_broker_vm_type: "medium"                              # broke
 
 ### <div id="2.5"/> 2.5. Service Installation
 
-- Modify the VARIABLES settings in the Deploy script file to suit the server environment, and select whether to add the option file.  
+- Modify the VARIABLES settings in the Deploy script file to suit the server environment, and decide whether to add the option file.  
 	(optional) -o operations/cce.yml (Apply CCE when installing)
 
 
@@ -332,7 +332,7 @@ This Sample Web App is deployed to PaaS-TA and can be used with Mongodb's servic
 
 ### <div id='3.1'> 3.1. Mongodb Service Broker Registration
 
-When Mongodb service pack deployment is completed, the application must first register the Mongodb service broker to use the service pack.
+When Mongodb service pack deployment is completed, you must first register the Mongodb service broker to use the service pack in the application.
 When registering a service broker, you must be logged in as a user who can register a service broker on an open cloud platform.
 
 - Check the list of service brokers.
@@ -348,7 +348,7 @@ No service brokers found
 
 <br>
 
-- Service Broker Registering Command
+- Command for registering Service Broker
 ```
 cf create-service-broker [SERVICE_BROKER] [USERNAME] [PASSWORD] [SERVICE_BROKER_URL]
 
@@ -424,10 +424,10 @@ $ cd paasta-service-samples/mongodb
 
 <br>
 
-### <div id='3.3'> 3.3. Apply for service in PaaS-TA
+### <div id='3.3'> 3.3. Request for service in PaaS-TA
 
-In order to use the Mongodb service in the Sample Web App, you must apply for a service (Provision).
-*Note: When applying for a service, you must be logged in as a user who can apply for a service on an open cloud platform.
+In order to use the Mongodb service in the Sample Web App, you must request for a service (Provision).
+*Note: When requesting for a service, you must be logged in as a user who can request for a service on an open cloud platform.
 
 
 - Check whether there is a service in the PaaS-TA Marketplace first.
@@ -446,7 +446,7 @@ TIP:  Use 'cf marketplace -s SERVICE' to view descriptions of individual plans o
 
 <br>
 
-- Service Instance Application Commands
+- Command for requesting Service Instance
 ```
 cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 
@@ -455,7 +455,7 @@ cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 [SERVICE_INSTANCE] : Name of the service instance to create
 ```
 
-- If there is a service you want on the Marketplace, apply for a service (Provision).
+- If there is a service you want on the Marketplace, request for a service (Provision).
 
 > $ cf create-service Mongo-DB default-plan mongodb-service-instance 
 ```  
@@ -478,10 +478,10 @@ mongodb-service-instance  Mongo-DB   default-plan                               
 
 <br>
 
-### <div id='3.4'> 3.4. Apply for service bind to Sample App and check for App  
+### <div id='3.4'> 3.4. Request for service bind to Sample App and check for App  
 
 When the service application is completed, the Sample Web App binds the generated service instance and uses the Mongodb service in the App.
-*Note: When applying for service bind, you must be logged in as a user who can apply for service bind on an open cloud platform.
+*Note: When requesting for service bind, you must be logged in as a user who can request for service bind on an open cloud platform.
   
 - Check the manifest file.  
 
@@ -522,7 +522,7 @@ memory usage:   1024M
 #0   down    2021-11-22T05:13:12Z   0.0%   0 of 0   0 of 0   
 ```  
   
-- Apply for service instance bind created by Sample Web App.
+- Request for service instance bind created by Sample Web App.
 
 > $ cf bind-service hello-spring-Mongodb mongodb-service-instance 
 

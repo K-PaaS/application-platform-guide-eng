@@ -15,11 +15,11 @@
   2.5. [Service Installation](#2.5)    
   2.6. [Service Installation Check](#2.6)  
 
-3. [RabbitMQ Linkage Sample App Description](#3)  
+3. [Description for Sample App including RabbitMQ Linkage](#3)  
   3.1. [Service Broker Registration](#3.1)  
   3.2. [Sample App Download](#3.2)  
-  3.3. [Apply for service in PaaS-TA](#3.3)  
-  3.4. [Apply for service bind to Sample App and check for App](#3.4)   
+  3.3. [Request for service in PaaS-TA](#3.3)  
+  3.4. [Request for service bind to Sample App and check for App](#3.4)   
      
 ## <div id='1'> 1. Document Outline
 ### <div id='1.1'> 1.1. Purpose
@@ -43,7 +43,7 @@ In order to install the service pack, BOSH CLI v2 must be installed and logged i
 If BOSH CLI v2 is not installed, you should first refer to the BOSH 2.0 installation guide document to install BOSH CLI v2 and familiarize the usage.
 
 - Check the bosh runtime-config to see if there is a rabbitmq in the bosh-dns include deployments.
- ※ If bosh-dns include deployments is not at rabbitmq, go to ~/workspace/paasta-deployment/bosh/runtime-configs and open dns.yml to add rabbitmq and update bosh runtime-config.  
+ ※ (Note) If bosh-dns include deployments is not at rabbitmq, go to ~/workspace/paasta-deployment/bosh/runtime-configs and open dns.yml to add rabbitmq and update bosh runtime-config.  
 
 > $ bosh -e micro-bosh runtime-config
 ```
@@ -265,7 +265,7 @@ broker_deregistrar_instances: 1                             # broker-deregistrar
 
 ### <div id="2.5"/> 2.5. Service Installation
 
-- Modify the VARIABLES settings in the Deploy script file to suit the server environment, and select whether to add the option file.
+- Modify the VARIABLES settings in the Deploy script file to suit the server environment, and decide whether to add the option file.
      (Optinal) -o operations/cce.yml (Apply CCE when Installing)
 
 > $ vi ~/workspace/service-deployment/rabbitmq/deploy.sh
@@ -314,13 +314,13 @@ rmq/a4ef4c7e-4776-411d-8317-b2b059e416dd                running        z5  10.30
 Succeeded
 ```
 
-## <div id='3'> 3. RabbitMQ Linkage Sample App Description
+## <div id='3'> 3. Description for Sample App including RabbitMQ Linkage
 
 This Sample App is deployed to PaaS-TA and can be used with RabbitMQ's service on Provision and Bind.
 
 ### <div id='3.1'> 3.1. Service Broker Registration
 
-When the RabbitMQ service pack deployment is completed, the application must first register the RabbitMQ service broker to use the service pack.
+When the RabbitMQ service pack deployment is completed, you must first register the RabbitMQ service broker to use the service pack in the application.
 When registering a service broker, you must log in as a user who can register a service broker in PaaS-TA.
 
 - Check the list of service brokers.
@@ -334,7 +334,7 @@ No service brokers found
 
 <br>
 
-- Service Broker Registration Commands
+- Command for registering Service Broker
 ```
 cf create-service-broker [SERVICE_BROKER] [USERNAME] [PASSWORD] [SERVICE_BROKER_URL]
 
@@ -408,9 +408,9 @@ $ cd paasta-service-samples/rabbitmq
 <br>
 
 
-### <div id='3.3'> 3.3. Application for service
-Applying for service in order to use the RabbitMQ service in the Sample App, you must apply for service (Provision).
-*Note: When applying for a service, you must be logged in as a user who can apply for a service in PaaS-TA.
+### <div id='3.3'> 3.3. Request for service
+Request for service in order to use the RabbitMQ service in the Sample App, you must request for service (Provision).
+*Note: When requesting for a service, you must be logged in as a user who can request for a service in PaaS-TA.
 
 - Check whether there is a service in the PaaS-TA Marketplace first.
 
@@ -427,7 +427,7 @@ TIP: Use 'cf marketplace -s SERVICE' to view descriptions of individual plans of
 ```
 <br>
 
-- Service Instance Application Commands
+- Command for Service Instance Request
 ```
 cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 
@@ -436,7 +436,7 @@ cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 [SERVICE_INSTANCE] : Name of the service instance to create
 ```
 
-- If there is a service you want on the Marketplace, apply for a service (Provision).
+- If there is a service you want on the Marketplace, request for a service (Provision).
 
 > $ cf create-service rabbitmq standard my_rabbitmq_service
 ```
@@ -459,9 +459,9 @@ my_rabbitmq_service   rabbitmq     standard                create succeeded   ra
 
 <br>
 
-### <div id='3.4'> 3.4. Apply for service bind to Sample App and check App
-Once the service application is completed, download the labbit-example-app provided by cf and conduct the test.
-* Note: When applying for service bind, you must be logged in as a user who can apply for service bind in PaaS-TA..
+### <div id='3.4'> 3.4. Request for service bind to Sample App and check App
+Once the service request is completed, download the labbit-example-app provided by cf and conduct the test.
+* Note: When requesting for service bind, you must be logged in as a user who can request for service bind in PaaS-TA..
 
 - Check the manifest file.  
 
@@ -506,7 +506,7 @@ start command:   thin -R config.ru start
 
 ```  
   
-- Apply for service instance bind created by Sample Web App.
+- Request for service instance bind created by Sample Web App.
 
 > $ cf bind-service rabbit-example-app my_rabbitmq_service 
 
@@ -539,7 +539,7 @@ Creating security group rabbitmq as admin...
 OK		
 ```
   
-- Apply the security group that you created to use the rabbitmq service.
+- Request the security group that you created to use the rabbitmq service.
 > $ cf bind-running-security-group rabbitmq 
 ```
 Binding security group rabbitmq to running as admin...

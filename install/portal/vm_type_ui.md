@@ -72,7 +72,7 @@ bosh-openstack-kvm-ubuntu-bionic-go_agent  1.76      ubuntu-bionic  -    ce507ae
 Succeeded
 ```
 
-If the corresponding Stemcell is not uploaded, copy the corresponding IaaS environment and version stemcell link from [bosh.io Stemcell] (https://bosh.io/stemcells/) and execute the following command.
+If the corresponding Stemcell is not uploaded, copy the Stemcell link to the corresponding IaaS environment and version from bosh.io Stemcell [bosh.io Stemcell](https://bosh.io/stemcells/) and run the following command.
 
 ```
 # Example of Stemcell upload command
@@ -228,7 +228,7 @@ apache_usr_limit_request_body: <APACHE limitRequestBody>                 # Apach
 
 ### <div id="2.5"/> 2.5. Service Installation
 
-- Modify the VARIABLES settings in the Deploy script file to match your server environment, and select whether to add the option file.
+- Modify the VARIABLES settings in the Deploy script file to match your server environment, and decide whether to add the option file.
      (Optional) -o operations/cce.yml (install with CCE applied)
 
 > $ vi ~/workspace/portal-deployment/portal-ui/deploy.sh
@@ -448,7 +448,7 @@ After installing the Paas-TA Portal, you must register the build pack and servic
  1. Access the Administrator Portal.(portal-web-admin.[public ip].nip.io)
     
     >![paas-ta-portal-15]
- 2. Press Operation Management.
+ 2. Click Operation Management.
     
     >![paas-ta-portal-16]
  2. Go to Catalog page.

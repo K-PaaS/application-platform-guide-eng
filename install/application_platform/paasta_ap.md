@@ -75,7 +75,7 @@ $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell {URL}
 
 Paasta-deployment supports Stemcell upload scripts from v5.5.0. After logging in to BOSH, perform the following command to upload Stemcell.
 BOSH_ENVIRONMENT is the Director name used when installing BOSH, and CURRENT_IAAS is entered according to the deployed environment IaaS (aws, azure, gcp, openstack, vsphere, and other input bosh-lite).
-<br>(create-bosh-login provided by PaaS-TA AP.BOSH_ENVIRONMENT and CURRENT_IAAS are automatically entered during BOSH LOGIN using sh.)
+<br>(BOSH_ENVIRONMENT and CURRENT_IAAS are automatically entered during BOSH LOGIN using create-bosh-login.sh provided by PaaS-TA AP.)
 
 - Modify the settings of the Stemcell upload script (Modify BOSH_ENVIRONMENT)
 
@@ -103,7 +103,7 @@ else
 fi
 ```
 
-- Stemcell Upload Run Script 
+- Run Stemcell upload script 
 
 ```
 $ cd ~/workspace/paasta-deployment/bosh
@@ -113,8 +113,8 @@ $ source upload-stemcell.sh
 <br>
 
 ## <div id='2.4'/>2.4. Runtime Config Setting
-Runtime config is a setting that applies to VMs deployed in BOSH collectively.
-The basic Runtime Config setting command is as follows.
+Runtime config is a setting that is applied to VMs deployed by BOSH.
+The command for setting basic Runtime Config is as follows.
 ```                     
 $ bosh -e ${BOSH_ENVIRONMENT} update-runtime-config {PATH} --name={NAME}
 ```
@@ -130,7 +130,7 @@ The Runtime Config applied by PaaS-TA AP is as follows.
 
 Paasta-deployment supports the Runtime Config configuration script from v5.5.0. After logging in to BOSH, run the following commands to configure Runtime Config.
 
-  - Modify Runtime Config Update Script (Modify BOSH_ENVIRONMENT)
+  - Modify Runtime Config update script (Modify BOSH_ENVIRONMENT)
 > $ vi ~/workspace/paasta-deployment/bosh/update-runtime-config.sh
 ```                     
 #!/bin/bash
@@ -140,13 +140,13 @@ BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"			 # bosh director alias name (When not u
 bosh -e ${BOSH_ENVIRONMENT} update-runtime-config -n runtime-configs/dns.yml
 bosh -e ${BOSH_ENVIRONMENT} update-runtime-config -n --name=os-conf runtime-configs/os-conf.yml
 ```
-- Runtime Config Update Run Script
+- Update Runtime Config script
 ```                     
 $ cd ~/workspace/paasta-deployment/bosh
 $ source update-runtime-config.sh
 ```
 
-  - Runtime Config Check
+  - Check Runtime Config
   ```  
   $ bosh -e ${BOSH_ENVIRONMENT} runtime-config
   $ bosh -e ${BOSH_ENVIRONMENT} runtime-config --name=os-conf
@@ -252,7 +252,7 @@ The reason for setting it in three units is for service tripleization, and it ma
 
 A VM Type is a VM Type defined in IaaS.
 
-※ The following are the Instance Type defined by AWS.
+※ The followings are the Instance Type defined by AWS.
 ![aws-vmtype_eng](https://user-images.githubusercontent.com/104418463/165898613-4c595bbb-ae56-4033-ac6f-cea617523481.png)
 
 
@@ -262,7 +262,7 @@ When PaaS-TA AP and services are installed, BOSH creates a Compile task VM to co
 
 - Disk Size
 
-Persistent disk size is the VM where PaaS-TA AP and services are installed.
+Disk size is the persistent disk size of the VM where the PaaS-TA AP and service are installed.
 
 - Networks
 
@@ -292,7 +292,7 @@ common_vars.yml file and vars.yml can be modified to set the variables to be app
 <table>
 <tr>
 <td>common_vars.yml</td>
-<td>Common variable settings file to apply when installing PaaS-TA AP and various services</td>
+<td>Common variable setting file to apply when installing PaaS-TA AP and various services</td>
 </tr>
 <tr>
 <td>vars.yml</td>
@@ -300,7 +300,7 @@ common_vars.yml file and vars.yml can be modified to set the variables to be app
 </tr>
 <tr>
 <td>deploy-aws.sh</td>
-<td>Shell Script File for PaaS-TA AP Installation in AWS Environments</td>
+<td>Shell script file for PaaS-TA AP Installation in AWS Environments</td>
 </tr>
 <tr>
 <td>deploy-openstack.sh</td>
@@ -324,7 +324,7 @@ common_vars.yml file and vars.yml can be modified to set the variables to be app
 - common_vars.yml  
 
 Common variable setting file to apply when installing PaaS-TA AP and various services is under ~/workspace/common folder, [common_vars.yml] (https://github.com/PaaS-TA/common/blob/master/common_vars.yml). 
-When installing PaaS-TA AP by changing the variables of system_domain, paasta_admin_username, paasta_admin_password, paasta_database_port, paasta_cc_db_password, paasta_uaa_db_password, uaa_client_admin_secret, uaa_client_portal_secret.
+When installing PaaS-TA AP, you can install by changing the values of system_domain, paasta_admin_username, paasta_admin_password, paasta_database_port, paasta_cc_db_password, paasta_uaa_db_password, uaa_client_admin_secret, and uaa_client_portal_secret.
 > $ vi ~/workspace/common/common_vars.yml
 
 ```
@@ -544,14 +544,14 @@ After installing PaaS-TA AP, refer to the other CLI in the User Guide for how to
 <td>operations/use-postgres.yml</td>
 <td>Install Database as Postgres <br>
     - Install MySQL when use-postgres.yml is not applied  <br>
-    - Requiring for Migration from versions lower than 3.5
+    - Required for migration from version 3.5 or earlier
 </td>
 <td></td>
 </tr>
 <tr>
 <td>operations/use-haproxy.yml</td>
 <td>Apply HAProxy <br>
-    - When installing PaaS-TA AP using LB provided by IaaS, the operation file is removed and installed.
+    - When installing PaaS-TA AP using LB(Load Balancer) provided by IaaS, the operation file is removed and installed.
 </td>
 <td>Requires operation file: use-haproxy-public-network.yml <br>
     Requires value :  -v haproxy_private_ip

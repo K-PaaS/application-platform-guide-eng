@@ -65,7 +65,7 @@ The components to be configured on the Inception server for BOSH and PaaS-TA ins
 
 - BOSH CLI 6.1.x and above
 - BOSH Dependency : ruby, ruby-dev, openssl etc.
-- BOSH Deployment:manifest deployment for BOSH installation
+- BOSH Deployment: Manifest deployment for BOSH installation
 - PaaS-TA Deployment : Manifest deployment for PaaS-TA installation
 
 ## <div id='2.3'/>2.3.  BOSH Installation
@@ -305,19 +305,19 @@ The option files used in the installation Shell Script are as follows.
 </tr>
 <tr>
 <td>uaa.yml</td>
-<td>UAA applied</td>
+<td>For applying the UAA</td>
 </tr>
 <tr>
 <td>credhub.yml</td>
-<td>CredHub applied</td>
+<td>For applying CredHub</td>
 </tr>
 <tr>
 <td>jumpbox-user.yml</td>
-<td>Create BOSH Jumpbox user</td>
+<td>For creating BOSH Jumpbox user</td>
 </tr>
 <tr>
 <td>cce.yml</td>
-<td>Took action for CCE</td>
+<td>For taking action for CCE</td>
 </tr>
 </table>
 

@@ -71,7 +71,7 @@ bosh-openstack-kvm-ubuntu-bionic-go_agent  1.76      ubuntu-bionic  -    ce507ae
 Succeeded
 ```
 
-If the corresponding Stemcell is not uploaded, copy the corresponding IaaS environment and version stemcell link from [bosh.io Stemcell] (https://bosh.io/stemcells/) and execute the following command.
+If the corresponding Stemcell is not uploaded, copy the Stemcell link to the corresponding IaaS environment and version from [bosh.io Stemcell](https://bosh.io/stemcells/) and run the following command.
 
 ```
 # Example of Stemcell Upload Command
@@ -211,7 +211,7 @@ binary_storage_email: "<BINARY_STORAGE_EMAIL>"                  # binary storage
 
 ### <div id="2.5"/> 2.5. Service Installation
 
-- Modify the VARIABLES settings in the Deploy script file to match your server environment, and select whether to add the option file.
+- Modify the VARIABLES settings in the Deploy script file to match your server environment, and decide whether to add the option file.
      (Optional) -o operations/cce.yml (Apply CCE when installing)
 
 > $ vi ~/workspace/portal-deployment/portal-container-infra/deploy.sh
@@ -415,7 +415,7 @@ $ uaac client add portalclient -s clientsecret --redirect_uri "http://portal-web
 --autoapprove="openid , cloud_controller_service_permissions.read"
 ```
 
-- edirectError - Error registering redirect_uri in the portalclient
+- redirectError - Error registering redirect_uri in the portalclient
 ![paas-ta-portal-32]  
 1. If uri is registered incorrectly in the uaac portal client, a redirect error occurs as shown on that screen.
 2. The uri should be modified through the uaac client update.
@@ -433,11 +433,11 @@ After installing the Paas-TA Portal, you must register the build pack and servic
 
 1. Access the Administrator Portal.(portal-web-admin.\<DOMAIN\>)  
 ![paas-ta-portal-15]  
-2. Press Operation Management.
+2. Click Operation Management.
 ![paas-ta-portal-16]  
 3. Go to the catalog page.
 ![paas-ta-portal-17]  
-4. Enter the build pack and service pack detail screen, enter the value in each item column, and click Save.
+4. Go to the build pack and service pack detail screen, enter the value in each item column, and click Save.
 ![paas-ta-portal-18]  
 5. Check whether the changed value is applied in the user portal.
 ![paas-ta-portal-19]   

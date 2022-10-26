@@ -335,7 +335,7 @@ For more information on installing BOSH, see the BOSH Installation Guide.
 
 |File Name|Description|
 |------|---|
-| deploy-cpi-aws-secondary.yml | BUse if infrastructure without BOSH is AWS |
+| deploy-cpi-aws-secondary.yml | Use if infrastructure without BOSH is AWS |
 | deploy-cpi-openstack-secondary.yml	 | Use if infrastructure without BOSH is OpenStack |
 | deploy-cpi-vsphere-secondary.yml	 | Use if infrastructure without BOSH is OpenStack vSphere|
 | deploy-cpi-registry-secondary.yml | Use if infrastructure without BOSH is OpenStack vSphere <br>(used for paasta-deployment v5.7.0 or lower version deployment, <br>v5.7.0 or higher has no need to use.) |

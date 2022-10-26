@@ -71,7 +71,7 @@ bosh-openstack-kvm-ubuntu-bionic-go_agent  1.76      ubuntu-bionic  -    ce507ae
 Succeeded
 ```
 
-If the corresponding Stemcell is not uploaded, copy the corresponding IaaS environment and version stemcell link from [bosh.io Stemcell] (https://bosh.io/stemcells/) and execute the following command.
+If the corresponding Stemcell is not uploaded, copy the Stemcell link to the corresponding IaaS environment and version from [bosh.io Stemcell](https://bosh.io/stemcells/) and run the following command.
 
 ```
 # Example of Stemcell Upload Command
@@ -276,7 +276,7 @@ mail_smtp_properties_subject: "<MAIL_SMTP_PROPERTIES_SUBJECT>"  # mail-smtp : pr
 
 ### <div id="2.5"/> 2.5. Service Installation
 
-- Modify the VARIABLES settings in the Deploy script file to match your server environment, and select whether to add the option file.
+- Modify the VARIABLES settings in the Deploy script file to match your server environment, and decide whether to add the option file.
   (Optional) -o operations/cce.yml (Apply CCE when Installing)
 
 > $ vi ~/workspace/portal-deployment/portal-api/deploy.sh
@@ -352,7 +352,7 @@ Feature user_org_creation Enabled.
 ### <div id="3.2"/> 3.2. User portal UAA page error
 
 >![paas-ta-portal-31]
-1. If the uaac portal client is not registered, a redirect error occurs as shown on the screen.
+1. IF the uaac portal client is not registered, a redirect error occurs as shown on the screen.
 2. You must add the portalclient through uaac client add.
     > $ uaac target\
     $ uaac token client get\
@@ -368,7 +368,7 @@ $ uaac client add portalclient -s xxxxx --redirect_uri "http://portal-web-user.x
 --autoapprove="openid , cloud_controller_service_permissions.read"
 
  >![paas-ta-portal-32]
-1. If url is registered incorrectly in the uaac portal client, a redirect error occurs as shown on the screen.
+1. IF url is registered incorrectly in the uaac portal client, a redirect error occurs as shown on the screen.
 2. The url should be modified through the uaac client update.
    > $ uaac target\
     $ uaac token client get\
@@ -503,7 +503,7 @@ After installing the Paas-TA Portal, you must register the build pack and servic
  1. Access the Administrator Portal.(portal-web-admin.[public ip].nip.io)
     
     >![paas-ta-portal-15]
- 2. Press Operation Management.
+ 2. Click Operation Management.
     
     >![paas-ta-portal-16]
  2. Go to Catalog page.

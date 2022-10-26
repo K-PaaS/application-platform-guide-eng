@@ -76,7 +76,7 @@ $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell {URL}
 
 Paasta-deployment supports Stemcell upload scripts from v5.5.0. After logging in to BOSH, perform the following commands to upload Stemcells.
 BOSH_ENVIRONMENT is the Director name used when installing BOSH, and CURRENT_IAAS is entered according to the deployed environment IaaS (aws, azure, gcp, openstack, vsphere, and other input bosh-lite).
-<br>(PaaS-TA AP creates a create-bosh-login.When bosh login using sh, bosh_environment and current_ias are automatically input.)
+<br>(PBOSH_ENVIRONMENT and CURRENT_IAAS are automatically entered during BOSH LOGIN using create-bosh-login.sh provided by PaaS-TA AP.)
 
 - Modify the settings of the Stemcell upload script (Modify BOSH_ENVIRONMENT)
 
@@ -105,7 +105,7 @@ fi
 
 ```
 
-- Stemcell Upload Run Script
+- Run Stemcell upload script
 
 ```
 $ cd ~/workspace/paasta-deployment/bosh
@@ -264,7 +264,7 @@ When PaaS-TA AP and services are installed, BOSH creates a Compile task VM to co
 
 - Disk Size
 
-Persistent disk size of the VM where PaaS-TA AP and services are installed.
+Disk size is persistent disk size of the VM where PaaS-TA AP and services are installed.
 
 - Networks
 
@@ -329,7 +329,7 @@ common_vars.yml file and vars.yml can be modified to set the variables to be app
 
 - common_vars.yml  
 
-[common_vars.yml] (https://github.com/PaaS-TA/common/blob/master/common_vars.yml)in ~/workspace/common folder, there is a common variable setting file to apply when installing PaaS-TA AP min and various services.  
+[common_vars.yml] (https://github.com/PaaS-TA/common/blob/master/common_vars.yml)in ~/workspace/common folder has a common variable setting to apply when installing PaaS-TA AP min and various services.
 When installing PaaS-TA AP min, change the values of system_domain, paasta_admin_username, paasta_admin_password, paasta_database_port, paasta_cc_db_password, paasta_ua_db_password, ua_db_password, ua_client_secet_rset to install.
 
 > $ vi ~/workspace/common/common_vars.yml
@@ -508,7 +508,7 @@ Refer to the other CLI in the User Guide for how to use UAAC after installing Pa
 <td>operations/min-use-postgres.yml</td>
 <td>Install Database as Postgres <br>
     - When min-use-postgres.yml cannot be applied, install MySQL<br>
-    - Requiring for Migration from versions lower than 3.5  
+    - Required for Migration from versions earlier than 3.5 
 </td>
 <td></td>
 </tr>

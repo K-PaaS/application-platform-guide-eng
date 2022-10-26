@@ -76,7 +76,7 @@ $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell {URL}
 
 Paasta-deployment supports Stemcell upload scripts from v5.5.0. After logging in to BOSH, perform the following commands to upload Stemcells.
 BOSH_ENVIRONMENT is the Director name used when installing BOSH, and CURRENT_IAAS is entered according to the deployed environment IaaS (aws, azure, gcp, openstack, vsphere, and other input bosh-lite).
-<br>(PaaS-TAAP creates a create-bosh-login.When bosh login using sh, bosh_environment and current_ias are automatically input.)
+<br>(PaaS-TA AP creates a create-bosh-login.When bosh login using sh, bosh_environment and current_ias are automatically input.)
 
 - Modify the settings of the Stemcell upload script (Modify BOSH_ENVIRONMENT)
 
@@ -115,7 +115,7 @@ $ source upload-stemcell.sh
 <br>
 
 ## <div id='2.4'/>2.4. Runtime Config Setting
-Runtime config is a setting that applies to VMs distributed in BOSH collectively.
+Runtime config is a setting that applies to VMs deployed in BOSH collectively.
 The basic Runtime Config setting command is as follows.
 ```                     
 $ bosh -e ${BOSH_ENVIRONMENT} update-runtime-config {PATH} --name={NAME}
@@ -160,7 +160,7 @@ $ source update-runtime-config.sh
 
 When deploying VMs through BOSH, IaaS-related network, storage, and VM-related settings are defined as Cloud Config.
 After downloading the paasta-deployment installation file, you can see examples of IaaS-specific CloudConfig under the ~/workspace/paasta-deployment-min/cloud-config directory, and modify cloud-config.yml to fit IaaS. 
-Cloud Config should be applied to BOSH prior to PaaS-TAAP deployment.
+Cloud Config should be applied to BOSH prior to PaaS-TA AP deployment.
 
 - An example based on AWS [cloud-config.yml](https://github.com/PaaS-TA/paasta-deployment/blob/master/cloud-config/aws-cloud-config.yml) 
 
@@ -260,11 +260,11 @@ A VM Type is a VM Type defined in IaaS.
 
 - Compilation
 
-When PaaS-TAAP and services are installed, BOSH creates a Compile task VM to compile the source, and then installs the compiled file on the destination VM and deletes the Compile task VM (the number of workers is the number of Compile VMs, the faster the compilation)
+When PaaS-TA AP and services are installed, BOSH creates a Compile task VM to compile the source, and then installs the compiled file on the destination VM and deletes the Compile task VM (the number of workers is the number of Compile VMs, the faster the compilation)
 
 - Disk Size
 
-Persistent disk size of the VM where PaaS-TAAP and services are installed.
+Persistent disk size of the VM where PaaS-TA AP and services are installed.
 
 - Networks
 
@@ -350,7 +350,7 @@ uaa_client_portal_secret: "clientsecret"		# Secret variables for accessing the U
 
 - min-vars.yml
 
-Can change the various variable values applied when installing PaaS-TA AP min or the settings of the VM to be distributed.
+Can change the various variable values applied when installing PaaS-TA AP min or the settings of the VM to be deployed.
 
 > $ vi ~/workspace/paasta-deployment-min/paasta/min-vars.yml
 ```
@@ -492,7 +492,7 @@ ex) uaa_client_portal_secret="portalclient"
 ex) uaa_client_admin_secret="admin-secret"
 ```
 
-Refer to the other CLI in the User Guide for how to use UAAC after installing PaaS-TAAP.
+Refer to the other CLI in the User Guide for how to use UAAC after installing PaaS-TA AP.
 
 <br>
 

@@ -54,7 +54,7 @@ The range of this document is limited to Ruby application development, service p
 
 ### <div id='7'></div> 2.1.	Outline
 
-It describes how to bind various service packs registered on an open platform to an application written in Ruby language, link applications using VCAP_SERVICES bound to the application, and create a Ruby application to distribute to an open platform in a Windows-based environment.
+It describes how to bind various service packs registered on an open platform to an application written in Ruby language, link applications using VCAP_SERVICES bound to the application, and create a Ruby application to deploy to an open platform in a Windows-based environment.
 
 ### <div id='8'></div> 2.2.	Development Environment Configuration
 
@@ -387,7 +387,7 @@ config.action_controller.allow_forgery_protection    = false
 
 ##### <div id='13'></div> 2.3.3.	VCAP_SERVICES Environment Setting Information
 
-To obtain access information for each service to which an application distributed on an open platform is bound, information may be obtained by reading VCAP_SERVICES configuration information registered for each application.
+To obtain access information for each service to which an application deployed on an open platform is bound, information may be obtained by reading VCAP_SERVICES configuration information registered for each application.
 
 <table>
 <tr align=center>

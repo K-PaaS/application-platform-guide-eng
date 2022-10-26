@@ -48,7 +48,7 @@ CF Deployment: [https://github.com/cloudfoundry/cf-deployment](https://github.co
 
 - Installs BOSH2 based BOSH.
 - Installation of PaaS-TA AP is operated at Inception where BOSH was installed.
-- BOSH LOGIN is performed for PaaS-TAAP installation.
+- BOSH LOGIN is performed for PaaS-TA AP installation.
 
 <br>
 
@@ -66,7 +66,7 @@ $ git clone https://github.com/PaaS-TA/paasta-deployment.git -b v5.7.1
 <br>
 
 ## <div id='2.3'/>2.3. Stemcell Upload
-Stemcell is a PaaS-TAAP VM Base OS image that is created during deployment.
+Stemcell is a PaaS-TA AP VM Base OS image that is created during deployment.
 Paasta-deployment v5.7.1 is based on Ubuntu bionic stem cell 1.76. 
 The basic Stemcell upload command are as follows.
 ```                     
@@ -75,7 +75,7 @@ $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell {URL}
 
 Paasta-deployment supports Stemcell upload scripts from v5.5.0. After logging in to BOSH, perform the following command to upload Stemcell.
 BOSH_ENVIRONMENT is the Director name used when installing BOSH, and CURRENT_IAAS is entered according to the deployed environment IaaS (aws, azure, gcp, openstack, vsphere, and other input bosh-lite).
-<br>(create-bosh-login provided by PaaS-TAAP.BOSH_ENVIRONMENT and CURRENT_IAAS are automatically entered during BOSH LOGIN using sh.)
+<br>(create-bosh-login provided by PaaS-TA AP.BOSH_ENVIRONMENT and CURRENT_IAAS are automatically entered during BOSH LOGIN using sh.)
 
 - Modify the settings of the Stemcell upload script (Modify BOSH_ENVIRONMENT)
 
@@ -113,13 +113,13 @@ $ source upload-stemcell.sh
 <br>
 
 ## <div id='2.4'/>2.4. Runtime Config Setting
-Runtime config is a setting that applies to VMs distributed in BOSH collectively.
+Runtime config is a setting that applies to VMs deployed in BOSH collectively.
 The basic Runtime Config setting command is as follows.
 ```                     
 $ bosh -e ${BOSH_ENVIRONMENT} update-runtime-config {PATH} --name={NAME}
 ```
 
-The Runtime Config applied by PaaS-TAAP is as follows.
+The Runtime Config applied by PaaS-TA AP is as follows.
 
 - DNS Runtime Config  
   As part of PaaS-TA 4.0, it is a component that has been replaced by Consul in PaaS-TA Component.
@@ -600,7 +600,7 @@ Example of PaaS-TA AP deployment BOSH command
 $ bosh -e ${BOSH_ENVIRONMENT} -d paasta deploy paasta-deployment.yml
 ```
 
-Installation options must be added when deploying PaaS-TAAP. The description of the installation options are as follows.
+Installation options must be added when deploying PaaS-TA AP. The description of the installation options are as follows.
 
 <table>
 <tr>

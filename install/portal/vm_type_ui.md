@@ -281,7 +281,7 @@ Succeeded
 
 ### <div id="2.7"/> 2.7. Portal SSH Installation
 
-From Portal 5.1.0 and above, SSH access to distributed applications is possible.
+From Portal 5.1.0 and above, SSH access to deployed applications is possible.
 
 For this, deploy the Portal SSH App must be done first.
 

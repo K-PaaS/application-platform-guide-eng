@@ -328,7 +328,7 @@ Modify the WSGI module to enable WhiteNoise.
 
 ##### <div id='2-3-3'></div> 2.3.3. VCAP_SERVICES Environment Setting Information 
 
-To obtain access information for each service to which an application distributed on an open platform is bound, the VCAP_SERVICES configuration information registered in each application must be read to obtain information.
+To obtain access information for each service to which an application deployed on an open platform is bound, the VCAP_SERVICES configuration information registered in each application must be read to obtain information.
 
 * Open Platform's Application Environment Information
   When the service is bound, configuration information is registered by the application in the form of JSON.
@@ -750,7 +750,7 @@ applications:
 
 ##### <div id='2-4-5'></div> 2.4.5. Service Bind
 
-The connection between a service created by [2.4.3. Create Service] (#2-4-3) and an application distributed by [2.4.4.4. Application Deployment] (#2-4-4) is called a service bind. Through the service bind, the application may obtain VCAP_SERVICES configuration information for accessing the service, which may be confirmed in [2.3.3. VCAP_SERVICES Environment Setting Information] (#2-3-3). 
+The connection between a service created by [2.4.3. Create Service] (#2-4-3) and an application deployed by [2.4.4.4. Application Deployment] (#2-4-4) is called a service bind. Through the service bind, the application may obtain VCAP_SERVICES configuration information for accessing the service, which may be confirmed in [2.3.3. VCAP_SERVICES Environment Setting Information] (#2-3-3). 
 
 ```
 # cf bind-service APP_NAME SERVICE_INSTANCE [-c PARAMETERS_AS_JSON]

@@ -300,7 +300,7 @@ Succeeded
 
 ##  <div id='3'> 3. Sample Web App Interworking Pinpoint Interworking
 
-This Sample Web App is distributed on an open cloud platform and Pinpoint's service can be used with Provision and Bind.
+This Sample Web App is deployed on an open cloud platform and Pinpoint's service can be used with Provision and Bind.
 
 ### <div id='3.1'> 3.1. Pinpoint Service Broker Registration
 
@@ -374,7 +374,7 @@ broker: pinpoint-service-broker
 
 ### <div id='3.2'> 3.2. Sample Web App Download
 
-The Sample Web App is deployed as an App to PaaS-TA. Initial data is generated through Pinpoint service Bind on the distributed app.  
+The Sample Web App is deployed as an App to PaaS-TA. Initial data is generated through Pinpoint service Bind on the deployed app.  
 After the binding is completed, Pinpoint service monitoring for the app can be performed through the browser through the connection url.
 
 - Download Zip File of Sample Apps 

@@ -34,7 +34,7 @@ This document is an installation guide document for BOSH2 (hereinafter referred 
 # <div id='1'/>1. Document Outline
 
 ## <div id='1.1'/>1.1. Purpose
-BOSH, which can distribute service systems to cloud environments, is an open-source project that integrates release engineering, development, and software lifecycle management. The purpose of this document is to install BOSH in an Inception environment (installation environment).
+BOSH, which can deploy service systems to cloud environments, is an open-source project that integrates release engineering, development, and software lifecycle management. The purpose of this document is to install BOSH in an Inception environment (installation environment).
 
 ## <div id='1.2'/>1.2. Range
 This document was written based on installing and configuring packages and libraries for BOSH installation based on Linux environments (Ubuntu 18.04) and using them to install BOSH.
@@ -157,7 +157,7 @@ README.md  bosh  cloud-config  paasta
 </tr>
 <tr>
 <td>paasta</td>
-<td>Folder containing manifest and installation files for PaaS-TAAP installation</td>
+<td>Folder containing manifest and installation files for PaaS-TA AP installation</td>
 </tr>
 </table>
 

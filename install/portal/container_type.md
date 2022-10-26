@@ -258,7 +258,7 @@ Succeeded
 
 ## <div id="3"/> 3. PaaS-TA AP Portal Installation
 ### <div id="3.1"/> 3.1. Portal App Configuration
-9 Portal-related apps are distributed on PaaS-TAAP, and the configuration are as follows.
+9 Portal-related apps are deployed on PaaS-TA AP, and the configuration are as follows.
 ```
 portal-app-1.2.2
 ├── portal-api-2.4.1

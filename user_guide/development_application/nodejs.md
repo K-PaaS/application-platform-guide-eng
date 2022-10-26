@@ -527,7 +527,7 @@ app.delete('/orgs/:org_id/mysql', orgs_mysql.destroy);
 
 
 ### <div id='11'> 3.4. VCAP_SERVICES Environment Information
-To obtain access information for each service to which an application distributed on an open platform is bound, information can be obtained by reading the VCAP_SERVICES environment information registered for each application.
+To obtain access information for each service to which an application deployed on an open platform is bound, information can be obtained by reading the VCAP_SERVICES environment information registered for each application.
 
 1)  Application environment information of Open Platform
 - environment information is registered to each application in JSON form when the service is bound.

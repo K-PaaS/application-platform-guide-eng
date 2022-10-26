@@ -138,7 +138,7 @@ Prior to the architectural description, several terms used in this document are 
   ````
 
 -   **Container**[^3]: An open cloud platform provides each independent execution space for the applications being deployed, which is called a container.
-    The droplets are distributed to the container in the start step.
+    The droplets are deployed to the container in the start step.
 
 ### <a name="23"/>2.3. Buildpack Architecture
 

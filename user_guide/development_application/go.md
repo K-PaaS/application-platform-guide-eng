@@ -213,7 +213,7 @@ Data management for sample applications uses either MySQL or MongoDB, so when re
 
 ##### 2.3.3. Connection through VCAP\_SERVICES Environment Setting Information 
 
-To obtain access information for each service to which an application distributed on an open platform is bound, information may be obtained by reading VCAP\_SERVICES environment Setting information registered for each application.
+To obtain access information for each service to which an application deployed on an open platform is bound, information may be obtained by reading VCAP\_SERVICES environment Setting information registered for each application.
 
 1).  Application Environment Information of the Open Platform
 

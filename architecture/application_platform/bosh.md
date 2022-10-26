@@ -17,7 +17,7 @@ This document provides the Architecture of the BOSH.
 <br><br>
 
 ## Description
-Although BOSH was initially developed for Cloud Foundry PaaS, it is now an integrated project that allows the software to be easily distributed in Yaml file formats such as Jenkins and Hadoop. BOSH can install Hundreds of VMs, and manage lifecycle for each VM, such as monitoring and disaster recovery. 
+Although BOSH was initially developed for Cloud Foundry PaaS, it is now an integrated project that allows the software to be easily deployed in Yaml file formats such as Jenkins and Hadoop. BOSH can install Hundreds of VMs, and manage lifecycle for each VM, such as monitoring and disaster recovery. 
 IaaS supported by BOSH includes VMware vSphere, Google Cloud Platform, Amazon Web Services EC2, Microsoft Azure, OpenStack, and Alibaba Cloud. PaaS-TA AP BOSH supports IaaS such as VMware vSphere, Google Cloud Platform, Amazon Web Services EC2, OpenStack, and Microsoft Azure.
 
 
@@ -39,7 +39,7 @@ When Health Monitor detects a problem with a VM, it can send an alert through th
 
 - Blobstore : Stores the compilation images of releases and releases.
 
-- Agent : Installed on all VMs distributed through BOSH and serves to receive and perform specific commands from the Director.  
+- Agent : Installed on all VMs deployed through BOSH and serves to receive and perform specific commands from the Director.  
 The Agent installs the package designated as directed by the Director on the VM with the Job Specification information received from the Director and sets the necessary configuration information.
 
 - Message Bus (NATS) : A public-subscribe message system for communication between Director and Agent, used to monitor VMs and perform specific commands.

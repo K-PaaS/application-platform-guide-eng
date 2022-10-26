@@ -5,8 +5,8 @@ This document provides the Architecture of Application Platform (AP) Portal- Con
 <br><br>
 
 ## System Configuration Diagram
-The Container Type AP Portal can be divided into two parts, Portal Infra and Portal APP.
-Portal Infra is distributed as BOSH, and Portal APP is distributed as PaaS-TAAP.
+The Container Type AP Portal is composed of two parts: Portal Infra and Portal APP.
+Portal Infra is deployed by BOSH, and Portal APP is deployed by PaaS-TA AP.
 The configuration and specification of Portal Infra and Portal APP are as follows. 
 <br>
 

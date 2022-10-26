@@ -29,7 +29,7 @@
 # <div id='1'/>1. Document Outline
 
 ## <div id='1.1'/>1.1. Purpose
-This document is a Multi-CPI setup guide for BOSH2 (hereinafter BOSH) and explains how to set up and use Multi-CPI that distributes VMs in IaaS environments. (hereinafter referred to as Main IaaS AZ) and other IaaS environments (hereinafter referred to as Second IaaS AZ) where BOSH is installed through one BOSH.
+This document is a Multi-CPI setup guide for BOSH2 (hereinafter BOSH) and explains how to set up and use Multi-CPI that deploys VMs in IaaS environments. (hereinafter referred to as Main IaaS AZ) and other IaaS environments (hereinafter referred to as Second IaaS AZ) where BOSH is installed through one BOSH.
 
 <br>
 
@@ -648,7 +648,7 @@ After completing the Multi-CPI setup, PaaS-TA AP is installed to test whether co
 For a description of the runtime-config setting or variable setting required for PaaS-TA AP, refer to the PaaS-TA AP Guide.
 
 In this guide, among several cases, Diego-cell was installed on OpenStack and the remaining VMs were installed on AWS based on AWS - OpenStack.
-Not only Diego-cell but also other VMs can be distributed and distributed across different IaaS. Change the distribution method according to the application settings to proceed with the installation. 
+Not only Diego-cell but also other VMs can be deployed and deployed across different IaaS. Change the distribution method according to the application settings to proceed with the installation. 
 
 - Go to PaaS-TA AP Installation Folder
 ```

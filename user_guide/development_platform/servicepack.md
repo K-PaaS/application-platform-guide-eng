@@ -1048,7 +1048,7 @@ Receive "{}" value on success.
 #### <a name="19"/>3.1.	Outline
 The BOSH release consists of jobs (packages-driven scripts, monit scripts, etc.), packages, source code, and metadata from related sources. Install software through BOSH (service back-end, bro, etc.). The binary file (also known as "blobs") required for packaging, eliminates the need of necessity to store files inside the release storage. It is stored in the Blob repository in the release and can be referenced externally. Write a release yml to utilize the BOSH release.
 
-Refer: If the service back-end (refer to the software: 2.2 Service Architecture provided by the service provider) is a provider that already provides an external service, it is not necessary to install the service back-end with the BOSH release, and only the broker can develop and connect to the external service. In this case, install with Bosh release for Broker only. However, if an externally provided service is included in the IaaS where the CF is installed (if it is a cloud operation in a disconnected network), the service back-end is distributed as a BOSH release. In addition, if you use external services and want to provide (cf push) as an application for an open cloud platform, you can skip the BOSH release and proceed with the 2. Service Broker Guide.
+Refer: If the service back-end (refer to the software: 2.2 Service Architecture provided by the service provider) is a provider that already provides an external service, it is not necessary to install the service back-end with the BOSH release, and only the broker can develop and connect to the external service. In this case, install with Bosh release for Broker only. However, if an externally provided service is included in the IaaS where the CF is installed (if it is a cloud operation in a disconnected network), the service back-end is deployed as a BOSH release. In addition, if you use external services and want to provide (cf push) as an application for an open cloud platform, you can skip the BOSH release and proceed with the 2. Service Broker Guide.
 
 #### <a name="20"/>3.2.	Bosh Architecture
  
@@ -1064,7 +1064,7 @@ Refer: If the service back-end (refer to the software: 2.2 Service Architecture 
 > [picture reference]: https://www.ibm.com/developerworks/community/blogs/fe313521-2e95-46f2-817d-44a4f27eba32/entry/porting_cloud_foundry_on_power8_ubuntu_le?lang=en
 
 #### <a name="21"/>3.3.	Release Directory Configuration
-The directory structure can be configured with the Bosh release. Bosh is an open-source tool for release engineering, deployment, and lifecycle management of large-scale distributed services.
+The directory structure can be configured with the Bosh release. Bosh is an open-source tool for release engineering, deployment, and lifecycle management of large-scale deployed services.
 
 ##### <a name="22"/>3.3.1. packages
 Packages provide the information necessary to prepare a binary dependency for Bosh release installation. (packaging, pre_packaging, spec file)
@@ -1114,7 +1114,7 @@ Manage migration information files from this version. (Option)
 >![openpaas-servicepack-43]
  
 #### <a name="31"/>3.4.Development Guide
-must be written according to the Bosh release development method because the service must be distributed through the Bosh release.  
+must be written according to the Bosh release development method because the service must be deployed through the Bosh release.  
 The Bosh release consists of scripts related to packages and jobs.
 Bosh offers two ways to release software.
 Bosh upload release CLI command and process are as follows.

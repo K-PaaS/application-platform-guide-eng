@@ -523,7 +523,7 @@ View list of Apps in the target space.
     $ cf app spring-music
     ```
     
-#### <div id='push-p'/> push,p
+#### <div id='push-p'/> push (or p)
 
   - **Basic Syntax**
 
@@ -675,7 +675,7 @@ View list of Apps in the target space.
   $  cf rename spring-music new-spring-music
   ```
 
-#### <div id='start-st'/> start,st
+#### <div id='start-st'/> start (or st)
 
   - **Basic Syntax**
 
@@ -706,7 +706,7 @@ View list of Apps in the target space.
   ```
   $  cf start spring-music
   ```
-#### <div id='stop-sp'/> stop,sp
+#### <div id='stop-sp'/> stop (or sp)
 
   - **Basic Syntax**
 
@@ -738,7 +738,7 @@ View list of Apps in the target space.
   $  cf stop spring-music
   ```
 
-#### <div id='restart-rs'/> restart, rs
+#### <div id='restart-rs'/> restart (or rs)
 
   - **Basic Syntax**
 
@@ -770,7 +770,7 @@ View list of Apps in the target space.
   $cf restart spring-music
   ```
 
-####  <div id='restage-rg'/> restage, rg
+####  <div id='restage-rg'/> restage (or rg)
 
   - **Basic Syntax**
 
@@ -931,7 +931,7 @@ View list of Apps in the target space.
   ```
   $  cf logs spring-music
   ```
-#### <div id='env-e'/> env,e
+#### <div id='env-e'/> env (or e)
 
   - **Basic Syntax**
 
@@ -962,7 +962,7 @@ View list of Apps in the target space.
   $ cf env spring-music
   ```
 
-#### <div id='set-env-se'/> set-env,se
+#### <div id='set-env-se'/> set-env (or se)
 
   - **Basic Syntax**
 
@@ -1544,7 +1544,7 @@ View list of Apps in the target space.
 
 
   ```
-  Binds sertive instance and app.<br> - Service Instance and APP must be bound to use the service in App
+  Binds service instance and app.<br> - Service Instance and APP must be bound to use the service in App
   ```
 
 
@@ -1716,7 +1716,7 @@ View list of Apps in the target space.
 
 
   ```
-  Retrieve detailed information of organization조직 상세 정보를 조회합니다.
+  Retrieve detailed information of organization.
   ```
 
 
@@ -2980,8 +2980,8 @@ View list of Apps in the target space.
   |QUOTA                       |QUOTA Name                                                       |O         |
   |-m TOTAL_MEMORY             |Total amount of memory a space can have  <br> Ex) 1024M, 1G, 10G                         |X         |
   |-i INSTANCE_MEMORY          |Maximum amount of memory an application instance can have (-1 equals to infinity) <br>  Ex) 1024M, 1G, 10G                        |X         |
-  |-r ROUTES                   |Total number of routes                                                 |X         |
-  |-s SERVICE_INSTANCES        |Total number of service instance                                         |X         |
+  |-r ROUTES                   |Maximum number of routes                                                 |X         |
+  |-s SERVICE_INSTANCES        |Maximum number of service instance                                         |X         |
   |--allow-paid-service-plans  |Can provision instances of paid service plans                                       |X        |
 
 
@@ -3262,7 +3262,7 @@ View list of Apps in the target space.
   | Parameter   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
   |SPACE-QUOTA-NAME            |Space QUOTA Name                                               |O         |
-  |-i MAX-INSTANCE-MEMORY      ||Maximum amount of memory an application instance can have (-1 equals to infinity) <br>  Ex) 1024M, 1G, 10G                        |X         |
+  |-i MAX-INSTANCE-MEMORY      ||Maximum amount of memory an application instance can have (-1 equals to infinity) <br>  Ex) 1024M, 1G, 10G  |X         |
   |-m MEMORY                   |Maximum memory a space can have                               |X         |
   |-n NEW_NAME                 |New SPACE-QUOTA Name to change                                       |X         |
   |-r ROUTES                   |Maximum number of the route a space can have                               |X         |

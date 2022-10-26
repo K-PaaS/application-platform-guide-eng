@@ -5,7 +5,7 @@ This document provides the Architecture of Application Platform (AP) Portal - VM
 <br><br>
 
 ## System Configuration Diagram
-The AP Portal of VM Type can be divided into two parts, Portal API and Portal UI.  
+The AP Portal of VM Type is composed of two parts: Portal API and Portal UI. 
 The configuration and specification of Portal API and Portal UI are as follows.  
 <br>
 

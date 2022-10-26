@@ -17,9 +17,8 @@ This document provides the Architecture of the BOSH.
 <br><br>
 
 ## Description
-Although BOSH was initially developed for Cloud Foundry PaaS, it is now an integrated project that allows the software to be easily distributed in Yaml file formats such as Jenkins and Hadoop. Hundreds of VMs can be installed, and manage lifecycle for each VM, such as monitoring and disaster recovery. 
-IaaS supported BOSH includes VMware vSphere, Google Cloud Platform, Amazon Web Services EC2, Microsoft Azure, OpenStack, and Alibaba Cloud
-IaaS supporting PaaS-TA AP BOSH are VMware vSphere, Google Cloud Platform, Amazon Web Services EC2, OpenStack, and Microsoft Azure.
+Although BOSH was initially developed for Cloud Foundry PaaS, it is now an integrated project that allows the software to be easily distributed in Yaml file formats such as Jenkins and Hadoop. BOSH can install Hundreds of VMs, and manage lifecycle for each VM, such as monitoring and disaster recovery. 
+IaaS supported by BOSH includes VMware vSphere, Google Cloud Platform, Amazon Web Services EC2, Microsoft Azure, OpenStack, and Alibaba Cloud. PaaS-TA AP BOSH supports IaaS such as VMware vSphere, Google Cloud Platform, Amazon Web Services EC2, OpenStack, and Microsoft Azure.
 
 
 Below are the component descriptions of BOSH.

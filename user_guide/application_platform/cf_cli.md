@@ -3262,7 +3262,7 @@ View list of Apps in the target space.
   | Parameter   |           Description                 | Necessity(O/X) |
   |-------------|--------------------------------|-----------|
   |SPACE-QUOTA-NAME            |Space QUOTA Name                                               |O         |
-  |-i MAX-INSTANCE-MEMORY      ||Maximum amount of memory an application instance can have (-1 equals to infinity) <br>  Ex) 1024M, 1G, 10G  |X         |
+  |-i MAX-INSTANCE-MEMORY      |Maximum amount of memory an application instance can have (-1 equals to infinity) <br>  Ex) 1024M, 1G, 10G  |X         |
   |-m MEMORY                   |Maximum memory a space can have                               |X         |
   |-n NEW_NAME                 |New SPACE-QUOTA Name to change                                       |X         |
   |-r ROUTES                   |Maximum number of the route a space can have                               |X         |

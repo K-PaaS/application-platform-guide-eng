@@ -485,7 +485,8 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 - **Description**
 
-	Creates a configuration file for the release in dir Current directory if dir is not used
+	Create configuration file for release in dir.
+If the dir option is not used, the current directory is used.
 
 - **Parameter**
 
@@ -550,8 +551,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 - **Description**
 
-	Provide packages from other releases as releases of dir, including spec. lock in the directory so that the CLI references a specific package when creating a release
-	References https://bosh.io/docs/package-vendoring.html 
+	Provide packages from other releases as releases of dir, including spec.lock in the directory so that the CLI references a specific package when creating a release References https://bosh.io/docs/package-vendoring.html 
 
 
 - **Parameter**
@@ -716,7 +716,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 
 - **Description**
 
-	synchronize blob of blobstore within the release
+	Synchronize blob of blobstore within the release
 
 - **Used Example**
 
@@ -1408,8 +1408,7 @@ To help BOSH deployment and Release management, CLI is divided in the Command Li
 	|----------|-------------------------|--------------------------------|
 	|my-env|Specified Director Environment Name|O|
 	|my-dep|specify deployment name|O|
-	|group[/instance-id]|Group or group and instance ID
-|X|
+	|group[/instance-id]|Group or group and instance ID |X|
 
 
 - **Used Example**

@@ -124,7 +124,7 @@ For this example, Node.js, npm, and doc were selected and installed. The environ
 ![2-2-1-10]
 
 Development Tool
-Node.js is a javascript-based language that can use document editors such as Notepad++, Sublim Text, and EditPlus as the development tool. Also, Plugin Nodeclipse of Eclipse can be used.
+Node.js is a javascript-based language that can use document editors such as Notepad++, Sublime Text, and EditPlus as the development tool. Also, Plugin Nodeclipse of Eclipse can be used.
 
 
 # <div id='7'> 3. Development
@@ -220,7 +220,7 @@ Data management for sample applications uses either MySQL, CubridDB, or MongoDB,
   </tr>
   <tr>
     <td>test/</td>
-    <td>a directory that wrote the mocha test.</td>
+    <td>A directory that wrote the mocha test.</td>
   </tr>
   <tr>
     <td>(node_modules)</td>
@@ -228,7 +228,7 @@ Data management for sample applications uses either MySQL, CubridDB, or MongoDB,
   </tr>
   <tr>
     <td>Makefile</td>
-    <td>a file to run mocha test easily in linux.</td>
+    <td>A file to run mocha test easily in linux.</td>
   </tr>
   <tr>
     <td>manifest.yml</td>

@@ -574,8 +574,7 @@ All response bodies should be in JSON Object ({}) format.
 	
 	})
 
-4.	Update Service Instance API development specification by service
-4.1.	In common
+4.	Update Service Instance API development specification by service 4.1. in common.
 	1.	Check whether the plan information currently provided and the plan information requested for change are different.
 	
 	2.	When downgrading, an error occurs when the capacity being used is larger than the capacity to downgrade.
@@ -689,7 +688,7 @@ Receive "{}" value on success.
 
 
 4.2.	Mass storage
-1. the  In case of GlusterFS
+1.  In the case of GlusterFS
 
 	- Delete Swift Account
 	
@@ -739,7 +738,7 @@ A different status code response means failure.
 >![openpaas-servicepack-29]
 
 2.3.	Binding Credentials 
-In the case of service binding, authentication information that the user can use in the application is returned in response to the bind API call. Provide these credentials to the open cloud platform environment variable VCAP_SERVICES. It is recommended to be used in the Credentials field list. Use if the fields provided meet the user's requirements. Additional fields can be provided as needed.
+	In the case of service binding, authentication information that the user can use in the application is returned in response to the bind API call. Provide these credentials to the open cloud platform environment variable VCAP_SERVICES. It is recommended to be used in the Credentials field list. Use if the fields provided meet the user's requirements. Additional fields can be provided as needed.
 
 Important: If you provide a service that supports the connection string, at least the uri key must be provided. As mentioned above, a separate credential field may also be provided. Buildpacks and Application libraries use the uri key.
 >![openpaas-servicepack-30]

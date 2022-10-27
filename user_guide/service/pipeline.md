@@ -102,7 +102,7 @@ This document is written about how to use the deployment pipeline service based 
 1. Click log-in from the PaaS-Ta User Portal.  
 ![002]
 
-2. log in to the Portal by entering User ID and Password then click “LOGIN”.  
+2. Log in to the Portal by entering User ID and Password then click “LOGIN”.  
 ![003]
 
 3. Go to the Catalog page after logging in.  
@@ -129,7 +129,7 @@ This document is written about how to use the deployment pipeline service based 
 2. Check the connection of pipeline deployment.  
 ![010]
 
-3. At this, ***The user who first created the pipeline deployment becomes the administrator.*** Go to the user dashboard by clicking the user management menu at the right top.
+3. At this, ***the user who first created the pipeline deployment becomes the administrator.*** Go to the user dashboard by clicking the user management menu at the right top.
 
 ***※ Users who connect for the first time will not be able to access without administrator approval.***
 
@@ -197,7 +197,7 @@ The user management menu is visible only to the administrators. This chapter des
 2. Go to the user dashboard.  
 ![012]
 
-3. two conditions can be searched in the user dashboard list: a search with a user ID as a search term and a search whose type is an administrator/user. Click the "Enter" or "Magnifying class" button to search.  
+3. Two conditions can be searched in the user dashboard list: a search with a user ID as a search term and a search whose type is an administrator/user. Click the "Enter" or "Magnifying class" button to search.  
 ![013]  
 ![014]
 
@@ -208,7 +208,7 @@ The user management menu is visible only to the administrators. This chapter des
 2. Check the detailed information of the user.  
 ![016]
 
-3. When you want to modify the information, enter a new input value. Authority can be selected between administrator/user.  
+3. When you want to modify the information, enter a new input value. Authority can be selected as administrator or user.  
 ![017]
 
 4. After entering the new value, click the “Modify” button.  
@@ -294,12 +294,12 @@ This chapter describes the two methods of how to manage pipeline.
 This chapter describes overall contributor management, such as adding, modifying, deleting, and authorizing Contributors Contributing in the pipeline. Also talks about how to create, execute, delete, log/history check, and manage contributors for one pipeline.
 ##### <div id='3-2-2-4-1'/> 3.2.2.4.1. Manage Contributors
 ###### <div id='3-2-2-4-1-1'/> 3.2.2.4.1.1. Add Contributors
-***※	Administrators are pipeline creators, so they are contributors with creation authority by default..***
+***※	 Administrators are pipeline creators, so they are contributors with creation authority by default.***
 1.	Select the Contributors tab from the pipeline details page.  
 ![043]
 2.	Click the “Add Contributor” button at the top right.  
 ![044]
-3.	Go to the Add Contributors page to search for users who are currently invited to the pipeline deployment and select. Select one of the authorities between view, create, or execute and click the "Add" button.  
+3.	Go to the Add Contributors page to search for users who are currently invited to the pipeline deployment and select. Select one of the authorities among view, create, or execute and click the "Add" button. 
 ![045]
 4.	Check the added contributor at the Contributors tab.  
 ![046]
@@ -530,7 +530,7 @@ This chapter describes overall contributor management, such as adding, modifying
 ###### <div id='3-2-2-4-4-2'/> 3.2.2.4.4.2.	Check/ Modify Deployment Job Configuration
 1.	Click the “Configuration” icon of the created Deployment Job.  
 ![106]
-2.	Go to the Configuration details page and check the coninformationrmations saved.  
+2.	Go to the configuration detail page and inquire the configuration information stored at the time of creation.
 ![104]
 3.	To modify, re-enter the inputs and click “the Save” button.  
 ![107]

@@ -440,7 +440,7 @@ The information shown is as follows:
 
 Lookup for the number of instances from the general section.  
 Modify the number of instances to as much as you want and click the set button.  
-Several instance modification is completed.    
+Several instance modifications are completed.  
 ![](./images/openpaas-eclipse/image85.png)
 
 ##### Memory Limit
@@ -455,7 +455,7 @@ Memory limit modification is completed.
 1. Look for Environment Variable from the General(Application restart required) section and click the “Modify” button from the side.  
     ![](./images/openpaas-eclipse/image86.png)
 
-2. “Environment Variable” dialog box appears. This dialog box allows for to management of environment variables.  
+2. “Environment Variable” dialog box appears. This dialog box allows for the management of environment variables.  
       The first page of this dialog box shows the environment variable list.  
     ![](./images/openpaas-eclipse/image053.png)
 
@@ -641,9 +641,9 @@ The deployment settings of the deployed application can be saved as a manifest f
 # 8. Example Project Description
 
 This example was made based on the standard example of Standard Framework 3.1.  
-The example illustrates how to access service while the service and application are bound.
+The example illustrates how to access a service while the service and application are bound.
 
-### 8.1 Add Depenencies
+### 8.1 Add Dependencies
 
 Add dependency to use Spring Cloud Connectors, to access services on the cloud platform easily.
 ```xml

@@ -395,7 +395,7 @@ if 'VCAP_SERVICES' in os.environ:
             }, 
         }
 ```
- ※ DataBASES defined MySQL as the 'default' database. In django, 'default' was used instead of 'mysql' because 'default' must exist in the database name. When adding another database, you may use any name for the next database.
+ ※ DATABASES defined MySQL as the 'default' database. In django, 'default' was used instead of 'mysql' because 'default' must exist in the database name. When adding another database, you may use any name for the next database.
  
  <br>
  

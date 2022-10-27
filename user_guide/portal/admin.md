@@ -233,7 +233,7 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 3. Select the group to remove from ① Authorized group. When Confirm form layer pops up, click "Delete" to delete the authorized group.
 ![36]
 
-4. Check the user of the appropriate group by clicking ① Authorized group from the list. CLick ②"Register User". Click the selected user from the  ③ List. Register user by clicking the ④"Save" button.
+4. Check the user of the appropriate group by clicking ① Authorized group from the list. Click ②"Register User". Click the selected user from the  ③ List. Register user by clicking the ④"Save" button.
 ![37]
 
 5. Confirm the user from ① Authorized Group's list. Check the ② Check Box of the user to delete from the list. Click the ③ enabled "Delete User" button. Complete deletion by clicking ④ "Delete" from the confirm pop-up screen.
@@ -246,7 +246,7 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 1. Check the code used in Paas-TA Portal by code-group. Can check whether it is used, search type, and search term.<br>
 ![39]
 
-2. Can check the detailed code information by clicking the Code ID from the code group.<br>
+2. Check the detailed code information by clicking the Code ID from the code group.<br>
 ![40] 
 
 3. Click the ①"Register" button from **Group Table**. Enter Code ID and Code Name at the pop-up tab then click the ②"Register" button.
@@ -257,7 +257,7 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 ![43]
 ![44]
 
-5. Click appropriate code(Key, Value, Summary, Usage) from**Detail Table**. Complete deleting the code by clicking the ①"Delete" Button at the code detail pop-up tab.
+5. Click appropriate code(Key, Value, Summary, Usage) from **Detail Table**. Complete deleting the code by clicking the ①"Delete" Button at the code detail pop-up tab.
 ![45]
 
 ### <a name="4.7"/>  4.7. Setting Information
@@ -302,7 +302,7 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 
 ### <a name="4.9"/>  4.9. Isolation Management
 
-**The Administrator creates a new isolation segment, After an admin creates a new isolation segment, the admin can then create and manage relationships between the orgs and spaces of a Cloud Foundry deployment and the new isolation segment.<br>**
+**The Administrator creates a new isolation segment, after an admin creates a new isolation segment, the admin can then create and manage relationships between the orgs and spaces of a Cloud Foundry deployment and the new isolation segment.<br>**
 
 1. You can look up the isolation management history used in PaaS-TA portal.<br>
 ![isolationSegments01]
@@ -331,7 +331,7 @@ This is a menu for performing service management on the PaaS-TA portal.<br>
 1. Check the information of the buildpack being used at the PaaS-TA Portal.<br>
 ![50]
 
-2. change the value in the Combobox to change the order of buildpack..<br>
+2. Change the value in the Combobox to change the order of buildpack..<br>
 ![51]
 
 3. Click the usage checkbox to change the usage status of the buildpack.<br>
@@ -342,12 +342,12 @@ This is a menu for performing service management on the PaaS-TA portal.<br>
 
 ### <a name="5.2"/>  5.2 Service Broker
 
-**Administrators menu provides service broker URL registration, broker retrieve, modify and delete .<br>**
+**Administrator's menu provides service broker URL registration, broker retrieve, modify and delete .<br>**
 
 1. Look up the service broker list used in PaaS-TA Portal.<br>
 ![54]
 
-2. Click on the service name in the service broker list to view the details of the service broker. When there are modifications, clthe ick ①"Save" button after modifying to save the changes.<br>
+2. Click on the service name in the service broker list to view the details of the service broker. When there are modifications, click ①"Save" button after modifying to save the changes.<br>
 ![55]
 
 3. **5.2- 2** Click ②"Delete" button to delete the service broker.<br>
@@ -363,7 +363,7 @@ This is a menu for performing service management on the PaaS-TA portal.<br>
 ![63]
 
 2. Click a service from the service control list to check the authority activation of the service or the service plan. Can modify the  Click ①Access Combobox to modify the authority activation of the selected service. ② Organization authority can be granted to the selected service or service plan.<br>
-**When "Acces" is ALL(Activated), Service plan of One or all the organization's service or service plan access should be changed to 'NONE(Deactivated)'.**<br>
+**When "Access" is ALL(Activated), Service plan of One or all the organization's service or service plan access should be changed to 'NONE(Deactivated)'.**<br>
 ![64]
 
 3. Add organization to give authority from the ① "Add Organization" list by clicking.

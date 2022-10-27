@@ -111,11 +111,11 @@ DEVELOPMENT KIT : DevKit-tdm-32-4.5.2-20111229-1559-sfx
 ![ruby10] 
 
 4)	Ruby On Rails Installation
--	Run the command "gem update doc" to update the rdoc gem. (If not executed, errors may occur during rails installation.)
+-	Run the command "gem update doc" to update the rdoc gem. (If not executed, errors may occur during Rails installation.)
 ![ruby11] 
--	Execute “gem install rails –v 4.1.8” command and install rails.
+-	Execute “gem install rails –v 4.1.8” command and install Rails.
 ![ruby12] 
--	Check the rails version by using the “rails –v” command.
+-	Check the Rails version by using the “rails –v” command.
 ![ruby13] 
 
 
@@ -133,7 +133,7 @@ It describes the creation and environment setting of applications to develop Rub
 ##### <div id='11'></div> 2.3.1.	Create Application
 
 1)	Create Rails Application (bundle install excluded)
->rails new [application name] –B –skip-bundle
+>Rails new [application name] –B –skip-bundle
 ![ruby14] 
 ![ruby15] 
 
@@ -186,7 +186,7 @@ It describes the creation and environment setting of applications to develop Rub
 </tr>
 <tr>
     <td> script/ </td>
-    <td> Contains rails scripts. Put the relevant scripts here when you run or deploy the application. </td>
+    <td> Contains Rails scripts. Put the relevant scripts here when you run or deploy the application. </td>
 </tr>
 <tr>
     <td> test/ </td>
@@ -840,7 +840,7 @@ end
 </table>
 
 1)	./lib/rabbitmq_service.rb
--	Class to create RabbitMQ Connection by inheriting Vcap class Vcap
+-	Class to create RabbitMQ Connection by inheriting Vcap class
 
 ```
 require 'vcap'
@@ -867,7 +867,7 @@ module Connector
   end
 end
 ```
-※In Bunny 2.2.x and later driver versions, if you do not specify a path for TLS/SSLCA, the default path is used. Ex) Ubuntu/Debian : /etc/ssl/certs/ca-certificates.crt
+※In Bunny 2.2.x and later driver versions, if you do not specify a path for TLS/SSL CA, the default path is used. Ex) Ubuntu/Debian : /etc/ssl/certs/ca-certificates.crt
 
 2)	./app/controllers/status_controller.rb service connection class call
 ```
@@ -929,7 +929,7 @@ end
 </table>
 
 1)	./lib/glusterfs_service.rb
--	Class to create GlusterFS Connection by inheriting Vcap class Vcap
+-	Class to create GlusterFS Connection by inheriting Vcap class
 
 ```
 require 'vcap'
@@ -990,7 +990,7 @@ end
 
 ### <div id='21'></div> 2.4.	Deployment
 
-Explains how to deploy developed applications on open platforms다.
+Explains how to deploy developed applications on open platforms.
 
 ##### <div id='22'></div> 2.4.1.	Open Platform Application Deployment
 
@@ -1015,7 +1015,7 @@ applications:
   memory: 512M        # Application Memory Size
   instances: 1           # Applications Number of Instances
   path: .                # Applications location
-  command: bundle exec rails server -p $PORT # Deployment command after deployment
+  command: bundle exec Rails server -p $PORT # Deployment command after deployment
 ```
 ※The port that was allocated during application staging is registered as an environment variable. This $PORT is also used to check the status of the application. It is recommended to specify the port.
 
@@ -1091,7 +1091,7 @@ $ cf start ruby-sample-app    # Start Application
 ```
 ※Because the latest build packs do not support Ruby 1.9.3, deploy using Ruby-buildpack 1.3.1 version. Exclude the –b option if you are using a base build pack supported by an open platform 
 
-※If the application deployment procedure is performed on a Windows machine (if cf cli is installed and used on a Windows machine), the application may not start ('cf start') correctly. In this case, convert the three files bundle, rake, and rails in the bin folder to Unix and proceed from 'cf push'. The file conversion procedure follows:
+※If the application deployment procedure is performed on a Windows machine (if cf cli is installed and used on a Windows machine), the application may not start ('cf start') correctly. In this case, convert the three files bundle, rake, and Rails in the bin folder to Unix and proceed from 'cf push'. The file conversion procedure follows:
 
 
 1.	Open a windows command window and navigate to the Applications folder.

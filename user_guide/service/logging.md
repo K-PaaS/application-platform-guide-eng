@@ -126,12 +126,12 @@ In the "Discover" menu, click the ① area at the top to select the desired cond
 ![015]
 
 - Fields Setting  
-Select the desired Field(②) from the Available Fields list in the (①) area of the "Discover" menu to view the selected field(②).
+Select the ②desired Field from the Available Fields list in the ①area of the "Discover" menu to view the ②selected field.
 ![016]
 ![017]
 
 - Unset Fields  
-From the  ① area of the "Discover" menu's Selected Fields List, select(②) the Field to remove.
+From the  ①area of the "Discover" menu's Selected Fields List, select the ②Field to remove.
 ![018]
 
 ### <div id='3-2-2'/> 3.2.2. Visualize
@@ -147,10 +147,10 @@ Click "+" or "+ Create a visualization" button from the "Visualize" menu.
 Click type from the Select Visualization Type list.
 ![021]
 
-Click the index(①) or the "Search Name"(②) at the search list history(saved).
+Click the ①index or the ②"Search Name" at the search list history(saved).
 ![022]
 
-Configure visualization by editing data and option(①).
+Configure visualization by editing data and ①option.
 ![023]
 
 Click the "Save" button on top.
@@ -166,7 +166,7 @@ Click the "Visualize" menu on the left.
 Click on "Visualization Object Name" in the visualization list.
 ![027]
 
-Modify data and options(①), and click "Save".
+Modify data and ①options, and click "Save".
 ![028]
 ![029]
 
@@ -204,7 +204,7 @@ Click ① area and select the desired conditions from Time Range.
 Click the "Visualize" menu on the left.
 ![026]
 
-Select Visualized Object (①) from the Visualize Menu then click the ② icon.
+Select ①Visualized Object  from the Visualize Menu then click the ② icon.
 ![033]
 
 ### <div id='3-2-3'/> 3.2.3. Dashboard
@@ -217,13 +217,13 @@ Click the "Dashboard" menu on the left.
 Click "+" or "+ Create a dashboard" button.
 ![035]
 
-Click the "Add"(①) on top or the "Add" button(②).
+Click the ①"Add" on top or the "Add" button(②).
 ![036]
 
 Click "Visualization" / "Saved Search" of Add Panels to check the saved object list.
 ![037]
 
-From the retrieved saved object list, click "Object Name"(①) to configure the dashboard.
+From the retrieved saved object list, click ①"Object Name" to configure the dashboard.
 ![038]
 
 Click "Save" on top.
@@ -272,7 +272,7 @@ Click ① area on top, and selects the desired conditions from the Time Range ar
 Click the "Dashboard" menu on the left.
 ![041]
 
-Select Dashboard Object (①) from the Dashboard List and click the ② icon.
+Select ①Dashboard Object  from the Dashboard List and click the ② icon.
 ![048]
 
 ### <div id='3-2-4'/> 3.2.4. Management
@@ -285,7 +285,7 @@ Click "Dashboards" / "Searches" / "Visualization" and check each object list.
 ![050]
 
 #### <div id='3-2-4-2'/> 3.2.4.2. Modify Saved Objects
-Click "Object Name"(①)from each object list of the following: "Dashboards" / "Searches" / "Visualization".
+Click ①"Object Name"from each object list of the following: "Dashboards" / "Searches" / "Visualization".
 ![051]
 
 After modifying the contents from each object detail page, click the "Save dashboard Object" button at the bottom.
@@ -293,7 +293,7 @@ After modifying the contents from each object detail page, click the "Save dashb
 
 #### <div id='3-2-4-3'/> 3.2.4.3. Export Saved Objects
 - Selected Exportation
-Select object to export from "Dashboards" / "Searches" / "Visualization" each object's list(①) and click "Export" button.
+Select object to export from "Dashboards" / "Searches" / "Visualization" each object's ①list and click "Export" button.
 ![053]
 
 - Export All
@@ -309,14 +309,14 @@ Click the object file from the directory and click the "Open" button.
 
 #### <div id='3-2-4-5'/> 3.2.4.5. Delete Saved Objects
 - Delete from the object list
-Select object from object list of "Dashboards" / "Searches" / "Visualization"(①), click ② icon.
+Select object from object list of ①"Dashboards" / "Searches" / "Visualization", click ② icon.
 ![057]
 
 - Delete from the object details page
-Click "Object Name"(①) from the object list of "Dashboards" / "Searches" / "Visualization".
+Click ①"Object Name" from the object list of "Dashboards" / "Searches" / "Visualization".
 ![058]
 
-Click the (①) button from the object details page of "Delete dashboard/search/visualization".
+Click the ① button from the object details page of "Delete dashboard/search/visualization".
 ![059]
 
 

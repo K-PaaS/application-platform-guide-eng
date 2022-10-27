@@ -69,7 +69,7 @@ Build the "Road Name Address Search" function among common components of the e-G
 Create a Road Name Address Service (API) and register it at the API platform. And general developers apply for and use the road name address service on the "open cloud platform".
 >![api_platform_dorojuso_01]
 
-Picture. System Configuration Diagram of Road Name Address Search Service
+Picture 1. System Configuration Diagram of Road Name Address Search Service
 
 
 The API platform manages access to the road name address service API, statistics, and life cycle management. For a detailed description of the API platform, please refer to the separate API platform guide.
@@ -86,25 +86,25 @@ To build a road name address on its DBMS, you must first obtain a road name addr
 Select "Provide Address" -> "Provide Road Name Address DB" on the main screen when you access the site as shown below.
 >![api_platform_dorojuso_02]
 
-Picture. Proceeds to a page that provides Addresses
+Picture 1. Proceeds to a page that provides Addresses
 
 
 On the Address Delivery page, you can download the PDF file describing how to use the address data and the most recent address data information. Get the latest date information for the "Download full address deployment guide" and full address (final draft). Download the information by clicking on the two areas marked in red on the screen below.
 >![api_platform_dorojuso_03]
 
-Picture. Download the build guide and final address
+Picture 2. Download the build guide and final address
 
 
 The downloaded "[Guide]Utilization method of making address(full address).pdf" gives you a sense of the structure of the data. The specifications of the downloaded address file are defined on page 13 of the document. If you look in the center, there is a "building management number" and this information is the primary key.
 >![api_platform_dorojuso_04]
 
-Picture. Spec information of “[Guide]Utilization method of making address(full address).pdf”
+Picture 3. Spec information of “[Guide]Utilization method of making address(full address).pdf”
 
 
 The address file is a zipped file that is about 158 MB. (As of June 2015) If you unzip this file, you can check the address file with TXT information as below. 
 >![api_platform_dorojuso_05]
 
-picture. Address fule list
+picture 4. Address file list
 
 
 When you unzip the file, it's about 1.85GB. This TXT file is a text file with the "|" delimiter and must import data into MySQL.
@@ -157,14 +157,14 @@ CREATE INDEX `IDX_DORO` ON `egov_common`.`doro_juso` (`doro` ASC)  COMMENT '';
 
 
 ### <a name="11"/>3.3. Insert in Address Data DB
-There is one thing that needs to be checked before importing that address information into the DBMS. First, check the language settings of the DBMS to build is needed. Currently, this file has Korean standard ANSI.  when configuring DBs, they are usually configured with UTF8, so to import Hangul accurately, you need to develop a program that reads files one by one and changes character encoding to insert them or use commercial tools.
+There is one thing that needs to be checked before importing that address information into the DBMS. First, check the language settings of the DBMS to build is needed. Currently, Character encoding of this file is ANSI. When configuring DBs, they are usually configured with UTF8, so to import Hangul accurately, you need to develop a program that reads files one by one and changes character encoding to insert them or use commercial tools.
 
 This document explains how to import data to MySQL servers, convert existing TXT files to UTF8, and use the MySQL import function to put the converted files into DBMS. DBMS's DB is set to UTF8
 
 To convert a file's encoding to UTF8, open it in Notepad and "save it under a different name" in a Windows environment.
 >![api_platform_dorojuso_06]
 
-picture. Save it from the NotePad
+picture 1. Save it from the NotePad
 
 
 Prepare the file and use MySQL Import to import the data.
@@ -286,7 +286,7 @@ The information on the components developed using the Spring Framework is as fol
 The configuration for the major classes is shown in the Class Diagram below. The important controller, service, and DAO were displayed in the process excluding the model, exception, and utility.
 >![api_platform_dorojuso_07]
 
-picture. Class Diagram of Road Name Address Service
+picture 1. Class Diagram of Road Name Address Service
 
 The Base Controller defines various exceptions. Once the DoroJusoController has control over road name address retrieval, DoroJusoService is responsible for business logic.
 The DoroJusomanagerController, with the DoroJusoConroller, inherits the BaseController, controls the registration, modification, and deletion services (API) to manage road name addresses, and is responsible for the business logic of the DoroJusoManager Service.
@@ -405,7 +405,7 @@ The location of source will be located on the Git Hub of the "Open Cloud Platfor
     <td>The service responsible for the business logic of road name address management.</td>
   </tr>
   <tr>
-    <td>DoroJusoService</td>소
+    <td>DoroJusoService</td>
     <td>The service responsible for the business logic of road name address search.</td>
   </tr>
 </table>
@@ -424,7 +424,7 @@ Register the ability to search for road name addresses with the service API that
 Add API in API platform Publisher.
 >![api_platform_dorojuso_08]
 
-picture. Enter basic API information
+picture 1. Enter basic API information
 
 
 Enter basic information for the service. The name will be the name that will be shown in Marketplace on the "open cloud platform." 
@@ -435,13 +435,13 @@ Register the real API. To make it like the specification provided by the Road Na
 This creates two APIs: GET and OPTIONS.
 >![api_platform_dorojuso_09]
 
-picture. API Registration
+picture 2. API Registration
 
 
 When you press the Add New Resource button, GET and OPTIONS appear at the bottom of the screen so that you can define each parameter. Click GET to expand the screen to enter the parameter in GET. For currentPage, countPerPage, enter Data type as integer, and for Parameter type, select query. For keyword, put Data type as String and Parameter type as a query. All Required as true and must be selected.
 >![api_platform_dorojuso_10]
 
-picture. Insert Parameter
+picture 3. Insert Parameter
 
 
 The reason for registering OPTIONS is in preparation for times when OPTIONS are requested to check the CORS to see if the API is valid in https or other web communication, so OPTIONS are required when registering the API.
@@ -451,7 +451,7 @@ Endpoint type will be serviced by Http communication, so select "HTTP Endpoint" 
 The endpoint entered here is the default, and the API and parameter are attached to it to make an actual request.
 >![api_platform_dorojuso_11]
 
-picture. Endpoint Registration
+picture 4. Endpoint Registration
 
 
 When Endpoint registration is completed, proceed to the last step which is the access setting.  
@@ -460,13 +460,13 @@ Only basic settings are done here. Set the Tier Availability to Unlimited.
 When connecting to an open cloud platform, only Unlimited is enabled for the services (service packs) that connect the two systems because they are supposed to monitor without any restrictions.
 >![api_platform_dorojuso_12]
 
-picture. Access Environment Settings
+picture 5. Access Environment Settings
 
 
 Now you have entered the information about the API, and when Publishing this API, it can be checked at the API platform store. 
 >![api_platform_dorojuso_13]
 
-picture. API Platform 
+picture 6. API Platform 
 
 
 As shown above, if the service created by the Store is visible and the result value is normal when the API is called from the API Console, the registration is successful.
@@ -481,18 +481,18 @@ The difference will be discussed below.
 Register road name address API. Registration, Modification, Deletion, and Retrieve must be registered. For more information, you can register it as the API definition in Annex B.
 >![api_platform_dorojuso_14]
 
-picture. Registering the road name address manage API
+picture 1. Registering the road name address manage API
 
 
-The road name address management is designed with a path method rather than a query method. The API platform automatically sets the parameter by entering the path variable name with {} such as dorojuso/manager/{building_code} in the URL pattern as shown in the screen below.
+The road name address management is designed with a path method rather than a query method. The API platform automatically sets the parameter by entering the path variable name with {} such as dorojuso/manager/{building_code} in the URL pattern as shown in the picture below.
 >![api_platform_dorojuso_15]
 
-picture. Enter Parameter with Path Method
+picture 2. Enter Parameter with Path Method
 
 
 >![api_platform_dorojuso_16]
 
-picture. A screen when variables are inserted into the Path
+picture 3. A screen when variables are inserted into the Path
 
 
 It is important to note that OPTIONS must be registered for each API pattern. You need to register the API by checking the validity of the API with OPTIONS during Rest communication. You can enter the rest of the Endpoint and Access Preferences are the same as the Road Name Address Search Service. Once the entry is complete and the publication is complete, you can check whether the API is visible in the store and whether it is working properly in the API Console.
@@ -666,7 +666,7 @@ $ cf apps
 name                                 requested state   instances   memory   disk   urls
 service_egov_common_juso_sampleApp   started           1/1         512M     1G     service-egov-common-juso-sampleapp.cf-dev.open-paas.com
 ````
-you must deploy the app with only the basic configuration and bind it to the service to get the service's information (connection URL, connection ID, password). The development/deployment of apps in an open cloud platform part has been discussed in detail.
+You must deploy the app with only the basic configuration and bind it to the service to get the service's information (connection URL, connection ID, password). The development/deployment of apps in an open cloud platform part has been discussed in detail.
 
 After checking the name of the My App, Bind the service and app.
 ````
@@ -683,7 +683,7 @@ name            service          plan        bound apps                         
 dorojusodbmgt   dorojusodbMgt  Unlimited   service_egov_common_juso_sampleApp  create succeeded
 dorojusodb      dorojusodb      Unlimited   service_egov_common_juso_sampleApp   create succeeded
 ````
-위의 내용을 보면 service_egov_common_juso_sampleApp가 dorojusodbmgt와 dorojusodb완 연결되어 있는 것을 확인할 수 있습니다.
+It is shown that the service_egov_common_juso_sampleApp is connected to dorojusodbmgt and dorojusodb.
 
 ### <a name="31"/>7.3. Source List and Description
 The location of source will be located on the Git Hub of the "Open Cloud Platform" and the location to be open to the public will be shared separately through the website.
@@ -764,7 +764,7 @@ Only the developed part are organized from the source description of the Web. Th
   </tr>
   <tr>
     <td>app.html</td>
-    <td>The part called by the Sample Controller sends configuration settings (server information, service connection information) on the open cloud platform SampleController에서 호출하는 부분은 개방형 클라우드 플랫폼에서 설정된 환경설정(서버 정보, 서비스 연결 정보)를 보냅니다.</td>
+    <td>The part called by the Sample Controller sends configuration settings (server information, service connection information) on the open cloud platform SampleController.</td>
   </tr>
   <tr>
     <td colspan=2>public/js</td>

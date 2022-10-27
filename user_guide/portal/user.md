@@ -155,7 +155,7 @@ This chapter describes the account creation and password reset screen for using 
 2.  After the account is created, the Dashboard page will appear directly at the first login.
 ![dashboard]
 
-3.  Dashboard Page ① "Organization Management" Click the link or ②" Organization Management" at the menu on the right side. After the account is created, it is moved to the Dashboard page at the first login. More information can be found in 3.2.1.1 of this document.
+3.  From the dashboard Page, click ① "Organization Management"  link or ②" Organization Management" at the menu on the right side. After the account is created, it is moved to the Dashboard page at the first login. More information can be found in 3.2.1.1 of this document.
 ![2-3-1]
 
 
@@ -239,7 +239,7 @@ This chapter describes the three main categories of PaaS-TA user portals.
      > 3.2.1.1.1.1-3 Screen appears when creating the first new organization for the account. Click “Create New Organization” when creating an organization afterward. 
 
 ### <div id='15'/> 3.2.1.1.1.2.  Modify Organization Name
-1. ① Click the "Organization Management" Link or ②"Organization Management" at the menu to proceed to the organization dashboard page.
+1.  Click the ① "Organization Management" Link or ②"Organization Management" at the menu to proceed to the organization dashboard page.
 ![2-3-1]
 
 2.  Click "View details" on the  ① sub-menu at the right, then click ② "Change Name".
@@ -263,7 +263,7 @@ This chapter describes the three main categories of PaaS-TA user portals.
 ![3-2-1-2-1-0]
 
 ### <div id='18'/> 3.2.1.1.2.1.  Create Space
-1. ① Click the "Organization Management" Link or ②"Organization Management" at the menu to proceed to the organization dashboard page.
+1.  Click the ① "Organization Management" Link or ②"Organization Management" at the menu to proceed to the organization dashboard page.
 ![2-3-1]
 
 2.  Click “View Details” on the right side.
@@ -315,7 +315,7 @@ This chapter describes the three main categories of PaaS-TA user portals.
 1.  Click “+Invite User”.
 ![3-2-1-1-4-1-0]
 
-2.  Enter the user account to invite. Empower the organization, the space.
+2.  Enter the user account to invite. Authorize organization and space.
 ![3-2-1-1-4-1-1]
 
 3.  Click the “Invite” button to complete inviting.
@@ -616,7 +616,7 @@ Click the name of the application created in the catalog list to go to the appli
 1.  CPU Threshold Value(%) : Enter the minimum and maximum CPU value of the notification.
 (Notification appears when the instance increases/decreases than what is applied at the CPU value percentage.)
 
-4. Memory Threshold Value(%):Enter the minimum and maximum memory value of the notification.
+4. Memory Threshold Value(%): Enter the minimum and maximum memory value of the notification.
 (Number of Instances increases when CPU percentage increases than the applied maximum instance. On the other hand, the number of instances decreases when the instance is lower than the minimum instance)
 
 5. Time Measure(Second): Apply time measurement. The average value of each instance's memory and CPU values for the measured time is calculated and auto-scaling is applied.
@@ -632,7 +632,7 @@ Click the name of the application created in the catalog list to go to the appli
 ![3-2-2-0]
 
 ### <div id='66'/> 3.2.2.1.  Search Catalog
-1.  Results searched from ① Catalog Search automatically show its outputs. 
+1.  Search term entered in ① Catalog Search automatically displays the search results.
 ![3-2-2-1-0]
 
 ### <div id='67'/> 3.2.3.  Document
@@ -673,7 +673,7 @@ Click the name of the application created in the catalog list to go to the appli
 ![userinfo-name]
 
 ### <div id='75'/> 3.2.5.3.2  User Contact Number
-1. Only numbers can be entered.(numbers excluding "-") Click "Change" to complete the process.
+1. Only numbers can be entered excluding "-". Click "Change" to complete the process.
 ![userinfo-phone]
 
 ### <div id='76'/> 3.2.5.3.3 User Postal Code

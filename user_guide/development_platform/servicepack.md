@@ -738,7 +738,8 @@ A different status code response means failure.
 >![openpaas-servicepack-29]
 
 2.3.	Binding Credentials 
-	In the case of service binding, authentication information that the user can use in the application is returned in response to the bind API call. Provide these credentials to the open cloud platform environment variable VCAP_SERVICES. It is recommended to be used in the Credentials field list. Use if the fields provided meet the user's requirements. Additional fields can be provided as needed.
+<br/>
+In the case of service binding, authentication information that the user can use in the application is returned in response to the bind API call. Provide these credentials to the open cloud platform environment variable VCAP_SERVICES. It is recommended to be used in the Credentials field list. Use if the fields provided meet the user's requirements. Additional fields can be provided as needed.
 
 Important: If you provide a service that supports the connection string, at least the uri key must be provided. As mentioned above, a separate credential field may also be provided. Buildpacks and Application libraries use the uri key.
 >![openpaas-servicepack-30]
@@ -796,6 +797,7 @@ Important: If you provide a service that supports the connection string, at leas
 	}
 
 2.4.	Application Log Streaming 
+<br/>
 The open cloud platform streams logs for applications bound to service instances. Logs for all applications bound to a service instance are streamed to that instance.
 
 The operation method is as follows.
@@ -918,7 +920,7 @@ Note: In the Cubrid DB, the minimum unit of the authorization given is a table. 
 	   }
 	 )
 
-##### <a name="17"/>2.5.6. Unbind API Guide
+##### <a name="17"/>2.5.6. Unbind API Guide 
 Refer: Brokers that do not provide binding services do not need to implement the Unbind API.
 When a broker receives an unbind request from an open cloud platform, it deletes all resources created by the bind. If deleted, the service is inaccessible.
 
@@ -942,6 +944,7 @@ All response bodies should be in JSON Object ({}) format.
 Receive "{}" value on success.
 
 3.	Unbind Rest API Implementation
+<br/>
 3.1.	JAVA Method
 	-- ServiceBindingRestController.java (Use Spring Framework)
 	
@@ -1113,6 +1116,7 @@ Manage migration information files from this version. (Option)
 >![openpaas-servicepack-43]
  
 #### <a name="31"/>3.4.Development Guide
+<br/>
 must be written according to the Bosh release development method because the service must be deployed through the Bosh release.  
 The Bosh release consists of scripts related to packages and jobs.
 Bosh offers two ways to release software.

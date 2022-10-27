@@ -192,7 +192,7 @@ The API service broker contains information on the service to be used among the 
 # <div id='12'></div>   4. API Service Broker Implementation
 ### <div id='13'></div> 4.1. API Service Broker Setting File
 ##### <div id='14'></div> 4.1.1 Common Settings
-API 서비스 브로커를 통해 서비스되는 서비스들이 공통적으로 갖게 되는 값을 설정파일에 정의하였다.
+The value that services provided through API service brokers have in common is defined in the setting file.
 
 | <b>Key Value</b>      | <b>Description</b> | <b>Example of Value</b> |
 |-------------|-----------------------------|-----------------------------|
@@ -466,13 +466,13 @@ Create a service broker from Open Cloud Platform. When the service broker creati
 ```
 ※[Service Broker Name] is a name that refers to a service broker within an open cloud platform and is arbitrarily determined by the user. [Authentication ID] and [Authentication Password] are values defined in the library when implementing a service broker. The authentication ID defined in the provided sample is 'admin', and the authentication password is 'cloudfoundry'. [Service Broker Address] means the address where the service broker is driven.
 
-예시)
+Example)
 ```
   $ cf create-service-broker public-api-sb admin cloudfoundry http://10.30.60.100:8080
 ```
 
 ##### <div id='39'></div> 5.2.2 Check Created Service Broker
-The command to check the list of service brokers. Can be used to verify that the service broker is created normally.
+The command to check the list of service brokers. It can be used to verify that the service broker is created normally.
 ```
   $ cf service-brokers
 ```
@@ -885,7 +885,7 @@ Most APIs introduced on public data portals can issue service keys on public dat
   ※ In the case of [7.2.1.2. Incheon Metropolitan City Cultural Event], the service key is applied directly to the API service provider, so unlike the application of the service key on the public data portal, there is no waiting period and approval is automatically approved, so it can be used immediately.
 
 ##### <div id='53'></div> 7.3.2 Obtain Naver Open API Service Key
-[2.2.1. Naver Map], [2.2.2. Naver address-to-coordinate translation], [2.2.3. Naver Search] To get the API service key, you must be logged in with Naver ID. Access to [Naver Developer Center's Open API Page](http://developer.naver.com/wiki/pages/OpenAPI) and log in with Naver ID  or sign in.<br>
+To get the API service key for [2.2.1. Naver Map], [2.2.2. Naver address-to-coordinate translation], [2.2.3. Naver Search] , you must be logged in with Naver ID. Access to [Naver Developer Center's Open API Page](http://developer.naver.com/wiki/pages/OpenAPI) and log in with Naver ID  or sign in.<br>
 
   1. Sign in and Login<br>
   ![7-3-2-0]<br>
@@ -1012,7 +1012,7 @@ It is possible to check the instance name, service name, plan, and bound applica
 ### <div id='60'></div> 7.6. Bind Service
 Bind the service instance created from [7.5. Create Service Instance] and Application to be able to use API service.
 ##### <div id='61'></div> 7.6.1. Bind Service
-생성된 서비스 인스턴스와 어플리케이션을 바인드한다. 바인드 시, -c 옵션을 주어 사용자가 직접 발급받은 해당 서비스의 서비스키를 입력할 수 있도록 한다. 샘플 서비스 브로커의 경우는 서비스 키를 입력하지 않을 경우 바인드가 정상적으로 진행되지 않도록 설계되어 있다.
+Bind the generated service instance with the application. Give -c option when binding to let the user input service key of the directly issued service. In the case of sample service broker, the binding is designed not to proceed when service key is not input.
 
 ```
   $ cf bind-service [Application Name] [Service Instance Name] -c '{"serviceKey":"[Service Key]"}'

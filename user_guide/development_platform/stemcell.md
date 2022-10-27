@@ -70,7 +70,7 @@ BOSH creates and manages VMs that create stemcells on AWS. To create a stemcell,
 
 -   Access Key Setting
 
-	1. log in to AWS: [https://console.aws.amazon.com/console/home](https://console.aws.amazon.com/console/home)
+	1. Log in to AWS: [https://console.aws.amazon.com/console/home](https://console.aws.amazon.com/console/home)
 
 
 		![account-dashboard](./images/stemcell/account-dashboard.png "account-dashboard")
@@ -210,7 +210,7 @@ The procedure for installing Ruby is as follows.
 		    xcode-select: note: install requested for command line developer tools
   
 
-2.  Ruby Installation Admin and Ruby Installation
+2.  Install Ruby Installation Admin and Ruby
 
 		$ curl -L https://get.rvm.io | bash -s stable
 		$ source ~/.rvm/scripts/rvm
@@ -379,7 +379,7 @@ Describes the procedure for creating an RHEL OS image.
 	※ To download, one should have RedHat account.
 
 
-2.  Configuring the Execution Environment
+2.  Configure the Execution Environment
 
 		#Access to stemcell creation VM
 		$ cd ~/workspace/bosh/bosh-stemcell

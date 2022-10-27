@@ -246,7 +246,7 @@ To add, create the options.json file in the .bp-config directory and add it as f
   
 ### <div id='2.3.4'> 2.3.4.  VCAP_SERVICES Environment Setting Information 
 
-Service creation/binding is performed on an open platform to use the service. Must obtain VCAP_SERVICES configuration information to use the associated services. This information contains all the information needed to access the service, including the Host address/port, username, and password to connect. 
+Service creation/binding is performed on an open platform to use the service. User must obtain VCAP_SERVICES configuration information to use the associated services. This information contains all the information needed to access the service, including the Host address/port, username, and password to connect. 
 
 1.	Check the information of the connected service
 Use CF cli to check the information connected with the service. Instead of putting this information directly into the source, bring VCAP information from the source and set it up initially.
@@ -297,17 +297,16 @@ The way to bring VCAP environment settings information from PHP is simple. You c
                $this->dbname = $env["p-mysql"][0]["credentials"]["name"];
                // Brings users DB name.
 
-Environment setting information varies from service to service. Use the cfenv command to pinpoint the exact location or refer to the service provider's manual.
+Environment setting information varies from service to service. Use the "cfenv" command to pinpoint the exact location or refer to the service provider's manual.
 
  
 ### <div id='2.3.5'> 2.3.5.  Connect Mysql
 
 Use the mysqli added in Extension. It is set as default in XAMP, so there is no need for installation. 
-(위치:api/mysql_view.php)
+(Location:api/mysql_view.php)
 
 
-1.	Access to Mysql
-2.	
+1.	Access to Mysql	
         $conn = new mysqli($this->host, $this->username, $this->password, $this->dbname);
         
         if($conn->connect_error) {
@@ -317,6 +316,7 @@ Use the mysqli added in Extension. It is set as default in XAMP, so there is no 
 Use mysqli to access to mysql service. Access through the host, username, password, and db name brought from the environment setting.
 
 2.	Send Query and get results
+<br/>
 Create a Query and run it as a Prepared Statement. Receive the executed result value and make it into the desired type of array. When all processing is complete, close the connection and statement.
 
         $sql = "SELECT * FROM ORG_TBL";
@@ -357,7 +357,7 @@ Current CF's default build pack does not support CUBRID, so it was not implement
 ### <div id='2.3.7'> 2.3.7.  Connect MongoDB
 
 Use the mongo library added in Extension. However, there is a problem with user authentication with the current mongo library. the library's bug should be fixed. In this guide, we inevitably accessed MongoDB's Root account and implemented the example.
-(위치:api/mongodb_view.php)
+(Location:api/mongodb_view.php)
 
 1.	Access to Mongodbl. Use the uri information brought from environment settings.
 2.	
@@ -389,7 +389,7 @@ Use the mongo library added in Extension. However, there is a problem with user 
 
 The Redis integration uses additional packages installed through Composer. 
 
-1.	To use Redis, Predis' Class announce register.
+1.	To use Redis, declare register in Predis Class.
 
         Predis\Autoloader::register();
 

@@ -215,7 +215,7 @@ Data management for sample applications uses either MySQL or MongoDB, so when re
 
 To obtain access information for each service to which an application deployed on an open platform is bound, information may be obtained by reading VCAP\_SERVICES environment Setting information registered for each application.
 
-1).  Application Environment Information of the Open Platform
+1.)  Application Environment Information of the Open Platform
 
 -   When the service is bound, environment information is registered by the application in the form of JSON.
 
@@ -259,7 +259,7 @@ To obtain access information for each service to which an application deployed o
 
 -   VCAP\_SERVICES Information Structure
 
-2).  How to extract VCAP\_SERVICES information
+2.)  How to extract VCAP\_SERVICES information
 
 -   Extract and return the “uri” information from VCAP\_SERVICE information.
 
@@ -295,7 +295,7 @@ func sample_function_name() string {
 
 ##### 2.3.4. Connecting Database, Redis, RabbitMQ  through config.ini file
 
-1).  config.ini
+1.)  config.ini
 
 -   mysql connection information settings
 
@@ -322,7 +322,7 @@ rabbitmq.pass=”rabbitmq\_password”
 rabbitmq.addr=”rabbitmq\_server\_ip”: ”rabbitmq\_server\_port”
 ~~~
 
-2).  Connect Sample
+2.)  Connect Sample
 
 ~~~
 import (
@@ -494,7 +494,7 @@ func initRedis(addr string) *redis.Client {
 
 ##### 2.3.5. Connect GlusterFS
 
-1).  File Upload
+1.)  File Upload
 
 -   Read the file requested from the client and send it to the ClusterFS Server
 
@@ -529,9 +529,9 @@ func (h *GlusterFSService) Upload(w http.ResponseWriter, r *http.Request) {
 }
 ~~~
 
-2).  Connect GlusterFS Server and send file
+2.)  Connect GlusterFS Server and send file
 
--   Connect to GlusterFS Server and send files
+-   Connect to GlusterFS Server and send file
 
 ~~~
 func ObjectPut(buf []byte, fileName string) (string, error) {
@@ -576,7 +576,7 @@ func ObjectPut(buf []byte, fileName string) (string, error) {
 }
 ~~~
 
-3).  GlusterFS Connection information
+3.)  GlusterFS Connection information
 
 -   Extract information from VCAP\_SERVICES
 

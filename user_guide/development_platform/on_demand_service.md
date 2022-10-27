@@ -81,7 +81,7 @@ Before explaining the architecture, some terms used in this document are summari
       That is, it refers to a combination of a file in a source code or packaged form
       (eg, .war) and a file defining additional information (meta) to be used during deployment.
 
--   **서비스(Service)**: The service is used in an open cloud platform by implementing a cloud controller client API called the Service Broker API.
+-   **Service**: The service is used in an open cloud platform by implementing a cloud controller client API called the Service Broker API.
 The Services API is a version of the independent cloud controller API. This makes external applications available on the platform.
 
 # <a name="3"/>3. On-Demand Service Broker API
@@ -189,7 +189,9 @@ The Bosh API to implement the On-Demand format is as follows.
 
 
 1. Bosh Api Setting
+<br/>
 1.1.   BoshDirector
+<br/>
 Log in to Bosh Director and receive tokens to save and create an object with access to the Bosh API.
 
 ##### parameter
@@ -207,7 +209,9 @@ Log in to Bosh Director and receive tokens to save and create an object with acc
     OAuth2AccessToken
 
 2. ServiceInstace
+<br/>
 2.1 VMInstance
+<br/>
     Get the VMInstance information deployed in Bosh.
 
 ##### parameter
@@ -228,6 +232,7 @@ Log in to Bosh Director and receive tokens to save and create an object with acc
 
 
 2.2. TaskResult
+<br/>
 Check the Bosh task. (option: output=result) You can check the detailed value of the deployment.
 
 ##### parameter
@@ -248,6 +253,7 @@ Check the Bosh task. (option: output=result) You can check the detailed value of
 
 
 2.3. GetLock
+<br/>
 It is a function that inquires whether the deployment is locked before the deployment update.
 
 ##### parameter
@@ -263,6 +269,7 @@ It is a function that inquires whether the deployment is locked before the deplo
     It is returned in Json format from Bosh API.
 
 2.4. UpdateInstance
+<br/>
 Update the instance status (stop --> start)
 
 ##### parameter
@@ -282,6 +289,7 @@ Update the instance status (stop --> start)
     null
 
 2.5. GetTaskID
+<br/>
 Among the tasks currently in operation (state = queued, processing, and canceling), the ID such as the corresponding deployment_name is queried.
 
 ##### parameter
@@ -415,6 +423,7 @@ The service broker development guide related to on-demand implementation will be
 Currently, only the JAVA version is available. The source shown in the example can be found in PaaS-TA GitHub's On-Demand-broker.
 
 1. On-Demand ServiceInstace
+<br/>
 The information on the assigned VM is stored in the broker DB with the ServiceInstance object.
 
 Example)JpaServiceInstance Class
@@ -1189,7 +1198,7 @@ In the deployment manifest, which Stemcell (OS, BOSH agent) will be used to inst
 
     ```
 
-2. Deploy the service added On-Demand-Service (On-Demand-Service-Redis)
+2. You can deploy the service added On-Demand-Service (On-Demand-Service-Redis).
 To deploy the On-Demand-Service that has added the service, you can proceed with deployment by setting the properties required for the service and adding it to the manifest.yml.
 
 

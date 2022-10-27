@@ -751,7 +751,7 @@ The location of source will be located on the Git Hub of the "Open Cloud Platfor
   </tr>
 </table>
 
-#### <a name="33"/>7.3.2. 7.3.2. Web Area (Shows only the significant files are - inside the main/resources)
+#### <a name="33"/>7.3.2. Web Area (Shows only the significant files - inside the main/resources)
 Only the developed part are organized from the source description of the Web. These are the files inside main/resources.
 
 <table>

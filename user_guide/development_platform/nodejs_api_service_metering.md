@@ -124,7 +124,7 @@ For the development of Node.js application, the development environment is const
 **<a href="https://nodejs.org/ko/download/">https://nodejs.org/ko/download/</a>**
 
 ※ Development Tool  
-Node.js is a javascript-based language that can use document editors such as Notepad++, Sublim Text, and EditPlus as development tools. Can also install and use Nodeclipse, the plug-in of Eclipse. As a commercial development tool, there are WebStome, etc.
+Node.js is a javascript-based language that can use document editors such as Notepad++, Sublim Text, and EditPlus as development tools. You can also install and use Nodeclipse, the plug-in of Eclipse. As a commercial development tool, there are WebStome, etc.
 
 ### <div id='9'></div> 2.2.2 CF-Abacus Installation
 
@@ -132,7 +132,7 @@ Install CF-Abacus by referring to the Abacus installation guide provided separat
 
 ### <div id='10'></div> 2.3 Sample API Service Broker and Dashboard Development
 
-Develop service brokers and dashboards by referring to the service broker development guide.
+You can develop service brokers and dashboards by referring to the service broker development guide.
 
 ### <div id='11'></div> 2.4 Sample API Service Development
 
@@ -922,7 +922,7 @@ applications:
 	                   
 	                   
 #### 3.  App.js  
-Implement an application that requests API services.
+Implements an application that requests API services.
 
 -   Declare dependent modules
 
@@ -1134,7 +1134,7 @@ Implement an application that requests API services.
 
 
 #### 4.  Views/apiCaller.handlebars  
-Api 서비스를 요청하는 웹 화면
+Web screen requesting Api service
 
 	<!DOCTYPE html>
 	<html>
@@ -1148,9 +1148,9 @@ Api 서비스를 요청하는 웹 화면
 	        $('#result_div').html('');
 	
 	        var appUrl = document.URL;
-	        // 요청 서비스 입력 항목 설정
-	        var input_param1 = '서울';
-	        var input_param2 = '무교동';
+	        // Set Request Service Entry 
+	        var input_param1 = 'Seoul';
+	        var input_param2 = 'Mugyodong';
 	
 	        $('#send_btn').click(function(){
 	
@@ -1758,7 +1758,7 @@ Create a service to use at the application through the PaaS-TA Platform. It can 
 		Example)
 		$ cf create-service-broker sample-api-broker admin cloudfoundry http://sample-api-java-broker.bosh-lite.com
 		
-		## 서비스 브로커 확인
+		## Check Service Broker
 		$ cf service-brokers
 		Getting service brokers as admin...
 		
@@ -1782,7 +1782,7 @@ Create a service to use at the application through the PaaS-TA Platform. It can 
 
 ### <div id='26'></div> 2.7.3 API Service Application Deployment and Service Registration
 
-Deploy the API service application to the PaaS-TA platform. The API service registered can be bound with other applications to provide API services.
+You can deploy the API service application to the PaaS-TA platform. The API service registered can be bound with other applications to provide API services.
 
 #### 1.  Application Deployment
 

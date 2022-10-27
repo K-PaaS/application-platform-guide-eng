@@ -1044,7 +1044,7 @@ Check CF-Abacus Interwork
 It is implemented as a Junit test and owermock-mockito-release-full:1.6.1 was used for the partial mock appliance for the test service class.
 
 
--   Create gradle. build dependency for test
+-   Create gradle.build dependency for test.
 
 
 		dependencies {

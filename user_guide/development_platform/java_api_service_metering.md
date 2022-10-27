@@ -184,7 +184,7 @@ Java File Shape Description
 
 -  build.gradle
 
-	Describe the dependencies used by the sample Api service application.
+	Describes the dependencies used by the sample Api service application.
 
   
 		Skip...
@@ -826,7 +826,7 @@ There is no need to redeploy CF-ABACUS by storing the prepared policy in DB usin
 ## <div id='24'/>2.6. Deployment
 
 When deploying an application on the PaaS-TA Platform, the application can be connected and be used with the services provided by the PaaS-TA Platform.
-Only when executed on the PaaS-TA Platform can access service in the application environment variable of the PaaS-TA Platform.
+You can access the service by accessing the application environment variables of the PaaS-TA platform only when it is executed on the PaaS-TA platform.
 
 
 ### <div id='25'/>2.6.1 PaaS-TA Platform Login
@@ -841,7 +841,7 @@ Login to the PaaS-TA Platform to follow the process below
 ### <div id='26'/>2.6.2. Create API Service Broker
 
 Create the service to be used in the application through the PaaS-TA platform.
-Can generate without a separate service installation process, and access information can be obtained through an application and binding process.
+It can be created without a separate service installation process, and access information can be obtained through the application and binding process.
 
 -   Create Service (cf marketplace command allows you to view the list of services and the plan for each service.)
 
@@ -880,7 +880,7 @@ Can generate without a separate service installation process, and access informa
 
 ### <div id='27'/>2.6.3. API Service Application Deployment and Service Registration
 
-Deploys API service applications on the PaaS-TA platform. The API registered as a service can provide API services by combining it with other applications.
+API service applications are deployed on the PaaS-TA platform. The API registered as a service can provide API services by combining it with other applications.
 1.  **Application Deployment**
 
 	-	build with gradle build -x test command.
@@ -964,7 +964,7 @@ The process of connecting an application to a service is called a 'bind', and th
 
 ## <div id='29'/>2.7. API and CF-Abacus Interworking Tests
 
-Access from a web browser through the url of the API-linked sample application. CF-Abacus-linked tests on API-linked and API usage can be conducted.
+CF-Abacus interworking test for API interworking and API usage can be performed by accessing from a web browser through the url of the API interworking sample application.
 
 1.  **Check CF-Abacus Connection**
 

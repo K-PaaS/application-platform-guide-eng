@@ -1,5 +1,30 @@
 ### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Java Development
 
+## Table of Contents
+
+1. [Outline](#1)	
+	-	[1.1. Document Outline](#1-1)  
+		-	[1.1.1.	Purpose](#1-1-1)  
+		-	[1.1.2.	Range](#1-1-2)  
+		-	[1.1.3.	References](#1-1-3)  
+
+2. [JAVA Application Development Guide](#2)  
+
+	-	[2.1. Outline](#2-1)  
+	-	[2.2. Development Environment Configuration](#2-2)  
+		-	[2.2.1.	JDK Installation](#2-2-1)  
+
+	-	[2.3. Development](#2-3)  
+		-	[2.3.1.	Application Environment Setting](#2-3-1)  
+
+	-	[2.4. Deployment](#2-4)  
+
+	-	[2.5. Deployment](#2-5)  
+
+	-	[2.6. Sample App Deployment Check](#2-6)
+
+	-	[2.7. Sample App Login](#2-7)
+
 ### 1. Outline
 
 #### 1.1. Document Outline
@@ -95,8 +120,8 @@ The development environment is constructed in the following environment for Java
 
 
 #### 2.3. Development
-  - OpenPaas Java Sample Application has the following structure. Using the Spring-Boot Library
-It can be operated without a separate Tomcat setting. Data management for sample applications uses either MySQL, CubridDB, or MongoDB, so when making an API request, it is determined with the DBType value in the request body.
+  - OpenPaas Java Sample Application has the following structure. Using the Spring-Boot Library it can be operated without a separate Tomcat setting. 
+  Data management for sample applications uses either MySQL, CubridDB, or MongoDB, so when making an API request, it is determined with the DBType value in the request body.
 
 <img src="./images/java/image15.png" width="500" height="500" />
 
@@ -107,11 +132,11 @@ It can be operated without a separate Tomcat setting. Data management for sample
 |**Package/File**   |**Description**                 |
 |----------|-------------------------|
 |Java/sample/biz                  |It is a service domain which is a business domain.  |
-|Java/sample/Config/data          |This is a package that establishes persistence area connection settings such as Mysql, mongodb, redis, clusterFs, cubid, and RabbitMq. Recognize and access the Local/Cloud environment. ClusterFs settings are not supported in the Local environment (Cloud Only)|
+|Java/sample/Config/data          |This is a package that establishes persistence area connection settings such as Mysql, mongodb, redis, clusterFs, cubid, and RabbitMq. Recognize and access the Local/Cloud environment. ClusterFs settings are not supported in the Local environment (Cloud Only).|
 |Java/sample /Config/web          |Set the WEB settings information related to MVC, Interceptor, and MultiPart in Sample Application.              |
 |Java/sample /controller          |The controller domain that receives the requested information from the UI.            |
 |Java/sample/dao                  |The domain where data in the Persistence section is entered/modified/deleted/checked.               |
-|Java/sample /model               |VO domain.     |
+|Java/sample /model               |VO domain.      |
 |Java/sample /Application.java    |Starts the Sample Application using the Spring Boot.   |
 |Resource/tables                  |Contains DB Table DDL and basic data DDL for use by Sample Application.       |
 |Resource/ application-cloud.properties  |The property that the Sample Application will use in the Cloud environment. |
@@ -119,7 +144,7 @@ It can be operated without a separate Tomcat setting. Data management for sample
 |Resource/logback.xml                    |logging setting that uses Logback.   |
 |Manifest.yml                            |Files used when an application is first configured in a cloud environment, including environmental information, service information (such as mysql, rabbitmq), application name, number of instances, and instance memory settings.     |
 |pom.xml                                 |Defines the Maven dependency of Sample Application.     |
-|webapp                                 |UI related resources are located     |
+|webapp                                 |UI related resources are located.     |
 
 
 ##### 2.3.1. Application Environment Setting

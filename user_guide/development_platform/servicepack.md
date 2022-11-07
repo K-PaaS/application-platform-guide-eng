@@ -98,11 +98,13 @@ The method of implementing the service is up to the provider and developer. Open
 This development guide guides how the service back-end is controlled by the service broker. If you use AppDirect, refer to http://go.appdirect.com/request-more-information.
 
 Service Broker requires 6 basic API functions. (refer to the API guide of each for detailed descriptions)
->![openpaas-servicepack-05]
+>![1](https://user-images.githubusercontent.com/104418463/200229978-2283d8ea-3d54-40d1-a8e9-aa9435b8431b.png)
+
 
 Two major versions of the Service Broker API currently support open cloud platforms v1 and v2. Since v1 is not used and can be removed in the next version of the open cloud platform, Service Broker recommends implementing it as v2.
 - Version Information (This guide is written based on version 2.5)
->![openpaas-servicepack-06]
+>![2](https://user-images.githubusercontent.com/104418463/200230018-0b2052b7-70ec-421f-b276-1b76f115d7db.png)
+
 
 - Certification
 
@@ -120,26 +122,27 @@ The service catalog retrieves information about the service and the service plan
 1.2. cURL
 
 	curl -H "X-Broker-API-Version: 2.4" http://username:password@broker-url/v2/catalog
-	예)
+	Ex)
 	curl -H "X-Broker-API-Version: 2.4" http://admin:eaa139af583c@10.30.40.61/v2/catalog
 
 2. Response
 
 2.1. Status Code
 
->![openpaas-servicepack-07]
+>![3](https://user-images.githubusercontent.com/104418463/200230048-a02e42af-62f7-4348-b4ec-2882c4676a4c.png)
 
 2.2. Body (* means required)
->![openpaas-servicepack-09]
+>![4](https://user-images.githubusercontent.com/104418463/200230054-e54a68a0-bd36-40ab-817b-e0bead665296.png)
 
 2.3. Service Metadata
->![openpaas-servicepack-10]
+>![5](https://user-images.githubusercontent.com/104418463/200230088-d1e1f564-5403-435e-8fc2-b13f65e9e07f.png)
 
 2.4.	Plan Metadata
->![openpaas-servicepack-11]
+>![6](https://user-images.githubusercontent.com/104418463/200230113-54db4a2b-29be-41b9-80a5-716664bbb446.png)
 
 2.5.	Quota Plan
->![openpaas-servicepack-12]
+>![7](https://user-images.githubusercontent.com/104418463/200230149-83b66edf-2d9e-41f8-b0f0-5db580ebca30.png)
+
 
 ◎ sample body response message
 	
@@ -347,15 +350,19 @@ Note: The instance_id of the service instance is provided by the Cloud Controlle
 	}' -X PUT -H "X-Broker-API-Version: 2.4" -H "Content-Type: application/json"
 
 1.3.	Body
->![openpaas-servicepack-20]
+
+>![8](https://user-images.githubusercontent.com/104418463/200230229-73949202-3a1e-4388-8a6a-17da4bdf64dc.png)
 
 2. Response
 2.1. Status Code
->![openpaas-servicepack-21]
+
+>![9](https://user-images.githubusercontent.com/104418463/200230289-623dc721-71f9-4f1e-803d-9dce5161ad6a.png)
 
 2.2.	Body 
 All response bodies are in the format JSON Object ({}).
->![openpaas-servicepack-22]
+
+>![10](https://user-images.githubusercontent.com/104418463/200230346-63b448c7-d300-464a-bdcf-d4501e6e820c.png)
+
 
 2.3.	Dashboard Single Sign-On.
 Single Sign-On (SSO) allows open cloud platform users to access dashboards of third-party services using open cloud platform credentials. A service dashboard is a web interface in which some or all of the functions provided by the service may be used. SSO integrates and manages recurring logins and accounts for multiple services. Because it handles OAuth2 protocol authentication, user credentials are not sent directly to the service. To use SSO functions, the Cloud Controller UAA client must have permission to create and delete service brokers. Configure clients when installing an open cloud platform. (Refer to installation document)
@@ -504,12 +511,19 @@ Note: instance_id is the GUID of the previous provision service instance
 	}' -X PATCH -H "X-Broker-API-Version: 2.4" -H "Content-Type: application/json"
 
 1.3.	Body
->![openpaas-servicepack-23]
+	
+>![12](https://user-images.githubusercontent.com/104418463/200230543-bb440800-baa3-43aa-ada2-fc2c0b6a3add.png)
+
+
 
 2.	Response
+<br/>
 2.1.	Status Code
 STATUS CODE	DESCRIPTION
->![openpaas-servicepack-24]
+	
+>![13](https://user-images.githubusercontent.com/104418463/200230554-3bf778bd-b060-42c9-ab17-09d5eaa3edcc.png)
+
+
 
 2.2.	Body 
 All response bodies should be in JSON Object ({}) format.
@@ -591,7 +605,8 @@ When a broker receives a deployment request from an open cloud platform, it dele
 	DELETE /v2/service_instances/:instance_id
 
 1.2.	Parameters
->![openpaas-servicepack-25]
+>![14](https://user-images.githubusercontent.com/104418463/200230594-7d1fdabb-4222-4a39-8480-d031df1fdcb1.png)
+
 
 1.3.	cURL
 	$ curl 'http://username:password@broker-url/v2/service_instances/:instance_id?service_id=
@@ -599,7 +614,8 @@ When a broker receives a deployment request from an open cloud platform, it dele
 
 2.	Response
 2.1.	Status Code
->![openpaas-servicepack-26]
+>![15](https://user-images.githubusercontent.com/104418463/200230609-8d1b625a-b955-4705-9597-7bf00bd56b51.png)
+
 
 2.2.	Body 
 All response bodies should be in JSON Object ({}) format.
@@ -714,6 +730,7 @@ Receive "{}" value on success.
 If the service is available only with Provision, there is no need to implement the bind function, and only the resulting success message needs to be sent to the open cloud platform. When a broker receives a binding request from an open cloud platform, it returns the information necessary to utilize the provisioned resources. The information is provided in the credentials. It should not affect other applications by issuing unique credentials to the Application.
 
 1.	Request
+<br/>
 1.1.	Route
 	PUT /v2/service_instances/:instance_id/service_bindings/:binding_id
 Note: The binding_id is provided by the Cloud Controller to perform service binding. The binding_id is used for unbinding requests that will be shown later.
@@ -727,22 +744,29 @@ Note: The binding_id is provided by the Cloud Controller to perform service bind
 	}' -X PUT -H "X-Broker-API-Version: 2.4" -H "Content-Type: application/json"
 
 1.3.	Body
->![openpaas-servicepack-27]
+	
+>![16](https://user-images.githubusercontent.com/104418463/200230689-2129b7d0-f168-4a32-a6f6-34b200126a91.png)
+
 
 2.	Response
+<br/>
 2.1.	Status Code
->![openpaas-servicepack-28]
+	
+>![17](https://user-images.githubusercontent.com/104418463/200230699-ff968e7c-4687-4fdf-adad-bcd8052701d6.png)
+
 A different status code response means failure.
 
 2.2.	Body 
->![openpaas-servicepack-29]
+	
+>![18](https://user-images.githubusercontent.com/104418463/200230721-7510158a-b8aa-4799-9cd4-1ad776780827.png)
 
 2.3.	Binding Credentials 
 <br/>
 In the case of service binding, authentication information that the user can use in the application is returned in response to the bind API call. Provide these credentials to the open cloud platform environment variable VCAP_SERVICES. It is recommended to be used in the Credentials field list. Use if the fields provided meet the user's requirements. Additional fields can be provided as needed.
 
 Important: If you provide a service that supports the connection string, at least the uri key must be provided. As mentioned above, a separate credential field may also be provided. Buildpacks and Application libraries use the uri key.
->![openpaas-servicepack-30]
+>![19](https://user-images.githubusercontent.com/104418463/200230745-5a2562cd-5057-47b9-b6b4-51e86d625983.png)
+
 
 ◎ Example VCAP_SERVICES result
 
@@ -929,15 +953,20 @@ When a broker receives an unbind request from an open cloud platform, it deletes
 	DELETE /v2/service_instances/:instance_id/service_bindings/:binding_id
 
 1.2.	Parameters
->![openpaas-servicepack-31]
+		
+>![20](https://user-images.githubusercontent.com/104418463/200230796-e806bb72-d27a-40e4-9b48-8bcb26fca760.png)
+
 
 1.3.	cURL
 	$ curl 'http://username:password@broker-url/v2/service_instances/:instance_id/
 	service_bindings/:binding_id?service_id=service-id-here&plan_id=plan-id-here' -X DELETE -H "X-Broker-API-Version: 2.4"
 
 2.	Response
+<br/>
 2.1.	Status Code
->![openpaas-servicepack-32]
+		
+>![21](https://user-images.githubusercontent.com/104418463/200230828-578c1f1a-81a2-40e4-8da7-327472c09f73.png)
+
 
 2.2.	Body 
 All response bodies should be in JSON Object ({}) format.

@@ -502,16 +502,16 @@ After installing the Paas-TA Portal, you must register the build pack and servic
 
  1. Access the Administrator Portal.(portal-web-admin.[public ip].nip.io)
     
-    >![paas-ta-portal-15]
+    >![22](https://user-images.githubusercontent.com/104418463/200228947-84c66c35-9939-4f4c-8e5d-65935730e2f9.png)
  2. Click Operation Management.
     
-    >![paas-ta-portal-16]
+    >![23](https://user-images.githubusercontent.com/104418463/200228961-2227fed4-8bc1-4e80-92fd-9b3b233668ac.png)
  2. Go to Catalog page.
     
-    >![paas-ta-portal-17]
+    >![24](https://user-images.githubusercontent.com/104418463/200228968-394d913d-27a6-4948-830c-b51685111188.png)
  3. Go to the buildpack and servicepack detail page, enter the value in each index, and click Save.
     
-    >![paas-ta-portal-18]
+    >![25](https://user-images.githubusercontent.com/104418463/200229056-bfb721e5-102d-4cfd-a239-398610fd6e31.png)
  4. Check whether the changed value is applied in the user portal.
     
     >![paas-ta-portal-19]

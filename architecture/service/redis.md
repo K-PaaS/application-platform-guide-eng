@@ -8,7 +8,8 @@ This document provides the Architecture of Application Platform (AP) - Redis Ser
 Redis service provides in-memory cache storage.
 It provides a user on-demand Redis server rather than a multi-tenant-based shared service.
 
-![redis_architecture_eng](https://user-images.githubusercontent.com/104418463/165661241-e230f032-7758-46df-a862-5b9f7b2738c1.png)
+
+![Redis_architecture](https://user-images.githubusercontent.com/104418463/200266609-a406eee2-ed8d-47db-aa19-55eb53336047.png)
 
 
 

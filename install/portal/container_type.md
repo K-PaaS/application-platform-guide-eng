@@ -432,13 +432,13 @@ After installing the Paas-TA Portal, you must register the build pack and servic
 - [Catalog Image Download](https://nextcloud.paas-ta.org/index.php/s/EmzfJw38H4GQKTr/download)
 
 1. Access the Administrator Portal.(portal-web-admin.\<DOMAIN\>)  
-![paas-ta-portal-15]  
+![22](https://user-images.githubusercontent.com/104418463/200229183-e694af80-1d0f-485b-b172-457506058dac.png)
 2. Click Operation Management.
-![paas-ta-portal-16]  
+![23](https://user-images.githubusercontent.com/104418463/200229202-3166c4ae-5d23-4a9c-a8f8-30fbccd480cd.png)
 3. Go to the catalog page.
-![paas-ta-portal-17]  
+![24](https://user-images.githubusercontent.com/104418463/200229210-997cad41-5c10-4ab0-95c2-be89158f4993.png)
 4. Go to the build pack and service pack detail screen, enter the value in each item column, and click Save.
-![paas-ta-portal-18]  
+![25](https://user-images.githubusercontent.com/104418463/200229220-d6e9b7cd-a15d-48df-bd2d-7766c7049a7b.png)
 5. Check whether the changed value is applied in the user portal.
 ![paas-ta-portal-19]   
 

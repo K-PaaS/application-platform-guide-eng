@@ -2,6 +2,7 @@
 
 ## Purpose
 This document provides the Architecture of PaaS-TA Application Platform (AP) – min.
+<br>PaaS-TA Application Platform(AP)-min is a light version of Application Platform.
 <br><br>
 
 ## System Configuration Diagram

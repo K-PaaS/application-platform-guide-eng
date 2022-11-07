@@ -551,7 +551,7 @@ After installing PaaS-TA AP, refer to the other CLI in the User Guide for how to
 <tr>
 <td>operations/use-haproxy.yml</td>
 <td>Apply HAProxy <br>
-    - When installing PaaS-TA AP using LB(Load Balancer) provided by IaaS, the operation file is removed and installed.
+    - When installing PaaS-TA AP using Load Balancer (hereinafter, LB) provided by IaaS, the operation file is removed and installed.
 </td>
 <td>Requires operation file: use-haproxy-public-network.yml <br>
     Requires value :  -v haproxy_private_ip

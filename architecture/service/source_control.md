@@ -5,6 +5,9 @@ This document provides the Architecture of Application Platform (AP) - Source Co
 <br><br>
 
 ## System Configuration Diagram
+The Source Control Service provides a repository for securely storing the user's source code and various files.
+It provides a commit history, branch list, etc., and provides a UI that can check various information on the web.
+
 ![Source Control_architecture_eng](https://user-images.githubusercontent.com/104418463/165657254-70b8412f-ca52-44f1-9ad1-77f3910e8a38.png)
 
 <br>

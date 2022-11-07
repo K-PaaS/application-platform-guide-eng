@@ -29,7 +29,7 @@
 # <div id='1'/>1. Document Outline
 
 ## <div id='1.1'/>1.1. Purpose
-This document is a Multi-CPI setup guide for BOSH2 (hereinafter BOSH) and explains how to set up and use Multi-CPI that deploys VMs in IaaS environments. (hereinafter referred to as Main IaaS AZ) and other IaaS environments (hereinafter referred to as Second IaaS AZ) where BOSH is installed through one BOSH.
+This document is a Multi-CPI setup guide for BOSH2 (hereinafter BOSH) and explains how to set up and use Multi-Cloud Provider Interface (hereinafter CPI) that deploys VMs in IaaS environments. (hereinafter referred to as Main IaaS AZ) and other IaaS environments (hereinafter referred to as Second IaaS AZ) where BOSH is installed through one BOSH.
 
 <br>
 

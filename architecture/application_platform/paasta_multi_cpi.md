@@ -23,7 +23,7 @@ This document provides the Architecture of PaaS-TA Multi CPI.
 VMs are deployed and managed in the IaaS environment(Main IaaS AZ-1) through one BOSH Director, where BOSH is installed, and in other IaaS environments (Second IaaS AZ-2) where Bosh is not installed.
 This controls the Multi IaaS environment through CPIs installed in BOSH Director
 
-## 참고자료
+## References
 BOSH Document: [http://bosh.io](http://bosh.io)  
 BOSH Deployment: [https://github.com/cloudfoundry/bosh-deployment](https://github.com/cloudfoundry/bosh-deployment)  
 

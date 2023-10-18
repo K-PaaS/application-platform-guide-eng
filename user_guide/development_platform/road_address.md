@@ -549,7 +549,7 @@ broker: apiplatform-sb
 dorojusodb      Unlimited   all
    dorojusodbMgt   Unlimited   all
 ````
-Enable the service and check the service list again and check if the access has been changed to all.
+Enable the service and check the service combo box again and check if the access has been changed to all.
 
 Road name address services are now ready for use on open cloud platforms.
 

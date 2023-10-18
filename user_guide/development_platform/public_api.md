@@ -878,7 +878,7 @@ Most APIs introduced on public data portals can issue service keys on public dat
   
   3. Verify the service key issuance<br>
   ![7-3-1-20]<br>
-  On the main screen, click the [Key Issue/Manage] button in the middle right of the [Incheon Culture and Arts Information Public Open API Center](http://iq.ifac.or.kr/openAPI).
+  On the main screen, click the [Key Issue/Manage] button in the right of the [Incheon Culture and Arts Information Public Open API Center](http://iq.ifac.or.kr/openAPI).
 
   ![7-3-1-21]<br>
   If you go to the authentication key management screen, you can check (1) the service key, (2) traffic, (3) approval status, and (4) the delete service key.<br>
@@ -905,7 +905,7 @@ To get the API service key for [2.2.1. Naver Map], [2.2.2. Naver address-to-coor
   
   2. Apply for Service Key<br>
   ![7-3-2-7]<br>
-  After login, go to the Open API page of Naver Developer Center again, and you can check the [Issue/Manage Key] button in the middle of the right.
+  After login, go to the Open API page of Naver Developer Center again, and you can check the [Issue/Manage Key] button in the right.
 
   ![7-3-2-8]<br>
   Key management for API services provided by Naver may be performed on the key issuance/management screen.<br>

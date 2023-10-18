@@ -27,8 +27,8 @@ The purpose of this document is to provide a guide for manually installing PaaS-
 <br>
 
 ## <div id='1.2'/>1.2. Range
-PaaS-TA AP min is installed in a BOSH environment based on bosh-deployment, and a guide was written based on the installation of paasta-deployment v5.6.6-min.
-PaaS-TA AP min supports IaaS such as VMware vSphere, Google Cloud Platform, Amazon Web Services EC2, OpenStack, and Microsoft Azure. The IaaS environment validated by paasta-deployment v5.6.6-min is AWS and OpenStack environment.
+PaaS-TA AP min is installed in a BOSH environment based on bosh-deployment, and a guide was written based on the installation of paasta-deployment v5.8.5-min.
+PaaS-TA AP min supports IaaS such as VMware vSphere, Google Cloud Platform, Amazon Web Services EC2, OpenStack, and Microsoft Azure. The IaaS environment verified by paasta-deployment v5.8.5-min is OpenStack, and vSphere environment.
 
 <br>
 
@@ -61,14 +61,14 @@ $ mkdir -p ~/workspace
 $ cd ~/workspace
 $ git clone https://github.com/PaaS-TA/common.git
 $ cd ~/workspace
-$ git clone https://github.com/PaaS-TA/paasta-deployment.git -b v5.6.6-min paasta-deployment-min
+$ git clone https://github.com/PaaS-TA/paasta-deployment.git -b v5.8.5-min paasta-deployment-min
 ```
 
 <br>
 
 ## <div id='2.3'/>2.3. Stemcell Upload
 Stemcell is a VM Base OS image that is created during deployment.  
-Paasta-deployment v5.6.6 is based on Ubuntuionic stemcell 1.34.
+Paasta-deployment v5.8.5-min is based on Ubuntu bionic stemcell 1..171.
 The basic Stemcell upload commands are as follows. 
 ```                     
 $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell {URL}
@@ -76,14 +76,14 @@ $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell {URL}
 
 Paasta-deployment supports Stemcell upload scripts from v5.5.0. After logging in to BOSH, perform the following commands to upload Stemcells.
 BOSH_ENVIRONMENT is the Director name used when installing BOSH, and CURRENT_IAAS is entered according to the deployed environment IaaS (aws, azure, gcp, openstack, vsphere, and other input bosh-lite).
-<br>(PBOSH_ENVIRONMENT and CURRENT_IAAS are automatically entered during BOSH LOGIN using create-bosh-login.sh provided by PaaS-TA AP.)
+<br>(BOSH_ENVIRONMENT and CURRENT_IAAS are automatically entered during BOSH LOGIN using create-bosh-login.sh provided by paasta-deployment.)
 
 - Modify the settings of the Stemcell upload script (Modify BOSH_ENVIRONMENT)
 
 > $ vi ~/workspace/paasta-deployment/bosh/upload-stemcell.sh
 ```                     
 #!/bin/bash
-STEMCELL_VERSION=1.34
+STEMCELL_VERSION=1.171
 CURRENT_IAAS="${CURRENT_IAAS}"				# IaaS Information (When not using create-bosh-login.sh provided by PaaS-TA, enter aws/azure/gcp/openstack/vsphere/bosh-lite)
 BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"			# bosh director alias name (When not using create-bosh-login.sh provided by PaaS-TA, check and enter name from bosh envs)
 
@@ -123,9 +123,8 @@ $ bosh -e ${BOSH_ENVIRONMENT} update-runtime-config {PATH} --name={NAME}
 
 The Runtime Config applied in PaaS-TA AP min is as follows.
 
-- DNS Runtime Config  
-  A part of PaaS-TA 4.0, a component that has been replaced by Consul in PaaS-TA Component.
-  BOSH DNS distribution should precede communication between PaaS-TA components.
+- DNS Runtime Config
+  BOSH DNS distribution should precede communication between PaaS-TA AP components.
 
 - OS Configuration Runtime Config  
   BOSH Linux OS configuration release is used to configure sysctl
@@ -159,8 +158,8 @@ $ source update-runtime-config.sh
 ## <div id='2.5'/>2.5. Cloud Config Setting
 
 When deploying VMs through BOSH, IaaS-related network, storage, and VM-related settings are defined as Cloud Config.
-After downloading the paasta-deployment installation file, you can see examples of IaaS-specific CloudConfig under the ~/workspace/paasta-deployment-min/cloud-config directory, and modify cloud-config.yml to fit IaaS. 
-Cloud Config should be applied to BOSH prior to PaaS-TA AP deployment.
+After downloading the deployment installation file, you can see examples of IaaS-specific CloudConfig under the ~/workspace/paasta-deployment-min/cloud-config directory, and modify cloud-config.yml to fit IaaS. 
+Cloud Config should be applied to BOSH prior to PaaS-TA AP min deployment.
 
 - An example based on AWS [cloud-config.yml](https://github.com/PaaS-TA/paasta-deployment/blob/master/cloud-config/aws-cloud-config.yml) 
 
@@ -247,7 +246,7 @@ vm_types:
 - AZs
 
 Cloud Config examples provided in PaaS-TA are set from z1 to z6.
-Z1 to z3 are zones where PaaS-TA AP VMs are installed, and z4 to z6 are defined as zones where services are installed.
+Z1 to z3 are zones where PaaS-TA AP min VMs are installed, and z4 to z6 are defined as zones where services are installed.
 The reason for setting in three unit is for service tripleization, It may be set differently depending on the installation environment.
 
 - VM Types
@@ -260,11 +259,11 @@ A VM Type is a VM Type defined in IaaS.
 
 - Compilation
 
-When PaaS-TA AP and services are installed, BOSH creates a Compile task VM to compile the source, and then installs the compiled file on the destination VM and deletes the Compile task VM (the number of workers is the number of Compile VMs, the faster the compilation)
+When PaaS-TA AP min and services are installed, BOSH creates a Compile task VM to compile the source, and then installs the compiled file on the destination VM and deletes the Compile task VM (the number of workers is the number of Compile VMs, the faster the compilation)
 
 - Disk Size
 
-Disk size is persistent disk size of the VM where PaaS-TA AP and services are installed.
+Disk size is persistent disk size of the VM where PaaS-TA AP min and services are installed.
 
 - Networks
 
@@ -315,6 +314,30 @@ common_vars.yml file and vars.yml can be modified to set the variables to be app
 <tr>
 <td>deploy-openstack-7vms.sh</td>
 <td>Shell Script File for PaaS-TA AP min 7vm Installation in OpenStack Environment</td>
+</tr>
+<tr>
+<td>deploy-vsphere-4vms.sh</td>
+<td>Shell Script File for PaaS-TA AP min 4vm Installation in vSphere Environment</td>
+</tr>
+<tr>
+<td>deploy-vsphere-7vms.sh</td>
+<td>Shell Script File for PaaS-TA AP min 7vm Installation in vSphere Environment</td>
+</tr>
+<tr>
+<td>deploy-azure-4vms.sh</td>
+<td>Shell Script File for PaaS-TA AP min 4vm Installation in Azure Environment</td>
+</tr>
+<tr>
+<td>deploy-azure-7vms.sh</td>
+<td>Shell Script File for PaaS-TA AP min 7vm Installation in Azure Environment</td>
+</tr>
+<tr>
+<td>deploy-gcp-4vms.sh</td>
+<td>Shell Script File for PaaS-TA AP min 4vm Installation in GCP Environment</td>
+</tr>
+<tr>
+<td>deploy-gcp-7vms.sh</td>
+<td>Shell Script File for PaaS-TA AP min 7vm Installation in GCP Environment</td>
 </tr>
 <tr>
 <td>min-paasta-deployment.yml</td>
@@ -379,8 +402,8 @@ syslog_fallback_servers: []             # [MONITORING] PaaS-TA Syslog Fallback S
 
 
 # STEMCELL
-stemcell_os: "ubuntu-xenial"		# Stemcell OS
-stemcell_version: "621.94"		# Stemcell Version
+stemcell_os: "ubuntu-bionic"		# Stemcell OS
+stemcell_version: "1.171"		# Stemcell Version
 
 # SMOKE-TEST
 smoke_tests_azs: ["z1"]			# Smoke-Test Available Zone
@@ -492,7 +515,7 @@ ex) uaa_client_portal_secret="portalclient"
 ex) uaa_client_admin_secret="admin-secret"
 ```
 
-Refer to the other CLI in the User Guide for how to use UAAC after installing PaaS-TA AP.
+Refer to the other CLI in the User Guide for how to use UAAC after installing PaaS-TA AP min.
 
 <br>
 
@@ -566,7 +589,7 @@ min-paasta-deployment.yml file is a Manifest file that deploys PaaS-TA AP min, w
 Example of PaaS-TA AP min deployment BOSH command
 
 ```
-$ bosh -e ${BOSH_ENVIRONMENT} -d paasta deploy paasta-deployment.yml
+$ bosh -e ${BOSH_ENVIRONMENT} -d paasta deploy min-paasta-deployment.yml
 ```
 
 When deploying PaaS-TA AP min, installation options must be added. The description of the installation options are as follows.
@@ -672,6 +695,107 @@ bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy min-paasta-deployment.yml \	# Pa
         -l ../../common/common_vars.yml					# Common variable settings file to apply when installing PaaS-TA and various services
 ```
 
+- When installing 4vm in an vSphere environment
+
+```
+$ vi ~/workspace/paasta-deployment-min/paasta/deploy-vsphere-4vms.sh
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"                   # bosh director alias name (When Create-bosh-login provided by PaaS-TA.If sh is not used, check and enter the name in bosh envs)
+
+bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy min-paasta-deployment.yml \	# PaaS-TA-min Manifest File
+	-o operations/min-use-router-public-network.yml \			# Router external access setting
+        -o operations/min-use-router-public-network-vsphere.yml \
+        -o operations/min-use-postgres.yml \					# Database Type Setting (Requiring for Migration from versions lower than 3.5)
+        -o operations/min-rename-network-and-deployment.yml \			# Rename Network and Deployment
+	-o operations/min-cce.yml \						# CCE Applied
+        -l min-vars.yml \							# Variable settings file to apply when installing PaaS-TA-min
+        -l ../../common/common_vars.yml						# Common variable settings file to apply when installing PaaS-TA and various services
+```
+
+- When installing 7vm in an vSphere environment
+
+```
+$ vi ~/workspace/paasta-deployment-min/paasta/deploy-vsphere-7vms.sh
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"                   # bosh director alias name (When Create-bosh-login provided by PaaS-TA.If sh is not used, check and enter the name in bosh envs)
+bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy min-paasta-deployment.yml \	# PaaS-TA-min Manifest File
+        -o operations/min-create-vm-singleton-blobstore.yml \		# singleton-blobstore VM Deployment
+        -o operations/min-create-vm-tcp-router.yml \			# tcp-router VM Deployment
+        -o operations/min-use-haproxy.yml \				# HAProxy Applied
+        -o operations/use-haproxy-public-network-vsphere.yml \			# HAProxy Public Network Applied
+        -o operations/min-use-postgres.yml \				# Database Type Setting (Requiring for Migration from versions lower than 3.5)
+        -o operations/min-rename-network-and-deployment.yml \		# Rename Network and Deployment
+        -o operations/min-option-network-and-deployment.yml \		# singleton-blobstore Rename Network and Deployment
+	-o operations/min-cce.yml \					# CCE Applied
+        -l min-vars.yml \						# Variable settings file to apply when installing PaaS-TA-min
+        -l ../../common/common_vars.yml					# Common variable settings file to apply when installing PaaS-TA and various services
+```
+
+- When installing 4vm in an Azure environment
+
+```
+$ vi ~/workspace/paasta-deployment-min/paasta/deploy-azure-4vms.sh
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"                   # bosh director alias name (When Create-bosh-login provided by PaaS-TA.If sh is not used, check and enter the name in bosh envs)
+bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy min-paasta-deployment.yml \	# PaaS-TA-min Manifest File
+        -o operations/min-azure.yml \					        # Azure Setting
+	-o operations/min-use-router-public-network.yml \			# Router external access setting
+        -o operations/min-use-postgres.yml \					# Database Type Setting (Requiring for Migration from versions lower than 3.5)
+        -o operations/min-rename-network-and-deployment.yml \			# Rename Network and Deployment
+	-o operations/min-cce.yml \						# CCE Applied
+        -l min-vars.yml \							# Variable settings file to apply when installing PaaS-TA-min
+        -l ../../common/common_vars.yml						# Common variable settings file to apply when installing PaaS-TA and various services
+```
+
+- When installing 7vm in an Azure environment
+
+```
+$ vi ~/workspace/paasta-deployment-min/paasta/deploy-azure-7vms.sh
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"                   # bosh director alias name (When Create-bosh-login provided by PaaS-TA.If sh is not used, check and enter the name in bosh envs)
+bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy min-paasta-deployment.yml \	# PaaS-TA-min Manifest File
+        -o operations/min-azure.yml \					# Azure Setting
+        -o operations/min-create-vm-singleton-blobstore.yml \		# singleton-blobstore VM Deployment
+        -o operations/min-create-vm-tcp-router.yml \			# tcp-router VM Deployment
+        -o operations/min-use-haproxy.yml \				# HAProxy Applied
+        -o operations/use-haproxy-public-network.yml \			# HAProxy Public Network Applied
+        -o operations/min-use-postgres.yml \				# Database Type Setting (Requiring for Migration from versions lower than 3.5)
+        -o operations/min-rename-network-and-deployment.yml \		# Rename Network and Deployment
+        -o operations/min-option-network-and-deployment.yml \		# singleton-blobstore Rename Network and Deployment
+	-o operations/min-cce.yml \					# CCE Applied
+        -l min-vars.yml \						# Variable settings file to apply when installing PaaS-TA-min
+        -l ../../common/common_vars.yml					# Common variable settings file to apply when installing PaaS-TA and various services
+```
+
+- When installing 4vm in an GCP environment
+
+```
+$ vi ~/workspace/paasta-deployment-min/paasta/deploy-gcp-4vms.sh
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"                   # bosh director alias name (When Create-bosh-login provided by PaaS-TA.If sh is not used, check and enter the name in bosh envs)
+bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy min-paasta-deployment.yml \	# PaaS-TA-min Manifest File
+	-o operations/min-use-router-public-network.yml \			# Router external access setting
+        -o operations/min-use-postgres.yml \					# Database Type Setting (Requiring for Migration from versions lower than 3.5)
+        -o operations/min-rename-network-and-deployment.yml \			# Rename Network and Deployment
+	-o operations/min-cce.yml \						# CCE Applied
+        -l min-vars.yml \							# Variable settings file to apply when installing PaaS-TA-min
+        -l ../../common/common_vars.yml						# Common variable settings file to apply when installing PaaS-TA and various services
+```
+
+- When installing 7vm in an GCP environment
+
+```
+$ vi ~/workspace/paasta-deployment-min/paasta/deploy-gcp-7vms.sh
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"                   # bosh director alias name (When Create-bosh-login provided by PaaS-TA.If sh is not used, check and enter the name in bosh envs)
+bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy min-paasta-deployment.yml \	# PaaS-TA-min Manifest File
+        -o operations/min-create-vm-singleton-blobstore.yml \		# singleton-blobstore VM Deployment
+        -o operations/min-create-vm-tcp-router.yml \			# tcp-router VM Deployment
+        -o operations/min-use-haproxy.yml \				# HAProxy Applied
+        -o operations/use-haproxy-public-network.yml \			# HAProxy Public Network Applied
+        -o operations/min-use-postgres.yml \				# Database Type Setting (Requiring for Migration from versions lower than 3.5)
+        -o operations/min-rename-network-and-deployment.yml \		# Rename Network and Deployment
+        -o operations/min-option-network-and-deployment.yml \		# singleton-blobstore Rename Network and Deployment
+	-o operations/min-cce.yml \					# CCE Applied
+        -l min-vars.yml \						# Variable settings file to apply when installing PaaS-TA-min
+        -l ../../common/common_vars.yml					# Common variable settings file to apply when installing PaaS-TA and various services
+```
+
+
 - Grant execution permissions to Shell script files
 
 ```
@@ -741,10 +865,10 @@ Task 134. Done
 Deployment 'paasta'
 
 Instance                                       Process State  AZ  IPs          VM CID               VM Type             Active  Stemcell  
-compute/e154dcdc-a2c1-4a85-86b7-607a02a30acf   running        z1  10.0.31.235  i-0f92f55575bf2567e  small-highmem-16GB  true    bosh-aws-xen-hvm-ubuntu-bionic-go_agent/1.34 
-control/a18f5e97-098c-47ab-9147-77f594571bd6   running        z1  10.0.31.234  i-053cd8f71d99f1a15  small-highmem-16GB  true    bosh-aws-xen-hvm-ubuntu-bionic-go_agent/1.34 
-database/7ea28d82-5d5b-471f-bde6-a65d4809062e  running        z1  10.0.31.233  i-0b2e54deaf0734f59  small               true    bosh-aws-xen-hvm-ubuntu-bionic-go_agent/1.34 
-router/c01b1aa4-43c9-42f6-9003-cf8f8664d142    running        z7  10.0.30.204  i-0a449def3351877b3  minimal             true    bosh-aws-xen-hvm-ubuntu-bionic-go_agent/1.34 
+compute/e154dcdc-a2c1-4a85-86b7-607a02a30acf   running        z1  10.0.31.235  i-0f92f55575bf2567e  small-highmem-16GB  true    bosh-aws-xen-hvm-ubuntu-bionic-go_agent/1.171 
+control/a18f5e97-098c-47ab-9147-77f594571bd6   running        z1  10.0.31.234  i-053cd8f71d99f1a15  small-highmem-16GB  true    bosh-aws-xen-hvm-ubuntu-bionic-go_agent/1.171 
+database/7ea28d82-5d5b-471f-bde6-a65d4809062e  running        z1  10.0.31.233  i-0b2e54deaf0734f59  small               true    bosh-aws-xen-hvm-ubuntu-bionic-go_agent/1.171 
+router/c01b1aa4-43c9-42f6-9003-cf8f8664d142    running        z7  10.0.30.204  i-0a449def3351877b3  minimal             true    bosh-aws-xen-hvm-ubuntu-bionic-go_agent/1.171 
                                                                   54.180.53.80                                                 
 
 4 vms
@@ -760,14 +884,15 @@ Task 134. Done
 Deployment 'paasta'
 
 Instance                                                  Process State  AZ  IPs             VM CID               VM Type             Active  Stemcell  
-compute/c3f53aed-469f-47ab-aa9b-94be30ca3687              running        z1  10.0.21.156     i-0617a496567bd859e  small-highmem-16GB  true    bosh-aws-xen-hvm-ubuntu-bionic-go_agent/1.34   
-control/acd880a6-b309-452e-b996-0ef4252f8dd3              running        z1  10.0.21.153     i-0d9fbf3f662dec9a0  small-highmem-16GB  true    bosh-aws-xen-hvm-ubuntu-bionic-go_agent/1.34   
-database/c92fd45f-1165-4d71-8df4-9b4270abdd0a             running        z1  10.0.21.151     i-0ead4f61c9be951b9  small               true    bosh-aws-xen-hvm-ubuntu-bionic-go_agent/1.34   
-haproxy/5ccc73dd-cf7e-4f4c-a204-1e933eddfcf8              running        z7  10.0.20.151     i-02e5277d6fd829f34  minimal             true    bosh-aws-xen-hvm-ubuntu-bionic-go_agent/1.34   
+compute/c3f53aed-469f-47ab-aa9b-94be30ca3687              running        z1  10.0.21.156     i-0617a496567bd859e  small-highmem-16GB  true    bosh-aws-xen-hvm-ubuntu-bionic-go_agent/1.171   
+control/acd880a6-b309-452e-b996-0ef4252f8dd3              running        z1  10.0.21.153     i-0d9fbf3f662dec9a0  small-highmem-16GB  true    bosh-aws-xen-hvm-ubuntu-bionic-go_agent/1.171   
+database/c92fd45f-1165-4d71-8df4-9b4270abdd0a             running        z1  10.0.21.151     i-0ead4f61c9be951b9  small               true    bosh-aws-xen-hvm-ubuntu-bionic-go_agent/1.171   
+haproxy/5ccc73dd-cf7e-4f4c-a204-1e933eddfcf8              running        z7  10.0.20.151     i-02e5277d6fd829f34  minimal             true    bosh-aws-xen-hvm-ubuntu-bionic-go_agent/1.171      
                                                                              54.180.53.80                                             
-router/4f58af5a-529c-41f7-866c-e2327978ea99               running        z1  10.0.21.154     i-0b5f2d42d2c2b9d06  minimal             true    bosh-aws-xen-hvm-ubuntu-bionic-go_agent/1.34   
-singleton-blobstore/5ed376fe-1d84-45c8-a6e8-f938b7320a36  running        z1  10.0.21.152     i-08a432269ffb76663  small               true    bosh-aws-xen-hvm-ubuntu-bionic-go_agent/1.34   
-tcp-router/f8fe5974-8340-4d16-ae02-0b7150828388           running        z1  10.0.21.155     i-04a845c8e7fc7cfb4  minimal             true    bosh-aws-xen-hvm-ubuntu-bionic-go_agent/1.34   
+router/4f58af5a-529c-41f7-866c-e2327978ea99               running        z1  10.0.21.154     i-0b5f2d42d2c2b9d06  minimal             true    bosh-aws-xen-hvm-ubuntu-bionic-go_agent/1.171   
+singleton-blobstore/5ed376fe-1d84-45c8-a6e8-f938b7320a36  running        z1  10.0.21.152     i-08a432269ffb76663  small               true    bosh-aws-xen-hvm-ubuntu-bionic-go_agent/1.171   
+tcp-router/f8fe5974-8340-4d16-ae02-0b7150828388           running        z1  10.0.21.155     i-04a845c8e7fc7cfb4  minimal             true    bosh-aws-xen-hvm-ubuntu-bionic-go_agent/1.171   
+   
 
 
 7 vms

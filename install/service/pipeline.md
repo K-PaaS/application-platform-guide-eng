@@ -56,7 +56,7 @@ $ uaac -v
 ### <div id='2.2'/> 2.2. Stemcell Check
 
 Check the Stemcell list to make sure that the Stemcell required for service installation is uploaded.  
-The Stemcell of this guide uses ubuntu-bionic 1.76.  
+The Stemcell of this guide uses ubuntu-jammy 1.181.  
 
 > $ bosh -e ${BOSH_ENVIRONMENT} stemcells
 
@@ -64,7 +64,7 @@ The Stemcell of this guide uses ubuntu-bionic 1.76.
 Using environment '10.0.1.6' as client 'admin'
 
 Name                                       Version   OS             CPI  CID  
-bosh-openstack-kvm-ubuntu-bionic-go_agent  1.76      ubuntu-bionic  -    ce507ae4-aca6-4a6d-b7c7-220e3f4aaa7d
+bosh-openstack-kvm-ubuntu-jammy-go_agent  1.181      ubuntu-jammy  -    ce507ae4-aca6-4a6d-b7c7-220e3f4aaa7d
 
 (*) Currently deployed
 
@@ -84,7 +84,7 @@ $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell -n {STEMCELL_URL}
 
 Download the deployment needed from Git Repository and place the file in the service installation directory.  
 
-- Service Deployment Git Repository URL : https://github.com/PaaS-TA/service-deployment/tree/v5.1.5
+- Service Deployment Git Repository URL : https://github.com/PaaS-TA/service-deployment/tree/v5.1.25
 
 ```
 # Deployment File Download, make directory, change directory
@@ -92,7 +92,7 @@ $ mkdir -p ~/workspace
 $ cd ~/workspace
 
 # Deployment File Download
-$ git clone https://github.com/PaaS-TA/service-deployment.git -b v5.1.5
+$ git clone https://github.com/PaaS-TA/service-deployment.git -b v5.1.25
 
 # common_vars.yml File Download(Download if common_vars.yml doesn't exist)
 $ git clone https://github.com/PaaS-TA/common.git
@@ -184,8 +184,8 @@ system_domain: "61.252.53.246.nip.io"		# Domain (Same as HAProxy Public IP when 
 
 ```
 # STEMCELL
-stemcell_os: "ubuntu-bionic"                                     # stemcell os
-stemcell_version: "1.76"                                       # stemcell version
+stemcell_os: "ubuntu-jammy"                                     # stemcell os
+stemcell_version: "1.181"                                       # stemcell version
 
 # NETWORK
 private_networks_name: "default"                                 # private network name
@@ -495,7 +495,7 @@ Check the procedure for UAAC Client account registration.
 - Register deployment pipeline UAAC Client.
 ```
 ### uaac client add Description
-uaac client add {Client name} -s {Client Password} --redirect_URL{Dashboard URL} --scope {Permission Range} --authorized_grant_types {Authority Type} --authorities={Authority Permission} --autoapprove={Automatic Authorization}  
+uaac client add {Client name} -s {Client Password} --redirect_URI{Dashboard URL} --scope {Permission Range} --authorized_grant_types {Authority Type} --authorities={Authority Permission} --autoapprove={Automatic Authorization}  
 Client Name : uaac client name (pipeclient)  
 Client Password : uaac Client password  
 Dashboard URL: Dashboard URL to be successfully redirected   
@@ -505,10 +505,10 @@ Authority Permission : Authority list granted to clients
 Automatic Authorization : Authority list that do not require user approval  
 ```
 
->$ uaac client add pipeclient -s clientsecret --redirect_uri "[DASHBOARD_URL]" /  
->--scope "cloud_controller_service_permissions.read , openid , cloud_controller.read , cloud_controller.write , cloud_controller.admin" /  
->--authorized_grant_types "authorization_code , client_credentials , refresh_token" /  
->--authorities="uaa.resource" /  
+>$ uaac client add pipeclient -s clientsecret --redirect_uri "[DASHBOARD_URL]" \  
+>--scope "cloud_controller_service_permissions.read , openid , cloud_controller.read , cloud_controller.write , cloud_controller.admin" \  
+>--authorized_grant_types "authorization_code , client_credentials , refresh_token" \  
+>--authorities="uaa.resource" \    
 >--autoapprove="openid , cloud_controller_service_permissions.read"  
 
 ```  
@@ -540,7 +540,7 @@ Register Java Offline Buildpack to use deployment pipeline service.
 
 **buildpack Registration**  
 
-> $ cf create-buildpack java_buildpack_offline ..\buildpack\java-buildpack-offline-v4.25.zip 3   
+> $ cf create-buildpack java_buildpack_offline ..\buildpack\java-buildpack-offline-v4.37.zip 3   
 
 **buildpack Registration Check**  
 
@@ -551,7 +551,7 @@ Getting buildpacks...
 buildpack                position   enabled   locked   filename
 staticfile_buildpack     1          true      false    staticfile_buildpack-cflinuxfs3-v1.4.43.zip
 java_buildpack           2          true      false    java-buildpack-cflinuxfs3-v4.19.1.zip
-java_buildpack_offline   3          true      false    java-buildpack-offline-v4.25.zip
+java_buildpack_offline   3          true      false    java-buildpack-offline-v4.37.zip
 ruby_buildpack           4          true      false    ruby_buildpack-cflinuxfs3-v1.7.40.zip
 dotnet_core_buildpack    5          true      false    dotnet-core_buildpack-cflinuxfs3-v2.2.12.zip
 nodejs_buildpack         6          true      false    nodejs_buildpack-cflinuxfs3-v1.6.51.zip

@@ -231,7 +231,7 @@ Can check the File, Commit, and Contributor on the repository details page.
 
 
 ### <div id='23'/> 3.1.3.1.6.1. Check Repository Branch List
-1.	Click “Branch”: drop-down to check the branch used before. To search quickly, enter the branch name in the branch search box.  
+1.	“파일(file)” 의 하단에 있는 "브랜치 : " 드롭다운을 클릭하면 사용한 브랜치의 리스트를 확인할 수 있으며, "브랜치 명 검색" 창에서 브랜치명으로 조회도 가능하다.   
 ![036]
 
 
@@ -363,5 +363,6 @@ This chapter describes the usage of 7 menus of the PaaS-TA User Portal.
 [043]:./images/source-control/image043.png
 [044]:./images/source-control/image044.png
 [045]:./images/source-control/image045.png
+[046]:./images/source-control/image046.png
 
 ### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Source Control Service 

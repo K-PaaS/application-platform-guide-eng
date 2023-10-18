@@ -580,10 +580,10 @@ Click the name of the application created in the catalog list to go to the appli
 ![3-2-1-3-7-1-0]
 
 ### <div id='90'/> 3.2.1.3.7.2.  Tail Log
-1.  Clock ① **</>Tail Logs** link to check the newly opened Tail Logs page. Click ② "URL LInk". 
+1.  Clock "Tail Logs" link to check the newly opened Tail Logs page.
 ![3-2-1-3-7-1-1] 
 
-2.  Check the Tail Logs tab to view the output of the real-time log from the URL page opened.
+2.  Check the Tail Logs tab to view the output of the real-time log.
 ![3-2-1-3-7-1-2]
 
 ### <div id='91'/> 3.2.1.3.7.3. Auto Scaling

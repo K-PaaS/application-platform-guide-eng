@@ -54,7 +54,7 @@ $ uaac -v
 
 ### <div id="2.2"/> 2.2. Stemcell Check
 Check the list of Stemcells to verify that the Stemcells required for service installation are uploaded.
-The Stemcell in this guide uses ubuntu-bionic 1.76.
+The Stemcell in this guide uses ubuntu-jammy  1..181.
 
 > $ bosh -e ${BOSH_ENVIRONMENT} stemcells
 
@@ -62,7 +62,7 @@ The Stemcell in this guide uses ubuntu-bionic 1.76.
 Using environment '10.0.1.6' as client 'admin'
 
 Name                                       Version   OS             CPI  CID  
-bosh-openstack-kvm-ubuntu-bionic-go_agent  1.76      ubuntu-bionic  -    ce507ae4-aca6-4a6d-b7c7-220e3f4aaa7d
+bosh-openstack-kvm-ubuntu-jammy-go_agent  1.181      ubuntu-jammy  -    ce507ae4-aca6-4a6d-b7c7-220e3f4aaa7d
 
 (*) Currently deployed
 
@@ -83,7 +83,7 @@ $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell -n {STEMCELL_URL}
 
 Download the deployment needed from Git Repository and place the file at the service installation directory 
 
-- Portal Deployment Git Repository URL : https://github.com/PaaS-TA/portal-deployment/tree/v5.2.5
+- Portal Deployment Git Repository URL : https://github.com/PaaS-TA/portal-deployment/tree/v5.2.23
 
 ```
 # Deployment File Download , make directory, change directory
@@ -91,7 +91,7 @@ $ mkdir -p ~/workspace
 $ cd ~/workspace
 
 # Deployment File Download
-$ git clone https://github.com/PaaS-TA/portal-deployment.git -b v5.2.5
+$ git clone https://github.com/PaaS-TA/portal-deployment.git -b v5.2.23
 ```
 
 ### <div id="2.4"/> 2.4. Deployment File Modification
@@ -161,13 +161,15 @@ Succeeded
 ```
 
 - Modify common_vars.yml to suit your server environment.
-- The variable used by PaaS-TA AP Portal infrastructure is system_domain.
+- The variable used by PaaS-TA AP Portal infrastructure is system_domain, portal_web_user_language, and portal_web_admin_language.
 
 > $ vi ~/workspace/common/common_vars.yml
 ```
 ... ((Skip)) ...
 
-system_domain: "61.252.53.246.nip.io"		# Domain (Same as HAProxy Public IP when using nip.io)
+system_domain: "61.252.53.246.nip.io"		        # Domain (Same as HAProxy Public IP when using nip.io)
+portal_web_user_language: ["ko", "en"]              # portal webuser language list (e.g. ["ko", "en"])
+portal_web_admin_language: ["ko", "en"]             # portal webadmin language list (e.g. ["ko", "en"])
 
 ... ((Skip)) ...
 ```
@@ -179,8 +181,8 @@ system_domain: "61.252.53.246.nip.io"		# Domain (Same as HAProxy Public IP when 
 
 ```
 # STEMCELL INFO
-stemcell_os: "ubuntu-bionic"                                    # stemcell os
-stemcell_version: "1.76"                                        # stemcell version
+stemcell_os: "ubuntu-jammy"                                    # stemcell os
+stemcell_version: "1.181"                                        # stemcell version
 
 # NETWORKS INFO
 private_networks_name: "default"                                # private network name
@@ -258,18 +260,17 @@ Succeeded
 
 ## <div id="3"/> 3. PaaS-TA AP Portal Installation
 ### <div id="3.1"/> 3.1. Portal App Configuration
-9 Portal-related apps are deployed on PaaS-TA AP, and the configuration are as follows.
+8 Portal-related apps are deployed on PaaS-TA AP, and the configuration are as follows.
 ```
-portal-app-1.2.2
-├── portal-api-2.4.1
-├── portal-common-api-2.2.1
-├── portal-gateway-2.1.0
-├── portal-log-api-2.1.0
+portal-app-1.2.14
+├── portal-api-2.4.3
+├── portal-common-api-2.2.6
+├── portal-gateway-2.1.2
 ├── portal-registration-2.1.0
 ├── portal-ssh-1.0.0
 ├── portal-storage-api-2.2.1
-├── portal-web-admin-2.3.1
-└── portal-web-user-2.4.1
+├── portal-web-admin-2.3.5
+└── portal-web-user-2.4.10
 ```
 ### <div id="3.2"/> 3.2. Portal App Deployment Script Variable Settings
 Navigate to the location where the script is located to run the Portal App deployment script.
@@ -293,6 +294,8 @@ PORTAL_APP_WORKING_DIRECTORY=~/workspace/portal-deployment/portal-container-infr
 ##PORTAL VARIABLE
 USER_APP_SIZE_MB=0					# USER My App size(MB), if value==0 -> unlimited
 MONITORING_ENABLE=false					# Monitoring Enable Option
+SSH_ENABLE=true						# SSH Enable Option
+TAIL_LOG_INTERVAL=250					# tail log interval (ms)
 
 PORTAL_ORG_NAME="portal"				# PaaS-TA Portal Org Name
 PORTAL_SPACE_NAME="system"				# PaaS-TA Portal Space Name
@@ -316,6 +319,7 @@ PORTAL_WEB_USER_INSTANCE=1				# PORTAL-WEB-USER INSTANCES
 
 
 ##UNCHANGE VARIABLE(if defulat install, don't change variable)
+PAASTA_DEPLOYMENT_TYPE="ap"                             # PaaS TA Deployment Type
 PAASTA_CORE_DEPLOYMENT_NAME="paasta"			# PaaS TA AP Deployment Name
 PORTAL_INFRA_DEPLOYMENT_NAME="portal-container-infra"	# Portal Container Infra Deployment Name
 PAASTA_DATABASE_INSTANCE_NAME="database"		# PaaS TA AP Database Instance Name
@@ -341,6 +345,16 @@ PORTAL_EXTERNAL_STORAGE_PORT=				# Portal External Storage Port
 PORTAL_EXTERNAL_STORAGE_TENANTNAME=			# Portal External Storage Tenant Name
 PORTAL_EXTERNAL_STORAGE_USERNAME=			# Portal External Storage Username
 PORTAL_EXTERNAL_STORAGE_PASSWORD=			# Portal External Storage Password
+
+USE_LOGGING_SERVICE=false                               # (true or false)
+LOGGING_INFLUXDB_IP=10.0.1.115                          # Logging Service InfluxDB IP
+LOGGING_INFLUXDB_PORT=8086                              # Logging Service InfluxDB HTTP PORT
+LOGGING_INFLUXDB_USERNAME="admin"                       # Logging Service InfluxDB Username
+LOGGING_INFLUXDB_PASSWORD="PaaS-TA2022"                 # Logging Service InfluxDB Password
+LOGGING_INFLUXDB_DATABASE="logging_db"                  # Logging Service InfluxDB DB Name
+LOGGING_INFLUXDB_MEASUREMNET="logging_measurement"      # Logging Service InfluxDB Measurement Name
+LOGGING_INFLUXDB_LIMIT=50                               # Logging Service InfluxDB query limit
+LOGGING_INFLUXDB_HTTPS_ENABLED=false                    # (true or false)
 ```
 
 
@@ -355,7 +369,6 @@ name                  requested state   processes           routes
 portal-api            started           web:1/1, task:0/0   portal-api.61.252.53.246.nip.io
 portal-common-api     started           web:1/1, task:0/0   portal-common-api.61.252.53.246.nip.io
 portal-gateway        started           web:1/1, task:0/0   portal-gateway.61.252.53.246.nip.io
-portal-log-api        started           web:1/1, task:0/0   portal-log-api.61.252.53.246.nip.io
 portal-registration   started           web:1/1, task:0/0   portal-registration.61.252.53.246.nip.io
 portal-storage-api    started           web:1/1, task:0/0   portal-storage-api.61.252.53.246.nip.io
 portal-web-admin      started           web:1/1, task:0/0   portal-web-admin.61.252.53.246.nip.io
@@ -439,6 +452,13 @@ After installing the Paas-TA Portal, you must register the build pack and servic
 ![24](https://user-images.githubusercontent.com/104418463/200229210-997cad41-5c10-4ab0-95c2-be89158f4993.png)
 4. Go to the build pack and service pack detail screen, enter the value in each item column, and click Save.
 ![25](https://user-images.githubusercontent.com/104418463/200229220-d6e9b7cd-a15d-48df-bd2d-7766c7049a7b.png)
+
+   ※ 카탈로그 등록 및 수정 시 카탈로그 관리 코드는 선택 필수이며, 현재 사용 가능한 코드가 없는 경우 다음 내용을 참고하여 처리하도록 한다.
+   1. ①"코드 관리"를 클릭한다.
+   2. **Group Table**에서 해당하는 ②"분류 코드"를 클릭한다.
+   3. **Detail Table**에 ③"등록"버튼을 클릭하여 카탈로그 관리 코드를 추가 후 사용한다.
+   ![25-1](https://github.com/K-PaaS/application-platform-guide-eng/assets/107905603/045ed7a2-e753-43ec-ac72-de8114ea60d9)
+
 5. Check whether the changed value is applied in the user portal.
 ![paas-ta-portal-19]   
 
@@ -447,6 +467,7 @@ After installing the Paas-TA Portal, you must register the build pack and servic
 [paas-ta-portal-16]:./images/Paas-TA-Portal_16.png
 [paas-ta-portal-17]:./images/Paas-TA-Portal_17.png
 [paas-ta-portal-18]:./images/Paas-TA-Portal_18.png
+[paas-ta-portal-18-1]:./images/Paas-TA-Portal_18-1.png
 [paas-ta-portal-19]:./images/Paas-TA-Portal_19.png
 [paas-ta-portal-31]:./images/Paas-TA-Portal_27.jpg
 [paas-ta-portal-32]:./images/Paas-TA-Portal_28.jpg

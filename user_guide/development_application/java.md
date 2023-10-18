@@ -25,28 +25,28 @@
 
 	-	[2.7. Sample App Login](#2-7)
 
-### 1. Outline
+# <div id='1'></div> 1. Outline
 
-#### 1.1. Document Outline
+## <div id='1-1'></div> 1.1. Document Outline
 
-##### 1.1.1. Purpose
+##### <div id='1-1-1'></div> 1.1.1. Purpose
 This Document (Java Application Development Guide) presents the service pack of Open PaaS projects (Mysql, Cubrid, MongoDB, RabbitMQ, Radis, and GlusterFS) to work with Java applications and deploy applications.
 
-##### 1.1.2. Range
+##### <div id='1-1-2'></div> 1.1.2. Range
 The range of this document is limited to the Java application development and service pack linkage of Open PaaS projects.
 
-##### 1.1.3. References
+##### <div id='1-1-3'></div> 1.1.3. References
 -   [http://java.sun.com](http://java.sun.com)
 -   [http://spring.io](http://spring.io)
 
 
-### 2. JAVA Application Development Guide
+# <div id='2'></div> 2. JAVA Application Development Guide
 
-#### 2.1. Outline
+## <div id='2-1'></div> 2.1. Outline
 Various service packs registered in Open PaaS are bound to applications written in Java language, and access information for each service is acquired from environmental information (VCAP_SERVICES) bound to the application, and Java applications can be created in a Windows environment.
  The Java Sample Application provides a UI for REST-based services. Services used include Mysql, Cubrid, Mongodb, Redis, RabbitMq, and ClusterFS, which are available in local and OpenPaas environments. However, ClusterFs do not provide connection information in the Local environment.
 
-#### 2.2. Development Environment Configuration
+## <div id='2-2'></div> 2.2. Development Environment Configuration
 The development environment is constructed in the following environment for Java application development.
 -   OS: Windows 7 64bit
 -   Java: 1.8
@@ -54,7 +54,7 @@ The development environment is constructed in the following environment for Java
 -   IDE: Eclipse
 -   Dependency: Maven
 
-##### 2.2.1. JDK Installation
+##### <div id='2-2-1'></div> 2.2.1. JDK Installation
 1.  Download JDK(1.8)
 
 | <span id="__DdeLink__2953_294360055" class="anchor"></span>http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html |
@@ -119,7 +119,7 @@ The development environment is constructed in the following environment for Java
 <img src="./images/java/image14.png" width="400" height="150" />
 
 
-#### 2.3. Development
+## <div id='2-3'></div> 2.3. Development
   - OpenPaas Java Sample Application has the following structure. Using the Spring-Boot Library it can be operated without a separate Tomcat setting. 
   Data management for sample applications uses either MySQL, CubridDB, or MongoDB, so when making an API request, it is determined with the DBType value in the request body.
 
@@ -147,7 +147,7 @@ The development environment is constructed in the following environment for Java
 |webapp                                 |UI related resources are located.     |
 
 
-##### 2.3.1. Application Environment Setting
+##### <div id='2-3-1'></div> 2.3.1. Application Environment Setting
   - This document shows how Java Applications can run in a Cloud environment. Does not provide installation information such as Mysql, Cubrid, Redis, etc.
 
 1)   manifest.yml
@@ -472,7 +472,7 @@ public class CloudDataConfig extends AbstractCloudConfig {
  		</dependency>
  		<!-- GlusterFS End -->
    ```
-#### 2.3. Development
+## <div id='2-4'></div> 2.4. Development
 
   - The Java Sample Application is configured with Spring Boot and does not require a separate Tomcat setting.
 Right-click the Application.java button in the java package Root --> Run As --> Run Java Application to run the Sample Application.
@@ -480,7 +480,7 @@ Right-click the Application.java button in the java package Root --> Run As --> 
 <img src="./images/java/image17.png" width="350" height="400" />
 
 
-#### 2.4. Deployment
+## <div id='2-5'></div> 2.5. Deployment
   - Deploy Java sample applications using the cf cli command
   - The java-sample application runs maven installation and war must exist.
   - Proceed under the assumption that cf cli is installed and cf login is already done.
@@ -574,7 +574,7 @@ buildpack: java_buildpack
 #0   running   2016-02-15 03:49:33 PM   88.2%   341M of 512M   185.2M of 1G
  ```
 
-#### 2.5. Sample App Deployment Check
+## <div id='2-6'></div> 2.6. Sample App Deployment Check
 
 1) Use the cf cli command to check the deployment status and URL of the Java sample application.
 
@@ -587,7 +587,7 @@ name                     requested state   instances   memory   disk   urls
 java-sample              started           1/1         512M     1G     java-sample.52.71.31.153.xip.io   
 ```
 
-#### 2.6. Sample App Login
+## <div id='2-7'></div> 2.7. Sample App Login
 1) The login screen appears when java-sample.52.71.31.153.xip.io is accessed in the browser.
 Enter admin/admin to log in.
 

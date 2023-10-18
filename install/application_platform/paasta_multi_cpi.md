@@ -29,7 +29,7 @@
 # <div id='1'/>1. Document Outline
 
 ## <div id='1.1'/>1.1. Purpose
-This document is a Multi-CPI setup guide for BOSH2 (hereinafter BOSH) and explains how to set up and use Multi-Cloud Provider Interface (hereinafter CPI) that deploys VMs in IaaS environments. (hereinafter referred to as Main IaaS AZ) and other IaaS environments (hereinafter referred to as Second IaaS AZ) where BOSH is installed through one BOSH.
+This document is a Multi Cloud Provider Interface((hereinafter CPI) setup guide for BOSH2 (hereinafter BOSH) and explains how to set up and use Multi-Cloud Provider Interface (hereinafter CPI) that deploys VMs in IaaS environments. (hereinafter referred to as Main IaaS AZ) and other IaaS environments (hereinafter referred to as Second IaaS AZ) where BOSH is installed through one BOSH.
 
 <br>
 
@@ -123,7 +123,7 @@ If the BOSH CLI is not installed, first refer to the BOSH Installation Guide doc
 <br>
 
 
-## <div id='2.2'/>2.2. ownload the installation file
+## <div id='2.2'/>2.2. Download the installation file
 
 - Download if paasta-deployment for installing BOSH and multi-cpi-deployment for Multi CPI setup do not exist
 
@@ -131,7 +131,7 @@ If the BOSH CLI is not installed, first refer to the BOSH Installation Guide doc
 $ mkdir -p ~/workspace
 $ cd ~/workspace
 $ git clone https://github.com/PaaS-TA/paasta-deployment.git -b v5.7.1
-$ git clone https://github.com/PaaS-TA/multi-cpi-deployment.git -b v5.7.1
+$ git clone https://github.com/PaaS-TA/multi-cpi-deployment.git -b v5.7.1.1
 ```
 
 <br>
@@ -337,8 +337,8 @@ For more information on installing BOSH, see the BOSH Installation Guide.
 |------|---|
 | deploy-cpi-aws-secondary.yml | Use if infrastructure without BOSH is AWS |
 | deploy-cpi-openstack-secondary.yml	 | Use if infrastructure without BOSH is OpenStack |
-| deploy-cpi-vsphere-secondary.yml	 | Use if infrastructure without BOSH is OpenStack vSphere|
-| deploy-cpi-registry-secondary.yml | Use if infrastructure without BOSH is OpenStack vSphere <br>(used for paasta-deployment v5.7.0 or lower version deployment, <br>v5.7.0 or higher has no need to use.) |
+| deploy-cpi-vsphere-secondary.yml	 | Use if infrastructure without BOSH is vSphere|
+| deploy-cpi-registry-secondary.yml | Use if infrastructure without BOSH is vSphere <br>(used for paasta-deployment v5.7.0 or lower version deployment, <br>v5.7.0 or higher has no need to use.) |
 
 - Example 1. AWS - Openstack BOSH Installation
 > $ vi deploy-aws.sh

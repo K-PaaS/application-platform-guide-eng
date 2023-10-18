@@ -2,7 +2,7 @@
 
 ## Purpose
 This document provides the Architecture of PaaS-TA Application Platform (AP) – min.
-<br>PaaS-TA Application Platform(AP)-min is a light version of Application Platform.
+<br>PaaS-TA Application Platform(AP) - min is a light version of Application Platform.
 <br><br>
 
 ## System Configuration Diagram
@@ -17,7 +17,7 @@ This document provides the Architecture of PaaS-TA Application Platform (AP) –
 | database | 1 | 1vCPU / 2GB RAM / 100GB Extra Disk |
 | router | 1 | 1vCPU / 2GB RAM |
 
-- Wehn Deploying 7VM
+- When Deploying 7VM
 
 | Classification | Number of Instances (N>1) | Specificaion |
 |-------|----|-----|

@@ -27,8 +27,8 @@ The purpose of this document is to provide a guide for manually installing the P
 <br>
 
 ## <div id='1.2'/>1.2. Range
-PaaS-TA AP is installed in a BOSH environment based on bosh-deployment. Guide was written based on the installation of paasta-deployment v5.7.1.
-PaaS-TA AP supports IaaS such as VMware vSphere, Google Cloud Platform, Amazon Web Services EC2, OpenStack, and Microsoft Azure, and the IaaS environment validated in paasta-deployment v5.7.1 is AWS, OpenStack, and vSphere environments.
+PaaS-TA AP is installed in a BOSH environment based on bosh-deployment. Guide was written based on the installation of paasta-deployment v5.8.8.1
+PaaS-TA AP supports IaaS such as VMware vSphere, Google Cloud Platform, Amazon Web Services EC2, OpenStack, and Microsoft Azure, and the IaaS environment verified in paasta-deployment v5.8.8.1 is OpenStack, and vSphere environments.
 
 <br>
 
@@ -60,14 +60,14 @@ $ mkdir -p ~/workspace
 $ cd ~/workspace
 $ git clone https://github.com/PaaS-TA/common.git
 $ cd ~/workspace
-$ git clone https://github.com/PaaS-TA/paasta-deployment.git -b v5.7.1
+$ git clone https://github.com/PaaS-TA/paasta-deployment.git -b v5.8.8
 ```
 
 <br>
 
 ## <div id='2.3'/>2.3. Stemcell Upload
 Stemcell is a PaaS-TA AP VM Base OS image that is created during deployment.
-Paasta-deployment v5.7.1 is based on Ubuntu bionic stem cell 1.76. 
+Paasta-deployment v5.8.8 is based on Ubuntu jammy stemcell 1.181. 
 The basic Stemcell upload command are as follows.
 ```                     
 $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell {URL}
@@ -82,22 +82,22 @@ BOSH_ENVIRONMENT is the Director name used when installing BOSH, and CURRENT_IAA
 > $ vi ~/workspace/paasta-deployment/bosh/upload-stemcell.sh
 ```                     
 #!/bin/bash
-STEMCELL_VERSION=1.76
+JAMMY_STEMCELL_VERSION=1.181
 CURRENT_IAAS="${CURRENT_IAAS}"				# IaaS Information (When not using create-bosh-login.sh provided by PaaS-TA enter aws/azure/gcp/openstack/vsphere/bosh-lite)
 BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"			# bosh director alias name (When not using create-bosh-login.sh provided by PaaS-TA, Check and enter the name in boshenvs)
 
 if [[ ${CURRENT_IAAS} = "aws" ]]; then
-        bosh -e ${BOSH_ENVIRONMENT} upload-stemcell https://storage.googleapis.com/bosh-core-stemcells/${STEMCELL_VERSION}/bosh-stemcell-${STEMCELL_VERSION}-aws-xen-hvm-ubuntu-bionic-go_agent.tgz -n
+        bosh -e ${BOSH_ENVIRONMENT} upload-stemcell https://storage.googleapis.com/bosh-core-stemcells/${JAMMY_STEMCELL_VERSION}/bosh-stemcell-${JAMMY_STEMCELL_VERSION}-aws-xen-hvm-ubuntu-jammy-go_agent.tgz -n
 elif [[ ${CURRENT_IAAS} = "azure" ]]; then
-        bosh -e ${BOSH_ENVIRONMENT} upload-stemcell https://storage.googleapis.com/bosh-core-stemcells/${STEMCELL_VERSION}/bosh-stemcell-${STEMCELL_VERSION}-azure-hyperv-ubuntu-bionic-go_agent.tgz -n
+        bosh -e ${BOSH_ENVIRONMENT} upload-stemcell https://storage.googleapis.com/bosh-core-stemcells/${JAMMY_STEMCELL_VERSION}/bosh-stemcell-${JAMMY_STEMCELL_VERSION}-azure-hyperv-ubuntu-jammy-go_agent.tgz -n
 elif [[ ${CURRENT_IAAS} = "gcp" ]]; then
-        bosh -e ${BOSH_ENVIRONMENT} upload-stemcell https://storage.googleapis.com/bosh-core-stemcells/${STEMCELL_VERSION}/bosh-stemcell-${STEMCELL_VERSION}-google-kvm-ubuntu-bionic-go_agent.tgz -n
+        bosh -e ${BOSH_ENVIRONMENT} upload-stemcell https://storage.googleapis.com/bosh-core-stemcells/${JAMMY_STEMCELL_VERSION}/bosh-stemcell-${JAMMY_STEMCELL_VERSION}-google-kvm-ubuntu-jammy-go_agent.tgz -n
 elif [[ ${CURRENT_IAAS} = "openstack" ]]; then
-        bosh -e ${BOSH_ENVIRONMENT} upload-stemcell https://storage.googleapis.com/bosh-core-stemcells/${STEMCELL_VERSION}/bosh-stemcell-${STEMCELL_VERSION}-openstack-kvm-ubuntu-bionic-go_agent.tgz -n
+        bosh -e ${BOSH_ENVIRONMENT} upload-stemcell https://storage.googleapis.com/bosh-core-stemcells/${JAMMY_STEMCELL_VERSION}/bosh-stemcell-${JAMMY_STEMCELL_VERSION}-openstack-kvm-ubuntu-jammy-go_agent.tgz -n
 elif [[ ${CURRENT_IAAS} = "vsphere" ]]; then
-        bosh -e ${BOSH_ENVIRONMENT} upload-stemcell https://storage.googleapis.com/bosh-core-stemcells/${STEMCELL_VERSION}/bosh-stemcell-${STEMCELL_VERSION}-vsphere-esxi-ubuntu-bionic-go_agent.tgz -n
+        bosh -e ${BOSH_ENVIRONMENT} upload-stemcell https://storage.googleapis.com/bosh-core-stemcells/${JAMMY_STEMCELL_VERSION}/bosh-stemcell-${JAMMY_STEMCELL_VERSION}-vsphere-esxi-ubuntu-jammy-go_agent.tgz -n
 elif [[ ${CURRENT_IAAS} = "bosh-lite" ]]; then
-        bosh -e ${BOSH_ENVIRONMENT} upload-stemcell https://storage.googleapis.com/bosh-core-stemcells/${STEMCELL_VERSION}/bosh-stemcell-${STEMCELL_VERSION}-warden-boshlite-ubuntu-bionic-go_agent.tgz -n
+        bosh -e ${BOSH_ENVIRONMENT} upload-stemcell https://storage.googleapis.com/bosh-core-stemcells/${JAMMY_STEMCELL_VERSION}/bosh-stemcell-${JAMMY_STEMCELL_VERSION}-warden-boshlite-ubuntu-jammy-go_agent.tgz -n
 else
         echo "plz check CURRENT_IAAS"
 fi
@@ -372,8 +372,8 @@ syslog_fallback_servers: []					# [MONITORING] PaaS-TA Syslog Fallback Servers
 
 
 # STEMCELL
-stemcell_os: "ubuntu-bionic"		# Stemcell OS
-stemcell_version: "1.76"		# Stemcell Version
+stemcell_os: "ubuntu-jammy"		# Stemcell OS
+stemcell_version: "1.181"		# Stemcell Version
 
 # SMOKE-TEST
 smoke_tests_azs: ["z1"]			# Smoke-Test Available Zone
@@ -403,7 +403,7 @@ diego_api_network: "default"		# Diego-API Network
 # UAA
 uaa_azs: ["z1", "z2"]			# UAA Available Zone
 uaa_instances: 2			# UAA Number of Instances
-uaa_vm_type: "minimal"			# UAA VM Type
+uaa_vm_type: "small"			# UAA VM Type
 uaa_network: "default"			# UAA Network
 
 # SINGLETON-BLOBSTORE
@@ -449,9 +449,15 @@ tcp_router_vm_extensions: ["cf-tcp-router-network-properties"]	# TCP-Router VM E
 
 # DOPPLER
 doppler_azs: ["z1", "z2"]		# Doppler Available Zone
-doppler_instances: 4			# Doppler Number of Instances
+doppler_instances: 3			# Doppler Number of Instances
 doppler_vm_type: "minimal"		# Doppler VM Type
 doppler_network: "default"		# Doppler Network
+
+# LOG_CACHE
+log_cache_azs: ["z1"]		    # Log Cache Available Zone
+log_cache_instances: 1			# Log Cache Number of Instances
+log_cache_vm_type: "minimal"	# Log Cache VM Type
+log_cache_network: "default"	# Log Cache Network
 
 # DIEGO-CELL
 diego_cell_azs: ["z1", "z2"]		# Diego-Cell Available Zone
@@ -630,7 +636,7 @@ Installation options must be added when deploying PaaS-TA AP. The description of
 
 > $ vi ~/workspace/paasta-deployment/paasta/deploy-aws.sh
 ```
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"					 # bosh director alias name (When Create-bosh-login.sh provided by PaaS-TA is not used, check and enter the name in bosenvs)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"					 # bosh director alias name (When Create-bosh-login.sh provided by PaaS-TA is not used, check and enter the name in bosh envs)
 
 bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy paasta-deployment.yml \	# PaaS-TA Manifest File
 	-o operations/aws.yml \						# AWS Setting
@@ -719,37 +725,37 @@ Task 134. Done
 Deployment 'paasta'
 
 Instance                                                  Process State  AZ  IPs           VM CID               VM Type             Active  Stemcell  
-api/918da8e3-36c9-4144-b457-f48792041ece                  running        z1  10.0.31.206   i-093920c2caf43fe63  small               true    bosh-openstack-kvm-ubuntu-bionic-go_agent/1.76  
-api/c01d1a66-56c0-4dfb-87cd-b4e7323012ec                  running        z2  10.0.32.204   i-0bd6841ee37df618b  small               true    bosh-openstack-kvm-ubuntu-bionic-go_agent/1.76
-cc-worker/30aa88de-8b5c-4e3a-a0ae-b2933f3af492            running        z1  10.0.31.207   i-02a7032164038f09b  minimal             true    bosh-openstack-kvm-ubuntu-bionic-go_agent/1.76  
-cc-worker/31a465bd-64af-49c6-a867-3439d98b2014            running        z2  10.0.32.205   i-0d8345c5348a42fdd  minimal             true    bosh-openstack-kvm-ubuntu-bionic-go_agent/1.76  
-credhub/0d2da1ef-dbdc-47d8-9514-69c1e0e83f82              running        z2  10.0.32.213   i-0f21b57a610868775  minimal             true    bosh-openstack-kvm-ubuntu-bionic-go_agent/1.76  
-credhub/a43132d5-ab04-4fe3-8b75-b8194f28678b              running        z1  10.0.31.216   i-0ea2f77eb95a32f21  minimal             true    bosh-openstack-kvm-ubuntu-bionic-go_agent/1.76  
-database/07b7ba09-7ace-4428-b4d4-a80163aaf82c             running        z1  10.0.31.202   i-0c532e0a7a53015c2  small               true    bosh-openstack-kvm-ubuntu-bionic-go_agent/1.76  
-diego-api/a05bbf7b-f513-48f0-8444-c90cd4b63ae2            running        z2  10.0.32.202   i-0b982d70a8debde41  small               true    bosh-openstack-kvm-ubuntu-bionic-go_agent/1.76  
-diego-api/ba388ba5-e6df-4d5e-9c6e-3af6b1fdc319            running        z1  10.0.31.203   i-0a5dfee4dc8ba1b68  small               true    bosh-openstack-kvm-ubuntu-bionic-go_agent/1.76  
-diego-cell/15378660-b457-4b6e-a9cb-5729b091c675           running        z1  10.0.31.213   i-095a00b9cb171c444  small-highmem-16GB  true    bosh-openstack-kvm-ubuntu-bionic-go_agent/1.76  
-diego-cell/7d7ed58e-c82e-429e-a6ce-18e4d70cca29           running        z2  10.0.32.211   i-02d836e28133368a1  small-highmem-16GB  true    bosh-openstack-kvm-ubuntu-bionic-go_agent/1.76  
-diego-cell/eb3b22f3-2905-4ef5-81d0-1ba6974b7316           running        z1  10.0.31.214   i-0a26ae4105e8ef6f4  small-highmem-16GB  true    bosh-openstack-kvm-ubuntu-bionic-go_agent/1.76  
-doppler/75577265-7f33-45c0-b4de-b24a881462bf              running        z1  10.0.31.211   i-01b19951e2ed96a55  minimal             true    bosh-openstack-kvm-ubuntu-bionic-go_agent/1.76  
-doppler/82956ad8-d103-4223-b426-cebc793c45ee              running        z2  10.0.32.209   i-01e7d7cf7d117bf96  minimal             true    bosh-openstack-kvm-ubuntu-bionic-go_agent/1.76  
-doppler/8d1fa381-c9d4-4b51-b195-c25d5d7a1a55              running        z1  10.0.31.212   i-048de3c6ad38a0184  minimal             true    bosh-openstack-kvm-ubuntu-bionic-go_agent/1.76  
-doppler/ece4a895-03b9-47a1-9b48-9eaabaf258ef              running        z2  10.0.32.210   i-09a3cf0e5ac171012  minimal             true    bosh-openstack-kvm-ubuntu-bionic-go_agent/1.76  
-haproxy/abb270ef-01e8-4d4c-941c-2187ca2cc8ad              running        z7  10.0.30.201   i-08af20c6712d54dd6  minimal             true    bosh-openstack-kvm-ubuntu-bionic-go_agent/1.76  
+api/918da8e3-36c9-4144-b457-f48792041ece                  running        z1  10.0.31.206   i-093920c2caf43fe63  small               true    bosh-openstack-kvm-ubuntu-jammy-go_agent/1.181  
+api/c01d1a66-56c0-4dfb-87cd-b4e7323012ec                  running        z2  10.0.32.204   i-0bd6841ee37df618b  small               true    bosh-openstack-kvm-ubuntu-jammy-go_agent/1.181
+cc-worker/30aa88de-8b5c-4e3a-a0ae-b2933f3af492            running        z1  10.0.31.207   i-02a7032164038f09b  minimal             true    bosh-openstack-kvm-ubuntu-jammy-go_agent/1.181  
+cc-worker/31a465bd-64af-49c6-a867-3439d98b2014            running        z2  10.0.32.205   i-0d8345c5348a42fdd  minimal             true    bosh-openstack-kvm-ubuntu-jammy-go_agent/1.181  
+credhub/0d2da1ef-dbdc-47d8-9514-69c1e0e83f82              running        z2  10.0.32.212   i-0f21b57a610868775  minimal             true    bosh-openstack-kvm-ubuntu-jammy-go_agent/1.181  
+credhub/a43132d5-ab04-4fe3-8b75-b8194f28678b              running        z1  10.0.31.216   i-0ea2f77eb95a32f21  minimal             true    bosh-openstack-kvm-ubuntu-jammy-go_agent/1.181  
+database/07b7ba09-7ace-4428-b4d4-a80163aaf82c             running        z1  10.0.31.202   i-0c532e0a7a53015c2  small               true    bosh-openstack-kvm-ubuntu-jammy-go_agent/1.181  
+diego-api/a05bbf7b-f513-48f0-8444-c90cd4b63ae2            running        z2  10.0.32.202   i-0b982d70a8debde41  small               true    bosh-openstack-kvm-ubuntu-jammy-go_agent/1.181  
+diego-api/ba388ba5-e6df-4d5e-9c6e-3af6b1fdc319            running        z1  10.0.31.203   i-0a5dfee4dc8ba1b68  small               true    bosh-openstack-kvm-ubuntu-jammy-go_agent/1.181  
+diego-cell/15378660-b457-4b6e-a9cb-5729b091c675           running        z1  10.0.31.213   i-095a00b9cb171c444  small-highmem-16GB  true    bosh-openstack-kvm-ubuntu-jammy-go_agent/1.181  
+diego-cell/7d7ed58e-c82e-429e-a6ce-18e4d70cca29           running        z2  10.0.32.210   i-02d836e28133368a1  small-highmem-16GB  true    bosh-openstack-kvm-ubuntu-jammy-go_agent/1.181  
+diego-cell/eb3b22f3-2905-4ef5-81d0-1ba6974b7316           running        z1  10.0.31.214   i-0a26ae4105e8ef6f4  small-highmem-16GB  true    bosh-openstack-kvm-ubuntu-jammy-go_agent/1.181  
+doppler/75577265-7f33-45c0-b4de-b24a881462bf              running        z1  10.0.31.211   i-01b19951e2ed96a55  minimal             true    bosh-openstack-kvm-ubuntu-jammy-go_agent/1.181  
+doppler/82956ad8-d103-4223-b426-cebc793c45ee              running        z2  10.0.32.209   i-01e7d7cf7d117bf96  minimal             true    bosh-openstack-kvm-ubuntu-jammy-go_agent/1.181  
+doppler/8d1fa381-c9d4-4b51-b195-c25d5d7a1a55              running        z1  10.0.31.212   i-048de3c6ad38a0184  minimal             true    bosh-openstack-kvm-ubuntu-jammy-go_agent/1.181  
+haproxy/abb270ef-01e8-4d4c-941c-2187ca2cc8ad              running        z7  10.0.30.201   i-08af20c6712d54dd6  minimal             true    bosh-openstack-kvm-ubuntu-jammy-go_agent/1.181    
                                                                              54.180.53.80                                                    
-log-api/7b45f808-22c4-45ff-a81c-74a20bac852a              running        z1  10.0.31.215   i-0b11b17bdbc23553e  minimal             true    bosh-openstack-kvm-ubuntu-bionic-go_agent/1.76  
-log-api/dac3304c-f0a2-4c20-999d-db08ee39c7a7              running        z2  10.0.32.212   i-0b8426cba9bc7db7a  minimal             true    bosh-openstack-kvm-ubuntu-bionic-go_agent/1.76  
-nats/35b3ab92-453f-4e9f-adf8-04477f41ee80                 running        z2  10.0.32.201   i-05a787d09b5a2df0a  minimal             true    bosh-openstack-kvm-ubuntu-bionic-go_agent/1.76  
-nats/d08e1c80-bdf4-40c8-9134-16fb4a34ee11                 running        z1  10.0.31.201   i-04eddc4dfa9f9793e  minimal             true    bosh-openstack-kvm-ubuntu-bionic-go_agent/1.76  
-router/0c77c858-f0c7-400c-868d-e96cd2dff4a9               running        z1  10.0.31.209   i-075290e50e0ef541d  minimal             true    bosh-openstack-kvm-ubuntu-bionic-go_agent/1.76  
-router/5458b789-8ed0-4ba8-8093-6155ba1fa9b1               running        z2  10.0.32.207   i-02bc3f58d3c0306c9  minimal             true    bosh-openstack-kvm-ubuntu-bionic-go_agent/1.76  
-scheduler/348e2a4e-2da7-47a3-92f8-8bf3b00e9bf0            running        z1  10.0.31.208   i-0a0b2bd3e712f0b26  minimal             true    bosh-openstack-kvm-ubuntu-bionic-go_agent/1.76  
-scheduler/f56a196b-1f76-4ecc-b721-9b7fd04b8a94            running        z2  10.0.32.206   i-0c0917f591ce872f5  minimal             true    bosh-openstack-kvm-ubuntu-bionic-go_agent/1.76  
-singleton-blobstore/af6b0c3a-27d0-46ef-b432-0b5c8e81519d  running        z1  10.0.31.205   i-0c519ef6d50d74d1e  small               true    bosh-openstack-kvm-ubuntu-bionic-go_agent/1.76  
-tcp-router/891c0b3e-4de6-44a5-a98b-96dd0490cac3           running        z2  10.0.32.208   i-084e044926e602669  minimal             true    bosh-openstack-kvm-ubuntu-bionic-go_agent/1.76  
-tcp-router/ff3e0a98-092c-4e4c-a20c-0c0abf094a44           running        z1  10.0.31.210   i-076ef16b4d4114f83  minimal             true    bosh-openstack-kvm-ubuntu-bionic-go_agent/1.76  
-uaa/3e0f17c1-cd11-4ce6-b3b8-bf1b0f45aa9f                  running        z1  10.0.31.204   i-0454401aa5fcf61fb  minimal             true    bosh-openstack-kvm-ubuntu-bionic-go_agent/1.76  
-uaa/f8f6b0e8-2bbf-4be5-8f69-ac8dc7a3d943                  running        z2  10.0.32.203   i-0abd8df56336a799e  minimal             true    bosh-openstack-kvm-ubuntu-bionic-go_agent/1.76  
+log-api/7b45f808-22c4-45ff-a81c-74a20bac852a              running        z1  10.0.31.215   i-0b11b17bdbc23553e  minimal             true    bosh-openstack-kvm-ubuntu-jammy-go_agent/1.181  
+log-api/dac3304c-f0a2-4c20-999d-db08ee39c7a7              running        z2  10.0.32.211   i-0b8426cba9bc7db7a  minimal             true    bosh-openstack-kvm-ubuntu-jammy-go_agent/1.181  
+nats/35b3ab92-453f-4e9f-adf8-04477f41ee80                 running        z2  10.0.32.201   i-05a787d09b5a2df0a  minimal             true    bosh-openstack-kvm-ubuntu-jammy-go_agent/1.181  
+nats/d08e1c80-bdf4-40c8-9134-16fb4a34ee11                 running        z1  10.0.31.201   i-04eddc4dfa9f9793e  minimal             true    bosh-openstack-kvm-ubuntu-jammy-go_agent/1.181  
+router/0c77c858-f0c7-400c-868d-e96cd2dff4a9               running        z1  10.0.31.209   i-075290e50e0ef541d  minimal             true    bosh-openstack-kvm-ubuntu-jammy-go_agent/1.181  
+router/5458b789-8ed0-4ba8-8093-6155ba1fa9b1               running        z2  10.0.32.207   i-02bc3f58d3c0306c9  minimal             true    bosh-openstack-kvm-ubuntu-jammy-go_agent/1.181
+log-cache/3ac3394b-d0ae-5c2d-201d-4d08ee39c7a7            running        z1  10.0.31.217   i-0b3326cba9bd7db7e  minimal             true    bosh-openstack-kvm-ubuntu-jammy-go_agent/1.181   
+scheduler/348e2a4e-2da7-47a3-92f8-8bf3b00e9bf0            running        z1  10.0.31.208   i-0a0b2bd3e712f0b26  small               true    bosh-openstack-kvm-ubuntu-jammy-go_agent/1.181  
+scheduler/f56a196b-1f76-4ecc-b721-9b7fd04b8a94            running        z2  10.0.32.206   i-0c0917f591ce872f5  small               true    bosh-openstack-kvm-ubuntu-jammy-go_agent/1.181  
+singleton-blobstore/af6b0c3a-27d0-46ef-b432-0b5c8e81519d  running        z1  10.0.31.205   i-0c519ef6d50d74d1e  small               true    bosh-openstack-kvm-ubuntu-jammy-go_agent/1.181  
+tcp-router/891c0b3e-4de6-44a5-a98b-96dd0490cac3           running        z2  10.0.32.208   i-084e044926e602669  minimal             true    bosh-openstack-kvm-ubuntu-jammy-go_agent/1.181  
+tcp-router/ff3e0a98-092c-4e4c-a20c-0c0abf094a44           running        z1  10.0.31.210   i-076ef16b4d4114f83  minimal             true    bosh-openstack-kvm-ubuntu-jammy-go_agent/1.181  
+uaa/3e0f17c1-cd11-4ce6-b3b8-bf1b0f45aa9f                  running        z1  10.0.31.204   i-0454401aa5fcf61fb  small               true    bosh-openstack-kvm-ubuntu-jammy-go_agent/1.181  
+uaa/f8f6b0e8-2bbf-4be5-8f69-ac8dc7a3d943                  running        z2  10.0.32.203   i-0abd8df56336a799e  small               true    bosh-openstack-kvm-ubuntu-jammy-go_agent/1.181    
 
 30 vms
 

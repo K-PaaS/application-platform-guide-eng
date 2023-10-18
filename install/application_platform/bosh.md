@@ -38,6 +38,7 @@ BOSH, which can deploy service systems to cloud environments, is an open-source 
 
 ## <div id='1.2'/>1.2. Range
 This document was written based on installing and configuring packages and libraries for BOSH installation based on Linux environments (Ubuntu 18.04) and using them to install BOSH.
+BOSH supports IaaS such as VMware vSphere, Google Cloud Platform, Amazon Web Services EC2, OpenStack, and Microsoft Azure, and the IaaS environment verified is OpenStack, and vSphere environments.
 
 ## <div id='1.3'/>1.3. References
 
@@ -135,7 +136,7 @@ After a year of installing BOSH, the certification has to be renewed.
 ```
 $ mkdir -p ~/workspace
 $ cd ~/workspace
-$ git clone https://github.com/PaaS-TA/paasta-deployment.git -b v5.7.1
+$ git clone https://github.com/PaaS-TA/paasta-deployment.git -b v5.8.8
 ```
 
 - Check the folders under paasta/deployment/paasta-deployment
@@ -173,15 +174,15 @@ Modification can be done by {IaaS}-vars.yml to set the variables to be applied d
 <table>
 <tr>
 <td>aws-vars.yml</td>
-<td>The file for varialbe setting to be applied when installing BOSH in a AWS environment</td>
+<td>The file for variable setting to be applied when installing BOSH in a AWS environment</td>
 </tr>
 <tr>
 <td>openstack-vars.yml</td>
-<td>The file for varialbe setting to be applied when installing BOSH in a OpenStack environment</td>
+<td>The file for variable setting to be applied when installing BOSH in a OpenStack environment</td>
 </tr>
 <tr>
 <td>vsphere-vars.yml</td>
-<td>The file for varialbe setting to be applied when installing BOSH in a vSphere environment</td>
+<td>The file for variable setting to be applied when installing BOSH in a vSphere environment</td>
 </tr>
 <tr>
 <td>deploy-aws.sh</td>
@@ -368,7 +369,7 @@ bosh create-env bosh.yml \
 	-o credhub.yml \				# CredHub applied    
 	-o jumpbox-user.yml \				# Jumpbox-user applied  
 	-o cce.yml \					# Took action for CCE
- 	-l aws-vars.yml					# The file for varialbe setting to be applied when installing BOSH in a AWS environment
+ 	-l aws-vars.yml					# The file for variable setting to be applied when installing BOSH in a AWS environment
 ```
 
 - When installing OpenStack environment
@@ -384,7 +385,7 @@ bosh create-env bosh.yml \
 	-o jumpbox-user.yml \				# Jumpbox-user applied
 	-o cce.yml \					# Took action for CCE
 	-o openstack/disable-readable-vm-names.yml \	# VM name applied as UUIDs
-	-l openstack-vars.yml				# The file for varialbe setting to be applied when installing BOSH in a OpenStack environment
+	-l openstack-vars.yml				# The file for variable setting to be applied when installing BOSH in a OpenStack environment
 ```
 
 - When installing vSphere environment
@@ -400,7 +401,7 @@ bosh create-env bosh.yml \
 	-o credhub.yml  \				# CredHub applied
 	-o jumpbox-user.yml  \				# Jumpbox-user applied
 	-o cce.yml \					# Took action forCCE
-	-l vsphere-vars.yml				# The file for varialbe setting to be applied when installing BOSH in a vSphere Environment
+	-l vsphere-vars.yml				# The file for variable setting to be applied when installing BOSH in a vSphere Environment
 ```
 
 
@@ -550,7 +551,7 @@ credhub login -s https://'${BOSH_IP}':8844 --skip-tls-validation --client-name=c
 ' > ${BOSH_LOGIN_FILE_PATH}/${BOSH_LOGIN_FILE_NAME}
 ```
 
-- Create BOSH Login Run Script
+- Run Creating BOSH Login Script
 
 ```
 $ cd ~/workspace/paasta-deployment/bosh

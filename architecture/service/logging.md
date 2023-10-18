@@ -13,16 +13,11 @@ This document provides the Architecture of Application Platform (AP) - Logging S
 
 <br>
 
-| Classification | Specification |
+| Classification  | Specification |
 |-------|----|
-| elasticsearch_master | 1vCPU / 2GB RAM / 10GB Extra Disk |
-| queue | 1vCPU / 2GB RAM / 10GB Extra Disk |
-| maintenance | 1vCPU / 2GB RAM |
-| elasticsearch_data | 2vCPU / 4GB RAM / 20GB Extra Disk |
-| visualization | 1vCPU / 2GB RAM |
-| collector | 1vCPU / 2GB RAM |
-| parser | 1vCPU / 2GB RAM |
-| router | 1vCPU / 2GB RAM |
+| fluentd | 1vCPU / 4GB RAM |
+| influxdb | 4vCPU / 8GB RAM / 10GB Extra Disk |
+| collector | 1vCPU / 4GB RAM |
 
 
 

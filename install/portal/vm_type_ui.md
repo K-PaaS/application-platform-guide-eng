@@ -55,7 +55,7 @@ $ uaac -v
 ### <div id="2.2"/> 2.2. Stemcell Check
 
 Check the list of Stemcells to verify that the Stemcells required for service installation are uploaded.
-The Stemcell in this guide uses ubuntu-bionic 1.76.
+The Stemcell in this guide uses ubuntu-jammy  1.181.
 
 > $ bosh -e ${BOSH_ENVIRONMENT} stemcells
 
@@ -63,7 +63,7 @@ The Stemcell in this guide uses ubuntu-bionic 1.76.
 Using environment '10.0.1.6' as client 'admin'
 
 Name                                       Version   OS             CPI  CID  
-bosh-openstack-kvm-ubuntu-bionic-go_agent  1.76      ubuntu-bionic  -    ce507ae4-aca6-4a6d-b7c7-220e3f4aaa7d
+bosh-openstack-kvm-ubuntu-jammy-go_agent  1.181      ubuntu-jammy  -    ce507ae4-aca6-4a6d-b7c7-220e3f4aaa7d
 
 (*) Currently deployed
 
@@ -83,7 +83,7 @@ $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell -n {STEMCELL_URL}
 
 Download the deployment needed from Git Repository and place the file at the service installation directory
 
-- Portal Deployment Git Repository URL : https://github.com/PaaS-TA/portal-deployment/tree/v5.2.5
+- Portal Deployment Git Repository URL : https://github.com/PaaS-TA/portal-deployment/tree/v5.2.23
 
 ```
 # Deployment File Download , make directory, change directory
@@ -91,7 +91,7 @@ $ mkdir -p ~/workspace
 $ cd ~/workspace
 
 # Deployment File Download
-$ git clone https://github.com/PaaS-TA/portal-deployment.git -b v5.2.5
+$ git clone https://github.com/PaaS-TA/portal-deployment.git -b v5.2.23
 ```
 
 ### <div id="2.4"/> 2.4. Deployment File Modification
@@ -162,7 +162,7 @@ Succeeded
 ```
 
 - Modify common_vars.yml to suit server environment.
-- The variables used in the PaaS-TA AP Portal UI are system_domain, paasta_api_version, and uaa_client_portal_secret.
+- The variables used in the PaaS-TA AP Portal UI are system_domain, paasta_api_version, uaa_client_portal_secret, portal_web_user_language, and portal_web_admin_language.
 
 > $ vi ~/workspace/common/common_vars.yml
 ```
@@ -171,6 +171,8 @@ Succeeded
 system_domain: "61.252.53.246.nip.io"		# Domain (Same as HAProxy Public IP when using nip.io)
 paasta_api_version: "v3"
 uaa_client_portal_secret: "clientsecret"	# Secret variables for accessing the UAAC Portal Client
+portal_web_user_language: ["ko", "en"]             # portal webuser language list (e.g. ["ko", "en"])
+portal_web_admin_language: ["ko", "en"]             # portal webadmin language list (e.g. ["ko", "en"])
 
 ... ((Skip)) ...
 ```
@@ -182,8 +184,8 @@ uaa_client_portal_secret: "clientsecret"	# Secret variables for accessing the UA
 > $ vi ~/workspace/portal-deployment/portal-ui/vars.yml  
 ```
 # STEMCELL INFO
-stemcell_os: "ubuntu-bionic"                                             # stemcell os
-stemcell_version: "1.76"                                                 # stemcell version
+stemcell_os: "ubuntu-jammy"                                             # stemcell os
+stemcell_version: "1.181"                                                 # stemcell version
 
 # NETWORKS INFO
 private_networks_name: "default"                                         # private network name
@@ -218,6 +220,7 @@ webuser_automaticapproval: false                                         # webus
 user_app_size: 0                                                         # webuser :Limit capacity when deploying user myApp (unlimited if value is 0)
 
 # ETC INFO
+paasta_deployment_type: "ap"                                             # ETC : Paas-TA deployment type (ap, sidecar)
 portal_default_api_name: "PaaS-TA"                                       # ETC : default api name (e.g. PaaS-TA {Version})
 portal_default_api_url: "http://<PORTAL-API-HAPROXY-PUBLIC-IP>:2225"     # ETC : default api url
 portal_default_header_auth: "Basic YWRtaW46b3BlbnBhYXN0YQ=="             # ETC : default header auth
@@ -453,14 +456,19 @@ After installing the Paas-TA Portal, you must register the build pack and servic
     
     >![23](https://user-images.githubusercontent.com/104418463/200228805-b225cb37-ddec-414b-ac05-acd1f31b2996.png)
 
- 2. Go to Catalog page.
+ 3. Go to Catalog page.
     
     >![24](https://user-images.githubusercontent.com/104418463/200228830-a444add6-dede-4141-aee3-a2ed5ea5ea7f.png)
- 3. Go to the buildpack and servicepack detail page, enter the value in each index, and click Save.
+ 4. Go to the buildpack and servicepack detail page, enter the value in each index, and click Save.
     
     >![25](https://user-images.githubusercontent.com/104418463/200228846-1d838bd1-3269-478c-9ccf-2fd47f300da6.png)
 
- 4. Check whether the changed value is applied in the user portal.
+    ※ 카탈로그 등록 및 수정 시 카탈로그 관리 코드는 선택 필수이며, 현재 사용 가능한 코드가 없는 경우 다음 내용을 참고하여 처리하도록 한다.
+     1. ①"코드 관리"를 클릭한다.
+     2. **Group Table**에서 해당하는 ②"분류 코드"를 클릭한다.
+     3. **Detail Table**에 ③"등록"버튼을 클릭하여 카탈로그 관리 코드를 추가 후 사용한다.
+        ![25-1](https://github.com/K-PaaS/application-platform-guide-eng/assets/107905603/045ed7a2-e753-43ec-ac72-de8114ea60d9)
+ 5. Check whether the changed value is applied in the user portal.
     
     >![paas-ta-portal-19]
 

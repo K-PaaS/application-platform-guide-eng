@@ -127,6 +127,10 @@ In the search window, search types, search items, disclosure status, and search 
 4. Click the ①"Register App Template" button when registering an app template. Enter the following at the App Template Register pop-up: Name, Classification, App Development Environment, Service Thumbnail, Public Availability, Summary, and Description. A new App Template will be registered by Clicking the ②"Register" button.
 ![16]
 
+※ 앱 템플릿 등록 및 수정 시 카탈로그 관리 코드는 선택 필수이며, 현재 사용 가능한 코드가 없는 경우 다음 내용을 참고하여 처리하도록 한다.
+- ①"코드 관리" 클릭 > ②**Group Table**의 "STARTER_TAG" 클릭 > ③**Detail Table**에 "등록"버튼을 클릭하여 카탈로그 관리 코드를 추가 후 사용한다.
+  ![catalog-code-starter]
+
 ### <a name="4.3.2"/>  4.3.2 Catalog Managing App Development Environment
 1. Check the Catalog App Development Environment list. It shows Name, Outline, Classification, and Public Availability.
 One can search by the type, item, or name, whether it's private or public in the search engine.
@@ -141,6 +145,10 @@ One can search by the type, item, or name, whether it's private or public in the
 4. Click the ①"Register App Development Environment" button from the Catalog page to Register. Enter the following at the App Development Environment Registering pop-up: Name, Classification, App Development Environment, Service, Thumbnail, Public Availability, Summary, and Description. Complete registering by clicking the ②"Register" button.
 ![20]
 
+※ 앱 개발환경 등록 및 수정 시 카탈로그 관리 코드는 선택 필수이며, 현재 사용 가능한 코드가 없는 경우 다음 내용을 참고하여 처리하도록 한다.
+- ①"코드 관리" 클릭 > ②**Group Table**의 "BUILD_PACK_TAG" 클릭 > ③**Detail Table**에 "등록"버튼을 클릭하여 카탈로그 관리 코드를 추가 후 사용한다.
+  ![catalog-code-buildpack]
+
 ### <a name="4.3.3"/>  4.3.3 Catalog Management Service 
 1. Check Catalog Service List. Can check name, outline, classification, and public availability. One can search by the type, item, or name, whether it's private or public in the search engine.<br>
 ![21]
@@ -154,6 +162,10 @@ One can search by the type, item, or name, whether it's private or public in the
 4. When registering an app service on the catalog page, click the ①"Register App Service" button. 
 Enter name, classification, service, thumbnail, parameter, pubic availability, outline, and description. Click ②"Register" to complete registering the service. <br>
 ![24]
+
+※ 앱 서비스 등록 및 수정 시 카탈로그 관리 코드는 선택 필수이며, 현재 사용 가능한 코드가 없는 경우 다음 내용을 참고하여 처리하도록 한다.
+- ① "코드 관리" 클릭 > ②**Group Table**의 "SERVICE_PACK_TAG" 클릭 > ③**Detail Table**에 "등록"버튼을 클릭하여 카탈로그 관리 코드를 추가 후 사용한다.
+  ![catalog-code-servicepack]
 
 ※ **delivery-pipeline**, an example of registering an app service 
 1. Input necessary data for registering an app service at the registering form screen.
@@ -173,7 +185,7 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 9. Requires "Y" when the dashboard is being used. Setting the dashboard as "N" disables the dashboard button.
      > **When the dashboard is applied, catalog app service "Dashboard" button is activated in 'PaaS-TA User'**
      > ![pipeline-app-dashboard]
-10. In addition, enter public availability, outline, and description. Click the "Save" button to complete service registration.
+10. In addition, enter public availability, outline, description, and catalog management code. Click the "Save" button to complete service registration.
      > ![pipeline]
 
      
@@ -191,7 +203,7 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 8. Input "N" for App bind Usage.
 9. Requires "Y" when the dashboard is being used. Setting the dashboard as "N" disables the dashboard button.
      > **When dashboard is applied, catalog app service "Dashboard" button is activated in 'PaaS-TA User'**
-10. In addition, enter public availability, outline, and description. Click the "Save" button to complete service registration.
+10. In addition, enter public availability, outline, description, and catalog management code. Click the "Save" button to complete service registration.
      > ![sourcecontroller]
 
 ### <a name="4.4"/>  4.4. User Management
@@ -498,6 +510,9 @@ A menu for security management of the PaaS-TA portal.<br>
 [isolationSegments02]:./images/admin-portal/isolationSegments02.png	
 [isolationSegments03]:./images/admin-portal/isolationSegments03.png	
 [isolationSegments04]:./images/admin-portal/isolationSegments04.png	
-[isolationSegments05]:./images/admin-portal/isolationSegments05.png	
+[isolationSegments05]:./images/admin-portal/isolationSegments05.png
+[catalog-code-starter]:./images/admin-portal/catalog-code-starter.png
+[catalog-code-buildpack]:./images/admin-portal/catalog-code-buildpack.png
+[catalog-code-servicepack]:./images/admin-portal/catalog-code-servicepack.png
 
 ### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Operator Portal

@@ -54,7 +54,7 @@ $ uaac -v
 ### <div id="2.2"/> 2.2. Stemcell Check
 
 Check the list of Stemcells to verify that the Stemcells required for service installation are uploaded.
-The Stemcell in this guide uses ubuntu-bionic 1.76.
+The Stemcell in this guide uses ubuntu-jammy 1.181.
 
 > $ bosh -e ${BOSH_ENVIRONMENT} stemcells
 
@@ -62,7 +62,7 @@ The Stemcell in this guide uses ubuntu-bionic 1.76.
 Using environment '10.0.1.6' as client 'admin'
 
 Name                                       Version   OS             CPI  CID  
-bosh-openstack-kvm-ubuntu-bionic-go_agent  1.76      ubuntu-bionic  -    ce507ae4-aca6-4a6d-b7c7-220e3f4aaa7d
+bosh-openstack-kvm-ubuntu-jammy-go_agent  1.181      ubuntu-jammy  -    ce507ae4-aca6-4a6d-b7c7-220e3f4aaa7d
 
 (*) Currently deployed
 
@@ -82,7 +82,7 @@ $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell -n {STEMCELL_URL}
 
 Download the deployment needed from Git Repository and place the file at the service installation directory 
 
-- Portal Deployment Git Repository URL : https://github.com/PaaS-TA/portal-deployment/tree/v5.2.5
+- Portal Deployment Git Repository URL : https://github.com/PaaS-TA/portal-deployment/tree/v5.2.23
 
 ```
 # Deployment File Download , make directory, change directory
@@ -90,7 +90,7 @@ $ mkdir -p ~/workspace
 $ cd ~/workspace
 
 # Deployment File Download
-$ git clone https://github.com/PaaS-TA/portal-deployment.git -b v5.2.5
+$ git clone https://github.com/PaaS-TA/portal-deployment.git -b v5.2.23
 ```
 
 ### <div id="2.4"/> 2.4. Deployment File Modification
@@ -161,7 +161,7 @@ Succeeded
 ```
 
 - Modify common_vars.yml to suit server environment.
-- The Variables used in PaaS-TA AP Portal API are: system_domain, paasta_admin_username, paasta_admin_password, paasta_database_ips, paasta_database_port, paasta_database_type, paasta_database_driver_class, paasta_cc_db_id, paasta_cc_db_password, paasta_uaa_db_id, paasta_uaa_db_password, uaa_client_admin_id, uaa_client_admin_secret, monitoring_api_url, and portal_web_user_url.
+- The Variables used in PaaS-TA AP Portal API are: system_domain, paasta_admin_username, paasta_admin_password, paasta_database_ips, paasta_database_port, paasta_database_type, paasta_database_driver_class, paasta_cc_db_id, paasta_cc_db_password, paasta_uaa_db_id, paasta_uaa_db_password, uaa_client_admin_id, uaa_client_admin_secret, monitoring_api_url, portal_web_user_url, and portal_web_user_language.
 
 > $ vi ~/workspace/common/common_vars.yml
 ```
@@ -182,6 +182,7 @@ uaa_client_admin_id: "admin"			# UAAC Admin Client Admin ID
 uaa_client_admin_secret: "admin-secret"		# Secret variables for accessing the UAAC Admin Client
 monitoring_api_url: "61.252.53.241"		# Monitoring-WEB의 Public IP
 portal_web_user_url: "http://portal-web-user.52.78.88.252.nip.io"
+portal_web_user_language: ["ko", "en"]          # portal webuser language list (e.g. ["ko", "en"])
 
 ... ((Skip)) ...
 ```
@@ -194,8 +195,8 @@ portal_web_user_url: "http://portal-web-user.52.78.88.252.nip.io"
 
 ```
 # STEMCELL INFO
-stemcell_os: "ubuntu-bionic"                                    # stemcell os
-stemcell_version: "1.76"                                        # stemcell version
+stemcell_os: "ubuntu-jammy"                                    # stemcell os
+stemcell_version: "1.181"                                        # stemcell version
 
 # NETWORKS INFO
 private_networks_name: "default"                                # private network name
@@ -258,9 +259,18 @@ storage_api_infra_admin: false                                  # portal-storage
 
 # PORTAL_LOG_API INFO
 log_api_azs: [z6]                                               # portal-log-api : azs
-log_api_instances: 1                                            # portal-log-api : instances (1)
+log_api_instances: 0                                            # portal-log-api : instances (1)
 log_api_vm_type: "small"                                        # portal-log-api : vm type
 log_api_infra_admin: false                                      # portal-log-api : infra admin (default "false")
+
+log_api_influxdb_ip: "<LOG_API_INFLUXDB_IP>"                    # portal-log-api : InfluxDB IP
+log_api_influxdb_http_port: "8086"                              # portal-log-api : InfluxDB HTTP PORT (default 8086)
+log_api_influxdb_username: "<INFLUXDB_USERNAME>"                # portal-log-api : InfluxDB Admin Account Username
+log_api_influxdb_password: "<INFLUXDB_PASSWORD>"                # portal-log-api : InfluxDB Admin Account Password
+log_api_influxdb_https_enabled: true                            # portal-log-api : InfluxDB HTTPS Setting (default "true")
+log_api_influxdb_database: "<INFLUXDB_DATABASE>"                # portal-log-api : InfluxDB Database Name
+log_api_influxdb_measurement: "<INFLUXDB_MEASUREMENT>"          # portal-log-api : InfluxDB Measurement Name
+log_api_influxdb_query_limit: "<INFLUXDB_QUERY_LIMIT>"          # portal-log-api : InfluxDB query limit (default "50")
 
 # MAIL_SMTP INFO
 mail_smtp_host: "<MAIL_SMTP_HOST>"                              # mail-smtp : host (e.g. "smtp.gmail.com")
@@ -284,16 +294,28 @@ mail_smtp_properties_subject: "<MAIL_SMTP_PROPERTIES_SUBJECT>"  # mail-smtp : pr
 #!/bin/bash
 
 # VARIABLES
-COMMON_VARS_PATH="<COMMON_VARS_FILE_PATH>"	# common_vars.yml File Path (e.g. ../../common/common_vars.yml)
-CURRENT_IAAS="${CURRENT_IAAS}"			# IaaS Information (When not using create-bosh-login.sh provided by PaaS-TA enter aws/azure/gcp/openstack/vsphere)
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"		# bosh director alias name (When not using create-bosh-login.sh provided by PaaS-TA, check the name at bosh envs and enter)
+COMMON_VARS_PATH="<COMMON_VARS_FILE_PATH>"              # common_vars.yml File Path (e.g. ../../common/common_vars.yml)
+CURRENT_IAAS="${CURRENT_IAAS}"                          # IaaS Information (When not using create-bosh-login.sh provided by PaaS-TA enter aws/azure/gcp/openstack/vsphere)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"                  # bosh director alias name (When not using create-bosh-login.sh provided by PaaS-TA, check the name at bosh envs and enter)
+
+# portal-log-api 인스턴스 갯수에 따라 logging service 활성화 여부를 분기한다.
+LOG_API_INSTANCE_CNT=`grep 'log_api_instances' vars.yml | cut -d ":" -f2 | cut -d "#" -f1`
 
 # DEPLOY
-bosh -e ${BOSH_ENVIRONMENT} -n -d portal-api deploy --no-redact portal-api.yml \
-   -o operations/${CURRENT_IAAS}-network.yml \
-   -o operations/cce.yml \
-   -l ${COMMON_VARS_PATH} \
-   -l vars.yml
+if [[ ${LOG_API_INSTANCE_CNT} -eq 1 ]]; then
+  bosh -e ${BOSH_ENVIRONMENT} -n -d portal-api deploy --no-redact portal-api.yml \
+     -o operations/${CURRENT_IAAS}-network.yml \
+     -o operations/cce.yml \
+     -l ${COMMON_VARS_PATH} \
+     -l vars.yml
+else
+  bosh -e ${BOSH_ENVIRONMENT} -n -d portal-api deploy --no-redact portal-api.yml \
+     -o operations/disable-logging-service.yml \
+     -o operations/${CURRENT_IAAS}-network.yml \
+     -o operations/cce.yml \
+     -l ${COMMON_VARS_PATH} \
+     -l vars.yml
+fi
 ```
 
 - Install Service
@@ -323,12 +345,11 @@ haproxy/8cc2d633-2b43-4f3d-a2e8-72f5279c11d5                      running       
 mariadb/117cbf05-b223-4133-bf61-e15f16494e21                      running        z5  10.30.107.211  vm-bc5ae334-12d4-41d4-8411-d9315a96a305  portal_large   true  
 paas-ta-portal-api/48fa0c5a-52eb-4ae8-a7b9-91275615318c           running        z5  10.30.107.217  vm-9d2a1929-0157-4c77-af5e-707ec496ed87  portal_medium  true  
 paas-ta-portal-common-api/060320fa-7f26-4032-a1d9-6a7a41a044a8    running        z5  10.30.107.219  vm-f35e9838-74cf-40e0-9f97-894b53a68d1f  portal_medium  true  
-paas-ta-portal-gateway/6baba810-9a4a-479d-98b2-97e5ba651784       running        z5  10.30.107.214  vm-7ec75160-bf34-442e-b755-778ae7dd3fec  portal_medium  true  
-paas-ta-portal-log-api/a4460008-42b5-4ba0-84ee-fff49fe6c1bd       running        z5  10.30.107.218  vm-9ec0a1b0-09f6-415b-8e23-53af91fd94b8  portal_medium  true  
+paas-ta-portal-gateway/6baba810-9a4a-479d-98b2-97e5ba651784       running        z5  10.30.107.214  vm-7ec75160-bf34-442e-b755-778ae7dd3fec  portal_medium  true   
 paas-ta-portal-registration/3728ed73-451e-4b93-ab9b-c610826c3135  running        z5  10.30.107.215  vm-c4020514-c458-41c6-bcbc-7e0ee1bc6f42  portal_small   true  
 paas-ta-portal-storage-api/2940366a-8294-4509-a9c0-811c8140663a   running        z5  10.30.107.220  vm-79ad6ee1-1bb5-4308-8b71-9ed30418e2c1  portal_medium  true  
 
-9 vms
+8 vms
 
 Succeeded
 ```
@@ -413,14 +434,11 @@ You can check the log of each instance on the Paas-TA Portal.
        mariadb/117cbf05-b223-4133-bf61-e15f16494e21                      running        z5  10.30.107.211  vm-bc5ae334-12d4-41d4-8411-d9315a96a305  portal_large   true  
        paas-ta-portal-api/48fa0c5a-52eb-4ae8-a7b9-91275615318c           running        z5  10.30.107.217  vm-9d2a1929-0157-4c77-af5e-707ec496ed87  portal_medium  true  
        paas-ta-portal-common-api/060320fa-7f26-4032-a1d9-6a7a41a044a8    running        z5  10.30.107.219  vm-f35e9838-74cf-40e0-9f97-894b53a68d1f  portal_medium  true  
-       paas-ta-portal-gateway/6baba810-9a4a-479d-98b2-97e5ba651784       running        z5  10.30.107.214  vm-7ec75160-bf34-442e-b755-778ae7dd3fec  portal_medium  true  
-       paas-ta-portal-log-api/a4460008-42b5-4ba0-84ee-fff49fe6c1bd       running        z5  10.30.107.218  vm-9ec0a1b0-09f6-415b-8e23-53af91fd94b8  portal_medium  true  
+       paas-ta-portal-gateway/6baba810-9a4a-479d-98b2-97e5ba651784       running        z5  10.30.107.214  vm-7ec75160-bf34-442e-b755-778ae7dd3fec  portal_medium  true
        paas-ta-portal-registration/3728ed73-451e-4b93-ab9b-c610826c3135  running        z5  10.30.107.215  vm-c4020514-c458-41c6-bcbc-7e0ee1bc6f42  portal_small   true  
        paas-ta-portal-storage-api/2940366a-8294-4509-a9c0-811c8140663a   running        z5  10.30.107.220  vm-79ad6ee1-1bb5-4308-8b71-9ed30418e2c1  portal_medium  true  
-       paas-ta-portal-webadmin/8047fcbd-9a98-4b61-b161-0cbb277fa643      running        z5  10.30.107.221  vm-188250fd-e918-4aab-9cbe-7d368852ea8a  portal_medium  true  
-       paas-ta-portal-webuser/cb206717-81c9-49ed-a0a8-e6c3b957cb66       running        z5  10.30.107.222  vm-822f68a5-91c8-453a-b9b3-c1bbb388e377  portal_medium  true  
-
-       11 vms
+       
+       8 vms
 
        Succeeded
        inception@inception:~$ bosh ssh -d paas-ta-portal-v2 paas-ta-portal-api  << Enter the instance access (bosh ssh) command
@@ -506,13 +524,19 @@ After installing the Paas-TA Portal, you must register the build pack and servic
  2. Click Operation Management.
     
     >![23](https://user-images.githubusercontent.com/104418463/200228961-2227fed4-8bc1-4e80-92fd-9b3b233668ac.png)
- 2. Go to Catalog page.
+ 3. Go to Catalog page.
     
     >![24](https://user-images.githubusercontent.com/104418463/200228968-394d913d-27a6-4948-830c-b51685111188.png)
- 3. Go to the buildpack and servicepack detail page, enter the value in each index, and click Save.
+ 4. Go to the buildpack and servicepack detail page, enter the value in each index, and click Save.
     
     >![25](https://user-images.githubusercontent.com/104418463/200229056-bfb721e5-102d-4cfd-a239-398610fd6e31.png)
- 4. Check whether the changed value is applied in the user portal.
+
+    ※ 카탈로그 등록 및 수정 시 카탈로그 관리 코드는 선택 필수이며, 현재 사용 가능한 코드가 없는 경우 다음 내용을 참고하여 처리하도록 한다.
+    1. ①"코드 관리"를 클릭한다.
+    2. **Group Table**에서 해당하는 ②"분류 코드"를 클릭한다.
+    3. **Detail Table**에 ③"등록"버튼을 클릭하여 카탈로그 관리 코드를 추가 후 사용한다.
+       ![25-1](https://github.com/K-PaaS/application-platform-guide-eng/assets/107905603/045ed7a2-e753-43ec-ac72-de8114ea60d9)
+ 5. Check whether the changed value is applied in the user portal.
     
     >![paas-ta-portal-19]
 
@@ -534,6 +558,7 @@ After installing the Paas-TA Portal, you must register the build pack and servic
 [paas-ta-portal-16]:./images/Paas-TA-Portal_16.png
 [paas-ta-portal-17]:./images/Paas-TA-Portal_17.png
 [paas-ta-portal-18]:./images/Paas-TA-Portal_18.png
+[paas-ta-portal-18-1]:./images/Paas-TA-Portal_18-1.png
 [paas-ta-portal-19]:./images/Paas-TA-Portal_19.png
 [paas-ta-portal-20]:./images/Paas-TA-Portal_20.png
 [paas-ta-portal-21]:./images/Paas-TA-Portal_21.png

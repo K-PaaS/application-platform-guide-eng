@@ -59,7 +59,7 @@ If BOSH CLI v2 is not installed, you should first refer to the BOSH 2.0 installa
 ### <div id="2.2"/> 2.2. Stemcell Check  
 
 Check the Stemcell list to make sure that the Stemcell required for service installation is uploaded. 
-The Stemcell of this guide uses ubuntu-bionic 1.76. 
+The Stemcell of this guide uses ubuntu-jammy 1.181. 
 
 > $ bosh -e ${BOSH_ENVIRONMENT} stemcells
 
@@ -67,7 +67,7 @@ The Stemcell of this guide uses ubuntu-bionic 1.76.
 Using environment '10.0.1.6' as client 'admin'
 
 Name                                       Version   OS             CPI  CID  
-bosh-openstack-kvm-ubuntu-bionic-go_agent  1.76      ubuntu-bionic  -    ce507ae4-aca6-4a6d-b7c7-220e3f4aaa7d
+bosh-openstack-kvm-ubuntu-jammy-go_agent  1.181      ubuntu-jammy  -    ce507ae4-aca6-4a6d-b7c7-220e3f4aaa7d
 
 (*) Currently deployed
 
@@ -87,7 +87,7 @@ $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell -n {STEMCELL_URL}
 
 Download the deployment needed from Git Repository and place the file at the service installation directory.  
 
-- Service Deployment Git Repository URL : https://github.com/PaaS-TA/service-deployment/tree/v5.1.5
+- Service Deployment Git Repository URL : https://github.com/PaaS-TA/service-deployment/tree/v5.1.25
 
 ```
 # Deployment File Download , make directory, change directory
@@ -95,7 +95,7 @@ $ mkdir -p ~/workspace
 $ cd ~/workspace
 
 # Deployment File Download
-$ git clone https://github.com/PaaS-TA/service-deployment.git -b v5.1.5
+$ git clone https://github.com/PaaS-TA/service-deployment.git -b v5.1.25
 
 # common_vars.yml File Download(Download if common_vars.yml doesn't exist)
 $ git clone https://github.com/PaaS-TA/common.git
@@ -199,8 +199,8 @@ paasta_admin_password: "admin"			# PaaS-TA Admin Password
 deployment_name: "web-ide"                                                # Service Deployed Name
 
 # STEMCELL
-stemcell_os: "ubuntu-bionic"                                              # stemcell os
-stemcell_version: "1.76"                                                  # stemcell version
+stemcell_os: "ubuntu-jammy"                                              # stemcell os
+stemcell_version: "1.181"                                                  # stemcell version
 stemcell_alias: "default"                                                 # stemcell alias
 
 # NETWORK

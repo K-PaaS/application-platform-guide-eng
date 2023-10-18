@@ -59,7 +59,7 @@ http://docs.cloudfoundry.org/services/
 http://bosh.io/docs/create-release.html  
 https://github.com/cloudfoundry/bosh-sample-release  
 https://github.com/cloudfoundry/cf-mysql-release/  
-https://github.com/cloudfoundry-community/cf-mysql-java-broker-boshrelease  
+https://github.com/cloudfoundry-community/cf-mysql-java-broker-Bosh release
 https://github.com/cloudfoundry-community/cf-mysql-java-broker  
 http://rubykr.github.io/rails_guides/getting_started.html  
 http://www.appdirect.com  
@@ -1152,7 +1152,7 @@ Bosh offers two ways to release software.
 Bosh upload release CLI command and process are as follows.
 
 bosh upload release CLI 
-boshupload release [<release_file>] [--rebase] [--skip-if-exists]
+bosh upload release [<release_file>] [--rebase] [--skip-if-exists]
 release_file: local files or remote URIs information
     --rebase:Set to Director with the latest version
     --skip-if-exists:Do not upload if the release exists

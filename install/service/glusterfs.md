@@ -47,7 +47,7 @@ A Swift & GlusterFS server must be installed to connect with the service broker.
 ### <div id="2.2"/> 2.2. Stemcell Check
 
 Check the Stemcell list to make sure that the Stemcell required for service installation is uploaded.
-The Stemcell of this guide uses ubuntu-bionic 1.76. 
+The Stemcell of this guide uses ubuntu-jammy 1.181. 
 
 > $ bosh -e ${BOSH_ENVIRONMENT} stemcells
 
@@ -55,7 +55,7 @@ The Stemcell of this guide uses ubuntu-bionic 1.76.
 Using environment '10.0.1.6' as client 'admin'
 
 Name                                       Version   OS             CPI  CID  
-bosh-openstack-kvm-ubuntu-bionic-go_agent  1.76      ubuntu-bionic  -    ce507ae4-aca6-4a6d-b7c7-220e3f4aaa7d
+bosh-openstack-kvm-ubuntu-jammy-go_agent  1.181      ubuntu-jammy  -    ce507ae4-aca6-4a6d-b7c7-220e3f4aaa7d
 
 (*) Currently deployed
 
@@ -76,7 +76,7 @@ $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell -n {STEMCELL_URL}
 
 Download the deployment needed from Git Repository and place the file at the service installation directory 
 
-- Service Deployment Git Repository URL : https://github.com/PaaS-TA/service-deployment/tree/v5.1.5
+- Service Deployment Git Repository URL : https://github.com/PaaS-TA/service-deployment/tree/v5.1.25
 
 ```
 # Deployment File Download , make directory, change directory
@@ -84,7 +84,7 @@ $ mkdir -p ~/workspace
 $ cd ~/workspace
 
 # Deployment File Download
-$ git clone https://github.com/PaaS-TA/service-deployment.git -b v5.1.5
+$ git clone https://github.com/PaaS-TA/service-deployment.git -b v5.1.25
 
 # common_vars.yml File Download(Download if common_vars.yml doesn't exist)
 $ git clone https://github.com/PaaS-TA/common.git
@@ -180,8 +180,8 @@ paasta_admin_password: "admin"			# PaaS-TA Admin Password
 
 ```
 # STEMCELL
-stemcell_os: "ubuntu-bionic"                                     # stemcell os
-stemcell_version: "1.76"                                       # stemcell version
+stemcell_os: "ubuntu-jammy"                                     # stemcell os
+stemcell_version: "1.181"                                       # stemcell version
 
 
 # NETWORK
@@ -357,8 +357,8 @@ broker: glusterfs-service
 
 - Download zip file of sample apps
 ```
-$ wget https://nextcloud.paas-ta.org/index.php/s/NDgriPk5cgeLMfG/download --content-disposition  
-$ unzip paasta-service-samples.zip  
+$ wget https://nextcloud.paas-ta.org/index.php/s/BoSbKrcXMmTztSa/download --content-disposition  
+$ unzip paasta-service-samples-459dad9.zip    
 $ cd paasta-service-samples/glusterfs  
 ```
 

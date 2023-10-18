@@ -940,9 +940,7 @@ Log in to the PaaS-TA platform to perform the procedure below
 
 ### <div id='34'/>2.6.2.  Create mongo-db Service Broker
 
-Create the service to use at the application through the PaaS-TA Platform.  
-Mongo-db service must be deployed in the PaaS-TA platform environment.  
-Access information can be obtained through the application and binding process.  
+파스-타 플랫폼 환경에 mongo db 서비스가 배포되어 있어야 한다. 애플리케이션과 바인딩 과정을 통해 접속정보를 얻을 수 있다.  
 
 -   **Create Service (The cf marketplace command allows you to view the list of services and the plan for each service.)**
 

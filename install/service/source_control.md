@@ -53,7 +53,7 @@ $ uaac -v
 ### <div id="2.2"/> 2.2. Stemcell Cgeck  
 
 Check the Stemcell list to make sure that the Stemcell required for service installation is uploaded.  
-The Stemcell of this guide uses ubuntu-bionic 1.76. 
+The Stemcell of this guide uses ubuntu-jammy 1.181. 
 
 > $ bosh -e ${BOSH_ENVIRONMENT} stemcells
 
@@ -61,7 +61,7 @@ The Stemcell of this guide uses ubuntu-bionic 1.76.
 Using environment '10.0.1.6' as client 'admin'
 
 Name                                       Version   OS             CPI  CID  
-bosh-openstack-kvm-ubuntu-bionic-go_agent  1.76      ubuntu-bionic  -    ce507ae4-aca6-4a6d-b7c7-220e3f4aaa7d
+bosh-openstack-kvm-ubuntu-jammy-go_agent  1.181      ubuntu-jammy  -    ce507ae4-aca6-4a6d-b7c7-220e3f4aaa7d
 
 (*) Currently deployed
 
@@ -82,7 +82,7 @@ $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell -n {STEMCELL_URL}
 
 Download the deployment needed from Git Repository and place the file in the service installation directory.  
 
-- Service Deployment Git Repository URL : https://github.com/PaaS-TA/service-deployment/tree/v5.1.6
+- Service Deployment Git Repository URL : https://github.com/PaaS-TA/service-deployment/tree/v5.1.25
 
 ```
 # Deployment File Download, make directory, change directory
@@ -90,7 +90,7 @@ $ mkdir -p ~/workspace
 $ cd ~/workspace
 
 # Deployment File Download
-$ git clone https://github.com/PaaS-TA/service-deployment.git -b v5.1.6
+$ git clone https://github.com/PaaS-TA/service-deployment.git -b v5.1.25
 
 # common_vars.yml File Download (download if common_vars.yml doesn't exist)
 $ git clone https://github.com/PaaS-TA/common.git
@@ -183,8 +183,8 @@ system_domain: "61.252.53.246.nip.io"		# Domain (Same as HAProxy Public IP when 
 
 ```
 # STEMCELL
-stemcell_os: "ubuntu-bionic"                                   # stemcell os
-stemcell_version: "1.76"                                     # stemcell version
+stemcell_os: "ubuntu-jammy"                                   # stemcell os
+stemcell_version: "1.181"                                     # stemcell version
 
 # VM_TYPE
 vm_type_small: "minimal"                                       # vm type small
@@ -402,10 +402,10 @@ uaac client add <CF_UAA_CLIENT_ID> -s <CF_UAA_CLIENT_SECRET> --redirect_uri <Con
 <Authorization Permission> : Authority list granted to clients  
 <Automatic Authorization> : Authority list that do not require user approval   
 ```
-> $ uaac client add scclient -s clientsecret --redirect_uri "http://[DASHBOARD_URL]:8080 http://[DASHBOARD_URL]:8080/repositories http://[DASHBOARD_URL]:8080/repositories/user" \
-  --scope "cloud_controller_service_permissions.read , openid , cloud_controller.read , cloud_controller.write , cloud_controller.admin" \
-  --authorized_grant_types "authorization_code , client_credentials , refresh_token" \
-  --authorities="uaa.resource" \
+> $ uaac client add scclient -s clientsecret --redirect_uri "http://[DASHBOARD_URL]:8080 http://[DASHBOARD_URL]:8080/repositories http://[DASHBOARD_URL]:8080/repositories/user" \  
+  --scope "cloud_controller_service_permissions.read , openid , cloud_controller.read , cloud_controller.write , cloud_controller.admin" \  
+  --authorized_grant_types "authorization_code , client_credentials , refresh_token" \  
+  --authorities="uaa.resource" \  
   --autoapprove="openid , cloud_controller_service_permissions.read"
 ```  
 # e.g. Creating a Configuration Management Service Account

@@ -53,7 +53,7 @@ If BOSH CLI v2 is not installed, you must first refer to the BOSH 2.0 Installati
 ### <div id="2.2"/> 2.2. Stemcell Check
 
 Check the list of Stemcells to verify that the Stemcells required for service installation are uploaded.
-The Stemcell in this guide uses ubuntu-bionic 1.76.
+The Stemcell in this guide uses ubuntu-jammy 1.181.
 
 > $ bosh -e ${BOSH_ENVIRONMENT} stemcells
 
@@ -61,7 +61,7 @@ The Stemcell in this guide uses ubuntu-bionic 1.76.
 Using environment '10.0.1.6' as client 'admin'
 
 Name                                       Version   OS             CPI  CID  
-bosh-openstack-kvm-ubuntu-bionic-go_agent  1.76      ubuntu-bionic  -    ce507ae4-aca6-4a6d-b7c7-220e3f4aaa7d
+bosh-openstack-kvm-ubuntu-jammy-go_agent  1.181      ubuntu-jammy  -    ce507ae4-aca6-4a6d-b7c7-220e3f4aaa7d
 
 (*) Currently deployed
 
@@ -81,7 +81,7 @@ $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell -n {STEMCELL_URL}
 
 Download the deployment needed from Git Repository and place the file at the service installation directory
 
-- Service Deployment Git Repository URL : https://github.com/PaaS-TA/service-deployment/tree/v5.1.5
+- Service Deployment Git Repository URL : https://github.com/PaaS-TA/service-deployment/tree/v5.1.25
 
 ```
 # Deployment File Download , make directory, change directory
@@ -89,7 +89,7 @@ $ mkdir -p ~/workspace
 $ cd ~/workspace
 
 # Deployment File Download
-$ git clone https://github.com/PaaS-TA/service-deployment.git -b v5.1.5
+$ git clone https://github.com/PaaS-TA/service-deployment.git -b v5.1.25
 ```
 
 ### <div id="2.4"/> 2.4. Deployment File Modification
@@ -164,35 +164,34 @@ Succeeded
 > $ vi ~/workspace/service-deployment/mysql/vars.yml	
 ```
 # STEMCELL
-stemcell_os: "ubuntu-bionic"                                     # stemcell os
-stemcell_version: "1.76"                                       # stemcell version
+stemcell_os: "ubuntu-jammy"                                     # stemcell os
+stemcell_version: "1.181"                                       # stemcell version
 
 # NETWORK
 private_networks_name: "default"                                 # private network name
 
 # MYSQL
 mysql_azs: [z4]                                                  # mysql azs
-mysql_instances: 1                                               # mysql instances (N)
+mysql_instances: 3                                               # mysql instances (N)
 mysql_vm_type: "small"                                           # mysql vm type
 mysql_persistent_disk_type: "8GB"                                # mysql persistent disk type
 mysql_port: 13306                                                # mysql port (e.g. 13306) -- Do Not Use "3306"
 mysql_admin_password: "<MYSQL_ADMIN_PASSWORD>"                   # mysql admin password (e.g. "admin!Service")
 
-# ARBITRATOR
-arbitrator_azs: [z4]                                             # arbitrator azs 
-arbitrator_instances: 1                                          # arbitrator instances (1)
-arbitrator_vm_type: "small"                                      # arbitrator vm type
-
 # PROXY
 proxy_azs: [z4]                                                  # proxy azs
-proxy_instances: 1                                               # proxy instances (1)
 proxy_vm_type: "small"                                           # proxy vm type
 proxy_mysql_port: 13307                                          # proxy mysql port (e.g. 13307) -- Do Not Use "3306"
+proxy_static_ip: "<PROXY_STATIC_IP>"                             # proxy ip (e.g. "10.0.161.100")
 
 # MYSQL_BROKER
 mysql_broker_azs: [z4]                                           # mysql broker azs
 mysql_broker_instances: 1                                        # mysql broker instances (1)
 mysql_broker_vm_type: "small"                                    # mysql broker vm type
+mysql_broker_services_plan_a_name: "<MYSQL_BROKER_SERVICE_PLAN_A_NAME>"   # mysql broker service small plan name (e.g. "Mysql-Plan1-10con")
+mysql_broker_services_plan_a_connection: 10                      # mysql broker service small plan user connections
+mysql_broker_services_plan_b_name: "<MYSQL_BROKER_SERVICE_PLAN_B_NAME>"   # mysql broker service big plan name (e.g. "Mysql-Plan2-100con")
+mysql_broker_services_plan_b_connection: 100                     # mysql broker service big plan user connections
 ```
 
 ### <div id="2.5"/> 2.5. Service Installation
@@ -238,10 +237,11 @@ Task 4525. Done
 Deployment 'mysql'
 
 Instance                                                       Process State  AZ  IPs            VM CID                                   VM Type  Active  
-arbitrator/2e190b67-e2b7-4e2d-a72d-872c2019c963                running        z5  10.30.107.165  vm-214663a8-fcbc-4ae4-9aae-92027b9725a9  minimal  true  
-mysql-broker/05c44b41-0fc1-41c0-b814-d79558850480              running        z5  10.30.107.167  vm-7c3edc00-3074-4e98-9c89-9e9ba83b47e4  minimal  true  
-mysql/fe6943ed-c0c1-4a99-8f4c-d209e165898a                     running        z5  10.30.107.164  vm-81ecdc43-03d2-44f5-9b89-c6cdaa443d8b  minimal  true  
-proxy/5b883a78-eb43-417f-98a2-d44c13c29ed4                     running        z5  10.30.107.168  vm-e447eb75-1119-451f-adc9-71b0a6ef1a6a  minimal  true  
+mysql-broker/0150c7f3-8920-45e6-839b-29884dc61301              running        z5  10.30.107.165  vm-214663a8-fcbc-4ae4-9aae-92027b9725a9  minimal  true  
+mysql/00e8731f-5b13-421e-b633-0813a33db476                     running        z5  10.30.107.167  vm-7c3edc00-3074-4e98-9c89-9e9ba83b47e4  minimal  true  
+mysql/00e8731f-5b13-421e-b633-0813a33db476                     running        z5  10.30.107.164  vm-81ecdc43-03d2-44f5-9b89-c6cdaa443d8b  minimal  true  
+mysql/00e8731f-5b13-421e-b633-0813a33db476                     running        z5  10.30.107.168  vm-e447eb75-1119-451f-adc9-71b0a6ef1a6a  minimal  true  
+proxy/2adc060d-a30b-46bc-b5f7-a4c09db1b189                     running        z5  10.30.107.160  vm-e447eb75-1119-451f-adc9-71b0a6ef1a6a  minimal  true  
 
 5 vms
 
@@ -330,8 +330,8 @@ After accessing the app through a browser, the initially generated data can be i
 
 - Download zip file of sample apps
 ```
-$ wget https://nextcloud.paas-ta.org/index.php/s/NDgriPk5cgeLMfG/download --content-disposition  
-$ unzip paasta-service-samples.zip  
+$ wget https://nextcloud.paas-ta.org/index.php/s/BoSbKrcXMmTztSa/download --content-disposition  
+$ unzip paasta-service-samples-459dad9.zip 
 $ cd paasta-service-samples/mysql  
 ```
 
@@ -399,7 +399,7 @@ applications:
   buildpack: java_buildpack
   path: mysql-sample-app.war
   env:
-    mysql_datasource_driver-class-name: org.mariadb.jdbc.Driver
+    mysql_datasource_driver-class-name: com.mysql.cj.jdbc.Driver
     mysql_datasource_jdbc-url: jdbc:\${vcap.services.mysql-service-instance.credentials.uri}
     mysql_datasource_username: \${vcap.services.mysql-service-instance.credentials.username}
     mysql_datasource_password: \${vcap.services.mysql-service-instance.credentials.password}

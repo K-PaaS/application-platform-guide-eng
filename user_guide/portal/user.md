@@ -325,6 +325,7 @@ This chapter describes the three main categories of PaaS-TA user portals.
 
 4.  An email is sent to the user who has been invited. The invited user will have access to the organization when “Accept Invite" link has been clicked.
      > **Email Format to Receive**
+
 ![inviteEmail]
 
 ### <div id='24'/> 3.2.1.1.4.2.  Remove Member

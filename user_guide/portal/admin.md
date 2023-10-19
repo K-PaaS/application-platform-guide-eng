@@ -178,7 +178,7 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 6. Insert document URL. 
      > (Ex.) https://github.com/PaaS-TA/DELIVERY-PIPELINE-UI <br>
      > **When the Document URL is applied, the 'PaaS-TA User' Catalog Service Registration 'View Document' button gets activated.**
-     > ![pipeline-app-service-create]
+     ![pipeline-app-service-create]
 
 7. Set needed parameter value when creating a service.
     (Ex.) owner : 'Automatic-input' /  org_name : 'Automatic-input'

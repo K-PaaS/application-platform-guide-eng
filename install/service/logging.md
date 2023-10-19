@@ -393,13 +393,15 @@ After the service installation is complete, register the Logging service activat
 > ※ Group Table  
 > Code ID  : LOGGING  
 > Code Name : Logging Service  
+
 ![003]
->
+
 > ※ Detail Table  
 > Key : enable_logging_service  
 > Value : true  
 > Outline : Logging Service Enable Code   
 > Use : Y  
+
 ![004]
 
 ![005]

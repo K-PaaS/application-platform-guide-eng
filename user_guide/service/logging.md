@@ -10,9 +10,9 @@
 	- [2.1. PaaS-TA User Portal Access](#2-1)
 	- [2.2. Logging Service Access](#2-2)
 3. [Logging Service User Manual](#3)
-	- [3.1. Visualization Time Range Setting](#3-1)
+	- [3.1. Set Search Conditions](#3-1)
 	- [3.2. Search](#3-2)
-	- [3.3. Reset](#3-3)
+	- [3.3. Initialize(Reset)](#3-3)
 
 <br/>
 ---
@@ -53,25 +53,25 @@ This document is written about how to use the Logging service based on a Windows
 # <div id='3'/> 3. Logging Service User Manual
 This chapter describes the screen description of the logging service.
 
-### <div id='3-1'/> 3.1. 검색 조건 설정
-- 날짜 설정  
-  달력 버튼을 클릭하여 검색하려는 App Log의 날짜를 선택한다.
+### <div id='3-1'/> 3.1. Set Search Conditions
+- Set Date  
+  Click the calendar button to select the date of the app log you want to search.
 ![009]
 
-- 시간 설정  
-  시계 버튼을 클릭하여 검색하려는 App Log의 ①시작 시간과 ②종료 시간을 선택한다.  
+- Set Time  
+  Click the clock button to select the ①start time and ②end time of the app log you want to search.  
 ![010]
 
-- 키워드 설정  
-  검색하고 싶은 단어를 입력한다.(해당 검색어가 적용된 App Log만 조회되며, 존재하지 않을 경우 "No Log Data" 메시지가 출력된다.)
+- Set Keyword  
+  Enter the words you want to search for (only App Logs with the search terms will be retrieved, and if they do not exist, a "No Log Data" message will be displayed).
 ![011]
 
-#### <div id='3-2'/> 3.2. 검색
-"SEARCH"를 클릭하거나 검색어 입력 후 "Enter" 키를 눌러 Log를 조회한다.
+#### <div id='3-2'/> 3.2. Search
+Click "SEARCH" or type in a search term and press "Enter" to view the log.
 ![007]
 
-#### <div id='3-3'/> 3.3. 초기화
-"RESET" 버튼을 클릭하여 날짜, 시간, 검색어를 초기화 한다.
+#### <div id='3-3'/> 3.3. Initialize(Reset)
+Click the "RESET" button to reset the date, time, and search terms.
 ![008]
 
 

@@ -253,7 +253,7 @@ The reason for setting it in three units is for service tripleization, and it ma
 A VM Type is a VM Type defined in IaaS.
 
 ※ The followings are the Instance Type defined by AWS.
-![aws-vmtype_eng](https://user-images.githubusercontent.com/104418463/165898613-4c595bbb-ae56-4033-ac6f-cea617523481.png)
+![aws-vmtype_eng](./images/ap/aws-vmtype.png)
 
 
 - Compilation
@@ -505,7 +505,7 @@ ex) uaa_login_logout_redirect_parameter_whitelist=["{PaaS-TA PORTAL URI}","{PaaS
 ex) uaa_login_links_signup="{PaaS-TA PORTAL URI}/createuser"
 ```
 
-<img src="https://github.com/PaaS-TA/Guide-5.0-Ravioli/blob/master/install-guide/paasta/images/uaa-login-2.png">
+![UAA_Login_Create_Account]
 
 3. uaa_login_links_passwd :  Link address when Reset Passwork is clicked in UAA page
 
@@ -513,7 +513,7 @@ ex) uaa_login_links_signup="{PaaS-TA PORTAL URI}/createuser"
 ex) uaa_login_links_passwd="{PaaS-TA PORTAL URI}/resetpasswd"
 ```
 
-<img src="https://github.com/PaaS-TA/Guide-5.0-Ravioli/blob/master/install-guide/paasta/images/uaa-login.png" width="663px">
+![UAA_Login_Reset_Password]
 
 
 4. uaa_client_portal_redirect_uri : Redirect URI designated variable in UAAC Portal Client, URI that moves when login is successful on UAA page after clicking the login button on the portal
@@ -814,6 +814,7 @@ space:          No space targeted, use 'cf target -s SPACE'
 ```
 
 [PaaSTa_FLAVOR_Image]:./images/ap/aws-vmtype.png
-
+[UAA_Login_Create_Account]:./images/ap/uaa-login-2.png
+[UAA_Login_Reset_Password]:./images/ap/uaa-login.png
 
 ### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > PaaS-TA AP

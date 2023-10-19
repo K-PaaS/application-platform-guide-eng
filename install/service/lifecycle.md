@@ -375,7 +375,7 @@ broker: app-lifecycle-service-broker
 > 
 > The service administrator's account is serviceadmin/< Password is what the user has entered when requesting for the service >.
 >  
-> ![002]
+![002]
 
 -	Access the PaaS-TA User Portal, and request for services through the catalog.   
 
@@ -414,12 +414,9 @@ service broker:   app-lifecycle-service-broker
  ```
 
 
-[001]:./images/applifecycle-service/image001.png
 [002]:./images/applifecycle-service/image002.png
 [003]:./images/applifecycle-service/image003.png
 [004]:./images/applifecycle-service/image004.png
-[005]:./images/applifecycle-service/image005.png
-[006]:./images/applifecycle-service/image006.png
 
 
 ### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > Lifecycle Service

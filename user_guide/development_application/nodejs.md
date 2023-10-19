@@ -75,7 +75,7 @@ Configure the development environment to develop the Node.js Application as show
 - Access the address below and download node-v0.12.4-x64.msi.
 
 >https://nodejs.org/dist/v0.12.4/x64/node-v0.12.4-x64.msi
->![2-2-1-0]
+![2-2-1-0]
 
 ##### 2. Node.js Installation
 
@@ -952,6 +952,7 @@ Log in to Open Platform to perform the task below
 
 >$ cf api --skip-ssl-validation https://api.cf.open-paas.com # Set TARGET to Open Platform<br>
 >$ cf login -u testUser -o sample_test -s sample_space # Login Request<br>
+
 ![2-4-1-0]
 
 

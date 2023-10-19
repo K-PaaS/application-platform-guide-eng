@@ -69,27 +69,27 @@ http://www.appdirect.com
 The open cloud platform Service API defines the protocol between the Cloud Controller and the Service Broker. Broker is implemented in HTTP (or HTTPS) endpoints URI format. One or more services may be provided by one broker and may be provided horizontally and extensively to enable load balancing.
 
 #### <a name="8"/>2.2. Service Architecture
->![openpaas-servicepack-01]  
+![openpaas-servicepack-01]  
 [picture reference]: http://docs.cloudfoundry.org/services/overview.html
 
 Services are used in open cloud platforms by implementing a cloud controller client API called the Service Broker API. The Services API is a version of the independent cloud controller API.
 This makes external applications available on the platform. (database, message queue, rest endpoint, etc)
 
 #### <a name="9"/>2.3. Service Broker API Architecture
->![openpaas-servicepack-02]  
+![openpaas-servicepack-02]  
 [picture reference]: http://docs.cloudfoundry.org/services/api.html
 
 The Open Cloud Platform Service API is a protocol between Cloud Controller and Service Broker (catalog, provision, deprovision, update provision plan, bind, unbound), and the Service Broker implements it as a RESTful API and registers it with the Cloud Controller.
 
 #### <a name="10"/>2.4. Pivotal(Cloud Foundry) Marketplace Model
->![openpaas-servicepack-03]  
+![openpaas-servicepack-03]  
 [picture reference]: http://www.slideshare.net/platformcf/cloud-foundry-marketplacepowered-by-appdirect
 
 AppDirect: a leading company in cloud service marketplace and management solution.The established marketplace of many global companies. (Samsung, Cloud Foundry, ETC)
 AppDirect offers Cloud Foundry service brokerages and additional services. 
 
 Describe Service Provider and Cloud Foundry integration
->![openpaas-servicepack-04]  
+![openpaas-servicepack-04]  
 [picture reference]: http://www.slideshare.net/platformcf/cloud-foundry-marketplacepowered-by-appdirect
 
 #### <a name="11"/>2.5. Development Guide
@@ -98,12 +98,12 @@ The method of implementing the service is up to the provider and developer. Open
 This development guide guides how the service back-end is controlled by the service broker. If you use AppDirect, refer to http://go.appdirect.com/request-more-information.
 
 Service Broker requires 6 basic API functions. (refer to the API guide of each for detailed descriptions)
->![1](https://user-images.githubusercontent.com/104418463/200229978-2283d8ea-3d54-40d1-a8e9-aa9435b8431b.png)
+![1](https://user-images.githubusercontent.com/104418463/200229978-2283d8ea-3d54-40d1-a8e9-aa9435b8431b.png)
 
 
 Two major versions of the Service Broker API currently support open cloud platforms v1 and v2. Since v1 is not used and can be removed in the next version of the open cloud platform, Service Broker recommends implementing it as v2.
 - Version Information (This guide is written based on version 2.5)
->![2](https://user-images.githubusercontent.com/104418463/200230018-0b2052b7-70ec-421f-b276-1b76f115d7db.png)
+![2](https://user-images.githubusercontent.com/104418463/200230018-0b2052b7-70ec-421f-b276-1b76f115d7db.png)
 
 
 - Certification
@@ -129,19 +129,19 @@ The service catalog retrieves information about the service and the service plan
 
 2.1. Status Code
 
->![3](https://user-images.githubusercontent.com/104418463/200230048-a02e42af-62f7-4348-b4ec-2882c4676a4c.png)
+![3](https://user-images.githubusercontent.com/104418463/200230048-a02e42af-62f7-4348-b4ec-2882c4676a4c.png)
 
 2.2. Body (* means required)
->![4](https://user-images.githubusercontent.com/104418463/200230054-e54a68a0-bd36-40ab-817b-e0bead665296.png)
+![4](https://user-images.githubusercontent.com/104418463/200230054-e54a68a0-bd36-40ab-817b-e0bead665296.png)
 
 2.3. Service Metadata
->![5](https://user-images.githubusercontent.com/104418463/200230088-d1e1f564-5403-435e-8fc2-b13f65e9e07f.png)
+![5](https://user-images.githubusercontent.com/104418463/200230088-d1e1f564-5403-435e-8fc2-b13f65e9e07f.png)
 
 2.4.	Plan Metadata
->![6](https://user-images.githubusercontent.com/104418463/200230113-54db4a2b-29be-41b9-80a5-716664bbb446.png)
+![6](https://user-images.githubusercontent.com/104418463/200230113-54db4a2b-29be-41b9-80a5-716664bbb446.png)
 
 2.5.	Quota Plan
->![7](https://user-images.githubusercontent.com/104418463/200230149-83b66edf-2d9e-41f8-b0f0-5db580ebca30.png)
+![7](https://user-images.githubusercontent.com/104418463/200230149-83b66edf-2d9e-41f8-b0f0-5db580ebca30.png)
 
 
 ◎ sample body response message
@@ -254,7 +254,7 @@ The service catalog retrieves information about the service and the service plan
 
 	-- When creating an application, rails are used to create a basic creation structure for a new application. See table below
 	$ rails new<broker_name>
-	>![openpaas-servicepack-13]
+	![openpaas-servicepack-13]
 	
 		-- config/routes.rb: Modified routing file with routing information for posts
 		
@@ -314,20 +314,20 @@ In the case of the Catalog API, regardless of the type of service, the informati
 - Example of clearDB plan  
 [picture reference]:http://run.pivotal.io/
 
->![openpaas-servicepack-14]
+![openpaas-servicepack-14]
 
->![openpaas-servicepack-15]
+![openpaas-servicepack-15]
  
->![openpaas-servicepack-16]
+![openpaas-servicepack-16]
 
->![openpaas-servicepack-17]
+![openpaas-servicepack-17]
 
 ◎ Example of Pivotal Service Dashboard
 - Example of clearDB Dashboard  
 [picture reference] https://www.cleardb.com/
->![openpaas-servicepack-18]
+![openpaas-servicepack-18]
 
->![openpaas-servicepack-19]
+![openpaas-servicepack-19]
  
 ##### <a name="13"/>2.5.2. Provision API Guide
 When the broker sends a provision request from the Cloud Controller, it creates a new service instance for the developer. Provision results vary depending on the type of services in provision.
@@ -351,17 +351,17 @@ Note: The instance_id of the service instance is provided by the Cloud Controlle
 
 1.3.	Body
 
->![8](https://user-images.githubusercontent.com/104418463/200230229-73949202-3a1e-4388-8a6a-17da4bdf64dc.png)
+![8](https://user-images.githubusercontent.com/104418463/200230229-73949202-3a1e-4388-8a6a-17da4bdf64dc.png)
 
 2. Response
 2.1. Status Code
 
->![9](https://user-images.githubusercontent.com/104418463/200230289-623dc721-71f9-4f1e-803d-9dce5161ad6a.png)
+![9](https://user-images.githubusercontent.com/104418463/200230289-623dc721-71f9-4f1e-803d-9dce5161ad6a.png)
 
 2.2.	Body 
 All response bodies are in the format JSON Object ({}).
 
->![10](https://user-images.githubusercontent.com/104418463/200230346-63b448c7-d300-464a-bdcf-d4501e6e820c.png)
+![10](https://user-images.githubusercontent.com/104418463/200230346-63b448c7-d300-464a-bdcf-d4501e6e820c.png)
 
 
 2.3.	Dashboard Single Sign-On.
@@ -512,7 +512,7 @@ Note: instance_id is the GUID of the previous provision service instance
 
 1.3.	Body
 	
->![12](https://user-images.githubusercontent.com/104418463/200230543-bb440800-baa3-43aa-ada2-fc2c0b6a3add.png)
+![12](https://user-images.githubusercontent.com/104418463/200230543-bb440800-baa3-43aa-ada2-fc2c0b6a3add.png)
 
 
 
@@ -521,7 +521,7 @@ Note: instance_id is the GUID of the previous provision service instance
 2.1.	Status Code
 STATUS CODE	DESCRIPTION
 	
->![13](https://user-images.githubusercontent.com/104418463/200230554-3bf778bd-b060-42c9-ab17-09d5eaa3edcc.png)
+![13](https://user-images.githubusercontent.com/104418463/200230554-3bf778bd-b060-42c9-ab17-09d5eaa3edcc.png)
 
 
 
@@ -605,7 +605,7 @@ When a broker receives a deployment request from an open cloud platform, it dele
 	DELETE /v2/service_instances/:instance_id
 
 1.2.	Parameters
->![14](https://user-images.githubusercontent.com/104418463/200230594-7d1fdabb-4222-4a39-8480-d031df1fdcb1.png)
+![14](https://user-images.githubusercontent.com/104418463/200230594-7d1fdabb-4222-4a39-8480-d031df1fdcb1.png)
 
 
 1.3.	cURL
@@ -614,7 +614,7 @@ When a broker receives a deployment request from an open cloud platform, it dele
 
 2.	Response
 2.1.	Status Code
->![15](https://user-images.githubusercontent.com/104418463/200230609-8d1b625a-b955-4705-9597-7bf00bd56b51.png)
+![15](https://user-images.githubusercontent.com/104418463/200230609-8d1b625a-b955-4705-9597-7bf00bd56b51.png)
 
 
 2.2.	Body 
@@ -745,27 +745,27 @@ Note: The binding_id is provided by the Cloud Controller to perform service bind
 
 1.3.	Body
 	
->![16](https://user-images.githubusercontent.com/104418463/200230689-2129b7d0-f168-4a32-a6f6-34b200126a91.png)
+![16](https://user-images.githubusercontent.com/104418463/200230689-2129b7d0-f168-4a32-a6f6-34b200126a91.png)
 
 
 2.	Response
 <br/>
 2.1.	Status Code
 	
->![17](https://user-images.githubusercontent.com/104418463/200230699-ff968e7c-4687-4fdf-adad-bcd8052701d6.png)
+![17](https://user-images.githubusercontent.com/104418463/200230699-ff968e7c-4687-4fdf-adad-bcd8052701d6.png)
 
 A different status code response means failure.
 
 2.2.	Body 
 	
->![18](https://user-images.githubusercontent.com/104418463/200230721-7510158a-b8aa-4799-9cd4-1ad776780827.png)
+![18](https://user-images.githubusercontent.com/104418463/200230721-7510158a-b8aa-4799-9cd4-1ad776780827.png)
 
 2.3.	Binding Credentials 
 <br/>
 In the case of service binding, authentication information that the user can use in the application is returned in response to the bind API call. Provide these credentials to the open cloud platform environment variable VCAP_SERVICES. It is recommended to be used in the Credentials field list. Use if the fields provided meet the user's requirements. Additional fields can be provided as needed.
 
 Important: If you provide a service that supports the connection string, at least the uri key must be provided. As mentioned above, a separate credential field may also be provided. Buildpacks and Application libraries use the uri key.
->![19](https://user-images.githubusercontent.com/104418463/200230745-5a2562cd-5057-47b9-b6b4-51e86d625983.png)
+![19](https://user-images.githubusercontent.com/104418463/200230745-5a2562cd-5057-47b9-b6b4-51e86d625983.png)
 
 
 ◎ Example VCAP_SERVICES result
@@ -954,7 +954,7 @@ When a broker receives an unbind request from an open cloud platform, it deletes
 
 1.2.	Parameters
 		
->![20](https://user-images.githubusercontent.com/104418463/200230796-e806bb72-d27a-40e4-9b48-8bcb26fca760.png)
+![20](https://user-images.githubusercontent.com/104418463/200230796-e806bb72-d27a-40e4-9b48-8bcb26fca760.png)
 
 
 1.3.	cURL
@@ -965,7 +965,7 @@ When a broker receives an unbind request from an open cloud platform, it deletes
 <br/>
 2.1.	Status Code
 		
->![21](https://user-images.githubusercontent.com/104418463/200230828-578c1f1a-81a2-40e4-8da7-327472c09f73.png)
+![21](https://user-images.githubusercontent.com/104418463/200230828-578c1f1a-81a2-40e4-8da7-327472c09f73.png)
 
 
 2.2.	Body 
@@ -1083,7 +1083,7 @@ Refer: If the service back-end (refer to the software: 2.2 Service Architecture 
 
 #### <a name="20"/>3.2.	Bosh Architecture
  
->![openpaas-servicepack-33]  
+![openpaas-servicepack-33]  
 > [picture reference]: http://www.cloudsofchange.com/2012/05/fork-in-road-to-cloud.html
 
 -	Similar to open cloud platform architecture (Message Bus, Health Monitor, Blobstore, etc.)
@@ -1091,7 +1091,7 @@ Refer: If the service back-end (refer to the software: 2.2 Service Architecture 
 -	CPIs implementation varies depending on the type of IaaS. (CPI: Cloud Provider Interface)
 -	Workers are responsible for executing tasks determined by the Director
 
->![openpaas-servicepack-34]  
+![openpaas-servicepack-34]  
 > [picture reference]: https://www.ibm.com/developerworks/community/blogs/fe313521-2e95-46f2-817d-44a4f27eba32/entry/porting_cloud_foundry_on_power8_ubuntu_le?lang=en
 
 #### <a name="21"/>3.3.	Release Directory Configuration
@@ -1100,49 +1100,49 @@ The directory structure can be configured with the Bosh release. Bosh is an open
 ##### <a name="22"/>3.3.1. packages
 Packages provide the information necessary to prepare a binary dependency for Bosh release installation. (packaging, pre_packaging, spec file)
 
->![openpaas-servicepack-35]
+![openpaas-servicepack-35]
  
 ##### <a name="23"/>3.3.2. jobs
 It consists of the operations and shutdown scripts of the installed packages and the monitoring script.
 
->![openpaas-servicepack-36]
+![openpaas-servicepack-36]
 
 ##### <a name="24"/>3.3.3. src
 Configures a component source code or pre-compiled software file used in a service release.
  
->![openpaas-servicepack-37]
+![openpaas-servicepack-37]
  
 ##### <a name="25"/>3.3.4. shared
 Manage common component sources such as ruby and lib. (Option)
  
->![openpaas-servicepack-38]
+![openpaas-servicepack-38]
  
 ##### <a name="26"/>3.3.5. releases
 -	Manage version-specified service release yml files. (yaml installation method)
 -	Manage version-specified service release tgz zipped files. (tarball installation method)
 -	Refer to the development guide below for the installation method of Yaml and tarball.
  
->![openpaas-servicepack-39]
+![openpaas-servicepack-39]
 
 ##### <a name="27"/>3.3.6. config
 Configure the URL and the settings file for access credentials in the Bosh blobstore for storing the final release.
  
->![openpaas-servicepack-40]
+![openpaas-servicepack-40]
 
 ##### <a name="28"/>3.3.7. final_builds
 Provides public blobstore information for final jobs and packages.
 
->![openpaas-servicepack-41]
+![openpaas-servicepack-41]
  
 ##### <a name="29"/>3.3.8. deployments
 manages service deployment manifest files by IaaS.
  
->![openpaas-servicepack-42]
+![openpaas-servicepack-42]
 
 ##### <a name="30"/>3.3.9. content_migrations
 Manage migration information files from this version. (Option)
  
->![openpaas-servicepack-43]
+![openpaas-servicepack-43]
  
 #### <a name="31"/>3.4.Development Guide
 <br/>
@@ -1259,7 +1259,7 @@ The meter information of the package to be installed is provided such as name, d
 	(4.2 After creating the spec file, add the contents of the dependencies if there is a dependency)
 Example) dependency graph
  
->![openpaas-servicepack-44]  
+![openpaas-servicepack-44]  
 [picture reference]: https://bosh.io/docs/create-release.html
 
 4.2	Create spec script file automatically by using the “bosh generate package PACKAGE_NAME” command.  
@@ -1575,7 +1575,7 @@ The contents of the BOSH Deployment Manifest are as follows.
 1.	Deployment Identification
 name [String, required]: Name of deployment. A single BOSH Director manages multiple deployments and distinguishes them by their names.
 director_uuid [String, required]: The BOSH CLI must match the UUID of the current target BOSH Director to allow all operations on the deployment. Through the 'bosh status' CLI, you can check the UUID currently targeted by the BOSH Director.
->![openpaas-servicepack-45]
+![openpaas-servicepack-45]
 
 bosh status CLI
  
@@ -1910,13 +1910,13 @@ Provides the bosh deploy CLI command which deploys Software(servicepack software
 Proceed to deployment with the procedures below.
 
 1. Save the deployment manifest file to deploy at the BOSH.(bosh deployment CLI)
->![openpaas-servicepack-46]
+![openpaas-servicepack-46]
  
 2. Deploy Software. (bosh deploy CLI)
->![openpaas-servicepack-47]
+![openpaas-servicepack-47]
  
 3. Check the deployed software. (bosh vms)
->![openpaas-servicepack-48]
+![openpaas-servicepack-48]
 
  [openpaas-servicepack-01]:./images/openpaas-servicepack/openpaas-servicepack-01.PNG
  [openpaas-servicepack-02]:./images/openpaas-servicepack/openpaas-servicepack-02.PNG

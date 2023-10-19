@@ -413,7 +413,7 @@ Target: https://uaa.<DOMAIN>
 Context: admin, from client admin
 ```
 - redirect error - portalclient not registered 
-![paas-ta-portal-31]  
+![paas-ta-portal-1]  
 1. If the uaac portal client is not registered, a redirect error occurs as shown on the screen.
 2. You must add the portalclient through uaac client add.
 > $ uaac client add <PORTAL_UAA_CLIENT_ID> -s <PORTAL_UAA_CLIENT_SECRET> --redirect_uri <PORTAL_WEB_USER_URI>, <PORTAL_WEB_USER_URI>/callback --scope   "cloud_controller_service_permissions.read , openid , cloud_controller.read , cloud_controller.write , cloud_controller.admin" --authorized_grant_types "authorization_code , client_credentials , refresh_token" --authorities="uaa.resource" --autoapprove="openid , cloud_controller_service_permissions.read"  
@@ -429,7 +429,7 @@ $ uaac client add portalclient -s clientsecret --redirect_uri "http://portal-web
 ```
 
 - redirectError - Error registering redirect_uri in the portalclient
-![paas-ta-portal-32]  
+![paas-ta-portal-2]  
 1. If uri is registered incorrectly in the uaac portal client, a redirect error occurs as shown on that screen.
 2. The uri should be modified through the uaac client update.
 > $ uaac client update portalclient --redirect_uri "<PORTAL_WEB_USER_URI>, <PORTAL_WEB_USER_URI>/callback"   
@@ -445,31 +445,31 @@ After installing the Paas-TA Portal, you must register the build pack and servic
 - [Catalog Image Download](https://nextcloud.paas-ta.org/index.php/s/EmzfJw38H4GQKTr/download)
 
 1. Access the Administrator Portal.(portal-web-admin.\<DOMAIN\>)  
-![22](https://user-images.githubusercontent.com/104418463/200229183-e694af80-1d0f-485b-b172-457506058dac.png)
+![paas-ta-portal-3]
 2. Click Operation Management.
-![23](https://user-images.githubusercontent.com/104418463/200229202-3166c4ae-5d23-4a9c-a8f8-30fbccd480cd.png)
+![paas-ta-portal-4]
 3. Go to the catalog page.
-![24](https://user-images.githubusercontent.com/104418463/200229210-997cad41-5c10-4ab0-95c2-be89158f4993.png)
+![paas-ta-portal-5]
 4. Go to the build pack and service pack detail screen, enter the value in each item column, and click Save.
-![25](https://user-images.githubusercontent.com/104418463/200229220-d6e9b7cd-a15d-48df-bd2d-7766c7049a7b.png)
-
-   ※ 카탈로그 등록 및 수정 시 카탈로그 관리 코드는 선택 필수이며, 현재 사용 가능한 코드가 없는 경우 다음 내용을 참고하여 처리하도록 한다.
-   1. ①"코드 관리"를 클릭한다.
-   2. **Group Table**에서 해당하는 ②"분류 코드"를 클릭한다.
-   3. **Detail Table**에 ③"등록"버튼을 클릭하여 카탈로그 관리 코드를 추가 후 사용한다.
-   ![25-1](https://github.com/K-PaaS/application-platform-guide-eng/assets/107905603/045ed7a2-e753-43ec-ac72-de8114ea60d9)
+![paas-ta-portal-6]
+   ※ The catalog management code is required when registering and modifying catalogs. When there is no code available as of the moment, follow the instruction below.
+   1. ① Click "Manage Code".
+   2. From the **Group Table**, click the corresponding ② "Code Category".
+   3. Click the "Register" button to add the catalog management code to the **Detail Table** and use it.
+   ![paas-ta-portal-7]
 
 5. Check whether the changed value is applied in the user portal.
-![paas-ta-portal-19]   
+![paas-ta-portal-8]   
 
-[paas-ta-portal-01]:./images/Paas-TA-Portal_App_01.png
-[paas-ta-portal-15]:./images/Paas-TA-Portal_15.png
-[paas-ta-portal-16]:./images/Paas-TA-Portal_16.png
-[paas-ta-portal-17]:./images/Paas-TA-Portal_17.png
-[paas-ta-portal-18]:./images/Paas-TA-Portal_18.png
-[paas-ta-portal-18-1]:./images/Paas-TA-Portal_18-1.png
-[paas-ta-portal-19]:./images/Paas-TA-Portal_19.png
-[paas-ta-portal-31]:./images/Paas-TA-Portal_27.jpg
-[paas-ta-portal-32]:./images/Paas-TA-Portal_28.jpg
+[paas-ta-portal-1]:./images/Portal_1.jpg
+[paas-ta-portal-2]:./images/Portal_2.jpg
+[paas-ta-portal-3]:./images/Portal_3.png
+[paas-ta-portal-4]:./images/Portal_4.png
+[paas-ta-portal-5]:./images/Portal_5.png
+[paas-ta-portal-6]:./images/Portal_6.png
+[paas-ta-portal-7]:./images/Portal_7.png
+[paas-ta-portal-8]:./images/Portal_8.png
+
+
 
 ### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > Portal Container Type

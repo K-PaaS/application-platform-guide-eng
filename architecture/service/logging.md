@@ -7,7 +7,7 @@ This document provides the Architecture of Application Platform (AP) - Logging S
 ## System Configuration Diagram
 
 
-![logging_architecture_eng](https://user-images.githubusercontent.com/104418463/165663396-cc2ffddf-60a1-45b0-874a-d6ba34888c90.png)
+![logging_architecture_eng](./image/logging_architecture.png)
 
 
 

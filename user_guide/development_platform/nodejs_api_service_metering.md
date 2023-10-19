@@ -276,7 +276,7 @@ applications:
     AUTH_SERVER: https://api.bosh-lite.com:443					# oauth Service Endpoint
     CLIENT_ID: abacus	                    					# oauth authentication id
     CLIENT_SECRET: secret                     					# oauth id password
-    JWTKEY: |+                             						# 앱을 secured mode로 서비스 하기 위해 Auth Server와 유효성 체크를 하는 인증 서비스 공개키 
+    JWTKEY: |+                             						# Authentication service public key that validates with the Auth Server to service the app in secured mode. 
       -----BEGIN PUBLIC KEY-----
       MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDHFr+KICms+tuT1OXJwhCUmR2d
       KVy7psa8xzElSyzqx7oJyfJ1JZyOzToj9T5SfTIq396agbHJWVfYphNahvZ/7uMX

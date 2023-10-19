@@ -14,11 +14,11 @@
   2.4. [Deployment File Modification](#2.4)  
   2.5. [Service Installation](#2.5)      
   2.6. [Sercice Installation Check](#2.6)  
-  2.7. [Deploy Portal Log API](#2.7)  
+  2.7. [Portal Log API Deployment](#2.7)  
   2.7.1 [Portal VM Type](#2.7.1)  
   2.7.2 [Portal App Type](#2.7.2)
 
-3. [Logging Service management](#3)  
+3. [Logging Service Management](#3)  
   3.1. [Enable Logging Service ](#3.1)   
 
 
@@ -27,9 +27,9 @@
 
 ### <div id="1.1"/> 1.1. Purpose
 
-본 문서(Logging Service 설치 가이드)는 Bosh를 이용하여 Logging Service를 설치 하는 방법을 기술하였다.  
-Logging Service를 설치할 경우, **설치된 시점**을 기준으로 cf로 배포한 app의 누적된 log를 확인 할 수 있다.  
-보관기간은 운영기관에 따라 상이하며, 기본은 7일이다.
+This document (Logging Service Installation Guide) shows how to install the Logging Service using Bosh.  
+When installing the Logging Service, user can check the accumulated logs of apps deployed with cf based on the **time of installation**.  
+The storage period varies depending on the operating organization, and the default is 7 days.
 
 ### <div id="1.2"/> 1.2. Range
 
@@ -45,8 +45,8 @@ Cloud Foundry Document: [https://docs.cloudfoundry.org](https://docs.cloudfoundr
 
 ## <div id="2.1"/> 2.1. Prerequisite
 
-본 설치 가이드는 Linux 환경에서 설치하는 것을 기준으로 하였다.  
-서비스 설치를 위해서는 **BOSH**와 **PaaS-TA**, **Portal** 설치가 선행되어야 한다.
+This installation guide is based on installing in a Linux environment.  
+To install the service, you need to install **BOSH**, **PaaS-TA**, and **Portal**.
 
 ## <div id="2.2"/> 2.2. Stemcell 확인
 
@@ -120,16 +120,16 @@ stemcell_version: "1.181"                       # Stemcell Version
 
 
 # VARIABLE
-syslog_forwarder_custom_rule: 'if ($msg contains "DEBUG") then stop'    # PaaS-TA Logging Agent에서 전송할 Custom Rule
+syslog_forwarder_custom_rule: 'if ($msg contains "DEBUG") then stop'    #  Custom Rule to send from PaaS-TA Logging Agent
 syslog_forwarder_fallback_servers: []
-portal_deploy_type: "vm"                        # PaaS-TA Portal 배포 타입(vm, app)
+portal_deploy_type: "vm"                        # PaaS-TA Portal deploy type(vm, app)
 
 
 # Fluentd
 fluentd_azs: ["z4"]                             # fluentd : azs
 fluentd_instances: 1                            # fluentd : instances (1)
 fluentd_vm_type: "small"                        # fluentd : vm type
-fluentd_network: "default"                      # fluentd 네트워크
+fluentd_network: "default"                      # fluentd network
 fluentd_ip: "10.0.1.105"
 fluentd_port: "3514"                            # fluentd Port
 fluentd_transport: "tcp"                        # fluentd Logging Protocol
@@ -139,18 +139,18 @@ fluentd_transport: "tcp"                        # fluentd Logging Protocol
 influxdb_azs: ["z4"]                            # InfluxDB : azs
 influxdb_instances: 1                           # InfluxDB : instances (1)
 influxdb_vm_type: "large"                       # InfluxDB : vm type
-influxdb_network: "default"                     # InfluxDB 네트워크
-influxdb_persistent_disk_type: "10GB"           # InfluxDB 영구 Disk 종류
+influxdb_network: "default"                     # InfluxDB network
+influxdb_persistent_disk_type: "10GB"           # InfluxDB persistent disk type
 
 influxdb_ip: "10.0.1.115"
 influxdb_http_port: "8086"                      # default 8086
-influxdb_username: "admin"                      # InfluxDB Admin 계정 Username
-influxdb_password: "PaaS-TA2022"                # InfluxDB Admin 계정 Password
+influxdb_username: "admin"                      # InfluxDB Admin Account Username
+influxdb_password: "PaaS-TA2022"                # InfluxDB Admin Account Password
 influxdb_interval: "7d"                         # InfluxDB Retention Policy (bootstrapper)
-influxdb_https_enabled: "true"                  # InfluxDB HTTPS 설정
+influxdb_https_enabled: "true"                  # InfluxDB HTTPS Setting
 
-influxdb_database: "logging_db"                 # InfluxDB Database명
-influxdb_measurement: "logging_measurement"     # InfluxDB Measurement명
+influxdb_database: "logging_db"                 # InfluxDB Database Name
+influxdb_measurement: "logging_measurement"     # InfluxDB Measurement Name
 influxdb_time_precision: "s"                    # hour(h), minutes(m), second(s), millisecond(ms), microsecond(u), nanosecond(ns)
 
 # COLLECTOR
@@ -160,7 +160,7 @@ collector_vm_type: "small"                      # collector : vm type
 collector_network: "default"                    # collector network
 ```  
 
-## <div id="2.5"/> 2.5. 서비스 설치
+## <div id="2.5"/> 2.5. Service Installation
 
 - Modify the VARIABLES settings in the Deploy script file to suit the server environment 
 
@@ -174,7 +174,7 @@ COMMON_VARS_PATH="<COMMON_VARS_FILE_PATH>"              # common_vars.yml File P
 BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"                  # bosh director alias name (When not using create-bosh-login.sh provided by PaaS-TA, check the name at bosh envs and enter)
 
 
-# Portal 설치 타입 및 프로토콜 종류에 따라 옵션 파일 사용 여부를 분기한다.
+# Depending on the type of Portal installation and protocol type, bifurcate the option file usage.
 PORTAL_DEPLOY_TYPE=`grep portal_deploy_type vars.yml | cut -d "#" -f1`
 FLUENTD_TRANSPORT=`grep fluentd_transport vars.yml`
 
@@ -236,14 +236,14 @@ influxdb/e8fc41b5-e5ed-4176-ad5b-216d2cccf88b   running        z1  10.0.1.115  7
 
 ```
 
-## <div id="2.7"/> 2.7. Portal Log API 배포
+## <div id="2.7"/> 2.7. Portal Log API Deployment
 
-Logging 서비스를 활성화 하기 위해서는 Portal Log API를 배포해야 한다.  
-Portal 배포 시 Log API를 배포했다면 [3. Logging 서비스 관리](#3)부터 진행한다.
+To enable Logging service, Portal Log API must be deployed.  
+When Log API is already deployed when deploying Portal, continue from [3. Logging Service Management](#3).
 
 ### <div id="2.7.1"/> 2.7.1. Portal VM Type
 
-- Portal API에서 사용하는 변수 파일을 수정한다.
+- Modify the variable file used in Portal API.
 
 > $ vi ~/workspace/portal-deployment/portal-api/vars.yml
 
@@ -268,14 +268,14 @@ log_api_influxdb_query_limit: "50"                              # portal-log-api
 ...
 
 ```
-- 서비스를 설치한다.
+- Install Service.
 
 ```
 $ cd ~/workspace/portal-deployment/portal-api   
 $ sh ./deploy.sh  
 ```
 
-- 설치 완료된 서비스를 확인한다.
+- Check the installed Service.
 
 > $ bosh -e ${BOSH_ENVIRONMENT} -d portal-api vms
 ```diff
@@ -304,7 +304,7 @@ $ sh ./deploy.sh
 ```
 ### <div id="2.7.2"/> 2.7.2. Portal App Type
 
-- Portal App에서 사용하는 Manifest 파일을 수정한다.
+- Modify the Manifest file used in Portal App.
 
 > $ vi ~/workspace/portal-container-infra/portal-app/portal-app-1.2.13/portal-log-api-2.3.2/manifest.yml
 ```yaml
@@ -331,7 +331,7 @@ applications:
 
 ```
 
-- App을 배포한다.
+- Deploy App.
 
 ```
 $ cd ~/workspace/portal-container-infra/portal-app/portal-app-1.2.13/portal-log-api-2.3.2   
@@ -379,11 +379,11 @@ There are no running instances of this process.
 ``` 
 <br>
 
-# <div id="3"/>3.  Logging 서비스 관리
+# <div id="3"/>3.  Logging Service Management
 
-서비스 설치가 완료 되면, PaaS-TA 포탈에서 서비스를 사용하기 위해 Logging 서비스 활성화 코드 등록을 해 주어야 한다.
+After the service installation is complete, register the Logging service activation code to use the service in the PaaS-TA portal.
 
-## <div id="3.1"/>  3.1. Logging 서비스 활성화
+## <div id="3.1"/>  3.1. Enable Logging Service
 
 -	Access the PaaS-TA operator portal and log in.
 ![002]
@@ -393,18 +393,18 @@ There are no running instances of this process.
 > ※ Group Table  
 > Code ID  : LOGGING  
 > Code Name : Logging Service  
-> ![003]
+![003]
 >
 > ※ Detail Table  
 > Key : enable_logging_service  
 > Value : true  
 > Outline : Logging Service Enable Code   
 > Use : Y  
-> ![004]
+![004]
 
 ![005]
 
-[001]:./images/logging-service/image001.png
+
 [002]:./images/logging-service/image002.png
 [003]:./images/logging-service/image003.png
 [004]:./images/logging-service/image004.png

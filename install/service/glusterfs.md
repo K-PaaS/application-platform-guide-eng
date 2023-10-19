@@ -555,19 +555,7 @@ memory usage:   1024M
 
 ![glusterfs_image_19]
 
-[glusterfs_image_01]:./images/glusterfs/glusterfs_image_01.png
 
-[glusterfs_image_07]:./images/glusterfs/glusterfs_image_07.png
-[glusterfs_image_08]:./images/glusterfs/glusterfs_image_08.png
-[glusterfs_image_09]:./images/glusterfs/glusterfs_image_09.png
-[glusterfs_image_10]:./images/glusterfs/glusterfs_image_10.png
-[glusterfs_image_11]:./images/glusterfs/glusterfs_image_11.png
-[glusterfs_image_12]:./images/glusterfs/glusterfs_image_12.png
-[glusterfs_image_13]:./images/glusterfs/glusterfs_image_13.png
-[glusterfs_image_14]:./images/glusterfs/glusterfs_image_14.png
-[glusterfs_image_15]:./images/glusterfs/glusterfs_image_15.png
-[glusterfs_image_16]:./images/glusterfs/glusterfs_image_16.png
-[glusterfs_image_17]:./images/glusterfs/glusterfs_image_17.jpeg
 [glusterfs_image_18]:./images/glusterfs/glusterfs_image_18.png
 [glusterfs_image_19]:./images/glusterfs/glusterfs_image_19.png
 

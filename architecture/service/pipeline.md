@@ -6,7 +6,7 @@ This document provides the Architecture of Application Platform (AP) - Pipeline 
 
 ## System Configuration Diagram
 
-![pipeline_architecture_eng](https://user-images.githubusercontent.com/104418463/165662258-65112aba-dfcc-4963-8361-5360b7a59fbb.png)
+![pipeline_architecture_eng](./image/pipeline_architecture.png)
 
 
 

@@ -463,7 +463,7 @@ scclient
 > GIT and SVN repository are provided as configuration management services.  
 > Minimum requirements were made by configuration management server and configuration management service broker.
 >  
-> ![3-2-2]
+![3-2-2]
 
 - Access to PaaS-TA user portal then request for service through catalog.   
 
@@ -502,7 +502,7 @@ OK
  ... (Skip) ...
  ```
  
-[source_controller_service_guide01]:.images/source-control/source_controller_service_guide01.PNG
+
 [3-1-1]:./images/source-control/adminPortal_login.png
 [3-1-2]:./images/source-control/adminPortal_serviceBroker.png
 [3-1-3]:./images/source-control/adminPortal_serviceControl.png

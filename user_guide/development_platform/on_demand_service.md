@@ -42,11 +42,11 @@ This chapter defines the terms used and describes the on-demand architecture.
 
 ### <a name="21"/>2.1. On-Demand Service Architecture and Process
 
->![On-Demand_Image_01]
+![On-Demand_Image_01]
 
 **Picture 2-1 On-demand service architecture on an open cloud platform**
 
->![On-Demand_Image_02]
+![On-Demand_Image_02]
 
 **Picture 2-2 On-demand service processes on an open cloud platform**
 
@@ -88,7 +88,7 @@ The Services API is a version of the independent cloud controller API. This make
 The open cloud platform Service API defines the protocol between the Cloud Controller and the Service Broker. Broker is implemented in HTTP (or HTTPS) endpoints URI format. One or more services may be provided by one broker, and load balancing and horizontal scalability may be provided.
 
 #### <a name="31"/>3.1. Service Architecture
->![On-Demand_Image_03]  
+![On-Demand_Image_03]  
 [Picture Source]: http://docs.cloudfoundry.org/services/overview.html
 
 
@@ -97,20 +97,20 @@ called Service Broker API. The Services API is an independent version of the clo
 This makes external applications available on the platform. (database, message queue, rest endpoint, etc)
 
 #### <a name="32"/>3.2. Service Broker API Architecture
->![On-Demand_Image_04]  
+![On-Demand_Image_04]  
 [Picture Source]: http://docs.cloudfoundry.org/services/api.html
 
 The Open Cloud Platform Service API is a protocol between Cloud Controller and Service Broker (catalog, provision, deprovision, update provision plan, bind, unbound), and the Service Broker implements it as a RESTful API and registers it with the Cloud Controller.
 
 #### <a name="33"/>3.3. Pivotal(Cloud Foundry) Marketplace Model
->![On-Demand_Image_05]  
+![On-Demand_Image_05]  
 [Picture Source]: http://www.slideshare.net/platformcf/cloud-foundry-marketplacepowered-by-appdirect
 
 It is a leader in cloud service marketplace and management solutions, and has established a marketplace of many global companies. (Samsung, Cloud Foundry, ETC)
 AppDirect provides Cloud Foundry service brokerages and additional services.
 
 Description of Service Provider and Cloud Foundry integration
->![On-Demand_Image_06]
+![On-Demand_Image_06]
 [Picture Source]: http://www.slideshare.net/platformcf/cloud-foundry-marketplacepowered-by-appdirect
 
 # <a name="4"/>4. On-Demand Service Broker API Development Guide

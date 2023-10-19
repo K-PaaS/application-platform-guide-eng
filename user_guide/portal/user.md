@@ -125,7 +125,8 @@ This chapter describes the account creation and password reset screen for using 
 5.  Click the "Verify Email Address" link in the received email.<br>
 
      > **Email Format to Receive**
-     > ![email]
+     
+     ![email]
 
 6.  Enter Username and Password. Click “Create Account" to complete the account creation.
 
@@ -142,7 +143,8 @@ This chapter describes the account creation and password reset screen for using 
 3.  Click the "Reset Password" link in the received email.
 
      > **Email Format to Receive**
-     > ![passwordemail]
+     
+     ![passwordemail]
 
 4.  Enter new password. Click the “Change” button to complete the password reset. 
 ![2-2-2]

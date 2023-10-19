@@ -7,7 +7,7 @@ This document provides the Architecture of Application Platform (AP) - GlusterFS
 ## System Configuration Diagram
 
 
-![glusterfs_architecture_eng](https://user-images.githubusercontent.com/104418463/165661493-865ad1b2-7cb6-4504-a287-449dca50c399.png)
+![glusterfs_architecture_eng](./image/glusterfs_architecture.png)
 
 
 <br>

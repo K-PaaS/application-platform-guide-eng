@@ -10,7 +10,7 @@ MongoDB uses Sharding to support the configuration required for very large datas
 MongoDB's Replica Set is a group of MongoDB processes that maintain the same dataset, providing redundancy and high availability.
 The Config server stores all meta-information required by the shard cluster.
 
-![mongodb_architecture_eng](https://user-images.githubusercontent.com/104418463/165661071-6b87f9d8-659a-449b-84bd-0eb4eda101cb.png)
+![mongodb_architecture_eng](./image/mongodb_architecture.png)
 
 
 <br>

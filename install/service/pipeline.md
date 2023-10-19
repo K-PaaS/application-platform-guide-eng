@@ -598,7 +598,7 @@ binary_buildpack         12         true      false    binary_buildpack-cflinuxf
 > A pipeline designed for development.  
 > Minimum requirements were made by Deployment Pipeline Server and Deployment Pipeline Service Broker.
 >  
-> ![3-2-2]
+![3-2-2]
 
 - Access to PaaS-TA user portal then request for service through catalog.   
 
@@ -638,7 +638,6 @@ OK
  ```
 
 
-[1-1-3]:./images/pipeline/Delivery_Pipeline_Architecture.jpg
 [3-1-1]:./images/pipeline/adminPortal_login.png
 [3-1-2]:./images/pipeline/adminPortal_serviceBroker.png
 [3-1-3]:./images/pipeline/adminPortal_serviceControl.png

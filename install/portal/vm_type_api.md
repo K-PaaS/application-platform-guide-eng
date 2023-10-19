@@ -298,7 +298,7 @@ COMMON_VARS_PATH="<COMMON_VARS_FILE_PATH>"              # common_vars.yml File P
 CURRENT_IAAS="${CURRENT_IAAS}"                          # IaaS Information (When not using create-bosh-login.sh provided by PaaS-TA enter aws/azure/gcp/openstack/vsphere)
 BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"                  # bosh director alias name (When not using create-bosh-login.sh provided by PaaS-TA, check the name at bosh envs and enter)
 
-# portal-log-api 인스턴스 갯수에 따라 logging service 활성화 여부를 분기한다.
+# Depending on the number of portal-log-api instances, bifurcate whether to enable or disable the logging service.
 LOG_API_INSTANCE_CNT=`grep 'log_api_instances' vars.yml | cut -d ":" -f2 | cut -d "#" -f1`
 
 # DEPLOY
@@ -372,7 +372,7 @@ Feature user_org_creation Enabled.
 
 ### <div id="3.2"/> 3.2. User portal UAA page error
 
->![paas-ta-portal-31]
+![paas-ta-portal-1]
 1. IF the uaac portal client is not registered, a redirect error occurs as shown on the screen.
 2. You must add the portalclient through uaac client add.
     > $ uaac target\
@@ -388,7 +388,7 @@ $ uaac client add portalclient -s xxxxx --redirect_uri "http://portal-web-user.x
 --authorities="uaa.resource" \
 --autoapprove="openid , cloud_controller_service_permissions.read"
 
- >![paas-ta-portal-32]
+![paas-ta-portal-2]
 1. IF url is registered incorrectly in the uaac portal client, a redirect error occurs as shown on the screen.
 2. The url should be modified through the uaac client update.
    > $ uaac target\
@@ -407,19 +407,19 @@ Describes how to migrate the Portal DB used in previous versions to the PaaS-TA 
 ##### 1. DB tool is used to connect existing DB and Paas-TA 3.5 Portal DB.
  * The migration description using the DB tool of the guide is based on navicat.
 ##### 2. Delete all record data in the table to be migrated.
->![paas-ta-portal-25]
+![paas-ta-portal-9]
 ##### 3. Tools - Click Data Transfer to display the Migration Settings window.
->![paas-ta-portal-21]
+![paas-ta-portal-10]
 ##### 4. Set source DB (existing DB) and target DB (Paas-TA 3.5 Portal DB) to be migrated.
->![paas-ta-portal-20]
+![paas-ta-portal-11]
 ##### 5. Go to the option, uncheck the Create tables option in the Table Options, check the Contiune on error in the Order Options, and press next.
->![paas-ta-portal-24]
+![paas-ta-portal-12]
 ##### 6. Set the table to move the data and press next.
->![paas-ta-portal-22]
+![paas-ta-portal-13]
 ##### 7-1. Migration completed successfully
->![paas-ta-portal-23]
+![paas-ta-portal-14]
 ##### 7-2. Migration error 
->![paas-ta-portal-26]
+![paas-ta-portal-15]
 ##### 7-3. After correcting it according to the design of the Paas-TA Portal table that failed in the existing DB, we proceed with the migration again.
 
 ### <div id="3.5"/> 3.5. Log
@@ -519,59 +519,38 @@ You can check the log of each instance on the Paas-TA Portal.
 After installing the Paas-TA Portal, you must register the build pack and service pack on the administrator portal to use it on the user portal.
 
  1. Access the Administrator Portal.(portal-web-admin.[public ip].nip.io)
-    
-    >![22](https://user-images.githubusercontent.com/104418463/200228947-84c66c35-9939-4f4c-8e5d-65935730e2f9.png)
+ ![paas-ta-portal-3]
  2. Click Operation Management.
-    
-    >![23](https://user-images.githubusercontent.com/104418463/200228961-2227fed4-8bc1-4e80-92fd-9b3b233668ac.png)
+ ![paas-ta-portal-4]
  3. Go to Catalog page.
-    
-    >![24](https://user-images.githubusercontent.com/104418463/200228968-394d913d-27a6-4948-830c-b51685111188.png)
+ ![paas-ta-portal-5]
  4. Go to the buildpack and servicepack detail page, enter the value in each index, and click Save.
-    
-    >![25](https://user-images.githubusercontent.com/104418463/200229056-bfb721e5-102d-4cfd-a239-398610fd6e31.png)
+ ![paas-ta-portal-6]
 
-    ※ 카탈로그 등록 및 수정 시 카탈로그 관리 코드는 선택 필수이며, 현재 사용 가능한 코드가 없는 경우 다음 내용을 참고하여 처리하도록 한다.
-    1. ①"코드 관리"를 클릭한다.
-    2. **Group Table**에서 해당하는 ②"분류 코드"를 클릭한다.
-    3. **Detail Table**에 ③"등록"버튼을 클릭하여 카탈로그 관리 코드를 추가 후 사용한다.
-       ![25-1](https://github.com/K-PaaS/application-platform-guide-eng/assets/107905603/045ed7a2-e753-43ec-ac72-de8114ea60d9)
+    ※ The catalog management code is required when registering and modifying catalogs. When there is no code available as of the moment, follow the instruction below.
+    1. ① Click "Manage Code".
+    2. From the **Group Table**, click the corresponding ② "Code Category".
+    3. Click the "Register" button to add the catalog management code to the **Detail Table** and use it.
+    ![paas-ta-portal-7]
  5. Check whether the changed value is applied in the user portal.
-    
-    >![paas-ta-portal-19]
+ ![paas-ta-portal-8]
 
-[paas-ta-portal-01]:./images/Paas-TA-Portal_01.png
-[paas-ta-portal-02]:./images/Paas-TA-Portal_02.png
-[paas-ta-portal-03]:./images/Paas-TA-Portal_03.png
-[paas-ta-portal-04]:./images/Paas-TA-Portal_04.png
-[paas-ta-portal-05]:./images/Paas-TA-Portal_05.png
-[paas-ta-portal-06]:./images/Paas-TA-Portal_06.png
-[paas-ta-portal-07]:./images/Paas-TA-Portal_07.png
-[paas-ta-portal-08]:./images/Paas-TA-Portal_08.png
-[paas-ta-portal-09]:./images/Paas-TA-Portal_09.png
-[paas-ta-portal-10]:./images/Paas-TA-Portal_10.png
-[paas-ta-portal-11]:./images/Paas-TA-Portal_11.png
-[paas-ta-portal-12]:./images/Paas-TA-Portal_12.png
-[paas-ta-portal-13]:./images/Paas-TA-Portal_13.png
-[paas-ta-portal-14]:./images/Paas-TA-Portal_14.png
-[paas-ta-portal-15]:./images/Paas-TA-Portal_15.png
-[paas-ta-portal-16]:./images/Paas-TA-Portal_16.png
-[paas-ta-portal-17]:./images/Paas-TA-Portal_17.png
-[paas-ta-portal-18]:./images/Paas-TA-Portal_18.png
-[paas-ta-portal-18-1]:./images/Paas-TA-Portal_18-1.png
-[paas-ta-portal-19]:./images/Paas-TA-Portal_19.png
-[paas-ta-portal-20]:./images/Paas-TA-Portal_20.png
-[paas-ta-portal-21]:./images/Paas-TA-Portal_21.png
-[paas-ta-portal-22]:./images/Paas-TA-Portal_22.png
-[paas-ta-portal-23]:./images/Paas-TA-Portal_23.png
-[paas-ta-portal-24]:./images/Paas-TA-Portal_24.png
-[paas-ta-portal-25]:./images/Paas-TA-Portal_25.png
-[paas-ta-portal-26]:./images/Paas-TA-Portal_26.png
-[paas-ta-portal-27]:./images/Paas-TA-Portal_27.PNG
-[paas-ta-portal-28]:./images/Paas-TA-Portal_28.PNG
-[paas-ta-portal-29]:./images/Paas-TA-Portal_29.png
-[paas-ta-portal-31]:./images/Paas-TA-Portal_27.jpg
-[paas-ta-portal-32]:./images/Paas-TA-Portal_28.jpg
+[paas-ta-portal-1]:./images/Portal_1.jpg
+[paas-ta-portal-2]:./images/Portal_2.jpg
+[paas-ta-portal-3]:./images/Portal_3.png
+[paas-ta-portal-4]:./images/Portal_4.png
+[paas-ta-portal-5]:./images/Portal_5.png
+[paas-ta-portal-6]:./images/Portal_6.png
+[paas-ta-portal-7]:./images/Portal_7.png
+[paas-ta-portal-8]:./images/Portal_8.png
+[paas-ta-portal-9]:./images/Portal_9.png
+[paas-ta-portal-10]:./images/Portal_10.png
+[paas-ta-portal-11]:./images/Portal_11.png
+[paas-ta-portal-12]:./images/Portal_12.png
+[paas-ta-portal-13]:./images/Portal_13.png
+[paas-ta-portal-14]:./images/Portal_14.png
+[paas-ta-portal-15]:./images/Portal_15.png
+
 
 
 ### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > Portal VM Type API

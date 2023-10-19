@@ -709,7 +709,7 @@ See the table below for a description of each package.
 </tr>
 <tr><td>MySQL-python</td><td>1.2.3</td><td>Driver to link mysql with Django application</td>
 </tr>
-<tr><td>CUBRID-Python</td><td>>9.3.0.0001</td><td>python과 Cubrid를 연동하는 드라이버</td>
+<tr><td>CUBRID-Python</td><td>>9.3.0.0001</td><td>Driver to link Cubrid with Python</td>
 </tr>
 <tr><td>pymongo</td><td>2.8</td><td>Driver to link python with Mongodb</td>
 </tr>

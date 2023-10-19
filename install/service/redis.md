@@ -620,32 +620,7 @@ Service status : created succeed
 ![11]
 
 
-[redis_image_01]:./images/redis/redis_image_01.png
-[redis_image_02]:./images/redis/redis_image_02.png
-[redis_image_03]:./images/redis/redis_image_03.png
-[redis_image_04]:./images/redis/redis_image_04.png
-[redis_image_05]:./images/redis/redis_image_05.png
-[redis_image_06]:./images/redis/redis_image_06.png
-[redis_image_07]:./images/redis/redis_image_07.png
-[redis_image_08]:./images/redis/redis_image_08.png
-[redis_image_09]:./images/redis/redis_image_09.png
-[redis_image_10]:./images/redis/redis_image_10.png
-[redis_image_11]:./images/redis/redis_image_11.png
-[redis_image_12]:./images/redis/redis_image_12.png
-[redis_image_13]:./images/redis/redis_image_13.png
-[redis_image_14]:./images/redis/redis_image_14.png
-[redis_image_15]:./images/redis/redis_image_15.png
-[redis_image_16]:./images/redis/redis_image_16.png
-[redis_image_17]:./images/redis/redis_image_17.png
-[redis_image_18]:./images/redis/redis_image_18.png
-[redis_image_19]:./images/redis/redis_image_19.png
-[redis_image_20]:./images/redis/redis_image_20.png
-[redis_image_21]:./images/redis/redis_image_21.png
-[redis_image_22]:./images/redis/redis_image_22.png
-[redis_image_23]:./images/redis/redis_image_23.png
-[redis_image_24]:./images/redis/redis_image_24.png
-[redis_image_25]:./images/redis/redis_image_25.png
-[redis_image_26]:./images/redis/redis_image_26.png
+
 [1]:./images/redis/redis_test1.PNG
 [2]:./images/redis/redis_test2.PNG
 [3]:./images/redis/redis_test3.PNG

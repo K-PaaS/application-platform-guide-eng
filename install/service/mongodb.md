@@ -606,48 +606,8 @@ memory usage:   1024M
 
 
 
-[mongodb_image_01]:./images/mongodb/mongodb_image_01.png
-[mongodb_image_02]:./images/mongodb/mongodb_image_02.png
-[mongodb_image_03]:./images/mongodb/mongodb_image_03.png
-[mongodb_image_04]:./images/mongodb/mongodb_image_04.png
-[mongodb_image_05]:./images/mongodb/mongodb_image_05.png
-[mongodb_image_06]:./images/mongodb/mongodb_image_06.png
-[mongodb_image_07]:./images/mongodb/mongodb_image_07.png
-[mongodb_image_08]:./images/mongodb/mongodb_image_08.png
-[mongodb_image_09]:./images/mongodb/mongodb_image_09.png
-[mongodb_image_10]:./images/mongodb/mongodb_image_10.png
-[mongodb_image_11]:./images/mongodb/mongodb_image_11.png
-[mongodb_image_12]:./images/mongodb/mongodb_image_12.png
-[mongodb_image_13]:./images/mongodb/mongodb_image_13.png
-[mongodb_image_14]:./images/mongodb/mongodb_image_14.png
-[mongodb_image_15]:./images/mongodb/mongodb_image_15.png
-[mongodb_image_16]:./images/mongodb/mongodb_image_16.png
-[mongodb_image_17]:./images/mongodb/mongodb_image_17.png
-[mongodb_image_18]:./images/mongodb/mongodb_image_18.png
-[mongodb_image_19]:./images/mongodb/mongodb_image_19.png
-[mongodb_image_20]:./images/mongodb/mongodb_image_20.png
-[mongodb_image_21]:./images/mongodb/mongodb_image_21.png
-[mongodb_image_22]:./images/mongodb/mongodb_image_22.png
 [mongodb_image_23]:./images/mongodb/mongodb_image_23.png
-[mongodb_image_24]:./images/mongodb/mongodb_image_24.png
-[mongodb_image_25]:./images/mongodb/mongodb_image_25.png
-[mongodb_image_26]:./images/mongodb/mongodb_image_26.png
-[mongodb_image_27]:./images/mongodb/mongodb_image_27.png
-[mongodb_image_28]:./images/mongodb/mongodb_image_28.png
-[mongodb_image_29]:./images/mongodb/mongodb_image_29.png
-[mongodb_image_30]:./images/mongodb/mongodb_image_30.png
-[mongodb_image_31]:./images/mongodb/mongodb_image_31.png
-[mongodb_image_32]:./images/mongodb/mongodb_image_32.png
-[mongodb_image_33]:./images/mongodb/mongodb_image_33.png
-[mongodb_image_34]:./images/mongodb/mongodb_image_34.png
-[mongodb_image_35]:./images/mongodb/mongodb_image_35.png
-[mongodb_image_36]:./images/mongodb/mongodb_image_36.png
-[mongodb_image_37]:./images/mongodb/mongodb_image_37.png
-[mongodb_image_38]:./images/mongodb/mongodb_image_38.png
-[mongodb_image_39]:./images/mongodb/mongodb_image_39.png
-[mongodb_image_40]:./images/mongodb/mongodb_image_40.png
-[mongodb_image_41]:./images/mongodb/mongodb_image_41.png
-[mongodb_image_42]:./images/mongodb/mongodb_image_42.png
+
 
 
 ### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > MongoDB Service

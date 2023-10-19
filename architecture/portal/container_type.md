@@ -12,7 +12,7 @@ The configuration and specification of Portal Infra and Portal APP are as follow
 
 
 
-![portal_architecture_container_eng](https://user-images.githubusercontent.com/104418463/165660452-7e57fa86-5835-412f-9330-4c9b6b29ebf8.png)
+![portal_architecture_container_eng](./image/portal-container_type.png)
 
 
 

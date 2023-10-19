@@ -127,8 +127,9 @@ In the search window, search types, search items, disclosure status, and search 
 4. Click the ①"Register App Template" button when registering an app template. Enter the following at the App Template Register pop-up: Name, Classification, App Development Environment, Service Thumbnail, Public Availability, Summary, and Description. A new App Template will be registered by Clicking the ②"Register" button.
 ![16]
 
-※ 앱 템플릿 등록 및 수정 시 카탈로그 관리 코드는 선택 필수이며, 현재 사용 가능한 코드가 없는 경우 다음 내용을 참고하여 처리하도록 한다.
-- ①"코드 관리" 클릭 > ②**Group Table**의 "STARTER_TAG" 클릭 > ③**Detail Table**에 "등록"버튼을 클릭하여 카탈로그 관리 코드를 추가 후 사용한다.
+※ The catalog management code is required when registering and editing app templates, When there is no code available as of the moment, follow the instruction below.
+- ① Click "Manage Code" > ② Click "STARTER_TAG" in "Group Table" > ③ Click "Register" button in "Detail Table" to add and use the catalog management code.
+
   ![catalog-code-starter]
 
 ### <a name="4.3.2"/>  4.3.2 Catalog Managing App Development Environment
@@ -145,8 +146,8 @@ One can search by the type, item, or name, whether it's private or public in the
 4. Click the ①"Register App Development Environment" button from the Catalog page to Register. Enter the following at the App Development Environment Registering pop-up: Name, Classification, App Development Environment, Service, Thumbnail, Public Availability, Summary, and Description. Complete registering by clicking the ②"Register" button.
 ![20]
 
-※ 앱 개발환경 등록 및 수정 시 카탈로그 관리 코드는 선택 필수이며, 현재 사용 가능한 코드가 없는 경우 다음 내용을 참고하여 처리하도록 한다.
-- ①"코드 관리" 클릭 > ②**Group Table**의 "BUILD_PACK_TAG" 클릭 > ③**Detail Table**에 "등록"버튼을 클릭하여 카탈로그 관리 코드를 추가 후 사용한다.
+※ The catalog management code is required when registering and editing app development environment, When there is no code available as of the moment, follow the instruction below.
+- ① Click "Manage Code" > ② Click "BUILD_PACK_TAG" in "Group Table" > ③ Click "Register" button in "Detail Table" to add and use the catalog management code.
   ![catalog-code-buildpack]
 
 ### <a name="4.3.3"/>  4.3.3 Catalog Management Service 
@@ -163,8 +164,8 @@ One can search by the type, item, or name, whether it's private or public in the
 Enter name, classification, service, thumbnail, parameter, pubic availability, outline, and description. Click ②"Register" to complete registering the service. <br>
 ![24]
 
-※ 앱 서비스 등록 및 수정 시 카탈로그 관리 코드는 선택 필수이며, 현재 사용 가능한 코드가 없는 경우 다음 내용을 참고하여 처리하도록 한다.
-- ① "코드 관리" 클릭 > ②**Group Table**의 "SERVICE_PACK_TAG" 클릭 > ③**Detail Table**에 "등록"버튼을 클릭하여 카탈로그 관리 코드를 추가 후 사용한다.
+※ The catalog management code is required when registering and editing app service, When there is no code available as of the moment, follow the instruction below.
+- ① Click "Manage Code" > ② Click "SERVICE_PACK_TAG" in "Group Table" > ③ Click "Register" button in "Detail Table" to add and use the catalog management code.
   ![catalog-code-servicepack]
 
 ※ **delivery-pipeline**, an example of registering an app service 
@@ -184,9 +185,11 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 8. Input "N" for App bind Usage.
 9. Requires "Y" when the dashboard is being used. Setting the dashboard as "N" disables the dashboard button.
      > **When the dashboard is applied, catalog app service "Dashboard" button is activated in 'PaaS-TA User'**
-     > ![pipeline-app-dashboard]
+     
+    ![pipeline-app-dashboard]
+
 10. In addition, enter public availability, outline, description, and catalog management code. Click the "Save" button to complete service registration.
-     > ![pipeline]
+     ![pipeline]
 
      
 ※ **source control**, an Example of App Service Registration
@@ -204,7 +207,7 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 9. Requires "Y" when the dashboard is being used. Setting the dashboard as "N" disables the dashboard button.
      > **When dashboard is applied, catalog app service "Dashboard" button is activated in 'PaaS-TA User'**
 10. In addition, enter public availability, outline, description, and catalog management code. Click the "Save" button to complete service registration.
-     > ![sourcecontroller]
+     ![sourcecontroller]
 
 ### <a name="4.4"/>  4.4. User Management
 
@@ -220,12 +223,15 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 ![28]
 ![27]
      > When checking the user management list after clicking the "Run" button, [Administrator] changes from  **Y** to **N**. If User Management List [Administrator] is **N** , Click  ①"Management" button then "Give Operator Authority". <br>
-     > ![27-1]
+     
+     ![27-1]
+
 4. After clicking the ①"Management" button, Click " Cancel sign-in" to block CF login.  Approve CF login by clicking "Approve Sign in" when it's not approved.<br>
 ![30]
 ![31]
 ![31-2]
      > When checking the user management list by clicking "Modify", [Status] changes from **Approve** to **Disapprove**. Cannot log in to CF and Portal when its disapprove<br>
+     
      ![31-1]
      
 5. Click the ①"Manage" button then click "Delete Account" to delete the Account.<br>

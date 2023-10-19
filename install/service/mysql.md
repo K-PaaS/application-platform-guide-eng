@@ -522,25 +522,25 @@ The HeidiSQL program is an open-source software that can be used for free.
 
 >[http://www.heidisql.com/download.php](http://www.heidisql.com/download.php)
 
->![mysql_vsphere_4.1.01]
+![mysql_vsphere_4.1.01]
 
 <br>
 
 - Run the downloaded installation file.
 
->![mysql_vsphere_4.1.02]
+![mysql_vsphere_4.1.02]
 
 <br>
 
 - Bellow is a guide for installing HeidSQL. Click Next.
 
->![mysql_vsphere_4.1.03]
+![mysql_vsphere_4.1.03]
 
 <br>
 
 - It is about program license. Check the button of "I accept the agreement" and click Next.
 
->![mysql_vsphere_4.1.04]
+![mysql_vsphere_4.1.04]
 
 <br>
 
@@ -548,14 +548,14 @@ The HeidiSQL program is an open-source software that can be used for free.
 
 >If no separate path setting is required, it is installed in the C drive Program Files folder by default.
 
->![mysql_vsphere_4.1.05]
+![mysql_vsphere_4.1.05]
 
 <br>
 
 - This is the process of setting the name of the HeidiSQL shortcut icon at the Start menu after the installing 
 >Click the Next button to proceed to the next step.
 
->![mysql_vsphere_4.1.06]
+![mysql_vsphere_4.1.06]
 
 <br>
 
@@ -568,49 +568,49 @@ The HeidiSQL program is an open-source software that can be used for free.
 
 > Click the Next button when you have finished setting/unchecking the check box.
 
->![mysql_vsphere_4.1.07]
+![mysql_vsphere_4.1.07]
 
 <br>
 
 - All settings for installation are printed at once. After checking, click the Install button to proceed with the installation
 
->![mysql_vsphere_4.1.08]
+![mysql_vsphere_4.1.08]
 
 <br>
 
 - Click the Finish button to complete the installation.
 
->![mysql_vsphere_4.1.09]
+![mysql_vsphere_4.1.09]
 
 <br>
 
 - This is the first screen that appears when you run HeidiSQL. On this screen, you can access by setting/saving a profile for accessing the server. Click the New button.
 
->![mysql_vsphere_4.1.10]
+![mysql_vsphere_4.1.10]
 
 <br>
 
 - Enter an alias for the connection information to connect to which server
 
->![mysql_vsphere_4.1.11]
+![mysql_vsphere_4.1.11]
 
 <br>
 
 - Select MySQL (SSHTunel) from the list of network types.
 
->![mysql_vsphere_4.1.12]
+![mysql_vsphere_4.1.12]
 
 <br>
 
 - Enter all server information to access the red area below.
 
->![mysql_vsphere_4.1.13]
+![mysql_vsphere_4.1.13]
 
 >The server information inputs the server information bound to the application. Check using the cf env <app_name> command.
 
 >**Ex.)** $cf env hello-spring-mysql
 
->![mysql_vsphere_4.1.14]
+![mysql_vsphere_4.1.14]
 
 <br>
 
@@ -618,13 +618,13 @@ The HeidiSQL program is an open-source software that can be used for free.
 
 >(Note) If access is possible with a private key, refer to the Open PaaS Mysql service pack installation guide for openstack.
 
->![mysql_vsphere_4.1.15]
+![mysql_vsphere_4.1.15]
 
 <br>
 
 - When the connection is complete, schema information appears on the left. However, the initial settings are all mixed with tables, views, procedures, functions, triggers, and events, which are difficult to distinguish at a glance, so right-click on the DB alias you accessed and click "Tree Options" - "Bundle Objects by Type" as shown on the screen below.
 
->![mysql_vsphere_4.1.16]
+![mysql_vsphere_4.1.16]
 
 <br>
 
@@ -632,44 +632,11 @@ The HeidiSQL program is an open-source software that can be used for free.
 
 >If there is no abnormality in the query statement, the result will be obtained normally.
 
->![mysql_vsphere_4.1.17]
+![mysql_vsphere_4.1.17]
 	
 	
 	
-[mysql_vsphere_1.3.01]:./images/mysql/mysql_vsphere_1.3.01.png
-[mysql_vsphere_2.2.01]:./images/mysql/mysql_vsphere_2.2.01.png
-[mysql_vsphere_2.2.02]:./images/mysql/mysql_vsphere_2.2.02.png
-[mysql_vsphere_2.2.03]:./images/mysql/mysql_vsphere_2.2.03.png
-[mysql_vsphere_2.2.04]:./images/mysql/mysql_vsphere_2.2.04.png
-[mysql_vsphere_2.2.05]:./images/mysql/mysql_vsphere_2.2.05.png
-[mysql_vsphere_2.2.06]:./images/mysql/mysql_vsphere_2.2.06.png
-[mysql_vsphere_2.2.07]:./images/mysql/mysql_vsphere_2.2.07.png
-[mysql_vsphere_2.2.08]:./images/mysql/mysql_vsphere_2.2.08.png
-[mysql_vsphere_2.3.01]:./images/mysql/mysql_vsphere_2.3.01.png
-[mysql_vsphere_2.3.02]:./images/mysql/mysql_vsphere_2.3.02.png
-[mysql_vsphere_2.3.03]:./images/mysql/mysql_vsphere_2.3.03.png
-[mysql_vsphere_2.3.04]:./images/mysql/mysql_vsphere_2.3.04.png
-[mysql_vsphere_2.3.05]:./images/mysql/mysql_vsphere_2.3.05.png
-[mysql_vsphere_2.3.06]:./images/mysql/mysql_vsphere_2.3.06.png
-[mysql_vsphere_2.3.07]:./images/mysql/mysql_vsphere_2.3.07.png
-[mysql_vsphere_2.4.01]:./images/mysql/mysql_vsphere_2.4.01.png
-[mysql_vsphere_2.4.02]:./images/mysql/mysql_vsphere_2.4.02.png
-[mysql_vsphere_2.4.03]:./images/mysql/mysql_vsphere_2.4.03.png
-[mysql_vsphere_2.4.04]:./images/mysql/mysql_vsphere_2.4.04.png
-[mysql_vsphere_2.4.05]:./images/mysql/mysql_vsphere_2.4.05.png
-[mysql_vsphere_3.1.01]:./images/mysql/mysql_vsphere_3.1.01.png
-[mysql_vsphere_3.2.01]:./images/mysql/mysql_vsphere_3.2.01.png
-[mysql_vsphere_3.2.02]:./images/mysql/mysql_vsphere_3.2.02.png
-[mysql_vsphere_3.2.03]:./images/mysql/mysql_vsphere_3.2.03.png
-[mysql_vsphere_3.3.01]:./images/mysql/mysql_vsphere_3.3.01.png
-[mysql_vsphere_3.3.02]:./images/mysql/mysql_vsphere_3.3.02.png
-[mysql_vsphere_3.3.03]:./images/mysql/mysql_vsphere_3.3.03.png
-[mysql_vsphere_3.3.04]:./images/mysql/mysql_vsphere_3.3.04.png
-[mysql_vsphere_3.3.05]:./images/mysql/mysql_vsphere_3.3.05.png
-[mysql_vsphere_3.3.06]:./images/mysql/mysql_vsphere_3.3.06.png
-[mysql_vsphere_3.3.07]:./images/mysql/mysql_vsphere_3.3.07.png
-[mysql_vsphere_3.3.08]:./images/mysql/mysql_vsphere_3.3.08.png
-[mysql_vsphere_3.3.09]:./images/mysql/mysql_vsphere_3.3.09.png
+
 [mysql_vsphere_4.1.01]:./images/mysql/mysql_vsphere_4.1.01.png
 [mysql_vsphere_4.1.02]:./images/mysql/mysql_vsphere_4.1.02.png
 [mysql_vsphere_4.1.03]:./images/mysql/mysql_vsphere_4.1.03.png
@@ -688,44 +655,6 @@ The HeidiSQL program is an open-source software that can be used for free.
 [mysql_vsphere_4.1.16]:./images/mysql/mysql_vsphere_4.1.16.png
 [mysql_vsphere_4.1.17]:./images/mysql/mysql_vsphere_4.1.17.png
 
-
-
-[update_mysql_vsphere_01]:./images/mysql/update_mysql_vsphere_01.png
-[update_mysql_vsphere_02]:./images/mysql/update_mysql_vsphere_02.png
-[update_mysql_vsphere_03]:./images/mysql/update_mysql_vsphere_03.png
-[update_mysql_vsphere_04]:./images/mysql/update_mysql_vsphere_04.png
-[update_mysql_vsphere_05]:./images/mysql/update_mysql_vsphere_05.png
-[update_mysql_vsphere_06]:./images/mysql/update_mysql_vsphere_06.png
-[update_mysql_vsphere_07]:./images/mysql/update_mysql_vsphere_07.png
-[update_mysql_vsphere_08]:./images/mysql/update_mysql_vsphere_08.png
-[update_mysql_vsphere_09]:./images/mysql/update_mysql_vsphere_09.png
-[update_mysql_vsphere_10]:./images/mysql/update_mysql_vsphere_10.png
-[update_mysql_vsphere_11]:./images/mysql/update_mysql_vsphere_11.png
-[update_mysql_vsphere_12]:./images/mysql/update_mysql_vsphere_12.png
-[update_mysql_vsphere_13]:./images/mysql/update_mysql_vsphere_13.png
-[update_mysql_vsphere_14]:./images/mysql/update_mysql_vsphere_14.png
-[update_mysql_vsphere_15]:./images/mysql/update_mysql_vsphere_15.png
-
-[update_mysql_vsphere_25]:./images/mysql/update_mysql_vsphere_25.png
-[update_mysql_vsphere_30]:./images/mysql/update_mysql_vsphere_30.png
-[update_mysql_vsphere_31]:./images/mysql/update_mysql_vsphere_31.png
 [update_mysql_vsphere_34]:./images/mysql/update_mysql_vsphere_34.png
-
-[update_mysql_vsphere_35]:./images/mysql/update_mysql_vsphere_35.png
-[update_mysql_vsphere_36]:./images/mysql/update_mysql_vsphere_36.png
-[update_mysql_vsphere_37]:./images/mysql/update_mysql_vsphere_37.png
-[update_mysql_vsphere_38]:./images/mysql/update_mysql_vsphere_38.png
-[update_mysql_vsphere_39]:./images/mysql/update_mysql_vsphere_39.png
-[update_mysql_vsphere_40]:./images/mysql/update_mysql_vsphere_40.png
-[update_mysql_vsphere_41]:./images/mysql/update_mysql_vsphere_41.png
-[update_mysql_vsphere_42]:./images/mysql/update_mysql_vsphere_42.png
-[update_mysql_vsphere_43]:./images/mysql/update_mysql_vsphere_43.png
-[update_mysql_vsphere_44]:./images/mysql/update_mysql_vsphere_44.png
-[update_mysql_vsphere_45]:./images/mysql/update_mysql_vsphere_45.png
-[update_mysql_vsphere_46]:./images/mysql/update_mysql_vsphere_46.png
-[update_mysql_vsphere_47]:./images/mysql/update_mysql_vsphere_47.png
-[update_mysql_vsphere_48]:./images/mysql/update_mysql_vsphere_48.png
-[update_mysql_vsphere_49]:./images/mysql/update_mysql_vsphere_49.png
-[update_mysql_vsphere_50]:./images/mysql/update_mysql_vsphere_50.png
 
 ### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > MySQL Service

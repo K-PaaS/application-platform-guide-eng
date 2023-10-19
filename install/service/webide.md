@@ -377,7 +377,7 @@ broker: webide-service-broker
 > - Description :
 > WEB IDE for Web Programming - eclipse-che
 >  
-> ![3-2-2]
+![3-2-2]
 
 - Access the PaaS-TA User Portal, and request for services through the catalog.   
 
@@ -492,15 +492,15 @@ Succeeded
 
 - use -cf api command to set endpoint.
 
-> ![](./images/webide/web-ide-12.png)
+![](./images/webide/web-ide-12.png)
 
 - Log in with the cf login command and select the organization and space.
 
-> ![](./images/webide/web-ide-13.png)
+![](./images/webide/web-ide-13.png)
 
 - use cf push to upload app in cf.
 
-> ![](./images/webide/web-ide-14.png)
+![](./images/webide/web-ide-14.png)
 
 
 

@@ -231,7 +231,7 @@ Can check the File, Commit, and Contributor on the repository details page.
 
 
 ### <div id='23'/> 3.1.3.1.6.1. Check Repository Branch List
-1.	“파일(file)” 의 하단에 있는 "브랜치 : " 드롭다운을 클릭하면 사용한 브랜치의 리스트를 확인할 수 있으며, "브랜치 명 검색" 창에서 브랜치명으로 조회도 가능하다.   
+1.	Click the "Branch: " dropdown at the bottom of "file" to see a list of the branches used, searching by branch name is also able from the "Search Branch Name" window.  
 ![036]
 
 

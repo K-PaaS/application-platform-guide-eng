@@ -254,7 +254,7 @@ The reason for setting in three unit is for service tripleization, It may be set
 A VM Type is a VM Type defined in IaaS.
 
 ※ Following are the Instance Type defined by AWS.
-![aws-vmtype_eng](https://user-images.githubusercontent.com/104418463/166170134-37816fd0-5a08-4e78-8580-66ef9840de29.png)
+![aws-vmtype_eng](./images/ap/aws-vmtype.png)
 
 
 - Compilation
@@ -486,7 +486,7 @@ ex) uaa_login_logout_redirect_parameter_whitelist=["{PaaS-TA PORTAL URI}","{PaaS
 ex) uaa_login_links_signup="{PaaS-TA PORTAL URI}/createuser"
 ```
 
-<img src="https://github.com/PaaS-TA/Guide-5.0-Ravioli/blob/master/install-guide/paasta/images/uaa-login-2.png">
+![UAA_Login_Create_Account]
 
 3. uaa_login_links_passwd : Link address when Reset Password clicked in UAA page
 
@@ -494,7 +494,7 @@ ex) uaa_login_links_signup="{PaaS-TA PORTAL URI}/createuser"
 ex) uaa_login_links_passwd="{PaaS-TA PORTAL URI}/resetpasswd"
 ```
 
-<img src="https://github.com/PaaS-TA/Guide-5.0-Ravioli/blob/master/install-guide/paasta/images/uaa-login.png" width="663px">
+![UAA_Login_Reset_Password]
 
 
 4. uaa_client_portal_redirect_uri : Redirect URI designated variable in UAAC Portal Client, URI that moves when login is successful on UAA page after clicking the login button on the portal
@@ -959,6 +959,7 @@ Select an org (or press enter to skip):
 ```
 
 [PaaSTa_FLAVOR_Image]:./images/ap/aws-vmtype.png
-
+[UAA_Login_Create_Account]:./images/ap/uaa-login-2.png
+[UAA_Login_Reset_Password]:./images/ap/uaa-login.png
 
 ### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > PaaS-TA AP - min

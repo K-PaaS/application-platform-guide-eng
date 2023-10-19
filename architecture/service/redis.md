@@ -9,7 +9,7 @@ Redis service provides in-memory cache storage.
 It provides a user on-demand Redis server rather than a multi-tenant-based shared service.
 
 
-![Redis_architecture](https://user-images.githubusercontent.com/104418463/200266609-a406eee2-ed8d-47db-aa19-55eb53336047.png)
+![Redis_architecture](./image/redis_architecture.png)
 
 
 

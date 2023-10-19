@@ -591,7 +591,7 @@ memory usage:   1024M
 
 - Check at the browser
 
->![rabbitmq_image_12]
+![rabbitmq_image_12]
 
 - Test Store Endpoints
 ```	
@@ -602,21 +602,7 @@ test
 
 
 
-
-
-
-
-
-[rabbitmq_image_01]:./images/rabbitmq/rabbitmq_image_01.png
-
 [rabbitmq_image_12]:./images/rabbitmq/rabbitmq_image_12.png
-[rabbitmq_image_13]:./images/rabbitmq/rabbitmq_image_13.png
-[rabbitmq_image_14]:./images/rabbitmq/rabbitmq_image_14.png
-[rabbitmq_image_15]:./images/rabbitmq/rabbitmq_image_15.png
-[rabbitmq_image_16]:./images/rabbitmq/rabbitmq_image_16.png
-[rabbitmq_image_17]:./images/rabbitmq/rabbitmq_image_17.png
-[rabbitmq_image_18]:./images/rabbitmq/rabbitmq_image_18.png
-[rabbitmq_image_19]:./images/rabbitmq/rabbitmq_image_19.png
 
 
 ### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > RabbitMQ Service

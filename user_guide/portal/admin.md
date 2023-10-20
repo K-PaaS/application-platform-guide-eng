@@ -45,7 +45,7 @@ Describes how to use the K-PaaS AP operator portal website that is already insta
 
 This User Guide does not describe the installation process.
 
- Refer to    [AP Portal Deployment Guide Document](https://github.com/K-PaaSs/Guide-3.0-Penne-/blob/v3.5/Install-Guide/Portal/K-PaaS%20Portal%20%EC%84%A4%EC%B9%98%EA%B0%80%EC%9D%B4%EB%93%9C.md) for Operators Portal Installation.
+ Refer to    [AP Portal Deployment Guide Document](https://github.com/K-PaaS/application-platform-guide-eng/blob/master/install/portal/vm_type_ui.md) for Operators Portal Installation.
 
 ## <a name="2"/>2.  Start K-PaaS AP Operator Portal
 

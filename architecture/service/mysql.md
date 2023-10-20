@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > MySQL Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > MySQL Service
 
 ## Purpose
 This document provides the Architecture of Application Platform (AP) - MySQL Service.
@@ -23,4 +23,4 @@ This document provides the Architecture of Application Platform (AP) - MySQL Ser
 
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > MySQL Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > MySQL Service

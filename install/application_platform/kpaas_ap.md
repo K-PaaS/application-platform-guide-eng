@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > PaaS-TA AP
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > K-PaaS AP
 
 ## Table of Contents
 
@@ -6,29 +6,29 @@
  1.1. [Purpose](#1.1)  
  1.2. [Range](#1.2)  
  1.3. [Refrences](#1.3)  
-2. [PaaS-TA AP Installation](#2)  
+2. [K-PaaS AP Installation](#2)  
  2.1. [Prerequisite](#2.1)  
  2.2. [Download the installation file](#2.2)  
  2.3. [Stemcell Upload](#2.3)  
  2.4. [Runtime Config Setting](#2.4)  
  2.5. [Cloud Config Setting](#2.5)  
- 2.6. [PaaS-TA AP Installation File](#2.6)  
-　2.6.1. [PaaS-TA AP Installation Variable File](#2.6.1)    
-　2.6.2. [PaaS-TA AP Operation File](#2.6.2)  
-　2.6.3. [PaaS-TA AP Installation Shell Scripts](#2.6.3)  
- 2.7. [PaaS-TA AP Installation](#2.7)  
- 2.8. [PaaS-TA AP Login](#2.8)   
+ 2.6. [K-PaaS AP Installation File](#2.6)  
+　2.6.1. [K-PaaS AP Installation Variable File](#2.6.1)    
+　2.6.2. [K-PaaS AP Operation File](#2.6.2)  
+　2.6.3. [K-PaaS AP Installation Shell Scripts](#2.6.3)  
+ 2.7. [K-PaaS AP Installation](#2.7)  
+ 2.8. [K-PaaS AP Login](#2.8)   
 
 # <div id='1'/>1.  Document Outline
 
 ## <div id='1.1'/>1.1. Purpose
-The purpose of this document is to provide a guide for manually installing the PaaS-TA Application Platform (hereinafter referred to as PaaS-TA AP) without monitoring.
+The purpose of this document is to provide a guide for manually installing the K-PaaS Application Platform (hereinafter referred to as K-PaaS AP) without monitoring.
 
 <br>
 
 ## <div id='1.2'/>1.2. Range
-PaaS-TA AP is installed in a BOSH environment based on bosh-deployment. Guide was written based on the installation of paasta-deployment v5.8.8.1
-PaaS-TA AP supports IaaS such as VMware vSphere, Google Cloud Platform, Amazon Web Services EC2, OpenStack, and Microsoft Azure, and the IaaS environment verified in paasta-deployment v5.8.8.1 is OpenStack, and vSphere environments.
+K-PaaS AP is installed in a BOSH environment based on bosh-deployment. Guide was written based on the installation of ap-deployment v5.8.8.1
+K-PaaS AP supports IaaS such as VMware vSphere, Google Cloud Platform, Amazon Web Services EC2, OpenStack, and Microsoft Azure, and the IaaS environment verified in ap-deployment v5.8.8.1 is OpenStack, and vSphere environments.
 
 <br>
 
@@ -43,48 +43,48 @@ CF Deployment: [https://github.com/cloudfoundry/cf-deployment](https://github.co
   
 <br><br>
 
-# <div id='2'/>2. PaaS-TA AP Installation
+# <div id='2'/>2. K-PaaS AP Installation
 ## <div id='2.1'/>2.1. Prerequisite
 
 - Installs BOSH2 based BOSH.
-- Installation of PaaS-TA AP is operated at Inception where BOSH was installed.
-- BOSH LOGIN is performed for PaaS-TA AP installation.
+- Installation of K-PaaS AP is operated at Inception where BOSH was installed.
+- BOSH LOGIN is performed for K-PaaS AP installation.
 
 <br>
 
 ## <div id='2.2'/>2.2. Download the Installation File
-- Download if deployment to install PaaS-TA AP does not exist.
+- Download if deployment to install K-PaaS AP does not exist.
 
 ```
 $ mkdir -p ~/workspace
 $ cd ~/workspace
-$ git clone https://github.com/PaaS-TA/common.git
+$ git clone https://github.com/K-PaaS/common.git
 $ cd ~/workspace
-$ git clone https://github.com/PaaS-TA/paasta-deployment.git -b v5.8.8
+$ git clone https://github.com/K-PaaS/ap-deployment.git -b v5.8.8.1
 ```
 
 <br>
 
 ## <div id='2.3'/>2.3. Stemcell Upload
-Stemcell is a PaaS-TA AP VM Base OS image that is created during deployment.
-Paasta-deployment v5.8.8 is based on Ubuntu jammy stemcell 1.181. 
+Stemcell is a K-PaaS AP VM Base OS image that is created during deployment.
+ap-deployment v5.8.8.1 is based on Ubuntu jammy stemcell 1.181. 
 The basic Stemcell upload command are as follows.
 ```                     
 $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell {URL}
 ```
 
-Paasta-deployment supports Stemcell upload scripts from v5.5.0. After logging in to BOSH, perform the following command to upload Stemcell.
+ap-deployment supports Stemcell upload scripts from v5.5.0. After logging in to BOSH, perform the following command to upload Stemcell.
 BOSH_ENVIRONMENT is the Director name used when installing BOSH, and CURRENT_IAAS is entered according to the deployed environment IaaS (aws, azure, gcp, openstack, vsphere, and other input bosh-lite).
-<br>(BOSH_ENVIRONMENT and CURRENT_IAAS are automatically entered during BOSH LOGIN using create-bosh-login.sh provided by PaaS-TA AP.)
+<br>(BOSH_ENVIRONMENT and CURRENT_IAAS are automatically entered during BOSH LOGIN using create-bosh-login.sh provided by K-PaaS AP.)
 
 - Modify the settings of the Stemcell upload script (Modify BOSH_ENVIRONMENT)
 
-> $ vi ~/workspace/paasta-deployment/bosh/upload-stemcell.sh
+> $ vi ~/workspace/ap-deployment/bosh/upload-stemcell.sh
 ```                     
 #!/bin/bash
 JAMMY_STEMCELL_VERSION=1.181
-CURRENT_IAAS="${CURRENT_IAAS}"				# IaaS Information (When not using create-bosh-login.sh provided by PaaS-TA enter aws/azure/gcp/openstack/vsphere/bosh-lite)
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"			# bosh director alias name (When not using create-bosh-login.sh provided by PaaS-TA, Check and enter the name in boshenvs)
+CURRENT_IAAS="${CURRENT_IAAS}"				# IaaS Information (When not using create-bosh-login.sh provided by K-PaaS enter aws/azure/gcp/openstack/vsphere/bosh-lite)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"			# bosh director alias name (When not using create-bosh-login.sh provided by K-PaaS, Check and enter the name in boshenvs)
 
 if [[ ${CURRENT_IAAS} = "aws" ]]; then
         bosh -e ${BOSH_ENVIRONMENT} upload-stemcell https://storage.googleapis.com/bosh-core-stemcells/${JAMMY_STEMCELL_VERSION}/bosh-stemcell-${JAMMY_STEMCELL_VERSION}-aws-xen-hvm-ubuntu-jammy-go_agent.tgz -n
@@ -106,7 +106,7 @@ fi
 - Run Stemcell upload script 
 
 ```
-$ cd ~/workspace/paasta-deployment/bosh
+$ cd ~/workspace/ap-deployment/bosh
 $ source upload-stemcell.sh
 ```
 
@@ -119,30 +119,30 @@ The command for setting basic Runtime Config is as follows.
 $ bosh -e ${BOSH_ENVIRONMENT} update-runtime-config {PATH} --name={NAME}
 ```
 
-The Runtime Config applied by PaaS-TA AP is as follows.
+The Runtime Config applied by K-PaaS AP is as follows.
 
 - DNS Runtime Config  
-  As part of PaaS-TA 4.0, it is a component that has been replaced by Consul in PaaS-TA Component.
-  BOSH DNS distribution should precede communication between PaaS-TA components.
+  As part of K-PaaS 4.0, it is a component that has been replaced by Consul in K-PaaS AP Component.
+  BOSH DNS distribution should precede communication between K-PaaS components.
 
 - OS Configuration Runtime Config  
   BOSH Linux OS configuration release is used to configure sysctl.
 
-Paasta-deployment supports the Runtime Config configuration script from v5.5.0. After logging in to BOSH, run the following commands to configure Runtime Config.
+ap-deployment supports the Runtime Config configuration script from v5.5.0. After logging in to BOSH, run the following commands to configure Runtime Config.
 
   - Modify Runtime Config update script (Modify BOSH_ENVIRONMENT)
-> $ vi ~/workspace/paasta-deployment/bosh/update-runtime-config.sh
+> $ vi ~/workspace/ap-deployment/bosh/update-runtime-config.sh
 ```                     
 #!/bin/bash
 
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"			 # bosh director alias name (When not using Create-bosh-login.sh provided by PaaS-TA, check and enter name at bosh envs)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"			 # bosh director alias name (When not using Create-bosh-login.sh provided by K-PaaS, check and enter name at bosh envs)
 
 bosh -e ${BOSH_ENVIRONMENT} update-runtime-config -n runtime-configs/dns.yml
 bosh -e ${BOSH_ENVIRONMENT} update-runtime-config -n --name=os-conf runtime-configs/os-conf.yml
 ```
 - Update Runtime Config script
 ```                     
-$ cd ~/workspace/paasta-deployment/bosh
+$ cd ~/workspace/ap-deployment/bosh
 $ source update-runtime-config.sh
 ```
 
@@ -157,10 +157,10 @@ $ source update-runtime-config.sh
 ## <div id='2.5'/>2.5. Cloud Config Setting
 
 When deploying VMs through BOSH, IaaS-related network, storage, and VM-related settings are defined as Cloud Config. 
-When downloading the paasta-deployment installation file, you can check examples of cloud configurations by IaaS in the ~/workspace/paasta-deployment/cloud-config directory and modify cloud-config.yml to fit IaaS. 
-Cloud Config should be applied to BOSH prior to PaaS-TA AP deployment.
+When downloading the ap-deployment installation file, you can check examples of cloud configurations by IaaS in the ~/workspace/ap-deployment/cloud-config directory and modify cloud-config.yml to fit IaaS. 
+Cloud Config should be applied to BOSH prior to K-PaaS AP deployment.
 
-- [cloud-config.yml] (https://github.com/PaaS-TA/paasta-deployment/blob/master/cloud-config/aws-cloud-config.yml) is an example based on AWS
+- [cloud-config.yml] (https://github.com/K-PaaS/ap-deployment/blob/master/cloud-config/aws-cloud-config.yml) is an example based on AWS
 
 ```
 ## azs :: Defines Availability Zone
@@ -197,7 +197,7 @@ networks:
   subnets:
   - az: z1
     cloud_properties:
-      security_groups: paasta-v50-security
+      security_groups: ap-v50-security
       subnet: subnet-XXXXXXXXXXXXXXXXX
     dns:
     - 8.8.8.8
@@ -244,8 +244,8 @@ vm_types:
 
 - AZs
 
-Cloud Config examples provided in PaaS-TA are set from z1 to z6.
-Z1 to z3 are zones where PaaS-TA AP VMs are installed, and z4 to z6 are defined as zones where services are installed.
+Cloud Config examples provided in K-PaaS are set from z1 to z6.
+Z1 to z3 are zones where K-PaaS AP VMs are installed, and z4 to z6 are defined as zones where services are installed.
 The reason for setting it in three units is for service tripleization, and it may be set differently depending on the installation environment.
 
 - VM Types
@@ -258,11 +258,11 @@ A VM Type is a VM Type defined in IaaS.
 
 - Compilation
 
-When PaaS-TA AP and services are installed, BOSH creates a Compile task VM to compile the source, and then creates a VM to install the compiled file on the destination VM and deletes the Compile task VM. (The number of workers is the number of Compile VMs, and the more the number, the faster the compilation speed.)  
+When K-PaaS AP and services are installed, BOSH creates a Compile task VM to compile the source, and then creates a VM to install the compiled file on the destination VM and deletes the Compile task VM. (The number of workers is the number of Compile VMs, and the more the number, the faster the compilation speed.)  
 
 - Disk Size
 
-Disk size is the persistent disk size of the VM where the PaaS-TA AP and service are installed.
+Disk size is the persistent disk size of the VM where the K-PaaS AP and service are installed.
 
 - Networks
 
@@ -274,7 +274,7 @@ Typically, a Range Cider is defined so that 256 IPs can be defined per AZ.
 - Cloud Config Update
 
 ```
-$ bosh -e ${BOSH_ENVIRONMENT} update-cloud-config ~/workspace/paasta-deployment/cloud-config/{iaas}-cloud-config.yml
+$ bosh -e ${BOSH_ENVIRONMENT} update-cloud-config ~/workspace/ap-deployment/cloud-config/{iaas}-cloud-config.yml
 ```
 
 - Cloud Config Check
@@ -285,57 +285,57 @@ $ bosh -e ${BOSH_ENVIRONMENT} cloud-config
 
 <br>
 
-## <div id='2.6'/>2.6.  PaaS-TA AP Installation File
+## <div id='2.6'/>2.6.  K-PaaS AP Installation File
 
-common_vars.yml file and vars.yml can be modified to set the variables to be applied when installing PaaS-TA AP.
+common_vars.yml file and vars.yml can be modified to set the variables to be applied when installing K-PaaS AP.
 
 <table>
 <tr>
 <td>common_vars.yml</td>
-<td>Common variable setting file to apply when installing PaaS-TA AP and various services</td>
+<td>Common variable setting file to apply when installing K-PaaS AP and various services</td>
 </tr>
 <tr>
 <td>vars.yml</td>
-<td>Variable settings file to apply when installing PaaS-TA AP</td>
+<td>Variable settings file to apply when installing K-PaaS AP</td>
 </tr>
 <tr>
 <td>deploy-aws.sh</td>
-<td>Shell script file for PaaS-TA AP Installation in AWS Environments</td>
+<td>Shell script file for K-PaaS AP Installation in AWS Environments</td>
 </tr>
 <tr>
 <td>deploy-openstack.sh</td>
-<td>Shell Script File for PaaS-TA AP Installation in an OpenStack Environment</td>
+<td>Shell Script File for K-PaaS AP Installation in an OpenStack Environment</td>
 </tr>
 <tr>
 <td>deploy-vsphere.sh</td>
-<td>Shell Script File for PaaS-TA AP Installation in a vSphere Environment</td>
+<td>Shell Script File for K-PaaS AP Installation in a vSphere Environment</td>
 </tr>
 <tr>
-<td>paasta-deployment.yml</td>
-<td>Manifest file that deploys PaaS-TA AP</td>
+<td>ap-deployment.yml</td>
+<td>Manifest file that deploys K-PaaS AP</td>
 </tr>
 </table>
 
 <br>
 
-### <div id='2.6.1'/>2.6.1. PaaS-TA AP Installation Variable File
+### <div id='2.6.1'/>2.6.1. K-PaaS AP Installation Variable File
 
 
 - common_vars.yml  
 
-Common variable setting file to apply when installing PaaS-TA AP and various services is under ~/workspace/common folder, [common_vars.yml] (https://github.com/PaaS-TA/common/blob/master/common_vars.yml). 
-When installing PaaS-TA AP, you can install by changing the values of system_domain, paasta_admin_username, paasta_admin_password, paasta_database_port, paasta_cc_db_password, paasta_uaa_db_password, uaa_client_admin_secret, and uaa_client_portal_secret.
+Common variable setting file to apply when installing K-PaaS AP and various services is under ~/workspace/common folder, [common_vars.yml] (https://github.com/K-PaaS/common/blob/master/common_vars.yml). 
+When installing K-PaaS AP, you can install by changing the values of system_domain, ap_admin_username, ap_admin_password, paasta_database_port, ap_cc_db_password, ap_uaa_db_password, uaa_client_admin_secret, and uaa_client_portal_secret.
 > $ vi ~/workspace/common/common_vars.yml
 
 ```
 ... ((Skip)) ...
 
 system_domain: "xx.xx.xxx.xxx.nip.io"			# Domain (Same as HAProxy Public IP when using nip.io)
-paasta_admin_username: "admin"				# PaaS-TA Admin Username
-paasta_admin_password: "admin"				# PaaS-TA Admin Password
-paasta_database_port: 5524				# PaaS-TA Database Port (e.g. 5524(postgresql)/13307(mysql)) -- Do Not Use "3306"&"13306" in mysql
-paasta_cc_db_password: "cc_admin"			# CCDB Password(e.g. "cc_admin")
-paasta_uaa_db_password: "uaa_admin"			# UAADB Password(e.g. "uaa_admin")
+ap_admin_username: "admin"				# Application Platform Admin Username
+ap_admin_password: "admin"				# Application Platform Admin Password
+ap_database_port: 5524				# Application Platform Database Port (e.g. 5524(postgresql)/13307(mysql)) -- Do Not Use "3306"&"13306" in mysql
+ap_cc_db_password: "cc_admin"			# CCDB Password(e.g. "cc_admin")
+ap_uaa_db_password: "uaa_admin"			# UAADB Password(e.g. "uaa_admin")
 uaa_client_admin_secret: "admin-secret"			# Secret variables for accessing the UAAC Admin Client
 uaa_client_portal_secret: "clientsecret"		# Secret variables for accessing the UAAC Portal Client
 
@@ -344,31 +344,31 @@ uaa_client_portal_secret: "clientsecret"		# Secret variables for accessing the U
 
 - vars.yml  
 
-Several variable values that would be applied during the installation of PaaS-TA AP and the settings of VM that is to be deployed can be altered.
+Several variable values that would be applied during the installation of K-PaaS AP and the settings of VM that is to be deployed can be altered.
 
-> $ vi ~/workspace/paasta-deployment/paasta/vars.yml
+> $ vi ~/workspace/ap-deployment/paasta/vars.yml
 ```
 # SERVICE VARIABLE
-deployment_name: "paasta"			# Deployment Name
+deployment_name: "ap"			# Deployment Name
 network_name: "default"				# Default Network Name not specified separately at VM
 haproxy_public_ip: "52.78.32.153"		# HAProxy IP (Public IP, HAproxy VM needed when deploying)
-haproxy_public_network_name: "vip"		# PaaS-TA Public Network Name
-haproxy_private_network_name: "private" 	# PaaS-TA Private Network Name (requires setup for deployments with vSphere use-happroxy-public-network-vsphere.yml)
+haproxy_public_network_name: "vip"		# Application Platform Public Network Name
+haproxy_private_network_name: "private" 	# Application Platform Private Network Name (requires setup for deployments with vSphere use-happroxy-public-network-vsphere.yml)
 cc_db_encryption_key: "db-encryption-key"	# Database Encryption Key (Same KEY Required for Version Upgrade)
-cert_days: 3650					# PaaS-TA Certificate expiration date
+cert_days: 3650					# Application Platform Certificate expiration date
 private_ip: "10.244.0.34"   			# Proxy IP (Private IP, BOSH-LITE need to set up when in use)
 uaa_login_logout_redirect_parameter_disable: "false"
 uaa_login_logout_redirect_parameter_whitelist: ["http://portal-web-user.15.165.2.88.nip.io","http://portal-web-user.15.165.2.88.nip.io/callback","http://portal-web-user.15.165.2.88.nip.io/login"]	# UAA Redirect Whitelist registration variables for transfering portal pages
-uaa_login_branding_company_name: "PaaS-TA R&D"	# UAA page title
-uaa_login_branding_footer_legal_text: "Copyright © PaaS-TA R&D Foundation, Inc. 2017. All Rights Reserved."	# UAA page bottom part text
+uaa_login_branding_company_name: "K-PaaS R&D"	# UAA page title
+uaa_login_branding_footer_legal_text: "Copyright © K-PaaS R&D Foundation, Inc. 2017. All Rights Reserved."	# UAA page bottom part text
 uaa_login_branding_product_logo: "iVBORw0KGgoAAAANSUhEUgAAAM0AAAAdCAYAAAAJguhGAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QUNDMTA1MTZCRDNBMTFFNjkzMTVEQjMxRkE5QjkxNUMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QUNDMTA1MTdCRDNBMTFFNjkzMTVEQjMxRkE5QjkxNUMiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpBQ0MxMDUxNEJEM0ExMUU2OTMxNURCMzFGQTlCOTE1QyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpBQ0MxMDUxNUJEM0ExMUU2OTMxNURCMzFGQTlCOTE1QyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Piy2YkgAAA9pSURBVHja7FwJeBRF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"	 # UAA Page logo image (Base64)
 uaa_login_branding_square_logo: "iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QkIwMjA5M0U5NEQ0MTFFNjk1M0FFQ0UxNkIxNEZFNjciIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QkIwMjA5M0Q5NEQ0MTFFNjk1M0FFQ0UxNkIxNEZFNjciIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoV2luZG93cykiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpEMzRGNDdCNTgxNEIxMUU2QjJFODk1MEQzM0EzNkMxOSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpEMzRGNDdCNjgxNEIxMUU2QjJFODk1MEQzM0EzNkMxOSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Psx4+gAAAASbSURBVHja7FZ9aFVlGP8973vOud9Tt7nl1lzNOWailKkV/iEohYn2Vx/QHxKCQkUUmEFhREXQvxJGhSFRlERFhEk1K9PUjJk0dZJzzuGc+3B3997tfp3zfvScu0X4T1AQ/nPP5eGce17e5/l9PO9zL1lrcTMvgZt8VQFUAVQBVAE4KHbDZIYWq1P7dpiJwQ7HdYxZsOyiXLzmYxGvOwJZD6ICDFxQKQeKNgEyi6A8BYcUSE0CJKCpDkExikgyBmTLQJzXhIaVSejxfsjaZtDkeaD3M9iVu6ByKbiNc+GYsUtt5R/fPIzxoSaSUZhIADM9sN5c/WG707Z2r+jc8gJFvAz0/zOyhTrf9RImBptsOQ4bSA4P0Alma8hcOLAtOPnaT7pwbQXJ2H+vQsRaRzkis8+ci5wZAHb4+EYpErBFbgdWzpYJ1p8NHQeNnVuuj7/epca6N89spH9ZOAb+vZsf9B18Juj97osgkznk9+zfY0ojbeEaFd9tT0OV55lhycwJFGOpoxbkcoSAIxZClmHiXkCdD7/qLtr6BkSa/Z74xx6gFBOwvtSXf9mp+r5+mrJDt5IRMNIB+T5MtHHUXfvyFvnKltUbbP7KbRRzoDMSxHBp9hNetnLnTaE/6d/XmdLwUjuvuRtOKiNCALpQYWopDqMcOB43q/Zggusd6rf3PjF9X26ncr5GOGyxGwUZJiq4TmkyqXOjHXLXi8/l7eCRR0WUi3gWekowKxGaMyvjXzd+z0wp27tUjZ18TFiboljdALleNlTAEjdw4MKJp2CvdW/2T+/5VEz03FmRee4S8NECpljSUqTiv5U+53N9spM/o3TsrYN06dCDSDCLPCcb4apBaAdXjhkg3OOZmYgISLfMCdiWRPN1arz7Qzm//aCNd5wIVEPeyXZvs6d2v0N+UZhIDUztWqgreYjRiywk53QjHFzD9oI6H/mIrD4Pk0svKH+zo8tJX1hqonwCmLyeZFlzrET4pVJYQ3isgxf2iOZ3mokXWBkNlWyHbX3oLBVL31P//mcpKMFG50PVb4Y+fQZycoDJJBkAd75gFeU4bFPT2ei6nRvJls9W5qEZOrYoOLHvADIXOxHzWB62RGnoosfyJhlAimW07CNHRCK0TM6tBSX4BAlen7gASp8GBQo62XLF1G4S9ujRZuQGYNkWwX1C0Qh0jeu7i5Z/7tz7xPNCmOEZAIbP3/QgjK9a/F/3vY+x7vtlCMrjQoI3Oi4XTUE5c2CcGsDlo8XKRHhC2uJViOkxBltkLdirhnu+dToff0qd6LnDz11/wHHVLcKUha5bOCXdfA9aFh7y6u46g4aFQG4QfwPI9LGsNbD5aaHT57bq/sNPYuryCjLTDEJUpLbcmCTNjC0cllvFWrYHcWbd2idvX/+2bNq0m8HY4PhRFNrXYI6bBQpp2LZVMP2HYVIJuBEe541tQP4qnBsGh1FhIeO0rN6L1pUfmNFz99HIHxtsYXCZ1qoO0taTKgs+a4xAjguZmaLaVSNINHS5NUu+Eqn6HFTAeYIQGdtRRGW6KR/w+VkrXtM3zqrq3/IqgCqAKoCbDeBPAQYAvdcfKsxKtoUAAAAASUVORK5CYII="	# UAA page title logo image (Base64)
 uaa_login_links_passwd: "http://portal-web-user.15.165.2.88.nip.io/resetpasswd"	# Link address when Reset Password is clicked in UAA page 
 uaa_login_links_signup: "http://portal-web-user.15.165.2.88.nip.io/createuser"	# Link address when Create Account is clicked in UAA page
 uaa_client_portal_redirect_uri: "http://portal-web-user.15.165.2.88.nip.io,http://portal-web-user.15.165.2.88.nip.io/callback"	# Redirect URI designated variable in UAA Portal Client, the URI path that moves if you click the Login button on the portal and successfully log in from the UAA page
 
-syslog_custom_rule: 'if ($msg contains "DEBUG") then stop'	# [MONITORING] Custom Rules to be sent by PaaS-TA Logging Agent
-syslog_fallback_servers: []					# [MONITORING] PaaS-TA Syslog Fallback Servers
+syslog_custom_rule: 'if ($msg contains "DEBUG") then stop'	# [MONITORING] Custom Rules to be sent by Logging Agent
+syslog_fallback_servers: []					# [MONITORING] Syslog Fallback Servers
 
 
 # STEMCELL
@@ -496,13 +496,13 @@ Below are explaination regarding UAA variables.
 1. uaa_login_logout_redirect_parameter_whitelist : UAA Redirect Whitelist Registration Variables for Moving Portal Pages
 
 ```
-ex) uaa_login_logout_redirect_parameter_whitelist=["{PaaS-TA PORTAL URI}","{PaaS-TA PORTAL URI}/callback","{PaaS-TA PORTAL URI}/login"]
+ex) uaa_login_logout_redirect_parameter_whitelist=["{AP PORTAL URI}","{AP PORTAL URI}/callback","{AP PORTAL URI}/login"]
 ```
 
 2. uaa_login_links_signup : Link address when Create Account is clicked in UAA page
 
 ```
-ex) uaa_login_links_signup="{PaaS-TA PORTAL URI}/createuser"
+ex) uaa_login_links_signup="{AP PORTAL URI}/createuser"
 ```
 
 ![UAA_Login_Create_Account]
@@ -510,7 +510,7 @@ ex) uaa_login_links_signup="{PaaS-TA PORTAL URI}/createuser"
 3. uaa_login_links_passwd :  Link address when Reset Passwork is clicked in UAA page
 
 ```
-ex) uaa_login_links_passwd="{PaaS-TA PORTAL URI}/resetpasswd"
+ex) uaa_login_links_passwd="{AP PORTAL URI}/resetpasswd"
 ```
 
 ![UAA_Login_Reset_Password]
@@ -519,7 +519,7 @@ ex) uaa_login_links_passwd="{PaaS-TA PORTAL URI}/resetpasswd"
 4. uaa_client_portal_redirect_uri : Redirect URI designated variable in UAAC Portal Client, URI that moves when login is successful on UAA page after clicking the login button on the portal
 
 ```
-ex) uaa_client_portal_redirect_uri="{PaaS-TA PORTAL URI}, {PaaS-TA PORTAL URI}/callback"
+ex) uaa_client_portal_redirect_uri="{AP PORTAL URI}, {AP PORTAL URI}/callback"
 ```
 
 5. uaa_client_portal_secret : Secret variables for accessing the UAAC Portal Client
@@ -534,11 +534,11 @@ ex) uaa_client_portal_secret="portalclient"
 ex) uaa_client_admin_secret="admin-secret"
 ```
 
-After installing PaaS-TA AP, refer to the other CLI in the User Guide for how to use UAAC .
+After installing K-PaaS AP, refer to the other CLI in the User Guide for how to use UAAC .
 
 <br>
 
-### <div id='2.6.2'/>2.6.2. PaaS-TA AP Operation File
+### <div id='2.6.2'/>2.6.2. K-PaaS AP Operation File
 
 <table>
 <tr>
@@ -557,7 +557,7 @@ After installing PaaS-TA AP, refer to the other CLI in the User Guide for how to
 <tr>
 <td>operations/use-haproxy.yml</td>
 <td>Apply HAProxy <br>
-    - When installing PaaS-TA AP using Load Balancer (hereinafter, LB) provided by IaaS, the operation file is removed and installed.
+    - When installing K-PaaS AP using Load Balancer (hereinafter, LB) provided by IaaS, the operation file is removed and installed.
 </td>
 <td>Requires operation file: use-haproxy-public-network.yml <br>
     Requires value :  -v haproxy_private_ip
@@ -566,7 +566,7 @@ After installing PaaS-TA AP, refer to the other CLI in the User Guide for how to
 <tr>
 <td>operations/use-haproxy-public-network.yml</td>
 <td>HAProxy Public Network setting <br>
-    - When installing PaaS-TA AP using IaaS-provided LB, remove and install Operation files.
+    - When installing K-PaaS AP using IaaS-provided LB, remove and install Operation files.
 </td>
 <td>Requires: use-haproxy.yml <br>
     Requires Value :  <br>
@@ -577,7 +577,7 @@ After installing PaaS-TA AP, refer to the other CLI in the User Guide for how to
 <tr>
 <td>operations/use-haproxy-public-network-vsphere.yml</td>
 <td>HAProxy Public Network Setting <br>
-    - When installing PaaS-TA AP using IaaS-provided LB, which is used by vsphere, the operation file is removed and installed.
+    - When installing K-PaaS AP using IaaS-provided LB, which is used by vsphere, the operation file is removed and installed.
 </td>
 <td>Requires: use-haproxy.yml <br>
     Requires Value :  <br>
@@ -595,18 +595,18 @@ After installing PaaS-TA AP, refer to the other CLI in the User Guide for how to
 
 <br>
 
-### <div id='2.6.3'/>2.6.3.   PaaS-TA AP Installation Shell Scripts
-The paasta-deployment.yml file is a Manifest file that deploys PaaS-TA AP, which provides installation definitions for PaaS-TA AP VMs.
-When redistributing installed PaaS-TA AP, if AZs (zone) of the singleton-blobstore and database changes, all organization (ORG), space (SPACE), and app (APP) information gets deleted.
+### <div id='2.6.3'/>2.6.3.   K-PaaS AP Installation Shell Scripts
+The ap-deployment.yml file is a Manifest file that deploys K-PaaS AP, which provides installation definitions for K-PaaS AP VMs.
+When redistributing installed K-PaaS AP, if AZs (zone) of the singleton-blobstore and database changes, all organization (ORG), space (SPACE), and app (APP) information gets deleted.
 
-**※ Use BOSH deploy as a Command to install PaaS-TA AP. (Options vary by IaaS environment)**
+**※ Use BOSH deploy as a Command to install K-PaaS AP. (Options vary by IaaS environment)**
 
-Example of PaaS-TA AP deployment BOSH command
+Example of K-PaaS AP deployment BOSH command
 ```
-$ bosh -e ${BOSH_ENVIRONMENT} -d paasta deploy paasta-deployment.yml
+$ bosh -e ${BOSH_ENVIRONMENT} -d ap deploy ap-deployment.yml
 ```
 
-Installation options must be added when deploying PaaS-TA AP. The description of the installation options are as follows.
+Installation options must be added when deploying K-PaaS AP. The description of the installation options are as follows.
 
 <table>
 <tr>
@@ -615,16 +615,16 @@ Installation options must be added when deploying PaaS-TA AP. The description of
 </tr>
 <tr>
 <td>-d</td>
-<td>Deployment Name (Default Value paasta, modifications affect other PaaS-TA services.)</td>
+<td>Deployment Name (Default Value ap, modifications affect other K-PaaS services.)</td>
 </tr>   
 <tr>
 <td>-o</td>
-<td>The Option file applied when installing PaaS-TA provides attributes for each IaaS, whether or not to use Haproxy, and database setting functions.
+<td>The Option file applied when installing K-PaaS provides attributes for each IaaS, whether or not to use Haproxy, and database setting functions.
 </td>
 </tr>
 <tr>
 <td>-v</td>
-<td>Used to set variables in the option file or variables applied when installing PaaS-TA. <br> Option Categorized into required or optional items according to file properties.</td>
+<td>Used to set variables in the option file or variables applied when installing K-PaaS. <br> Option Categorized into required or optional items according to file properties.</td>
 </tr>
 <tr>
 <td>-l, --var-file</td>
@@ -634,95 +634,95 @@ Installation options must be added when deploying PaaS-TA AP. The description of
 
 - When installing AWS environment
 
-> $ vi ~/workspace/paasta-deployment/paasta/deploy-aws.sh
+> $ vi ~/workspace/ap-deployment/ap/deploy-aws.sh
 ```
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"					 # bosh director alias name (When Create-bosh-login.sh provided by PaaS-TA is not used, check and enter the name in bosh envs)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"					 # bosh director alias name (When Create-bosh-login.sh provided by K-PaaS is not used, check and enter the name in bosh envs)
 
-bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy paasta-deployment.yml \	# PaaS-TA Manifest File
+bosh -e ${BOSH_ENVIRONMENT} -d ap -n deploy ap-deployment.yml \	# AP Manifest File
 	-o operations/aws.yml \						# AWS Setting
 	-o operations/use-haproxy.yml \					# Apply HAProxy 
 	-o operations/use-haproxy-public-network.yml \			# Apply HAProxy Public Network
 	-o operations/use-postgres.yml \				# Database Type Setting (Requiires Migration from versions lower than 3.5)
 	-o operations/cce.yml \						# CCE applied
 	-o operations/rename-network-and-deployment.yml \		# Rename Network and Deployment
-	-l vars.yml \							# Variable settings file to apply when installing PaaS-TA in your environment
-	-l ../../common/common_vars.yml					# Common variable setting file to apply when installing PaaS-TA and various services
+	-l vars.yml \							# Variable settings file to apply when installing AP in your environment
+	-l ../../common/common_vars.yml					# Common variable setting file to apply when installing AP and various services
 ```
 
 - When installing an OpenStack environment
-> $ vi ~/workspace/paasta-deployment/paasta/deploy-openstack.sh
+> $ vi ~/workspace/ap-deployment/ap/deploy-openstack.sh
 ```
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"					 # bosh director alias name (When Create-bosh-login.sh provided by PaaS-TA is not used, check and enter the name in bosh envs)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"					 # bosh director alias name (When Create-bosh-login.sh provided by K-PaaS is not used, check and enter the name in bosh envs)
 
-bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy paasta-deployment.yml \	# PaaS-TA Manifest File
+bosh -e ${BOSH_ENVIRONMENT} -d ap -n deploy ap-deployment.yml \	# AP Manifest File
 	-o operations/openstack.yml \					# OpenStack Setting
 	-o operations/use-haproxy.yml \					# Apply HAProxy
 	-o operations/use-haproxy-public-network.yml \			# Apply HAProxy Public Network 
 	-o operations/use-postgres.yml \				# Database Type Setting (requiires Migration from versions lower than 3.5)
 	-o operations/cce.yml \						# CCE applied
 	-o operations/rename-network-and-deployment.yml \		# Rename Network and Deployment
-	-l vars.yml \							# Variable settings file to apply when installing PaaS-TA in your environment
-	-l ../../common/common_vars.yml					# Common variable setting file to apply when installing PaaS-TA and various services
+	-l vars.yml \							# Variable settings file to apply when installing AP in your environment
+	-l ../../common/common_vars.yml					# Common variable setting file to apply when installing AP and various services
 ```
 
 - When installing a vSphere environment
-> $ vi ~/workspace/paasta-deployment/paasta/deploy-vsphere.sh
+> $ vi ~/workspace/ap-deployment/ap/deploy-vsphere.sh
 ```
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"			 # bosh director alias name (When Create-bosh-login.sh provided by PaaS-TA is not used, check and enter the name in bosh envs)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"			 # bosh director alias name (When Create-bosh-login.sh provided by K-PaaS is not used, check and enter the name in bosh envs)
 
-bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy paasta-deployment.yml \	# PaaS-TA Manifest File
+bosh -e ${BOSH_ENVIRONMENT} -d ap -n deploy ap-deployment.yml \	# AP Manifest File
 	-o operations/use-haproxy.yml \					# Apply HAProxy
 	-o operations/use-haproxy-public-network-vsphere.yml \		# Apply HAProxy Public Network vSphere
 	-o operations/use-postgres.yml \				# Database Type Setting (requiires Migration from versions lower than 3.5)
 	-o operations/cce.yml \						# CCE applied
 	-o operations/rename-network-and-deployment.yml \		# Rename Network and Deployment
-	-l vars.yml \							# Variable settings file to apply when installing PaaS-TA in your environment
-	-l ../../common/common_vars.yml					# Common variable setting file to apply when installing PaaS-TA and various services
+	-l vars.yml \							# Variable settings file to apply when installing AP in your environment
+	-l ../../common/common_vars.yml					# Common variable setting file to apply when installing AP and various services
 ```
 
 - Grant execution permissions to Shell script File
 
 ```
-$ chmod +x ~/workspace/paasta-deployment/paasta/*.sh
+$ chmod +x ~/workspace/ap-deployment/ap/*.sh
 ```
 
 <br>
 
-## <div id='2.7'/>2.7.  PaaS-TA AP Installation
+## <div id='2.7'/>2.7.  K-PaaS AP Installation
 - Modify common_vars.yml and vars.yml to match your server environment, and then modify the settings in the Deploy script file.
-> $ vi ~/workspace/paasta-deployment/paasta/deploy-aws.sh
+> $ vi ~/workspace/ap-deployment/ap/deploy-aws.sh
 ```
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"			 		# bosh director alias name (When Create-bosh-login.sh provided by PaaS-TA is not used, check and enter the name in bosh envs)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"			 		# bosh director alias name (When Create-bosh-login.sh provided by K-PaaS is not used, check and enter the name in bosh envs)
 
-bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy paasta-deployment.yml \	# PaaS-TA Manifest File
+bosh -e ${BOSH_ENVIRONMENT} -d ap -n deploy ap-deployment.yml \	# AP Manifest File
 	-o operations/aws.yml \						# AWS Setting
 	-o operations/use-haproxy.yml \					# Apply HAProxy
 	-o operations/use-haproxy-public-network.yml \			# Apply HAProxy Public Network
 	-o operations/use-postgres.yml \				# Database Type Setting (requiires Migration from versions lower than 3.5)
 	-o operations/cce.yml \						# CCE applied
 	-o operations/rename-network-and-deployment.yml \		# Rename Network and Deployment
-	-l vars.yml \							# Variable settings file to apply when installing PaaS-TA in your environment
-	-l ../../common/common_vars.yml					# Common variable settings file to apply when installing PaaS-TA and various services
+	-l vars.yml \							# Variable settings file to apply when installing AP in your environment
+	-l ../../common/common_vars.yml					# Common variable settings file to apply when installing AP and various services
 ```
 
-- Run Shell Script file when installing PaaS-TA AP (BOSH login required)
+- Run Shell Script file when installing K-PaaS AP (BOSH login required)
 
 ```
 $ cd ~/workspace/paasta-deployment/paasta
 $ ./deploy-{IaaS}.sh
 ```
 
-- PaaS-TA AP Installation Check
+- K-PaaS AP Installation Check
 
-> $ bosh -e ${BOSH_ENVIRONMENT} vms -d paasta
+> $ bosh -e ${BOSH_ENVIRONMENT} vms -d ap
 
 ```
-ubuntu@inception:~$ bosh -e micro-bosh vms -d paasta
+ubuntu@inception:~$ bosh -e micro-bosh vms -d ap
 Using environment '10.0.1.6' as client 'admin'
 
 Task 134. Done
 
-Deployment 'paasta'
+Deployment 'ap'
 
 Instance                                                  Process State  AZ  IPs           VM CID               VM Type             Active  Stemcell  
 api/918da8e3-36c9-4144-b457-f48792041ece                  running        z1  10.0.31.206   i-093920c2caf43fe63  small               true    bosh-openstack-kvm-ubuntu-jammy-go_agent/1.181  
@@ -764,11 +764,11 @@ Succeeded
 
 <br>
 
-## <div id='2.8'/>2.8.  PaaS-TA AP Login
+## <div id='2.8'/>2.8.  K-PaaS AP Login
 
-Install CF CLI and log in to PaaS-TA AP.  
+Install CF CLI and log in to K-PaaS AP.  
 Install CF CLI by selecting between v6 and v7. 
-CF API uses the System Domain name specified during PaaS-TA AP deployment.
+CF API uses the System Domain name specified during K-PaaS AP deployment.
 
 - CF CLI v6 Installation
 
@@ -780,7 +780,7 @@ $ sudo apt install cf-cli -y
 $ cf --version
 ```
 
-- CF CLI v7 Installation (PaaS-TA AP 5.1.0 above)
+- CF CLI v7 Installation (K-PaaS AP 5.1.0 above)
 
 ```
 $ wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
@@ -790,7 +790,7 @@ $ sudo apt install cf7-cli -y
 $ cf --version
 ```
 
-- PaaS-TA AP Login
+- K-PaaS AP Login
 
 > $ cf login -a https://api.{system_domain} --skip-ssl-validation 
 
@@ -817,4 +817,4 @@ space:          No space targeted, use 'cf target -s SPACE'
 [UAA_Login_Create_Account]:./images/ap/uaa-login-2.png
 [UAA_Login_Reset_Password]:./images/ap/uaa-login.png
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > PaaS-TA AP
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > K-PaaS AP

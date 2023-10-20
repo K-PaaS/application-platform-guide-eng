@@ -1,12 +1,12 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > PaaS-TA AP - min
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > K-PaaS AP - min
 
 ## Purpose
-This document provides the Architecture of PaaS-TA Application Platform (AP) – min.
-<br>PaaS-TA Application Platform(AP) - min is a light version of Application Platform.
+This document provides the Architecture of K-PaaS Application Platform (AP) – min.
+<br>K-PaaS Application Platform(AP) - min is a light version of Application Platform.
 <br><br>
 
 ## System Configuration Diagram
-![PaaS-TA AP - min Architecture](image/ap_architecture_min.png)
+![K-PaaS AP - min Architecture](image/ap_architecture_min.png)
 
 - When Deploying 4VM
 
@@ -32,8 +32,8 @@ This document provides the Architecture of PaaS-TA Application Platform (AP) –
 
 
 ## Description
-PaaS-TA AP – min is a lightweight version of PaaS-TA AP.    
+K-PaaS AP – min is a lightweight version of K-PaaS AP.    
 Existing 15 to 16 VM components can be deployed as 4 VMs or 7 VMs if needed.
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > PaaS-TA AP - min
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > K-PaaS AP - min

@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > Pipeline Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > Pipeline Service
 
 ## Table of Contents  
 
@@ -28,7 +28,7 @@
 ## <div id='1'/> 1. Document Outline
 
 ### <div id='1.1'/> 1.1. Range
-This document (Distribution Pipeline Service Pack Installation Guide) describes how to install the distribution pipeline service pack, which is a service pack provided by PaaS-TA, using Bosh.  
+This document (Distribution Pipeline Service Pack Installation Guide) describes how to install the distribution pipeline service pack, which is a service pack provided by K-PaaS, using Bosh.  
 
 ### <div id='1.2'/> 1.2. Range
 The installation range was prepared based on the basic installation to verify the distribution pipeline service pack.
@@ -84,7 +84,7 @@ $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell -n {STEMCELL_URL}
 
 Download the deployment needed from Git Repository and place the file in the service installation directory.  
 
-- Service Deployment Git Repository URL : https://github.com/PaaS-TA/service-deployment/tree/v5.1.25
+- Service Deployment Git Repository URL : https://github.com/K-PaaS/service-deployment/tree/v5.1.25.1
 
 ```
 # Deployment File Download, make directory, change directory
@@ -92,16 +92,16 @@ $ mkdir -p ~/workspace
 $ cd ~/workspace
 
 # Deployment File Download
-$ git clone https://github.com/PaaS-TA/service-deployment.git -b v5.1.25
+$ git clone https://github.com/K-PaaS/service-deployment.git -b v5.1.25.1
 
 # common_vars.yml File Download(Download if common_vars.yml doesn't exist)
-$ git clone https://github.com/PaaS-TA/common.git
+$ git clone https://github.com/K-PaaS/common.git
 ```
 
 ### <div id='2.4'/> 2.4. Deployment File Modification
 
 The BOSH Deployment manifest is a YAML file that defines the properties of components elements and deployments.  
-Cloud config is used for network, vm_type, and disk_type used in Deployment files, and refer to the PaaS-TA AP installation guide for the usage  
+Cloud config is used for network, vm_type, and disk_type used in Deployment files, and refer to the K-PaaS AP installation guide for the usage  
 
 - Check the Cloud config settings.   
 
@@ -133,7 +133,7 @@ networks:
   subnets:
   - az: z1
     cloud_properties:
-      security_groups: paasta-security-group
+      security_groups: ap-security-group
       subnet: subnet-00000000000000000
     dns:
     - 8.8.8.8
@@ -226,84 +226,6 @@ haproxy_instances: 1                                             # haproxy insta
 haproxy_vm_type: "small"                                         # haproxy vm type
 haproxy_internal_static_ips: "<HAPROXY_PRIVATE_IP>"              # haproxy's private IP (e.g. "10.0.0.11")
 haproxy_public_static_ips: "<HAPROXY_PUBLIC_IP>"                 # haproxy's public IP
-
-# CI_SERVER
-ci_server_azs: [z5]                                                           # ci server(Jenkins) azs
-ci_server_instances: 2                                                        # ci server(Jenkins) instances
-ci_server_persistent_disk_type: "5GB"                                         # ci server(Jenkins) persistent disk type
-ci_server_vm_type: "small"                                                    # ci server(Jenkins) vm type
-ci_server_shared_internal_static_ip: "<CI_SERVER_SHARD_PRIVATE_IP>"           # ci server(Jenkins)'s private IP for shared (e.g. "10.0.161.33")
-ci_server_dedicated_internal_static_ip: "<CI_SERVER_DEDICATED_PRIVATE_IP>"    # ci server(Jenkins)'s public IP for dedicated (e.g. "10.0.161.34")
-ci_server_password: "<CI_SERVER_PASSWORD>"                                    # ci server(Jenkins) password (e.g. "admin!@#")
-ci_server_admin_user_username: "<CI_SERVER_ADMIN_USERNAME>"                   # ci server(Jenkins) admin username (e.g. "admin")
-ci_server_admin_user_password: "<CI_SERVER_ADMIN_PASSWORD>"                   # ci server(Jenkins) admin password (e.g. "admin!@#")
-ci_server_http_url: "<CI_SERVER_HTTP_URL>"                                    # ci server(Jenkins) Enter the first two digits of the internal IP (e.g. If 10.110.10.10, enter "10.110")
-
-# BINARY_STORAGE
-binary_storage_azs: [z5]                                           # binary storage azs
-binary_storage_instances: 1                                        # binary storage instances
-binary_storage_persistent_disk_type: "5GB"                         # binary storage persistent disk type
-binary_storage_vm_type: "small"                                    # binary storage vm type
-binary_storage_internal_static_ips: "<BINARY_STORAGE_PRIVATE_IP>"  # binary storage's private IP (e.g. "10.0.161.35")
-binary_storage_proxy_port: "10008"                                 # binary storage Proxy Server Port(Object Storage access Port) (default : 10008)
-binary_storage_auth_port: 15001                                    # binary storage keystone port (e.g. 15001) -- Do Not Use "5000"
-binary_storage_username: "paasta-pipeline"                         # binary storage First generated user name(Object Storage Access Username)
-binary_storage_password: "paasta-pipeline"                         # binary storage First generated user password(Object Storage Access User Password)
-binary_storage_tenantname: "paasta-pipeline"                       # binary storage First generated tenant name(Object Storage Access Tenant Name)
-binary_storage_email: "email@email.com"                            # binary storage First generated user email
-binary_storage_binary_desc: "paasta-pipeline-object service"       # binary storage Description
-binary_storage_container: "delivery-pipeline-container"            # binary storage First generated container Name
-
-# COMMON_API
-common_api_port: "8081"                                          # common api port 
-common_api_azs: [z5]                                             # common api azs
-common_api_instances: 1                                          # common api instances
-common_api_vm_type: "small"                                      # common api vm type
-common_api_internal_static_ips: "<COMMON_API_PRIVATE_IP>"        # common api's private IP (e.g. "10.0.161.36")
-
-# INSPECTION_API
-inspection_api_port: "8083"                                         # inspection api port
-inspection_api_azs: [z5]                                            # inspection api azs
-inspection_api_instances: 1                                         # inspection api instances
-inspection_api_vm_type: "small"                                     # inspection api vm type
-inspection_api_internal_static_ips: "<INSPECTION_API_PRIVATE_IP>"   # inspection api's private IP (e.g. "10.0.161.37")
-
-# BINARY_STORAGE_API
-storage_api_port: "8080"                                         # storage api port
-storage_api_azs: [z5]                                            # storage api azs
-storage_api_instances: 1                                         # storage api instances
-storage_api_vm_type: "small"                                     # storage api vm type
-storage_api_internal_static_ips: "<STORAGE_API_PRIVATE_IP>"      # storage api's private IP (e.g. "10.0.161.38")
-
-# API
-api_port: "8082"                                                 # api port 
-api_azs: [z5]                                                    # api azs
-api_instances: 1                                                 # api instances
-api_persistent_disk_type: "2GB"                                  # api persistent disk type
-api_vm_type: "small"                                             # api vm type
-api_internal_static_ips: "<API_PRIVATE_IP>"                      # api's private IP (e.g. "10.0.161.39")
-
-# SERVICE_BROKER
-service_broker_port: "8080"                                       # pipeline service broker port
-service_broker_azs: [z5]                                          # pipeline service broker azs
-service_broker_instances: 1                                       # pipeline service broker instances
-service_broker_persistent_disk_type: "2GB"                        # pipeline service broker persistent disk type
-service_broker_vm_type: "small"                                   # pipeline service broker vm type
-service_broker_internal_static_ips: "<SERVICE_BROKER_PRIVATE_IP>" # pipeline service broker's private IP (e.g. "10.0.161.40")
-
-# UI(DASHBOARD)
-ui_port: "8084"                                                  # ui(dahsboard) port
-ui_azs: [z5]                                                     # ui(dahsboard) azs
-ui_instances: 1                                                  # ui(dahsboard) instances
-ui_vm_type: "small"                                              # ui(dahsboard) vm type
-ui_internal_static_ips: "<UI_PRIVATE_IP>"                        # ui(dahsboard)'s private IP (e.g. "10.0.161.41")
-
-# SCHEDULER
-scheduler_port: "8080"                                           # scheduler port
-scheduler_azs: [z5]                                              # scheduler azs
-scheduler_instances: 1                                           # scheduler instances
-scheduler_vm_type: "small"                                       # scheduler vm type
-scheduler_internal_static_ips: "<SCHEDULER_PRIVATE_IP>"          # scheduler's private IP (e.g. "10.0.161.42")
 ```
 
 ### <div id='2.5'/> 2.5. Service Installation
@@ -317,8 +239,8 @@ scheduler_internal_static_ips: "<SCHEDULER_PRIVATE_IP>"          # scheduler's p
 
 # VARIABLES
 COMMON_VARS_PATH="<COMMON_VARS_FILE_PATH>"	# common_vars.yml File Path (e.g. ../../common/common_vars.yml)
-CURRENT_IAAS="${CURRENT_IAAS}"			# IaaS Information (When not using create-bosh-login.sh provided by PaaS-TA, enter aws/azure/gcp/openstack/vsphere)
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"		# bosh director alias name (When not using create-bosh-login.sh provided by PaaS-TA, check the name from bosh envs and enter)
+CURRENT_IAAS="${CURRENT_IAAS}"			# IaaS Information (When not using create-bosh-login.sh provided by K-PaaS, enter aws/azure/gcp/openstack/vsphere)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"		# bosh director alias name (When not using create-bosh-login.sh provided by K-PaaS, check the name from bosh envs and enter)
 
 # DEPLOY
 bosh -e ${BOSH_ENVIRONMENT} -n -d pipeline-service deploy --no-redact pipeline-service.yml \
@@ -417,11 +339,11 @@ $ sh /var/vcap/php-mariadb-script.sh
 ```
 
 ## <div id='3'/> 3. Manage and request for deployment pipeline services 
-If you register and disclose the distribution pipeline service through the PaaS-TA operator portal, you can request for and use the service through the PaaS-TA user portal.
+If you register and disclose the distribution pipeline service through the K-PaaS AP operator portal, you can request for and use the service through the K-PaaS AP user portal.
 
 ### <div id='3.1'/> 3.1. Service Broker Registration
 
-Once the deployment of the deployment pipeline service pack has been completed, you must first register the deployment pipeline service broker to use the service pack on the PAAS-TA Portal.
+Once the deployment of the deployment pipeline service pack has been completed, you must first register the deployment pipeline service broker to use the service pack on the K-PaaS AP Portal.
 When registering as a service broker, you must be logged in as a user who can register a service broker on an open cloud platform.
 
 - Check the list of service brokers.
@@ -430,7 +352,6 @@ When registering as a service broker, you must be logged in as a user who can re
 ```  
 Getting service brokers as admin...
 
-name   url
 No service brokers found
 ```  
 
@@ -467,26 +388,28 @@ delivery-pipeline-broker       http://10.0.161.22:8080
 
 ```
 Getting service access as admin...
-broker: delivery-pipeline-broker
-   service             plan                          access   orgs
-   delivery-pipeline   delivery-pipeline-shared      none
-   delivery-pipeline   delivery-pipeline-dedicated   none
+
+broker: delivery-pipeline
+   offering   plan                 access   orgs
+   pipeline   pipeline-dedicated   none     
+   pipeline   pipeline-shared      none   
 ```
 Do not allow access by default when creating a service broker.
 
 - Assign permission to a specific organization to access the service and recheck the access service list. (Overall Organization) 
-> $ cf enable-service-access delivery-pipeline   
+> $ cf enable-service-access pipeline   
 ```
-Enabling access to all plans of service delivery-pipeline for all orgs as admin...   
+Enabling access to all plans of service offering pipeline for all orgs as admin...
 OK
 ```
 > $ cf service-access   
 ```                          
 Getting service access as admin...
-broker: delivery-pipeline-broker
-   service             plan                          access   orgs
-   delivery-pipeline   delivery-pipeline-shared      all
-   delivery-pipeline   delivery-pipeline-dedicated   all
+
+broker: delivery-pipeline
+   offering   plan                 access   orgs
+   pipeline   pipeline-dedicated   all      
+   pipeline   pipeline-shared      all
 ```
 
 ### <div id='3.2'/> 3.2. UAAC Client Registration
@@ -495,7 +418,7 @@ Check the procedure for UAAC Client account registration.
 - Register deployment pipeline UAAC Client.
 ```
 ### uaac client add Description
-uaac client add {Client name} -s {Client Password} --redirect_URI{Dashboard URL} --scope {Permission Range} --authorized_grant_types {Authority Type} --authorities={Authority Permission} --autoapprove={Automatic Authorization}  
+uaac client add {Client name} -s {Client Password} --redirect_uri{Dashboard URL} --scope {Permission Range} --authorized_grant_types {Authority Type} --authorities={Authority Permission} --autoapprove={Automatic Authorization}  
 Client Name : uaac client name (pipeclient)  
 Client Password : uaac Client password  
 Dashboard URL: Dashboard URL to be successfully redirected   
@@ -536,38 +459,46 @@ $ uaac client add pipeclient -s clientsecret --redirect_uri "http://101.55.50.20
 Register Java Offline Buildpack to use deployment pipeline service.
 
 - Java Offline Buildpack Download 
-> wget -O java-buildpack-offline-v4.37.zip https://nextcloud.paas-ta.org/index.php/s/8rGJXEFa8odFDLk/download 
+> wget -O java-buildpack-offline-v4.37.zip https://nextcloud.k-paas.org/index.php/s/8rGJXEFa8odFDLk/download 
 
 **buildpack Registration**  
 
-> $ cf create-buildpack java_buildpack_offline ..\buildpack\java-buildpack-offline-v4.37.zip 3   
+> $ cf create-buildpack java_buildpack_offline java-buildpack-offline-v4.37.zip 3
+```
+Creating buildpack java_buildpack_offline as admin...
+OK
+Uploading buildpack java_buildpack_offline as admin...
+ 794.99 MiB / 794.99 MiB [===================================================================================] 100.00% 7s
+OK
+Processing uploaded buildpack java_buildpack_offline...
+OK
+```
 
 **buildpack Registration Check**  
 
 > $ cf buildpacks 
 ```
-Getting buildpacks...
-
-buildpack                position   enabled   locked   filename
-staticfile_buildpack     1          true      false    staticfile_buildpack-cflinuxfs3-v1.4.43.zip
-java_buildpack           2          true      false    java-buildpack-cflinuxfs3-v4.19.1.zip
-java_buildpack_offline   3          true      false    java-buildpack-offline-v4.37.zip
-ruby_buildpack           4          true      false    ruby_buildpack-cflinuxfs3-v1.7.40.zip
-dotnet_core_buildpack    5          true      false    dotnet-core_buildpack-cflinuxfs3-v2.2.12.zip
-nodejs_buildpack         6          true      false    nodejs_buildpack-cflinuxfs3-v1.6.51.zip
-go_buildpack             7          true      false    go_buildpack-cflinuxfs3-v1.8.40.zip
-python_buildpack         8          true      false    python_buildpack-cflinuxfs3-v1.6.34.zip
-php_buildpack            9          true      false    php_buildpack-cflinuxfs3-v4.3.77.zip
-nginx_buildpack          10         true      false    nginx_buildpack-cflinuxfs3-v1.0.13.zip
-r_buildpack              11         true      false    r_buildpack-cflinuxfs3-v1.0.10.zip
-binary_buildpack         12         true      false    binary_buildpack-cflinuxfs3-v1.0.32.zip
+Getting buildpacks as admin...
+position   name                     stack        enabled   locked   filename
+1          java_buildpack           cflinuxfs3   true      false    java-buildpack-cflinuxfs3-v4.50.zip
+2          staticfile_buildpack     cflinuxfs3   true      false    staticfile_buildpack-cflinuxfs3-v1.5.32.zip
+3          java_buildpack_offline                true      false    java-buildpack-offline-v4.37.zip
+4          ruby_buildpack           cflinuxfs3   true      false    ruby_buildpack-cflinuxfs3-v1.8.56.zip
+5          dotnet_core_buildpack    cflinuxfs3   true      false    dotnet-core_buildpack-cflinuxfs3-v2.3.44.zip
+6          nodejs_buildpack         cflinuxfs3   true      false    nodejs_buildpack-cflinuxfs3-v1.7.72.zip
+7          go_buildpack             cflinuxfs3   true      false    go_buildpack-cflinuxfs3-v1.9.48.zip
+8          python_buildpack         cflinuxfs3   true      false    python_buildpack-cflinuxfs3-v1.7.56.zip
+9          php_buildpack            cflinuxfs3   true      false    php_buildpack-cflinuxfs3-v4.4.64.zip
+10         nginx_buildpack          cflinuxfs3   true      false    nginx_buildpack-cflinuxfs3-v1.1.41.zip
+11         r_buildpack              cflinuxfs3   true      false    r_buildpack-cflinuxfs3-v1.1.31.zip
+12         binary_buildpack         cflinuxfs3   true      false    binary_buildpack-cflinuxfs3-v1.0.45.zip
 ```
 ※ Reference URL : https://github.com/cloudfoundry/java-buildpack  
 
   
 ### <div id='3.4'/> 3.4. Service Application
 #### <div id='3.4.1'/> 3.4.1. Service Application - Portal
-1. Access the PaaS-TA operator portal and log in.
+1. Access the K-PaaS AP operator portal and log in.
 ![3-1-1]
 
 2. Login > Service Management > Check the Deployment Pipeline Service Broker on the Service Broker page.
@@ -586,13 +517,13 @@ binary_buildpack         12         true      false    binary_buildpack-cflinuxf
 > - Classification :  Development Support Tools
 > - Service : delivery-pipeline
 > - Thumbnail : [Deployment Pipeline Service Thumbnail]
-> - Document URL : https://github.com/PaaS-TA/DELIVERY-PIPELINE-SERVICE-BROKER
+> - Document URL : https://github.com/K-PaaS/ap-pipeline-broker
 > - Service Creating Parameter : owner
 > - Using App Bind : N
 > - Public : Y
 > - Using Dashboard : Y
 > - OnDemand : N
-> - Tag : paasta / tag6, free / tag2
+> - Tag : k-paas / tag6, free / tag2
 > - Outline : A pipeline designed for development
 > - Description :
 > A pipeline designed for development.  
@@ -600,7 +531,7 @@ binary_buildpack         12         true      false    binary_buildpack-cflinuxf
 >  
 ![3-2-2]
 
-- Access to PaaS-TA user portal then request for service through catalog.   
+- Access to K-PaaS AP user portal then request for service through catalog.   
 
 ![003]
 
@@ -621,8 +552,8 @@ cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 [SERVICE_INSTANCE] : Name of the service instance to create
 ```
 
-- Request for pipeline service. (PaaS-TA user_id Setting)
-> cf create-service delivery-pipeline delivery-pipeline-shared pipeline-service -c '{"owner":"{user_id}"}'  
+- Request for pipeline service. (K-PaaS AP user_id Setting)
+> cf create-service pipeline pipeline-shared pipeline-service -c '{"owner":"{user_id}"}'
 ```
 Creating service instance pipeline-service in org system / space dev as admin...
 OK
@@ -648,4 +579,4 @@ OK
 
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > Pipeline Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > Pipeline Service

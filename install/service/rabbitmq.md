@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > RabbitMQ Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > RabbitMQ Service
 
 ## Table of Contents
 
@@ -18,12 +18,12 @@
 3. [Description for Sample App including RabbitMQ Linkage](#3)  
   3.1. [Service Broker Registration](#3.1)  
   3.2. [Sample App Download](#3.2)  
-  3.3. [Request for service in PaaS-TA](#3.3)  
+  3.3. [Request for service in K-PaaS](#3.3)  
   3.4. [Request for service bind to Sample App and check for App](#3.4)   
      
 ## <div id='1'> 1. Document Outline
 ### <div id='1.1'> 1.1. Purpose
-This document (Rabbit MQ service pack installation guide) describes how to install RabbitMQ service pack, which is a service pack provided by PaaS-TA, using Bosh. 
+This document (Rabbit MQ service pack installation guide) describes how to install RabbitMQ service pack, which is a service pack provided by K-PaaS, using Bosh. 
 
 ### <div id='1.2'> 1.2. Range
 The installation range was prepared based on the basic installation to verify the RabbitMQ service pack. 
@@ -43,7 +43,7 @@ In order to install the service pack, BOSH CLI v2 must be installed and logged i
 If BOSH CLI v2 is not installed, you should first refer to the BOSH 2.0 installation guide document to install BOSH CLI v2 and familiarize the usage.
 
 - Check the bosh runtime-config to see if there is a rabbitmq in the bosh-dns include deployments.
- ※ (Note) If bosh-dns include deployments is not at rabbitmq, go to ~/workspace/paasta-deployment/bosh/runtime-configs and open dns.yml to add rabbitmq and update bosh runtime-config.  
+ ※ (Note) If bosh-dns include deployments is not at rabbitmq, go to ~/workspace/ap-deployment/bosh/runtime-configs and open dns.yml to add rabbitmq and update bosh runtime-config.  
 
 > $ bosh -e micro-bosh runtime-config
 ```
@@ -53,7 +53,7 @@ Using environment '10.0.1.6' as client 'admin'
 addons:
 - include:
     deployments:
-    - paasta
+    - ap
     - pinpoint
     - pinpoint-monitoring
     - rabbitmq
@@ -115,7 +115,7 @@ $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell -n {STEMCELL_URL}
 
 Download the deployment needed from Git Repository and place the file at the service installation directory 
 
-- Service Deployment Git Repository URL : https://github.com/PaaS-TA/service-deployment/tree/v5.1.25
+- Service Deployment Git Repository URL : https://github.com/K-PaaS/service-deployment/tree/v5.1.25.1
 
 ```
 # Deployment File Download , make directory, change directory
@@ -123,16 +123,16 @@ $ mkdir -p ~/workspace
 $ cd ~/workspace
 
 # Deployment File Download
-$ git clone https://github.com/PaaS-TA/service-deployment.git -b v5.1.25
+$ git clone https://github.com/K-PaaS/service-deployment.git -b v5.1.25.1
 
 # common_vars.yml File Download (Download if common_vars.yml doesn't exist)
-$ git clone https://github.com/PaaS-TA/common.git
+$ git clone https://github.com/K-PaaS/common.git
 ```
 
 ### <div id="2.4"/> 2.4. Deployment File Modification
 
 The BOSH Deployment manifest is a YAML file that defines the properties of components elements and deployments. 
-Cloud config is used for network, vm_type, and disk_type used in Deployment files, and refer to the PaaS-TA AP installation guide on the usage.  
+Cloud config is used for network, vm_type, and disk_type used in Deployment files, and refer to the K-PaaS AP installation guide on the usage.  
 
 - Check the Cloud config settings.  
 
@@ -164,7 +164,7 @@ networks:
   subnets:
   - az: z1
     cloud_properties:
-      security_groups: paasta-security-group
+      security_groups: ap-security-group
       subnet: subnet-00000000000000000
     dns:
     - 8.8.8.8
@@ -197,16 +197,16 @@ Succeeded
 ```
 
 - Modify common_vars.yml to suit the server environment. 
-- The variables used in RabbitMQ are system_domain, paasta_admin_username, paasta_admin_password, and paasta_nats_ip.
+- The variables used in RabbitMQ are system_domain, ap_admin_username, ap_admin_password, and ap_nats_ip.
 
 > $ vi ~/workspace/common/common_vars.yml
 ```
 ... ((Skip)) ...
 
 system_domain: "61.252.53.246.nip.io"		# Domain (Same as HAProxy Public IP when using nip.io)
-paasta_admin_username: "admin"			# PaaS-TA Admin Username
-paasta_admin_password: "admin"			# PaaS-TA Admin Password
-paasta_nats_ip: "10.0.1.121"
+ap_admin_username: "admin"			# Application Platform Admin Username
+ap_admin_password: "admin"			# Application Platform Admin Password
+ap_nats_ip: "10.0.1.121"
   
 ... ((Skip)) ...
 
@@ -232,13 +232,13 @@ private_networks_name: "default"                            # private network na
 
 # COMMON
 bosh_name: "micro-bosh"                                     # bosh name (e.g. micro-bosh) -- (Checkable through 'bosh env' command)
-paasta_deployment_name: "paasta"                            # paasta application platform name (e.g. paasta)
+paasta_deployment_name: "ap"                                #  application platform name (e.g. ap)
 
 # RABBITMQ
 rabbitmq_azs: [z3]                                          # rabbitmq : azs
 rabbitmq_instances: 1                                       # rabbitmq : instances (1) 
 rabbitmq_private_ips: "<RABBITMQ_PRIVATE_IPS>"              # rabbitmq : private ips (e.g. "10.0.81.31")
-management_username: "<MANAGEMENT_USERNAME>"  		    # rabbitmq : username (e.g. "madmin") *broker/administrator_username != management_username
+management_username: "<MANAGEMENT_USERNAME>"  		        # rabbitmq : username (e.g. "madmin") *broker/administrator_username != management_username
 
 # HAPROXY
 haproxy_azs: [z3]                                           # haproxy : azs
@@ -249,7 +249,7 @@ haproxy_private_ips: "<HAPROXY_PRIVATE_IPS>"                # haproxy : private 
 broker_azs: [z3]                                            # service-broker : azs
 broker_instances: 1                                         # service-broker : instances (1)
 broker_port: 4567                                           # service-broker : broker port (e.g. "4567")
-broker_username: "<SERVICE_BROKER_USERNAME>"		    # service-broker : username (e.g. "admin") *broker/administrator_username != management_username
+broker_username: "<SERVICE_BROKER_USERNAME>"		        # service-broker : username (e.g. "admin") *broker/administrator_username != management_username
 broker_password: "<SERVICE_BROKER_PASSWORD>"                # service-broker : password (e.g. "admin" no recommand)
 administrator_username: "<SERVICE_BROKER_ADMIN_USERNAME>"   # servier-broker : administrator username (e.g. "administrator")
 
@@ -316,19 +316,18 @@ Succeeded
 
 ## <div id='3'> 3. Description for Sample App including RabbitMQ Linkage
 
-This Sample App is deployed to PaaS-TA and can be used with RabbitMQ's service on Provision and Bind.
+This Sample App is deployed to K-PaaS AP and can be used with RabbitMQ's service on Provision and Bind.
 
 ### <div id='3.1'> 3.1. Service Broker Registration
 
 When the RabbitMQ service pack deployment is completed, you must first register the RabbitMQ service broker to use the service pack in the application.
-When registering a service broker, you must log in as a user who can register a service broker in PaaS-TA.
+When registering a service broker, you must log in as a user who can register a service broker in K-PaaS AP.
 
 - Check the list of service brokers.
 > $ cf service-brokers
 ```
 Getting service brokers as admin...
-  
-name   url
+
 No service brokers found
 ```
 
@@ -373,8 +372,8 @@ rabbitmq-service-broker http://10.30.107.191:4567
 ```
 Getting service access as admin...
 broker: rabbitmq-service-broker
-   service      plan       access   orgs
-   rabbitmq     standard   none      
+   offering   plan       access   orgs
+   rabbitmq   standard   none          
 ```
 
 - Access is initially not permitted when registering as a service broker. Therefore, access is set to none.
@@ -384,7 +383,7 @@ broker: rabbitmq-service-broker
 > $ cf enable-service-access rabbitmq 
 
 ```
-Enabling access to all plans of service rabbitmq for all orgs as admin...
+Enabling access to all plans of service offering rabbitmq for all orgs as admin...
 OK
 ```
 
@@ -392,17 +391,17 @@ OK
 ```
 Getting service access as admin...
 broker: rabbitmq-service-broker
-   service      plan       access   orgs
-   rabbitmq     standard   all      
+   offering   plan       access   orgs
+   rabbitmq   standard   all               
 ```
 
 ### <div id='3.2'> 3.2. Sample App Download
 
 - Download Zip file of Sample Apps
 ```
-$ wget https://nextcloud.paas-ta.org/index.php/s/BoSbKrcXMmTztSa/download --content-disposition  
-$ unzip paasta-service-samples-459dad9.zip  
-$ cd paasta-service-samples/rabbitmq  
+$ wget https://nextcloud.k-paas.org/index.php/s/scFDGk9iZBg8apZ/download --content-disposition  
+$ unzip ap-service-samples-db49d1e.zip  
+$ cd ap-service-samples/rabbitmq  
 ```
 
 <br>
@@ -410,20 +409,19 @@ $ cd paasta-service-samples/rabbitmq
 
 ### <div id='3.3'> 3.3. Request for service
 Request for service in order to use the RabbitMQ service in the Sample App, you must request for service (Provision).
-*Note: When requesting for a service, you must be logged in as a user who can request for a service in PaaS-TA.
+*Note: When requesting for a service, you must be logged in as a user who can request for a service in K-PaaS AP.
 
-- Check whether there is a service in the PaaS-TA Marketplace first.
+- Check whether there is a service in the K-PaaS AP Marketplace first.
 
 > $ cf marketplace
 
 ```
-getting services from marketplace in org system / space dev as admin...
-OK
+Getting all service offerings from marketplace in org system / space dev as admin...
 
-service      plans         description                                                                           broker
-rabbitmq     standard      RabbitMQ is a robust and scalable high-performance multi-protocol messaging broker.   rabbitmq-service-broker
+offering   plans          description                                                                                                                   broker
+rabbitmq   standard       RabbitMQ service to provide shared instances of this high-performance multi-protocol messaging broker.                        rabbitmq-service-broker
 
-TIP: Use 'cf marketplace -s SERVICE' to view descriptions of individual plans of a given service.
+TIP: Use 'cf marketplace -e SERVICE_OFFERING' to view descriptions of individual plans of a given service offering.
 ```
 <br>
 
@@ -451,17 +449,17 @@ OK
 > $ cf services
 
 ```
-Getting services in org system / space dev as admin...
+Getting service instances in org system / space dev as admin...
 
-name                  service      plan       bound apps   last operation     broker                    upgrade available
-my_rabbitmq_service   rabbitmq     standard                create succeeded   rabbitmq-service-broker   
+name                  offering   plan           bound apps          last operation     broker                    upgrade available
+my_rabbitmq_service   rabbitmq   standard                           create succeeded   rabbitmq-service-broker   no
 ```
 
 <br>
 
 ### <div id='3.4'> 3.4. Request for service bind to Sample App and check App
 Once the service request is completed, download the labbit-example-app provided by cf and conduct the test.
-* Note: When requesting for service bind, you must be logged in as a user who can request for service bind in PaaS-TA..
+* Note: When requesting for service bind, you must be logged in as a user who can request for service bind in K-PaaS AP.
 
 - Check the manifest file.  
 
@@ -481,17 +479,27 @@ applications:
 
 > $ cf push --no-start 
 ```  
-Applying manifest file /home/ubuntu/workspace/samples/paasta-service-samples/rabbitmq/manifest.yml...
+Pushing app rabbit-example-app to org system / space dev as admin...
+Applying manifest file /home/ubuntu/workspace/samples/ap-service-samples/rabbitmq/manifest.yml...
+Updating with these attributes...
+  ---
+  applications:
++ - name: rabbit-example-app
+    path: /home/ubuntu/workspace/samples/ap-service-samples/rabbitmq
++   default-route: true
++   buildpacks:
++   - ruby_buildpack
++   command: thin -R config.ru start.
 Manifest applied
 Packaging files to upload...
 Uploading files...
- 3.16 MiB / 3.16 MiB [===================================================================================================
+ 18.25 KiB / 18.25 KiB [=================================================================] 100.00% 1s
 
 Waiting for API to complete processing files...
 
 name:              rabbit-example-app
 requested state:   stopped
-routes:            rabbit-example-app.paasta.kr
+routes:            rabbit-example-app.ap.kr
 last uploaded:     
 stack:             
 buildpacks:        
@@ -502,7 +510,7 @@ instances:       0/1
 memory usage:    1024M
 start command:   thin -R config.ru start
      state   since                  cpu    memory   disk     details
-#0   down    2021-11-22T05:32:24Z   0.0%   0 of 0   0 of 0   
+#0   down    2023-10-12T08:05:15Z   0.0%   0 of 0   0 of 0   
 
 ```  
   
@@ -511,8 +519,10 @@ start command:   thin -R config.ru start
 > $ cf bind-service rabbit-example-app my_rabbitmq_service 
 
 ```	
-Binding service my_rabbitmq_service to app rabbit-example-app in org system / space dev as admin...
+Binding service instance my_rabbitmq_service to app rabbit-example-app in org system / space dev as admin...
 OK
+
+TIP: Use 'cf restage rabbit-example-app' to ensure your env variable changes take effect
 ```
 
 When running the app, add a security group for communication with the service.
@@ -555,12 +565,15 @@ Restarting app rabbit-example-app in org system / space dev as admin...
 
 Staging app and tracing logs...
    Downloading ruby_buildpack...
-   Downloaded ruby_buildpack (5.2M)
-   Cell 4a88ce8b-1e72-485a-8f62-1fe0c6b9a7cd creating container for instance 934daf45-8787-4d8a-86fd-bd6dbde78f30
-   Cell 4a88ce8b-1e72-485a-8f62-1fe0c6b9a7cd successfully created container for instance 934daf45-8787-4d8a-86fd-bd6dbde7
+   Downloaded ruby_buildpack
+   Cell 67f9c5f5-04bc-42a9-a5bc-d628dd9f2a2c creating container for instance 17d0d71e-75d3-48f4-b7a2-de1f31702ae4
+   Security group rules were updated
+   Cell 67f9c5f5-04bc-42a9-a5bc-d628dd9f2a2c successfully created container for instance 17d0d71e-75d3-48f4-b7a2-de1f31702ae4
    Downloading app package...
-   Downloaded app package (3.2M)
-   -----> Ruby Buildpack version 1.8.37
+   Downloaded app package (18.3K)
+   -----> Ruby Buildpack version 1.8.56
+   -----> Supplying Ruby
+   -----> Installing bundler 1.17.3
 
 
 ........
@@ -570,19 +583,19 @@ Instances starting...
 
 name:              rabbit-example-app
 requested state:   started
-routes:            rabbit-example-app.paasta.kr
-last uploaded:     Mon 22 Nov 05:34:27 UTC 2021
+routes:            rabbit-example-app.ap.kr
+last uploaded:     Thu 12 Oct 17:07:34 KST 2023
 stack:             cflinuxfs3
 buildpacks:        
 	name             version   detect output   buildpack name
-	ruby_buildpack   1.8.37    ruby            ruby
+	ruby_buildpack   1.8.56    ruby            ruby
 
 type:           web
 sidecars:       
 instances:      1/1
 memory usage:   1024M
      state     since                  cpu    memory   disk     details
-#0   running   2021-11-22T05:34:36Z   0.0%   0 of 0   0 of 0   
+#0   running   2023-10-12T08:07:47Z   0.0%   0 of 1G   0 of 1G   
 ```  
 
 
@@ -605,4 +618,4 @@ test
 [rabbitmq_image_12]:./images/rabbitmq/rabbitmq_image_12.png
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > RabbitMQ Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > RabbitMQ Service

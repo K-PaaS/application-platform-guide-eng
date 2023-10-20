@@ -1,16 +1,16 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > User Portal
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > User Portal
 
 ## Table of Contents
 1. [Document Outline](#1)
      * [1.1. Purpose](#2)
      * [1.2. Range](#3)
-2. [Create PaaS-TA User Portal Account](#4)
-     * [2.1.  Create PaaS-TA User Portal Account](#5)
-     * [2.2.  Reset PaaS-TA User Portal Password](#6)
-     * [2.3.  Login to PaaS-TA User Portal and Create Organization](#7)
-3. [PaaS-TA User Portal Manual](#8)
-     * [3.1.  Construct PaaS-TA User Portal Menu](#9)
-     * [3.2.  PaaS-TA User Portal Menu Description](#10)
+2. [Create K-PaaS AP User Portal Account](#4)
+     * [2.1.  Create K-PaaS AP User Portal Account](#5)
+     * [2.2.  Reset K-PaaS AP User Portal Password](#6)
+     * [2.3.  Login to K-PaaS AP User Portal and Create Organization](#7)
+3. [K-PaaS AP User Portal Manual](#8)
+     * [3.1.  Construct K-PaaS AP User Portal Menu](#9)
+     * [3.2.  K-PaaS AP User Portal Menu Description](#10)
      * [3.2.1.  Dashboard](#11)
      * [3.2.1.1.  Organization and Space](#12)
      * [3.2.1.1.1.  Organization Management](#13)
@@ -95,22 +95,22 @@
 
 ### <div id='2'/> 1.1. Purpose
       
-This document describes how to use the PaaS-TA user portal.
+This document describes how to use the K-PaaS AP user portal.
 
 
 ### <div id='3'/> 1.2. Range
       
-This document is written on how to use the PaaS-TA User Portal based on Windows environments.
+This document is written on how to use the K-PaaS AP User Portal based on Windows environments.
 
 
-# <div id='4'/> 2.  Create PaaS-TA User Portal Account
+# <div id='4'/> 2.  Create K-PaaS AP User Portal Account
 
-This chapter describes the account creation and password reset screen for using the PaaS-TA user portal.
+This chapter describes the account creation and password reset screen for using the K-PaaS AP user portal.
 
 
-### <div id='5'/> 2.1.  Create PaaS-TA User Portal Account
+### <div id='5'/> 2.1.  Create K-PaaS AP User Portal Account
 
-1.  Access to PaaS-TA User Portal.
+1.  Access to K-PaaS AP User Portal.
 ![2-1-0]
 
 2.  Click “Login”. 
@@ -133,7 +133,7 @@ This chapter describes the account creation and password reset screen for using 
 ![2-1-4]
 
 
-### <div id='6'/> 2.2.  Reset PaaS-TA User Portal Password
+### <div id='6'/> 2.2.  Reset K-PaaS AP User Portal Password
 1.  Click the “Reset password” link.
 ![2-2-0]
 
@@ -150,7 +150,7 @@ This chapter describes the account creation and password reset screen for using 
 ![2-2-2]
 
 
-### <div id='7'/> 2.3.  Login to PaaS-TA User Portal and Create Organization
+### <div id='7'/> 2.3.  Login to K-PaaS AP User Portal and Create Organization
 1.  Enter user ID and Password. Click “SIGN IN” to log in to the user portal.
 ![2-3-0]
 
@@ -161,14 +161,14 @@ This chapter describes the account creation and password reset screen for using 
 ![2-3-1]
 
 
-# <div id='8'/> 3. PaaS-TA User Portal Manual
+# <div id='8'/> 3. K-PaaS AP User Portal Manual
 
-This chapter describes the menu configuration and screen description of the PaaS-TA user portal.
+This chapter describes the menu configuration and screen description of the K-PaaS AP user portal.
 
 
-### <div id='9'/> 3.1.  Construct PaaS-TA User Portal Menu
+### <div id='9'/> 3.1.  Construct K-PaaS AP User Portal Menu
 
-The PaaS-TA User Portal consists of a section that manages organizations, spaces, and applications, a section that generates development environments and services, and an information check section that checks documents and menus.
+The K-PaaS AP User Portal consists of a section that manages organizations, spaces, and applications, a section that generates development environments and services, and an information check section that checks documents and menus.
 
 <table>
   <tr>
@@ -200,9 +200,9 @@ The PaaS-TA User Portal consists of a section that manages organizations, spaces
 </table>
 
 
-### <div id='10'/> 3.2.  PaaS-TA User Portal Menu Description
+### <div id='10'/> 3.2.  K-PaaS AP User Portal Menu Description
 
-This chapter describes the three main categories of PaaS-TA user portals.
+This chapter describes the three main categories of K-PaaS AP user portals.
 
 
 ### <div id='11'/> 3.2.1.   Dashboard
@@ -222,7 +222,7 @@ This chapter describes the three main categories of PaaS-TA user portals.
 2.  Click “Add New Organization” to proceed to the organization creating a page.
 ![2-3-1-1]
 
-     > **To enable "Add New Organization"** button, [PaaS-TA Portal Deployment Guide Document](https://github.com/PaaS-TA/Guide-3.0-Penne-/blob/master/Use-Guide/portal/PaaS-TA%20Portal%20%EB%B0%B0%ED%8F%AC%20%EA%B0%80%EC%9D%B4%EB%93%9C_v1.1.md#7-1) Refer to **2.2. Enable create user organization Flag**.
+     > **To enable "Add New Organization"** button, [AP Portal Deployment Guide Document](https://github.com/K-PaaS/application-platform-guide-eng/blob/master/install/portal/vm_type_ui.md#-31-enable-the-users-organization-creating-flag:~:text=3.1.%20Enable%20the%20user%27s%20organization%20creating%20flag) Refer to **3.1. Enable the user's organization creating flag**.
 
 3.  Enter Organization Name. Click "Create Organization" to complete. 
 ![2-3-1-2]
@@ -591,7 +591,7 @@ Click the name of the application created in the catalog list to go to the appli
 
 ### <div id='91'/> 3.2.1.3.7.3. Auto Scaling
 ```diff
-#### Install monitoring provided by PaaS-TA before proceeding.
+#### Install monitoring provided by K-PaaS AP before proceeding.
 ```
 ![3-2-1-3-7-1-3]
 1.  Click monitoring of ① App Layout. Click ② Setting tab button.
@@ -883,4 +883,4 @@ Click the name of the application created in the catalog list to go to the appli
 [cass-dashboard4]:./images/user-portal/cass-dashboard4.png
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > User Portal
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > User Portal

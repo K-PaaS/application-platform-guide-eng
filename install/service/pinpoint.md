@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > Pinpoint APM Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > Pinpoint APM Service
 
 ## Table of Contents  
 
@@ -18,13 +18,13 @@
 3. [Sample Web App Interworking Pinpoint](#3)    
   3.1. [Pinpoint Service Broker Registration](#3.1)  
   3.2. [Sample Web App Structure](#3.2)   
-  3.3. [Request for service in PaaS-TA](#3.3)  
+  3.3. [Request for service in K-PaaS](#3.3)  
   3.4. [Request for service bind to Sample Web App and check for App](#3.4)  
 
 ## <div id='1'> 1. Document Outline
 ### <div id='1.1'> 1.1. Purpose
 
-This document (Pinpoint Service Pack Installation Guide) describes how to install Pinpoint Service Pack, a service pack provided by PaaS-TA, using Bosch.
+This document (Pinpoint Service Pack Installation Guide) describes how to install Pinpoint Service Pack, a service pack provided by K-PaaS AP, using Bosch.
 
 ### <div id='1.2'> 1.2. Range
 The installation Range was prepared based on the basic installation to verify the Pinpoint service pack.
@@ -43,7 +43,7 @@ To install the service pack, BOSH CLI v2 must be installed and logged in to BOSH
 If BOSH CLI v2 is not installed, you should first refer to the BOSH 2.0 installation guide document to install BOSH CLI v2 and familiarize the usage.  
 
 - Check the bosh runtime-config to see if there are pinpoints in the bosh-dns include deployments.  
- ※ (Note) If there is no pinpoint in bosh-dns include deployments, open the dns.yml in ~/workspace/paasta-deployment/bosh/runtime-configs to add pinpoint and update the bosh runtime-config.   
+ ※ (Note) If there is no pinpoint in bosh-dns include deployments, open the dns.yml in ~/workspace/ap-deployment/bosh/runtime-configs to add pinpoint and update the bosh runtime-config.   
 
 > $ bosh -e micro-bosh runtime-config
 ```
@@ -53,7 +53,7 @@ Using environment '10.0.1.6' as client 'admin'
 addons:
 - include:
     deployments:
-    - paasta
+    - ap
     - pinpoint
     - pinpoint-monitoring
     - rabbitmq
@@ -116,7 +116,7 @@ $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell -n {STEMCELL_URL}
 
 Download the deployment needed from Git Repository and place the file in the service installation directory.  
 
-- Service Deployment Git Repository URL : https://github.com/PaaS-TA/service-deployment/tree/v5.1.25
+- Service Deployment Git Repository URL : https://github.com/K-PaaS/service-deployment/tree/v5.1.25.1
 
 ```
 # Deployment File Download, make directory, change directory
@@ -124,13 +124,13 @@ $ mkdir -p ~/workspace
 $ cd ~/workspace
 
 # Deployment File Download
-$ git clone https://github.com/PaaS-TA/service-deployment.git -b v5.1.25
+$ git clone https://github.com/K-PaaS/service-deployment.git -b v5.1.25.1
 ```
 
 ### <div id="2.4"/> 2.4. Deployment File Modification
 
 The BOSH Deployment manifest is a YAML file that defines the properties of components elements and deployments.  
-Cloud config is used for network, vm_type, and disk_type used in Deployment files, and refer to the PaaS-TA AP installation guide for the usage.  
+Cloud config is used for network, vm_type, and disk_type used in Deployment files, and refer to the K-PaaS AP installation guide for the usage.  
 
 - Check the Cloud config settings.   
 
@@ -162,7 +162,7 @@ networks:
   subnets:
   - az: z1
     cloud_properties:
-      security_groups: paasta-security-group
+      security_groups: ap-security-group
       subnet: subnet-00000000000000000
     dns:
     - 8.8.8.8
@@ -254,8 +254,8 @@ webui_haproxy_public_ip: "<WEB_UI_PUBLIC_IP>"                    # webui haproxy
 
 # VARIABLES
 COMMON_VARS_PATH="<COMMON_VARS_FILE_PATH>"	# common_vars.yml File Path (e.g. ../../common/common_vars.yml)
-CURRENT_IAAS="${CURRENT_IAAS}"			# IaaS Information (When not using create-bosh-login.sh provided by PaaS-TA, enter aws/azure/gcp/openstack/vsphere)
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"		# bosh director alias name (When not using create-bosh-login.sh provided by PaaS-TA,check the name at bosh envs and enter)
+CURRENT_IAAS="${CURRENT_IAAS}"			# IaaS Information (When not using create-bosh-login.sh provided by K-PaaS, enter aws/azure/gcp/openstack/vsphere)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"		# bosh director alias name (When not using create-bosh-login.sh provided by K-PaaS,check the name at bosh envs and enter)
 
 # DEPLOY
 bosh -e ${BOSH_ENVIRONMENT} -n -d pinpoint deploy --no-redact pinpoint.yml \
@@ -305,7 +305,7 @@ This Sample Web App is deployed on an open cloud platform and Pinpoint's service
 ### <div id='3.1'> 3.1. Pinpoint Service Broker Registration
 
 When the Pinpoint service pack deployment is completed, the Pinpoint service broker must be registered first to use the service pack in the application.  
-When registering a service broker, you must be logged in as a user who can register a service broker in PaaS-TA.
+When registering a service broker, you must be logged in as a user who can register a service broker in K-PaaS AP.
 
 - Check the list of service brokers.
 
@@ -374,33 +374,33 @@ broker: pinpoint-service-broker
 
 ### <div id='3.2'> 3.2. Sample Web App Download
 
-The Sample Web App is deployed as an App to PaaS-TA. Initial data is generated through Pinpoint service Bind on the deployed app.  
+The Sample Web App is deployed as an App to K-PaaS AP. Initial data is generated through Pinpoint service Bind on the deployed app.  
 After the binding is completed, Pinpoint service monitoring for the app can be performed through the browser through the connection url.
 
 - Download Zip File of Sample Apps 
 ```
-$ wget https://nextcloud.paas-ta.org/index.php/s/BoSbKrcXMmTztSa/download --content-disposition  
-$ unzip paasta-service-samples-459dad9.zip 
-$ cd paasta-service-samples/pinpoint  
+$ wget https://nextcloud.k-paas.org/index.php/s/scFDGk9iZBg8apZ/download --content-disposition  
+$ unzip ap-service-samples-db49d1e.zip  
+$ cd ap-service-samples/pinpoint   
 ```
 
 <br>
 
-### <div id='3.3'> 3.3. Request for service in PaaS-TA
+### <div id='3.3'> 3.3. Request for service in K-PaaS
 
 To use the Pinpoint service in the Sample Web App, you must request for a service (Provision).  
-*Note: When requesting for a service, you must be logged in as a user who can request for a service in PaaS-TA.  
+*Note: When requesting for a service, you must be logged in as a user who can request for a service in K-PaaS AP.  
 
-- check whether there is a service in the PaaS-TA Marketplace first.
+- check whether there is a service in the K-PaaS AP Marketplace first.
 
 > $ cf marketplace
 
 ```
-Getting services from marketplace in org org / space space as admin...
-OK
+Getting all service offerings from marketplace in org system / space dev as admin...
+offering   plans               description                        broker
+Pinpoint   Pinpoint_standard   A simple pinpoint implementation   pinpoint-service-broker
 
-service    plans               description
-Pinpoint   Pinpoint_standard   A simple pinpoint implementation
+TIP: Use 'cf marketplace -e SERVICE_OFFERING' to view descriptions of individual plans of a given service offering.
 ```
 
 - Command for requesting Service Instance
@@ -417,7 +417,9 @@ cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 > $ cf create-service Pinpoint Pinpoint_standard PS1
 
 ```
-Creating service instance PS1 in org org / space space as admin...
+Creating service instance PS1 in org system / space dev as admin...
+
+Service instance PS1 created.
 OK
 ```
 
@@ -425,17 +427,16 @@ OK
 
 > $ cf services
 ```
-Getting services in org system / space space as admin...
-OK
+Getting service instances in org system / space dev as admin...
 
-name   service      plan                 bound apps   last
-PS1    Pinpoint     Pinpoint_standard                 create succeeded
+name   offering   plan                bound apps   last operation     broker                    upgrade available
+PS1    Pinpoint   Pinpoint_standard                create succeeded   pinpoint-service-broker   no
 ```
 
 ### <div id='3.4'> 3.4. Request for service bind to Sample Web App and check for App
 
 When the service application is completed, the Sample Web App binds the generated service instance and uses the Pinpoint service in the App.  
-*Note: When requesting for service bind, you must be logged in as a user who can request for service bind on the PaaS-TA platform.
+*Note: When requesting for service bind, you must be logged in as a user who can request for service bind on the K-PaaS AP platform.
 
 - Check manifest fie. 
 	
@@ -474,17 +475,30 @@ OK
 
 > $ cf push --no-start 
 ```  
-Applying manifest file /home/ubuntu/workspace/samples/paasta-service-samples/pinpoint/manifest.yml...
+Pushing app spring-music-pinpoint to org system / space dev as admin...
+Applying manifest file /home/ubuntu/workspace/samples/ap-service-samples/pinpoint/manifest.yml...
+Updating with these attributes...
+  ---
+  applications:
++ - name: spring-music-pinpoint
+    disk-quota: 1G
+    path: /home/ubuntu/workspace/samples/ap-service-samples/pinpoint/spring-music-1.0.jar
+    memory: 1G
++   default-route: true
++   buildpacks:
++   - pinpoint_buildpack
++   env:
++     JBP_CONFIG_SPRING_AUTO_RECONFIGURATION: '{enabled: false}'
 Manifest applied
 Packaging files to upload...
 Uploading files...
- 48.91 MiB / 48.91 MiB [=================================================================================================
+ 45.25 MiB / 45.25 MiB [=====================================================================================] 100.00% 1s
 
 Waiting for API to complete processing files...
 
 name:              spring-music-pinpoint
 requested state:   stopped
-routes:            spring-music-pinpoint.paastacloud.shop
+routes:            spring-music-pinpoint.ap.kr
 last uploaded:     
 stack:             
 buildpacks:        
@@ -494,7 +508,8 @@ sidecars:
 instances:      0/1
 memory usage:   1024M
      state   since                  cpu    memory   disk     details
-#0   down    2021-11-22T05:26:04Z   0.0%   0 of 0   0 of 0   
+#0   down    2023-10-12T00:28:00Z   0.0%   0 of 0   0 of 0   
+#0   down    2023-10-12T00:28:00Z   0.0%   0 of 0   0 of 0   
 ```  
 	
 - Request for service instance bind created by Sample Web App.
@@ -502,8 +517,9 @@ memory usage:   1024M
 > $ cf bind-service spring-music-pinpoint PS1 -c '{"application_name":"spring-music-pinpoint"}'
 	
 ```	
-Binding service PS1 to app spring-music-pinpoint in org org / space space as admin...
+Binding service instance PS1 to app spring-music-pinpoint in org system / space dev as admin...
 OK
+
 TIP: Use 'cf restage spring-music-pinpoint' to ensure your env variable changes take effect
 ```
 	
@@ -535,7 +551,9 @@ OK
 > $ cf bind-running-security-group pinpoint  
 ```
 Binding security group pinpoint to running as admin...
-OK		
+OK
+
+TIP: Changes require an app restart (for running) or restage (for staging) to apply to existing applications.		
 ```
 
 - Restage the app for the binding to be applied.
@@ -543,14 +561,18 @@ OK
 > $ cf restage spring-music-pinpoint
 
 ```	
+This action will cause app downtime.
+
+Restaging app spring-music-pinpoint in org system / space dev as admin...
+
 Staging app and tracing logs...
    Downloading pinpoint_buildpack...
    Downloaded pinpoint_buildpack (14M)
-   Cell 4a88ce8b-1e72-485a-8f62-1fe0c6b9a7cd creating container for instance 89996fa5-3197-4a9c-8304-9a5b288c74ee
-   Cell 4a88ce8b-1e72-485a-8f62-1fe0c6b9a7cd successfully created container for instance 89996fa5-3197-4a9c-8304-9a5b288c
+   Cell 67f9c5f5-04bc-42a9-a5bc-d628dd9f2a2c creating container for instance ce2873af-053b-4a83-90ab-40e3943ecb80
+   Security group rules were updated
+   Cell 67f9c5f5-04bc-42a9-a5bc-d628dd9f2a2c successfully created container for instance ce2873af-053b-4a83-90ab-40e3943ecb80
    Downloading app package...
-   Downloaded app package (50M)
-
+   Downloaded app package (49.9M)
 ........
 ........
 	
@@ -559,8 +581,8 @@ Instances starting...
 
 name:              spring-music-pinpoint
 requested state:   started
-routes:            spring-music-pinpoint.paasta.kr
-last uploaded:     Mon 22 Nov 05:28:14 UTC 2021
+routes:            spring-music-pinpoint.ap.kr
+last uploaded:     Thu 12 Oct 09:31:39 KST 2023
 stack:             cflinuxfs3
 buildpacks:        
 	name                 version   detect output   buildpack name
@@ -570,8 +592,8 @@ type:           web
 sidecars:       
 instances:      1/1
 memory usage:   1024M
-     state     since                  cpu    memory        disk           details
-#0   running   2021-11-22T05:28:37Z   0.0%   47.5M of 1G   177.9M of 1G   
+     state     since                  cpu    memory    disk      details
+#0   running   2023-10-12T00:31:59Z   0.0%   0 of 1G   0 of 1G   
 
 type:           task
 sidecars:       
@@ -607,4 +629,4 @@ e.g. http://3.12.24.53/#/main/spring-music-pinpoint@SPRING_BOOT/realtime
 [pinpoint_image_04]:./images/pinpoint/pinpoint-image4.png
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > Pinpoint APM Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > Pinpoint APM Service

@@ -1,14 +1,14 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Pipeline Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Pipeline Service
 
 
-# [PaaS-TA Pipeline Deployment Service User Guide]
+# [K-PaaS AP Pipeline Deployment Service User Guide]
 
 ## Table of Contents
 1. [Document Outline](#1)
 	* [1.1. Purpose](#1-1)
 	* [1.2. Range](#1-2)
 2. [Pipeline Deployment Service Registration ](#2)
-	* [2.1. PaaS-TA User Portal Portal Access](#2-1)
+	* [2.1. K-PaaS AP User Portal Portal Access](#2-1)
 	* [2.2. Pipeline Deployment Service Registration](#2-2)
 	* [2.3. Pipeline Deployment Access](#2-3)
 3. [Pipeline Deployment User Manual](#3)
@@ -98,8 +98,8 @@ This document is written about how to use the deployment pipeline service based 
 
 # <div id='2'/> 2. Pipeline Deployment Service Registration
 
-## <div id='2-1'/> 2.1 PaaS-TA User Portal Access
-1. Click log-in from the PaaS-Ta User Portal.  
+## <div id='2-1'/> 2.1 K-PaaS AP User Portal Access
+1. Click log-in from the K-PaaS AP User Portal.  
 ![002]
 
 2. Log in to the Portal by entering User ID and Password then click “LOGIN”.  
@@ -123,7 +123,7 @@ This document is written about how to use the deployment pipeline service based 
 ![008]
 
 ## <div id='2-3'/> 2.3 Pipeline Deployment Access
-1. Click the “Dashboard” button of the applied pipeline deployment from the PaaS-TA Portals Space page and access.  
+1. Click the “Dashboard” button of the applied pipeline deployment from the K-PaaS AP Portals Space page and access.  
 ![009]
 
 2. Check the connection of pipeline deployment.  
@@ -563,7 +563,7 @@ This chapter describes overall contributor management, such as adding, modifying
 ![114]
 3.	Confirm that the deployment job execution is complete, and verify the history.  
 ![115]
-4.	As a result of creating and deploying a Cloud Foundry account with the PaaS-TA portal, you can see that an application called 'testtest' was deployed in the application portion of the space in the PaaS-TA portal dashboard.  
+4.	As a result of creating and deploying a Cloud Foundry account with the K-PaaS AP portal, you can see that an application called 'testtest' was deployed in the application portion of the space in the K-PaaS AP portal dashboard.  
 ![116]
 
 ***※	The deployment Job log/history is visible to the administrator and all pipeline Contributors, but the Run and Stop buttons can only be seen by Contributors with creation and execution authority.***
@@ -576,7 +576,7 @@ As an example, set the application name as ‘test-hrjin’ and click the “Rol
 ![118]
 3.	Progress Rollback.  
 ![119]
-4.	After the rollback, an application named 'test-hrjin' was successfully deployed at the PaaS-TA Portal.  
+4.	After the rollback, an application named 'test-hrjin' was successfully deployed at the K-PaaS AP Portal.  
 ![120]
 
 ***※	Deployment Job Rollback to Current Job is permitted only to administrators and contributors with creation and execution authorities.***
@@ -946,4 +946,4 @@ This chapter describes quality issues and coding rules, quality profiles, and qu
 [178]:./images/pipeline/image178.png
 [179]:./images/pipeline/image179.png
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Pipeline Service 
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Pipeline Service 

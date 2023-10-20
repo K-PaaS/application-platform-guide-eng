@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Python Development
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Python Development
 
 ## Table of Contents
 
@@ -179,7 +179,7 @@ Because data management for sample applications uses either MySQL, CubridDB, or 
 ※Sample Application Download
 The completed sample application can be downloaded from the /OpenPaas-Sample/python-sample-app link below.
 <br>
-Sample-App: [https://nextcloud.paas-ta.org/index.php/s/x8Tg37WDFiL5ZDi/download](https://nextcloud.paas-ta.org/index.php/s/x8Tg37WDFiL5ZDi/download)
+Sample-App: [https://nextcloud.k-paas.org/index.php/s/x8Tg37WDFiL5ZDi/download](https://nextcloud.k-paas.org/index.php/s/x8Tg37WDFiL5ZDi/download)
 
 
 ##### <div id='2-3-1'></div> 2.3.1. Create django Application
@@ -626,7 +626,7 @@ def make_connection():
 
 ##### <div id='2-4-1'></div> 2.4.1. Download the Completed Sample Application
 After the application development process described in [2.3. Development], the completed sample application can be downloaded from the link below. If you download the entire Python-sample-app directory from the link below, you can use the completed sample application to proceed with the [2.4. Deployment] process.  
-Sample-App: [https://nextcloud.paas-ta.org/index.php/s/x8Tg37WDFiL5ZDi/download](https://nextcloud.paas-ta.org/index.php/s/x8Tg37WDFiL5ZDi/download)
+Sample-App: [https://nextcloud.k-paas.org/index.php/s/x8Tg37WDFiL5ZDi/download](https://nextcloud.k-paas.org/index.php/s/x8Tg37WDFiL5ZDi/download)
 
 ##### <div id='2-4-2'></div> 2.4.2. Log in to Open Cloud Platform
 
@@ -969,4 +969,4 @@ A window for entering the application name is created. The application name is a
 [python-36]:./images/python/image36.png
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Python Development
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Python Development

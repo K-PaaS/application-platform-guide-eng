@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > Lifecycle Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > Lifecycle Service
 
 ## Table of Contents
 
@@ -28,7 +28,7 @@
 
 ### <div id="1.1"/> 1.1. Purpose
 
-This document (Lifecycle Management Service Pack Installation Guide) describes how to install Lifecycle Management Service Pack, a service pack provided by PaaS-TA, using Bosh.  
+This document (Lifecycle Management Service Pack Installation Guide) describes how to install Lifecycle Management Service Pack, a service pack provided by K-PaaS, using Bosh.  
 
 ### <div id="1.2"/> 1.2. Range
 
@@ -78,7 +78,7 @@ $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell -n {STEMCELL_URL}
 
 Download the deployment needed from Git Repository and place the file in the service installation directory.  
 
-- Service Deployment Git Repository URL : https://github.com/PaaS-TA/service-deployment/tree/v5.1.25
+- Service Deployment Git Repository URL : https://github.com/K-PaaS/service-deployment/tree/v5.1.25.1
 
 ```
 # Deployment file download, make directory, change directory
@@ -86,17 +86,17 @@ $ mkdir -p ~/workspace
 $ cd ~/workspace
 
 # Deployment File Download
-$ git clone https://github.com/PaaS-TA/service-deployment.git -b v5.1.25
+$ git clone https://github.com/K-PaaS/service-deployment.git -b v5.1.25.1
 
 # common_vars.yml File Download(Download if common_vars.yml doesn't exist)
-$ git clone https://github.com/PaaS-TA/common.git
+$ git clone https://github.com/K-PaaS/common.git
 
 ```
 
 ### <div id="2.4"/> 2.4. Deployment File Modification
 
 The BOSH Deployment manifest is a YAML file that defines the properties of components elements and deployments.  
-Cloud config is used for network, vm_type, and disk_type used in Deployment files, and refer to the PaaS-TA AP installation guide for the usage.  
+Cloud config is used for network, vm_type, and disk_type used in Deployment files, and refer to the K-PaaS AP installation guide for the usage.  
 
 - Check Cloud config Settings.   
 
@@ -128,7 +128,7 @@ networks:
   subnets:
   - az: z1
     cloud_properties:
-      security_groups: paasta-security-group
+      security_groups: ap-security-group
       subnet: subnet-00000000000000000
     dns:
     - 8.8.8.8
@@ -169,7 +169,7 @@ Succeeded
 
 bosh_url: "https://10.0.1.6"			# BOSH URL (e.g. "https://00.000.0.0")
 bosh_client_admin_id: "admin"			# BOSH Client Admin ID
-bosh_client_admin_secret: "ert7na4jpew48"	# BOSH Client Admin Secret('echo $(bosh int ~/workspace/paasta-deployment/bosh/{iaas}/creds.yml --path /admin_password)' Can be checked through command)
+bosh_client_admin_secret: "ert7na4jpew48"	# BOSH Client Admin Secret('echo $(bosh int ~/workspace/ap-deployment/bosh/{iaas}/creds.yml --path /admin_password)' Can be checked through command)
 bosh_director_port: 25555			# BOSH director port
 bosh_oauth_port: 8443				# BOSH oauth port
 
@@ -183,6 +183,8 @@ bosh_oauth_port: 8443				# BOSH oauth port
 > $ vi ~/workspace/service-deployment/lifecycle-service/vars.yml
 
 ```
+deployment_name: "lifecycle-service"
+
 # STEMCELL
 stemcell_os: "ubuntu-jammy"                                                         # stemcell os
 stemcell_version: "1.181"                                                           # stemcell version
@@ -200,7 +202,7 @@ mariadb_azs: [z3]                                                               
 mariadb_instances: 1                                                                 # mariadb : instances (1) 
 mariadb_persistent_disk_type: "10GB"                                                 # mariadb : persistent disk type 
 mariadb_port: "<MARIADB_PORT>"                                                       # mariadb : database port (e.g. 31306) -- Do Not Use "3306"
-mariadb_admin_password: "<MARIADB_ADMIN_PASSWORD>"                                   # mariadb : database admin password (e.g. "paas-ta!admin")
+mariadb_admin_password: "<MARIADB_ADMIN_PASSWORD>"                                   # mariadb : database admin password (e.g. "k-paas!admin")
 mariadb_broker_username: "<MARIADB_BROKER_USERNAME>"                                 # mariadb : service-broker-user id (e.g. "applifecycle")
 mariadb_broker_password: "<MARIADB_BROKER_PASSWORD>"                                 # mariadb : service-broker-user password (e.g. "broker!admin")
 
@@ -235,8 +237,8 @@ postgres_port: "<APP_LIFECYCLE_POSTGRES_PORT>"                                  
 
 # VARIABLES
 COMMON_VARS_PATH="<COMMON_VARS_FILE_PATH>"    # common_vars.yml File Path (e.g. ../../common/common_vars.yml)
-CURRENT_IAAS="${CURRENT_IAAS}"                # IaaS Information (When not using create-bosh-login.sh provided by PaaS-TA, enter aws/azure/gcp/openstack/vsphere)
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"        # bosh director alias name (When not using create-bosh-login.sh provided by PaaS-TA, check the name at bosh envs and enter)
+CURRENT_IAAS="${CURRENT_IAAS}"                # IaaS Information (When not using create-bosh-login.sh provided by K-PaaS, enter aws/azure/gcp/openstack/vsphere)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"        # bosh director alias name (When not using create-bosh-login.sh provided by K-PaaS, check the name at bosh envs and enter)
 
 # DEPLOY
 bosh -e ${BOSH_ENVIRONMENT} -n -d lifecycle-service deploy --no-redact lifecycle-service.yml \
@@ -281,11 +283,11 @@ Succeeded
 
 ## <div id="3"/>3.  Management and request for Lifecycle managing service
 
-If you register and disclose the service through the PaaS-TA operator's portal, you can request for and use the service through the PaaS-TA user's portal.
+If you register and disclose the service through the K-PaaS AP operator's portal, you can request for and use the service through the K-PaaS AP user's portal.
 
 ### <div id="3.1"/> 3.1. Service Broker Registration
 
-Once the service is installed, a service broker must be registered to use the service on the PaaS-TA portal.  
+Once the service is installed, a service broker must be registered to use the service on the K-PaaS AP portal.  
 When registering as a service broker, you must be logged in as a user with permission to register a service broker on an open cloud platform.
 
 - Check the list of service brokers
@@ -324,7 +326,7 @@ OK
 Getting service brokers as admin...
 
 name                           url
-app-lifecycle-service-broker   http://10.0.81.123:8081
+app-lifecycle-service-broker   http://10.0.81.123:8080
 ```
 
 - Check service access information of lifecycle management service.
@@ -355,20 +357,20 @@ broker: app-lifecycle-service-broker
 ### <div id='3.2'/> 3.2. Service Request
 #### <div id='3.2.1'/> 3.2.1. Service Request - Portal
 
--	Access the PaaS-TA operator portal and register the service.  
+-	Access the K-PaaS AP operator portal and register the service.  
 
 > ※ (Note) Operation Management > Catalog > App service registration
 > - Name : Lifecycle Management Service
 > - Classification :  Development Support Tools
 > - Service : app-lifecycle
 > - Thumbnail : [Lifecycle management service thumbnail]
-> - Document URL : https://github.com/PaaS-TA/PAAS-TA-APP-LIFECYCLE-SERVICE-BROKER
+> - Document URL : https://github.com/K-PaaS/ap-app-lifecycle-broker
 > - Service Creation Parameters : password
 > - Using App Bind : N
 > - Public : Y
 > - Using Dashboarf : Y
 > - OnDemand : N
-> - Tag : paasta / tag1, free / tag2
+> - Tag : k-paas / tag1, free / tag2
 > - outline : Lifecycle Management Service
 > - Description :
 > TAIGA is provided in a dedicated manner, providing systematic Agile development support and communication-oriented documentation and knowledge sharing support required for project collaboration.  
@@ -377,7 +379,7 @@ broker: app-lifecycle-service-broker
 >  
 ![002]
 
--	Access the PaaS-TA User Portal, and request for services through the catalog.   
+-	Access the K-PaaS AP User Portal, and request for services through the catalog.   
 
 ![003]
 
@@ -419,4 +421,4 @@ service broker:   app-lifecycle-service-broker
 [004]:./images/applifecycle-service/image004.png
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > Lifecycle Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > Lifecycle Service

@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > Portal Container Type
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > Portal Container Type
 
 ## Purpose
 This document provides the Architecture of Application Platform (AP) Portal- Container Type.
@@ -6,7 +6,7 @@ This document provides the Architecture of Application Platform (AP) Portal- Con
 
 ## System Configuration Diagram
 The Container Type AP Portal is composed of two parts: Portal Infra and Portal APP.
-Portal Infra is deployed by BOSH, and Portal APP is deployed by PaaS-TA AP.
+Portal Infra is deployed by BOSH, and Portal APP is deployed by K-PaaS AP.
 The configuration and specification of Portal Infra and Portal APP are as follows. 
 <br>
 
@@ -18,13 +18,13 @@ The configuration and specification of Portal Infra and Portal APP are as follow
 
 <br>
 
-* Paas-TA Portal infra VM   
+* K-PaaS Portal infra VM   
 
 | Classification | Specification |
 |---------|-------|
 | infra (mariadb / binary storage) | 1vCPU / 512MB RAM / 10GB Disk 20GB(Permanent Disk) |
 
-* Paas-TA Portal App
+* K-PaaS Portal App
 
 | App Name | Number of Instances | Memory | Disk |
 |--------|-------|-------|-------|
@@ -39,4 +39,4 @@ The configuration and specification of Portal Infra and Portal APP are as follow
 | ssh-app | 1 | 1G | 1G|  
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > Portal Container Type
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > Portal Container Type

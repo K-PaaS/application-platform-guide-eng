@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > Redis Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > Redis Service
 
 ## Purpose
 This document provides the Architecture of Application Platform (AP) - Redis Service.
@@ -15,12 +15,12 @@ It provides a user on-demand Redis server rather than a multi-tenant-based share
 
 <br>
 
-| Classification | Specification |
-|-------|-----|
-| mariadb | 2vCPU / 4GB RAM / 2GB Extra Disk |
-| paas-ta-on-demand-broker | 2vCPU / 4GB RAM |
-| redis | 2vCPU / 4GB RAM / 1GB Extra Disk |
+| Classification      | Specification |
+|---------------------|-----|
+| mariadb             | 2vCPU / 4GB RAM / 2GB Extra Disk |
+| ap-on-demand-broker | 2vCPU / 4GB RAM |
+| redis               | 2vCPU / 4GB RAM / 1GB Extra Disk |
 
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > Redis Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > Redis Service

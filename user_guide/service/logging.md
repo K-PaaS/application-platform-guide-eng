@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Logging Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Logging Service
 
 
 # Table Of Contents
@@ -7,7 +7,7 @@
 	- [1.1. Purpose](#1-1)
 	- [1.2. Range](#1-2)
 2. [Logging Service Access](#2)
-	- [2.1. PaaS-TA User Portal Access](#2-1)
+	- [2.1. K-PaaS AP User Portal Access](#2-1)
 	- [2.2. Logging Service Access](#2-2)
 3. [Logging Service User Manual](#3)
 	- [3.1. Set Search Conditions](#3-1)
@@ -28,12 +28,12 @@ This document is written about how to use the Logging service based on a Windows
 
 # <div id='2'/> 2. Logging Service Access
 
-## <div id='2-1'/> 2.1 PaaS-TA User Portal Access
-- Click the “Login” button from the accessed PaaS-TA User Portal.
+## <div id='2-1'/> 2.1 K-PaaS AP User Portal Access
+- Click the “Login” button from the accessed K-PaaS AP User Portal.
 
 ![001]
 
-- Enter User ID and Password and click the “SIGN IN” button and log in to PaaS-TA User Portal.
+- Enter User ID and Password and click the “SIGN IN” button and log in to K-PaaS AP User Portal.
 ![002]
 
 - Click "Application Name" after logging in and go to the application details page.
@@ -41,13 +41,13 @@ This document is written about how to use the Logging service based on a Windows
 
 ## <div id='2-2'/> 2.2 Logging Service Access
 
-- Click the "Log" Menu from the PaaS-TA Portal Application Details page.
+- Click the "Log" Menu from the K-PaaS AP Portal Application Details page.
 ![004]
 
 - Click "Logging" from the Application Log page.
 ![005]
 
-- Check the PaaS-TA Logging Service paage.
+- Check the K-PaaS AP Logging Service paage.
 ![006]
 
 # <div id='3'/> 3. Logging Service User Manual
@@ -89,4 +89,4 @@ Click the "RESET" button to reset the date, time, and search terms.
 [011]:./images/logging-service/image011.png
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Logging Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Logging Service

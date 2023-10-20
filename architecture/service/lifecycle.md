@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > Lifecycle Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > Lifecycle Service
 
 ## Purpose
 This document provides the Architecture of Application Platform (AP) - Lifecycle Service.
@@ -22,4 +22,4 @@ It provides an API-life cycle server (taiga) for user organizations, not a multi
 
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > Lifecycle Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > Lifecycle Service

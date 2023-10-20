@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > Redis Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > Redis Service
 
 ## Table of Contents  
 
@@ -18,7 +18,7 @@
 3. [On-Demand-Redis Service Broker Registration Using CF CLI](#3)  
   3.1. [On-Demand-Redis Service Broker Registration](#3.1)  
   3.2. [Sample App Download](#3.2)  
-  3.3. [Request for service in PaaS-TA](#3.3)  
+  3.3. [Request for service in K-PaaS](#3.3)  
   3.4. [Request for service bind to Sample App and check for App](#3.4)  
 
 4. [Redis Service Test using Portal](#4)  
@@ -29,7 +29,7 @@
 ## <div id='1'> 1. Document Outline
 
 ### <div id='1.1'> 1.1. Purpose
-This document (Redis service pack installation guide) describes how to install Redis service pack, which is a service pack provided by PaaS-TA, using Bosh.
+This document (Redis service pack installation guide) describes how to install Redis service pack, which is a service pack provided by K-PaaS, using Bosh.
 
 ### <div id='1.2'> 1.2. Range
 The installation range was prepared based on the basic installation to verify the Redis service pack.
@@ -72,7 +72,7 @@ $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell -n {STEMCELL_URL}
 
 Download the deployment needed from Git Repository and place the file at the service installation directory
 
-- Service Deployment Git Repository URL : https://github.com/PaaS-TA/service-deployment/tree/v5.1.25
+- Service Deployment Git Repository URL : https://github.com/K-PaaS/service-deployment/tree/v5.1.25.1
 
 ```
 # Deployment File Download , make directory, change directory
@@ -80,16 +80,16 @@ $ mkdir -p ~/workspace
 $ cd ~/workspace
 
 # Deployment File Download
-$ git clone https://github.com/PaaS-TA/service-deployment.git -b v5.1.25
+$ git clone https://github.com/K-PaaS/service-deployment.git -b v5.1.25.1
 
 # common_vars.yml File Download (Download if common_vars.yml doesn't exist)
-$ git clone https://github.com/PaaS-TA/common.git
+$ git clone https://github.com/K-PaaS/common.git
 ```
 
 ### <div id="2.4"/> 2.4. Deployment File Modification
 
 The BOSH Deployment manifest is a YAML file that defines the properties of components elements and deployments. 
-Cloud config is used for network, vm_type, and disk_type used in Deployment files, and refer to the PaaS-TA AP installation guide for the usage.
+Cloud config is used for network, vm_type, and disk_type used in Deployment files, and refer to the K-PaaS AP installation guide for the usage.
 
 - Check the Cloud config settings.
 
@@ -121,7 +121,7 @@ networks:
   subnets:
   - az: z1
     cloud_properties:
-      security_groups: paasta-security-group
+      security_groups: ap-security-group
       subnet: subnet-00000000000000000
     dns:
     - 8.8.8.8
@@ -154,20 +154,20 @@ Succeeded
 ```
 
 - Modify common_vars.yml to suit the server environment.
-- The variables used in redis are: bosh_url, bosh_client_admin_id, bosh_client_admin_secret, bosh_director_port, bosh_oauth_port, system_domain, paasta_admin_username, paasta_admin_password, and bosh_version.
+- The variables used in redis are: bosh_url, bosh_client_admin_id, bosh_client_admin_secret, bosh_director_port, bosh_oauth_port, system_domain, ap_admin_username, ap_admin_password, and bosh_version.
 
 > $ vi ~/workspace/common/common_vars.yml
 ```
 ... ((Skip)) ...
 bosh_url: "https://10.0.1.6"			# BOSH URL (e.g. "https://00.000.0.0")
 bosh_client_admin_id: "admin"			# BOSH Client Admin ID
-bosh_client_admin_secret: "ert7na4jpew48"	# BOSH Client Admin Secret('echo $(bosh int ~/workspace/paasta-deployment/bosh/{iaas}/creds.yml --path /admin_password)' can check by using this command)
+bosh_client_admin_secret: "ert7na4jpew48"	# BOSH Client Admin Secret('echo $(bosh int ~/workspace/ap-deployment/bosh/{iaas}/creds.yml --path /admin_password)' can check by using this command)
 bosh_director_port: 25555			# BOSH director port
 bosh_oauth_port: 8443				# BOSH oauth port
 bosh_version: 271.2				# BOSH version('bosh env' command for on-demand service, e.g. "271.2")
 system_domain: "61.252.53.246.nip.io"		# Domain (Same as HAProxy Public IP when using nip.io)
-paasta_admin_username: "admin"			# PaaS-TA Admin Username
-paasta_admin_password: "admin"			# PaaS-TA Admin Password
+ap_admin_username: "admin"			# Application Platform Admin Username
+ap_admin_password: "admin"			# Application Platform Admin Password
 ... ((Skip)) ...
 ```
 
@@ -201,12 +201,17 @@ redis_azs: [z5]                                                   # redis azs
 redis_vm_type: "medium"                                           # redis vm type
 redis_persistent_disk_type: "1GB"                                 # redis persistent disk type
 
+# SANITY-TEST
+sanity_tests_azs: [z5]
+sanity_tests_instances: 1
+sanity_tests_vm_type: medium
+
 # PROPERTIES
 broker_server_port: 8080                                          # broker server port
 
 ### On-Demand Dedicated Service Instance Properties ###
 on_demand_service_instance_name: "redis"                          # On-Demand Service Instance Name
-service_password: "PaaS-TA#2021!"                                 # On-Demand Redis Service password
+service_password: "K-PaaS#2021!"                                 # On-Demand Redis Service password
 service_port: 6379                                                # On-Demand Redis Service port
 
 # SERVICE PLAN INFO
@@ -215,10 +220,6 @@ service_instance_name: "redis"                                           # Servi
 service_instance_bullet_name: "Redis Dedicated Server Use"               # Service Instance bullet Name
 service_instance_bullet_desc: "Redis Service Using a Dedicated Server"   # Enter description about Service Instance bullet
 service_instance_plan_guid: "2a26b717-b8b5-489c-8ef1-02bcdc445720"       # Service Instance Plan Guid
-service_instance_plan_name: "dedicated-vm"                               # Service Instance Plan Name
-service_instance_plan_desc: "Redis service to provide a key-value store" # Enter description about Service Instance Plan
-service_instance_org_limitation: "-1"                                    # Limit the number of Service Instances that can be installed in Org. (No limit for -1)
-service_instance_space_limitation: "-1"                                  # Limit the number of Service Instances that can be installed in Space. (No limit for -1)
 ```
 
 ### <div id="2.5"/> 2.5. Service Installation
@@ -233,7 +234,7 @@ service_instance_space_limitation: "-1"                                  # Limit
 
 # VARIABLES
 COMMON_VARS_PATH="<COMMON_VARS_FILE_PATH>"	# common_vars.yml File Path (e.g. ../../common/common_vars.yml)
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"		# bosh director alias name (Create-bosh-login.sh provided by PaaS-TA.If is not in use, check the name in bosh envs and enter)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"		# bosh director alias name (Create-bosh-login.sh provided by K-PaaS.If is not in use, check the name in bosh envs and enter)
 
 # DEPLOY
 bosh -e ${BOSH_ENVIRONMENT} -n -d redis deploy --no-redact redis.yml \
@@ -264,7 +265,7 @@ Deployment 'redis'
 
 Instance                                                       Process State  AZ  IPs           VM CID                                   VM Type         Active  
 mariadb/e35f3ece-9c34-41f4-a88e-d8365e9b8c70                   running        z5  10.30.255.25  vm-5168ec8d-f42f-40fa-9c3a-8635bf138b0a  medium          true  
-paas-ta-on-demand-broker/13c11522-10dd-485c-bb86-3ac5337223d0  running        z5  10.30.255.26  vm-eab6e832-8b7c-49bc-ac04-80258896880d  service_medium  true  
+ap-on-demand-broker/13c11522-10dd-485c-bb86-3ac5337223d0  running        z5  10.30.255.26  vm-eab6e832-8b7c-49bc-ac04-80258896880d  service_medium  true  
 
 2 vms
 
@@ -274,7 +275,7 @@ Succeeded
 ## <div id='3'> 3. On-Demand-Redis service using CF CLI
 ### <div id='3.1'> 3.1. On-Demand-Redis Service Broker Registration
 When the Redis service pack deployment is complete, you must first register the On-Demand-Redis service broker to use the service pack in the application.
-When registering a service broker, you must log in as a user who can register a service broker in PaaS-TA.
+When registering a service broker, you must log in as a user who can register a service broker in K-PaaS AP.
 
 
 - Check the list of service brokers.
@@ -299,7 +300,7 @@ cf create-service-broker [SERVICE_BROKER] [USERNAME] [PASSWORD] [SERVICE_BROKER_
 	
 - Register the On-Demand-Redis service broker.
 
-> $ cf create-service-broker on-demand-redis-service admin cloudfoundry http://<paas-ta-on-demand-broker_ip>:8080 
+> $ cf create-service-broker on-demand-redis-service admin cloudfoundry http://<ap-on-demand-broker_ip>:8080 
 
 ```
 $ cf create-service-broker on-demand-redis-service admin cloudfoundry http://10.30.255.26:8080
@@ -351,25 +352,28 @@ broker: on-demand-redis-service
 
 - Download zip file of sample app
 ```
-$ wget https://nextcloud.paas-ta.org/index.php/s/BoSbKrcXMmTztSa/download --content-disposition  
+$ wget https://nextcloud.K-PaaS.org/index.php/s/BoSbKrcXMmTztSa/download --content-disposition  
 $ unzip paasta-service-samples-459dad9.zip  
 $ cd paasta-service-samples/redis  
 ```
 
 <br>
 
-### <div id='3.3'> 3.3. Request for service in PaaS-TA
+### <div id='3.3'> 3.3. Request for service in K-PaaS
 In order to use the Redis service in the Sample App, you must request for a service (Provision).
-*Note: When Requesting for a service, you must be logged in as a user who can request for a service in PaaS-TA.
+*Note: When Requesting for a service, you must be logged in as a user who can request for a service in K-PaaS AP.
 
-- Check whether there is a service in the PaaS-TA Marketplace first.
+- Check whether there is a service in the K-PaaS AP Marketplace first.
 
 > $ cf marketplace
 
 ```
-OK
-service   plans          description
-redis     dedicated-vm   A paasta source control service for application development.provision parameters : parameters {owner : owner}
+Getting all service offerings from marketplace in org system / space dev as admin...
+
+offering   plans          description                                                                                                                   broker
+redis      dedicated-vm   A Application Platform source control service for application development.provision parameters : parameters {owner : owner}   on-demand-redis-service
+
+TIP: Use 'cf marketplace -e SERVICE_OFFERING' to view descriptions of individual plans of a given service offering.
 ```
 
 <br>
@@ -405,42 +409,65 @@ Create in progress. Use 'cf services' or 'cf service redis' to check operation s
 Showing info of service redis in org system / space dev as admin...
 
 name:            redis
-service:         redis
-tags:            
+guid:            671f4bbc-3453-4f51-a523-a7b2bf00527c
+type:            managed
+broker:          on-demand-redis-service
+offering:        redis     
 plan:            dedicated-vm
-description:     A paasta source control service for application development.provision parameters : parameters {owner : owner}
-documentation:   https://paas-ta.kr
-dashboard:       10.30.255.26
+tags:            
+offering tags:   dedicated-vm
+description:     A Application Platform source control service for application development.provision
+                 parameters : parameters {owner : owner}
+documentation:   https://k-paas.or.kr
+dashboard url:   10.0.0.68
 
-Showing status of last operation from service redis...
+Showing status of last operation:
+   status:    create in progress
+   message:   
+   started:   2023-10-12T07:39:04Z
+   updated:   2023-10-12T07:39:04Z
 
-status:    create in progress
-message:   
-started:   2019-07-05T05:58:13Z
-updated:   2019-07-05T05:58:16Z
-
-There are no bound apps for this service.
+Showing bound apps:
+   There are no bound apps for this service instance.
+Showing sharing info:
+   This service instance is not currently being shared.
+   The "service_instance_sharing" feature flag is disabled for this Cloud Foundry platform.
+   Service instance sharing is disabled for this service offering.
+Showing upgrade status:
+   Upgrades are not supported by this broker.
 ```
 - Verify that the status of the generated Redis service instance has been created successfully.
 ```
 Showing info of service redis in org system / space dev as admin...
 
 name:            redis
-service:         redis
-tags:            
+guid:            671f4bbc-3453-4f51-a523-a7b2bf00527c
+type:            managed
+broker:          on-demand-redis-service
+offering:        redis           
 plan:            dedicated-vm
-description:     A paasta source control service for application development.provision parameters : parameters {owner : owner}
-documentation:   https://paas-ta.kr
-dashboard:       10.30.255.26
+tags:            
+offering tags:   dedicated-vm
+description:     A Application Platform source control service for application development.provision
+                 parameters : parameters {owner : owner}
+documentation:   https://k-paas.or.kr
+dashboard url:   10.0.0.68
 
-Showing status of last operation from service redis...
+Showing status of last operation:
+   status:    create succeeded
+   message:   test
+   started:   2023-10-12T07:51:08Z
+   updated:   2023-10-12T07:51:08Z
 
-status:    create succeeded
-message:   test
-started:   2019-07-05T05:58:13Z
-updated:   2019-07-05T06:01:20Z
+Showing bound apps:
+   There are no bound apps for this service instance.
 
-There are no bound apps for this service.
+Showing sharing info:
+   This service instance is not currently being shared.
+   The "service_instance_sharing" feature flag is disabled for this Cloud Foundry platform.
+   Service instance sharing is disabled for this service offering.
+Showing upgrade status:
+   Upgrades are not supported by this broker.
 ```
 
 <br>
@@ -456,21 +483,18 @@ There are no bound apps for this service.
 > $ cf security-groups  
 ```
 Getting security groups as admin...
-OK
-
-     name                                         organization   space   lifecycle
-#0   abacus                                       abacus-org     dev     running
-#1   dns                                          <all>          <all>   running
-     dns                                          <all>          <all>   staging
-#2   public_networks                              <all>          <all>   running
-     public_networks                              <all>          <all>   staging
-#3   redis_20bc9b52-c3d5-4cd2-94d9-7f444f9ab464   system         dev     running
+name                                         organization   space    lifecycle
+public_networks                              <all>          <all>    staging
+public_networks                              <all>          <all>    running
+dns                                          <all>          <all>    staging
+dns                                          <all>          <all>    running
+redis_266ea624-fc66-4de5-8fa2-b03d32019c4a   system           dev   running
 ```
 
 
 ### <div id='3.4'> 3.4. Request for service bind to Sample App and check for App
 When the service application is completed, the Sample App binds the generated service instance and uses the Redis service in the App.
-*Note: When Requesting for service bind, you must be logged in as a user who can request for service bind in PaaS-TA.
+*Note: When Requesting for service bind, you must be logged in as a user who can request for service bind in K-PaaS AP.
 
 - Check the manifest file.  
 
@@ -491,17 +515,27 @@ applications:
 > $ cf push --no-start 
 ```  
 Pushing app redis-example-app to org system / space dev as admin...
-Applying manifest file /home/ubuntu/workspace/samples/paasta-service-samples/redis/manifest.yml...
+Applying manifest file /home/ubuntu/workspace/samples/ap-service-samples/redis/manifest.yml...
+Updating with these attributes...
+  ---
+  applications:
++ - name: redis-example-app
++   instances: 1
+    path: /home/ubuntu/workspace/luna/ap-service-samples/redis
+    memory: 256M
++   default-route: true
++   buildpacks:
++   - ruby_buildpack
 Manifest applied
 Packaging files to upload...
 Uploading files...
- 1.23 MiB / 1.23 MiB [===================================================================================================
+ 1.37 MiB / 1.37 MiB [===================================================================] 100.00% 1s
 
 Waiting for API to complete processing files...
 
 name:              redis-example-app
 requested state:   stopped
-routes:            redis-example-app.paastacloud.shop
+routes:            redis-example-app.ap.kr
 last uploaded:     
 stack:             
 buildpacks:        
@@ -511,7 +545,7 @@ sidecars:
 instances:      0/1
 memory usage:   256M
      state   since                  cpu    memory   disk     details
-#0   down    2021-11-22T05:39:06Z   0.0%   0 of 0   0 of 0   
+#0   down    2023-10-12T07:58:02Z   0.0%   0 of 0   0 of 0   
 ```  
   
 - Request for service instance bind created by Sample Web App.
@@ -519,7 +553,7 @@ memory usage:   256M
 > $ cf bind-service redis-example-app redis 
 
 ```	
-Binding service redis to app redis-example-app in org system / space dev as admin...
+Binding service instance redis to app redis-example-app in org system / space dev as admin...
 OK
 ```
 	
@@ -533,11 +567,14 @@ Restarting app redis-example-app in org system / space dev as admin...
 Staging app and tracing logs...
    Downloading ruby_buildpack...
    Downloaded ruby_buildpack
-   Cell 4a88ce8b-1e72-485a-8f62-1fe0c6b9a7cd creating container for instance 4a47d02a-24d6-4046-b2b8-866b915eaf6a
-   Cell 4a88ce8b-1e72-485a-8f62-1fe0c6b9a7cd successfully created container for instance 4a47d02a-24d6-4046-b2b8-866b915e
+   Cell 67f9c5f5-04bc-42a9-a5bc-d628dd9f2a2c creating container for instance 5d9f73b6-f9e2-45d0-b45b-93a511a9a588
+   Security group rules were updated
+   Cell 67f9c5f5-04bc-42a9-a5bc-d628dd9f2a2c successfully created container for instance 5d9f73b6-f9e2-45d0-b45b-93a511a9a588
    Downloading app package...
    Downloaded app package (1.4M)
-   -----> Ruby Buildpack version 1.8.37
+   -----> Ruby Buildpack version 1.8.56
+   -----> Supplying Ruby
+   -----> Installing bundler 2.3.17
 
 ........
 ........
@@ -546,19 +583,19 @@ Instances starting...
 
 name:              redis-example-app
 requested state:   started
-routes:            redis-example-app.paastacloud.shop
-last uploaded:     Mon 22 Nov 05:40:50 UTC 2021
+routes:            redis-example-app.ap.kr
+last uploaded:     Thu 12 Oct 16:59:55 KST 2023
 stack:             cflinuxfs3
 buildpacks:        
 	name             version   detect output   buildpack name
-	ruby_buildpack   1.8.37    ruby            ruby
+	ruby_buildpack   1.8.56    ruby            ruby
 
 type:           web
 sidecars:       
 instances:      1/1
 memory usage:   256M
      state     since                  cpu    memory   disk     details
-#0   running   2021-11-22T05:41:01Z   0.0%   0 of 0   0 of 0  
+#0   running   2023-10-12T08:00:10Z   0.0%   0 of 0   0 of 0  
 ```  
 
 
@@ -635,4 +672,4 @@ Service status : created succeed
 
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > Redis Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > Redis Service

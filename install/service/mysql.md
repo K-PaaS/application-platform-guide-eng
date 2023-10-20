@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > MySQL Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > MySQL Service
 
 ## Table of Contents  
 
@@ -18,7 +18,7 @@
 3. [MySQL Linkage Sample Web App Description](#3)  
   3.1. [Service Broker Registration](#3.1)  
   3.2. [Sample Web App Download](#3.2)  
-  3.3. [Request for services from PaaS-TA](#3.3)  
+  3.3. [Request for services from K-PaaS](#3.3)  
   3.4. [Deploy Sample Web App and Verify MySQL Binds](#3.4)  
 
 4. [Access MySQL Client Tool](#4)  
@@ -32,7 +32,7 @@
 ## <div id='1'> 1. Document Outline
 ### <div id='1.1'> 1.1. Purpose
 
-This document (MySQL Service Pack Installation Guide) describes how to install MySQL Service Pack, a service pack provided by PaaS-TA, using Bosh.
+This document (MySQL Service Pack Installation Guide) describes how to install MySQL Service Pack, a service pack provided by K-PaaS, using Bosh.
 	
 	
 ### <div id='1.2'> 1.2. Range
@@ -81,7 +81,7 @@ $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell -n {STEMCELL_URL}
 
 Download the deployment needed from Git Repository and place the file at the service installation directory
 
-- Service Deployment Git Repository URL : https://github.com/PaaS-TA/service-deployment/tree/v5.1.25
+- Service Deployment Git Repository URL : https://github.com/K-PaaS/service-deployment/tree/v5.1.25.1
 
 ```
 # Deployment File Download , make directory, change directory
@@ -89,13 +89,13 @@ $ mkdir -p ~/workspace
 $ cd ~/workspace
 
 # Deployment File Download
-$ git clone https://github.com/PaaS-TA/service-deployment.git -b v5.1.25
+$ git clone https://github.com/K-PaaS/service-deployment.git -b v5.1.25.1
 ```
 
 ### <div id="2.4"/> 2.4. Deployment File Modification
 
 The BOSH Deployment manifest is a YAML file that defines the properties of the Components element and the deployment.
-Network, vm_type, disk_type, etc. used in the deployment file utilize Cloud config, and refer to the PaaS-TA AP installation guide for utilization methods
+Network, vm_type, disk_type, etc. used in the deployment file utilize Cloud config, and refer to the K-PaaS AP installation guide for utilization methods
 
 - Check the contents of the cloud config setting.
 
@@ -127,7 +127,7 @@ networks:
   subnets:
   - az: z1
     cloud_properties:
-      security_groups: paasta-security-group
+      security_groups: ap-security-group
       subnet: subnet-00000000000000000
     dns:
     - 8.8.8.8
@@ -207,7 +207,7 @@ mysql_broker_services_plan_b_connection: 100                     # mysql broker 
 
 # VARIABLES
 COMMON_VARS_PATH="<COMMON_VARS_FILE_PATH>"    # common_vars.yml File Path (e.g. ../../common/common_vars.yml)
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"        # bosh director alias name (When not using create-bosh-login.sh provided by PaaS-TA, check the name at bosh envs and enter)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"        # bosh director alias name (When not using create-bosh-login.sh provided by K-PaaS, check the name at bosh envs and enter)
 
 # DEPLOY
 bosh -e ${BOSH_ENVIRONMENT} -n -d mysql deploy --no-redact mysql.yml \
@@ -250,11 +250,11 @@ Succeeded
 
 ## <div id='3'> 3. MySQL Linkage Sample Web App Description
 
-This Sample App can be used as it is bound with the MySQL service when deployed to PaaS-TA while the MySQL service is provisioned.
+This Sample App can be used as it is bound with the MySQL service when deployed to K-PaaS AP while the MySQL service is provisioned.
 
 ### <div id='3.1'> 3.1. Register MySQL Service Broker
 Once the Mysql service pack has been deployed, you must first register the MySQL service broker to use the service pack in the application.
-When registering a service broker, you must be logged in as a user who can register a service broker in PaaS-TA.
+When registering a service broker, you must be logged in as a user who can register a service broker in K-PaaS AP.
 - Check the list of service brokers.
 
 > $ cf service-brokers  
@@ -301,9 +301,9 @@ mysql-service-broker      http://10.30.107.167:8080
 $ cf service-access
 Getting service access as admin...
 broker: mysql-service-broker
-   service    plan                 access   orgs
-   Mysql-DB   Mysql-Plan1-10con    none
-   Mysql-DB   Mysql-Plan2-100con   none
+offering   plan                 access   orgs
+Mysql-DB   Mysql-Plan1-10con    none     
+Mysql-DB   Mysql-Plan2-100con   none
 ```  
 Default access is not allowed when creating a service broker.
 
@@ -311,46 +311,46 @@ Default access is not allowed when creating a service broker.
 
 > $ cf enable-service-access Mysql-DB  
 ```
-Enabling access to all plans of service Mysql-DB for all orgs as admin...
+Enabling access to all plans of service offering Mysql-DB for all orgs as admin...
 OK
 ```
 > $ cf service-access   
 ```
 Getting service access as admin...
 broker: mysql-service-broker
-   service    plan                 access   orgs
-   Mysql-DB   Mysql-Plan1-10con    all
-   Mysql-DB   Mysql-Plan2-100con   all
+offering   plan                 access   orgs
+Mysql-DB   Mysql-Plan1-10con    all     
+Mysql-DB   Mysql-Plan2-100con   all
 ```  
 
 ### <div id='3.2'> 3.2. Sample Web App Download  
 
-Sample App is deployed as an app in PaaS-TA. When the app runs, the initial data is generated by accessing the bound MySQL service connection information.
+Sample App is deployed as an app in K-PaaS AP. When the app runs, the initial data is generated by accessing the bound MySQL service connection information.
 After accessing the app through a browser, the initially generated data can be inquired through "MYSQL data import".
 
 - Download zip file of sample apps
 ```
-$ wget https://nextcloud.paas-ta.org/index.php/s/BoSbKrcXMmTztSa/download --content-disposition  
-$ unzip paasta-service-samples-459dad9.zip 
-$ cd paasta-service-samples/mysql  
+$ wget https://nextcloud.k-paas.org/index.php/s/scFDGk9iZBg8apZ/download --content-disposition  
+$ unzip ap-service-samples-db49d1e.zip  
+$ cd ap-service-samples/mysql
 ```
 
-### <div id='3.3'> 3.3. Request for service in PaaS-TA
+### <div id='3.3'> 3.3. Request for service in K-PaaS
 In order to use the MySQL service in the Sample App, you must apply for a service (Provision).
 
-*Note: you must be logged in as a user who can apply for the service from PaaS-TA when applying for a service.
+*Note: you must be logged in as a user who can apply for the service from K-PaaS AP when applying for a service.
 
-- Check whether there is a service in the PaaS-TA Marketplace first.
+- Check whether there is a service in the K-PaaS AP Marketplace first.
 
 > $ cf marketplace   
 ```  
 Getting services from marketplace in org org system / space dev as admin...
 OK
 
-service      plans                                    description
-Mysql-DB     Mysql-Plan1-10con, Mysql-Plan2-100con*   A simple mysql implementation
+offering   plans                                   description                     broker
+Mysql-DB   Mysql-Plan1-10con, Mysql-Plan2-100con   A simple mysql implementation   mysql-service-broker
 
-TIP:  Use 'cf marketplace -s SERVICE' to view descriptions of individual plans of a given service.
+TIP: Use 'cf marketplace -e SERVICE_OFFERING' to view descriptions of individual plans of a given service offering.
 ```  
 
 - Command for requesting Service Instance
@@ -366,25 +366,24 @@ cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 
 > $ cf create-service Mysql-DB Mysql-Plan2-100con mysql-service-instance   
 ```  
-Creating service instance mysql-service-instance in org org system / space dev as admin...
-OK
+Creating service instance mysql-service-instance in org system / space dev as admin...
 
-Attention: The plan `Mysql-Plan2-100con` of service `Mysql-DB` is not free.  The instance `mysql-service-instance` will incur a cost.  Contact your administrator if you think this is in error.
+Service instance mysql-service-instance created.
+OK
 ```  
 
 - Verify the MySQL service instance that was created.
 
 > $ cf services 
 ```  
-Getting services in org system / space dev as admin...
-OK
+Getting service instances in org system / space dev as admin...
 
-name                      service    plan                 bound apps            last operation
-mysql-service-instance    Mysql-DB   Mysql-Plan2-100con                         create succeeded
+name                     offering   plan                 bound apps   last operation     broker                 upgrade available
+mysql-service-instance   Mysql-DB   Mysql-Plan2-100con                create succeeded   mysql-service-broker   no
 ```  
 
 ### <div id='3.4'> 3.4. Sample Web App Deployment and MySQL Bind Verification 
-When the service application is completed, the Sample Web App binds the generated service instance and uses the MySQL service in the App. *Note: When applying for service bind, you must be logged in as a user who can apply for service bind in PaaS-TA.
+When the service application is completed, the Sample Web App binds the generated service instance and uses the MySQL service in the App. *Note: When applying for service bind, you must be logged in as a user who can apply for service bind in K-PaaS AP.
 	
 - Check the manifest file. 
 
@@ -399,27 +398,27 @@ applications:
   buildpack: java_buildpack
   path: mysql-sample-app.war
   env:
-    mysql_datasource_driver-class-name: com.mysql.cj.jdbc.Driver
-    mysql_datasource_jdbc-url: jdbc:\${vcap.services.mysql-service-instance.credentials.uri}
-    mysql_datasource_username: \${vcap.services.mysql-service-instance.credentials.username}
-    mysql_datasource_password: \${vcap.services.mysql-service-instance.credentials.password}
+  mysql_datasource_driver-class-name: com.mysql.cj.jdbc.Driver
+  mysql_datasource_jdbc-url: jdbc:\${vcap.services.mysql-service-instance.credentials.uri}
+  mysql_datasource_username: \${vcap.services.mysql-service-instance.credentials.username}
+  mysql_datasource_password: \${vcap.services.mysql-service-instance.credentials.password}
 
 ```
 
 - Deploy the app with the --no-start option.
 > $ cf push --no-start  
 ```  
-Applying manifest file /home/ubuntu/workspace/samples/paasta-service-samples/mysql/manifest.yml...
+Applying manifest file /home/ubuntu/workspace/samples/ap-service-samples/mysql/manifest.yml...
 Manifest applied
 Packaging files to upload...
 Uploading files...
- 26.48 MiB / 26.48 MiB [================================================================================================================] 100.00% 1s
+26.48 MiB / 26.48 MiB [================================================================================================================] 100.00% 1s
 
 Waiting for API to complete processing files...
 
 name:              mysql-sample-app
 requested state:   stopped
-routes:            mysql-sample-app.paasta.kr
+routes:            mysql-sample-app.ap.kr
 last uploaded:     
 stack:             
 buildpacks:        
@@ -428,8 +427,8 @@ type:           web
 sidecars:       
 instances:      0/1
 memory usage:   1024M
-     state   since                  cpu    memory   disk     details
-#0   down    2021-11-22T05:21:57Z   0.0%   0 of 0   0 of 0   
+state   since                  cpu    memory   disk     details
+#0   down    2021-11-22T05:21:57Z   0.0%   0 of 0   0 of 0 
 ```  
 	
 - Apply for service instance bind created by Sample Web App.
@@ -437,8 +436,10 @@ memory usage:   1024M
 > $ cf bind-service mysql-sample-app mysql-service-instance  
 
 ```
-Binding service mysql-service-instance to app mysql-sample-app in org system / space dev as admin...
+Binding service instance mysql-service-instance to app mysql-sample-app in org system / space dev as admin...
 OK
+
+TIP: Use 'cf restage mysql-sample-app' to ensure your env variable changes take effect
 ```
 
 When running the app, add a security group for communication with the service.
@@ -486,10 +487,11 @@ Restarting app mysql-sample-app in org system / space dev as admin...
 Staging app and tracing logs...
    Downloading java_buildpack...
    Downloaded java_buildpack
-   Cell 4a88ce8b-1e72-485a-8f62-1fe0c6b9a7cd creating container for instance 678aa272-945b-41a9-8924-0782891d0cc4
-   Cell 4a88ce8b-1e72-485a-8f62-1fe0c6b9a7cd successfully created container for instance 678aa272-945b-41a9-8924-0782891d0cc4
+   Cell 67f9c5f5-04bc-42a9-a5bc-d628dd9f2a2c creating container for instance b9b1470a-c9ca-41a2-b42a-279267ca14bb
+   Security group rules were updated
+   Cell 67f9c5f5-04bc-42a9-a5bc-d628dd9f2a2c successfully created container for instance b9b1470a-c9ca-41a2-b42a-279267ca14bb
    Downloading app package...
-   Downloaded app package (30.5M)
+   Downloaded app package (33.6M)
 
 ........
 ........
@@ -498,12 +500,23 @@ Instances starting...
 
 name:              mysql-sample-app
 requested state:   started
-routes:            mysql-sample-app.paasta.kr
-last uploaded:     Mon 22 Nov 05:23:48 UTC 2021
+routes:            mysql-sample-app.ap.kr
+last uploaded:     Wed 11 Oct 14:18:35 KST 2023
 stack:             cflinuxfs3
 buildpacks:        
-	name             version                                                             detect output   buildpack name
-	java_buildpack   v4.37-https://github.com/cloudfoundry/java-buildpack.git#ab2b4512   java            java
+	name             version                                                         detect output   buildpack name
+	java_buildpack   v4.50-git@github.com:cloudfoundry/java-buildpack.git#5fe41f89   java            java
+type:           web
+sidecars:       
+instances:      1/1
+memory usage:   1024M
+     state     since                  cpu    memory    disk      details
+#0   running   2023-10-11T05:18:54Z   0.0%   0 of 1G   0 of 1G   
+type:           task
+sidecars:       
+instances:      0/0
+memory usage:   1024M
+There are no running instances of this process.
 ```  
 
 - Check if the app uses the MySQL service normally.
@@ -657,4 +670,4 @@ The HeidiSQL program is an open-source software that can be used for free.
 
 [update_mysql_vsphere_34]:./images/mysql/update_mysql_vsphere_34.png
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > MySQL Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > MySQL Service

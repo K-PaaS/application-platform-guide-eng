@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > BOSH
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > BOSH
 
 ## Table of Contents
 
@@ -52,22 +52,22 @@ Cloud Foundry Document: [https://docs.cloudfoundry.org](https://docs.cloudfoundr
 # <div id='2'/>2. Configuring and Installing the BOSH Installation Environment 
 
 ## <div id='2.1'/>2.1. BOSH Installaion Procedure
-Inception (a PaaS-TA installation) is an installation environment for installing BOSH and PaaS-TA, either VM or server equipment. 
+Inception (a K-PaaS installation) is an installation environment for installing BOSH and K-PaaS, either VM or server equipment. 
 OS Version is based on Ubuntu 18.04. Inception VM must be created manually in IaaS.
 
 Inception VM recommends Ubuntu 18.04, vCPU 2 Core, Memory 4G, and Disk 100G or higher.
 
 ## <div id='2.2'/>2.2.  Inception Server Configuration
 
-The Inception server is a deployment job execution server that has the necessary environment for installing BOSH and PaaS-TA, such as packages, libraries, and Manifest files.
+The Inception server is a deployment job execution server that has the necessary environment for installing BOSH and K-PaaS, such as packages, libraries, and Manifest files.
 The Inception server should be capable of external communication.
 
-The components to be configured on the Inception server for BOSH and PaaS-TA installation are as follows.
+The components to be configured on the Inception server for BOSH and Application Platform (hereinafter AP) installation are as follows.
 
 - BOSH CLI 6.1.x and above
 - BOSH Dependency : ruby, ruby-dev, openssl etc.
 - BOSH Deployment: Manifest deployment for BOSH installation
-- PaaS-TA Deployment : Manifest deployment for PaaS-TA installation
+- AP Deployment : Manifest deployment for Application Platform installation
 
 ## <div id='2.3'/>2.3.  BOSH Installation
 
@@ -82,11 +82,11 @@ The components to be configured on the Inception server for BOSH and PaaS-TA ins
 |22|Use BOSH|
 |6868|Use BOSH|
 |25555|Use BOSH|
-|53|Use PaaS-TA|
-|68|Use PaaS-TA|
-|80|Use PaaS-TA|
-|443|Use PaaS-TA|
-|4443|Use PaaS-TA|
+|53|Use AP|
+|68|Use AP|
+|80|Use AP|
+|443|Use AP|
+|4443|Use AP|
 
 
 - Disable the ICMP types 13 (timestamp request) and types 14 (timestamp response) rule in the inbound of the IaaS security group. (CVE-1999-0524 ICMP timestamp response security issue applied)
@@ -136,15 +136,15 @@ After a year of installing BOSH, the certification has to be renewed.
 ```
 $ mkdir -p ~/workspace
 $ cd ~/workspace
-$ git clone https://github.com/PaaS-TA/paasta-deployment.git -b v5.8.8
+$ git clone https://github.com/K-PaaS/ap-deployment.git -b v5.8.8
 ```
 
-- Check the folders under paasta/deployment/paasta-deployment
+- Check the folders under ap-deployment
 
 ```
-$ cd ~/workspace/paasta-deployment
+$ cd ~/workspace/ap-deployment
 $ ls
-README.md  bosh  cloud-config  paasta
+README.md  bosh  cloud-config  ap
 ```
 
 <table>
@@ -157,15 +157,15 @@ README.md  bosh  cloud-config  paasta
 <td>Folder containing IaaS network, storage, vm-specific settings files for VM deployment exist</td>
 </tr>
 <tr>
-<td>paasta</td>
-<td>Folder containing manifest and installation files for PaaS-TA AP installation</td>
+<td>ap</td>
+<td>Folder containing manifest and installation files for AP installation</td>
 </tr>
 </table>
 
 
 ### <div id='2.3.4'/>2.3.4.    BOSH Installation File
 
-~/workspace/paasta-deployment/bosh contains IaaS-specific Shell Script files for BOSH installation.
+~/workspace/ap-deployment/bosh contains IaaS-specific Shell Script files for BOSH installation.
 
 Use Shell Script to intall BOSH.
 File name was made as deploy-{IaaS}.sh . 
@@ -211,86 +211,85 @@ Set variable file according to IaaS environment where BOSH is installed.
 
 - When installing AWS environment 
 
-> $ vi ~/workspace/paasta-deployment/bosh/aws-vars.yml
+> $ vi ~/workspace/ap-deployment/bosh/aws-vars.yml
 ```
 # BOSH VARIABLE
 bosh_client_admin_id: "admin"				# Bosh Client Admin ID
 private_cidr: "10.0.1.0/24"				# Private IP Range
 private_gw: "10.0.1.1"					# Private IP Gateway
-bosh_url: "10.0.1.6"					# Private IP
+bosh_ip: "10.0.1.6"					# Private IP
 director_name: "micro-bosh"				# BOSH Director Name
 access_key_id: "XXXXXXXXXXXXXXX"			# AWS Access Key
 secret_access_key: "XXXXXXXXXXXXX"			# AWS Secret Key
 region: "ap-northeast-2"				# AWS Region
 az: "ap-northeast-2a"					# AWS AZ Zone
-default_key_name: "aws-paasta.pem"			# AWS Key Name
+default_key_name: "aws-ap"			# AWS Key Name
 default_security_groups: ["bosh"]			# AWS Security-Group
-subnet_id: "paasta-subnet"				# AWS Subnet
-private_key: "~/.ssh/aws-paasta.pem"			# SSH Private Key Path (Path to a private key with access to corresponding IaaS)
+subnet_id: "ap-subnet"				# AWS Subnet
+private_key: "~/.ssh/aws-ap.pem"			# SSH Private Key Path (Path to a private key with access to corresponding IaaS)
 
-# MONITORING VARIABLE(When installing PaaS-TA Monitoring, pre-modify the value of the VM to be installed ahead of time)
-metric_url: "xx.xx.xxx.xxx"				# PaaS-TA Monitoring InfluxDB IP
-syslog_address: "xx.xx.xxx.xxx"				# Logsearch의 ls-router IP
-syslog_port: "2514"					# Logsearch의 ls-router Port
-syslog_transport: "relp"				# Logsearch Protocol
+# MONITORING VARIABLE(When installing K-PaaS Monitoring, pre-modify the value of the VM to be installed ahead of time)
+metric_url: "10.0.161.101"          # influxdb IP
+syslog_address: "10.0.121.100"      # td-agent IP
+syslog_port: "2514"                 # td-agent Port
+syslog_transport: "udp"             # td-agent Logging Protocol
 ```
 
 - When installing OpenStack environment
 
-> $ vi ~/workspace/paasta-deployment/bosh/openstack-vars.yml
+> $ vi ~/workspace/ap-deployment/bosh/openstack-vars.yml
 ```
 # BOSH VARIABLE
-bosh_client_admin_id: "admin"				# Bosh Client Admin ID
-director_name: "micro-bosh"				# BOSH Director Name
-private_cidr: "10.0.1.0/24"				# Private IP Range
-private_gw: "10.0.1.1"					# Private IP Gateway
-bosh_url: "10.0.1.6"					# Private IP
-auth_url: "http://XX.XXX.XX.XX:XXXX/v3/"		# Openstack Keystone URL
-az: "nova"						# Openstack AZ Zone
-default_key_name: "paasta"				# Openstack Key Name
-default_security_groups: ["paasta"]			# Openstack Security Group
-net_id: "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"		# Openstack Network ID
+director_name: "micro-bosh"					# BOSH Director Name
+private_cidr: "10.0.1.0/24"					# Private IP Range
+private_gw: "10.0.1.1"							# Private IP Gateway
+bosh_ip: "10.0.1.6"									# Private IP 
+auth_url: "http://XX.XXX.XX.XX:XXXX/v3/"	# Openstack Keystone URL
+az: "nova"													# Openstack AZ Zone
+default_key_name: "ap"							# Openstack Key Name
+default_security_groups: ["ap"]			# Openstack Security Group
+net_id: "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"	# Openstack Network ID
 openstack_password: "XXXXXX"				# Openstack User Password
 openstack_username: "XXXXXX"				# Openstack User Name
-openstack_domain: "XXXXXXX"				# Openstack Domain Name
-openstack_project: "PaaSTA"				# Openstack Project
-private_key: "~/.ssh/id_rsa.pem"			# SSH Private Key Path (Path to a private key with access corresponding IaaS)
-region: "RegionOne"					# Openstack Region
+openstack_domain: "XXXXXXX"					# Openstack Domain Name
+openstack_project: "ap"							# Openstack Project
+private_key: "~/.ssh/id_rsa.pem"		# Openstack Region
+region: "RegionOne"									# SSH Private Key Path
 
-# MONITORING VARIABLE(When installing PaaS-TA Monitoring, pre-modify it to the value of the VMs to be installed ahead of time)
-metric_url: "10.0.161.101"				# PaaS-TA Monitoring InfluxDB IP
-syslog_address: "10.0.121.100"				# Logsearch의 ls-router IP
-syslog_port: "2514"					# Logsearch의 ls-router Port
-syslog_transport: "relp"				# Logsearch Protocol
+# MONITORING VARIABLE(When installing K-PaaS Monitoring, pre-modify it to the value of the VMs to be installed ahead of time)
+metric_url: "10.0.161.101"          # influxdb IP
+syslog_address: "10.0.121.100"      # td-agent IP
+syslog_port: "2514"                 # td-agent Port
+syslog_transport: "udp"             # td-agent Logging Protocol
 ```
 
 - When installing vSphere environment
 
-> $ vi ~/workspace/paasta-deployment/bosh/vsphere-vars.yml
+> $ vi ~/workspace/ap-deployment/bosh/vsphere-vars.yml
 ```
 # BOSH VARIABLE
-bosh_client_admin_id: "admin"			# Bosh Client Admin ID
-director_name: "micro-bosh"			# BOSH Director Name
-private_cidr: "10.0.1.0/24"			# Private IP Range
-private_gw: "10.0.1.1"				# Private IP Gateway
-bosh_ip: "10.0.1.6"				# Private IP
-network_name: "PaaS-TA"				# Private Network Name (vCenter)
-vcenter_dc: "PaaS-TA-DC"			# vCenter Data Center Name
-vcenter_ds: "PaaS-TA-Storage"			# vCenter Data Storage Name
-vcenter_ip: "XX.XX.XXX.XX"			# vCenter Private IP
-vcenter_user: "XXXXX"				# vCenter User Name
-vcenter_password: "XXXXXX"			# vCenter User Password
-vcenter_templates: "PaaS-TA_Templates"		# vCenter Templates Name
-vcenter_vms: "PaaS-TA_VMs"			# vCenter VMS Name
-vcenter_disks: "PaaS-TA_Disks"			# vCenter Disk Name
-vcenter_cluster: "PaaS-TA"			# vCenter Cluster Name
-vcenter_rp: "PaaS-TA_Pool"			# vCenter Resource Pool Name
+bosh_client_admin_id: "admin"				# Bosh Client Admin ID
+director_name: "micro-bosh"					# BOSH Director Name
+private_cidr: "10.0.1.0/24"					# Private IP Range
+private_gw: "10.0.1.1"							# Private IP Gateway
+bosh_ip: "10.0.1.6"									# Private IP 
+network_name: "AP"									# Private Network Name (vCenter)	
+vcenter_dc: "AP-DC"									# vCenter Data Center Name
+vcenter_ds: "AP-Storage"						# vCenter Data Storage Name
+vcenter_ip: "XX.XX.XXX.XX"					# vCenter Private IP
+vcenter_user: "XXXXX"								# vCenter User Name
+vcenter_password: "XXXXXX"					# vCenter User Password
+vcenter_templates: "AP_Templates"		# vCenter Templates Name
+vcenter_vms: "AP_VMs"								# vCenter VMS Name
+vcenter_disks: "AP_Disks"						# vCenter Disk Name
+vcenter_cluster: "AP"								# vCenter Cluster Name
+vcenter_rp: "AP_Pool"								# vCenter Resource Pool Name
 
-# MONITORING VARIABLE(Modify when installing PaaS-TA Monitoring)
-metric_url: "10.0.161.101"			# PaaS-TA Monitoring InfluxDB IP
-syslog_address: "10.0.121.100"			# Logsearch의 ls-router IP
-syslog_port: "2514"				# Logsearch의 ls-router Port
-syslog_transport: "relp"			# Logsearch Protocol
+# MONITORING VARIABLE(Modify when installing K-PaaS Monitoring)
+metric_url: "10.0.161.101"          # influxdb IP
+syslog_address: "10.0.121.100"      # td-agent IP
+syslog_port: "2514"                 # td-agent Port
+syslog_transport: "udp"             # td-agent Logging Protocol
 ```
 
 
@@ -359,7 +358,7 @@ If the options in the installed Shell Scripts need to be changed, run the corres
 
 - When installing AWS environment
 
-> $ vi ~/workspace/paasta-deployment/bosh/deploy-aws.sh
+> $ vi ~/workspace/ap-deployment/bosh/deploy-aws.sh
 ```
 bosh create-env bosh.yml \                         
 	--state=aws/state.json \			# BOSH Latest Running State, Create at installation, Backup needed
@@ -374,7 +373,7 @@ bosh create-env bosh.yml \
 
 - When installing OpenStack environment
 
-> $ vi ~/workspace/paasta-deployment/bosh/deploy-openstack.sh
+> $ vi ~/workspace/ap-deployment/bosh/deploy-openstack.sh
 ```
 bosh create-env bosh.yml \                       
 	--state=openstack/state.json \			# BOSH Latest Running State, Create at installation, Backup needed
@@ -390,7 +389,7 @@ bosh create-env bosh.yml \
 
 - When installing vSphere environment
 
-> $ vi ~/workspace/paasta-deployment/bosh/deploy-vsphere.sh
+> $ vi ~/workspace/ap-deployment/bosh/deploy-vsphere.sh
 ```
 bosh create-env bosh.yml \
 	--state=vsphere/state.json \			# BOSH Latest Running State, Create at installation, Backup needed
@@ -419,7 +418,7 @@ After setting up Variable File and Installation Shell Script, proceed with the i
 - Run BOSH Installation Shell Script File
 
 ```
-$ cd ~/workspace/paasta-deployment/bosh
+$ cd ~/workspace/ap-deployment/bosh
 $ ./deploy-{iaas}.sh
 ```
 
@@ -443,12 +442,12 @@ Succeeded
 ### <div id='2.3.6'/>2.3.6. BOSH Login
 {iaas}/creds.yml file is created below the BOSH installation folder when BOSH is installed.  
 Creds.yml has BOSH authentication information and logs in to BOSH using creds.yml.
-After logging in to BOSH, PaaS-TA may be installed using the BOSH CLI command.
+After logging in to BOSH, AP may be installed using the BOSH CLI command.
 **To deploy VMs using BOSH, you MUST login to BOSH.**  
 BOSH Login command are as follows.  
 
 ```
-$ cd ~/workspace/paasta-deployment/bosh
+$ cd ~/workspace/ap-deployment/bosh
 $ export BOSH_CA_CERT=$(bosh int ./{iaas}/creds.yml --path /director_ssl/ca)
 $ export BOSH_CLIENT=admin
 $ export BOSH_CLIENT_SECRET=$(bosh int ./{iaas}/creds.yml --path /admin_password)
@@ -492,14 +491,14 @@ You can access the BOSH VM using Jumpbox when there is an abnormality in the BOS
 **You must reconnect to the BOSH and change the password to manage it before the password gets expired  (Jumpbox account gets locked if not changed)**
 
 ```
-$ cd ~/workspace/paasta-deployment/bosh
+$ cd ~/workspace/ap-deployment/bosh
 $ bosh int {iaas}/creds.yml --path /jumpbox_ssh/private_key > jumpbox.key
 $ chmod 600 jumpbox.key
 $ ssh jumpbox@{bosh_url} -i jumpbox.key
 ```
 
 ```
-ubuntu@inception:~/workspace/paasta-deployment/bosh$ ssh jumpbox@10.0.1.6 -i jumpbox.key
+ubuntu@inception:~/workspace/ap-deployment/bosh$ ssh jumpbox@10.0.1.6 -i jumpbox.key
 Unauthorized use is strictly prohibited. All access and activity
 is subject to logging and monitoring.
 Welcome to Ubuntu 18.04.6 LTS (GNU/Linux 4.15.0-54-generic x86_64)
@@ -517,16 +516,16 @@ bosh/0:~$
 ## <div id='4'/>4. Others
 ### <div id='4.1'/>4.1. Create BOSH login script
 
-Provides creating BOSH login script form PaaS-TA 5.5.
+Provides creating BOSH login script form AP 5.5.
 Can save the BOSH_DEPLOYMENT_PATH, CURRENT_IAAS, BOSH_IP, BOSH_CLIENT_ADMIN_ID, BOSH_ENVIRONMENT, BOSH_LOGIN_PATH, BOSH_LOGIN_FILE_PATH, and change the BOSH_LOGIN_FILE_ME script at the preferred location.
 
 - Modify settings in the Create BOSH Login Script
 
-> $ vi ~/workspace/paasta-deployment/bosh/create-bosh-login.sh
+> $ vi ~/workspace/ap-deployment/bosh/create-bosh-login.sh
 ```
 #!/bin/bash
 
-BOSH_DEPLOYMENT_PATH="<BOSH_DEPLOYMENT_PATH>" 	# (e.g. ~/workspace/paasta-deployment/bosh)
+BOSH_DEPLOYMENT_PATH="<BOSH_DEPLOYMENT_PATH>" 	# (e.g. ~/workspace/ap-deployment/bosh)
 CURRENT_IAAS="aws"				# (e.g. aws/azure/gcp/openstack/vsphere/bosh-lite)
 BOSH_IP="10.0.1.6"				# (e.g. 10.0.1.6)
 BOSH_CLIENT_ADMIN_ID="admin"			# (e.g. admin)
@@ -554,7 +553,7 @@ credhub login -s https://'${BOSH_IP}':8844 --skip-tls-validation --client-name=c
 - Run Creating BOSH Login Script
 
 ```
-$ cd ~/workspace/paasta-deployment/bosh
+$ cd ~/workspace/ap-deployment/bosh
 $ source create-bosh-login.sh
 ```
 
@@ -566,4 +565,4 @@ $ source {BOSH_LOGIN_FILE_PATH}/{BOSH_LOGIN_FILE_NAME}
 ```
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > BOSH
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > BOSH

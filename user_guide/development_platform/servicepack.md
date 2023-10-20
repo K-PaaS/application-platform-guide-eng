@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Servicepack Development
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Servicepack Development
 
 
 ## Table of Contents
@@ -1968,4 +1968,4 @@ Proceed to deployment with the procedures below.
  [openpaas-servicepack-48]:./images/openpaas-servicepack/openpaas-servicepack-48.png
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Servicepack Development
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Servicepack Development

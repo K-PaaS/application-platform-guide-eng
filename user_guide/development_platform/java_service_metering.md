@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Java Service Metering Development
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Java Service Metering Development
 
 ## Table of Contents
 
@@ -35,7 +35,7 @@
      * [Billing Policy](#30)
      * [Register Policy](#31)
     * [Deployment](#32)
-     * [Login to PaaS-TA Platforn](#33)
+     * [Login to Application Platform](#33)
      * [Create mongo-db Service Broker](#34)
      * [API Service Interworking Sample Application Deployment and Service Connection](#35)
     * [Service Binding CF-Abacus Interworking Test](#36)
@@ -48,12 +48,12 @@
 ### <div id='3'/>1.1.1.  Purpose
 
 
-This document (Java Service Broker Metering Application Development Guide) describes how to meter CF (Cloud Foundry) services by adding metering services to service brokers in PaaS-TA platform projects.
+This document (Java Service Broker Metering Application Development Guide) describes how to meter CF (Cloud Foundry) services by adding metering services to service brokers in Application platform projects.
 
 
 ### <div id='4'/>1.1.2.  Range
 
-The range of this document is limited to the development of Cloud Foundry JAVA service broker application metering and CF-Abacus linkage in the Pas-Ta platform project.
+The range of this document is limited to the development of Cloud Foundry JAVA service broker application metering and CF-Abacus linkage in the Application platform project.
 For service broker API development, refer to the service broker API development guide provided separately.
 
 This document describes the development environment of Ubuntu 14.04 ver.
@@ -407,11 +407,11 @@ The dependencies portion of the mongo-db service broker build.gradle file
 ### <div id='22'/>2.4.5.  application-mvc.properties Settings
 
 	# The address of abacus usage collector RESTAPI
-	abacus.collector: https://abacus-usage-collector.<PaaS-TA Domain> /v1/metering/collected/usage
+	abacus.collector: https://abacus-usage-collector.<Application Platform Domain> /v1/metering/collected/usage
 	# If the abacus usage collector is in secured mode, then true / if not, false
 	abacus.secured: true
 	# uaa server of the Open Platform
-	uaa.server: https://uaa.<PaaS-TA Domain>
+	uaa.server: https://uaa.<Application Platform Domain>
 	# abacus usage collector RESTAPI use authority (Register at UAA server ahead of time.)
 	uaa.client.id: abacus-linux-container
 	uaa.client.secret: secret
@@ -926,21 +926,21 @@ There is no need to redeploy CF-ABACUS by storing the prepared policy in DB usin
 
 
 ## <div id='32'/>2.6  Deployment
-When an application is deployed on the PaaS-TA platform, you can connect and use the deployed application with the services provided by the PaaS-TA platform.
-It should be executed only on the PaaS-TA platform to access the application environment variable and access the service.
+When an application is deployed on the Application platform, you can connect and use the deployed application with the services provided by the Application platform.
+It should be executed only on the Application platform to access the application environment variable and access the service.
 
-### <div id='33'/> 2.6.1. PaaS-TA Platform Login
+### <div id='33'/> 2.6.1. Application Platform Login
 
-Log in to the PaaS-TA platform to perform the procedure below
+Log in to the Application platform to perform the procedure below
 
-  >$ cf api --skip-ssl-validation **https://api**.<***PaaS-TA Domain***> # **Set PaaS-TA Platform TARGET**
+  >$ cf api --skip-ssl-validation **https://api**.<***Application Platform Domain***> # **Set Application Platform TARGET**
 
   >$ cf login -u *<**user name**>* -o *<**org name**>* -s *<**space name**>* **#Request login**
 
 
 ### <div id='34'/>2.6.2.  Create mongo-db Service Broker
 
-The mongo db service must be deployed in the PaaS-TA platform environment. Access information can be obtained through the binding process with the application.  
+The mongo db service must be deployed in the Application platform environment. Access information can be obtained through the binding process with the application.  
 
 -   **Create Service (The cf marketplace command allows you to view the list of services and the plan for each service.)**
 
@@ -959,7 +959,7 @@ The mongo db service must be deployed in the PaaS-TA platform environment. Acces
 		Getting service brokers as admin...
 		
 		name                url   
-		openpaas-mongo-broker http://openpaas-mongo-broker.<PaaS-TA Domain>
+		openpaas-mongo-broker http://openpaas-mongo-broker.<Application Platform Domain>
 		
 		## Check Service Catalog
 		$ cf service-access
@@ -1015,8 +1015,8 @@ The process of connecting an application to a service is called a 'bind'. Throug
 		OK
 		
 		name                      requested state   instances   memory   disk   urls   
-		binding-test-app          started           1/1         512M     512M   binding-test-app.<PaaS-TA Domain>
-		openpaas-mongo-broker     started           1/1         512M     1G     openpaas-mongo-broker.<PaaS-TA Domain>
+		binding-test-app          started           1/1         512M     512M   binding-test-app.<Application Platform Domain>
+		openpaas-mongo-broker     started           1/1         512M     1G     openpaas-mongo-broker.<Application Platform Domain>
 
 
 ## <div id='36'/>2.7.  Service Binding CF-Abacus Interworking Test
@@ -1031,7 +1031,7 @@ Check CF-Abacus Interwork
 	<<Skip>> 
 	
 	## Check API Usage
-	$ curl 'http://abacus-usage-reporting.<PaaS-TA Domain>/v1/metering/organizations/<Orgainization that deployed sampele application>/aggregated/usage'
+	$ curl 'http://abacus-usage-reporting.<Application Platform Domain>/v1/metering/organizations/<Orgainization that deployed sampele application>/aggregated/usage'
 	
 	Example)
 	$ curl 'http://abacus-usage-reporting.bosh-lite.com/v1/metering/organizations/testOrgGuid /aggregated/usage'
@@ -1073,7 +1073,7 @@ It is implemented as a Junit test and owermock-mockito-release-full:1.6.1 was us
 
 The Sample code can be downloaded from the site below.
 
-[Download](https://paas-ta.kr/data/packages/2.0/PaaSTA-Metering.zip)
+[Download](https://nextcloud.k-paas.org/index.php/s/mEbGNcJjrEj7GWx/download)
 
 
 [Java_Service_Metering_Image01]:./images/Java_Service_Metering/service_broker_api_architecture.png
@@ -1082,4 +1082,4 @@ The Sample code can be downloaded from the site below.
 [Java_Service_Metering_Image04]:./images/Java_Service_Metering/service_broker_library_architecture.png
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Java Service Metering Development
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Java Service Metering Development

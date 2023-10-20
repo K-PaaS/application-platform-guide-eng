@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Node.js Development
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Node.js Development
 
 ## Table of Contents
 1. [Document Outline](#1)
@@ -172,7 +172,7 @@ Data management for sample applications uses either MySQL, CubridDB, or MongoDB,
 
 - The completed sample application can be downloaded from the /OpenPaaSSample/node-sample-app of the link below.
 
-> https://nextcloud.paas-ta.org/index.php/s/x8Tg37WDFiL5ZDi/download
+> https://nextcloud.k-paas.org/index.php/s/x8Tg37WDFiL5ZDi/download
 
 ##### 2. Go to the Node.js Sample Application Path
 
@@ -1122,4 +1122,4 @@ test:
 [2-4-5-0]:./images/nodejs/2-4-5-0.png
 [2-5-0-0]:./images/nodejs/2-5-0-0.png
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Node.js Development
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Node.js Development

@@ -1,14 +1,14 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Operators Portal
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Operators Portal
 
 ## Table of Contents
 1. [Document Outline](#1)
     * [1.1. Purpose](#1.1)
     * [1.2. Range](#1.2)
     * [1.3. Install Operators Portal](#1.3)
-2. [Start PaaS-TA Operator Portal](#2)
-    * [2.1. PaaS-TA Operator Portal Login](#2.1)
-    * [2.2. PaaS-TA Operator Portal Log](#2.2)
-3. [PaaS-TA Operator Portal Dashboard](#3)
+2. [Start K-PaaS Operator Portal](#2)
+    * [2.1. K-PaaS AP Operator Portal Login](#2.1)
+    * [2.2. K-PaaS AP Operator Portal Log](#2.2)
+3. [K-PaaS AP Operator Portal Dashboard](#3)
     * [3.1. Check Dashboard Information](#3.1)
 4. [Operation Managing Menu](#4)
     * [4.1. Check Organization and Space](#4.1)    
@@ -35,38 +35,38 @@
 
 ### <a name="1.1"/>   1.1. Purpose
 
-This document describes how to use and manage the PaaS-TA Operator Portal website written in JAVA.
+This document describes how to use and manage the K-PaaS AP Operator Portal website written in JAVA.
 
 ### <a name="1.2"/>   1.2. Range
 
-Describes how to use the PaaS-TA operator portal website that is already installed.
+Describes how to use the K-PaaS AP operator portal website that is already installed.
 
 ### <a name="1.3"/>  1.3. Install Operators Portal
 
 This User Guide does not describe the installation process.
 
- Refer to    [PaaS-TA Portal Deployment Guide Document](https://github.com/PaaS-TA/Guide-3.0-Penne-/blob/v3.5/Install-Guide/Portal/PaaS-TA%20Portal%20%EC%84%A4%EC%B9%98%EA%B0%80%EC%9D%B4%EB%93%9C.md) for Operators Portal Installation.
+ Refer to    [AP Portal Deployment Guide Document](https://github.com/K-PaaSs/Guide-3.0-Penne-/blob/v3.5/Install-Guide/Portal/K-PaaS%20Portal%20%EC%84%A4%EC%B9%98%EA%B0%80%EC%9D%B4%EB%93%9C.md) for Operators Portal Installation.
 
-## <a name="2"/>2.  Start PaaS-TA Operator Portal
+## <a name="2"/>2.  Start K-PaaS AP Operator Portal
 
-Access to the PaaS-TA Operators Portal Web site.
+Access to the K-PaaS AP Operators Portal Web site.
 
-### <a name="2.1"/>  2.1. PaaS-TA Operator Portal Login
+### <a name="2.1"/>  2.1. K-PaaS AP Operator Portal Login
 
-1. Accessing the PaaS-TA Operator Portal will bring up a login screen for authentication.
+1. Accessing the K-PaaS AP Operator Portal will bring up a login screen for authentication.
 ![01]
 
 2. Enter User ID and Password then click "Login".
 ![02]
 
-### <a name="2.2"/>  2.2. PaaS-TA Operator Portal Logout
+### <a name="2.2"/>  2.2. K-PaaS AP Operator Portal Logout
 
 1. Click the ① "Logout" button from (the logged-in) main page.
 ![03]
 
-## <a name="3"/>3.  PaaS-TA Operator Portal Dashboard
+## <a name="3"/>3.  K-PaaS AP Operator Portal Dashboard
 
-Shows the Organization, Space, App, Users statistic Information registered in PaaS-TA.
+Shows the Organization, Space, App, Users statistic Information registered in K-PaaS AP.
 
 ### <a name="3.1"/>  3.1. Check Dashboard Information
 
@@ -78,7 +78,7 @@ Shows the Organization, Space, App, Users statistic Information registered in Pa
 
 ## <a name="4"/>4.  Operation Managing Menu
 
-A menu to perform the management necessary for the operation of the PaaS-TA portal.<br>
+A menu to perform the management necessary for the operation of the K-PaaS AP portal.<br>
 
 ### <a name="4.1"/>  4.1. Check Organization and Space
 
@@ -174,17 +174,17 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 3. Set classification as "Development Support Tool".
 4. Set service as "delivery-pipeline-v2".
 5. Select an image the user wants to use for the thumbnail. 
-     > **The applied Thumbnail can be checked at the 'PaaS-TA User' of Catalog service list and service registration.**<br>
+     > **The applied Thumbnail can be checked at the 'K-PaaS AP User' of Catalog service list and service registration.**<br>
 6. Insert document URL. 
-     > (Ex.) https://github.com/PaaS-TA/DELIVERY-PIPELINE-UI <br>
-     > **When the Document URL is applied, the 'PaaS-TA User' Catalog Service Registration 'View Document' button gets activated.**
+     > (Ex.) https://github.com/K-PaaS/ap-pipeline-ui <br>
+     > **When the Document URL is applied, the 'K-PaaS AP User' Catalog Service Registration 'View Document' button gets activated.**
      ![pipeline-app-service-create]
 
 7. Set needed parameter value when creating a service.
     (Ex.) owner : 'Automatic-input' /  org_name : 'Automatic-input'
 8. Input "N" for App bind Usage.
 9. Requires "Y" when the dashboard is being used. Setting the dashboard as "N" disables the dashboard button.
-     > **When the dashboard is applied, catalog app service "Dashboard" button is activated in 'PaaS-TA User'**
+     > **When the dashboard is applied, catalog app service "Dashboard" button is activated in 'K-PaaS AP User'**
      
     ![pipeline-app-dashboard]
 
@@ -196,16 +196,16 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 1. Enter the contents necessary to register the app service on the app service registration form screen.
 2. Enter the App Service name to register. 
 3. Set classification as "Development Support Tool".
-4. Set Service as "paasta-sourcecontrol".
+4. Set Service as "ap-sourcecontrol".
 5. Select an image the user wants to use for thumbnail.
 6. Insert Document URL.
-     > (Ex.) https://github.com/PaaS-TA/Guide-3.0-Penne-/blob/master/Service-Guide/Tools/PaaS-TA%20%ED%98%95%EC%83%81%EA%B4%80%EB%A6%AC%20%EC%84%9C%EB%B9%84%EC%8A%A4%ED%8C%A9%20%EC%84%A4%EC%B9%98%20%EA%B0%80%EC%9D%B4%EB%93%9C_v1.0.md <br>
-     > **When Document URL is applied, 'PaaS-TA User' Catalog Service Registration 'View Document' button gets activated.**<br>
+     > (Ex.) [AP Portal Deployment Guide Document](https://github.com/K-PaaS/application-platform-guide-eng/blob/master/install/portal/vm_type_ui.md#-31-enable-the-users-organization-creating-flag:~:text=3.1.%20Enable%20the%20user%27s%20organization%20creating%20flag) Refer to **3.1. Enable the user's organization creating flag**. <br>
+     > **When Document URL is applied, 'K-PaaS AP User' Catalog Service Registration 'View Document' button gets activated.**<br>
 7. Set needed parameter value when creating service.
     (Ex.) owner : 'Automatic-input' /  org_name : 'Automatic-input'
 8. Input "N" for App bind Usage.
 9. Requires "Y" when the dashboard is being used. Setting the dashboard as "N" disables the dashboard button.
-     > **When dashboard is applied, catalog app service "Dashboard" button is activated in 'PaaS-TA User'**
+     > **When dashboard is applied, catalog app service "Dashboard" button is activated in 'K-PaaS AP User'**
 10. In addition, enter public availability, outline, description, and catalog management code. Click the "Save" button to complete service registration.
      ![sourcecontroller]
 
@@ -259,9 +259,9 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 
 ### <a name="4.6"/>  4.6. Code Management
 
-**Administrator manages the PaaS-TA Portal Code.<br>**
+**Administrator manages the K-PaaS AP Portal Code.<br>**
 
-1. Check the code used in Paas-TA Portal by code-group. Can check whether it is used, search type, and search term.<br>
+1. Check the code used in K-PaaS AP Portal by code-group. Can check whether it is used, search type, and search term.<br>
 ![39]
 
 2. Check the detailed code information by clicking the Code ID from the code group.<br>
@@ -280,17 +280,17 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 
 ### <a name="4.7"/>  4.7. Setting Information
 
-**Administrator menu provides ta function to retrieve, register, and modify settings information on the Paas-ta portal.<br>**
+**Administrator menu provides ta function to retrieve, register, and modify settings information on the K-PaaS AP portal.<br>**
 
-1. Check setting information used in PaaS-TA Portal.
+1. Check setting information used in K-PaaS AP Portal.
 ![60]
 
-2. Modify and save the settings used at PaaS-TA Portal.
+2. Modify and save the settings used at K-PaaS AP Portal.
 ![62]
 
 ### <a name="4.8"/>  4.8. Quota Management
 
-**Operator Menu provides checking, registering, modifying, and deleting of PaaS-TA Portal's organization and space quota.<br>**
+**Operator Menu provides checking, registering, modifying, and deleting of K-PaaS AP Portal's organization and space quota.<br>**
 
 ![46]
 
@@ -322,7 +322,7 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 
 **The Administrator creates a new isolation segment, after an admin creates a new isolation segment, the admin can then create and manage relationships between the orgs and spaces of a Cloud Foundry deployment and the new isolation segment.<br>**
 
-1. You can look up the isolation management history used in PaaS-TA portal.<br>
+1. You can look up the isolation management history used in K-PaaS AP portal.<br>
 ![isolationSegments01]
 
 2. Enter the name to be used when creating at Segment Name text box. Register by clicking the "Register Segment" button.<br>
@@ -340,13 +340,13 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 
 ## <a name="5"/>5.  Service Management
 
-This is a menu for performing service management on the PaaS-TA portal.<br>
+This is a menu for performing service management on the K-PaaS AP portal.<br>
 
 ### <a name="5.1"/>  5.1. Buildpack
 
 **The administrator manages the retrieving, modification, use, and lock of the build pack.<br>**
 
-1. Check the information of the buildpack being used at the PaaS-TA Portal.<br>
+1. Check the information of the buildpack being used at the K-PaaS AP Portal.<br>
 ![50]
 
 2. Change the value in the Combobox to change the order of buildpack..<br>
@@ -362,7 +362,7 @@ This is a menu for performing service management on the PaaS-TA portal.<br>
 
 **Administrator's menu provides service broker URL registration, broker retrieve, modify and delete .<br>**
 
-1. Look up the service broker list used in PaaS-TA Portal.<br>
+1. Look up the service broker list used in K-PaaS AP Portal.<br>
 ![54]
 
 2. Click on the service name in the service broker list to view the details of the service broker. When there are modifications, click ①"Save" button after modifying to save the changes.<br>
@@ -377,7 +377,7 @@ This is a menu for performing service management on the PaaS-TA portal.<br>
 
 **Administrators control service plans and manage limited service availability available to users.<br>**
 
-1. Look up the service list used in PaaS-TA Portal.<br>
+1. Look up the service list used in K-PaaS AP Portal.<br>
 ![63]
 
 2. Click a service from the service control list to check the authority activation of the service or the service plan. Can modify the  Click ①Access Combobox to modify the authority activation of the selected service. ② Organization authority can be granted to the selected service or service plan.<br>
@@ -394,13 +394,13 @@ This is a menu for performing service management on the PaaS-TA portal.<br>
 
 ## <a name="6"/>6.  Security Management
 
-A menu for security management of the PaaS-TA portal.<br>
+A menu for security management of the K-PaaS AP portal.<br>
     
 ### <a name="6.1"/>  6.1 Security Group
 
 **Administrator manages access control of a specific space and prepares tasks and apps by using staging and running rules.**<br>
 
-1. Check the security group information used in PaaS-TA Portal.<br>
+1. Check the security group information used in K-PaaS AP Portal.<br>
 ![securitygroups01]
 
 2. Register the security group by clicking ①"Register Security Group". <br>
@@ -521,4 +521,4 @@ A menu for security management of the PaaS-TA portal.<br>
 [catalog-code-buildpack]:./images/admin-portal/catalog-code-buildpack.png
 [catalog-code-servicepack]:./images/admin-portal/catalog-code-servicepack.png
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Operator Portal
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Operator Portal

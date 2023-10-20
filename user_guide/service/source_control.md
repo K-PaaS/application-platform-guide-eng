@@ -1,13 +1,13 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Source Control Service 
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Source Control Service 
 
-# [PaaS-TA Configuration Management Service User's Guide]
+# [K-PaaS AP Configuration Management Service User's Guide]
 
 ## Table of Contents
 1. [Document Outline](#1)
-     * [1.1. Create PaaS-TA Portal Account](#2)
+     * [1.1. Create K-PaaS AP Portal Account](#2)
      * [1.2. Range](#3)
-2. [PaaS-TA User Portal Service](#4)
-     * [2.1. Create PaaS-TA Portal Account](#5)
+2. [K-PaaS AP User Portal Service](#4)
+     * [2.1. Create K-PaaS AP Portal Account](#5)
 3. [Configuration Management User Portal Service](#6)
      * [3.1. Create Configuration Management Service User](#7)
      * [3.1.1 Login](#8)
@@ -43,27 +43,27 @@
 
 # <div id='1'/> 1. Document Outline
 
-### <div id='2'/> 1.1. Create PaaS-TA Portal Account
+### <div id='2'/> 1.1. Create K-PaaS AP Portal Account
 This document describes how to use configuration management user.
 
 ### <div id='3'/> 1.2. Range
 This document is written on how to use the Configuration Management User Portal based on the Windows environment.
 
-# <div id='4'/> 2. PaaS-TA User Portal Service
+# <div id='4'/> 2. K-PaaS AP User Portal Service
 
-### <div id='5'/> 2.1. Create PaaS-TA Portal Account
-Before creating a configuration management service, creating of PaaS-TA user portal account is required. For creating a user account or resetting the password for PaaS-TA, refer to PaaS-TA User Portal Guide.
+### <div id='5'/> 2.1. Create K-PaaS AP Portal Account
+Before creating a configuration management service, creating of K-PaaS AP user portal account is required. For creating a user account or resetting the password for K-PaaS AP, refer to K-PaaS AP User Portal Guide.
 
 
 # <div id='6'/> 3. Configuration Management User Portal Service
 
 
 ### <div id='7'/> 3.1. Preparation Needed before Creating Configuration Management Service
-One Configuration Management Service can be created per organization. Refer to PaaS-TA User Portal Guide for details on creating a configuration management service.
+One Configuration Management Service can be created per organization. Refer to K-PaaS AP User Portal Guide for details on creating a configuration management service.
 
 
 ### <div id='8'/>  3.1.1. Login
-1.	Access to PaaS-TA User Portal.  
+1.	Access to K-PaaS AP User Portal.  
 ![002]
 
 2. Click the "Login" button.  
@@ -168,7 +168,7 @@ After checking the information of User ID, Name, and Email added in [Invite Cont
 
 
 ### <div id='16'/> 3.1.3. Create Repository
-1.	Access to PaaS-TA Developers Portal. (Skip when already logged in.)
+1.	Access to K-PaaS AP Developers Portal. (Skip when already logged in.)
 
 2.	After logging in, click “Dashboard” from the top of creating organization page's menu to proceed to the organization dashboard page. Click the “dev” space name located at the center of the screen to go to the space dashboard.  
 ![026]
@@ -255,7 +255,7 @@ Can check the File, Commit, and Contributor on the repository details page.
 
 ### <div id='27'/> 3.1.4. User Management
 ### <div id='28'/> 3.1.4.1.1.	Check All Users
-This chapter describes the usage of 7 menus of the PaaS-TA User Portal.
+This chapter describes the usage of 7 menus of the K-PaaS AP User Portal.
 1.	Click My ID on the Configuration Management Repository List page. Click “User Management” shown on the second part of the list.  
 ![040]
 
@@ -365,4 +365,4 @@ This chapter describes the usage of 7 menus of the PaaS-TA User Portal.
 [045]:./images/source-control/image045.png
 [046]:./images/source-control/image046.png
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Source Control Service 
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Source Control Service 

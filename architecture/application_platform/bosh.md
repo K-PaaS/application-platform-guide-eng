@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > BOSH
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > BOSH
 
 ## Purpose
 This document provides the Architecture of the BOSH.
@@ -18,7 +18,7 @@ This document provides the Architecture of the BOSH.
 
 ## Description
 Although BOSH was initially developed for Cloud Foundry PaaS, it is now an integrated project that allows the software to be easily deployed in Yaml file formats such as Jenkins and Hadoop. BOSH can install Hundreds of VMs, and manage lifecycle for each VM, such as monitoring and disaster recovery. 
-IaaS supported by BOSH includes VMware vSphere, Google Cloud Platform, Amazon Web Services EC2, Microsoft Azure, OpenStack, and Alibaba Cloud. PaaS-TA AP BOSH supports IaaS such as VMware vSphere, Google Cloud Platform, Amazon Web Services EC2, OpenStack, and Microsoft Azure.
+IaaS supported by BOSH includes VMware vSphere, Google Cloud Platform, Amazon Web Services EC2, Microsoft Azure, OpenStack, and Alibaba Cloud. K-PaaS AP BOSH supports IaaS such as VMware vSphere, Google Cloud Platform, Amazon Web Services EC2, OpenStack, and Microsoft Azure.
 
 
 Below are the component descriptions of BOSH.
@@ -54,4 +54,4 @@ The Agent installs the package designated as directed by the Director on the VM 
 BOSH Document: [http://bosh.io](http://bosh.io)  
 BOSH Deployment: [https://github.com/cloudfoundry/bosh-deployment](https://github.com/cloudfoundry/bosh-deployment)  
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > BOSH
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > BOSH

@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > GlusterFS Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > GlusterFS Service
 
 ## Table of Contents  
 
@@ -18,14 +18,14 @@
 3. [GlusterFS Linkage Sample App Description](#3)    
   3.1. [Service Broker Registration](#3.1)   
   3.2. [Sample App Download](#3.2)    
-  3.3. [Request for service in PaaS-TA](#3.3)   
+  3.3. [Request for service in K-PaaS](#3.3)   
   3.4. [Request for service bind to Sample App and check for App](#3.4)   
 
 
 ## <div id="1"/> 1. Document Outline
 
 ### <div id="1.1"/>1.1. Purpose
-This document (GlusterFS service pack installation guide) describes how to install the GlusterFS service pack, which is a service pack provided by PaaS-TA, using Bosh.
+This document (GlusterFS service pack installation guide) describes how to install the GlusterFS service pack, which is a service pack provided by K-PaaS, using Bosh.
 
 ### <div id="1.2"/> 1.2. Range
 The installation range was prepared based on the basic installation to verify the GlusterFS service pack.
@@ -76,7 +76,7 @@ $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell -n {STEMCELL_URL}
 
 Download the deployment needed from Git Repository and place the file at the service installation directory 
 
-- Service Deployment Git Repository URL : https://github.com/PaaS-TA/service-deployment/tree/v5.1.25
+- Service Deployment Git Repository URL : https://github.com/K-PaaS/service-deployment/tree/v5.1.25.1
 
 ```
 # Deployment File Download , make directory, change directory
@@ -84,16 +84,16 @@ $ mkdir -p ~/workspace
 $ cd ~/workspace
 
 # Deployment File Download
-$ git clone https://github.com/PaaS-TA/service-deployment.git -b v5.1.25
+$ git clone https://github.com/K-PaaS/service-deployment.git -b v5.1.25.1
 
 # common_vars.yml File Download(Download if common_vars.yml doesn't exist)
-$ git clone https://github.com/PaaS-TA/common.git
+$ git clone https://github.com/K-PaaS/common.git
 ```
 
 ### <div id="2.4"/> 2.4. Deployment File Modification
 
 The BOSH Deployment manifest is a YAML file that defines the properties of components elements and deployments. 
-Cloud config is used for network, vm_type, and disk_type used in Deployment files, and refer to the PaaS-TA AP installation guide for the usage.
+Cloud config is used for network, vm_type, and disk_type used in Deployment files, and refer to the K-PaaS AP installation guide for the usage.
 
 - Check the Cloud config settings.
 
@@ -125,7 +125,7 @@ networks:
   subnets:
   - az: z1
     cloud_properties:
-      security_groups: paasta-security-group
+      security_groups: ap-security-group
       subnet: subnet-00000000000000000
     dns:
     - 8.8.8.8
@@ -165,8 +165,8 @@ Succeeded
 ... ((Skip)) ...
 
 system_domain: "61.252.53.246.nip.io"		# Domain (Same as HAProxy Public IP when using nip.io)
-paasta_admin_username: "admin"			# PaaS-TA Admin Username
-paasta_admin_password: "admin"			# PaaS-TA Admin Password
+ap_admin_username: "admin"			# Application Platform Admin Username
+ap_admin_password: "admin"			# Application Platform Admin Password
 
 ... ((Skip)) ...
 
@@ -239,7 +239,7 @@ broker_deregistrar_vm_type: "small"                              # broker deregi
 
 # VARIABLES
 COMMON_VARS_PATH="<COMMON_VARS_FILE_PATH>"    # common_vars.yml File Path (e.g. ../../common/common_vars.yml)
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"        # bosh director alias name (When not using create-bosh-login.sh provided by PaaS-TA, check the name at bosh envs and enter)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"        # bosh director alias name (When not using create-bosh-login.sh provided by K-PaaS, check the name at bosh envs and enter)
 
 bosh -e ${BOSH_ENVIRONMENT} -n -d glusterfs deploy --no-redact glusterfs.yml \
     -o operations/cce.yml \
@@ -269,7 +269,7 @@ Deployment 'glusterfs'
 
 Instance                                                      Process State  AZ  IPs          VM CID                                   VM Type  Active  
 mysql/8770bc70-8681-4079-8360-086219d6231b                    running        z3  10.30.52.10  vm-96697221-0ff9-4520-8a68-2314c62057a5  medium   true  
-paasta-glusterfs-broker/229fb890-645b-4213-89a1-fc2116de3f54  running        z3  10.30.52.11  vm-ace55b8f-3ce0-4482-b03b-96fbc567592e  medium   true  
+service-broker/229fb890-645b-4213-89a1-fc2116de3f54  running        z3  10.30.52.11  vm-ace55b8f-3ce0-4482-b03b-96fbc567592e  medium   true  
 
 2 vms
 
@@ -277,12 +277,12 @@ Succeeded
 ```
 
 ## <div id="3"/>3. GlusterFS Linkage Sample App Description
-This Sample Web App is deployed to PaaS-TA and can be used with the service of GlusterFS on Provision and Bind.
+This Sample Web App is deployed to K-PaaS AP and can be used with the service of GlusterFS on Provision and Bind.
 
 ### <div id="3.1"/> 3.1. Service Broker Registration  
 
 When the GlusterFS service pack deployment is completed, you must first register the GlusterFS service broker to use the service pack in the application.
-When registering a service broker, you must log in as a user who can register a service broker in PaaS-TA
+When registering a service broker, you must log in as a user who can register a service broker in K-PaaS AP
 
 - Check the list of service brokers.
 
@@ -305,7 +305,7 @@ cf create-service-broker [SERVICE_BROKER] [USERNAME] [PASSWORD] [SERVICE_BROKER_
 
 - Register the GlusterFS service broker.
   
-> $ cf create-service-broker glusterfs-service admin cloudfoundry http://<paasta-glusterfs-broker_ip>:8080
+> $ cf create-service-broker glusterfs-service admin cloudfoundry http://<glusterfs-broker_ip>:8080
 ```  
 $ cf create-service-broker glusterfs-service admin cloudfoundry http://10.30.52.11:8080
 Creating service broker glusterfs-service as admin...
@@ -328,10 +328,10 @@ glusterfs-service              http://10.30.52.11:8080
 ```  
 Getting service access as admin...
 broker: glusterfs-service
-   service     plan               access   orgs
-   glusterfs   glusterfs-5Mb      none
-   glusterfs   glusterfs-100Mb    none
-   glusterfs   glusterfs-1000Mb   none
+   offering    plan               access   orgs
+   glusterfs   glusterfs-1000Mb   none     
+   glusterfs   glusterfs-100Mb    none     
+   glusterfs   glusterfs-5Mb      none     
 ```  
 >Access is initially not permitted when registering as a service broker. Therefore, access is set to none.
 
@@ -339,17 +339,17 @@ broker: glusterfs-service
 
 > $ cf enable-service-access glusterfs   
 ```
-Enabling access to all plans of service glusterfs for all orgs as admin...
+Enabling access to all plans of service offering for all orgs as admin...
 OK
 ```
 > $ cf service-access   
 ```  
 Getting service access as admin...
 broker: glusterfs-service
-   service     plan               access   orgs
-   glusterfs   glusterfs-5Mb      all
-   glusterfs   glusterfs-100Mb    all
-   glusterfs   glusterfs-1000Mb   all
+   offering    plan               access   orgs
+   glusterfs   glusterfs-1000Mb   all      
+   glusterfs   glusterfs-100Mb    all      
+   glusterfs   glusterfs-5Mb      all      
 ```  
 
 
@@ -357,18 +357,18 @@ broker: glusterfs-service
 
 - Download zip file of sample apps
 ```
-$ wget https://nextcloud.paas-ta.org/index.php/s/BoSbKrcXMmTztSa/download --content-disposition  
-$ unzip paasta-service-samples-459dad9.zip    
-$ cd paasta-service-samples/glusterfs  
+$ wget https://nextcloud.k-paas.org/index.php/s/scFDGk9iZBg8apZ/download --content-disposition  
+$ unzip ap-service-samples-db49d1e.zip  
+$ cd ap-service-samples/glusterfs  
 ```
 
 <br>
 
-### <div id="3.3"/> 3.3. Request for service in PaaS-TA
+### <div id="3.3"/> 3.3. Request for service in K-PaaS
 In order to use the GlusterFS service in the Sample App, you must request(provision) for a service.
-*Note: When requesting for a service, you must be logged in as a user who can request for a service in PaaS-TA.
+*Note: When requesting for a service, you must be logged in as a user who can request for a service in K-PaaS AP.
 
-- Check whether there is a service in the PaaS-TA Marketplace First.
+- Check whether there is a service in the K-PaaS AP Marketplace First.
 
 > $ cf marketplace
 
@@ -376,10 +376,10 @@ In order to use the GlusterFS service in the Sample App, you must request(provis
 Getting services from marketplace in org system / space dev as admin...
 OK
 
-service      plans                                              description
-glusterfs    glusterfs-5Mb, glusterfs-100Mb, glusterfs-1000Mb   A simple glusterfs implementation 
+offering    plans                                              description                         broker
+glusterfs   glusterfs-5Mb, glusterfs-100Mb, glusterfs-1000Mb   A simple glusterfs implementation   glusterfs-service
 
-TIP:  Use 'cf marketplace -s SERVICE' to view descriptions of individual plans of a given service.
+TIP: Use 'cf marketplace -e SERVICE_OFFERING' to view descriptions of individual plans of a given service offering.
 ```  
 
 <br>
@@ -397,7 +397,7 @@ cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 
 > $ cf create-service glusterfs glusterfs-1000Mb glusterfs-service-instance 
 ```  
-Creating service instance glusterfs-service-instance in org system / space dev as admin...
+Service instance glusterfs-service-instance created.
 OK
 ```  
 
@@ -408,11 +408,10 @@ OK
 
 > $ cf services
 ```  
-Getting services in org system / space dev as admin...
-OK
+Getting service instances in org system / space dev as admin...
 
-name                        service     plan                 bound apps            last operation
-glusterfs-service-instance  glusterfs   glusterfs-1000Mb                           create succeeded
+name                         offering    plan               bound apps   last operation     broker              upgrade available
+glusterfs-service-instance   glusterfs   glusterfs-1000Mb                create succeeded   glusterfs-service   no
 ```  
 
 <br>
@@ -436,24 +435,37 @@ applications:
   buildpacks:
   - java_buildpack
   env:
-    swift_region: paasta
+    swift_region: kpaas
 ```
 
 - Deploy app with --no-start opition.
 
 > $ cf push --no-start 
 ```  
-Applying manifest file /home/ubuntu/workspace/samples/paasta-service-samples/gluserfs/manifest.yml...
+Pushing app hello-spring-glusterfs to org system / space dev as admin...
+Applying manifest file /home/ubuntu/workspace/samples/ap-service-samples/gluserfs/manifest.yml...
+Updating with these attributes...
+  ---
+  applications:
++ - name: hello-spring-glusterfs
++   instances: 1
+    path: /home/ubuntu/workspace/ap-service-samples/glusterfs/hello-spring-glusterfs.war
+    memory: 1G
++   default-route: true
++   buildpacks:
++   - java_buildpack
++   env:
++     swift_region: kpaas
 Manifest applied
 Packaging files to upload...
 Uploading files...
- 17.06 MiB / 17.06 MiB [=================================================================================================
+ 19.21 MiB / 19.21 MiB [=========================================================================================================] 100.00% 1s
 
 Waiting for API to complete processing files...
 
 name:              hello-spring-glusterfs
 requested state:   stopped
-routes:            hello-spring-glusterfs.paasta.kr
+routes:            hello-spring-glusterfs.ap.kr
 last uploaded:     
 stack:             
 buildpacks:        
@@ -463,7 +475,7 @@ sidecars:
 instances:      0/1
 memory usage:   1024M
      state   since                  cpu    memory   disk     details
-#0   down    2021-11-22T05:13:12Z   0.0%   0 of 0   0 of 0   
+#0   down    2023-10-11T06:54:59Z   0.0%   0 of 0   0 of 0   
 ```  
   
 - Request for service instance bind created by Sample Web App.
@@ -471,7 +483,7 @@ memory usage:   1024M
 > $ cf bind-service hello-spring-glusterfs glusterfs-service-instance
 
 ```
-Binding service glusterfs-service-instance to app hello-spring-glusterfs in org system / space dev as admin...
+Binding service instance glusterfs-service-instance to app hello-spring-glusterfs in org system / space dev as admin...
 OK
 ```
 
@@ -519,10 +531,11 @@ Restarting app hello-spring-glusterFS in org system / space dev as admin...
 Staging app and tracing logs...
    Downloading java_buildpack...
    Downloaded java_buildpack
-   Cell 4a88ce8b-1e72-485a-8f62-1fe0c6b9a7cd creating container for instance 678aa272-945b-41a9-8924-0782891d0cc4
-   Cell 4a88ce8b-1e72-485a-8f62-1fe0c6b9a7cd successfully created container for instance 678aa272-945b-41a9-8924-0782891d0cc4
+   Cell 67f9c5f5-04bc-42a9-a5bc-d628dd9f2a2c creating container for instance 60d278f0-8ea7-40c5-9cf7-29756aeb5e69
+   Security group rules were updated
+   Cell 67f9c5f5-04bc-42a9-a5bc-d628dd9f2a2c successfully created container for instance 60d278f0-8ea7-40c5-9cf7-29756aeb5e69
    Downloading app package...
-   Downloaded app package (30.5M)
+   Downloaded app package (29.6M)
 
 ........
 ........
@@ -531,20 +544,25 @@ Instances starting...
 
 name:              hello-spring-glusterFS
 requested state:   started
-routes:            hello-spring-glusterFS.paasta.kr
-last uploaded:     Mon 22 Nov 05:19:59 UTC 2021
+routes:            hello-spring-glusterfs.ap.kr
+last uploaded:     Wed 11 Oct 17:44:38 KST 2023
 stack:             cflinuxfs3
 buildpacks:        
-	name             version                                                             detect output   buildpack na
-	java_buildpack   v4.37-https://github.com/cloudfoundry/java-buildpack.git#ab2b4512   java            java
+	name             version                                                         detect output   buildpack name
+	java_buildpack   v4.50-git@github.com:cloudfoundry/java-buildpack.git#5fe41f89   java            java
 
 type:           web
 sidecars:       
 instances:      1/1
 memory usage:   1024M
-     state     since                  cpu    memory    disk       details
-#0   running   2021-11-22T05:20:19Z   0.0%   0 of 1G   8K of 1G   
+     state     since                  cpu    memory   disk     details
+#0   running   2023-10-11T08:44:57Z   0.0%   0 of 0   0 of 0   
 
+type:           task
+sidecars:       
+instances:      0/0
+memory usage:   1024M
+There are no running instances of this process.
 ```  
 
 
@@ -560,4 +578,4 @@ memory usage:   1024M
 [glusterfs_image_19]:./images/glusterfs/glusterfs_image_19.png
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > GlusterFS Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > GlusterFS Service

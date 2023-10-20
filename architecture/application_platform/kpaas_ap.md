@@ -1,11 +1,11 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > PaaS-TA AP
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > K-PaaS AP
 
 ## Purpose
-This document provides the Architecture of the PaaS-TA Application Platform (AP).
+This document provides the Architecture of the K-PaaS Application Platform (AP).
 <br><br>
 
 ## System Configuration Diagram
-![PaaS-TA AP Component](image/ap_architecture_component.png)
+![K-PaaS AP Component](image/ap_architecture_component.png)
 
 
 
@@ -28,8 +28,8 @@ This document provides the Architecture of the PaaS-TA Application Platform (AP)
 
 
 ## Description
-PaaS-TA AP is a platform as a service (PaaS), a platform that allows you to select developer frameworks and app services.  
-PaaS-TA AP makes it faster and easier to deploy, test deploy, and scale applications.
+K-PaaS AP is a platform as a service (PaaS), a platform that allows you to select developer frameworks and app services.  
+K-PaaS AP makes it faster and easier to deploy, test deploy, and scale applications.
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > PaaS-TA AP
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > K-PaaS AP

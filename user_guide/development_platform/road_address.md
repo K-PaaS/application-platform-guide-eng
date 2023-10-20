@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > API Platform Road Address Development
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > API Platform Road Address Development
 
 
 ## Table of Contents
@@ -293,7 +293,7 @@ The DoroJusomanagerController, with the DoroJusoConroller, inherits the BaseCont
 
 #### <a name="19"/>4.3.2. Source List and Description
 The location of source will be located on the Git Hub of the "Open Cloud Platform" and the location to be open to the public will be shared separately through the website.
-(A private location for the developer is [**https://github.com/PaaS-TA/SERVICE-EGOV-COMMON-JUSO**](https://github.com/PaaS-TA/SERVICE-EGOV-COMMON-JUSO))
+(A private location for the developer is [**https://github.com/K-PaaS/service-egov-common-juso**](https://github.com/K-PaaS/service-egov-common-juso))
 
 <table>
   <tr>
@@ -687,7 +687,7 @@ It is shown that the service_egov_common_juso_sampleApp is connected to dorojuso
 
 ### <a name="31"/>7.3. Source List and Description
 The location of source will be located on the Git Hub of the "Open Cloud Platform" and the location to be open to the public will be shared separately through the website.
-(The Private location for developers: https://github.com/PaaS-TA/SERVICE-EGOV-COMMON-JUSO-SAMPLEAPP.)
+(The Private location for developers: https://github.com/K-PaaS/service-egov-common-juso-sampleapp.)
 
 #### <a name="32"/>7.3.1. Spring Server Area
 
@@ -1281,4 +1281,4 @@ Accept : application/json
 [api_platform_dorojuso_16]:./images/openpaas-application-apiplatform-dorojuso/api_platform_dorojuso_16.png
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > API Platform Road Address Development
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > API Platform Road Address Development

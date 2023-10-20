@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > AP User Guide
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > AP User Guide
 
 ## Application Platform (AP) - User Guide
 - Application Platform
@@ -35,4 +35,4 @@
   - [Node.js API Service Metering](./development_platform/nodejs_api_service_metering.md)
   - [On-Demand Service](./development_platform/on_demand_service.md)
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > AP User Guide
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > AP User Guide

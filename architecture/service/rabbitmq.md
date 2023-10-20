@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > RabbitMQ Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > RabbitMQ Service
 
 ## Purpose
 This document provides the Architecture of Application Platform (AP) - RabbitMQ Service.
@@ -21,4 +21,4 @@ Used to deliver messages to many users, delegate requests to other APIs and resp
 
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > RabbitMQ Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > RabbitMQ Service

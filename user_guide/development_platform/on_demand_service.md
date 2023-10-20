@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > On-Demand Service Development
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > On-Demand Service Development
 
 ## Table of Contents
 1. [Document Outline](#1)
@@ -137,7 +137,7 @@ bosh:
 
 spring:
   application:
-    name: paas-ta-on-demand-broker
+    name: ap-on-demand-broker
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: "jdbc:mysql://{on_demand_service_broker_database_url}/on-demand?autoReconnect=true&useUnicode=true&characterEncoding=utf8"
@@ -152,7 +152,7 @@ spring:
 serviceDefinition:
   id: 54e2de61-de84-4b9c-afc3-88d08aadfcb6
   name: redis
-  desc: "A paasta source control service for application development.provision parameters : parameters {owner : owner}"
+  desc: "A Application Platform source control service for application development.provision parameters : parameters {owner : owner}"
   bindable: true
   planupdatable: false
   bullet:
@@ -342,7 +342,7 @@ instance_groups:
   instances: 1
   jobs:
   - name: binary_storage
-    release: paasta-portal-api-release
+    release: ap-portal-api-release
   name: binary_storage
   networks:
   - default:
@@ -377,13 +377,13 @@ properties:
     - email@email.com
     - email@email.com
     password:
-    - paasta
+    - kpaas
     proxy_ip:
     proxy_port: 10008
     tenantname:
-    - paasta-marketplace
+    - kpaas-marketplace
     username:
-    - paasta-marketplace
+    - kpaas-marketplace
   haproxy:
     http_port: 8080
   mariadb:
@@ -398,7 +398,7 @@ properties:
     port: 5432
     vcap_password: c1oudc0w
 releases:
-- name: paasta-portal-api-release
+- name: ap-portal-api-release
   version: latest
 - name: common-infra
   version: latest
@@ -420,9 +420,9 @@ update:
 
 ##### <a name="43"/>4.3. On-Demand Service-Broker Implementation Source Development Guide
 The service broker development guide related to on-demand implementation will be processed.
-Currently, only the JAVA version is available. The source shown in the example can be found in PaaS-TA GitHub's On-Demand-broker.
+Currently, only the JAVA version is available. The source shown in the example can be found in K-PaaS GitHub's On-Demand-broker.
 
-1. On-Demand ServiceInstace
+1. On-Demand Service Instance
 <br/>
 The information on the assigned VM is stored in the broker DB with the ServiceInstance object.
 
@@ -657,7 +657,7 @@ public class JpaServiceInstance extends ServiceInstance {
 ##### taskId : Task ID of BOSH performing VM task to assign to service
 
 ◎ 1.2. JPAInstance(CreateServiceInstanceRequest request) creator
-##### To use the app template using the PaaS-TA Portal, the service parameter value assigned to the arbitrarily designated key is received and assigned to the appGuid.
+##### To use the app template using the K-PaaS AP Portal, the service parameter value assigned to the arbitrarily designated key is received and assigned to the appGuid.
        ```
        Example)
        public JpaServiceInstance(CreateServiceInstanceRequest request) {
@@ -884,7 +884,7 @@ Since the service must be deployed through the Bosh release, it must be written 
     ├── deployments
     │   ├── deploy-vsphere.sh
     │   ├── necessary_on_demand_vars.yml
-    │   ├── paasta_on_demand_service_broker.yml
+    │   ├── ap_on_demand_service_broker.yml
     │   └── unnecessary_on_demand_vars.yml
     ├── jobs
     │   ├── mariadb
@@ -898,7 +898,7 @@ Since the service must be deployed through the Bosh release, it must be written 
     │   │       └── conf
     │   │           ├── init.sql
     │   │           └── mariadb.cnf
-    │   ├── paas-ta-on-demand-broker
+    │   ├── ap-on-demand-broker
     │   │   ├── monit
     │   │   ├── spec
     │   │   └── templates
@@ -918,7 +918,7 @@ Since the service must be deployed through the Bosh release, it must be written 
     │   ├── mariadb
     │   │   ├── packaging
     │   │   └── spec
-    │   ├── paas-ta-on-demand-broker
+    │   ├── ap-on-demand-broker
     │   │   ├── packaging
     │   │   └── spec
     └── src
@@ -926,8 +926,8 @@ Since the service must be deployed through the Bosh release, it must be written 
         │   └── server-jre-8u121-linux-x64.tar.gz
         ├── mariadb
         │   └── mariadb-10.1.22-linux-x86_64.tar.gz
-        └── paas-ta-on-demand-broker
-            └── paas-ta-on-demand-broker.jar
+        └── ap-on-demand-broker
+            └── ap-on-demand-broker.jar
 
     ```
 
@@ -952,7 +952,7 @@ Since the service must be deployed through the Bosh release, it must be written 
     ├── deployments
     │   ├── deploy-vsphere.sh
     │   ├── necessary_on_demand_vars.yml
-    │   ├── paasta_on_demand_service_broker.yml
+    │   ├── ap_on_demand_service_broker.yml
     │   └── unnecessary_on_demand_vars.yml
     ├── jobs
     │   ├── mariadb
@@ -966,7 +966,7 @@ Since the service must be deployed through the Bosh release, it must be written 
     │   │       └── conf
     │   │           ├── init.sql
     │   │           └── mariadb.cnf
-    │   ├── paas-ta-on-demand-broker
+    │   ├── ap-on-demand-broker
     │   │   ├── monit
     │   │   ├── spec
     │   │   └── templates
@@ -1002,7 +1002,7 @@ Since the service must be deployed through the Bosh release, it must be written 
     │   ├── mariadb
     │   │   ├── packaging
     │   │   └── spec
-    │   ├── paas-ta-on-demand-broker
+    │   ├── ap-on-demand-broker
     │   │   ├── packaging
     │   │   └── spec
     │   └── redis-4
@@ -1013,8 +1013,8 @@ Since the service must be deployed through the Bosh release, it must be written 
         │   └── server-jre-8u121-linux-x64.tar.gz
         ├── mariadb
         │   └── mariadb-10.1.22-linux-x86_64.tar.gz
-        └── paas-ta-on-demand-broker
-            └── paas-ta-on-demand-broker.jar
+        └── ap-on-demand-broker
+            └── ap-on-demand-broker.jar
     ```
 
 3. After completing the release configuration, create a tgz file using the bosh cli command and upload it.
@@ -1037,13 +1037,13 @@ In the deployment manifest, which Stemcell (OS, BOSH agent) will be used to inst
     .
     ├── deploy-vsphere.sh                     bosh deploy execution file
     ├── necessary_on_demand_vars.yml          Required Change property file to be included in manifest.yml
-    ├── paasta_on_demand_service_broker.yml   deploy manifest.yml file
+    ├── ap_on_demand_service_broker.yml   deploy manifest.yml file
     └── unnecessary_on_demand_vars.yml        property file to be included in manifest.yml
     ```
     deploy-vsphere.sh
 
     ```
-    bosh -d on-demand-service-broker deploy paasta_on_demand_service_broker.yml \
+    bosh -d on-demand-service-broker deploy ap_on_demand_service_broker.yml \
    -l necessary_on_demand_vars.yml\
    -l unnecessary_on_demand_vars.yml
     ```
@@ -1101,7 +1101,7 @@ In the deployment manifest, which Stemcell (OS, BOSH agent) will be used to inst
 
     ```
 
-    paasta_on_demand_service_broker.yml : manifest.yml file of On-demand-Service
+    ap_on_demand_service_broker.yml : manifest.yml file of On-demand-Service
 
     ```
     ---
@@ -1144,7 +1144,7 @@ In the deployment manifest, which Stemcell (OS, BOSH agent) will be used to inst
 
     ######## BROKER ########
 
-    - name: paas-ta-on-demand-broker
+    - name: ap-on-demand-broker
       azs:
       - z5
       instances: 1
@@ -1153,7 +1153,7 @@ In the deployment manifest, which Stemcell (OS, BOSH agent) will be used to inst
       networks:
       - name: "((internal_networks_name))"
       jobs:
-      - name: paas-ta-on-demand-broker
+      - name: ap-on-demand-broker
         release: "((releases_name))"
       syslog_aggregator: null
 
@@ -1243,7 +1243,7 @@ To deploy the On-Demand-Service that has added the service, you can proceed with
 
     ```
 
-    On-Demand-Redis paasta_on_demand_service_broker(Example)
+    On-Demand-Redis ap_on_demand_service_broker(Example)
     ```
     ---
     name: "((deployment_name))"        #Service deployment name (required) that can be checked with bosh deployments
@@ -1296,7 +1296,7 @@ To deploy the On-Demand-Service that has added the service, you can proceed with
 
     ######## BROKER ########
 
-    - name: paas-ta-on-demand-broker
+    - name: ap-on-demand-broker
       azs:
       - z5
       instances: 1
@@ -1305,7 +1305,7 @@ To deploy the On-Demand-Service that has added the service, you can proceed with
       networks:
       - name: "((internal_networks_name))"
       jobs:
-      - name: paas-ta-on-demand-broker
+      - name: ap-on-demand-broker
         release: "((releases_name))"
       syslog_aggregator: null
     - name: redis
@@ -1388,4 +1388,4 @@ To deploy the On-Demand-Service that has added the service, you can proceed with
 [On-Demand_Image_06]:./images/on-demand/6.png
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > On-Demand Service Development
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > On-Demand Service Development

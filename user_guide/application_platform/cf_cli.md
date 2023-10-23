@@ -6,7 +6,7 @@
      * [Range](#range)
      * [References](#references)
 
-1. [Basic OpenPaaS CLI Usage](#basic-OpenPaaS-CLI-Usage)
+1. [Basic OpenPaaS CLI Usage](#basic-openpaas-cli-usage)
 
 1. [GETTING STARTED](#getting-started)
      * [login](#login)
@@ -16,7 +16,7 @@
      * [api](#api)
      * [auth](#auth)
 
-1. [APPS](#APPS)
+1. [APPS](#4.apps)
      * [apps](#apps)
      * [app](#app)
      * [push, p](#push-p)
@@ -193,7 +193,7 @@ This document is written about OpenPaaS CLI classification and basic usage.
 
  [***https://docs.cloudfoundry.org/devguide/installcf/***](https://docs.cloudfoundry.org/devguide/installcf/)
 
-## <div id='basic-OpenPaaS-CLI-Usage'/> Basic OpenPaaS CLI Usage
+## <div id='basic-openpaas-cli-usage'/> Basic OpenPaaS CLI Usage
 
 OpenPaaS CLI : CLI tool to manage OpenPaaS.
 
@@ -460,7 +460,7 @@ OpenPaaS login only logs in, no spaces and targets are specified.
 ```
 $ cf api --skip-ssl-validation api.10.244.0.34.xip.io
 ```
-## <div id='APPS'/> APPS
+## <div id='4.apps'/> APPS
 
 
 #### apps

@@ -75,6 +75,7 @@ Configure the development environment to develop the Node.js Application as show
 - Access the address below and download node-v0.12.4-x64.msi.
 
 >https://nodejs.org/dist/v0.12.4/x64/node-v0.12.4-x64.msi
+
 ![2-2-1-0]
 
 ##### 2. Node.js Installation

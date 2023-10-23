@@ -412,7 +412,7 @@ At least one plan must be defined in the configuration file for each service. If
   |-------------|-----------------------------|
   | {} | If the unbinding was successfully done, it responds in "{}" form. |
 
-### <div id='32'></div> 4.6. Deprovision
+### <div id='32'></div> 4.7. Deprovision
 ※ Refer to [2.5.4 Deferral API Guide] of the service pack development guide document for detailed information.
 ##### <div id='33'></div> 4.7.1 Request
 - Route
@@ -1039,7 +1039,7 @@ Example)
 ![7-6-2-0]<br>
 If you check VCAP_SERVICES information, you can check service information such as plans, endpoints, and service keys entered through -c options for each service as shown in the figure. The sample application takes the endpoint and the service key from this VCAP_SERVICES information and uses the required API service.
 
-### <div id='62'></div> 7.7. Check Sample Application Behavior
+### <div id='63'></div> 7.7. Check Sample Application Behavior
 You can check the URL of the application through the command.
 
 ```

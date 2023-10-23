@@ -135,6 +135,7 @@ It describes the creation and environment setting of applications to develop Rub
 1)	Create Rails Application (bundle install excluded)
 >Rails new [application name] –B –skip-bundle
 <br>
+
 ![ruby14] 
 ![ruby15] 
 

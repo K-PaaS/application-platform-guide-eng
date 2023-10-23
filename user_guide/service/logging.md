@@ -14,9 +14,7 @@
 	- [3.2. Search](#3-2)
 	- [3.3. Initialize(Reset)](#3-3)
 
-<br/>
----
-
+	
 # <div id='1'/> 1. Document Outline
 ## <div id='1-1'/> 1.1 Purpose
 This document describes how to use the Logging service.

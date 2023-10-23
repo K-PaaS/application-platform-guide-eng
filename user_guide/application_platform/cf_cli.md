@@ -155,7 +155,7 @@
     * [set-staging-environment-variable-group, ssevg](#set-staging-environment-variable-group-ssevg)
     * [set-running-environment-variable-group, ssevg](#set-running-environment-variable-group-ssevg)
 
-1. [FEATURE FLAGS](#17.feature-flages)
+1. [FEATURE FLAGS](#17.feature-flags)
     * [feature-flags](#feature-flags)
     * [feature-flag](#feature-flag)
     * [enable-feature-flag](#enable-feature-flag)
@@ -4382,7 +4382,7 @@ View list of Apps in the target space.
   $ cf set-running-environment-variable-group '{"name":"value","name":"value"}'
   ```
 
-## <div id='17feature-flags'/> FEATURE FLAGS
+## <div id='17.feature-flags'/> FEATURE FLAGS
 
 #### feature-flags
 

@@ -16,14 +16,14 @@
 		-	[2.2.2.	python Virtual Environment Configuration](#2-2-2)  
 		-	[2.2.3.	Django Installation](#2-2-3)  
 
-	-	[2.3. Development2-3)  
+	-	[2.3. Development](#2-3)  
 		-	[2.3.1.	Create django Application](#2-3-1)  
 		-	[2.3.2.	Application Environment Setting](#2-3-2)  
 		-	[2.3.3.	VCAP_SERVICES Environment Setting Information](#2-3-3)  
 		-	[2.3.4.	Connect Mysql](#2-3-4)  
 		-	[2.3.5.	Connect Cubrid](#2-3-5)  
 		-	[2.3.6.	Connect MongoDB](#2-3-6)  
-		-	[2.3.7.	Connect Redis](#2-7-7)  
+		-	[2.3.7.	Connect Redis](#2-3-7)  
 		-	[2.3.8.	Connect RabbitMQ](#2-3-8)  
 		-	[2.3.9.	Connect GlusterFS ](#2-3-9)  
 
@@ -173,7 +173,7 @@ Windows x86-64 MSI installer
 
  ※ A user who wants to install a warehouse in a virtual environment inputs a command while executing the virtual environment.
 
-## <div id='2-2'></div> 2.3. Development
+## <div id='2-3'></div> 2.3. Development
 Because data management for sample applications uses either MySQL, CubridDB, or MongoDB, it is determined by the DBType value of the body of the request upon API request.
 
 ※Sample Application Download

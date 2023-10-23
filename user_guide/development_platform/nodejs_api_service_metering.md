@@ -58,7 +58,7 @@ The range of this document is limited to the development of Node.js API service 
 The API service and the application using the API service are to be written in Node.js language. Bind the application that uses API Service and the API service.
 Using environmental information (VCAP_SERVICES) bound to the application, access information for each service is acquired and applied to the application to create an application that calls API services. The API service also creates an application that processes service requests and sends API usage history to CF-ABACUS.
 
-![26](https://user-images.githubusercontent.com/104418463/200229570-ed57aa12-6b47-4fff-935b-65f3f5ea13ea.png)
+![Development_Guide_Nodejs_Image01]
 
 
 <table>

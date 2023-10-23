@@ -31,7 +31,7 @@
      * [SampleMeteringReportService Implementation](#26)
     * [Metering/Rating/Billing Policy](#27)
      * [Metering Policy](#28)
-     * [Rating Policy](#39)
+     * [Rating Policy](#29)
      * [Billing Policy](#30)
      * [Register Policy](#31)
     * [Deployment](#32)

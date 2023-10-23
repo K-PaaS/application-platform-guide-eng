@@ -36,7 +36,7 @@
      * [3.2.1.2.2.  Service Management](#36)
      * [3.2.1.2.2.1.  Create Service](#37)
      * [3.2.1.2.2.2.  Modify Service Name](#38)
-     * [3.2.1.2.2.4.  Delete Service](#39)
+     * [3.2.1.2.2.3.  Delete Service](#39)
      * [3.2.1.2.3.1.  Create User Provided Service](#40)
      * [3.2.1.2.3.2.  Modify User Provided Service](#41)
      * [3.2.1.2.3.3.  Delete User Provided Service](#42)
@@ -82,7 +82,8 @@
      * [3.2.5.3.1.  User Address](#77)
      * [3.2.5.4.  My Organization](#81)
      * [3.2.5.4.1  Leave My Organization](#79) 
-     * [3.2.5.6.  Logout](#80)
+     * [3.2.5.5.  Delete Account](#80)
+     * [3.2.5.6.  Logout](#81)
      * [3.3.6.1.  Check Dashboard CAAS Deployments](#82)
      * [3.3.6.2.  Check Dashboard CAAS Pods](#83)
      * [3.3.6.3.  Check Dashboard CAAS Replica Sets](#84)
@@ -417,7 +418,7 @@ This chapter describes the three main categories of K-PaaS AP user portals.
 2. Enter the new name of the service. Click the "Change" button to complete the service name change.
 ![3-2-1-2-3-4-1]
 
-### <div id='39'/> 3.2.1.2.2.4.  Delete Service
+### <div id='39'/> 3.2.1.2.2.3.  Delete Service
 1.   Click ① sub-menu of the service to delete from the list and click ②“delete”.
 ![3-2-1-2-3-5-0]
 

@@ -1473,7 +1473,7 @@ In the deployed release, the BOSH Agent runs on the job VM. The BOSH in turn com
 	  stop program "/var/vcap/jobs/mysql/bin/gra-log-purger_ctl stop" with timeout 10 seconds
 	  group vcap
 
-###### <a name="38"/>3.4.2.3. spec
+###### <a name="39"/>3.4.2.3. spec
 The meter information of the package to be installed is provided such as name, dependencies, and installation file information.
 
 ◎ spec file explanation 

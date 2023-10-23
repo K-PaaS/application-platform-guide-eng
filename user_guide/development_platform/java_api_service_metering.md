@@ -65,7 +65,7 @@ This document does not implement API service-specific business logic, but only t
 
 Create API service applications in Java language. The API service creates an application that processes the service request and sends API usage history to CF-ABACUS.
 
-![26](https://user-images.githubusercontent.com/104418463/200229511-465700ec-ae98-4611-aec5-967889aaa94b.png)
+![Java_Api_Service_Metering_Image01]
 
 <table border = "1px;">
   <tr>

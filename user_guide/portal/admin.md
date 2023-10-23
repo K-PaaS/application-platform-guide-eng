@@ -178,6 +178,7 @@ Enter name, classification, service, thumbnail, parameter, pubic availability, o
 6. Insert document URL. 
      > (Ex.) https://github.com/K-PaaS/ap-pipeline-ui <br>
      > **When the Document URL is applied, the 'K-PaaS AP User' Catalog Service Registration 'View Document' button gets activated.**
+
      ![pipeline-app-service-create]
 
 7. Set needed parameter value when creating a service.

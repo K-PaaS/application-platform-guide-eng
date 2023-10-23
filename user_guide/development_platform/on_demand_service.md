@@ -14,7 +14,7 @@
     * [3.3. Pivotal(Cloud Foundry) Marketplace Model](#33)
 4. [On-Demand Service Broker API Development Guide](#4)
     * [4.1. Development Guide](#41)
-    * [4.2. Service and VM Instance Creating API Guide](#42)
+    * [4.2. Service and VM Instance Creation API Guide](#42)
     * [4.3. On-Demand Service-Broker Implementation Source Development Guide](#43)
     * [4.4. On-Demand Release Development Guide](#44)
     * [4.5. On-Demand Deployment Development Guide](#45)

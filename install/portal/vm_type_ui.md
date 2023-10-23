@@ -477,4 +477,4 @@ After installing the K-PaaS AP Portal, you must register the build pack and serv
 
 
 
-### [Index](https://github.com/K-PaaS AP/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > Portal VM Type UI
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > Portal VM Type UI

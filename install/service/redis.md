@@ -8,12 +8,11 @@
   1.3. [References](#1.3)  
   
 2. [On-Demand-Redis Service Installation](#2)  
-  2.1. [Prerequisite](#2.1)   
-  2.2. [Stemcell Check](#2.2)    
-  2.3. [Deployment Download](#2.3)   
-  2.4. [Deployment File Modification](#2.4)  
-  2.5. [Service Installation](#2.5)    
-  2.6. [Service Installation Check](#2.6)  
+  2.1. [Prerequisite](#2.1)    
+  2.2. [Deployment Download](#2.2)   
+  2.3. [Deployment File Modification](#2.3)  
+  2.4. [Service Installation](#2.4)    
+  2.5. [Service Installation Check](#2.5)  
 
 3. [On-Demand-Redis Service Broker Registration Using CF CLI](#3)  
   3.1. [On-Demand-Redis Service Broker Registration](#3.1)  

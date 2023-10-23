@@ -1,14 +1,14 @@
 ### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > cf CLI
 
 ## Table of Contents
-1. [Outline](#개요)
-     * [Document Purpose](#문서-목적)
-     * [Range](#범위)
-     * [References](#참고-자료)
+1. [Outline](#Outline)
+     * [Document Purpose](#Document-Purpose)
+     * [Range](#Range)
+     * [References](#References)
 
-1. [Basic OpenPaaS CLI Usage](#ID-OpenPaaS-CLI-USAGE)
+1. [Basic OpenPaaS CLI Usage](#Basic-OpenPaaS-CLI-Usage)
 
-1. [GETTING STARTED](#ID-GETTING-STARTED)
+1. [GETTING STARTED](#GETTING-STARTED)
      * [login](#login)
      * [logout](#logout)
      * [passwd](#passwd)
@@ -16,7 +16,7 @@
      * [api](#api)
      * [auth](#auth)
 
-1. [APPS](#ID-APPS)
+1. [APPS](#APPS)
      * [apps](#apps)
      * [app](#app)
      * [push, p](#push-p)
@@ -88,7 +88,6 @@
     * [buildpacks](#buildpacks)
     * [create-buildpack](#create-buildpack)
     * [update-buildpack](#update-buildpack)
-    * [rename-buildpack](#rename-buildpack)
     * [delete-buildpack](#delete-buildpack)
 
 1. [USER ADMIN](#ID-USER-ADMIN)
@@ -97,7 +96,7 @@
     * [org-users](#org-users)
     * [set-org-role](#set-org-role)
     * [unset-org-role](#unset-org-role)
-    * [space-user](#space-user)
+    * [space-users](#space-users)
     * [set-space-role](#set-space-role)
     * [unset-space-role](#unset-space-role)
 
@@ -177,24 +176,24 @@
     * [plugins](#plugins)
     * [install-plugin](#install-plugin)
 
-## Outline
----
 
-#### Document Purpose
+## <div id='Outline'/> Outline
+
+#### <div id='Document-Purpose'/> Document Purpose
 
 The purpose of this document is to understand OpenPaaS through basic usage and use examples for OpenPaaS CLI, a tool for installing and managing operations for OpenPaaS.
 
-#### Range
+#### <div id='Range'/> Range
 
 This document is written about OpenPaaS CLI classification and basic usage.
 
-#### References
+#### <div id='References'/> References
 
  This document is based on the CF document of Cloud Foundry.
 
  [***https://docs.cloudfoundry.org/devguide/installcf/***](https://docs.cloudfoundry.org/devguide/installcf/)
 
-## <div id='ID-OpenPaaS-CLI-USAGE'/> Basic OpenPaaS CLI Usage
+## <div id='Basic-OpenPaaS-CLI-Usage'/> Basic OpenPaaS CLI Usage
 
 OpenPaaS CLI : CLI tool to manage OpenPaaS.
 
@@ -222,7 +221,7 @@ $ cf st
 [command options], a square-braced factor in OpenPaaS commands, is optionally used according to the command, and the command '<arguments>' factor is a required factor. OpenPaaS CLI, a tool for operating and managing OpenPaaS, provides the following commands.
 
 
-## <div id='ID-GETTING-STARTED'/> GETTING STARTED
+## <div id='GETTING-STARTED'/> GETTING STARTED
 
 
 #### login
@@ -461,7 +460,7 @@ OpenPaaS login only logs in, no spaces and targets are specified.
 ```
 $ cf api --skip-ssl-validation api.10.244.0.34.xip.io
 ```
-## <div id='ID-APPS'/> APPS
+## <div id='APPS'/> APPS
 
 
 #### apps
@@ -4220,7 +4219,7 @@ View list of Apps in the target space.
   ```
 
 
-#### running-security-groups
+#### running-security-group
 
   - **Basic Syntax**
 

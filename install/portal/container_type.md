@@ -83,7 +83,7 @@ $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell -n {STEMCELL_URL}
 
 Download the deployment needed from Git Repository and place the file at the service installation directory 
 
-- Portal Deployment Git Repository URL : https://github.com/K-PaaS/portal-deployment/tree/v5.2.23
+- Portal Deployment Git Repository URL : https://github.com/K-PaaS/portal-deployment/tree/v5.2.23.1
 
 ```
 # Deployment File Download , make directory, change directory
@@ -91,7 +91,7 @@ $ mkdir -p ~/workspace
 $ cd ~/workspace
 
 # Deployment File Download
-$ git clone https://github.com/K-PaaS/portal-deployment.git -b v5.2.23
+$ git clone https://github.com/K-PaaS/portal-deployment.git -b v5.2.23.1
 ```
 
 ### <div id="2.4"/> 2.4. Deployment File Modification
@@ -416,6 +416,7 @@ Target: https://uaa.<DOMAIN>
 Context: admin, from client admin
 ```
 - redirect error - portalclient not registered 
+
 ![portal-1]  
 1. If the uaac portal client is not registered, a redirect error occurs as shown on the screen.
 2. You must add the portalclient through uaac client add.
@@ -432,6 +433,7 @@ $ uaac client add portalclient -s clientsecret --redirect_uri "http://portal-web
 ```
 
 - redirectError - Error registering redirect_uri in the portalclient
+
 ![portal-2]  
 1. If uri is registered incorrectly in the uaac portal client, a redirect error occurs as shown on that screen.
 2. The uri should be modified through the uaac client update.
@@ -455,6 +457,7 @@ After installing the K-PaaS AP Portal, you must register the build pack and serv
 ![portal-5]
 4. Go to the build pack and service pack detail screen, enter the value in each item column, and click Save.
 ![portal-6]
+
    ※ The catalog management code is required when registering and modifying catalogs. When there is no code available as of the moment, follow the instruction below.
    1. ① Click "Manage Code".
    2. From the **Group Table**, click the corresponding ② "Code Category".

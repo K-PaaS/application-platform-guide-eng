@@ -504,7 +504,7 @@ Succeeded
 
 
 
-## <div id='5'/> 2. WEB IDE IP Expansion
+## <div id='5'/> 5. WEB IDE IP Expansion
 ### <div id="5.1"/> 5.1. Service Check
 
 Check the currently created WEB-IDE VM instance.

@@ -1,14 +1,14 @@
 ### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > cf CLI
 
 ## Table of Contents
-1. [Outline](#Outline)
-     * [Document Purpose](#Document-Purpose)
-     * [Range](#Range)
-     * [References](#References)
+1. [Outline](#outline)
+     * [Document Purpose](#document-purpose)
+     * [Range](#range)
+     * [References](#references)
 
-1. [Basic OpenPaaS CLI Usage](#Basic-OpenPaaS-CLI-Usage)
+1. [Basic OpenPaaS CLI Usage](#basic-OpenPaaS-CLI-Usage)
 
-1. [GETTING STARTED](#GETTING-STARTED)
+1. [GETTING STARTED](#getting-started)
      * [login](#login)
      * [logout](#logout)
      * [passwd](#passwd)
@@ -177,23 +177,23 @@
     * [install-plugin](#install-plugin)
 
 
-## <div id='Outline'/> Outline
+## <div id='outline'/> Outline
 
-#### <div id='Document-Purpose'/> Document Purpose
+#### <div id='document-purpose'/> Document Purpose
 
 The purpose of this document is to understand OpenPaaS through basic usage and use examples for OpenPaaS CLI, a tool for installing and managing operations for OpenPaaS.
 
-#### <div id='Range'/> Range
+#### <div id='range'/> Range
 
 This document is written about OpenPaaS CLI classification and basic usage.
 
-#### <div id='References'/> References
+#### <div id='references'/> References
 
  This document is based on the CF document of Cloud Foundry.
 
  [***https://docs.cloudfoundry.org/devguide/installcf/***](https://docs.cloudfoundry.org/devguide/installcf/)
 
-## <div id='Basic-OpenPaaS-CLI-Usage'/> Basic OpenPaaS CLI Usage
+## <div id='basic-OpenPaaS-CLI-Usage'/> Basic OpenPaaS CLI Usage
 
 OpenPaaS CLI : CLI tool to manage OpenPaaS.
 
@@ -221,7 +221,7 @@ $ cf st
 [command options], a square-braced factor in OpenPaaS commands, is optionally used according to the command, and the command '<arguments>' factor is a required factor. OpenPaaS CLI, a tool for operating and managing OpenPaaS, provides the following commands.
 
 
-## <div id='GETTING-STARTED'/> GETTING STARTED
+## <div id='getting-started'/> GETTING STARTED
 
 
 #### login

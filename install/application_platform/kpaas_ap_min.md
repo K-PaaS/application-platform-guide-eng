@@ -380,7 +380,6 @@ Can change the various variable values applied when installing K-PaaS AP min or 
 # SERVICE VARIABLE
 deployment_name: "ap"		# Deployment Name
 network_name: "default"			# Default Network Name not specified separately for VM
-releases_dir: "/home/ubuntu/workspace/paasta-5.5.1/release"	# Release Directory (Download and enable the release offline)
 haproxy_public_ip: "52.78.32.153"	# HAProxy IP (Required for Public IP, HAproxy VM deployment)
 haproxy_public_network_name: "vip"	# Application Platform Public Network Name
 haproxy_private_network_name: "private" # Application Platform Private Network Name (vSphere use-haproxy-public-network-vsphere.yml inclusive Deployment requires setup)

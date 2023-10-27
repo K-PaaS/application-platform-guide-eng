@@ -407,7 +407,7 @@ bosh create-env bosh.yml \
 - Grant execution permissions to Shell Script files
 
 ```
-$ chmod +x ~/workspace/paasta-deployment/bosh/*.sh  
+$ chmod +x ~/workspace/ap-deployment/bosh/*.sh  
 ```
 
 
@@ -475,7 +475,7 @@ $ credhub --version
 To log in to CredHub, log in using the creds.yml in the bosh-deployment directory where BOSH was installed.
 
 ```
-$ cd ~/workspace/paasta-deployment/bosh
+$ cd ~/workspace/ap-deployment/bosh
 $ export CREDHUB_CLIENT=credhub-admin
 $ export CREDHUB_SECRET=$(bosh int --path /credhub_admin_client_secret {iaas}/creds.yml)
 $ export CREDHUB_CA_CERT=$(bosh int --path /credhub_tls/ca {iaas}/creds.yml)

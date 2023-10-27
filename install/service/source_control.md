@@ -307,10 +307,10 @@ cf create-service-broker [SERVICE_BROKER] [USERNAME] [PASSWORD] [SERVICE_BROKER_
 
 - Register configuration management service broker.
 
-> $ cf create-service-broker paasta-sourcecontrol-broker admin cloudfoundry http://<sourcecontrol-broker_ip>:8080
+> $ cf create-service-broker ap-sourcecontrol-broker admin cloudfoundry http://<sourcecontrol-broker_ip>:8080
 ```
-$ cf create-service-broker paasta-sourcecontrol-broker admin cloudfoundry http://10.30.107.126:8080
-Creating service broker paasta-sourcecontrol-broker as admin...   
+$ cf create-service-broker ap-sourcecontrol-broker admin cloudfoundry http://10.30.107.126:8080
+Creating service broker ap-sourcecontrol-broker as admin...   
 OK       
 ```
 
@@ -320,7 +320,7 @@ OK
 ```
 Getting service brokers as admin...
                         url
-paasta-sourcecontrol-broker   http://10.30.107.126:8080
+ap-sourcecontrol-broker   http://10.30.107.126:8080
 ```
 
 - Check service access information of configuration management service.  
@@ -480,7 +480,7 @@ OK
  ```
  ... (Skip) ...
  Dashboard:        http://115.68.47.179:8080/repositories/user/b840ecb4-15fb-4b35-a9fc-185f42f0de37
- Service broker:   paasta-sourcecontrol-broker
+ Service broker:   ap-sourcecontrol-broker
  ... (Skip) ...
  ```
  

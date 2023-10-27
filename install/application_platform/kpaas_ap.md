@@ -324,7 +324,7 @@ common_vars.yml file and vars.yml can be modified to set the variables to be app
 - common_vars.yml  
 
 Common variable setting file to apply when installing K-PaaS AP and various services is under ~/workspace/common folder, [common_vars.yml] (https://github.com/K-PaaS/common/blob/master/common_vars.yml). 
-When installing K-PaaS AP, you can install by changing the values of system_domain, ap_admin_username, ap_admin_password, paasta_database_port, ap_cc_db_password, ap_uaa_db_password, uaa_client_admin_secret, and uaa_client_portal_secret.
+When installing K-PaaS AP, you can install by changing the values of system_domain, ap_admin_username, ap_admin_password, ap_database_port, ap_cc_db_password, ap_uaa_db_password, uaa_client_admin_secret, and uaa_client_portal_secret.
 > $ vi ~/workspace/common/common_vars.yml
 
 ```
@@ -346,7 +346,7 @@ uaa_client_portal_secret: "clientsecret"		# Secret variables for accessing the U
 
 Several variable values that would be applied during the installation of K-PaaS AP and the settings of VM that is to be deployed can be altered.
 
-> $ vi ~/workspace/ap-deployment/paasta/vars.yml
+> $ vi ~/workspace/ap-deployment/ap/vars.yml
 ```
 # SERVICE VARIABLE
 deployment_name: "ap"			# Deployment Name
@@ -708,7 +708,7 @@ bosh -e ${BOSH_ENVIRONMENT} -d ap -n deploy ap-deployment.yml \	# AP Manifest Fi
 - Run Shell Script file when installing K-PaaS AP (BOSH login required)
 
 ```
-$ cd ~/workspace/paasta-deployment/paasta
+$ cd ~/workspace/ap-deployment/ap
 $ ./deploy-{IaaS}.sh
 ```
 
@@ -813,7 +813,7 @@ org:            system
 space:          No space targeted, use 'cf target -s SPACE'
 ```
 
-[PaaSTa_FLAVOR_Image]:./images/ap/aws-vmtype.png
+
 [UAA_Login_Create_Account]:./images/ap/uaa-login-2.png
 [UAA_Login_Reset_Password]:./images/ap/uaa-login.png
 

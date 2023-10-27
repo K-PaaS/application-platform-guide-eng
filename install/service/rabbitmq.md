@@ -232,7 +232,7 @@ private_networks_name: "default"                            # private network na
 
 # COMMON
 bosh_name: "micro-bosh"                                     # bosh name (e.g. micro-bosh) -- (Checkable through 'bosh env' command)
-paasta_deployment_name: "ap"                                #  application platform name (e.g. ap)
+ap_deployment_name: "ap"                                #  application platform name (e.g. ap)
 
 # RABBITMQ
 rabbitmq_azs: [z3]                                          # rabbitmq : azs

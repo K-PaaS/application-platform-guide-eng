@@ -352,8 +352,8 @@ broker: on-demand-redis-service
 - Download zip file of sample app
 ```
 $ wget https://nextcloud.K-PaaS.org/index.php/s/BoSbKrcXMmTztSa/download --content-disposition  
-$ unzip paasta-service-samples-459dad9.zip  
-$ cd paasta-service-samples/redis  
+$ unzip ap-service-samples-459dad9.zip  
+$ cd ap-service-samples/redis  
 ```
 
 <br>

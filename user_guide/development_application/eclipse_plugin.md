@@ -2,44 +2,44 @@
 
 # Table Of Contents
 
-1. [Document Outline](#1-문서-개요)  
-     1.1. [Purpose](#11-목적)  
-     1.2. [Range](#12-범위)  
-     1.3. [References](#13-참고자료)  
-2. [Preparations Before Installing the Development Environment](#2-개발환경-설치-전-준비사항)  
-     2.1. [Preparations Before Installation](#21-설치-전-준비사항)  
-     2.2. [Install JAVA Development kit](#22-자바-개발-킷-설치)  
-     2.3. [Install e-Government Standard Framework](#23-전자정부-표준프레임워크-설치)  
-     2.4. [Install Kepler Version of Eclipse Integrated Development Environment](#24-이클립스-통합개발환경-케플러-버전-설치)  
-3. [Install Open PaaS Development Environment](#3-open-paas-개발환경-설치)  
-     3.1. [Install Open PaaS Development Environment at e-Government Standard Framework](#31-전자정부-표준프레임워크에-open-paas-개발환경-설치)  
-     3.2. [Install Open PaaS Development Environment at Eclipse Integrated Development Environment](#32-이클립스-통합개발환경에-open-paas-개발환경-설치)  
-     3.3. [Usage of e-Government Standard Framework Development Environment with Open PaaS Development Environment included](#33-open-paas-개발환경이-포함된-전자정부-표준프레임워크-개발환경-사용)  
-4. [Open Platform Server Connection Management](#4-개방형-플랫폼-서버-연결-관리)  
-     4.1. [Add Server](#41-서버-추가)  
-     4.2. [Register Platform Server Information](#42-플랫폼-서버-정보-등록)  
-     4.3. [Replicate Server](#43-서버-복제)  
-     4.4. [Modify Server](#44-서버-수정)  
-5. [Application and Servicepack Management](#5-애플리케이션-및-서비스팩-관리)  
-     5.1. [Application Deployment](#51-애플리케이션-배포)  
-     5.2. [Application List Check](#52-애플리케이션-목록-확인)  
-     5.3. [Application Route Management](#53-애플리케이션-라우트-관리)  
-     5.4. [Application Instance Management](#54-애플리케이션-인스턴스-관리)  
-     5.5. [Delete Application](#55-애플리케이션-삭제)  
-     5.6. [Add Servicepack Instance](#56-서비스팩-인스턴스-추가)  
-     5.7. [Servicepack Instance Binding](#57-서비스팩-인스턴스-바인딩)  
-     5.8. [Unbind Servicepack Instance](#58-서비스팩-인스턴스-바인딩-해제)  
-     5.9. [Delete Servicepack Instance](#59-서비스팩-인스턴스-삭제)  
-6. [Setting through Manifest](#6-매니페스트를-통한-설정)  
-     6.1. [Add Manifest](#61-매니페스트-추가)  
-     6.2. [Save Manifest](#62-매니페스트-저장)  
-7. [Plugin Setting(REST API Log Tracking Settings)](#7-플러그인-설정rest-api-로그-추적-설정)  
-8. [Example Project Description](#8-예제-프로젝트-설명)  
-     8.1. [Add Dependencies](#81-의존성-추가)  
-     8.2. [Add Cloud Namespace0](#82-cloud-네임스페이스-추가)  
-     8.3. [Modify dataSource Setting](#83-datasource-설정-변경)  
-     8.4. [Set dataSource Reset](#84-datasource-초기화-설정)  
-     8.5. [Precautions for deployment](#85-배포시-주의사항)  
+1. [Document Outline](#1)  
+     1.1. [Purpose](#1-1)  
+     1.2. [Range](#1-2)  
+     1.3. [References](#1-3)  
+2. [Preparations Before Installing the Development Environment](#2)  
+     2.1. [Preparations Before Installation](#2-1)  
+     2.2. [Install JAVA Development kit](#2-2)  
+     2.3. [Install e-Government Standard Framework](#2-3)  
+     2.4. [Install Kepler Version of Eclipse Integrated Development Environment](#2-4)  
+3. [Install Open PaaS Development Environment](#3)  
+     3.1. [Install Open PaaS Development Environment at e-Government Standard Framework](#3-1)  
+     3.2. [Install Open PaaS Development Environment at Eclipse Integrated Development Environment](#3-2)  
+     3.3. [Usage of e-Government Standard Framework Development Environment with Open PaaS Development Environment included](#3-3)  
+4. [Open Platform Server Connection Management](#4)  
+     4.1. [Add Server](#4-1)  
+     4.2. [Register Platform Server Information](#4-2)  
+     4.3. [Replicate Server](#4-3)  
+     4.4. [Modify Server](#4-4)  
+5. [Application and Servicepack Management](#5)  
+     5.1. [Application Deployment](#5-1)  
+     5.2. [Application List Check](#5-2)  
+     5.3. [Application Route Management](#5-3)  
+     5.4. [Application Instance Management](#5-4)  
+     5.5. [Delete Application](#5-5)  
+     5.6. [Add Servicepack Instance](#5-6)  
+     5.7. [Servicepack Instance Binding](#5-7)  
+     5.8. [Unbind Servicepack Instance](#5-8)  
+     5.9. [Delete Servicepack Instance](#5-9)  
+6. [Setting through Manifest](#6)  
+     6.1. [Add Manifest](#6-1)  
+     6.2. [Save Manifest](#6-2)  
+7. [Plugin Setting(REST API Log Tracking Settings)](#7)  
+8. [Example Project Description](#8)  
+     8.1. [Add Dependencies](#8-1)  
+     8.2. [Add Cloud Namespace0](#8-2)  
+     8.3. [Modify dataSource Setting](#8-3)  
+     8.4. [Set dataSource Reset](#8-4)  
+     8.5. [Precautions for deployment](#8-5)  
 
 
 
@@ -53,22 +53,22 @@ The guide is prepared according to the 2 steps below.
 * Open PaaS Development Environment Usage
 
 
-# 1. Document Outline
+# <div id='1'></div> 1. Document Outline
 
-### 1.1 Purpose
+### <div id='1-1'></div> 1.1 Purpose
 This document provides a guide on the following: install Open PaaS development environment on e-Government Standard Framework Development Environment and Eclipse IDE, manage and deploy Java Web Application to Open PaaS environment through Open PaaS Development Environment, and manage Servicepack.
 
-### 1.2 Range
+### <div id='1-2'></div> 1.2 Range
 The guide provided in this document is written based on e-Government Standard Framework 3.2.0 and Kepler Version of Eclipse (Kepler, 4.3.x).
 
-### 1.3 References
+### <div id='1-3'></div> 1.3 References
 This document refers to Cloud Foundry Eclipse Plugin Document from Cloud Foundry.  
 The Cloud Foundry Eclipse Plugin Document:
 http://www.eclipse.org/cft/documentation/projectPageLink/CFTProjectPagedocumentation.html
 
-# 2. Preparations Before Installing the Development Environment
+# <div id='2'></div> 2. Preparations Before Installing the Development Environment
 
-### 2.1 Preparation Before Installing
+### <div id='2-1'></div> 2.1 Preparation Before Installing
 
 This document provides the installation guide using the 3.1.1 version of the e-Government Standard Framework development environment.
 The language used in the e-Government Standard Framework development environment is JAVA, which means Java Development Kit (JDK) or Java Runtime Environment (JRE) should be installed for the execution.
@@ -81,7 +81,7 @@ The versions used in the guide.
 * openpaas\_dev\_env.jar
 * eGovFrameDev-3.1.1
 
-### 2.2 Install JAVA Development kit
+### <div id='2-2'></div> 2.2 Install JAVA Development kit
 
 1. Access the link below and when the “JavaSE Download” page appears, click the “JDK Download” link shown at the center and it goes to the license agreement page.
 [***http://www.oracle.com/technetwork/java/javase/downloads/index.html***](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
@@ -99,12 +99,12 @@ The versions used in the guide.
   
      ![java version](./images/openpaas-eclipse/image6.jpeg)
 
-### 2.3 Install e-Government Standard Framework
+### <div id='2-3'></div> 2.3 Install e-Government Standard Framework
 
 For installing e-Government Standard Framework, Refer to e-Governments Standard Framework's [Guide on installing development environment for developers](http://www.egovframe.go.kr/wiki/doku.php?id=egovframework:dev2:clntinstall).  
 > **3.1.1 Version was used**
 
-### 2.4 Install Kepler Version of Eclipse Integrated Development Environment
+### <div id='2-4'></div> 2.4 Install Kepler Version of Eclipse Integrated Development Environment
 
 The installation procedure of the Kepler version of the Eclipse Integrated Development Environment is as follows.
 
@@ -119,11 +119,11 @@ The installation procedure of the Kepler version of the Eclipse Integrated Devel
 
 4. Unzip the downloaded file and run the “eclipse.exe” file to access Eclipse without any other installation.
 
-# 3. Install Open PaaS Development Environment
+# <div id='3'></div> 3. Install Open PaaS Development Environment
 
 In this chapter, the procedure of installing the Open PaaS development environment to the e-Government Standard Framework and Eclipse IDE will be described. If you're using the e-Government Standard Framework Development Environment which includes an Open PaaS development environment, there is no need for extra installation. For Eclipse, use the “openpaas_dev_env.zip” file to install the Open PaaS development environment which is provided as a plugin.
 
-### 3.1 Install Open PaaS Development Environment at e-Government Standard Framework
+### <div id='3-1'></div> 3.1 Install Open PaaS Development Environment at e-Government Standard Framework
 
 The procedures for installing an Open PaaS development environment in an e-government standard framework development environment are as follows:
 
@@ -167,18 +167,18 @@ The procedures for installing an Open PaaS development environment in an e-gover
 
 9. If restarted, the installation has been completed.
 
-### 3.2 Install Open PaaS Development Environment at Eclipse Integrated Development Environment
+### <div id='3-2'></div> 3.2 Install Open PaaS Development Environment at Eclipse Integrated Development Environment
 
 For procedures for installing the Open PaaS Development Environment at Eclipse IDE, refer to “3.1 Install Open PaaS Development Environment at e-Government Standard Framework”.
 
-### 3.3 Usage of e-Government Standard Framework Development Environment with Open PaaS Development Environment included
+### <div id='3-3'></div> 3.3 Usage of e-Government Standard Framework Development Environment with Open PaaS Development Environment included
 No other installation is required since Open PaaS Development Environment is installed at the e-Government Standard Framework Development Environment. It is possible to start with 4. Open Platform Server Connection Management.
 
-# 4. Open Platform Server Connection Management
+# <div id='4'></div> 4. Open Platform Server Connection Management
 
 This chapter describes how to connect an open platform server.
 
-### 4.1 Add Server
+### <div id='4-1'></div> 4.1 Add Server
 
 1. Click “New” – “Server” from the “Servers” tab to add a server.  
      ![](./images/openpaas-eclipse/image28.png)
@@ -216,7 +216,7 @@ This chapter describes how to connect an open platform server.
     Click the “Cancel” button to cancel the process and exit the screen.  
     ![](./images/openpaas-eclipse/image37.png)
 
-### 4.2 Register Platform Server Information
+### <div id='4-2'></div> 4.2 Register Platform Server Information
 
 1. Click “Manage Platform Server…” and execute the “Manage Platform Server URL” dialog box.  
   Click the “Add” button to add the Platform Server URL.    
@@ -233,7 +233,7 @@ This chapter describes how to connect an open platform server.
      ![](./images/openpaas-eclipse/image33_2.png)
 
 
-### 4.3 Replicate Server
+### <div id='4-3'></div> 4.3 Replicate Server
 
 Targeted Space cannot be modified from Open Platform Server Connection Information.
 To change from the same open platform server to a different target space,
@@ -251,7 +251,7 @@ space must be reset by replicating Open Platform Server Connection Information.
 3. The selected space will be replicated with the name of its own and will be added to the list of the “Servers” tab.  
     ![](./images/openpaas-eclipse/image42.png)
 
-### 4.4 Modify Server
+### <div id='4-4'></div> 4.4 Modify Server
 
 Server modification can only modify the management server name
 
@@ -262,11 +262,11 @@ Server modification can only modify the management server name
     Modify the server's name and click “File” – “Save” from the menu.  
      ![](./images/openpaas-eclipse/image45.png)
 
-# 5. Application and Servicepack Management
+# <div id='5'></div> 5. Application and Servicepack Management
 
 This chapter describes the procedure for managing applications and service packs in an Open PaaS Development Environment.
 
-### 5.1 Application Deployment
+### <div id='5-1'></div> 5.1 Application Deployment
 
 #####  Add by “Add and Remove”
 
@@ -355,13 +355,13 @@ Refer to [***“Add Server”***](#41-서버-추가) for the procedures
 
 
 
-### 5.2 Application List Check
+### <div id='5-2'></div> 5.2 Application List Check
 
 Double-click the open platform server to check the application list to run the server editor.  
 A list of deployed applications can be found in the application list found in the editor.  
 ![](./images/openpaas-eclipse/image67.png)
 
-### 5.3 Application Route Management
+### <div id='5-3'></div> 5.3 Application Route Management
 
 1. Double-click the Open Platform of the application route to manage and execute the server editor.  
     Find the “Route” list from the editor.  
@@ -373,7 +373,7 @@ A list of deployed applications can be found in the application list found in th
     Click “Cancel” and the routes to be deleted will be restored.  
     ![](./images/openpaas-eclipse/image70.png)
 
-### 5.4 Application Instance Management
+### <div id='5-4'></div> 5.4 Application Instance Management
 
 Double-click the Open platform server to manage application routes and run the server editor.  
 Find the application list from the editor and locate and click the application from the list to manage the instance.  
@@ -450,7 +450,7 @@ After changing the memory limit to as much as you want, click the set button.
 Memory limit modification is completed.    
 ![](./images/openpaas-eclipse/image87.png)
 
-##### Check Environment Variable List
+##### <div id='check-environment-variable-list'></div> Check Environment Variable List
 
 1. Look for Environment Variable from the General(Application restart required) section and click the “Modify” button from the side.  
     ![](./images/openpaas-eclipse/image86.png)
@@ -461,7 +461,7 @@ Memory limit modification is completed.
 
 ##### Add Environment Variable
 
-1. Do [***“Check Environment Variable List”***](#환경-변수-목록-조회) process
+1. Do [***“Check Environment Variable List”***](#check-environment-variable-list) process
 
 2. Click the “Add” button at the right to add the environment variable.  
     ![](./images/openpaas-eclipse/image88.png)
@@ -476,7 +476,7 @@ Memory limit modification is completed.
 
 ##### Modify Environment Variable
 
-1. Do [***“Check Environment Variable List”***](#환경-변수-목록-조회) process.
+1. Do [***“Check Environment Variable List”***](#check-environment-variable-list) process.
 
 2. To add the environment variable, modify the environment variable by clicking the “Modify” button from the environment variable list.  
      ![](./images/openpaas-eclipse/image94.png)
@@ -491,7 +491,7 @@ Memory limit modification is completed.
 
 ##### Delete Environment Variable
 
-1. Do [***“Check Environment Variable List”***](#환경-변수-목록-조회) process
+1. Do [***“Check Environment Variable List”***](#check-environment-variable-list) process
 
 2. To delete the environment variable, click the environment variable to delete it from the list.  
       Click the “Delete” button located on the right.   
@@ -501,29 +501,29 @@ Memory limit modification is completed.
 
 ##### Restart Application
 
-Look for the application behavior section from [***Manage Application Instance***](#54-애플리케이션-인스턴스-관리).  
+Look for the application behavior section from [***Manage Application Instance***](#5-4).  
       Click the “Restart” button to restart.    
 ![](./images/openpaas-eclipse/image98.png)
 
 ##### Stop Application
 
-Look for the application behavior section from [***Manage Application Instance***](#54-애플리케이션-인스턴스-관리).  
+Look for the application behavior section from [***Manage Application Instance***](#5-4).  
       Click “Stop” to stop the process.    
 ![](./images/openpaas-eclipse/image99.png)
 
 ##### Application Update and Restart
 
-Look for the application behavior section from [***Manage Application Instance***](#54-애플리케이션-인스턴스-관리).  
+Look for the application behavior section from [***Manage Application Instance***](#5-4).  
       Click the “Update and restart” button to update and restart.  
 ![](./images/openpaas-eclipse/image100.png)
 
 ##### Application Deployment
 
-Look for the application behavior section from  [***Manage Application Instance***](#54-애플리케이션-인스턴스-관리).  
+Look for the application behavior section from  [***Manage Application Instance***](#5-4).  
       Click the “Deploy” button to deploy.    
 ![](./images/openpaas-eclipse/image101.png)
 
-### 5.5 Delete Application
+### <div id='5-5'></div> 5.5 Delete Application
 
 1. Double-click the open platform server to delete the application and execute the server editor.  
     Look for the application to delete from the application list of the editor. Right-click the selected application and click the “Remove” button.  
@@ -542,7 +542,7 @@ Look for the application behavior section from  [***Manage Application Instance*
     button to delete or cancel the process.    
      ![](./images/openpaas-eclipse/image106.png)
 
-### 5.6 Add Servicepack Instance
+### <div id='5-6'></div> 5.6 Add Servicepack Instance
 
 1. Click the “Application and Servicepack” tab from the server editor.  
    Click the “Add Servicepack” icon from the right side of the Service Pack Section Title.  
@@ -560,7 +560,7 @@ Look for the application behavior section from  [***Manage Application Instance*
      ![](./images/openpaas-eclipse/image110.png)  
      ![](./images/openpaas-eclipse/image113.png)
 
-### 5.7 Servicepack Instance Binding
+### <div id='5-7'></div> 5.7 Servicepack Instance Binding
 
 1. Click the “Application and Servicepack” tab from the service editor.  
    Select a servicepack instance to bind from the servicepack list. Click the “Manage Servicepack Binding…” menu by right-clicking.  
@@ -572,7 +572,7 @@ Look for the application behavior section from  [***Manage Application Instance*
     Check the application to bind from the list and click the “Finish” button to complete binding.  
      ![](./images/openpaas-eclipse/image116.png)
 
-### 5.8 Unbind Servicepack Instance
+### <div id='5-8'></div> 5.8 Unbind Servicepack Instance
 
 1. Click the “Application and Servicepack” tab from the service editor.  
     Select a servicepack instance to unbind from the servicepack list. Click the “Manage Servicepack Binding…” menu by right-clicking.    
@@ -582,7 +582,7 @@ Look for the application behavior section from  [***Manage Application Instance*
     Check the application to bind from the list and click the “Finish” button to complete binding.  
      ![](./images/openpaas-eclipse/image116.png)
 
-### 5.9 Delete Servicepack Instance
+### <div id='5-9'></div> 5.9 Delete Servicepack Instance
 
 1.  Click the “Application and Servicepack” tab from the service editor.  
     Select a servicepack instance to delete from the servicepack list. Click the “Delete” menu.  
@@ -593,9 +593,9 @@ Look for the application behavior section from  [***Manage Application Instance*
     Click “Cancel” to cancel deleting the servicepack instance.  
      ![](./images/openpaas-eclipse/image117.png)
 
-# 6. Setting through Manifest
+# <div id='6'></div> 6. Setting through Manifest
 
-### 6.1 Add Manifest
+### <div id='6-1'></div> 6.1 Add Manifest
 
 1. Add the Manifest file (manifest.yml) to the route of the project.    
      ![](./images/openpaas-eclipse/image119.png)
@@ -603,7 +603,7 @@ Look for the application behavior section from  [***Manage Application Instance*
      ![](./images/openpaas-eclipse/image121.png)
   
 2. Deploy the application.  
-    Refer to [***“Application Deployment”***](#51-애플리케이션-배포) for the deployment procedures.  
+    Refer to [***“Application Deployment”***](#5-1) for the deployment procedures.  
 
 3. When executing the application deployment wizard, the manifest values can be found the same as the set values.  
      ![](./images/openpaas-eclipse/image122.png)
@@ -612,7 +612,7 @@ Look for the application behavior section from  [***Manage Application Instance*
      ![](./images/openpaas-eclipse/image121.png)  
      ![](./images/openpaas-eclipse/image131.png)
 
-### 6.2 Save Manifest
+### <div id='6-2'></div> 6.2 Save Manifest
 
 The deployment settings of the deployed application can be saved as a manifest file(manifest.yml).
 
@@ -626,7 +626,7 @@ The deployment settings of the deployed application can be saved as a manifest f
     If the Manifest file(manifest.yml) already exists, check if it was modified.  
      ![](./images/openpaas-eclipse/image119.png)
 
-# 7. Plugin Setting(REST API Log Tracking Settings)
+# <div id='7'></div> 7. Plugin Setting(REST API Log Tracking Settings)
 
 1. Click “Window” – “Preferences” from the Eclipse menu to set the plugin.  
      ![](./images/openpaas-eclipse/image129.png)
@@ -638,12 +638,12 @@ The deployment settings of the deployed application can be saved as a manifest f
      ![](./images/openpaas-eclipse/image130.png)
 
 
-# 8. Example Project Description
+# <div id='8'></div> 8. Example Project Description
 
 This example was made based on the standard example of Standard Framework 3.1.  
 The example illustrates how to access a service while the service and application are bound.
 
-### 8.1 Add Dependencies
+### <div id='8-1'></div> 8.1 Add Dependencies
 
 Add dependency to use Spring Cloud Connectors, to access services on the cloud platform easily.
 ```xml
@@ -661,7 +661,7 @@ Add dependency to use Spring Cloud Connectors, to access services on the cloud p
 <!-- Spring Cloud Connector End -->
 ```
 
-### 8.2 Add Cloud Namespace
+### <div id='8-2'></div> 8.2 Add Cloud Namespace
 
 Open src/main/resources/egovframework/spring/context-datasource.xml file and add Cloud Namespace.
 ```xml
@@ -672,7 +672,7 @@ Open src/main/resources/egovframework/spring/context-datasource.xml file and add
           http://www.springframework.org/schema/cloud http://www.springframework.org/schema/cloud/spring-cloud.xsd">
 ```
   
-### 8.3 Modify dataSource Settings
+### <div id='8-3'></div> 8.3 Modify dataSource Settings
 
 Delete the previous dataSource settings and input a new setting.
 
@@ -683,7 +683,7 @@ Delete the previous dataSource settings and input a new setting.
 </cloud:data-source>
 ```
 
-### 8.4 Set dataSource Reset
+### <div id='8-4'></div> 8.4 Set dataSource Reset
 
 Run a pre-written SQL script when running the application to automatically initialize the DB.
 
@@ -731,9 +731,9 @@ Open src/main/resources/egovframework/spring/context-datasource.xml file and add
 ```
  
 
-### 8.5 Precautions for deployment
+### <div id='8-5'></div> 8.5 Precautions for deployment
 
-Deploy application. Refer to [***Application Deployment***](#51-애플리케이션-배포) for the deployment procedures.
+Deploy application. Refer to [***Application Deployment***](#5-1) for the deployment procedures.
 
 1.  Set memory as 1024mb and above since the example project takes a lot of memory.
 2.  This example was made based on MySql. Create a MySql service instance and bind.

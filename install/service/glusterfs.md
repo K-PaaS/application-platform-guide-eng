@@ -158,7 +158,7 @@ Succeeded
 ```
 
 - Modify common_vars.yml to suit the server environment. 
-- The verification glusterfs uses are: system_domain, paasta_admin_username, and  paasta_admin_password.
+- The verification glusterfs uses are: system_domain, ap_admin_username, and  ap_admin_password.
 
 > $ vi ~/workspace/common/common_vars.yml
 ```

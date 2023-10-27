@@ -168,7 +168,7 @@ ap_admin_password: "admin"	        		# Application Platform Admin Password
 ap_nats_ip: "10.0.1.121"
 ap_nats_port: 4222
 ap_nats_user: "nats"
-ap_nats_password: "7EZB5ZkMLMqT73h2Jh3UsqO"	# Application Platform Nats Password (After logging in to CredHub, check with the command 'credhub get -n /micro-bosh/paasta/nats_password')
+ap_nats_password: "7EZB5ZkMLMqT73h2Jh3UsqO"	# Application Platform Nats Password (After logging in to CredHub, check with the command 'credhub get -n /micro-bosh/ap/nats_password')
 
 ... ((Skip)) ...
 

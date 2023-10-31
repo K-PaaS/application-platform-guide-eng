@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > Gateway Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > Gateway Service
 
 ## Table of Contents
 
@@ -27,7 +27,7 @@
 
 ### <div id="1.1"/> 1.1. Purpose
 
-This document (Application Gateway Service Pack Installation Guide) describes how to install the Application Gateway Service Pack, which is a service pack provided by PaaS-TA, using Bosh.
+This document (Application Gateway Service Pack Installation Guide) describes how to install the Application Gateway Service Pack, which is a service pack provided by K-PaaS, using Bosh.
 
 ### <div id="1.2"/> 1.2. Range
 
@@ -49,7 +49,7 @@ If BOSH CLI v2 is not installed, you should first refer to the BOSH 2.0 installa
 ### <div id="2.2"/> 2.2. Stemcell Check
 
 Check the Stemcell list to make sure that the Stemcell required for service installation is uploaded.  
-The Stemcell of this guide uses ubuntu-bionic 1.76.  
+The Stemcell of this guide uses ubuntu-jammy  1.181.  
 
 > $ bosh -e ${BOSH_ENVIRONMENT} stemcells
 
@@ -57,7 +57,7 @@ The Stemcell of this guide uses ubuntu-bionic 1.76.
 Using environment '10.0.1.6' as client 'admin'
 
 Name                                       Version   OS             CPI  CID  
-bosh-openstack-kvm-ubuntu-bionic-go_agent  1.76      ubuntu-bionic  -    ce507ae4-aca6-4a6d-b7c7-220e3f4aaa7d
+bosh-openstack-kvm-ubuntu-jammy-go_agent  1.181      ubuntu-jammy  -    ce507ae4-aca6-4a6d-b7c7-220e3f4aaa7d
 
 (*) Currently deployed
 
@@ -77,7 +77,7 @@ $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell -n {STEMCELL_URL}
 
 Download the deployment needed from Git Repository and place the file in the service installation directory.
 
-- Service Deployment Git Repository URL : https://github.com/PaaS-TA/service-deployment/tree/v5.1.6
+- Service Deployment Git Repository URL : https://github.com/K-PaaS/service-deployment/tree/v5.1.25.1
 
 ```
 # Deployment file download, make directory, change directory
@@ -85,16 +85,16 @@ $ mkdir -p ~/workspace
 $ cd ~/workspace
 
 # Deployment File Download
-$ git clone https://github.com/PaaS-TA/service-deployment.git -b v5.1.6
+$ git clone https://github.com/K-PaaS/service-deployment.git -b v5.1.25.1
 
 # common_vars.yml File Download(download if common_vars.yml doesn't exist)
-$ git clone https://github.com/PaaS-TA/common.git
+$ git clone https://github.com/K-PaaS/common.git
 ```
 
 ### <div id="2.4"/> 2.4. Deployment File Modification
 
 The BOSH Deployment manifest is a YAML file that defines the properties of components elements and deployments. 
-Cloud config is used for network, vm_type, and disk_type used in Deployment files, and refer to the PaaS-TA AP installation guide for the usage.  
+Cloud config is used for network, vm_type, and disk_type used in Deployment files, and refer to the K-PaaS AP installation guide for the usage.  
 
 - Check Cloud config settings.   
 
@@ -126,7 +126,7 @@ networks:
   subnets:
   - az: z1
     cloud_properties:
-      security_groups: paasta-security-group
+      security_groups: ap-security-group
       subnet: subnet-00000000000000000
     dns:
     - 8.8.8.8
@@ -169,7 +169,7 @@ Succeeded
 
 bosh_url: "https://10.0.1.6"			# BOSH URL (e.g. "https://00.000.0.0")
 bosh_client_admin_id: "admin"			# BOSH Client Admin ID
-bosh_client_admin_secret: "ert7na4jpew48"	# BOSH Client Admin Secret('echo $(bosh int ~/workspace/paasta-deployment/bosh/{iaas}/creds.yml --path /admin_password)' Can be checked through commads)
+bosh_client_admin_secret: "ert7na4jpew48"	# BOSH Client Admin Secret('echo $(bosh int ~/workspace/ap-deployment/bosh/{iaas}/creds.yml --path /admin_password)' Can be checked through commads)
 bosh_director_port: 25555			# BOSH director port
 bosh_oauth_port: 8443				# BOSH oauth port
 
@@ -183,8 +183,8 @@ bosh_oauth_port: 8443				# BOSH oauth port
 
 ```
 # STEMCELL
-stemcell_os: "ubuntu-bionic"                                         # stemcell os
-stemcell_version: "1.76"                                           # stemcell version
+stemcell_os: "ubuntu-jammy"                                         # stemcell os
+stemcell_version: "1.181"                                           # stemcell version
 
 # VM_TYPE
 vm_type_default: "medium"                                            # vm type default
@@ -199,7 +199,7 @@ mariadb_azs: [z3]                                                    # mariadb :
 mariadb_instances: 1                                                 # mariadb : instances (1) 
 mariadb_persistent_disk_type: "10GB"                                 # mariadb : persistent disk type 
 mariadb_port: "<MARIADB_PORT>"                                       # mariadb : database port (e.g. 31306) -- Do Not Use "3306"
-mariadb_admin_password: "<MARIADB_ADMIN_PASSWORD>"                   # mariadb : database admin password (e.g. "paas-ta!admin")
+mariadb_admin_password: "<MARIADB_ADMIN_PASSWORD>"                   # mariadb : database admin password (e.g. "k-paas!admin")
 mariadb_broker_username: "<MARIADB_BROKER_USERNAME>"                 # mariadb : service-broker-user id (e.g. "apigateway")
 mariadb_broker_password: "<MARIADB_BROKER_PASSWORD>"                 # mariadb : service-broker-user password (e.g. "broker!admin")
 
@@ -232,8 +232,8 @@ api_gateway_admin_password: "<API_GATEWAY_ADMIN_PASSWORD>"           # api-gatew
 
 # VARIABLES
 COMMON_VARS_PATH="<COMMON_VARS_FILE_PATH>"  # common_vars.yml File Path (e.g. ../../common/common_vars.yml)
-CURRENT_IAAS="${CURRENT_IAAS}"              # IaaS Information (When not using create-bosh-login.sh provided by PaaS-TA, enter aws/azure/gcp/openstack/vsphere)
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"      # bosh director alias name (When not using create-bosh-login.sh provided by PaaS-TA,Check the name at bosh envs and enter)
+CURRENT_IAAS="${CURRENT_IAAS}"              # IaaS Information (When not using create-bosh-login.sh provided by K-PaaS, enter aws/azure/gcp/openstack/vsphere)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"      # bosh director alias name (When not using create-bosh-login.sh provided by K-PaaS,Check the name at bosh envs and enter)
 
 # DEPLOY
 bosh -e ${BOSH_ENVIRONMENT} -n -d gateway-service deploy --no-redact gateway-service.yml \
@@ -278,11 +278,11 @@ Succeeded
 
 ## <div id="3"/>3.  Management and request for Application Gateway Service
 
-If you register and disclose the service through the PaaS-TA operator portal, you can apply for and use the service through the PaaS-TA user portal.
+If you register and disclose the service through the K-PaaS AP operator portal, you can apply for and use the service through the K-PaaS AP user portal.
 
 ### <div id="3.1"/> 3.1. Service Broker Registration
 
-Once the service is installed, an application gateway service broker must be registered to use the service on the PaaS-TA portal.  
+Once the service is installed, an application gateway service broker must be registered to use the service on the K-PaaS portal.  
 When registering a service broker, you must be logged in as a user with authority to register a service broker on an open cloud platform.  
 
 - Check the list of service brokers  
@@ -352,29 +352,29 @@ broker: api-gateway-service-broker
 ### <div id='3.2'/> 3.2. Service Request
 #### <div id='3.2.1'/> 3.2.1. Service Request - Portal
 
-Access the PaaS-TA operator portal and register the service.  
+Access the K-PaaS AP operator portal and register the service.  
 
 > ※ Operation Management > Catalog > App service registration
 > - Name : Application Gateway Service
 > - Classification :  Development Support Tools
 > - Service : api-gateway
 > - Thumbnail : [Application Gateway Service Thumbnail]
-> - Document URL : https://github.com/PaaS-TA/PAAS-TA-API-GATEWAY-SERVICE-BROKER
+> - Document URL : https://github.com/K-PaaS/ap-api-gateway-broker
 > - Service Creating Parameter : password 
 > - Using App bind : N
 > - Public : Y
 > - Using Dashboard : Y
 > - OnDemand : N
-> - Tag : paasta / tag1, free / tag2
+> - Tag : k-paas / tag1, free / tag2
 > - Outline : Application Gateway Service
 > - Description :
 > WSO2 service, an application gateway service that provides functions such as API registration and API lifecycle management, is provided in a dedicated manner.  
 >  
 > The service administrator's account is serviceadmin/< Password is what the user has entered when applying for the service >.  
 >  
-> ![002]
+![002]
 
--	Access the PaaS-TA user portal and apply for services through the catalog.   
+-	Access the K-PaaS AP user portal and apply for services through the catalog.   
 
 ![003]
 
@@ -413,16 +413,8 @@ service broker:   api-gateway-service-broker
 
 
 
-[001]:./images/apigateway-service/image001.png
 [002]:./images/apigateway-service/image002.png
 [003]:./images/apigateway-service/image003.png
 [004]:./images/apigateway-service/image004.png
-[005]:./images/apigateway-service/image005.png
-[006]:./images/apigateway-service/image006.png
-[007]:./images/apigateway-service/image007.png
-[011]:./images/apigateway-service/image011.jpeg
-[012]:./images/apigateway-service/image012.jpeg
-[013]:./images/apigateway-service/image013.jpeg
 
-
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > Gateway Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > Gateway Service

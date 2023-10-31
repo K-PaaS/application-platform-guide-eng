@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > Source Control Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > Source Control Service
 
 ## Table of Contents  
 
@@ -26,7 +26,7 @@
 ## <div id='1'/> 1. Document Outline
 
 ### <div id='1.1'/> 1.1. Purpose
-This document (Figure Management Service Pack Installation Guide) describes how to install the shape management service pack, which is a service pack provided by PaaS-TA, using Bosh.  
+This document (Figure Management Service Pack Installation Guide) describes how to install the shape management service pack, which is a service pack provided by K-PaaS, using Bosh.  
 
 ### <div id='1.2'/> 1.2. Range
 The installation range was prepared based on the basic installation for verifying the shape management service pack.
@@ -53,7 +53,7 @@ $ uaac -v
 ### <div id="2.2"/> 2.2. Stemcell Cgeck  
 
 Check the Stemcell list to make sure that the Stemcell required for service installation is uploaded.  
-The Stemcell of this guide uses ubuntu-bionic 1.76. 
+The Stemcell of this guide uses ubuntu-jammy 1.181. 
 
 > $ bosh -e ${BOSH_ENVIRONMENT} stemcells
 
@@ -61,7 +61,7 @@ The Stemcell of this guide uses ubuntu-bionic 1.76.
 Using environment '10.0.1.6' as client 'admin'
 
 Name                                       Version   OS             CPI  CID  
-bosh-openstack-kvm-ubuntu-bionic-go_agent  1.76      ubuntu-bionic  -    ce507ae4-aca6-4a6d-b7c7-220e3f4aaa7d
+bosh-openstack-kvm-ubuntu-jammy-go_agent  1.181      ubuntu-jammy  -    ce507ae4-aca6-4a6d-b7c7-220e3f4aaa7d
 
 (*) Currently deployed
 
@@ -82,7 +82,7 @@ $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell -n {STEMCELL_URL}
 
 Download the deployment needed from Git Repository and place the file in the service installation directory.  
 
-- Service Deployment Git Repository URL : https://github.com/PaaS-TA/service-deployment/tree/v5.1.6
+- Service Deployment Git Repository URL : https://github.com/K-PaaS/service-deployment/tree/v5.1.25.1
 
 ```
 # Deployment File Download, make directory, change directory
@@ -90,16 +90,16 @@ $ mkdir -p ~/workspace
 $ cd ~/workspace
 
 # Deployment File Download
-$ git clone https://github.com/PaaS-TA/service-deployment.git -b v5.1.6
+$ git clone https://github.com/K-PaaS/service-deployment.git -b v5.1.25.1
 
 # common_vars.yml File Download (download if common_vars.yml doesn't exist)
-$ git clone https://github.com/PaaS-TA/common.git
+$ git clone https://github.com/K-PaaS/common.git
 ```
 
 ### <div id="2.4"/> 2.4. Deployment File Modification
 
 The BOSH Deployment manifest is a YAML file that defines the properties of components elements and deployments.  
-Cloud config is used for network, vm_type, and disk_type used in Deployment files, and refer to the PaaS-TA AP installation guide for the usage.  
+Cloud config is used for network, vm_type, and disk_type used in Deployment files, and refer to the K-PaaS AP installation guide for the usage.  
 
 - Check the Cloud config settings.   
 
@@ -131,7 +131,7 @@ networks:
   subnets:
   - az: z1
     cloud_properties:
-      security_groups: paasta-security-group
+      security_groups: ap-security-group
       subnet: subnet-00000000000000000
     dns:
     - 8.8.8.8
@@ -183,8 +183,8 @@ system_domain: "61.252.53.246.nip.io"		# Domain (Same as HAProxy Public IP when 
 
 ```
 # STEMCELL
-stemcell_os: "ubuntu-bionic"                                   # stemcell os
-stemcell_version: "1.76"                                     # stemcell version
+stemcell_os: "ubuntu-jammy"                                   # stemcell os
+stemcell_version: "1.181"                                     # stemcell version
 
 # VM_TYPE
 vm_type_small: "minimal"                                       # vm type small
@@ -198,6 +198,7 @@ scm_azs: [z3]                                                  # scm : azs
 scm_instances: 1                                               # scm : instances (1)
 scm_persistent_disk_type: "30GB"                               # scm : persistent disk type
 scm_private_ips: "<SCM_PRIVATE_IPS>"                           # scm : private ips (e.g. "10.0.81.41")
+scm_admin_password: "<SCM_ADMIN_PASSWORD>"                     # scm : scm-sever admin password -- Do Not Use "scmadmin"
 
 # MARIA-DB# MARIA_DB
 mariadb_azs: [z3]                                              # mariadb : azs
@@ -219,24 +220,6 @@ haproxy_public_ips: "<HAPROXY_PUBLIC_IPS>"                     # haproxy : publi
 # WEB-UI
 web_ui_azs: [z3]                                               # web-ui : azs
 web_ui_instances: 1                                            # web-ui : instances (1)
-web_ui_persistent_disk_type: "2GB"                             # web-ui : persistent disk type
-web_ui_private_ips: "<WEB_UI_PRIVATE_IPS>"                     # web-ui : private ips (e.g. "10.0.81.44")
-
-# SCM-API
-api_azs: [z3]                                                  # scm-api : azs
-api_instances: 1                                               # scm-api : instances (1)
-api_persistent_disk_type: "2GB"                                # scm-api : persistent disk type
-api_private_ips: "<API_PRIVATE_IPS>"                           # scm-api : private ips (e.g. "10.0.81.45")
-
-# SERVICE-BROKER
-broker_azs: [z3]                                               # service-broker : azs
-broker_instances: 1                                            # service-broker : instances (1)
-broker_persistent_disk_type: "2GB"                             # service-broker : persistent disk type
-broker_private_ips: "<BROKER_PRIVATE_IPS>"                     # service-broker : private ips (e.g. "10.0.81.46")
-
-# UAAC
-uaa_client_sc_id: "scclient"                                   # source-control-service uaa client id
-uaa_client_sc_secret: "clientsecret"                           # source-control-service uaa client secret
 ```
 
 ### <div id="2.5"/> 2.5. Service Installation
@@ -251,8 +234,8 @@ uaa_client_sc_secret: "clientsecret"                           # source-control-
   
 # VARIABLES
 COMMON_VARS_PATH="<COMMON_VARS_FILE_PATH>"	# common_vars.yml File Path (e.g. ../../common/common_vars.yml)
-CURRENT_IAAS="${CURRENT_IAAS}"			# IaaS Information (When not using create-bosh-login.sh provided by PaaS-TA, enter aws/azure/gcp/openstack/vsphere)
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"		# bosh director alias name (When not using create-bosh-login.sh provided by PaaS-TA, check the name at bosh envs and enter)
+CURRENT_IAAS="${CURRENT_IAAS}"			# IaaS Information (When not using create-bosh-login.sh provided by K-PaaS, enter aws/azure/gcp/openstack/vsphere)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"		# bosh director alias name (When not using create-bosh-login.sh provided by K-PaaS, check the name at bosh envs and enter)
 
 # DEPLOY
 bosh -e ${BOSH_ENVIRONMENT} -n -d source-control-service deploy --no-redact source-control-service.yml \
@@ -300,7 +283,7 @@ Succeeded
 
 ### <div id="3.1"/> 3.1. Register Service Broker Command
 
-Once the service is installed, a configuration management service broker must be registered to use the service on the PaaS-TA portal.  
+Once the service is installed, a configuration management service broker must be registered to use the service on the K-PaaS AP portal.  
 When registering a service broker, you must be logged in as a user with authority to register a service broker on an open cloud platform. 
 
 - Check the list of service brokers  
@@ -324,10 +307,10 @@ cf create-service-broker [SERVICE_BROKER] [USERNAME] [PASSWORD] [SERVICE_BROKER_
 
 - Register configuration management service broker.
 
-> $ cf create-service-broker paasta-sourcecontrol-broker admin cloudfoundry http://<sourcecontrol-broker_ip>:8080
+> $ cf create-service-broker ap-sourcecontrol-broker admin cloudfoundry http://<sourcecontrol-broker_ip>:8080
 ```
-$ cf create-service-broker paasta-sourcecontrol-broker admin cloudfoundry http://10.30.107.126:8080
-Creating service broker paasta-sourcecontrol-broker as admin...   
+$ cf create-service-broker ap-sourcecontrol-broker admin cloudfoundry http://10.30.107.126:8080
+Creating service broker ap-sourcecontrol-broker as admin...   
 OK       
 ```
 
@@ -336,33 +319,32 @@ OK
 
 ```
 Getting service brokers as admin...
-
-name                         url
-paasta-sourcecontrol-broker   http://10.30.107.126:8080
+                        url
+ap-sourcecontrol-broker   http://10.30.107.126:8080
 ```
 
 - Check service access information of configuration management service.  
-> $ cf service-access -b paasta-sourcecontrol-broker  
+> $ cf service-access -b ap-sourcecontrol-broker  
 
 ```
-Getting service access for broker paasta-sourcecontrol-broker as admin...
-broker: paasta-sourcecontrol-broker
-   service                  plan      access   orgs
-   p-paasta-sourcecontrol   Default   none
+Getting service access for broker ap-sourcecontrol-broker as admin...
+broker: ap-sourcecontrol-broker
+   offering             plan      access   orgs
+   p-ap-sourcecontrol   Default   none     
 ```
 
 -Set (all) permission for configuration management service access and reconfirm service access information.  
-> $ cf enable-service-access p-paasta-sourcecontrol    
+> $ cf enable-service-access p-ap-sourcecontrol    
 ```
-Enabling access to all plans of service p-paasta-sourcecontrol for all orgs as admin...
+Enabling access to all plans of service offering p-ap-sourcecontrol for all orgs as admin...
 OK
 ```
-> $ cf service-access -b paasta-sourcecontrol-broker   
+> $ cf service-access -b ap-sourcecontrol-broker   
 ```
-Getting service access for broker paasta-sourcecontrol-broker as admin...
-broker: paasta-sourcecontrol-broker
-   service                  plan      access   orgs
-   p-paasta-sourcecontrol   Default   all  
+Getting service access for broker ap-sourcecontrol-broker as admin...
+broker: ap-sourcecontrol-broker
+   offering             plan      access   orgs
+   p-ap-sourcecontrol   Default   all
 ```
 
 ### <div id="3.2"/> 3.2. UAA Client Registration
@@ -402,10 +384,10 @@ uaac client add <CF_UAA_CLIENT_ID> -s <CF_UAA_CLIENT_SECRET> --redirect_uri <Con
 <Authorization Permission> : Authority list granted to clients  
 <Automatic Authorization> : Authority list that do not require user approval   
 ```
-> $ uaac client add scclient -s clientsecret --redirect_uri "http://[DASHBOARD_URL]:8080 http://[DASHBOARD_URL]:8080/repositories http://[DASHBOARD_URL]:8080/repositories/user" \
-  --scope "cloud_controller_service_permissions.read , openid , cloud_controller.read , cloud_controller.write , cloud_controller.admin" \
-  --authorized_grant_types "authorization_code , client_credentials , refresh_token" \
-  --authorities="uaa.resource" \
+> $ uaac client add scclient -s clientsecret --redirect_uri "http://[DASHBOARD_URL]:8080 http://[DASHBOARD_URL]:8080/repositories http://[DASHBOARD_URL]:8080/repositories/user" \  
+  --scope "cloud_controller_service_permissions.read , openid , cloud_controller.read , cloud_controller.write , cloud_controller.admin" \  
+  --authorized_grant_types "authorization_code , client_credentials , refresh_token" \  
+  --authorities="uaa.resource" \  
   --autoapprove="openid , cloud_controller_service_permissions.read"
 ```  
 # e.g. Creating a Configuration Management Service Account
@@ -431,7 +413,7 @@ scclient
 
 ### <div id='3.3'/> 3.3. Service Request
 #### <div id='3.3.1'/> 3.3.1. Service Request - Portal
-1. Access the PaaS-TA operator portal and log in.
+1. Access the K-PaaS AP operator portal and log in.
 ![3-1-1]
 
 2. Login > Service Management > Check the Configuration Management Service Broker on Service Broker page.
@@ -448,24 +430,24 @@ scclient
 > ※ Catalog Management > App Service
 > - Name : Configuration Management
 > - Classification :  Development Support Tools
-> - Service : p-paasta-sourcecontrol
+> - Service : p-ap-sourcecontrol
 > - Thumbnail : [Configuration Management Service Thumbnail]
-> - Document URL : https://github.com/PaaS-TA/SOURCE-CONTROL-SERVICE-BROKER
+> - Document URL : https://github.com/K-PaaS/ap-source-control-broker
 > - Service Creating Parameter : owner
 > - Service Creating Parameter : org_name
 > - Using App bind : N
 > - Public : Y
 > - Using Dashboard : Y
 > - OnDemand : N
-> - Tag : paasta / tag6, free / tag2
+> - Tag : k-paas / tag6, free / tag2
 > - Outline : Configuration Management
 > - Description :
 > GIT and SVN repository are provided as configuration management services.  
 > Minimum requirements were made by configuration management server and configuration management service broker.
 >  
-> ![3-2-2]
+![3-2-2]
 
-- Access to PaaS-TA user portal then request for service through catalog.   
+- Access to K-PaaS AP user portal then request for service through catalog.   
 
 ![003]
 
@@ -486,23 +468,23 @@ cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 [SERVICE_INSTANCE] : Name of the service instance to create
 ```
 
--Request for service for the use of configuration management services. (PaaS-TA user_id, org name setting)
-> $ cf create-service p-paasta-sourcecontrol Default paasta-sourcecontrol -c '{"owner":"{user_id}", "org_name":"{org_name}"}'  
+-Request for service for the use of configuration management services. (K-PaaS AP user_id, org name setting)
+> $ cf create-service p-ap-sourcecontrol Default ap-sourcecontrol -c '{"owner":"{user_id}", "org_name":"{org_name}"}'  
 ```
-Creating service instance paasta-sourcecontrol in org system / space dev as admin...
+Creating service instance ap-sourcecontrol in org system / space dev as admin...
 OK
 ```
 
 - Access the service by checking the service details dashboard URL information.
-> $ cf service paasta-sourcecontrol
+> $ cf service ap-sourcecontrol
  ```
  ... (Skip) ...
  Dashboard:        http://115.68.47.179:8080/repositories/user/b840ecb4-15fb-4b35-a9fc-185f42f0de37
- Service broker:   paasta-sourcecontrol-broker
+ Service broker:   ap-sourcecontrol-broker
  ... (Skip) ...
  ```
  
-[source_controller_service_guide01]:.images/source-control/source_controller_service_guide01.PNG
+
 [3-1-1]:./images/source-control/adminPortal_login.png
 [3-1-2]:./images/source-control/adminPortal_serviceBroker.png
 [3-1-3]:./images/source-control/adminPortal_serviceControl.png
@@ -512,4 +494,4 @@ OK
 [004]:./images/source-control/userportal_dashboard.png
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > Source Control Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > Source Control Service

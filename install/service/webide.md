@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > WEB IDE Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > WEB IDE Service
 
 ## Table of Contents
 1. [Document Outline](#1)  
@@ -14,7 +14,7 @@
   2.5. [Service Installation](#2.5)    
   2.6. [Service Installation Check](#2.6)  
 
-3. [Web-IDE's PaaS-TA Portal Site Interworking](#3)  
+3. [Web-IDE's K-PaaS Portal Site Interworking](#3)  
  3.1. [WEB-IDE Service Broker Registration](#3.1)  
  3.2. [Request for service](#3.2)  
 　3.2.1. [Request for service-Portal](#3.2.1)   
@@ -36,7 +36,7 @@
 
 ### <div id='1.1'/>1.1. Purpose
 
-This document (WEB-IDE service pack installation guide) describes how to install the WEB-IDE service pack, which is a service pack provided by PaaS-TA, using Bosh.
+This document (WEB-IDE service pack installation guide) describes how to install the WEB-IDE service pack, which is a service pack provided by K-PaaS, using Bosh.
 
 ### <div id='1.2'/> 1.2. Range
 The installation range was prepared based on the basic installation to verify the use of WEB-IDE.
@@ -59,7 +59,7 @@ If BOSH CLI v2 is not installed, you should first refer to the BOSH 2.0 installa
 ### <div id="2.2"/> 2.2. Stemcell Check  
 
 Check the Stemcell list to make sure that the Stemcell required for service installation is uploaded. 
-The Stemcell of this guide uses ubuntu-bionic 1.76. 
+The Stemcell of this guide uses ubuntu-jammy 1.181. 
 
 > $ bosh -e ${BOSH_ENVIRONMENT} stemcells
 
@@ -67,7 +67,7 @@ The Stemcell of this guide uses ubuntu-bionic 1.76.
 Using environment '10.0.1.6' as client 'admin'
 
 Name                                       Version   OS             CPI  CID  
-bosh-openstack-kvm-ubuntu-bionic-go_agent  1.76      ubuntu-bionic  -    ce507ae4-aca6-4a6d-b7c7-220e3f4aaa7d
+bosh-openstack-kvm-ubuntu-jammy-go_agent   1.181     ubuntu-jammy   -    ce507ae4-aca6-4a6d-b7c7-220e3f4aaa7d
 
 (*) Currently deployed
 
@@ -87,7 +87,7 @@ $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell -n {STEMCELL_URL}
 
 Download the deployment needed from Git Repository and place the file at the service installation directory.  
 
-- Service Deployment Git Repository URL : https://github.com/PaaS-TA/service-deployment/tree/v5.1.5
+- Service Deployment Git Repository URL : https://github.com/K-PaaS/service-deployment/tree/v5.1.25.1
 
 ```
 # Deployment File Download , make directory, change directory
@@ -95,16 +95,16 @@ $ mkdir -p ~/workspace
 $ cd ~/workspace
 
 # Deployment File Download
-$ git clone https://github.com/PaaS-TA/service-deployment.git -b v5.1.5
+$ git clone https://github.com/K-PaaS/service-deployment.git -b v5.1.25.1
 
 # common_vars.yml File Download(Download if common_vars.yml doesn't exist)
-$ git clone https://github.com/PaaS-TA/common.git
+$ git clone https://github.com/K-PaaS/common.git
 ```
 
 ### <div id="2.4"/> 2.4. Deployment File Modification
 
 The BOSH Deployment manifest is a YAML file that defines the properties of components elements and deployments.
-Cloud config is used for network, vm_type, and disk_type used in Deployment files, and refer to the PaaS-TA AP installation guide the usage.  
+Cloud config is used for network, vm_type, and disk_type used in Deployment files, and refer to the K-PaaS AP installation guide the usage.  
 
 - Check the Cloud config settings.   
 
@@ -136,7 +136,7 @@ networks:
   subnets:
   - az: z1
     cloud_properties:
-      security_groups: paasta-security-group
+      security_groups: ap-security-group
       subnet: subnet-00000000000000000
     dns:
     - 8.8.8.8
@@ -169,7 +169,7 @@ Succeeded
 ```
 
 - Modify common_vars.yml to suit the server environment. 
-- The Variables used in WEB IDE are: bosh_url, bosh_client_admin_id, bosh_client_admin_secret, bosh_director_port,  bosh_oauth_port, bosh_version, system_domain, paasta_admin_username, paasta_admin_password.
+- The Variables used in WEB IDE are: bosh_url, bosh_client_admin_id, bosh_client_admin_secret, bosh_director_port, bosh_oauth_port, bosh_version, system_domain, ap_admin_username, and ap_admin_password.
 
 > $ vi ~/workspace/common/common_vars.yml
 ```
@@ -177,13 +177,13 @@ Succeeded
 
 bosh_url: "https://10.0.1.6"			# BOSH URL (e.g. "https://00.000.0.0")
 bosh_client_admin_id: "admin"			# BOSH Client Admin ID
-bosh_client_admin_secret: "ert7na4jpew"		# BOSH Client Admin Secret('echo $(bosh int ~/workspace/paasta-deployment/bosh/{iaas}/creds.yml --path /admin_password)' command can be used to check)
+bosh_client_admin_secret: "ert7na4jpew"		# BOSH Client Admin Secret('echo $(bosh int ~/workspace/ap-deployment/bosh/{iaas}/creds.yml --path /admin_password)' command can be used to check)
 bosh_director_port: 25555			# BOSH director port
 bosh_oauth_port: 8443				# BOSH oauth port
 bosh_version: 271.2				# BOSH version(can be checked through 'bosh env' command, on-demand service용, e.g. "271.2")
 system_domain: "61.252.53.246.nip.io"		# Domain (Same as HAProxy Public IP when using nip.io)
-paasta_admin_username: "admin"			# PaaS-TA Admin Username
-paasta_admin_password: "admin"			# PaaS-TA Admin Password
+ap_admin_username: "admin"			# Application Platform Admin Username
+ap_admin_password: "admin"			# Application Platform Admin Password
 
 ... ((Skip)) ...
 
@@ -199,8 +199,8 @@ paasta_admin_password: "admin"			# PaaS-TA Admin Password
 deployment_name: "web-ide"                                                # Service Deployed Name
 
 # STEMCELL
-stemcell_os: "ubuntu-bionic"                                              # stemcell os
-stemcell_version: "1.76"                                                  # stemcell version
+stemcell_os: "ubuntu-jammy"                                              # stemcell os
+stemcell_version: "1.181"                                                  # stemcell version
 stemcell_alias: "default"                                                 # stemcell alias
 
 # NETWORK
@@ -221,7 +221,7 @@ mariadb_instances: 1                                                      # mari
 mariadb_vm_type: "small"                                                  # mariadb : vm type
 mariadb_persistent_disk_type: "10GB"                                      # mariadb : persistent disk type
 mariadb_port: "<MARIADB_PORT>"                                            # mariadb : database port (e.g. 31306) -- Do Not Use "3306"
-mariadb_admin_password: "<MARIADB_ADMIN_PASSWORD>"                        # mariadb : database admin password (e.g. "Paasta@2021")
+mariadb_admin_password: "<MARIADB_ADMIN_PASSWORD>"                        # mariadb : database admin password (e.g. "KPaaS@2021")
 
 # SERVICE-BROKER
 broker_azs: [z4]                                                          # service-broker : azs
@@ -254,8 +254,8 @@ cloudfoundry_sslSkipValidation: "true"
   
 # VARIABLES
 COMMON_VARS_PATH="<COMMON_VARS_FILE_PATH>"       # common_vars.yml File Path (e.g. ../../common/common_vars.yml)
-CURRENT_IAAS="${CURRENT_IAAS}"					 # IaaS Information (When not using create-bosh-login.sh provided by PaaS-TA, enter aws/azure/gcp/openstack/vsphere)
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"			 # bosh director alias name (When not using create-bosh-login.sh provided by PaaS-TA, check the name at bosh envs and enter)
+CURRENT_IAAS="${CURRENT_IAAS}"					 # IaaS Information (When not using create-bosh-login.sh provided by K-PaaS, enter aws/azure/gcp/openstack/vsphere)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"			 # bosh director alias name (When not using create-bosh-login.sh provided by K-PaaS, check the name at bosh envs and enter)
 
 # DEPLOY
 bosh -e ${BOSH_NAME} -n -d web-ide deploy --no-redact web-ide.yml \
@@ -296,7 +296,7 @@ Succeeded
 
 
 
-## <div id='3'/> 3. Web-IDE's PaaS-TA Portal Site Interworking
+## <div id='3'/> 3. Web-IDE's K-PaaS Portal Site Interworking
 
 ### <div id='3.1'/> 3.1. WEB-IDE Service Broker Registration
 
@@ -342,7 +342,7 @@ Access is initially not permitted when registering as a service broker. Therefor
 - Assign permission to a specific organization to access the service and recheck the access service list. (Overall Organization)
 > $ cf enable-service-access webide <br>
 ```
-Enabling access to all plans of service webide for all orgs as admin...
+Enabling access to all plans of service offering webide for all orgs as admin...
 OK
 ```
 > $ cf service-access 
@@ -367,19 +367,19 @@ broker: webide-service-broker
 > - Category :  Development Support Tools
 > - Service : webide
 > - Thumbnail : [WEB IDE Service Thumbnail]
-> - Document URL : https://github.com/PaaS-TA/PAAS-TA-WEB-IDE-BROKER
+> - Document URL : https://github.com/K-PaaS/ap-web-ide-broker
 > App bind usage : N
 > - Public : Y
 > - Dashboard usage : Y
 > - On demand : N
-> - Tag : paasta / tag6, free / tag2
+> - Tag : k-paas / tag6, free / tag2
 > - Summary : WEB IDE
 > - Description :
 > WEB IDE for Web Programming - eclipse-che
 >  
-> ![3-2-2]
+![3-2-2]
 
-- Access the PaaS-TA User Portal, and request for services through the catalog.   
+- Access the K-PaaS AP User Portal, and request for services through the catalog.   
 
 ![003]
 
@@ -391,15 +391,15 @@ broker: webide-service-broker
 #### <div id="3.2.2"/>  3.2.2. Request for service - CLI
 Guide on how to request for the WEB-IDE service through the CLI.
 
-- Check if the service is available at PaaS-TA Marketplace.
+- Check if the service is available at K-PaaS AP Marketplace.
 
 > $ cf marketplace
 ```
 Getting services from marketplace in org system / space dev as admin...
 OK
 
-offering   plans          description                                                                 broker
-webide     dedicated-vm   A paasta web ide service for application development.provision parameters   webide-service-broker
+offering   plans          description                                                                               broker
+webide     dedicated-vm   A Application Platform web ide service for application development.provision parameters   webide-service-broker
 ```
 <br>
 
@@ -416,10 +416,9 @@ cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 
 > $ cf create-service webide dedicated-vm webide-service  
 ```
-Creating service instance paasta-webide-service in org system / space dev as admin...
+Creating service instance webide-service in org system / space dev as admin...
+Service instance webide-service created.
 OK
-
-Create in progress. Use 'cf services' or 'cf service webide' to check operation status.
 ```
 <br>
 
@@ -467,7 +466,7 @@ Succeeded
 ## <div id='4'/> 4. Use guide of CF CLI in WEB-IDE
 
 ### <div id='4.1'/> 4.1. WEB-IDE New Project Screen
-***※ Refer to [PaaS-TA Operator Portal 4.3.3 Catalog Management Service Guide] (/use-guide/portal/PAAS-TA_ADMIN_PORTAL_USE_GUIDE_V1.1.md#4.3.3) ***  
+***※ Refer to [AP Operator Portal 4.3.3 Catalog Management Service Guide] (/use-guide/portal/admin.md#4.3.3) ***  
 
 - Select the language to be used and start a new project with Create workspace and project.
 
@@ -492,20 +491,20 @@ Succeeded
 
 - use -cf api command to set endpoint.
 
-> ![](./images/webide/web-ide-12.png)
+![](./images/webide/web-ide-12.png)
 
 - Log in with the cf login command and select the organization and space.
 
-> ![](./images/webide/web-ide-13.png)
+![](./images/webide/web-ide-13.png)
 
 - use cf push to upload app in cf.
 
-> ![](./images/webide/web-ide-14.png)
+![](./images/webide/web-ide-14.png)
 
 
 
 
-## <div id='5'/> 2. WEB IDE IP Expansion
+## <div id='5'/> 5. WEB IDE IP Expansion
 ### <div id="5.1"/> 5.1. Service Check
 
 Check the currently created WEB-IDE VM instance.
@@ -566,7 +565,7 @@ Using environment '10.0.1.6' as client 'admin'
 
 Using deployment 'web-ide'
 
-Release 'paas-ta-webide-release/2.0' already exists.
+Release 'ap-webide-release/2.0' already exists.
 
   instance_groups:
   - name: webide-broker
@@ -617,4 +616,4 @@ Succeeded
 [004]:./images/webide/userportal_dashboard.png
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > WEB IDE Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > WEB IDE Service

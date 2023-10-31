@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Public API Development
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Public API Development
 
 
 ## Table of Contents
@@ -412,7 +412,7 @@ At least one plan must be defined in the configuration file for each service. If
   |-------------|-----------------------------|
   | {} | If the unbinding was successfully done, it responds in "{}" form. |
 
-### <div id='32'></div> 4.6. Deprovision
+### <div id='32'></div> 4.7. Deprovision
 ※ Refer to [2.5.4 Deferral API Guide] of the service pack development guide document for detailed information.
 ##### <div id='33'></div> 4.7.1 Request
 - Route
@@ -878,7 +878,7 @@ Most APIs introduced on public data portals can issue service keys on public dat
   
   3. Verify the service key issuance<br>
   ![7-3-1-20]<br>
-  On the main screen, click the [Key Issue/Manage] button in the middle right of the [Incheon Culture and Arts Information Public Open API Center](http://iq.ifac.or.kr/openAPI).
+  On the main screen, click the [Key Issue/Manage] button in the right of the [Incheon Culture and Arts Information Public Open API Center](http://iq.ifac.or.kr/openAPI).
 
   ![7-3-1-21]<br>
   If you go to the authentication key management screen, you can check (1) the service key, (2) traffic, (3) approval status, and (4) the delete service key.<br>
@@ -905,7 +905,7 @@ To get the API service key for [2.2.1. Naver Map], [2.2.2. Naver address-to-coor
   
   2. Apply for Service Key<br>
   ![7-3-2-7]<br>
-  After login, go to the Open API page of Naver Developer Center again, and you can check the [Issue/Manage Key] button in the middle of the right.
+  After login, go to the Open API page of Naver Developer Center again, and you can check the [Issue/Manage Key] button in the right.
 
   ![7-3-2-8]<br>
   Key management for API services provided by Naver may be performed on the key issuance/management screen.<br>
@@ -1039,7 +1039,7 @@ Example)
 ![7-6-2-0]<br>
 If you check VCAP_SERVICES information, you can check service information such as plans, endpoints, and service keys entered through -c options for each service as shown in the figure. The sample application takes the endpoint and the service key from this VCAP_SERVICES information and uses the required API service.
 
-### <div id='62'></div> 7.7. Check Sample Application Behavior
+### <div id='63'></div> 7.7. Check Sample Application Behavior
 You can check the URL of the application through the command.
 
 ```
@@ -1125,4 +1125,4 @@ Check that each API operates normally by selecting an area in the lower-left sel
 
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Public API Development
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Public API Development

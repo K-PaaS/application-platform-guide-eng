@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > Open Service Broker
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > Open Service Broker
 
 ## Purpose
 
@@ -24,4 +24,4 @@ The Open Service Broker API defines the protocol between the Cloud Controller an
 http://docs.cloudfoundry.org/services/  
 https://github.com/openservicebrokerapi  
 https://github.com/cloudfoundry/pxc-release  
-https://github.com/PaaS-TA/OPENPAAS-SERVICE-JAVA-BROKER-MYSQL
+https://github.com/K-PaaS/ap-service-broker

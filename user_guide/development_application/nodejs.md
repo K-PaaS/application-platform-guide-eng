@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Node.js Development
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Node.js Development
 
 ## Table of Contents
 1. [Document Outline](#1)
@@ -75,7 +75,8 @@ Configure the development environment to develop the Node.js Application as show
 - Access the address below and download node-v0.12.4-x64.msi.
 
 >https://nodejs.org/dist/v0.12.4/x64/node-v0.12.4-x64.msi
->![2-2-1-0]
+
+![2-2-1-0]
 
 ##### 2. Node.js Installation
 
@@ -172,7 +173,7 @@ Data management for sample applications uses either MySQL, CubridDB, or MongoDB,
 
 - The completed sample application can be downloaded from the /OpenPaaSSample/node-sample-app of the link below.
 
-> https://nextcloud.paas-ta.org/index.php/s/x8Tg37WDFiL5ZDi/download
+> https://nextcloud.k-paas.org/index.php/s/x8Tg37WDFiL5ZDi/download
 
 ##### 2. Go to the Node.js Sample Application Path
 
@@ -952,6 +953,7 @@ Log in to Open Platform to perform the task below
 
 >$ cf api --skip-ssl-validation https://api.cf.open-paas.com # Set TARGET to Open Platform<br>
 >$ cf login -u testUser -o sample_test -s sample_space # Login Request<br>
+
 ![2-4-1-0]
 
 
@@ -1121,4 +1123,4 @@ test:
 [2-4-5-0]:./images/nodejs/2-4-5-0.png
 [2-5-0-0]:./images/nodejs/2-5-0-0.png
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Node.js Development
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Node.js Development

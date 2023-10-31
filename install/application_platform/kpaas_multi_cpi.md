@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > PaaS-TA Multi CPI
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > K-PaaS Multi CPI
 
 ## Table of Contents
 
@@ -29,13 +29,13 @@
 # <div id='1'/>1. Document Outline
 
 ## <div id='1.1'/>1.1. Purpose
-This document is a Multi-CPI setup guide for BOSH2 (hereinafter BOSH) and explains how to set up and use Multi-Cloud Provider Interface (hereinafter CPI) that deploys VMs in IaaS environments. (hereinafter referred to as Main IaaS AZ) and other IaaS environments (hereinafter referred to as Second IaaS AZ) where BOSH is installed through one BOSH.
+This document is a Multi Cloud Provider Interface((hereinafter CPI) setup guide for BOSH2 (hereinafter BOSH) and explains how to set up and use Multi-Cloud Provider Interface (hereinafter CPI) that deploys VMs in IaaS environments. (hereinafter referred to as Main IaaS AZ) and other IaaS environments (hereinafter referred to as Second IaaS AZ) where BOSH is installed through one BOSH.
 
 <br>
 
 ## <div id='1.2'/>1.2. Range
-This guide was conducted on the premise that there is a basic understanding of BOSH and PaaS-TA AP.
-For multi-cpi-deployment, a guide was prepared based on the installation of paasta-deployment v5.7.1.
+This guide was conducted on the premise that there is a basic understanding of BOSH and K-PaaS AP.
+For multi-cpi-deployment, a guide was prepared based on the installation of ap-deployment v5.7.1.
 Multi-cpi-deployment can be configured on AWS, OpenStack, and vSphere.
 The classification was largely based on the case where Main IaaS AZ and Second IaaS AZ are the same (e.g. A OpenStack ⇆ B OpenStack, hereinafter Same IaaS AZ) and the case where Main IaaS AZ and Second IaaS AZ are different (e.g. OpenStack ⇆ AWS, hereinafter Different IaaS AZ).
 
@@ -123,15 +123,15 @@ If the BOSH CLI is not installed, first refer to the BOSH Installation Guide doc
 <br>
 
 
-## <div id='2.2'/>2.2. ownload the installation file
+## <div id='2.2'/>2.2. Download the installation file
 
-- Download if paasta-deployment for installing BOSH and multi-cpi-deployment for Multi CPI setup do not exist
+- Download if ap-deployment for installing BOSH and multi-cpi-deployment for Multi CPI setup do not exist
 
 ```
 $ mkdir -p ~/workspace
 $ cd ~/workspace
-$ git clone https://github.com/PaaS-TA/paasta-deployment.git -b v5.7.1
-$ git clone https://github.com/PaaS-TA/multi-cpi-deployment.git -b v5.7.1
+$ git clone https://github.com/K-PaaS/ap-deployment.git -b v5.7.1
+$ git clone https://github.com/K-PaaS/multi-cpi-deployment.git -b v5.7.1.1
 ```
 
 <br>
@@ -169,7 +169,7 @@ remote_vpn_ip: "XXX.XXX.XXX.XXX"                  # Used by OpenVPN Server-2 ip
 #secret_access_key: "XXXXXXXXXXXXXXX"              # AWS Secret Key
 #region: "ap-northeast-2"                          # AWS Region
 #availability_zone: "ap-northeast-2a"              # AWS Region
-#subnet_id: "paasta-subnet"                        # AWS Subnet ex) subnet-0ebc.....
+#subnet_id: "ap-subnet"                        # AWS Subnet ex) subnet-0ebc.....
 #default_security_groups: ["bosh-sg"]              # AWS Security-Group
 #bootstrap_ssh_key_name: "bosh-key"                # AWS SSH Private Key Name
 #bootstrap_ssh_key_path: "/.ssh/bosh-key.pem"      # AWS SSH Private Key Path
@@ -184,7 +184,7 @@ remote_vpn_ip: "XXX.XXX.XXX.XXX"                  # Used by OpenVPN Server-2 ip
 #openstack_password: "XXXXXXXXXXXXXXX"             # Openstack User Password
 #openstack_username: "XXXXXXXXXXXXXXX"             # Openstack User Name
 #openstack_domain: "default"                       # Openstack Domain Name
-#openstack_project: "paasta"                       # Openstack Project
+#openstack_project: "ap"                       # Openstack Project
 #private_key: "/.ssh/bosh-key.pem"                 # Openstack SSH Private Key Path
 #region: "RegionOne"                               # Openstack Region
 
@@ -319,8 +319,8 @@ May install BOSH and set up Multi-CPI to deploy VMs in the Main IaaS AZ and Seco
 
 - Move Multi CPI File to  BOSH Folder
 ```
-$ cp ~/workspace/multi-cpi-deployment/multi-cpi ~/workspace/paasta-deployment/bosh -r
-$ cd ~/workspace/paasta-deployment/bosh
+$ cp ~/workspace/multi-cpi-deployment/multi-cpi ~/workspace/ap-deployment/bosh -r
+$ cd ~/workspace/ap-deployment/bosh
 ```
 
 <br>
@@ -337,8 +337,8 @@ For more information on installing BOSH, see the BOSH Installation Guide.
 |------|---|
 | deploy-cpi-aws-secondary.yml | Use if infrastructure without BOSH is AWS |
 | deploy-cpi-openstack-secondary.yml	 | Use if infrastructure without BOSH is OpenStack |
-| deploy-cpi-vsphere-secondary.yml	 | Use if infrastructure without BOSH is OpenStack vSphere|
-| deploy-cpi-registry-secondary.yml | Use if infrastructure without BOSH is OpenStack vSphere <br>(used for paasta-deployment v5.7.0 or lower version deployment, <br>v5.7.0 or higher has no need to use.) |
+| deploy-cpi-vsphere-secondary.yml	 | Use if infrastructure without BOSH is vSphere|
+| deploy-cpi-registry-secondary.yml | Use if infrastructure without BOSH is vSphere <br>(used for ap-deployment v5.7.0 or lower version deployment, <br>v5.7.0 or higher has no need to use.) |
 
 - Example 1. AWS - Openstack BOSH Installation
 > $ vi deploy-aws.sh
@@ -387,7 +387,7 @@ For more information on installing BOSH, see the BOSH Installation Guide.
  	-l openstack-vars.yml
 ```
 
-- Exmaple 4. vSphere - AWS BOSH Installation (paasta-deployment v5.7.0 and above)
+- Exmaple 4. vSphere - AWS BOSH Installation (ap-deployment v5.7.0 and above)
 > $ vi deploy-vsphere.sh
 ```diff
  bosh create-env bosh.yml \
@@ -402,7 +402,7 @@ For more information on installing BOSH, see the BOSH Installation Guide.
  	-l vsphere-vars.yml
 ```
 
-- Example 5. vSphere - AWS BOSH Installation (paasta-deployment v5.7.0 and lower)
+- Example 5. vSphere - AWS BOSH Installation (ap-deployment v5.7.0 and lower)
 > $ vi deploy-vsphere.sh
 ```diff
  bosh create-env bosh.yml \
@@ -446,19 +446,19 @@ Uncomment the cpi-config.yml according to the corresponding IaaS to proceed.
 ## MULTI-CPI VARIABLE :: AWS
 aws_access_key_id: "XXXXXXXXXXXXXXX"                    # AWS Access Key
 aws_secret_access_key: "XXXXXXXXXXXXX"                  # AWS Secret Key
-aws_default_key_name: "paasta-key"                      # AWS Key Name
-aws_default_security_groups: ["paasta-security"]        # AWS Security-Group
+aws_default_key_name: "ap-key"                      # AWS Key Name
+aws_default_security_groups: ["ap-security"]        # AWS Security-Group
 aws_region: "ap-northeast-2"                            # AWS Region
 
 ... ((Skip)) ...
 
 # IF USE SAME IAAS, CPI MULTI-CPI VARIABLE
 
-## MULTI-CPI VARIABLE :: AWS second
+## MULTI-CPI VARIABLE :: aws second
 aws_second_access_key_id: "XXXXXXXXXXXXXXX"                    # AWS Second Access Key
 aws_second_secret_access_key: "XXXXXXXXXXXXX"                  # AWS Second Secret Key
-aws_second_default_key_name: "paasta-key"                      # AWS Second Key Name
-aws_second_default_security_groups: ["paasta-security"]        # AWS Second Security-Group
+aws_second_default_key_name: "ap-key"                      # AWS Second Key Name
+aws_second_default_security_groups: ["ap-security"]        # AWS Second Security-Group
 aws_second_region: "ap-northeast-2"                            # AWS Second Region
 
 ... ((Skip)) ...
@@ -508,8 +508,8 @@ $ bosh update-cpi-config multi-cpi/cpi-config.yml -l multi-cpi/cpi-vars.yml
 ## MULTI-CPI VARIABLE :: AWS
 aws_access_key_id: "XXXXXXXXXXXXXXX"                    # AWS Access Key
 aws_secret_access_key: "XXXXXXXXXXXXX"                  # AWS Secret Key
-aws_default_key_name: "paasta-key"                      # AWS Key Name
-aws_default_security_groups: ["paasta-security"]        # AWS Security-Group
+aws_default_key_name: "ap-key"                      # AWS Key Name
+aws_default_security_groups: ["ap-security"]        # AWS Security-Group
 aws_region: "ap-northeast-2"                            # AWS Region
 
 ## MULTI-CPI VARIABLE :: OpenStack
@@ -517,10 +517,10 @@ openstack_auth_url: "http://XX.XXX.XX.XX:XXXX/v3/"      # OpenStack Keystone URL
 openstack_username: "XXXXXX"                            # OpenStack User Name
 openstack_password: "XXXXXX"                            # OpenStack User Password
 openstack_domain: "XXXXXX"                              # OpenStack Domain Name
-openstack_project: "PaaS-TA"                            # OpenStack Project
+openstack_project: "AP"                            # OpenStack Project
 openstack_region: "RegionOne"                           # OpenStack Region
-openstack_default_key_name: "paasta-key"                # OpenStack Key Name
-openstack_default_security_groups: ["paasta-security"]  # OpenStack Security Group
+openstack_default_key_name: "ap-key"                # OpenStack Key Name
+openstack_default_security_groups: ["ap-security"]  # OpenStack Security Group
 
 ... ((Skip)) ...
 ```
@@ -564,7 +564,7 @@ $ bosh update-cpi-config multi-cpi/cpi-config.yml -l multi-cpi/cpi-vars.yml
 
 ### <div id='2.4.3'/>2.4.3. Cloud Config Setting
 Proceed with additional setup for Cloud Config.
-Same IaaS AZ uses the cloud-config file in the paasta-deployment folder, and Different IaaS AZ uses the cloud-config file in the bosh/multi-cpi folder. 
+Same IaaS AZ uses the cloud-config file in the ap-deployment folder, and Different IaaS AZ uses the cloud-config file in the bosh/multi-cpi folder. 
 
 #### <div id='2.4.3.1'/>2.4.3.1. Same IaaS for AZ
 
@@ -627,7 +627,7 @@ $ bosh update-cloud-config ~/workspace/bosh/multi-cpi/cloud-config-{iaas}-{iaas}
 Log in to the installed BOSH and proceed with the IaaS Stemcell upload.
 (e.g. Use both AWS and OpenStack environments, execute both of those commands.)  
 ```
-# Use ubuntu-bionic 1.76 which is the same stem cell as paasta-deployment v5.7.1.
+# Use ubuntu-bionic 1.76 which is the same stem cell as ap-deployment v5.7.1.
 # For AWS stem cells, use light stemcells
 
 # AWS
@@ -644,15 +644,15 @@ $ bosh upload-stemcell https://storage.googleapis.com/bosh-core-stemcells/1.76/b
 
 
 ### <div id='2.4.5'/>2.4.5. AP Installation Test with Multi-CPI
-After completing the Multi-CPI setup, PaaS-TA AP is installed to test whether communication between each other is smooth.
-For a description of the runtime-config setting or variable setting required for PaaS-TA AP, refer to the PaaS-TA AP Guide.
+After completing the Multi-CPI setup, K-PaaS AP is installed to test whether communication between each other is smooth.
+For a description of the runtime-config setting or variable setting required for K-PaaS AP, refer to the K-PaaS AP Guide.
 
 In this guide, among several cases, Diego-cell was installed on OpenStack and the remaining VMs were installed on AWS based on AWS - OpenStack.
 Not only Diego-cell but also other VMs can be deployed and deployed across different IaaS. Change the distribution method according to the application settings to proceed with the installation. 
 
-- Go to PaaS-TA AP Installation Folder
+- Go to K-PaaS AP Installation Folder
 ```
-$ cd ~/workspace/paasta-deployment/paasta
+$ cd ~/workspace/ap-deployment/ap
 ```
 
 - diego-cell zone change
@@ -667,15 +667,15 @@ diego_cell_instances: 3			# Diego-Cell Number of Instances
 ... ((Skip)) ...
 ```
 
-- PaaS-TA AP Installation
+- K-PaaS AP Installation
 ```
 $ source deploy-aws.sh
 ```
 
 
-After completing PaaS-TA AP installation, push the Test APP to check if the app is working properly.
+After completing K-PaaS AP installation, push the Test APP to check if the app is working properly.
 
 
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > PaaS-TA Multi CPI
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > K-PaaS Multi CPI

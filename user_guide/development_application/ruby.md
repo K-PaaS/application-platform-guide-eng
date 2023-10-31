@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Ruby Development
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Ruby Development
 
 
 ## Table of Contents
@@ -128,12 +128,14 @@ It describes the creation and environment setting of applications to develop Rub
 
  The completed sample application can be downloaded in the /OpenPaaSSample/ruby-sample-app link below.
 
-> https://nextcloud.paas-ta.org/index.php/s/x8Tg37WDFiL5ZDi/download
+> https://nextcloud.k-paas.org/index.php/s/x8Tg37WDFiL5ZDi/download
 
 ##### <div id='11'></div> 2.3.1.	Create Application
 
 1)	Create Rails Application (bundle install excluded)
 >Rails new [application name] –B –skip-bundle
+<br>
+
 ![ruby14] 
 ![ruby15] 
 
@@ -1157,4 +1159,4 @@ Ruby Application Test using Rspec
 [ruby16]:./images/ruby/ruby_16.png
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Ruby Developmet
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Ruby Developmet

@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Java API Service Metering Development
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Java API Service Metering Development
 
 
 ## Table of Contents
@@ -28,7 +28,7 @@
      * [Charging Policy](#22)
      * [Register Policy](#23)
     * [Deployment](#24)
-     * [Log in Paas-Ta Platform](#25)
+     * [Log in Application Platform](#25)
      * [Create API Service Broker](#26)
      * [API Service Application Deployment and Service Registration](#27)
      * [API Service Interworking Sample Application Deployment and Service Connection](#28)
@@ -41,12 +41,12 @@
 
 ### <div id='3'/>1.1.1. Purpose
 
-This document (Java API Service Metering Application Development Guide) describes how to meter API services by linking the metering plug-in of the Pas-Ta platform project with the Java API Metering Service application.
+This document (Java API Service Metering Application Development Guide) describes how to meter API services by linking the metering plug-in of the Aplication platform project with the Java API Metering Service application.
 
 
 
 ### <div id='4'/>1.1.2. Range
-The range of this document is limited to the development of metering methods for JAVA API service applications in PAS-TAR platform projects and the CF-Abacus linkage.
+The range of this document is limited to the development of metering methods for JAVA API service applications in Application platform projects and the CF-Abacus linkage.
 
 This document describes the creation of API metering service applications in Java languages.
 
@@ -65,7 +65,7 @@ This document does not implement API service-specific business logic, but only t
 
 Create API service applications in Java language. The API service creates an application that processes the service request and sends API usage history to CF-ABACUS.
 
-![26](https://user-images.githubusercontent.com/104418463/200229511-465700ec-ae98-4611-aec5-967889aaa94b.png)
+![Java_Api_Service_Metering_Image01]
 
 <table border = "1px;">
   <tr>
@@ -157,27 +157,27 @@ Create a project directory and initialize it into a gradle project
 
 Describe dependencies and properties geometry
 
-| **File**       |           **Purpose**          |
-|---------------|-----------------------------|
-|build.gradle   |Describe the dependency information your application needs    |
-|.gitignore     |When configuration management is performed through Git, a file or directory that does not require configuration management is set.               |
-|manifest.yml   |Configuration information for the application to be applied when deploying an application to a parser platform <br>Can define the name, deployment path, and several instances of the application.        |
-|gradlew        |Gradlew build executable for Linux environment. <br> Automatically generated when initializing gradle.     |
-|gradlew.bat    |Gradle build executable for use in Windows environment. <br> Automatically generated when initializing gradle.      |
-|settings.gradle    |Configuration file to apply when gradlew runs  <br> Automatically generated when initializing gradle.    |
+| **File**       | **Purpose**                                                                                                                                                                                             |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|build.gradle   | Describe the dependency information your application needs                                                                                                                                              |
+|.gitignore     | When configuration management is performed through Git, a file or directory that does not require configuration management is set.                                                                      |
+|manifest.yml   | Configuration information for the application to be applied when deploying an application to a application platform <br>Can define the name, deployment path, and several instances of the application. |
+|gradlew        | Gradlew build executable for Linux environment. <br> Automatically generated when initializing gradle.                                                                                                  |
+|gradlew.bat    | Gradle build executable for use in Windows environment. <br> Automatically generated when initializing gradle.                                                                                          |
+|settings.gradle    | Configuration file to apply when gradlew runs  <br> Automatically generated when initializing gradle.                                                                                                   |
 
 
 Java File Shape Description
   
-| **File**       |           **Purpose**          |
-|---------------|-----------------------------|
-|MeteringConfig   |Load metering.properties when running application    |
-|MeteringAuthService     |Obtain and return an access token to the abacus-usage-collector from a UAA server on a PAS-Other platform.              |
-|MeteringService   |When API service usage requests are processed by the SampleApiJavaServiceController, a metering usage report is reported to the abacus-usage-collector for API service processing.       |
-|SampleApiJavaServiceApplication        |When SpringBoot is running, it loads the context objects required for the SpringBoot application.   |
-|SampleApiJavaServiceController   |REST Controller that handles API service usage requests.<br> This sample application does not implement API service-specific business logic, but only performs the function of sending API usage to the abacus-collector.|
-|application.properties     |When the SpringBoot is running, the properties required for the spring    |
-|metering.properties      |Properties to be set when sending API usage to abacus-collector are defined.    |
+| **File**       | **Purpose**                                                                                                                                                                                                               |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|MeteringConfig   | Load metering.properties when running application                                                                                                                                                                         |
+|MeteringAuthService     | Obtain and return an access token to the abacus-usage-collector from a UAA server on a Application platform.                                                                                                              |
+|MeteringService   | When API service usage requests are processed by the SampleApiJavaServiceController, a metering usage report is reported to the abacus-usage-collector for API service processing.                                        |
+|SampleApiJavaServiceApplication        | When SpringBoot is running, it loads the context objects required for the SpringBoot application.                                                                                                                         |
+|SampleApiJavaServiceController   | REST Controller that handles API service usage requests.<br> This sample application does not implement API service-specific business logic, but only performs the function of sending API usage to the abacus-collector. |
+|application.properties     | When the SpringBoot is running, the properties required for the spring                                                                                                                                                    |
+|metering.properties      | Properties to be set when sending API usage to abacus-collector are defined.                                                                                                                                              |
 
 ### <div id='13'/>2.3.3 Dependencies and Properties Setting
 
@@ -232,15 +232,15 @@ applications:
 
 		# Address of abacus usage collector RESTAPI
 
-		abacus.collector = https://abacus-usage-collector.<CFdomain/v1/metering/collected/usage
+		abacus.collector = https://abacus-usage-collector.<Application platform domain>/v1/metering/collected/usage
 
 		# abacus usage collector is secure mode true / if not false
 
 		abacus.secured = true
 
-		# uaa server of the PaaS-TA platform
+		# uaa server of the Application platform
 
-		uaa.server = https://uaa.<CFdomain>
+		uaa.server = https://uaa.<Application platform domain>
 
 		# abacus usage collector RESTAPI account information and authentications (Preset to UAA server)
 
@@ -825,22 +825,22 @@ There is no need to redeploy CF-ABACUS by storing the prepared policy in DB usin
 
 ## <div id='24'/>2.6. Deployment
 
-When deploying an application on the PaaS-TA Platform, the application can be connected and be used with the services provided by the PaaS-TA Platform.
-You can access the service by accessing the application environment variables of the PaaS-TA platform only when it is executed on the PaaS-TA platform.
+When deploying an application on the Application Platform, the application can be connected and be used with the services provided by the Application Platform.
+You can access the service by accessing the application environment variables of the Application platform only when it is executed on the Application platform.
 
 
-### <div id='25'/>2.6.1 PaaS-TA Platform Login
+### <div id='25'/>2.6.1 Application Platform Login
 
-Login to the PaaS-TA Platform to follow the process below
+Login to the Application Platform to follow the process below
 	
-`$ cf api --skip-ssl-validation`*`https://api.`**`<PAAS-TA DOMAIN> `**`#Set PAAS-TA Platform TARGET`*
+`$ cf api --skip-ssl-validation`*`https://api.`**`<Application Platform DOMAIN> `**`#Set Application Platform TARGET`*
 
 `$ cf login -u <user name> -o <org name> -s <space name>#request login`
 
 
 ### <div id='26'/>2.6.2. Create API Service Broker
 
-Create the service to be used in the application through the PaaS-TA platform.
+Create the service to be used in the application through the Application platform.
 It can be created without a separate service installation process, and access information can be obtained through the application and binding process.
 
 -   Create Service (cf marketplace command allows you to view the list of services and the plan for each service.)
@@ -880,7 +880,7 @@ It can be created without a separate service installation process, and access in
 
 ### <div id='27'/>2.6.3. API Service Application Deployment and Service Registration
 
-API service applications are deployed on the PaaS-TA platform. The API registered as a service can provide API services by combining it with other applications.
+API service applications are deployed on the Application platform. The API registered as a service can provide API services by combining it with other applications.
 1.  **Application Deployment**
 
 	-	build with gradle build -x test command.
@@ -1011,7 +1011,7 @@ CF-Abacus interworking test for API interworking and API usage can be performed 
 		<<Skipped>> 
 		
 		## Check API usage
-		$ curl 'http://abacus-usage-reporting.<PaaS-TA Domain>/v1/metering/organizations/<organization that deployed sample application>/aggregated/usage'
+		$ curl 'http://abacus-usage-reporting.<Application Platform Domain>/v1/metering/organizations/<organization that deployed sample application>/aggregated/usage'
 		
 		예)
 		$ curl 'http://abacus-usage-reporting.bosh-lite.com/v1/metering/organizations/877d01b2-d177-4209-95b0-00de794d9bba/aggregated/usage'
@@ -1020,10 +1020,10 @@ CF-Abacus interworking test for API interworking and API usage can be performed 
 
 Sample Code downloaded from the site below.
 
-[Download](https://nextcloud.paas-ta.org/index.php/s/mEbGNcJjrEj7GWx/download)
+[Download](https://nextcloud.k-paas.org/index.php/s/mEbGNcJjrEj7GWx/download)
 
 [Java_Api_Service_Metering_Image01]:./images/Java_Api_Service_Metering/meteringAPI_development_range.png
 [Java_Api_Service_Metering_Image02]:./images/Java_Api_Service_Metering/sampleAPI_Service.png
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Java API Service Metering Development
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Java API Service Metering Development

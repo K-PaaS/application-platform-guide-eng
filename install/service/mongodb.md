@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > MongoDB Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > MongoDB Service
 
 ## Table of Contents  
 
@@ -18,14 +18,14 @@
 3. [Mongodb Linkage Sample Web App Description](#3)  
   3.1. [Mongodb Service Broker Registration](#3.1)  
   3.2. [Sample App Download](#3.2)  
-  3.3. [Request for service in PaaS-TA](#3.3)  
+  3.3. [Request for service in K-PaaS](#3.3)  
   3.4. [Request for service bind to Sample App and check for App](#3.4)   
 
 
 ## <div id='1'> 1. Document Outline
 ### <div id='1.1'> 1.1. Purpose
 
-This document (Mongodb service pack installation guide) describes how to install Mongodb service pack, which is a service pack provided by PaaS-TA, using Bosh.
+This document (Mongodb service pack installation guide) describes how to install Mongodb service pack, which is a service pack provided by K-PaaS, using Bosh.
 
 ### <div id='1.2'> 1.2. Range
 The installation range was prepared based on the basic installation to verify the Mongodb service pack.
@@ -46,7 +46,7 @@ If BOSH CLI v2 is not installed, you should first refer to the BOSH 2.0 installa
 ### <div id="2.2"/> 2.2. Stemcell Check
 
 Check the Stemcell list to make sure that the Stemcell required for service installation is uploaded.
-The Stemcell of this guide uses ubuntu-bionic 1.76.
+The Stemcell of this guide uses ubuntu-jammy 1.181.
 
 > $ bosh -e ${BOSH_ENVIRONMENT} stemcells
 
@@ -54,7 +54,7 @@ The Stemcell of this guide uses ubuntu-bionic 1.76.
 Using environment '10.0.1.6' as client 'admin'
 
 Name                                       Version   OS             CPI  CID  
-bosh-openstack-kvm-ubuntu-bionic-go_agent  1.76      ubuntu-bionic  -    ce507ae4-aca6-4a6d-b7c7-220e3f4aaa7d
+bosh-openstack-kvm-ubuntu-jammy-go_agent  1.181      ubuntu-jammy  -    ce507ae4-aca6-4a6d-b7c7-220e3f4aaa7d
 
 (*) Currently deployed
 
@@ -74,7 +74,7 @@ $ bosh -e ${BOSH_ENVIRONMENT} upload-stemcell -n {STEMCELL_URL}
 
 Download the deployment needed from Git Repository and place the file at the service installation directory 
 
-- Service Deployment Git Repository URL : https://github.com/PaaS-TA/service-deployment/tree/v5.1.5
+- Service Deployment Git Repository URL : https://github.com/K-PaaS/service-deployment/tree/v5.1.25.1
 
 ```
 # Deployment File Download , make directory, change directory
@@ -82,16 +82,16 @@ $ mkdir -p ~/workspace
 $ cd ~/workspace
 
 # Deployment File Download
-$ git clone https://github.com/PaaS-TA/service-deployment.git -b v5.1.5
+$ git clone https://github.com/K-PaaS/service-deployment.git -b v5.1.25.1
 
 # Download common_vars.yml file (download if common_vars.yml does not exist)
-$ git clone https://github.com/PaaS-TA/common.git
+$ git clone https://github.com/K-PaaS/common.git
 ```
 
 ### <div id="2.4"/> 2.4. Deployment File Modification
 
 The BOSH Deployment manifest is a YAML file that defines the properties of components elements and deployments.
-Cloud config is used for network, vm_type, and disk_type used in Deployment files, and refer to the PaaS-TA AP installation guide for the usage.
+Cloud config is used for network, vm_type, and disk_type used in Deployment files, and refer to the K-PaaS AP installation guide for the usage.
 
 - Check the Cloud config settings.  
 
@@ -123,7 +123,7 @@ networks:
   subnets:
   - az: z1
     cloud_properties:
-      security_groups: paasta-security-group
+      security_groups: ap-security-group
       subnet: subnet-00000000000000000
     dns:
     - 8.8.8.8
@@ -156,19 +156,19 @@ Succeeded
 ```
 
 - Modify common_vars.yml to suit the server environment.
-- Variables used in MongoDB are: system_domain, paasta_admin_username, paasta_admin_password, paasta_nats_ip, paasta_nats_port, paasta_nats_user, and	paasta_nats_password.
+- Variables used in MongoDB are: system_domain, ap_admin_username, ap_admin_password, ap_nats_ip, ap_nats_port, ap_nats_user, and ap_nats_password.
 
 > $ vi ~/workspace/common/common_vars.yml
 ```
 ... ((Skip)) ...
 
 system_domain: "61.252.53.246.nip.io"		# Domain (Same as HAProxy Public IP when using nip.io)
-paasta_admin_username: "admin"			# PaaS-TA Admin Username
-paasta_admin_password: "admin"			# PaaS-TA Admin Password
-paasta_nats_ip: "10.0.1.121"
-paasta_nats_port: 4222
-paasta_nats_user: "nats"
-paasta_nats_password: "7EZB5ZkMLMqT73h2Jh3UsqO"	# PaaS-TA Nats Password (After logging in to CredHub, check with the command 'credhub get -n /micro-bosh/paasta/nats_password')
+ap_admin_username: "admin"		        	# Application Platform Admin Username
+ap_admin_password: "admin"	        		# Application Platform Admin Password
+ap_nats_ip: "10.0.1.121"
+ap_nats_port: 4222
+ap_nats_user: "nats"
+ap_nats_password: "7EZB5ZkMLMqT73h2Jh3UsqO"	# Application Platform Nats Password (After logging in to CredHub, check with the command 'credhub get -n /micro-bosh/ap/nats_password')
 
 ... ((Skip)) ...
 
@@ -179,8 +179,8 @@ paasta_nats_password: "7EZB5ZkMLMqT73h2Jh3UsqO"	# PaaS-TA Nats Password (After l
 > $ vi ~/workspace/service-deployment/mongodb/vars.yml
 ```
 # STEMCELL
-stemcell_os: "ubuntu-bionic"                                     # stemcell os
-stemcell_version: "1.76"                                         # stemcell version
+stemcell_os: "ubuntu-jammy"                                     # stemcell os
+stemcell_version: "1.181"                                         # stemcell version
 
 # NETWORK
 private_networks_name: "default"                                 # private network name
@@ -222,47 +222,7 @@ mongodb_master1_replSet_hosts: "<MONGODB_MASTER1_REPLSET_HOSTS>"         # The f
 # MONGODB_MASTER2
 mongodb_master2_azs: [z3]                                                # mongodb master2 azs
 mongodb_master2_instances: 1                                             # mongodb master2 instances
-mongodb_master2_vm_type: "medium"                                        # mongodb master2 vm type
-mongodb_master2_persistent_disk_type: "10GB"                             # mongodb master2 persistent disk type
-mongodb_master2_static_ips: "<MONGODB_MASTER2_PRIVATE_IP>"               # mongodb master2's private IP (e.g. "10.0.81.13")
-mongodb_master2_replSet_hosts: "<MONGODB_MASTER2_REPLSET_HOSTS>"         # The first host is the master2 ip of replicaSet2,  followed by the IPs of slave2. (e.g. ["10.0.81.13", "10.0.81.14","10.0.81.15"])
 
-# MONGODB_MASTER3 : use to operations/add-replica-set.yml
-mongodb_master3_azs: [z3]                                                # mongodb master3 azs
-mongodb_master3_instances: 1                                             # mongodb master3 instances
-mongodb_master3_vm_type: "medium"                                        # mongodb master3 vm type
-mongodb_master3_persistent_disk_type: "10GB"                             # mongodb master3 persistent disk type
-mongodb_master3_static_ips: "<MONGODB_MASTER3_PRIVATE_IP>"               # mongodb master3's private IP (e.g. "10.0.81.16")
-mongodb_master3_replSet_hosts: "<MONGODB_MASTER3_REPLSET_HOSTS>"         # The first host is the master3 ip of replicaSet3,  followed by the IPs of slave3. (e.g. ["10.0.81.16", "10.0.81.17","10.0.81.18"])
-
-# MONGODB_CONFIG
-mongodb_config_azs: [z3]                                                 # mongodb config azs
-mongodb_config_instances: 2                                              # mongodb config instances : less than 3 instances
-mongodb_config_vm_type: "medium"                                         # mongodb config vm type
-mongodb_config_persistent_disk_type: "10GB"                              # mongodb config persistent disk type
-mongodb_config_static_ips: "<MONGODB_CONFIG_PRIVATE_IPS>"                # mongodb config's private IPs (e.g. ["10.0.81.19", "10.0.81.20"])
-
-# MONGODB_SHARD
-mongodb_shard_azs: [z3]                                                  # mongodb shard azs
-mongodb_shard_instances: 1                                               # mongodb shard instances
-mongodb_shard_vm_type: "medium"                                          # mongodb shard vm type
-mongodb_shard_static_ips: "<MONGODB_SHARD_PRIVATE_IP>"                   # mongodb shard's private IP (e.g. "10.0.81.21")
-
-# MONGODB_BROKER
-mongodb_broker_azs: [z3]                                                 # mongodb broker azs
-mongodb_broker_instances: 1                                              # mongodb broker instances
-mongodb_broker_vm_type: "medium"                                         # mongodb broker vm type
-mongodb_broker_static_ips: "<MONGODB_BROKER_PRIVATE_IP>"                 # mongodb broker's private IP (e.g. "10.0.81.22")
-
-# BROKER_REGISTRAR
-broker_registrar_broker_azs: [z3]                                        # broker registrar azs
-broker_registrar_broker_instances: 1                                     # broker registrar instances
-broker_registrar_broker_vm_type: "medium"                                # broker registrar vm type
-
-# BROKER_DEREGISTRAR
-broker_deregistrar_broker_azs: [z3]                                      # broker deregistrar azs
-broker_deregistrar_broker_instances: 1                                   # broker deregistrar instances
-broker_deregistrar_broker_vm_type: "medium"                              # broker deregistrar vm type
 ```
 
 'pem.yml' does not modify the contents because MongoDB's own pem is registered and used.
@@ -280,7 +240,7 @@ broker_deregistrar_broker_vm_type: "medium"                              # broke
 
 # VARIABLES
 COMMON_VARS_PATH="<COMMON_VARS_FILE_PATH>"  # common_vars.yml File Path (e.g. ../../common/common_vars.yml)
-BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"      # bosh director alias name (Create-bosh-login.sh provided by PaaS-TA. If is not in use, check the name in bosh envs and enter)
+BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"      # bosh director alias name (Create-bosh-login.sh provided by K-PaaS. If is not in use, check the name in bosh envs and enter)
 
 # DEPLOY
 bosh -e ${BOSH_ENVIRONMENT} -n -d mongodb deploy --no-redact mongodb.yml \
@@ -328,7 +288,7 @@ Succeeded
 
 ## <div id='3'> 3. Mongodb Linkage Sample Web App Description
 
-This Sample Web App is deployed to PaaS-TA and can be used with Mongodb's service on Provision and Bind.
+This Sample Web App is deployed to K-PaaS AP and can be used with Mongodb's service on Provision and Bind.
 
 ### <div id='3.1'> 3.1. Mongodb Service Broker Registration
 
@@ -342,7 +302,6 @@ When registering a service broker, you must be logged in as a user who can regis
 ```
 Getting service brokers as admin...
 
-name   url
 No service brokers found
 ```
 
@@ -412,36 +371,35 @@ broker: mongodb-shard-service-broker
 
 ### <div id='3.2'> 3.2. Sample App Download
 
-Sample Web App is deployed as an App to PaaS-TA. When the app is deployed and operated, initial data is generated by accessing the bound Mongodb service connection information.
+Sample Web App is deployed as an App to K-PaaS AP. When the app is deployed and operated, initial data is generated by accessing the bound Mongodb service connection information.
 When the app runs normally after deployment is completed, access the app through a browser or curl to display Mongodb environment information (service connection information) and initial loaded data.
 
 - Download zip file of sample apps
 ```
-$ wget https://nextcloud.paas-ta.org/index.php/s/NDgriPk5cgeLMfG/download --content-disposition  
-$ unzip paasta-service-samples.zip  
-$ cd paasta-service-samples/mongodb  
+$ wget https://nextcloud.k-paas.org/index.php/s/scFDGk9iZBg8apZ/download --content-disposition  
+$ unzip ap-service-samples-db49d1e.zip  
+$ cd ap-service-samples/mongodb  
 ```
 
 <br>
 
-### <div id='3.3'> 3.3. Request for service in PaaS-TA
+### <div id='3.3'> 3.3. Request for service in K-PaaS AP
 
 In order to use the Mongodb service in the Sample Web App, you must request for a service (Provision).
 *Note: When requesting for a service, you must be logged in as a user who can request for a service on an open cloud platform.
 
 
-- Check whether there is a service in the PaaS-TA Marketplace first.
+- Check whether there is a service in the K-PaaS Marketplace first.
 
 > $ cf marketplace
 
 ```  
-Getting services from marketplace in org system / space dev as admin...
-OK
+Getting all service offerings from marketplace in org system / space dev as admin...
 
-service      plans          description
-Mongo-DB     default-plan   A simple mongo implementation
+offering   plans          description                     broker
+Mongo-DB   default-plan   A simple mongo implementation   mongodb-shard-service-broker
 
-TIP:  Use 'cf marketplace -s SERVICE' to view descriptions of individual plans of a given service.
+TIP:  Use 'cf marketplace -e SERVICE_OFFERING' to view descriptions of individual plans of a given service offering.
 ```  
 
 <br>
@@ -460,6 +418,8 @@ cf create-service [SERVICE] [PLAN] [SERVICE_INSTANCE]
 > $ cf create-service Mongo-DB default-plan mongodb-service-instance 
 ```  
 Creating service instance mongodb-service-instance in org system / space dev as admin...
+
+Service instance mongodb-service-instance created.
 OK
 ```  
 
@@ -469,11 +429,10 @@ OK
 
 > $ cf services 
 ```  
-Getting services in org system / space dev as admin...
-OK
+Getting service instances in org system / space dev as admin...
 
-name                      service    plan                 bound apps            last operation
-mongodb-service-instance  Mongo-DB   default-plan                               create succeeded
+name                       offering   plan           bound apps   last operation     broker                         upgrade available
+mongodb-service-instance   Mongo-DB   default-plan                create succeeded   mongodb-shard-service-broker   no
 ```  
 
 <br>
@@ -499,17 +458,26 @@ applications:
 - Deploy the app with --no-start option.  
 > $ cf push --no-start 
 ```  
-Applying manifest file /home/ubuntu/workspace/samples/paasta-service-samples/mongodb/manifest.yml...
+Pushing app hello-spring-mongodb to org system / space dev as admin...
+Applying manifest file /home/ubuntu/workspace/samples/ap-service-samples/mongodb/manifest.yml...
+Updating with these attributes...
+  ---
+  applications:
++ - name: hello-spring-mongodb
++   instances: 1
+    path: /home/ubuntu/workspace/samples/ap-service-samples/mongodb/hello-spring-mongodb.war
+    memory: 1G
++   default-route: true
 Manifest applied
 Packaging files to upload...
 Uploading files...
- 17.06 MiB / 17.06 MiB [=================================================================================================
+ 17.16 MiB / 17.16 MiB [========================================================================================================] 100.00% 1s
 
 Waiting for API to complete processing files...
 
 name:              hello-spring-mongodb
 requested state:   stopped
-routes:            hello-spring-mongodb.paasta.kr
+routes:            hello-spring-mongodb.ap.kr
 last uploaded:     
 stack:             
 buildpacks:        
@@ -519,7 +487,7 @@ sidecars:
 instances:      0/1
 memory usage:   1024M
      state   since                  cpu    memory   disk     details
-#0   down    2021-11-22T05:13:12Z   0.0%   0 of 0   0 of 0   
+#0   down    2023-10-11T04:25:42Z   0.0%   0 of 0   0 of 0   
 ```  
   
 - Request for service instance bind created by Sample Web App.
@@ -527,7 +495,7 @@ memory usage:   1024M
 > $ cf bind-service hello-spring-Mongodb mongodb-service-instance 
 
 ```
-Binding service mongodb-service-instance to app hello-spring-Mongodb in org system / space dev as admin...
+Binding service instance mongodb-service-instance to app hello-spring-Mongodb in org system / space dev as admin...
 OK
 ```
 
@@ -572,9 +540,9 @@ Restarting app hello-spring-mongodb in org system / space dev as admin...
 
 Staging app and tracing logs...
    Downloading binary_buildpack...
-   Downloading nodejs_buildpack...
-   Downloading php_buildpack...
-   Downloading nginx_buildpack...
+   Downloading ruby_buildpack...
+   Downloading java_buildpack...
+   Downloading dotnet_core_buildpack...
 
 ........
 ........
@@ -583,19 +551,25 @@ Instances starting...
 
 name:              hello-spring-mongodb
 requested state:   started
-routes:            hello-spring-mongodb.paasta.kr
-last uploaded:     Mon 22 Nov 05:19:59 UTC 2021
+routes:            hello-spring-mongodb.ap.kr
+last uploaded:     Wed 11 Oct 13:28:49 KST 2023
 stack:             cflinuxfs3
 buildpacks:        
-	name             version                                                             detect output   buildpack na
-	java_buildpack   v4.37-https://github.com/cloudfoundry/java-buildpack.git#ab2b4512   java            java
+	name             version                                                         detect output   buildpack name
+	java_buildpack   v4.50-git@github.com:cloudfoundry/java-buildpack.git#5fe41f89   java            java
 
 type:           web
 sidecars:       
 instances:      1/1
 memory usage:   1024M
-     state     since                  cpu    memory    disk       details
-#0   running   2021-11-22T05:20:19Z   0.0%   0 of 1G   8K of 1G   
+     state     since                  cpu    memory    disk      details
+#0   running   2023-10-11T04:29:04Z   0.0%   0 of 1G   0 of 1G   
+
+type:           task
+sidecars:       
+instances:      0/0
+memory usage:   1024M
+There are no running instances of this process.
 
 ```  
 
@@ -606,48 +580,8 @@ memory usage:   1024M
 
 
 
-[mongodb_image_01]:./images/mongodb/mongodb_image_01.png
-[mongodb_image_02]:./images/mongodb/mongodb_image_02.png
-[mongodb_image_03]:./images/mongodb/mongodb_image_03.png
-[mongodb_image_04]:./images/mongodb/mongodb_image_04.png
-[mongodb_image_05]:./images/mongodb/mongodb_image_05.png
-[mongodb_image_06]:./images/mongodb/mongodb_image_06.png
-[mongodb_image_07]:./images/mongodb/mongodb_image_07.png
-[mongodb_image_08]:./images/mongodb/mongodb_image_08.png
-[mongodb_image_09]:./images/mongodb/mongodb_image_09.png
-[mongodb_image_10]:./images/mongodb/mongodb_image_10.png
-[mongodb_image_11]:./images/mongodb/mongodb_image_11.png
-[mongodb_image_12]:./images/mongodb/mongodb_image_12.png
-[mongodb_image_13]:./images/mongodb/mongodb_image_13.png
-[mongodb_image_14]:./images/mongodb/mongodb_image_14.png
-[mongodb_image_15]:./images/mongodb/mongodb_image_15.png
-[mongodb_image_16]:./images/mongodb/mongodb_image_16.png
-[mongodb_image_17]:./images/mongodb/mongodb_image_17.png
-[mongodb_image_18]:./images/mongodb/mongodb_image_18.png
-[mongodb_image_19]:./images/mongodb/mongodb_image_19.png
-[mongodb_image_20]:./images/mongodb/mongodb_image_20.png
-[mongodb_image_21]:./images/mongodb/mongodb_image_21.png
-[mongodb_image_22]:./images/mongodb/mongodb_image_22.png
 [mongodb_image_23]:./images/mongodb/mongodb_image_23.png
-[mongodb_image_24]:./images/mongodb/mongodb_image_24.png
-[mongodb_image_25]:./images/mongodb/mongodb_image_25.png
-[mongodb_image_26]:./images/mongodb/mongodb_image_26.png
-[mongodb_image_27]:./images/mongodb/mongodb_image_27.png
-[mongodb_image_28]:./images/mongodb/mongodb_image_28.png
-[mongodb_image_29]:./images/mongodb/mongodb_image_29.png
-[mongodb_image_30]:./images/mongodb/mongodb_image_30.png
-[mongodb_image_31]:./images/mongodb/mongodb_image_31.png
-[mongodb_image_32]:./images/mongodb/mongodb_image_32.png
-[mongodb_image_33]:./images/mongodb/mongodb_image_33.png
-[mongodb_image_34]:./images/mongodb/mongodb_image_34.png
-[mongodb_image_35]:./images/mongodb/mongodb_image_35.png
-[mongodb_image_36]:./images/mongodb/mongodb_image_36.png
-[mongodb_image_37]:./images/mongodb/mongodb_image_37.png
-[mongodb_image_38]:./images/mongodb/mongodb_image_38.png
-[mongodb_image_39]:./images/mongodb/mongodb_image_39.png
-[mongodb_image_40]:./images/mongodb/mongodb_image_40.png
-[mongodb_image_41]:./images/mongodb/mongodb_image_41.png
-[mongodb_image_42]:./images/mongodb/mongodb_image_42.png
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > MongoDB Service
+
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Install](../README.md) > MongoDB Service

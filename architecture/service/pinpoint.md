@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > Pinpoint APM Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > Pinpoint APM Service
 
 ## Purpose
 This document provides the Architecture of Application Platform (AP) - Pinpoint APM Service.
@@ -7,7 +7,7 @@ This document provides the Architecture of Application Platform (AP) - Pinpoint 
 ## System Configuration Diagram
 The Pinpoint APM Service provides a UI to track transaction flows between components of user applications and to collect data and visually check them to identify problem areas and potential bottlenecks.
 
-![pinpoint_architecture_eng](https://user-images.githubusercontent.com/104418463/165662070-99ccbf52-b8e0-4848-8fca-1cb3686c5c0b.png)
+![pinpoint_architecture_eng](./image/pinpoint_architecture.png)
 
 
 <br>
@@ -22,4 +22,4 @@ The Pinpoint APM Service provides a UI to track transaction flows between compon
 
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > Pinpoint APM Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > Pinpoint APM Service

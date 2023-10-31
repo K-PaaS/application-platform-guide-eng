@@ -1,14 +1,14 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > PaaS-TA Multi CPI
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > K-PaaS Multi CPI
 
 ## Purpose
-This document provides the Architecture of PaaS-TA Multi CPI.
+This document provides the Architecture of K-PaaS Multi CPI.
 <br><br>
 
 ## System Configuration Diagram
 
 
 
-![PaaS-TA Multi CPI Architecture](image/ap_architecture_multi_cpi.png)
+![K-PaaS Multi CPI Architecture](image/ap_architecture_multi_cpi.png)
 
 <br>
 
@@ -27,4 +27,4 @@ This controls the Multi IaaS environment through CPIs installed in BOSH Director
 BOSH Document: [http://bosh.io](http://bosh.io)  
 BOSH Deployment: [https://github.com/cloudfoundry/bosh-deployment](https://github.com/cloudfoundry/bosh-deployment)  
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > PaaS-TA Multi CPI
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > K-PaaS Multi CPI

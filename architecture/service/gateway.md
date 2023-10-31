@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > Gateway Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > Gateway Service
 
 ## Purpose
 This document provides the Architecture of Application Platform (AP) - Gateway Service.
@@ -9,7 +9,7 @@ Gateway Service is an open-source API managing platform configured based on WS02
 It supports API design, publishing, access management and security application, API statistics, and API rate limiting.
 It provides an API-gateway server (WSO2) dedicated to user organizations rather than a multi-tenant-based shared service.
 
-![gateway_architecture_eng](https://user-images.githubusercontent.com/104418463/165663690-344c6800-c8f0-4d97-adf8-32a4ba12371b.png)
+![gateway_architecture_eng](./image/gateway_architecture.png)
 
 
 <br>
@@ -22,4 +22,4 @@ It provides an API-gateway server (WSO2) dedicated to user organizations rather 
 
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > Gateway Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > Gateway Service

@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Python Development
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Python Development
 
 ## Table of Contents
 
@@ -16,14 +16,14 @@
 		-	[2.2.2.	python Virtual Environment Configuration](#2-2-2)  
 		-	[2.2.3.	Django Installation](#2-2-3)  
 
-	-	[2.3. Development2-3)  
+	-	[2.3. Development](#2-3)  
 		-	[2.3.1.	Create django Application](#2-3-1)  
 		-	[2.3.2.	Application Environment Setting](#2-3-2)  
 		-	[2.3.3.	VCAP_SERVICES Environment Setting Information](#2-3-3)  
 		-	[2.3.4.	Connect Mysql](#2-3-4)  
 		-	[2.3.5.	Connect Cubrid](#2-3-5)  
 		-	[2.3.6.	Connect MongoDB](#2-3-6)  
-		-	[2.3.7.	Connect Redis](#2-7-7)  
+		-	[2.3.7.	Connect Redis](#2-3-7)  
 		-	[2.3.8.	Connect RabbitMQ](#2-3-8)  
 		-	[2.3.9.	Connect GlusterFS ](#2-3-9)  
 
@@ -173,13 +173,13 @@ Windows x86-64 MSI installer
 
  ※ A user who wants to install a warehouse in a virtual environment inputs a command while executing the virtual environment.
 
-## <div id='2-2'></div> 2.3. Development
+## <div id='2-3'></div> 2.3. Development
 Because data management for sample applications uses either MySQL, CubridDB, or MongoDB, it is determined by the DBType value of the body of the request upon API request.
 
 ※Sample Application Download
 The completed sample application can be downloaded from the /OpenPaas-Sample/python-sample-app link below.
 <br>
-Sample-App: [https://nextcloud.paas-ta.org/index.php/s/x8Tg37WDFiL5ZDi/download](https://nextcloud.paas-ta.org/index.php/s/x8Tg37WDFiL5ZDi/download)
+Sample-App: [https://nextcloud.k-paas.org/index.php/s/x8Tg37WDFiL5ZDi/download](https://nextcloud.k-paas.org/index.php/s/x8Tg37WDFiL5ZDi/download)
 
 
 ##### <div id='2-3-1'></div> 2.3.1. Create django Application
@@ -626,7 +626,7 @@ def make_connection():
 
 ##### <div id='2-4-1'></div> 2.4.1. Download the Completed Sample Application
 After the application development process described in [2.3. Development], the completed sample application can be downloaded from the link below. If you download the entire Python-sample-app directory from the link below, you can use the completed sample application to proceed with the [2.4. Deployment] process.  
-Sample-App: [https://nextcloud.paas-ta.org/index.php/s/x8Tg37WDFiL5ZDi/download](https://nextcloud.paas-ta.org/index.php/s/x8Tg37WDFiL5ZDi/download)
+Sample-App: [https://nextcloud.k-paas.org/index.php/s/x8Tg37WDFiL5ZDi/download](https://nextcloud.k-paas.org/index.php/s/x8Tg37WDFiL5ZDi/download)
 
 ##### <div id='2-4-2'></div> 2.4.2. Log in to Open Cloud Platform
 
@@ -709,7 +709,7 @@ See the table below for a description of each package.
 </tr>
 <tr><td>MySQL-python</td><td>1.2.3</td><td>Driver to link mysql with Django application</td>
 </tr>
-<tr><td>CUBRID-Python</td><td>>9.3.0.0001</td><td>python과 Cubrid를 연동하는 드라이버</td>
+<tr><td>CUBRID-Python</td><td>>9.3.0.0001</td><td>Driver to link Cubrid with Python</td>
 </tr>
 <tr><td>pymongo</td><td>2.8</td><td>Driver to link python with Mongodb</td>
 </tr>
@@ -969,4 +969,4 @@ A window for entering the application name is created. The application name is a
 [python-36]:./images/python/image36.png
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Python Development
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Python Development

@@ -1,16 +1,16 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > User Portal
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > User Portal
 
 ## Table of Contents
 1. [Document Outline](#1)
      * [1.1. Purpose](#2)
      * [1.2. Range](#3)
-2. [Create PaaS-TA User Portal Account](#4)
-     * [2.1.  Create PaaS-TA User Portal Account](#5)
-     * [2.2.  Reset PaaS-TA User Portal Password](#6)
-     * [2.3.  Login to PaaS-TA User Portal and Create Organization](#7)
-3. [PaaS-TA User Portal Manual](#8)
-     * [3.1.  Construct PaaS-TA User Portal Menu](#9)
-     * [3.2.  PaaS-TA User Portal Menu Description](#10)
+2. [Create K-PaaS AP User Portal Account](#4)
+     * [2.1.  Create K-PaaS AP User Portal Account](#5)
+     * [2.2.  Reset K-PaaS AP User Portal Password](#6)
+     * [2.3.  Login to K-PaaS AP User Portal and Create Organization](#7)
+3. [K-PaaS AP User Portal Manual](#8)
+     * [3.1.  Construct K-PaaS AP User Portal Menu](#9)
+     * [3.2.  K-PaaS AP User Portal Menu Description](#10)
      * [3.2.1.  Dashboard](#11)
      * [3.2.1.1.  Organization and Space](#12)
      * [3.2.1.1.1.  Organization Management](#13)
@@ -36,7 +36,7 @@
      * [3.2.1.2.2.  Service Management](#36)
      * [3.2.1.2.2.1.  Create Service](#37)
      * [3.2.1.2.2.2.  Modify Service Name](#38)
-     * [3.2.1.2.2.4.  Delete Service](#39)
+     * [3.2.1.2.2.3.  Delete Service](#39)
      * [3.2.1.2.3.1.  Create User Provided Service](#40)
      * [3.2.1.2.3.2.  Modify User Provided Service](#41)
      * [3.2.1.2.3.3.  Delete User Provided Service](#42)
@@ -82,7 +82,8 @@
      * [3.2.5.3.1.  User Address](#77)
      * [3.2.5.4.  My Organization](#81)
      * [3.2.5.4.1  Leave My Organization](#79) 
-     * [3.2.5.6.  Logout](#80)
+     * [3.2.5.5.  Delete Account](#80)
+     * [3.2.5.6.  Logout](#81)
      * [3.3.6.1.  Check Dashboard CAAS Deployments](#82)
      * [3.3.6.2.  Check Dashboard CAAS Pods](#83)
      * [3.3.6.3.  Check Dashboard CAAS Replica Sets](#84)
@@ -95,22 +96,22 @@
 
 ### <div id='2'/> 1.1. Purpose
       
-This document describes how to use the PaaS-TA user portal.
+This document describes how to use the K-PaaS AP user portal.
 
 
 ### <div id='3'/> 1.2. Range
       
-This document is written on how to use the PaaS-TA User Portal based on Windows environments.
+This document is written on how to use the K-PaaS AP User Portal based on Windows environments.
 
 
-# <div id='4'/> 2.  Create PaaS-TA User Portal Account
+# <div id='4'/> 2.  Create K-PaaS AP User Portal Account
 
-This chapter describes the account creation and password reset screen for using the PaaS-TA user portal.
+This chapter describes the account creation and password reset screen for using the K-PaaS AP user portal.
 
 
-### <div id='5'/> 2.1.  Create PaaS-TA User Portal Account
+### <div id='5'/> 2.1.  Create K-PaaS AP User Portal Account
 
-1.  Access to PaaS-TA User Portal.
+1.  Access to K-PaaS AP User Portal.
 ![2-1-0]
 
 2.  Click “Login”. 
@@ -125,14 +126,15 @@ This chapter describes the account creation and password reset screen for using 
 5.  Click the "Verify Email Address" link in the received email.<br>
 
      > **Email Format to Receive**
-     > ![email]
+     
+     ![email]
 
 6.  Enter Username and Password. Click “Create Account" to complete the account creation.
 
 ![2-1-4]
 
 
-### <div id='6'/> 2.2.  Reset PaaS-TA User Portal Password
+### <div id='6'/> 2.2.  Reset K-PaaS AP User Portal Password
 1.  Click the “Reset password” link.
 ![2-2-0]
 
@@ -142,13 +144,14 @@ This chapter describes the account creation and password reset screen for using 
 3.  Click the "Reset Password" link in the received email.
 
      > **Email Format to Receive**
-     > ![passwordemail]
+     
+     ![passwordemail]
 
 4.  Enter new password. Click the “Change” button to complete the password reset. 
 ![2-2-2]
 
 
-### <div id='7'/> 2.3.  Login to PaaS-TA User Portal and Create Organization
+### <div id='7'/> 2.3.  Login to K-PaaS AP User Portal and Create Organization
 1.  Enter user ID and Password. Click “SIGN IN” to log in to the user portal.
 ![2-3-0]
 
@@ -159,14 +162,14 @@ This chapter describes the account creation and password reset screen for using 
 ![2-3-1]
 
 
-# <div id='8'/> 3. PaaS-TA User Portal Manual
+# <div id='8'/> 3. K-PaaS AP User Portal Manual
 
-This chapter describes the menu configuration and screen description of the PaaS-TA user portal.
+This chapter describes the menu configuration and screen description of the K-PaaS AP user portal.
 
 
-### <div id='9'/> 3.1.  Construct PaaS-TA User Portal Menu
+### <div id='9'/> 3.1.  Construct K-PaaS AP User Portal Menu
 
-The PaaS-TA User Portal consists of a section that manages organizations, spaces, and applications, a section that generates development environments and services, and an information check section that checks documents and menus.
+The K-PaaS AP User Portal consists of a section that manages organizations, spaces, and applications, a section that generates development environments and services, and an information check section that checks documents and menus.
 
 <table>
   <tr>
@@ -198,9 +201,9 @@ The PaaS-TA User Portal consists of a section that manages organizations, spaces
 </table>
 
 
-### <div id='10'/> 3.2.  PaaS-TA User Portal Menu Description
+### <div id='10'/> 3.2.  K-PaaS AP User Portal Menu Description
 
-This chapter describes the three main categories of PaaS-TA user portals.
+This chapter describes the three main categories of K-PaaS AP user portals.
 
 
 ### <div id='11'/> 3.2.1.   Dashboard
@@ -220,7 +223,7 @@ This chapter describes the three main categories of PaaS-TA user portals.
 2.  Click “Add New Organization” to proceed to the organization creating a page.
 ![2-3-1-1]
 
-     > **To enable "Add New Organization"** button, [PaaS-TA Portal Deployment Guide Document](https://github.com/PaaS-TA/Guide-3.0-Penne-/blob/master/Use-Guide/portal/PaaS-TA%20Portal%20%EB%B0%B0%ED%8F%AC%20%EA%B0%80%EC%9D%B4%EB%93%9C_v1.1.md#7-1) Refer to **2.2. Enable create user organization Flag**.
+     > **To enable "Add New Organization"** button, [AP Portal Deployment Guide Document](https://github.com/K-PaaS/application-platform-guide-eng/blob/master/install/portal/vm_type_ui.md#-31-enable-the-users-organization-creating-flag:~:text=3.1.%20Enable%20the%20user%27s%20organization%20creating%20flag) Refer to **3.1. Enable the user's organization creating flag**.
 
 3.  Enter Organization Name. Click "Create Organization" to complete. 
 ![2-3-1-2]
@@ -323,6 +326,7 @@ This chapter describes the three main categories of PaaS-TA user portals.
 
 4.  An email is sent to the user who has been invited. The invited user will have access to the organization when “Accept Invite" link has been clicked.
      > **Email Format to Receive**
+
 ![inviteEmail]
 
 ### <div id='24'/> 3.2.1.1.4.2.  Remove Member
@@ -414,7 +418,7 @@ This chapter describes the three main categories of PaaS-TA user portals.
 2. Enter the new name of the service. Click the "Change" button to complete the service name change.
 ![3-2-1-2-3-4-1]
 
-### <div id='39'/> 3.2.1.2.2.4.  Delete Service
+### <div id='39'/> 3.2.1.2.2.3.  Delete Service
 1.   Click ① sub-menu of the service to delete from the list and click ②“delete”.
 ![3-2-1-2-3-5-0]
 
@@ -580,15 +584,15 @@ Click the name of the application created in the catalog list to go to the appli
 ![3-2-1-3-7-1-0]
 
 ### <div id='90'/> 3.2.1.3.7.2.  Tail Log
-1.  Clock ① **</>Tail Logs** link to check the newly opened Tail Logs page. Click ② "URL LInk". 
+1.  Clock "Tail Logs" link to check the newly opened Tail Logs page.
 ![3-2-1-3-7-1-1] 
 
-2.  Check the Tail Logs tab to view the output of the real-time log from the URL page opened.
+2.  Check the Tail Logs tab to view the output of the real-time log.
 ![3-2-1-3-7-1-2]
 
 ### <div id='91'/> 3.2.1.3.7.3. Auto Scaling
 ```diff
-#### Install monitoring provided by PaaS-TA before proceeding.
+#### Install monitoring provided by K-PaaS AP before proceeding.
 ```
 ![3-2-1-3-7-1-3]
 1.  Click monitoring of ① App Layout. Click ② Setting tab button.
@@ -880,4 +884,4 @@ Click the name of the application created in the catalog list to go to the appli
 [cass-dashboard4]:./images/user-portal/cass-dashboard4.png
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > User Portal
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > User Portal

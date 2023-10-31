@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Node.js API Service Metering Development
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Node.js API Service Metering Development
 
 ## Table of Contents
 1. [Document Outline](#1)
@@ -24,7 +24,7 @@
 	     * [2.6.3 Billing Policy](#21)
 	     * [2.6.4 Policy Registration](#22)
      * [2.7 Deployment](#23)
-	     * [2.7.1 PaaS-TA Platform Login](#24)
+	     * [2.7.1 Application Platform Login](#24)
 	     * [2.7.2 Create API Service Broker](#25)
 	     * [2.7.3 API Service Application Deployment and Service Registration](#26)
 	     * [2.7.4 API Service Interworking Sample Application Deployment and Service Connection](#27)
@@ -38,10 +38,10 @@
 
 ### <div id='2'></div> 1.1 Purpose
 
-This document (the Node.js API Service Metering Application Development Guide) describes how to meter API services by interworking the metering plug-in of the PaaS-TA platform project with the Node.js API application.
+This document (the Node.js API Service Metering Application Development Guide) describes how to meter API services by interworking the metering plug-in of the Application platform project with the Node.js API application.
 
 ### <div id='3'></div> 1.2 Range
-The range of this document is limited to the development of Node.js API service application and CF-Abacus interworking of PaaS-TA platform projects.
+The range of this document is limited to the development of Node.js API service application and CF-Abacus interworking of Application platform projects.
 
 ### <div id='4'></div> 1.3 References
 **<https://docs.cloudfoundry.org/devguide/>**  
@@ -58,7 +58,7 @@ The range of this document is limited to the development of Node.js API service 
 The API service and the application using the API service are to be written in Node.js language. Bind the application that uses API Service and the API service.
 Using environmental information (VCAP_SERVICES) bound to the application, access information for each service is acquired and applied to the application to create an application that calls API services. The API service also creates an application that processes service requests and sends API usage history to CF-ABACUS.
 
-![26](https://user-images.githubusercontent.com/104418463/200229570-ed57aa12-6b47-4fff-935b-65f3f5ea13ea.png)
+![Development_Guide_Nodejs_Image01]
 
 
 <table>
@@ -168,7 +168,7 @@ If there is a service request, the sample api service processes the response to 
   </tr>
   <tr>
     <td>manifest.yml</td>
-    <td>Configuration information for applications that you apply when deploying applications to a PaaS-TA Platform<br>
+    <td>Configuration information for applications that you apply when deploying applications to a Application Platform<br>
     The name of the application, the distribution path, and the number of instances may be defined.
     </td>
   </tr>
@@ -226,7 +226,7 @@ If there is a service request, the sample api service processes the response to 
 	    "cfpack": "cfpack",               						## npm run cfpack: Packaging of compiled development sources
 	    "cfpush": "cfpush"              						## npm run cfpush: Push packaged development source to cf
 	  },
-	  "author": "PAASTA", 
+	  "author": "KPaaS", 
 	  "license": "Apache-2.0",                    				## Declare License
 	  "dependencies": {
 	    "body-parser": "^1.15.2",                 				## json parser module
@@ -276,7 +276,7 @@ applications:
     AUTH_SERVER: https://api.bosh-lite.com:443					# oauth Service Endpoint
     CLIENT_ID: abacus	                    					# oauth authentication id
     CLIENT_SECRET: secret                     					# oauth id password
-    JWTKEY: |+                             						# Authentication service public key that validates the application to service in secure mode 
+    JWTKEY: |+                             						# Authentication service public key that validates with the Auth Server to service the app in secured mode. 
       -----BEGIN PUBLIC KEY-----
       MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDHFr+KICms+tuT1OXJwhCUmR2d
       KVy7psa8xzElSyzqx7oJyfJ1JZyOzToj9T5SfTIq396agbHJWVfYphNahvZ/7uMX
@@ -304,7 +304,7 @@ applications:
 	  </tr>
 	  <tr>
 	    <td>API</td>
-	    <td>CF API URL<br>https://api.<PaaS-TA Domain></td>
+	    <td>CF API URL<br>https://api.<Application Platform Domain></td>
 	  </tr>
 	  <tr>
 	    <td>COLLECTOR</td>
@@ -319,7 +319,7 @@ applications:
 	  <tr>
 	    <td>AUTH_SERVER</td>
 	    <td>Set if SECURED is true.<br>
-	    - when setting CF UAA as Auth_server, https://api.<PaaS-TA Domain><br>
+	    - when setting CF UAA as Auth_server, https://api.<Application Platform Domain><br>
 	    - When setting AuthServer of Abacus as Auth_server, abacus-authserver-plugin
 	    </td>
 	  </tr>
@@ -769,7 +769,7 @@ Refer: <u><b><a href="https://github.com/cloudfoundry-incubator/cf-abacus/blob/m
   </tr>
   <tr>
     <td>manifest.yml</td>
-    <td>This is the setting for the application when deploying to the PaaS-TA platform. You can define the name of the application, the deployment path, the number of instances, etc.</td>
+    <td>This is the setting for the application when deploying to the Application platform. You can define the name of the application, the deployment path, the number of instances, etc.</td>
   </tr>
   <tr>
     <td>.npmrc</td>
@@ -835,7 +835,7 @@ Describes the code configuration of the sample application.
 	    "cfpack": "cfpack",
 	    "cfpush": "./cfpush.sh"
 	  },
-	  "author": "PAASTA",
+	  "author": "KPaaS",
 	  "license": "Apache-2.0",
 	  "dependencies": {
 	    "body-parser": "^1.15.2",
@@ -907,7 +907,7 @@ applications:
       <tr>
         <td>AUTH_SERVER</td>
         <td>Set when SECURED is true.
-        - when setting CF UAA as Auth_server, https://api.<PaaS-TA Domain>
+        - when setting CF UAA as Auth_server, https://api.<Application Platform Domain>
         - When setting AuthServer of Abacus as Auth_server, abacus-authserver-plugin
         </td>
       <tr>
@@ -1294,9 +1294,9 @@ Web screen requesting Api service
 
 ### <div id='17'></div> 2.5.3 VCAP_SERVICES Environment Setting Information
 
-To obtain access information for each service to which an application deployed on the PaaS-TA platform is bound, the information may be obtained by reading the VCAP_SERVICES environment setting information registered for each application.
+To obtain access information for each service to which an application deployed on the Application platform is bound, the information may be obtained by reading the VCAP_SERVICES environment setting information registered for each application.
 
-#### 1.  Application environment information of the PaaS-TA platform
+#### 1.  Application environment information of the Application platform
 -   When the service is bound, the configuration information in JSON format is registered for each application.
 
 		{
@@ -1348,7 +1348,7 @@ To obtain access information for each service to which an application deployed o
 
 
 
-#### 2.  How to access application environment information of the PaaS-TA platform in Node.js
+#### 2.  How to access application environment information of the Application platform in Node.js
 
 -   It can be accessed by reading the VCAP_SERVICES value of the system environment variable.
 
@@ -1712,20 +1712,20 @@ There is no need to redeploy CF-ABACUS by saving the created policy in the DB us
 
 ### <div id='23'></div> 2.7 Deployment
 
-When an application is deployed on the PaaS-TA platform, the deployed application can be used by connecting to the service provided by the PaaS-TA platform. You can access the service by accessing the application environment variables of the PaaS-TA platform only when it is executed on the PaaS-TA platform.
+When an application is deployed on the Application platform, the deployed application can be used by connecting to the service provided by the Application platform. You can access the service by accessing the application environment variables of the Application platform only when it is executed on the Application platform.
 
-### <div id='24'></div> 2.7.1 PaaS-TA Platform Login
+### <div id='24'></div> 2.7.1 Application Platform Login
 
-Log in to the PaaS-TA platform to perform the process below
+Log in to the Application platform to perform the process below
 
-	$ cf api --skip-ssl-validation https://api.<PaaS-TA Domain> # Set PaaS-TA Platform TARGET 
+	$ cf api --skip-ssl-validation https://api.<Application Platform Domain> # Set Application Platform TARGET 
 	
 	$ cf login -u <user name> -o <org name> -s <space name> # Login request
 
 
 ### <div id='25'></div> 2.7.2  Create API Service Broker
 
-Create a service to use at the application through the PaaS-TA Platform. It can be created without a separate installation process, and can obtain access information through a binding process with the application.
+Create a service to use at the application through the Application Platform. It can be created without a separate installation process, and can obtain access information through a binding process with the application.
 
 -   Service Creation (Can check the service plan and service list using the cf marketplace command.)
 -   Gradle Version: 2.2
@@ -1734,7 +1734,7 @@ Create a service to use at the application through the PaaS-TA Platform. It can 
 		$ cd <Sample service broker path>/sample_api_java_broker
 		$ gradle build -x test
 		:compileJava
-		Note: ~/PAASTA-API-METERING-SAMPLE/lib/sample_api_java_broker/src/main/java/org/openpaas/servicebroker/api/config/CatalogConfig.java uses unchecked or unsafe operations.
+		Note: ~/KPAAS-API-METERING-SAMPLE/lib/sample_api_java_broker/src/main/java/org/openpaas/servicebroker/api/config/CatalogConfig.java uses unchecked or unsafe operations.
 		Note: Recompile with -Xlint:unchecked for details.
 		:processResources
 		:classes
@@ -1783,7 +1783,7 @@ Create a service to use at the application through the PaaS-TA Platform. It can 
 
 ### <div id='26'></div> 2.7.3 API Service Application Deployment and Service Registration
 
-You can deploy the API service application to the PaaS-TA platform. The API service registered can be bound with other applications to provide API services.
+You can deploy the API service application to the Application platform. The API service registered can be bound with other applications to provide API services.
 
 #### 1.  Application Deployment
 
@@ -1995,19 +1995,19 @@ The sample application is implemented as a REST service, and the eslint/mocha/Is
 		$ npm install && npm run babel && npm test
 		
 		$ npm install && npm run babel && npm test
-		sample-api-node-service@0.0.1 ~/PAASTA-API-METERING-SAMPLE/lib/sample_api_node_service
+		sample-api-node-service@0.0.1 ~/KPAAS-API-METERING-SAMPLE/lib/sample_api_node_service
 		├─┬ abacus-babel@0.0.6-dev.8 
 		...  Installation package tree output ...
 		
 		npm WARN sample-api-node-service@0.0.1 No repository field.
 		
-		> sample-api-node-service@0.0.1 babel /home/cloud4u/workspace/PAASTA-API-METERING-SAMPLE/lib/sample_api_node_service
+		> sample-api-node-service@0.0.1 babel /home/cloud4u/workspace/KPAAS-API-METERING-SAMPLE/lib/sample_api_node_service
 		> babel
 		
 		src/app.js -> lib/app.js
 		src/test/test.js -> lib/test/test.js
 		
-		> sample-api-node-service@0.0.1 test /home/cloud4u/workspace/PAASTA-API-METERING-SAMPLE/lib/sample_api_node_service
+		> sample-api-node-service@0.0.1 test /home/cloud4u/workspace/KPAAS-API-METERING-SAMPLE/lib/sample_api_node_service
 		> eslint && mocha
 		
 		
@@ -2099,7 +2099,7 @@ CF-Abacus interworking test for API interworking and API usage can be performed 
 	<<skip>> 
 	
 	## Check API usage
-	$ curl 'http://abacus-usage-reporting.<PaaS-TA domain>/v1/metering/organizations/<Organization that deployed the sample application>/aggregated/usage'
+	$ curl 'http://abacus-usage-reporting.<Application Platform domain>/v1/metering/organizations/<Organization that deployed the sample application>/aggregated/usage'
 	
 	Example)
 	$ curl 'http://abacus-usage-reporting.bosh-lite.com/v1/metering/organizations/877d01b2-d177-4209-95b0-00de794d9bba/aggregated/usage'
@@ -2108,10 +2108,10 @@ CF-Abacus interworking test for API interworking and API usage can be performed 
 
 The sample Code can be downloaded from the site below.
 
-[Download](https://nextcloud.paas-ta.org/index.php/s/mEbGNcJjrEj7GWx/download)
+[Download](https://nextcloud.k-paas.org/index.php/s/mEbGNcJjrEj7GWx/download)
 
 
 [Development_Guide_Nodejs_Image01]:./images/nodejs_Service_Metering/2-0-0.png
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Node.js API Service Metering Development
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Node.js API Service Metering Development

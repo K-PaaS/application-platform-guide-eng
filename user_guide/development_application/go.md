@@ -1,35 +1,61 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Go Development
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Go Development
 
-### 1. Outline
+## Table of Contents
 
-#### 1.1. Document Outline
+1. [Outline](#1)
+    -	[1.1. Document Outline](#1-1)  
+         -	[1.1.1.	Purpose](#1-1-1)  
+         -	[1.1.2.	Range](#1-1-2)  
+         -	[1.1.3.	References](#1-1-3)
 
-##### 1.1.1. Purpose
+2. [Go Application Development Guide](#2)
+
+    -	[2.1. Outline](#2-1)
+    -	[2.2. Development Environment Configuration](#2-2)  
+         -	[2.2.1.	Go SDK Installation](#2-2-1)
+    -	[2.2.2.	IntelliJ IDEA Installation](#2-2-2)
+
+    -	[2.3. 개발](#2-3)  
+         -	[2.3.1.	샘플 애플리케이션 연동](#2-3-1)
+    -	[2.3.2.	샘플 애플리케이션 환경설정](#2-3-2)
+    -	[2.3.3.	VCAP\_SERVICES 환경설정 정보를 통한 연동](#2-3-3)
+    -	[2.3.4.	config.ini 파일을 통한 Database, Redis, RabbitMQ 연동](#2-3-4)
+    -	[2.3.5.	GlusterFS 연동](#2-3-5)
+
+    -	[2.4. 배포](#2-4)
+
+    -	[2.5. 테스트](#2-5)
+
+# <div id='1'></div> 1. Outline
+
+## <div id='1-1'></div> 1.1. Document Outline
+
+##### <div id='1-1-1'></div> 1.1.1. Purpose
 This document (Go Application Development Guide) is a document that presents the service packs (Mysql, MongoDB, RabbitMQ, Redis, and ClusterFS) of Open PaaS projects in connection with Go applications to use services and deploy applications.
 
-##### 1.1.2. Range
+##### <div id='1-1-2'></div> 1.1.2. Range
 The range of this document is limited to the Go application development and service pack linkage of Open PaaS projects.
 
-##### 1.1.3. References
+##### <div id='1-1-3'></div> 1.1.3. References
 -   [***https://code.google.com/p/golang-korea/wiki/EffectiveGo***](https://code.google.com/p/golang-korea/wiki/EffectiveGo)
 -   [***https://github.com/brianmario/mysql2***](https://github.com/brianmario/mysql2)
 -   [***https://github.com/redis/redis-rb***](https://github.com/redis/redis-rb)
 -   [***https://github.com/fog/fog***](https://github.com/fog/fog)
 -   [***https://www.jetbrains.com/idea/***](https://www.jetbrains.com/idea/)
 
-### 2. Go Application Development Guide
+# <div id='2'></div> 2. Go Application Development Guide
 
-#### 2.1. Outline
+## <div id='2-1'></div> 2.1. Outline
 It binds various service packs registered with Open PaaS to applications written in the Go language. Access information for each service is obtained from the bound environmental information (VCAP\_SERVICES) of the application and applied to the application for use and allows to create of Go applications in a Windows environment.
 
-#### 2.2. Development Environment Configuration
+## <div id='2-2'></div> 2.2. Development Environment Configuration
 Configure the development environment of the Go Application as shown below.
 -   OS : Windows 7 64bit
 -   Go : 1.5.2
 -   IDE : Intellij IDEA  
 There are Community and Ultimate versions for Intellij IDEA. Community Version is for Free and the Ultimate version is a 30-day trial version.
 
-##### 2.2.1. Go SDK Installation
+##### <div id='2-2-1'></div> 2.2.1. Go SDK Installation
 1.  Download Go SDK
 
 | <span id="__DdeLink__2953_294360055" class="anchor"></span>https://golang.org/dl/ |
@@ -71,7 +97,7 @@ Go SDK: go1.5.2.windows-amd64.msi
 
 -   Click “Finish”
 
-##### 2.2.2. IntelliJ IDEA Installation
+##### <div id='2-2-2'></div> 2.2.2. IntelliJ IDEA Installation
 1.  Download IDEA
 
 | http://www.jetbrains.com/idea/ |
@@ -113,11 +139,11 @@ Go SDK: go1.5.2.windows-amd64.msi
 
 -   Click the “Finish” button
 
-#### 2.3. Development
+## <div id='2-3'></div> 2.3. Development
 
 Data management for sample applications uses either MySQL or MongoDB, so when requesting API, it is determined with the DBType value in the request body.
 
-##### 2.3.1. Connect Sample Application
+##### <div id='2-3-1'></div> 2.3.1. Connect Sample Application
 
 1.  Connect Go Sample Project
 
@@ -143,7 +169,7 @@ Data management for sample applications uses either MySQL or MongoDB, so when re
 
 -   Click the “Finish” button
 
-##### 2.3.2. Sample Application Environment Setting
+##### <div id='2-3-2'></div> 2.3.2. Sample Application Environment Setting
 
 -   Install Go Plugin and Go Sample Application's environment setting in IntelliJ IDEA Environment 
 
@@ -211,7 +237,7 @@ Data management for sample applications uses either MySQL or MongoDB, so when re
 
 <img src="./images/go/image40.png" width="560" height="305" />
 
-##### 2.3.3. Connection through VCAP\_SERVICES Environment Setting Information 
+##### <div id='2-3-3'></div> 2.3.3. Connection through VCAP\_SERVICES Environment Setting Information 
 
 To obtain access information for each service to which an application deployed on an open platform is bound, information may be obtained by reading VCAP\_SERVICES environment Setting information registered for each application.
 
@@ -293,7 +319,7 @@ func sample_function_name() string {
 
 -   Refer to VCAP\_SERVICES Structure
 
-##### 2.3.4. Connecting Database, Redis, RabbitMQ  through config.ini file
+##### <div id='2-3-4'></div> 2.3.4. Connecting Database, Redis, RabbitMQ  through config.ini file
 
 1.)  config.ini
 
@@ -492,7 +518,7 @@ func initRedis(addr string) *redis.Client {
 
 ~~~
 
-##### 2.3.5. Connect GlusterFS
+##### <div id='2-3-5'></div> 2.3.5. Connect GlusterFS
 
 1.)  File Upload
 
@@ -603,7 +629,7 @@ func readOSEnvironment_gf() (string, string, string, string) {
 }
 ~~~
 
-#### 2.4. Deployment
+## <div id='2-4'></div> 2.4. Deployment
 
 -   Deploy Go Sample Application using the cf cli command.
 
@@ -671,7 +697,7 @@ buildpack: https://github.com/cloudfoundry/go-buildpack.git
 
 Since the data management of the Go Sample Application is done by either MySQL or MongoDB. Set database name(mysql or mongodb) at the environment setting information(dbtype) when deploying.
 
-#### 2.5. Test
+## <div id='2-5'></div> 2.5. Test
 
 The test can be done directly at the command window using the curl command.
 
@@ -697,4 +723,4 @@ curl -X DELETE -v http:// ”depolyed_sample_app_name”/orgs/{org_id}
 ~~~
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Go Development
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP User Guide](../README.md) > Go Development

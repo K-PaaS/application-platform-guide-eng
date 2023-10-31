@@ -1,4 +1,4 @@
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > Source Control Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > Source Control Service
 
 ## Purpose
 This document provides the Architecture of Application Platform (AP) - Source Control Service.
@@ -9,7 +9,7 @@ The Source Control Service provides a repository for securely storing the user's
 It provides a commit history, branch list, etc., and provides a UI that can check various information on the web.
 
 
-![sourcecontrol_architecture](https://user-images.githubusercontent.com/104418463/200266722-6308e1d9-5a72-475e-a7de-e6b068988c71.png)
+![sourcecontrol_architecture](./image/source_control_architecture.PNG)
 
 
 <br>
@@ -24,4 +24,4 @@ It provides a commit history, branch list, etc., and provides a UI that can chec
 | sourcecontrol-broker | 1vCPU / 2GB RAM / 2GB Extra Disk |
 
 
-### [Index](https://github.com/PaaS-TA/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > Source Control Service
+### [Index](https://github.com/K-PaaS/Guide-eng/blob/master/README.md) > [AP Architecture](../README.md) > Source Control Service

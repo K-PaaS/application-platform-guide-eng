@@ -37,7 +37,7 @@ This document is an installation guide document for BOSH2 (hereinafter referred 
 BOSH, which can deploy service systems to cloud environments, is an open-source project that integrates release engineering, development, and software lifecycle management. The purpose of this document is to install BOSH in an Inception environment (installation environment).
 
 ## <div id='1.2'/>1.2. Range
-This document was written based on installing and configuring packages and libraries for BOSH installation based on Linux environments (Ubuntu 18.04) and using them to install BOSH.
+This document was written based on installing and configuring packages and libraries for BOSH installation based on Linux environments (Ubuntu 22.04) and using them to install BOSH.
 BOSH supports IaaS such as VMware vSphere, Google Cloud Platform, Amazon Web Services EC2, OpenStack, and Microsoft Azure, and the IaaS environment verified is OpenStack, and vSphere environments.
 
 ## <div id='1.3'/>1.3. References
@@ -53,9 +53,9 @@ Cloud Foundry Document: [https://docs.cloudfoundry.org](https://docs.cloudfoundr
 
 ## <div id='2.1'/>2.1. BOSH Installaion Procedure
 Inception (a K-PaaS installation) is an installation environment for installing BOSH and K-PaaS, either VM or server equipment. 
-OS Version is based on Ubuntu 18.04. Inception VM must be created manually in IaaS.
+OS Version is based on Ubuntu 22.04. Inception VM must be created manually in IaaS.
 
-Inception VM recommends Ubuntu 18.04, vCPU 2 Core, Memory 4G, and Disk 100G or higher.
+Inception VM recommends Ubuntu 22.04, vCPU 2 Core, Memory 4G, and Disk 100G or higher.
 
 ## <div id='2.2'/>2.2.  Inception Server Configuration
 
@@ -73,7 +73,7 @@ The components to be configured on the Inception server for BOSH and Application
 
 ### <div id='2.3.1'/>2.3.1.    Prerequisite
 
-- This installation guide is based on Ubuntu 18.04.
+- This installation guide is based on Ubuntu 22.04.
 
 - Set which ports should be opened for IaaS security groups.
 
@@ -98,18 +98,18 @@ The components to be configured on the Inception server for BOSH and Application
 
 ### <div id='2.3.2'/>2.3.2.    BOSH CLI and Dependency Installation
 
-- BOSH Dependency Installation (Ubuntu 18.04)
+- BOSH Dependency Installation (Ubuntu 22.04)
 
 ```
 $ sudo apt-get update
-$ sudo apt install -y build-essential zlibc zlib1g-dev ruby ruby-dev openssl libxslt1-dev libxml2-dev libssl-dev libreadline7 libreadline-dev libyaml-dev libsqlite3-dev sqlite3
+$ sudo apt-get install -y build-essential zlib1g-dev ruby ruby-dev openssl libxslt1-dev libxml2-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3
 ```
 
-- BOSH Dependency Installation (Ubuntu 16.04)
+- BOSH Dependency Installation (Ubuntu 20.04)
 
 ```
 $ sudo apt-get update
-$ sudo apt install -y libcurl4-openssl-dev gcc g++ build-essential zlibc zlib1g-dev ruby ruby-dev openssl libxslt-dev libxml2-dev libssl-dev libreadline6 libreadline6-dev libyaml-dev libsqlite3-dev sqlite3
+$ sudo apt install -y build-essential zlibc zlib1g-dev ruby ruby-dev openssl libxslt1-dev libxml2-dev libssl-dev  libreadline-dev libyaml-dev libsqlite3-dev sqlite3
 ```
 
 - BOSH CLI Installation
@@ -501,13 +501,22 @@ $ ssh jumpbox@{bosh_url} -i jumpbox.key
 ubuntu@inception:~/workspace/ap-deployment/bosh$ ssh jumpbox@10.0.1.6 -i jumpbox.key
 Unauthorized use is strictly prohibited. All access and activity
 is subject to logging and monitoring.
-Welcome to Ubuntu 18.04.6 LTS (GNU/Linux 4.15.0-54-generic x86_64)
+Welcome to Ubuntu 22.04.3 LTS (GNU/Linux 6.2.0-34-generic x86_64)
 
  * Documentation:  https://help.ubuntu.com
  * Management:     https://landscape.canonical.com
  * Support:        https://ubuntu.com/advantage
-Last login: Thu Oct 17 03:57:48 UTC 2019 from 10.0.0.9 on pts/0
-Last login: Fri Oct 25 07:05:42 2019 from 10.0.0.9
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+Last login: Wed Nov 29 09:14:51 2023 from 10.0.12.94
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
 bosh/0:~$
 ```
 
